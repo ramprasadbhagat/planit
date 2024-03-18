@@ -1,0 +1,36 @@
+{
+  "[plist]": {
+    "editor.formatOnSave": true,
+  },
+  "debug.openDebug": "openOnDebugBreak",
+	"debug.internalConsoleOptions": "openOnSessionStart",
+  "debug.toolBarLocation": "commandCenter",
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  "dart.previewFlutterUiGuides": true,
+  "dart.runPubGetOnPubspecChanges": "prompt",
+  "[dart]": {
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.guides.indentation": true,
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+  },
+
+  "dart.flutterSdkPath": ".fvm/versions/3.19.3",
+  "dart.sdkPath": ".fvm/versions/3.19.3/bin/dart",
+    // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+}
