@@ -1,0 +1,62 @@
+
+General guide line 
+
+1. **Utilize Iterable Methods**: Instead of using traditional for loops, leverage methods like .map, .where, .reduce, .any, and .fold to write cleaner and more expressive code.
+
+2. **Prefer Class Widgets**: Opt for class widgets over function widgets for better performance optimization, reliable hot-reload functionality, and improved error handling.
+
+3. **Return Early Pattern**: Employ the return early pattern to avoid nested JSON structures, thereby reducing code complexity especially during feature expansions.
+
+4. **Non-nullable DTO and Entity Variables**: Ensure that Data Transfer Objects (DTOs) and Entities cannot be null to minimize bugs and enhance execution speed.
+
+5. **Avoid Dynamic Types**: Never use dynamic as an object or sub-object type for Entity or DTO variables to maintain type safety.
+
+6. **Limit try-catch to Infrastructure Layer**: Reserve try-catch blocks primarily for the infrastructure layer, except for specific custom widgets.
+
+7. **Reinforce Test Cases After Bug Fixes**: Strengthen test cases by adding reproducing cases after fixing a bug ticket to ensure robustness.
+
+8. **Transformation and Validation Priority**: Place transformation and validation logic in the following order of priority: Value Object > Entity > Bloc State > Presentation.
+
+9. **Utilize Transformation and Validation Logic via Value Object**: Restrict the usage of transformation and validation logic exclusively to Value Objects, avoiding direct usage in the presentation layer.
+
+10. **Optimize Bloc Components**: Ensure that every BlocConsumer, BlocListener, and BlocBuilder includes buildWhen and listenWhen conditions to control rebuilds efficiently.
+
+11. **Naming Conventions**: Prefix private variables and functions with an underscore for clarity and to distinguish them from public elements.
+
+12. **Separation of Concerns with Either Monad**: Reserve the usage of dartz’s Right and Left for the infrastructure layer, avoiding their use in Blocs.
+
+13. **Standardized Error Handling**: Centralize error handling and use recognized error instances consistently for clarity and maintainability.
+
+14. **Prefer foldRight or foldLeft**: Opt for foldRight or foldLeft when expecting a single failure or success as a response.
+
+15. **Widget Best Practices**:
+    - Use BlocBuilder instead of BlocListener for textFormField widgets.
+    - Use absolute path imports instead of relative path imports.
+    - Adopt mock flavors for different layers in testing scenarios.
+  
+16. **DTO and Entity Design Principles**: Include only necessary parameters in DTOs and Entities to minimize complexity and avoid unnecessary data transfer.
+
+17. **Dependency Inversion Principle**: Limit the usage of locator to the presentation layer and follow dependency inversion principles in other layers.
+
+18. **Separation of Concerns**: Ensure that methods of Entity cannot be used in the repository, which can only access methods of DTO.
+
+19. **UI Optimization Tips**:
+    - Prefer ListView over SingleChildScrollView + Column for optimization.
+    - Minimize the use of Visibility widget in conditional cases.
+    - Utilize padding properties inside list views and scroll views.
+    - Standardize text styling with titleSmall, titleMedium, and titleLarge.
+    - Avoid unnecessary wrapper widgets and use optimized alternatives where possible.
+
+20. **Input Field Styling and Handling**:
+    - Use TextButton.icon for button styling.
+    - Incorporate TextFieldWithLabel for text and text field combinations.
+    - Apply standardized styles using theme properties like elevatedButtonTheme.style and textTheme.labelSmall.copyWith.
+
+21. **Standardize Color Usage**: Add new colors to the predefined color class and utilize existing colors whenever possible.
+
+22. **Icon Usage**: Prefer Flutter Icons over SVG, except for unique cases like custom logos.
+
+23. **Widget Organization**:
+    - Limit widget lines to below 80 and split UI into separate files for better organization.
+    - Use Inkwell over GestureDetector for onTap events without long-press or drag functionality.
+

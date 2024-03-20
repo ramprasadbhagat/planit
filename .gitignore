@@ -42,6 +42,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+.metadata
+pubspec.lock
 
 # FVM Version Cache
 .fvm/
+
+# Ignore on project
+/lib/gen/
+/ios/build
+ios/Podfile.lock
+Gemfile.lock

@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.0.1",
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    "dart.sdkPath": ".fvm/flutter_sdk/bin/dart",
+    "configurations": [
+        {
+            "name": "uat",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_uat.dart",
+            "args": [
+                "--flavor",
+                "uat",
+                "--web-browser-flag",
+                "--disable-web-security",
+                "--web-renderer",
+                "html",
+            ],
+        },
+        {
+            "name": "prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "args": [
+                "--flavor",
+                "prod"
+            ],
+        },
+        {
+            "name": "mock",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_mock.dart",
+            "args": [
+                "--flavor",
+                "mock",
+                "--web-browser-flag",
+                "--disable-web-security",
+                "--web-renderer",
+                "html"
+            ],
+        },
+    ],
+}

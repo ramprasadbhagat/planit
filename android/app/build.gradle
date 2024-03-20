@@ -52,6 +52,24 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+     flavorDimensions "env"
+     productFlavors {
+        mock {
+            dimension "env"
+            applicationIdSuffix ".mock"
+        }
+
+        uat {
+            dimension "env"
+            applicationIdSuffix ".uat"
+        }
+
+        prod {
+            dimension "env"
+            applicationIdSuffix ".prod"
+        }
+
+    }
 }
 
 flutter {
