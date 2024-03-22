@@ -1,22 +1,25 @@
-import 'package:auto_route/annotations.dart';
-import 'package:flutter/material.dart';
+import 'package:planit/config.dart';
 import 'package:planit/locator.dart';
-import 'package:planit/router/router.dart';
+import 'package:flutter/material.dart';
+import 'package:auto_route/annotations.dart';
+import 'package:planit/presentation/router/router.dart';
+import 'package:planit/presentation/theme/theme_data.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+Future<void> initialSetup({required Flavor flavor}) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+}
 
-  // This widget is the root of your application.
+class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
-    setupLocator();
-    final router = AppRouter();
+    final router = locator<AppRouter>();
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'PlanIt App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: locator<Config>().appName,
+      theme: appThemeData[AppTheme.light],
       routerConfig: router.config(),
     );
   }
@@ -31,12 +34,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Title"),
+        title: const Text('Title'),
       ),
       body: const Center(
         child: Column(
@@ -47,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
