@@ -19,58 +19,47 @@ class HomePageMobile extends StatelessWidget {
         title: const LocationPin(),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: AutoTabsRouter.tabBar(
-              routes: const [ShopRoute(), ReadRoute(), PlanRoute()],
-              builder: (context, child, tabController) => Column(
-                children: [
-                  Column(
-                    children: [
-                      TabBar(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        controller: tabController,
-                        indicator: const BoxDecoration(),
-                        tabs: tabs.mapIndexed(
-                          (index, title) {
-                            final isSelected = tabController.index == index;
-                            return Card(
-                              child: Tab(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: AutoTabsRouter.tabBar(
+                routes: const [ShopRoute(), ReadRoute(), PlanRoute()],
+                builder: (context, child, tabController) => Column(
+                  children: [
+                    TabBar(
+                      controller: tabController,
+                      indicator: const BoxDecoration(),
+                      labelStyle: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      labelPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                      ),
+                      tabs: ['shop', 'read', 'plan']
+                          .map(
+                            (title) => Tab(
+                              child: Material(
+                                elevation: 4.0,
                                 child: Container(
+                                  height: 30.0,
+                                  width: 100,
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: isSelected
-                                        ? AppColors.primary
-                                        : AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    title,
-                                    style: textTheme.labelMedium!.copyWith(
-                                      color: isSelected
-                                          ? AppColors.white
-                                          : AppColors.black,
-                                    ),
-                                  ),
+                                  child: Text(title),
                                 ),
                               ),
-                            );
-                          },
-                        ).toList(),
-                      ),
-                      const HomeSearchBar(),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                    ],
-                  ),
-                  Expanded(child: child),
-                ],
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    Expanded(child: child),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
