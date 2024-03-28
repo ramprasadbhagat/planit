@@ -29,28 +29,21 @@ class HomePageMobile extends StatelessWidget {
                   Column(
                     children: [
                       TabBar(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         controller: tabController,
                         indicator: const BoxDecoration(),
-                        labelStyle: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        labelPadding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                        ),
                         tabs: tabs.mapIndexed(
                           (index, title) {
                             final isSelected = tabController.index == index;
-
-                            return Tab(
-                              child: Card(
+                            return Card(
+                              child: Tab(
                                 child: Container(
-                                  height: 30,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     color: isSelected
                                         ? AppColors.primary
                                         : AppColors.white,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(
                                     title,

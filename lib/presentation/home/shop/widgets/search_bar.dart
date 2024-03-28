@@ -6,30 +6,30 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search',
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search_rounded,
                   size: 24,
                   color: Colors.grey,
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 0),
+                contentPadding: EdgeInsets.symmetric(horizontal: 0),
                 focusedBorder: OutlineInputBorder(
                   borderSide:
-                      const BorderSide(color: AppColors.lightGrey, width: 1.0),
-                  borderRadius: BorderRadius.circular(10.0),
+                      BorderSide(color: AppColors.lightGrey, width: 1.0),
+                  // borderRadius: BorderRadius.circular(10.0),
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 0),
+                // contentPadding: EdgeInsets.symmetric(horizontal: 0),
               ),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Badge(
               label: Text('5'),
@@ -41,7 +41,7 @@ class HomeSearchBar extends StatelessWidget {
               ),
             ),
           ),
-          const CircleAvatar(
+          CircleAvatar(
             radius: 20.0,
             backgroundImage: NetworkImage(
               'https://via.placeholder.com/150',
