@@ -19,47 +19,65 @@ class HomePageMobile extends StatelessWidget {
         title: const LocationPin(),
         automaticallyImplyLeading: false,
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: AutoTabsRouter.tabBar(
-                routes: const [ShopRoute(), ReadRoute(), PlanRoute()],
-                builder: (context, child, tabController) => Column(
-                  children: [
-                    TabBar(
-                      controller: tabController,
-                      indicator: const BoxDecoration(),
-                      labelStyle: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      labelPadding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                      ),
-                      tabs: ['shop', 'read', 'plan']
-                          .map(
-                            (title) => Tab(
-                              child: Material(
-                                elevation: 4.0,
+      body: Column(
+        children: [
+          Expanded(
+            child: AutoTabsRouter.tabBar(
+              routes: const [ShopRoute(), ReadRoute(), PlanRoute()],
+              builder: (context, child, tabController) => Column(
+                children: [
+                  Column(
+                    children: [
+                      TabBar(
+                        controller: tabController,
+                        indicator: const BoxDecoration(),
+                        labelStyle: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        labelPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                        ),
+                        tabs: tabs.mapIndexed(
+                          (index, title) {
+                            final isSelected = tabController.index == index;
+
+                            return Tab(
+                              child: Card(
                                 child: Container(
-                                  height: 30.0,
-                                  width: 100,
+                                  height: 30,
                                   alignment: Alignment.center,
-                                  child: Text(title),
+                                  decoration: BoxDecoration(
+                                    color: isSelected
+                                        ? AppColors.primary
+                                        : AppColors.white,
+                                  ),
+                                  child: Text(
+                                    title,
+                                    style: textTheme.labelMedium!.copyWith(
+                                      color: isSelected
+                                          ? AppColors.white
+                                          : AppColors.black,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    Expanded(child: child),
-                  ],
-                ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                      const HomeSearchBar(),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                    ],
+                  ),
+                  Expanded(child: child),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
