@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/category/widgets/category_app_bar.dart';
+import 'package:planit/presentation/category/widgets/category_body.dart';
+import 'package:planit/presentation/utils/responsive.dart';
 
 @RoutePage()
 class CategoryPage extends StatelessWidget {
@@ -7,20 +10,42 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Category'),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Category',
-            ),
-          ],
-        ),
-      ),
+    return const Responsive(
+      mobile: CategoryPageMobile(),
+      tablet: CategoryPageMobile(),
+      web: CategoryPageWeb(),
     );
   }
 }
+
+class CategoryPageMobile extends StatelessWidget {
+  const CategoryPageMobile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CategoryAppBar(
+        width: MediaQuery.of(context).size.width,
+        height: 70,
+      ),
+      body: CategoryBody(),
+    );
+  }
+}
+
+class CategoryPageWeb extends StatelessWidget {
+  const CategoryPageWeb({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CategoryAppBar(
+        width: MediaQuery.of(context).size.width,
+        height: 70,
+      ),
+      body: CategoryBody(),
+    );
+  }
+}
+
+

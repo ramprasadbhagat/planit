@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/router/router.gr.dart';
+import 'package:planit/presentation/utils/widget_keys.dart';
 
 @RoutePage()
 class MainTabbar extends StatelessWidget {
-  const MainTabbar({Key? key}) : super(key: key);
+  const MainTabbar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class MainTabbar extends StatelessWidget {
       routes: _getTabs(context).map((item) => item.route).toList(),
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
-          key: const Key('homeTabbar'),
+          key: WidgetKeys.homeTabBar,
           currentIndex: tabsRouter.activeIndex,
           onTap: (index) {
             tabsRouter.setActiveIndex(index);

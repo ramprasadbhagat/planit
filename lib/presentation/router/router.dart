@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:planit/presentation/home/home_page.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 
 @AutoRouterConfig()
@@ -27,6 +28,18 @@ class AppRouter extends $AppRouter {
               path: 'cart',
             ),
           ],
+        ),
+        AutoRoute(
+          page: ShopRoute.page,
+          path: '/shop',
+        ),
+        AutoRoute(
+          page: ReadRoute.page,
+          path: '/read',
+        ),
+        AutoRoute(
+          page: PlanRoute.page,
+          path: '/plan',
         ),
       ];
 }

@@ -121,6 +121,10 @@ abstract class AppColors {
       Color.fromRGBO(248, 227, 198, 1);
   static const Color downPink = Color.fromRGBO(236, 236, 236, 1);
   static const Color marketplaceBg = Color.fromRGBO(255, 241, 226, 1);
+  static const Color lightOrange = Color(0xFFFFC225);
+  static const Color deepOrange = Color(0xFFE9AE18);
+  static const Color iconGrey = Color(0xFF9A9A9A);
+  static const Color textBlack = Color(0xFF333333);
 
   static const MaterialColor kPrimaryColor = MaterialColor(
     0xFF005d62,
