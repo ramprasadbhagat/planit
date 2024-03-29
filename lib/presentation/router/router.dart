@@ -14,6 +14,20 @@ class AppRouter extends $AppRouter {
             AutoRoute(
               page: HomeRoute.page,
               path: 'home',
+              children: [
+                AutoRoute(
+                  page: ShopRoute.page,
+                  path: 'home/shop',
+                ),
+                AutoRoute(
+                  page: ReadRoute.page,
+                  path: 'home/read',
+                ),
+                AutoRoute(
+                  page: PlanRoute.page,
+                  path: 'home/plan',
+                ),
+              ],
             ),
             AutoRoute(
               page: CategoryRoute.page,
@@ -28,18 +42,6 @@ class AppRouter extends $AppRouter {
               path: 'cart',
             ),
           ],
-        ),
-        AutoRoute(
-          page: ShopRoute.page,
-          path: '/shop',
-        ),
-        AutoRoute(
-          page: ReadRoute.page,
-          path: '/read',
-        ),
-        AutoRoute(
-          page: PlanRoute.page,
-          path: '/plan',
         ),
       ];
 }

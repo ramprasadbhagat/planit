@@ -8,7 +8,7 @@ enum AppTheme {
 }
 
 final appThemeData = {
-  AppTheme.light: ThemeData.light().copyWith(
+  AppTheme.light: ThemeData.light(useMaterial3: false).copyWith(
     //Colors
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
@@ -47,6 +47,7 @@ final appThemeData = {
     dividerTheme: _dividerTheme(),
     chipTheme: _chipTheme(),
     listTileTheme: _listTileTheme(),
+    searchBarTheme: const SearchBarThemeData(),
   ),
   AppTheme.dark: ThemeData.dark().copyWith(),
 };
@@ -54,7 +55,7 @@ final appThemeData = {
 ColorScheme _colorScheme() {
   return const ColorScheme.light().copyWith(
     primary: AppColors.primary,
-    background: AppColors.white,
+    background: AppColors.red,
     secondary: AppColors.secondary,
     onPrimary: AppColors.black,
     error: AppColors.error,
@@ -68,7 +69,7 @@ ColorScheme _colorScheme() {
 AppBarTheme _appBarTheme() {
   return AppBarTheme(
     centerTitle: true,
-    color: AppColors.white,
+    color: Colors.white,
     titleTextStyle: GoogleFonts.notoSans(
       fontSize: 18,
       color: AppColors.black,

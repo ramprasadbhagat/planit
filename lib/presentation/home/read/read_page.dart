@@ -9,6 +9,7 @@ class ReadPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.black,
       key: WidgetKeys.readPage,
       body: Center(
         child: Text('read'),

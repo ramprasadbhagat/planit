@@ -1,6 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:planit/presentation/utils/responsive.dart';
 
 class CategoryBody extends StatelessWidget {
@@ -11,7 +11,9 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage('https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048'),
+          image: NetworkImage(
+            'https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048',
+          ),
           fit: BoxFit.fill,
         ),
       ),
@@ -20,7 +22,9 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage('https://www.shutterstock.com/image-photo/mixed-nuts-dried-fruits-wooden-600nw-1370109137.jpg'),
+          image: NetworkImage(
+            'https://www.shutterstock.com/image-photo/mixed-nuts-dried-fruits-wooden-600nw-1370109137.jpg',
+          ),
           fit: BoxFit.fill,
         ),
       ),
@@ -29,7 +33,9 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage('https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048'),
+          image: NetworkImage(
+            'https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048',
+          ),
           fit: BoxFit.fill,
         ),
       ),
@@ -67,7 +73,7 @@ class CategoryBody extends StatelessWidget {
               vertical: 10,
               horizontal: 8,
             ),
-            itemBuilder: (context,index){
+            itemBuilder: (context, index) {
               return Container(
                 height: 82,
                 width: 80,
@@ -92,7 +98,8 @@ class CategoryBody extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/png/almonds.png',
+                    Image.asset(
+                      'assets/png/almonds.png',
                       height: 45,
                     ),
                     const SizedBox(
@@ -148,13 +155,14 @@ class CategoryBody extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
-                          fontSize: 16,//size.width * 0.04,
+                          fontSize: 16, //size.width * 0.04,
                         ),
                       ),
-                      TextSpan(text: ' in Dry Fruits',
+                      TextSpan(
+                        text: ' in Dry Fruits',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,//size.width * 0.04,
+                          fontSize: 16, //size.width * 0.04,
                         ),
                       ),
                     ],
@@ -177,7 +185,7 @@ class CategoryBody extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.grey,
-                          width:  0.5,
+                          width: 0.5,
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
@@ -187,7 +195,8 @@ class CategoryBody extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset('assets/png/almonds.png',
+                          Image.asset(
+                            'assets/png/almonds.png',
                             height: 62,
                             width: double.infinity,
                             fit: BoxFit.contain,
@@ -242,7 +251,8 @@ class CategoryBody extends StatelessWidget {
                                           color: Colors.grey,
                                           fontSize: 11,
                                           fontWeight: FontWeight.w500,
-                                          decoration: TextDecoration.lineThrough,
+                                          decoration:
+                                              TextDecoration.lineThrough,
                                         ),
                                       ),
                                     ],
@@ -258,9 +268,11 @@ class CategoryBody extends StatelessWidget {
                             height: 26,
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: (){},
-                              style:  ElevatedButton.styleFrom(
-                                backgroundColor: index == 1 ? AppColors.lightOrange :Colors.white,
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: index == 1
+                                    ? AppColors.lightOrange
+                                    : Colors.white,
                                 side: const BorderSide(
                                   color: AppColors.lightOrange,
                                   width: 1,
@@ -270,55 +282,57 @@ class CategoryBody extends StatelessWidget {
                                 ),
                                 padding: EdgeInsets.zero,
                               ),
-                              child: index == 1 ?
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(2),
-                                          color: Colors.white,
-                                          shape: BoxShape.rectangle,
+                              child: index == 1
+                                  ? Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(2),
+                                            color: Colors.white,
+                                            shape: BoxShape.rectangle,
+                                          ),
+                                          margin: const EdgeInsets.all(6),
+                                          child: const Icon(
+                                            Icons.remove,
+                                            color: Colors.black,
+                                            size: 13,
+                                          ),
                                         ),
-                                        margin: const EdgeInsets.all(6),
-                                        child: const Icon(
-                                          Icons.remove,
-                                          color: Colors.black,
-                                          size: 13,
+                                        const Text(
+                                          '1',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(2),
+                                            color: Colors.white,
+                                            shape: BoxShape.rectangle,
+                                          ),
+                                          margin: const EdgeInsets.all(6),
+                                          child: const Icon(
+                                            Icons.add,
+                                            color: Colors.black,
+                                            size: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : const Text(
+                                      'Add to cart',
+                                      style: TextStyle(
+                                        color: AppColors.lightOrange,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                      const Text(
-                                        '1',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(2),
-                                          color: Colors.white,
-                                          shape: BoxShape.rectangle,
-                                        ),
-                                        margin: const EdgeInsets.all(6),
-                                        child: const Icon(
-                                          Icons.add,
-                                          color: Colors.black,
-                                          size: 14,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                  :
-                              const Text(
-                                'Add to cart',
-                                style: TextStyle(
-                                  color: AppColors.lightOrange,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                    ),
                             ),
                           ),
                         ],

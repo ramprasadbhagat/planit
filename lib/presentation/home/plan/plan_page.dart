@@ -9,6 +9,7 @@ class PlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.red,
       key: WidgetKeys.planPage,
       body: Center(
         child: Text('plan'),
