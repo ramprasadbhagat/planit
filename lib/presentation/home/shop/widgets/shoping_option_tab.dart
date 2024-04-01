@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:planit/domain/home/entities/quick_pick.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class ShoppingOptionTab extends StatelessWidget {
   const ShoppingOptionTab({super.key});
@@ -36,26 +38,11 @@ class ShoppingOptionTab extends StatelessWidget {
             SizedBox(
               height: 350,
               width: MediaQuery.sizeOf(context).width,
-              child: TabBarView(
+              child: const TabBarView(
                 children: [
-                  Column(
-                    children: [
-                      const SectionTitle(title: 'Your quick picks'),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Wrap(
-                        runSpacing: 10,
-                        spacing: 10,
-                        children: Iterable<int>.generate(6)
-                            .toList()
-                            .map((e) => const ShoppingOptionCard())
-                            .toList(),
-                      ),
-                    ],
-                  ),
-                  const Center(child: Text('Tab 2 Content')),
-                  const Center(child: Text('Tab 3 Content')),
+                  QuickPickTabView(),
+                  Center(child: Text('Tab 2 Content')),
+                  Center(child: Text('Tab 3 Content')),
                 ],
               ),
             ),
@@ -66,54 +53,76 @@ class ShoppingOptionTab extends StatelessWidget {
   }
 }
 
-class ShoppingOptionCard extends StatelessWidget {
-  const ShoppingOptionCard({super.key});
+class QuickPickTabView extends StatelessWidget {
+  const QuickPickTabView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SectionTitle(title: 'Your quick picks'),
+        const SizedBox(
+          height: 10,
+        ),
+        Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: quickPickList
+              .map(
+                (e) => QuickPickCard(
+                  item: e,
+                ),
+              )
+              .toList(),
+        ),
+      ],
+    );
+  }
+}
+
+class QuickPickCard extends StatelessWidget {
+  final QuickPick item;
+  const QuickPickCard({
+    super.key,
+    required this.item,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=85,metadata=none,w=120,h=120/app/assets/products/sliding_images/jpeg/44ad92be-1db7-4015-9072-3181958cf0a5.jpg?ts=1705560472';
     return Column(
       children: [
-        Card(
-          child: SizedBox(
-            height: 90,
-            width: 100,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  alignment: Alignment.center,
-                  color: Colors.red,
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-                const Positioned(
-                  bottom: 3,
-                  right: 3,
-                  child: ColoredBox(
-                    color: AppColors.primary,
-                    child: Icon(
-                      Icons.add,
-                      color: AppColors.white,
-                      size: 16,
-                    ),
-                  ),
-                ),
-              ],
+        Container(
+          height: 90,
+          width: 100,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(PngImage.generic(item.image)),
+              fit: BoxFit.fitHeight,
             ),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(8),
+                color: AppColors.primary,
+                child: const Icon(
+                  Icons.add,
+                  color: AppColors.white,
+                  size: 16,
+                ),
+              ),
+            ],
           ),
         ),
         Column(
           children: [
             Text(
-              'Amul Cow Milk',
+              item.title,
               style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
             ),
             Text(
@@ -126,3 +135,12 @@ class ShoppingOptionCard extends StatelessWidget {
     );
   }
 }
+
+List<QuickPick> quickPickList = <QuickPick>[
+  QuickPick(image: 'quick_pick_1.png', title: 'Amul Cow Milk'),
+  QuickPick(image: 'quick_pick_2.png', title: 'Whole Spices'),
+  QuickPick(image: 'quick_pick_3.png', title: 'Chia Seeds'),
+  QuickPick(image: 'quick_pick_4.png', title: 'Makhana'),
+  QuickPick(image: 'quick_pick_5.png', title: 'Blueberry'),
+  QuickPick(image: 'quick_pick_6.png', title: 'Corn Seeds'),
+];
