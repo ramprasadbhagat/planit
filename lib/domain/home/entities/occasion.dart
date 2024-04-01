@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'category.freezed.dart';
+part 'occasion.freezed.dart';
 
 @freezed
-class Category with _$Category {
-  factory Category({
+class Occasion with _$Occasion {
+  factory Occasion({
     required String title,
     required String image,
-  }) = _Category;
+  }) = _Occasion;
 }

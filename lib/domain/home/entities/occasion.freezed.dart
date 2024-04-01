@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'category.dart';
+part of 'occasion.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,27 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$Category {
+mixin _$Occasion {
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CategoryCopyWith<Category> get copyWith =>
+  $OccasionCopyWith<Occasion> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res, Category>;
+abstract class $OccasionCopyWith<$Res> {
+  factory $OccasionCopyWith(Occasion value, $Res Function(Occasion) then) =
+      _$OccasionCopyWithImpl<$Res, Occasion>;
   @useResult
   $Res call({String title, String image});
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res, $Val extends Category>
-    implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$OccasionCopyWithImpl<$Res, $Val extends Occasion>
+    implements $OccasionCopyWith<$Res> {
+  _$OccasionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,22 +62,22 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 }
 
 /// @nodoc
-abstract class _$$CategoryImplCopyWith<$Res>
-    implements $CategoryCopyWith<$Res> {
-  factory _$$CategoryImplCopyWith(
-          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
-      __$$CategoryImplCopyWithImpl<$Res>;
+abstract class _$$OccasionImplCopyWith<$Res>
+    implements $OccasionCopyWith<$Res> {
+  factory _$$OccasionImplCopyWith(
+          _$OccasionImpl value, $Res Function(_$OccasionImpl) then) =
+      __$$OccasionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String title, String image});
 }
 
 /// @nodoc
-class __$$CategoryImplCopyWithImpl<$Res>
-    extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
-    implements _$$CategoryImplCopyWith<$Res> {
-  __$$CategoryImplCopyWithImpl(
-      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+class __$$OccasionImplCopyWithImpl<$Res>
+    extends _$OccasionCopyWithImpl<$Res, _$OccasionImpl>
+    implements _$$OccasionImplCopyWith<$Res> {
+  __$$OccasionImplCopyWithImpl(
+      _$OccasionImpl _value, $Res Function(_$OccasionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? title = null,
     Object? image = null,
   }) {
-    return _then(_$CategoryImpl(
+    return _then(_$OccasionImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -101,8 +101,8 @@ class __$$CategoryImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CategoryImpl implements _Category {
-  _$CategoryImpl({required this.title, required this.image});
+class _$OccasionImpl implements _Occasion {
+  _$OccasionImpl({required this.title, required this.image});
 
   @override
   final String title;
@@ -111,14 +111,14 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'Category(title: $title, image: $image)';
+    return 'Occasion(title: $title, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryImpl &&
+            other is _$OccasionImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image));
   }
@@ -129,14 +129,14 @@ class _$CategoryImpl implements _Category {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
-      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
+  _$$OccasionImplCopyWith<_$OccasionImpl> get copyWith =>
+      __$$OccasionImplCopyWithImpl<_$OccasionImpl>(this, _$identity);
 }
 
-abstract class _Category implements Category {
-  factory _Category(
+abstract class _Occasion implements Occasion {
+  factory _Occasion(
       {required final String title,
-      required final String image}) = _$CategoryImpl;
+      required final String image}) = _$OccasionImpl;
 
   @override
   String get title;
@@ -144,6 +144,6 @@ abstract class _Category implements Category {
   String get image;
   @override
   @JsonKey(ignore: true)
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+  _$$OccasionImplCopyWith<_$OccasionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

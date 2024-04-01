@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:planit/domain/home/entities/category.dart';
+import 'package:planit/domain/home/entities/occasion.dart';
+import 'package:planit/presentation/home/shop/widgets/shop_by_category_section.dart';
+import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class ShopByOccasion extends StatelessWidget {
   const ShopByOccasion({super.key});
@@ -23,10 +28,11 @@ class ShopByOccasion extends StatelessWidget {
             height: 130,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return const ShopByOccasionItem();
-              },
+              itemCount: occasionList.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  ShopByOccasionItem(
+                item: occasionList.elementAt(index),
+              ),
             ),
           ),
         ],
@@ -36,14 +42,14 @@ class ShopByOccasion extends StatelessWidget {
 }
 
 class ShopByOccasionItem extends StatelessWidget {
-  const ShopByOccasionItem({super.key});
+  final Occasion item;
+  const ShopByOccasionItem({
+    super.key,
+    required this.item,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/492502a.jpg?ts=1690814287';
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -60,17 +66,25 @@ class ShopByOccasionItem extends StatelessWidget {
                 ),
               ],
             ),
-            child: const CircleAvatar(
+            child: CircleAvatar(
               radius: 40,
-              foregroundImage: NetworkImage(imageUrl, scale: 0.5),
+              backgroundColor: AppColors.white,
+              child: Image.asset(PngImage.generic(item.image)),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text('Birthday'),
+          Text(item.title),
         ],
       ),
     );
   }
 }
+
+List<Occasion> occasionList = <Occasion>[
+  Occasion(image: 'occasion_1.png', title: 'Birthday'),
+  Occasion(image: 'occasion_2.png', title: 'Travel'),
+  Occasion(image: 'occasion_3.png', title: 'House party'),
+  Occasion(image: 'occasion_4.png', title: 'Gifting'),
+];
