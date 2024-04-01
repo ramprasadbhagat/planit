@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:planit/domain/home/entities/best_seller.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
-class BestSeller extends StatelessWidget {
-  const BestSeller({super.key});
+class BestSellerSection extends StatelessWidget {
+  const BestSellerSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +29,12 @@ class BestSeller extends StatelessWidget {
             height: 10,
           ),
           SizedBox(
-            height: 240,
+            height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return const BestSellerItem();
-              },
+              itemCount: bestsellerList.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  BestSellerItem(item: bestsellerList.elementAt(index)),
             ),
           ),
         ],
@@ -43,14 +44,16 @@ class BestSeller extends StatelessWidget {
 }
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+  final BestSeller item;
+  const BestSellerItem({
+    super.key,
+    required this.item,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/492502a.jpg?ts=1690814287';
     return Column(
       children: [
         Stack(
@@ -60,14 +63,16 @@ class BestSellerItem extends StatelessWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
-                    Image.network(
-                      imageUrl,
+                    Image.asset(
+                      PngImage.generic(item.image),
                       width: 120,
-                      height: 150,
-                      fit: BoxFit.cover,
+                      height: 130,
+                      fit: BoxFit.scaleDown,
                     ),
-                    const Text('Roasted &Salted'),
-                    const Text('Cashew'),
+                    Text(
+                      item.title,
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
               ),
@@ -82,7 +87,7 @@ class BestSellerItem extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
-                  color: AppColors.green,
+                  color: AppColors.availableTagColor,
                 ),
                 child: Text(
                   'Available',
@@ -96,3 +101,9 @@ class BestSellerItem extends StatelessWidget {
     );
   }
 }
+
+List<BestSeller> bestsellerList = <BestSeller>[
+  BestSeller(image: 'bestseller_1.png', title: 'Roasted & Salted\nCashew'),
+  BestSeller(image: 'bestseller_2.png', title: 'Roasted & Salted\nCashew'),
+  BestSeller(image: 'bestseller_3.png', title: 'Roasted & Salted\nCashew'),
+];
