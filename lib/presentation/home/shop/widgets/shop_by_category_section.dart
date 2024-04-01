@@ -46,9 +46,10 @@ class ShopByCategoryItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
-      child: SizedBox(
+      child: Container(
         width: MediaQuery.sizeOf(context).width * 0.2,
-        height: MediaQuery.sizeOf(context).height * 0.1,
+        height: MediaQuery.sizeOf(context).height * 0.12,
+        padding: const EdgeInsets.symmetric(vertical: 3),
         child: Column(
           children: [
             Expanded(
