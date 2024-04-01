@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/responsive.dart';
 
@@ -11,8 +13,8 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage(
-            'https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048',
+          image: AssetImage(
+            'assets/demo/banner.png',
           ),
           fit: BoxFit.fill,
         ),
@@ -22,8 +24,8 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage(
-            'https://www.shutterstock.com/image-photo/mixed-nuts-dried-fruits-wooden-600nw-1370109137.jpg',
+          image: AssetImage(
+            'assets/demo/banner.png',
           ),
           fit: BoxFit.fill,
         ),
@@ -33,13 +35,52 @@ class CategoryBody extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: const DecorationImage(
-          image: NetworkImage(
-            'https://dadus.co.in/cdn/shop/collections/Desktop_-_Category_Banner_-_Dry_Fruits.jpg?v=1690951748&width=2048',
+          image: AssetImage(
+            'assets/demo/banner.png',
           ),
           fit: BoxFit.fill,
         ),
       ),
     ),
+  ];
+
+  final List<String> categoryImageList = [
+    'assets/demo/almonds.png',
+    'assets/demo/dates.png',
+    'assets/demo/kiwi.png',
+    'assets/demo/cashew.png',
+    'assets/demo/cashew_bowl.png',
+    'assets/demo/kiwi_fruit.png',
+    'assets/demo/pista.png',
+    'assets/demo/plum.png',
+    'assets/demo/almonds.png',
+    'assets/demo/cashew.png',
+  ];
+
+  final List<String> categoryNameList = [
+    'Fresh Nuts',
+    'Seasonal',
+    'Kashmir Spl',
+    'Roasted',
+    'Calories',
+    'Low Calories',
+    'Weight Loss',
+    'Used in Sweets',
+    'Fresh Nuts',
+    'Seasonal',
+  ];
+
+  final List<String> gridImage = [
+    'assets/demo/gridItem_1.png',
+    'assets/demo/almonds.png',
+    'assets/demo/pista.png',
+    'assets/demo/gridItem_2.png',
+    'assets/demo/gridItem_3.png',
+    'assets/demo/gridItem_4.png',
+    'assets/demo/gridItem_1.png',
+    'assets/demo/almonds.png',
+    'assets/demo/pista.png',
+    'assets/demo/gridItem_2.png',
   ];
 
   @override
@@ -52,7 +93,7 @@ class CategoryBody extends StatelessWidget {
           height: double.infinity,
           width: 100,
           margin: const EdgeInsets.only(
-            top: 10,
+            top: 5,
           ),
           decoration: const BoxDecoration(
             color: Colors.white,
@@ -81,12 +122,12 @@ class CategoryBody extends StatelessWidget {
                   top: index == 0 ? 0 : 10,
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
+                  horizontal: 2,
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: index == 0 ? AppColors.lightYellow : Colors.white,
-                  borderRadius: BorderRadius.circular(8),
+                  color: index == 0 ? AppColors.selectedYellow : Colors.white,
+                  borderRadius: BorderRadius.circular(6),
                   boxShadow: const [
                     BoxShadow(
                       color: Colors.grey,
@@ -99,20 +140,24 @@ class CategoryBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/png/almonds.png',
-                      height: 45,
+                      categoryImageList[index],
+                      height: 43,
+                      width: 60,
                     ),
                     const SizedBox(
                       height: 4,
                     ),
-                    const Text(
-                      'Fresh Nuts',
+                    Text(
+                      categoryNameList[index],
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                      style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                          color: AppColors.textBlack,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
@@ -126,7 +171,7 @@ class CategoryBody extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  top: 16,
+                  top: 10,
                   left: 4,
                   right: 4,
                 ),
@@ -143,26 +188,33 @@ class CategoryBody extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 16,
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  right: 14,
+                  top: 20,
+                  bottom: 10,
                 ),
                 child: RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
-                        text: '28 Items',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 16, //size.width * 0.04,
+                        text: '57 Items',
+                        style: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textBlack,
+                            fontSize: 16, //size.width * 0.04,
+                          ),
                         ),
                       ),
                       TextSpan(
                         text: ' in Dry Fruits',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16, //size.width * 0.04,
+                        style: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.textBlack,
+                            fontSize: 16, //size.width * 0.04,
+                          ),
                         ),
                       ),
                     ],
@@ -173,9 +225,9 @@ class CategoryBody extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: Responsive.isWeb(context) ? 5 : 2,
-                    mainAxisExtent: 190,
+                    mainAxisExtent: 200,
                   ),
-                  itemCount: 20,
+                  itemCount: 10,
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
@@ -195,22 +247,29 @@ class CategoryBody extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            'assets/png/almonds.png',
-                            height: 62,
-                            width: double.infinity,
-                            fit: BoxFit.contain,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                            ),
+                            child: Image.asset(
+                              gridImage[index],
+                              height: 77,
+                              width: double.infinity,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Roasted Almonds',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                              'Johnson Roasted Almonds',
+                              style: GoogleFonts.inter(
+                                textStyle: const TextStyle(
+                                  color: AppColors.textBlackDeep,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
@@ -225,9 +284,12 @@ class CategoryBody extends StatelessWidget {
                             children: [
                               Text(
                                 '1 kg',
-                                style: TextStyle(
-                                  color: Colors.grey.shade900,
-                                  fontSize: 11,
+                                style: GoogleFonts.inter(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.grey1,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -235,24 +297,27 @@ class CategoryBody extends StatelessWidget {
                                   top: 2,
                                 ),
                                 child: RichText(
-                                  text: const TextSpan(
+                                  text: TextSpan(
                                     children: [
                                       TextSpan(
                                         text: '\u{20B9} 430  ',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500,
+                                        style: GoogleFonts.inter(
+                                          textStyle: const TextStyle(
+                                            color: AppColors.textBlackDeep,
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ),
                                       TextSpan(
                                         text: '470',
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                              TextDecoration.lineThrough,
+                                        style: GoogleFonts.inter(
+                                          textStyle: const TextStyle(
+                                            color: AppColors.grey2,
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w400,
+                                            decoration: TextDecoration.lineThrough,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -288,49 +353,55 @@ class CategoryBody extends StatelessWidget {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
+                                          height: 15,
+                                          width: 15,
                                           decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(2),
+                                            borderRadius: BorderRadius.circular(2),
                                             color: Colors.white,
                                             shape: BoxShape.rectangle,
                                           ),
                                           margin: const EdgeInsets.all(6),
                                           child: const Icon(
                                             Icons.remove,
-                                            color: Colors.black,
+                                            color: AppColors.textBlack,
                                             size: 13,
                                           ),
                                         ),
-                                        const Text(
+                                        Text(
                                           '1',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
+                                          style: GoogleFonts.inter(
+                                            textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                         Container(
+                                          height: 15,
+                                          width: 15,
                                           decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(2),
+                                            borderRadius: BorderRadius.circular(2),
                                             color: Colors.white,
                                             shape: BoxShape.rectangle,
                                           ),
                                           margin: const EdgeInsets.all(6),
                                           child: const Icon(
                                             Icons.add,
-                                            color: Colors.black,
+                                            color: AppColors.textBlack,
                                             size: 14,
                                           ),
                                         ),
                                       ],
                                     )
-                                  : const Text(
+                                  : Text(
                                       'Add to cart',
-                                      style: TextStyle(
-                                        color: AppColors.lightOrange,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
+                                      style: GoogleFonts.montserrat(
+                                        textStyle: const TextStyle(
+                                          color: AppColors.lightOrange,
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                             ),
@@ -351,43 +422,3 @@ class CategoryBody extends StatelessWidget {
     );
   }
 }
-
-
-
-// {
-// "data": [],
-// "categories": [
-// {
-// "id": 1,
-// "name": "Fresh Nuts"
-// },
-// {
-// "id": 2,
-// "name": "Seasonal"
-// },
-// {
-// "id": 3,
-// "name": "Kashmir Spl"
-// },
-// {
-// "id": 4,
-// "name": "Roasted"
-// },
-// {
-// "id": 5,
-// "name": "Calories"
-// },
-// {
-// "id": 6,
-// "name": "Low Calories"
-// },
-// {
-// "id": 7,
-// "name": "Weight Loss"
-// },
-// {
-// "id": 8,
-// "name": "Used in Sweets"
-// }
-// ]
-// }

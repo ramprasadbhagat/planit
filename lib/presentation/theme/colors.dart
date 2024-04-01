@@ -125,6 +125,11 @@ abstract class AppColors {
   static const Color deepOrange = Color(0xFFE9AE18);
   static const Color iconGrey = Color(0xFF9A9A9A);
   static const Color textBlack = Color(0xFF333333);
+  static const Color selectedYellow = Color(0xFFFFF5DB);
+  static const Color textBlackDeep = Color(0xFF1C2120);
+  static const Color grey1 = Color(0xFF555555);
+  static const Color grey2 = Color(0xFF888888);
+  static const Color grey3 = Color(0xFF666666);
 
   static const MaterialColor kPrimaryColor = MaterialColor(
     0xFF005d62,
