@@ -1,12 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/presentation/utils/responsive.dart';
+import 'package:planit/utils/responsive.dart';
 
 class CategoryBody extends StatelessWidget {
   CategoryBody({super.key});
 
-  List<Widget> carouselItems = [
+  final List<Widget> carouselItems = [
     Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),

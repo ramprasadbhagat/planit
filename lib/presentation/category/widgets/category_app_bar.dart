@@ -3,10 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/presentation/category/widgets/category_dialog.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/presentation/utils/responsive.dart';
+import 'package:planit/utils/responsive.dart';
 
-
-class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
+class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final double width;
   const CategoryAppBar({super.key, required this.height, required this.width});
@@ -36,7 +35,8 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
           vertical: 0,
         ),
         horizontalTitleGap: 8,
-        leading: SvgPicture.asset('assets/svg/back_arrow.svg',
+        leading: SvgPicture.asset(
+          'assets/svg/back_arrow.svg',
           height: 24,
           width: 24,
         ),
@@ -45,7 +45,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
             top: 10,
           ),
           child: InkWell(
-            onTap: (){
+            onTap: () {
               showDialog(
                 context: context,
                 barrierDismissible: false,
@@ -72,7 +72,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
                   children: [
                     Text(
                       'See all categories',
-                      style:  GoogleFonts.montserrat(
+                      style: GoogleFonts.montserrat(
                         textStyle: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,

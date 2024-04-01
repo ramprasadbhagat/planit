@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/category/widgets/category_app_bar.dart';
 import 'package:planit/presentation/category/widgets/category_body.dart';
-import 'package:planit/presentation/utils/responsive.dart';
+import 'package:planit/utils/responsive.dart';
 
 @RoutePage()
 class CategoryPage extends StatelessWidget {
@@ -47,5 +47,3 @@ class CategoryPageWeb extends StatelessWidget {
     );
   }
 }
-
-

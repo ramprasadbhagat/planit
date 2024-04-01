@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/presentation/utils/responsive.dart';
+import 'package:planit/utils/responsive.dart';
 
 class CategoryAlertDialog extends StatelessWidget {
   const CategoryAlertDialog({super.key});
@@ -60,7 +60,7 @@ class CategoryAlertDialog extends StatelessWidget {
                     ],
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       context.router.maybePop();
                     },
                     child: Icon(
@@ -83,7 +83,7 @@ class CategoryAlertDialog extends StatelessWidget {
                     spacing: 10,
                     runSpacing: 10,
                     children: [
-                      for(int i=0;i<18;i++)
+                      for (int i = 0; i < 18; i++)
                         Container(
                           height: 86,
                           width: 78,
@@ -92,7 +92,7 @@ class CategoryAlertDialog extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color:  Colors.white,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
                             boxShadow: [
                               BoxShadow(
@@ -106,7 +106,8 @@ class CategoryAlertDialog extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset('assets/png/almonds.png',
+                              Image.asset(
+                                'assets/png/almonds.png',
                                 height: 40,
                                 fit: BoxFit.fill,
                               ),

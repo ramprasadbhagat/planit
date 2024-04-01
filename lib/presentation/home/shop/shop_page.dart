@@ -6,7 +6,7 @@ import 'package:planit/presentation/home/shop/widgets/highlight.dart';
 import 'package:planit/presentation/home/shop/widgets/shop_by_category.dart';
 import 'package:planit/presentation/home/shop/widgets/shop_by_occasion.dart';
 import 'package:planit/presentation/home/shop/widgets/shoping_option_tab.dart';
-import 'package:planit/presentation/utils/widget_keys.dart';
+import 'package:planit/utils/widget_keys.dart';
 
 @RoutePage()
 class ShopPage extends StatelessWidget {

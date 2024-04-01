@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planit/presentation/utils/responsive.dart';
+import 'package:planit/utils/responsive.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});

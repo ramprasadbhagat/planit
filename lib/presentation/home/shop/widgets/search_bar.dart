@@ -25,6 +25,7 @@ class HomeSearchBar extends StatelessWidget {
                       const BorderSide(color: AppColors.lightGrey, width: 1.0),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 0),
               ),
             ),
           ),
