@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/responsive.dart';
@@ -316,7 +315,8 @@ class CategoryBody extends StatelessWidget {
                                             color: AppColors.grey2,
                                             fontSize: 11,
                                             fontWeight: FontWeight.w400,
-                                            decoration: TextDecoration.lineThrough,
+                                            decoration:
+                                                TextDecoration.lineThrough,
                                           ),
                                         ),
                                       ),
@@ -356,7 +356,8 @@ class CategoryBody extends StatelessWidget {
                                           height: 15,
                                           width: 15,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(2),
+                                            borderRadius:
+                                                BorderRadius.circular(2),
                                             color: Colors.white,
                                             shape: BoxShape.rectangle,
                                           ),
@@ -381,7 +382,8 @@ class CategoryBody extends StatelessWidget {
                                           height: 15,
                                           width: 15,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(2),
+                                            borderRadius:
+                                                BorderRadius.circular(2),
                                             color: Colors.white,
                                             shape: BoxShape.rectangle,
                                           ),

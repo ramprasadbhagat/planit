@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:planit/utils/png_image.dart';
 
 class ShoppingBanner extends StatelessWidget {
   const ShoppingBanner({super.key});
@@ -27,8 +28,8 @@ class ShoppingBanner extends StatelessWidget {
             builder: (BuildContext context) {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  imageUrl,
+                child: Image.asset(
+                  PngImage.banner,
                   width: 120,
                   height: 150,
                   fit: BoxFit.fitHeight,
