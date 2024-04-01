@@ -19,7 +19,7 @@ class ShopPage extends StatelessWidget {
       body: ListView(
         children: const [
           ShoppingBanner(),
-          HighLight(),
+          HighLightSection(),
           ShoppingOptionTab(),
           ShopByCategory(),
           ShopByOccasion(),

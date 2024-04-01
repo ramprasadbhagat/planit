@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:planit/domain/home/entities/highlight.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/svg_image.dart';
+import 'package:planit/utils/png_image.dart';
 
-class HighLight extends StatelessWidget {
-  const HighLight({super.key});
+class HighLightSection extends StatelessWidget {
+  const HighLightSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +24,12 @@ class HighLight extends StatelessWidget {
             height: 10,
           ),
           SizedBox(
-            height: 180,
+            height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: highlightList.length,
               itemBuilder: (BuildContext context, int index) =>
-                  const HighlightItem(),
+                  HighlightItem(item: highlightList.elementAt(index)),
             ),
           ),
         ],
@@ -38,34 +39,30 @@ class HighLight extends StatelessWidget {
 }
 
 class HighlightItem extends StatelessWidget {
-  const HighlightItem({super.key});
+  final Highlight item;
+  const HighlightItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=85,metadata=none,w=120,h=120/app/assets/products/sliding_images/jpeg/44ad92be-1db7-4015-9072-3181958cf0a5.jpg?ts=1705560472';
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
-      color: AppColors.accentColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: Container(
+        width: MediaQuery.sizeOf(context).width * 0.33,
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(PngImage.generic(item.image)),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
-            Image.asset(
-              SvgImage.highlight1,
-              fit: BoxFit.scaleDown,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            const Spacer(),
             Text(
-              'Natural Fresh',
+              item.title,
               style: textTheme.bodySmall,
-            ),
-            Text(
-              'Almonds',
-              style: textTheme.bodySmall,
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -73,3 +70,9 @@ class HighlightItem extends StatelessWidget {
     );
   }
 }
+
+List<Highlight> highlightList = <Highlight>[
+  Highlight(title: 'Roasted & Salted \n Cashew', image: 'highlight_1.png'),
+  Highlight(title: 'Natural Fresh \n Almonds', image: 'highlight_2.png'),
+  Highlight(title: 'Aashirvaad Chakki \n Atta', image: 'highlight_3.png'),
+];

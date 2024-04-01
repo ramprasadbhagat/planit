@@ -130,6 +130,7 @@ abstract class AppColors {
   static const Color grey1 = Color(0xFF555555);
   static const Color grey2 = Color(0xFF888888);
   static const Color grey3 = Color(0xFF666666);
+  static const Color highlight1 = Color(0xffefe4d3);
 
   static const MaterialColor kPrimaryColor = MaterialColor(
     0xFF005d62,
