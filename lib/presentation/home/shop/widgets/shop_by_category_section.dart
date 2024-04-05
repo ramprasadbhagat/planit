@@ -47,7 +47,7 @@ class ShopByCategoryItem extends StatelessWidget {
 
     return Card(
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.2,
+        width: MediaQuery.sizeOf(context).width * 0.28,
         height: MediaQuery.sizeOf(context).height * 0.12,
         padding: const EdgeInsets.symmetric(vertical: 3),
         child: Column(
@@ -81,8 +81,8 @@ class ShopByCategoryItem extends StatelessWidget {
 }
 
 List<Category> categoryList = <Category>[
-  Category(image: 'category_1.png', title: 'Dry\nfruits'),
-  Category(image: 'category_2.png', title: 'Gourmet\ncheese'),
+  Category(image: 'category_1.png', title: 'Dry fruits'),
+  Category(image: 'category_2.png', title: 'Gourmet cheese'),
   Category(image: 'category_3.png', title: 'Powdered\nspices'),
   Category(image: 'category_4.png', title: 'Fresh\nfruits'),
   Category(image: 'category_5.png', title: 'Dairy and\nbreakfast'),

@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:planit/domain/home/entities/quick_pick.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
-class ShoppingOptionTab extends StatelessWidget {
+class ShoppingOptionTab extends StatefulWidget {
   const ShoppingOptionTab({super.key});
+
+  @override
+  State<ShoppingOptionTab> createState() => _ShoppingOptionTabState();
+}
+
+class _ShoppingOptionTabState extends State<ShoppingOptionTab>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  int _selectedTab = 0;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      initialIndex: 0,
+      length: 3,
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,27 +36,69 @@ class ShoppingOptionTab extends StatelessWidget {
         child: Column(
           children: [
             TabBar(
-              indicatorWeight: 1,
               labelPadding: const EdgeInsets.all(1),
-              labelStyle:
-                  textTheme.bodySmall!.copyWith(color: AppColors.lightGray2),
-              labelColor: AppColors.black,
-              tabs: const [
-                Tab(
-                  text: 'Your favorite picks',
+              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 12),
+              labelColor: AppColors.white,
+              indicator: const BoxDecoration(),
+              controller: _tabController,
+              onTap: (value) => setState(() => _selectedTab = value),
+              tabs: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 3.5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _tabController.index == 0
+                        ? AppColors.black
+                        : AppColors.white,
+                    border: Border.all(
+                      color: AppColors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: const Text(
+                    'Your favorite picks',
+                  ),
                 ),
-                Tab(text: 'Shop by category'),
-                Tab(text: 'Shop by occasion'),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                  decoration: BoxDecoration(
+                    color: _tabController.index == 1
+                        ? AppColors.black
+                        : AppColors.white,
+                    border: Border.all(
+                      color: AppColors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: const Text('Shop by category'),
+                ),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                  decoration: BoxDecoration(
+                    color: _tabController.index == 2
+                        ? AppColors.black
+                        : AppColors.white,
+                    border: Border.all(
+                      color: AppColors.black,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: const Text('Shop by occasion'),
+                ),
               ],
             ),
             const SizedBox(
               height: 10,
             ),
             SizedBox(
-              height: 350,
-              width: MediaQuery.sizeOf(context).width,
-              child: const TabBarView(
-                children: [
+              height: 400,
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
                   QuickPickTabView(),
                   Center(child: Text('Tab 2 Content')),
                   Center(child: Text('Tab 3 Content')),
@@ -65,8 +124,8 @@ class QuickPickTabView extends StatelessWidget {
           height: 10,
         ),
         Wrap(
-          runSpacing: 10,
-          spacing: 10,
+          runSpacing: 8,
+          spacing: 2,
           children: quickPickList
               .map(
                 (e) => QuickPickCard(
@@ -91,56 +150,120 @@ class QuickPickCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Column(
-      children: [
-        Container(
-          height: 90,
-          width: 100,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(PngImage.generic(item.image)),
-              fit: BoxFit.fitHeight,
-            ),
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                margin: const EdgeInsets.all(8),
-                color: AppColors.primary,
-                child: const Icon(
-                  Icons.add,
-                  color: AppColors.white,
-                  size: 16,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Column(
+    return Card(
+      child: Container(
+        width: MediaQuery.sizeOf(context).width * 0.28,
+        padding: const EdgeInsets.all(4),
+        child: Column(
           children: [
-            Text(
-              item.title,
-              style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 20,
+                  width: 60,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.black),
+                      foregroundColor: AppColors.grey3,
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.favorite_outline,
+                          size: 12,
+                          color: AppColors.grey3,
+                        ),
+                        Text(
+                          'Add to list',
+                          style: textTheme.bodySmall?.copyWith(fontSize: 8),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              'Rs. 85.00/Ltr',
-              style: textTheme.bodySmall,
+            Image.asset(PngImage.generic(item.image)),
+            Row(
+              children: [
+                Text(
+                  item.title,
+                  style: textTheme.bodySmall,
+                ),
+                Text(
+                  '1',
+                  style: textTheme.bodySmall,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Text(
+                  '\$ 430',
+                  style: textTheme.bodySmall,
+                ),
+                Text(
+                  '470',
+                  style: textTheme.bodySmall!.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      size: 12,
+                    ),
+                    Text(
+                      '4.3',
+                      style: textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                  width: 60,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.black),
+                      foregroundColor: AppColors.grey3,
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Text(
+                      'Add to cart',
+                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
 
 List<QuickPick> quickPickList = <QuickPick>[
-  QuickPick(image: 'quick_pick_1.png', title: 'Amul Cow Milk'),
-  QuickPick(image: 'quick_pick_2.png', title: 'Whole Spices'),
-  QuickPick(image: 'quick_pick_3.png', title: 'Chia Seeds'),
-  QuickPick(image: 'quick_pick_4.png', title: 'Makhana'),
-  QuickPick(image: 'quick_pick_5.png', title: 'Blueberry'),
-  QuickPick(image: 'quick_pick_6.png', title: 'Corn Seeds'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
 ];

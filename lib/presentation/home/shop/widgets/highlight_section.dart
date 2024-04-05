@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planit/domain/home/entities/highlight.dart';
+import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -8,23 +9,20 @@ class HighLightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
       padding: const EdgeInsets.all(16.0),
       color: AppColors.extraLightGray,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Highlights',
-            style: textTheme.labelMedium,
+          const SectionTitle(
+            title: 'Highlights',
           ),
           const SizedBox(
             height: 10,
           ),
           SizedBox(
-            height: 150,
+            height: 190,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: highlightList.length,
@@ -46,27 +44,50 @@ class HighlightItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.33,
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(PngImage.generic(item.image)),
-            fit: BoxFit.cover,
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Card(
+          child: Container(
+            width: MediaQuery.sizeOf(context).width * 0.33,
+            padding: const EdgeInsets.all(6),
+            color: AppColors.lightGrey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Image.asset(PngImage.generic(item.image)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    item.title,
+                    style: textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        child: Column(
-          children: [
-            const Spacer(),
-            Text(
-              item.title,
-              style: textTheme.bodySmall,
-              textAlign: TextAlign.center,
+        Positioned(
+          top: -1.8,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 5,
+              vertical: 4,
             ),
-          ],
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: AppColors.black,
+            ),
+            child: Text(
+              '12 % off',
+              style: textTheme.bodySmall!.copyWith(color: AppColors.white),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

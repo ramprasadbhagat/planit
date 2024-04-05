@@ -12,8 +12,6 @@ class HomePageMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         title: const LocationPin(),
@@ -32,28 +30,28 @@ class HomePageMobile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         controller: tabController,
                         indicator: const BoxDecoration(),
+                        labelColor: AppColors.white,
                         tabs: tabs.mapIndexed(
                           (index, title) {
                             final isSelected = tabController.index == index;
-                            return Card(
-                              child: Tab(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: isSelected
-                                        ? AppColors.primary
-                                        : AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    title,
-                                    style: textTheme.labelMedium!.copyWith(
-                                      color: isSelected
-                                          ? AppColors.white
-                                          : AppColors.black,
-                                    ),
-                                  ),
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 0.31,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                              ),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isSelected
+                                    ? AppColors.black
+                                    : AppColors.white,
+                                border: Border.all(
+                                  color: AppColors.black,
                                 ),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Text(
+                                title,
                               ),
                             );
                           },

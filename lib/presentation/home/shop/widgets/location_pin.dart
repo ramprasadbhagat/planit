@@ -6,28 +6,40 @@ class LocationPin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Row(
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Icon(
-              Icons.location_on,
-              size: 18,
+            Row(
+              children: <Widget>[
+                const Icon(
+                  Icons.location_on,
+                  size: 18,
+                ),
+                const SizedBox(width: 4.0),
+                Text(
+                  'Delivering to110017',
+                  style: textTheme.bodyMedium,
+                ),
+              ],
+            ),
+            Text(
+              'Order within 30 mins for delivery by 24-03-2024',
+              style: textTheme.labelSmall,
             ),
             const SizedBox(width: 4.0),
-            Text(
-              'Delivering to110017',
-              style: textTheme.bodyMedium,
-            ),
           ],
         ),
-        Text(
-          'Order within 30 mins for delivery by 24-03-2024',
-          style: textTheme.labelSmall,
+        const Expanded(
+          child: CircleAvatar(
+            radius: 20.0,
+            backgroundImage: NetworkImage(
+              'https://via.placeholder.com/150',
+            ),
+          ),
         ),
-        const SizedBox(width: 4.0),
       ],
     );
   }
