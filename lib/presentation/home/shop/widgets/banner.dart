@@ -7,10 +7,12 @@ class ShoppingBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2160/layout-engine/2022-05/Group-33704.jpg';
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      clipBehavior: Clip.antiAlias,
       child: FlutterCarousel(
         options: CarouselOptions(
           height: 160.0,
