@@ -16,6 +16,7 @@ class HomePageMobile extends StatelessWidget {
       appBar: AppBar(
         title: const LocationPin(),
         automaticallyImplyLeading: false,
+        elevation: 0,
       ),
       body: Column(
         children: [
