@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:planit/presentation/home/shop/widgets/banner.dart';
@@ -17,22 +16,25 @@ class ShopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       key: WidgetKeys.shopPage,
-      body: Stack(
-        alignment: Alignment.bottomCenter,
+      body: Column(
         children: [
-          ListView(
-            children: const [
-              ShoppingBanner(),
-              HighLightSection(),
-              ShoppingOptionTab(),
-              ShopByCategory(),
-              ShopByOccasion(),
-              BestSellerSection(),
-            ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ShoppingBanner(),
+                  HighLightSection(),
+                  ShoppingOptionTab(),
+                  ShopByCategory(),
+                  ShopByOccasion(),
+                  BestSellerSection(),
+                ],
+              ),
+            ),
           ),
-          const CartBanner(),
+          CartBanner(),
         ],
       ),
     );

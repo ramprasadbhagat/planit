@@ -21,7 +21,7 @@ class BestSellerSection extends StatelessWidget {
           ),
           Text(
             'BestSeller',
-            style: textTheme.labelMedium,
+            style: textTheme.titleMedium,
           ),
           const SizedBox(
             height: 10,
@@ -55,42 +55,42 @@ class BestSellerItem extends StatelessWidget {
     return Column(
       children: [
         Stack(
+          alignment: Alignment.topCenter,
           children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      PngImage.generic(item.image),
-                      width: 120,
-                      height: 130,
-                      fit: BoxFit.scaleDown,
-                    ),
-                    Text(
-                      item.title,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        PngImage.generic(item.image),
+                        width: 120,
+                        height: 130,
+                        fit: BoxFit.scaleDown,
+                      ),
+                      Text(
+                        item.title,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Positioned(
-              top: -2,
-              left: 30,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 5,
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  color: AppColors.availableTagColor,
-                ),
-                child: Text(
-                  'Available',
-                  style: textTheme.bodySmall!.copyWith(color: AppColors.white),
-                ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 5,
+                vertical: 4,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: AppColors.availableTagColor,
+              ),
+              child: Text(
+                'Available',
+                style: textTheme.bodySmall!.copyWith(color: AppColors.white),
               ),
             ),
           ],

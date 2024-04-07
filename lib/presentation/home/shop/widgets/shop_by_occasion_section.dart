@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:planit/domain/home/entities/category.dart';
+import 'package:flutter/widgets.dart';
 import 'package:planit/domain/home/entities/occasion.dart';
-import 'package:planit/presentation/home/shop/widgets/shop_by_category_section.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -13,16 +12,16 @@ class ShopByOccasion extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            'Shop by occasion',
-            style: textTheme.labelMedium,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Text(
+              'Shop by occasion',
+              style: textTheme.titleMedium,
+            ),
           ),
           SizedBox(
             height: 130,

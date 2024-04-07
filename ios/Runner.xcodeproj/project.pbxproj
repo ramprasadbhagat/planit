@@ -708,6 +708,7 @@
 		};
 		510E9E8F2BAD4B0900C7B82E /* Release-prod */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0511185EFF71726AA2721FDA /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

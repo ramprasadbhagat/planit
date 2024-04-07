@@ -20,10 +20,6 @@ class LocationPin extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  // const Icon(
-                  //   Icons.location_on,
-                  //   size: 18,
-                  // ),
                   SvgPicture.asset(
                     SvgImage.locationPin,
                   ),

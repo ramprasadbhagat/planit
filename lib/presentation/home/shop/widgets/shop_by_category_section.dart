@@ -48,29 +48,23 @@ class ShopByCategoryItem extends StatelessWidget {
     return Card(
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.28,
-        height: MediaQuery.sizeOf(context).height * 0.12,
-        padding: const EdgeInsets.symmetric(vertical: 3),
+        height: MediaQuery.sizeOf(context).height * 0.11,
+        padding: const EdgeInsets.symmetric(vertical: 9),
         child: Column(
           children: [
-            Expanded(
-              flex: 3,
-              child: SizedBox(
-                child: Image.asset(
-                  PngImage.generic(item.image),
-                  fit: BoxFit.scaleDown,
-                ),
+            SizedBox(
+              child: Image.asset(
+                PngImage.generic(item.image),
+                fit: BoxFit.scaleDown,
               ),
             ),
             Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Text(
-                    item.title,
-                    style: textTheme.bodySmall,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+              child: Text(
+                item.title,
+                style: textTheme.bodySmall,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
@@ -83,10 +77,8 @@ class ShopByCategoryItem extends StatelessWidget {
 List<Category> categoryList = <Category>[
   Category(image: 'category_1.png', title: 'Dry fruits'),
   Category(image: 'category_2.png', title: 'Gourmet cheese'),
-  Category(image: 'category_3.png', title: 'Powdered\nspices'),
-  Category(image: 'category_4.png', title: 'Fresh\nfruits'),
-  Category(image: 'category_5.png', title: 'Dairy and\nbreakfast'),
-  Category(image: 'category_6.png', title: 'Fresh\nnuts'),
-  Category(image: 'category_7.png', title: 'Premium\npulses'),
-  Category(image: 'category_8.png', title: 'Herbs'),
+  Category(image: 'category_3.png', title: 'Powdered spices'),
+  Category(image: 'category_4.png', title: 'Fresh Herbs'),
+  Category(image: 'category_5.png', title: 'Fresh fruits'),
+  Category(image: 'category_6.png', title: 'Premium Herbs'),
 ];

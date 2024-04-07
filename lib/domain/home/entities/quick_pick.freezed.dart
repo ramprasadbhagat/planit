@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QuickPick {
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  bool get editable => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuickPickCopyWith<QuickPick> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $QuickPickCopyWith<$Res> {
   factory $QuickPickCopyWith(QuickPick value, $Res Function(QuickPick) then) =
       _$QuickPickCopyWithImpl<$Res, QuickPick>;
   @useResult
-  $Res call({String title, String image});
+  $Res call({String title, String image, bool editable});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$QuickPickCopyWithImpl<$Res, $Val extends QuickPick>
   $Res call({
     Object? title = null,
     Object? image = null,
+    Object? editable = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -57,6 +59,10 @@ class _$QuickPickCopyWithImpl<$Res, $Val extends QuickPick>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      editable: null == editable
+          ? _value.editable
+          : editable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$QuickPickImplCopyWith<$Res>
       __$$QuickPickImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String image});
+  $Res call({String title, String image, bool editable});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$QuickPickImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? image = null,
+    Object? editable = null,
   }) {
     return _then(_$QuickPickImpl(
       title: null == title
@@ -95,6 +102,10 @@ class __$$QuickPickImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      editable: null == editable
+          ? _value.editable
+          : editable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,16 +113,19 @@ class __$$QuickPickImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$QuickPickImpl implements _QuickPick {
-  _$QuickPickImpl({required this.title, required this.image});
+  _$QuickPickImpl(
+      {required this.title, required this.image, required this.editable});
 
   @override
   final String title;
   @override
   final String image;
+  @override
+  final bool editable;
 
   @override
   String toString() {
-    return 'QuickPick(title: $title, image: $image)';
+    return 'QuickPick(title: $title, image: $image, editable: $editable)';
   }
 
   @override
@@ -120,11 +134,13 @@ class _$QuickPickImpl implements _QuickPick {
         (other.runtimeType == runtimeType &&
             other is _$QuickPickImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.editable, editable) ||
+                other.editable == editable));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, image);
+  int get hashCode => Object.hash(runtimeType, title, image, editable);
 
   @JsonKey(ignore: true)
   @override
@@ -136,12 +152,15 @@ class _$QuickPickImpl implements _QuickPick {
 abstract class _QuickPick implements QuickPick {
   factory _QuickPick(
       {required final String title,
-      required final String image}) = _$QuickPickImpl;
+      required final String image,
+      required final bool editable}) = _$QuickPickImpl;
 
   @override
   String get title;
   @override
   String get image;
+  @override
+  bool get editable;
   @override
   @JsonKey(ignore: true)
   _$$QuickPickImplCopyWith<_$QuickPickImpl> get copyWith =>

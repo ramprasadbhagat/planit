@@ -1,4 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:planit/domain/home/entities/quick_pick.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -15,6 +18,12 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
     with TickerProviderStateMixin {
   late TabController _tabController;
   int _selectedTab = 0;
+  static List<String> tabs = [
+    'Your favorite picks',
+    'Shop by category',
+    'Shop by occasion',
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -37,71 +46,45 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
           children: [
             TabBar(
               labelPadding: const EdgeInsets.all(1),
-              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 12),
+              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 11),
               labelColor: AppColors.white,
+              unselectedLabelColor: AppColors.black,
               indicator: const BoxDecoration(),
               controller: _tabController,
               onTap: (value) => setState(() => _selectedTab = value),
-              tabs: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 3.5,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _tabController.index == 0
-                        ? AppColors.black
-                        : AppColors.white,
-                    border: Border.all(
-                      color: AppColors.black,
+              tabs: tabs.mapIndexed(
+                (index, title) {
+                  final isSelected = _tabController.index == index;
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 8,
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: const Text(
-                    'Your favorite picks',
-                  ),
-                ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-                  decoration: BoxDecoration(
-                    color: _tabController.index == 1
-                        ? AppColors.black
-                        : AppColors.white,
-                    border: Border.all(
-                      color: AppColors.black,
+                    decoration: BoxDecoration(
+                      color: isSelected ? AppColors.black : AppColors.white,
+                      border: Border.all(
+                        color: AppColors.black,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: const Text('Shop by category'),
-                ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-                  decoration: BoxDecoration(
-                    color: _tabController.index == 2
-                        ? AppColors.black
-                        : AppColors.white,
-                    border: Border.all(
-                      color: AppColors.black,
+                    child: Text(
+                      title,
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: const Text('Shop by occasion'),
-                ),
-              ],
+                  );
+                },
+              ).toList(),
             ),
             const SizedBox(
               height: 10,
             ),
             SizedBox(
-              height: 400,
+              height: 410,
               child: TabBarView(
                 controller: _tabController,
                 children: const [
                   QuickPickTabView(),
-                  Center(child: Text('Tab 2 Content')),
-                  Center(child: Text('Tab 3 Content')),
+                  Center(child: Text('Shop by category')),
+                  Center(child: Text('Shop by occasion')),
                 ],
               ),
             ),
@@ -153,49 +136,32 @@ class QuickPickCard extends StatelessWidget {
     return Card(
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.28,
-        padding: const EdgeInsets.all(4),
+        padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            Stack(
+              alignment: Alignment.topRight,
               children: [
-                SizedBox(
-                  height: 20,
-                  width: 60,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.black),
-                      foregroundColor: AppColors.grey3,
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.favorite_outline,
-                          size: 12,
-                          color: AppColors.grey3,
-                        ),
-                        Text(
-                          'Add to list',
-                          style: textTheme.bodySmall?.copyWith(fontSize: 8),
-                        ),
-                      ],
-                    ),
-                  ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.sizeOf(context).height * 0.1,
+                  child: Image.asset(PngImage.generic(item.image)),
                 ),
+                item.editable
+                    ? const AddToListTextField()
+                    : const AddToListButton(),
               ],
             ),
-            Image.asset(PngImage.generic(item.image)),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   item.title,
                   style: textTheme.bodySmall,
                 ),
                 Text(
-                  '1',
-                  style: textTheme.bodySmall,
+                  '1g',
+                  style: textTheme.bodySmall?.copyWith(color: AppColors.grey1),
                 ),
               ],
             ),
@@ -205,19 +171,20 @@ class QuickPickCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '\$ 430',
+                  '\$430 ',
                   style: textTheme.bodySmall,
                 ),
                 Text(
-                  '470',
+                  ' 470',
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
+                    color: AppColors.lightGray,
                   ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -230,7 +197,9 @@ class QuickPickCard extends StatelessWidget {
                     ),
                     Text(
                       '4.3',
-                      style: textTheme.bodySmall,
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                      ),
                     ),
                   ],
                 ),
@@ -240,13 +209,16 @@ class QuickPickCard extends StatelessWidget {
                   child: OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
                       side: const BorderSide(color: Colors.black),
                       foregroundColor: AppColors.grey3,
                       padding: EdgeInsets.zero,
                     ),
                     child: Text(
                       'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                      style: textTheme.bodySmall?.copyWith(fontSize: 8),
                     ),
                   ),
                 ),
@@ -259,11 +231,112 @@ class QuickPickCard extends StatelessWidget {
   }
 }
 
+class AddToListButton extends StatelessWidget {
+  const AddToListButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return SizedBox(
+      height: 25,
+      width: 75,
+      child: OutlinedButton(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          side: const BorderSide(color: Colors.black),
+          foregroundColor: AppColors.grey3,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 6,
+            vertical: 3,
+          ),
+          textStyle: textTheme.bodySmall
+              ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
+        ),
+        child: const Row(
+          children: [
+            Icon(
+              Icons.favorite_outline,
+              size: 12,
+              color: AppColors.grey3,
+            ),
+            SizedBox(
+              width: 3,
+            ),
+            Text(
+              'Add to list',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToListTextField extends StatefulWidget {
+  const AddToListTextField({super.key});
+
+  @override
+  State<AddToListTextField> createState() => _AddToListTextFieldState();
+}
+
+class _AddToListTextFieldState extends State<AddToListTextField> {
+  int countValue = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 25,
+      width: 80,
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.black,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Icon(
+            Icons.favorite_rounded,
+            size: 12,
+            color: Color.fromRGBO(167, 22, 0, 1),
+          ),
+          GestureDetector(
+            onTap: () => setState(() => countValue += 1),
+            child: const Icon(
+              Icons.add,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+          Text(countValue.toString()),
+          GestureDetector(
+            onTap: () => setState(() {
+              if (countValue > 1) {
+                countValue -= 1;
+              }
+            }),
+            child: const Icon(
+              Icons.remove,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 List<QuickPick> quickPickList = <QuickPick>[
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices'),
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_2.png', title: 'Fresh Spices', editable: true),
+  QuickPick(image: 'quick_pick_3.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_4.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_5.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_6.png', title: 'Fresh Spices', editable: false),
 ];

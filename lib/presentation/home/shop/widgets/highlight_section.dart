@@ -9,9 +9,8 @@ class HighLightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.all(16.0),
-      color: AppColors.extraLightGray,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -47,32 +46,40 @@ class HighlightItem extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
-        Card(
-          child: Container(
-            width: MediaQuery.sizeOf(context).width * 0.33,
-            padding: const EdgeInsets.all(6),
-            color: AppColors.lightGrey,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Image.asset(PngImage.generic(item.image)),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Container(
+              width: MediaQuery.sizeOf(context).width * 0.33,
+              decoration: BoxDecoration(
+                color: AppColors.extraLightGray,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(PngImage.generic(item.image)),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
                     item.title,
                     style: textTheme.bodySmall,
                     textAlign: TextAlign.center,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-        Positioned(
-          top: -1.8,
-          child: Container(
+        if (item.discount)
+          Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 5,
               vertical: 4,
@@ -86,14 +93,25 @@ class HighlightItem extends StatelessWidget {
               style: textTheme.bodySmall!.copyWith(color: AppColors.white),
             ),
           ),
-        ),
       ],
     );
   }
 }
 
 List<Highlight> highlightList = <Highlight>[
-  Highlight(title: 'Roasted & Salted \n Cashew', image: 'highlight_1.png'),
-  Highlight(title: 'Natural Fresh \n Almonds', image: 'highlight_2.png'),
-  Highlight(title: 'Aashirvaad Chakki \n Atta', image: 'highlight_3.png'),
+  Highlight(
+    title: 'Roasted & Salted \n Cashew',
+    image: 'highlight_1.png',
+    discount: true,
+  ),
+  Highlight(
+    title: 'Natural Fresh \n Almonds',
+    image: 'highlight_2.png',
+    discount: false,
+  ),
+  Highlight(
+    title: 'Aashirvaad Chakki \n Atta',
+    image: 'highlight_3.png',
+    discount: true,
+  ),
 ];

@@ -13,7 +13,7 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: textTheme.labelMedium,
+          style: textTheme.titleMedium,
         ),
         Text(
           'View all',

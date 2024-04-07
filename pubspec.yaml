@@ -60,7 +60,7 @@ flutter_native_splash:
   android: true
   ios: true
   web: true
-  color: "#FFFFFF"
+  color: "#F7F4DE"
   image: assets/png/planit_logo.png
   ios_content_mode: center
   web_image_mode: center
@@ -68,5 +68,5 @@ flutter_native_splash:
 
   android_12:
     image: assets/png/planit_logo.png
-    icon_background_color: "#FFFFFF"
-    color: "#FFFFFF"
+    icon_background_color: "#F7F4DE"
+    color: "#F7F4DE"
