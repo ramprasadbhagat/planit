@@ -45,8 +45,10 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
         child: Column(
           children: [
             TabBar(
-              labelPadding: const EdgeInsets.all(1),
-              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 11),
+              labelPadding: EdgeInsets.zero,
+              labelStyle: textTheme.bodySmall!.copyWith(
+                fontSize: 11,
+              ),
               labelColor: AppColors.white,
               unselectedLabelColor: AppColors.black,
               indicator: const BoxDecoration(),
@@ -58,7 +60,7 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                   return Container(
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,
-                      horizontal: 8,
+                      horizontal: 7,
                     ),
                     decoration: BoxDecoration(
                       color: isSelected ? AppColors.black : AppColors.white,
@@ -69,6 +71,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                     ),
                     child: Text(
                       title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textScaler: const TextScaler.linear(0.9),
                     ),
                   );
                 },
