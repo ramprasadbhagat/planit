@@ -1,10 +1,38 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:planit/domain/home/entities/quick_pick.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
-class ShoppingOptionTab extends StatelessWidget {
+class ShoppingOptionTab extends StatefulWidget {
   const ShoppingOptionTab({super.key});
+
+  @override
+  State<ShoppingOptionTab> createState() => _ShoppingOptionTabState();
+}
+
+class _ShoppingOptionTabState extends State<ShoppingOptionTab>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  int _selectedTab = 0;
+  static List<String> tabs = [
+    'Your favorite picks',
+    'Shop by category',
+    'Shop by occasion',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      initialIndex: 0,
+      length: 3,
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +45,46 @@ class ShoppingOptionTab extends StatelessWidget {
         child: Column(
           children: [
             TabBar(
-              indicatorWeight: 1,
               labelPadding: const EdgeInsets.all(1),
-              labelStyle:
-                  textTheme.bodySmall!.copyWith(color: AppColors.lightGray2),
-              labelColor: AppColors.black,
-              tabs: const [
-                Tab(
-                  text: 'Your favorite picks',
-                ),
-                Tab(text: 'Shop by category'),
-                Tab(text: 'Shop by occasion'),
-              ],
+              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 11),
+              labelColor: AppColors.white,
+              unselectedLabelColor: AppColors.black,
+              indicator: const BoxDecoration(),
+              controller: _tabController,
+              onTap: (value) => setState(() => _selectedTab = value),
+              tabs: tabs.mapIndexed(
+                (index, title) {
+                  final isSelected = _tabController.index == index;
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: isSelected ? AppColors.black : AppColors.white,
+                      border: Border.all(
+                        color: AppColors.black,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Text(
+                      title,
+                    ),
+                  );
+                },
+              ).toList(),
             ),
             const SizedBox(
               height: 10,
             ),
             SizedBox(
-              height: 350,
-              width: MediaQuery.sizeOf(context).width,
+              height: 410,
               child: TabBarView(
-                children: [
-                  Column(
-                    children: [
-                      const SectionTitle(title: 'Your quick picks'),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Wrap(
-                        runSpacing: 10,
-                        spacing: 10,
-                        children: Iterable<int>.generate(6)
-                            .toList()
-                            .map((e) => const ShoppingOptionCard())
-                            .toList(),
-                      ),
-                    ],
-                  ),
-                  const Center(child: Text('Tab 2 Content')),
-                  const Center(child: Text('Tab 3 Content')),
+                controller: _tabController,
+                children: const [
+                  QuickPickTabView(),
+                  Center(child: Text('Shop by category')),
+                  Center(child: Text('Shop by occasion')),
                 ],
               ),
             ),
@@ -66,63 +95,248 @@ class ShoppingOptionTab extends StatelessWidget {
   }
 }
 
-class ShoppingOptionCard extends StatelessWidget {
-  const ShoppingOptionCard({super.key});
+class QuickPickTabView extends StatelessWidget {
+  const QuickPickTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=85,metadata=none,w=120,h=120/app/assets/products/sliding_images/jpeg/44ad92be-1db7-4015-9072-3181958cf0a5.jpg?ts=1705560472';
     return Column(
       children: [
-        Card(
-          child: SizedBox(
-            height: 90,
-            width: 100,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  alignment: Alignment.center,
-                  color: Colors.red,
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-                const Positioned(
-                  bottom: 3,
-                  right: 3,
-                  child: ColoredBox(
-                    color: AppColors.primary,
-                    child: Icon(
-                      Icons.add,
-                      color: AppColors.white,
-                      size: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+        const SectionTitle(title: 'Your quick picks'),
+        const SizedBox(
+          height: 10,
         ),
-        Column(
-          children: [
-            Text(
-              'Amul Cow Milk',
-              style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w500),
-            ),
-            Text(
-              'Rs. 85.00/Ltr',
-              style: textTheme.bodySmall,
-            ),
-          ],
+        Wrap(
+          runSpacing: 8,
+          spacing: 2,
+          children: quickPickList
+              .map(
+                (e) => QuickPickCard(
+                  item: e,
+                ),
+              )
+              .toList(),
         ),
       ],
     );
   }
 }
+
+class QuickPickCard extends StatelessWidget {
+  final QuickPick item;
+  const QuickPickCard({
+    super.key,
+    required this.item,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Card(
+      child: Container(
+        width: MediaQuery.sizeOf(context).width * 0.28,
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.sizeOf(context).height * 0.1,
+                  child: Image.asset(PngImage.generic(item.image)),
+                ),
+                item.editable
+                    ? const AddToListTextField()
+                    : const AddToListButton(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  item.title,
+                  style: textTheme.bodySmall,
+                ),
+                Text(
+                  '1g',
+                  style: textTheme.bodySmall?.copyWith(color: AppColors.grey1),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Text(
+                  '\$430 ',
+                  style: textTheme.bodySmall,
+                ),
+                Text(
+                  ' 470',
+                  style: textTheme.bodySmall!.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                    color: AppColors.lightGray,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      size: 12,
+                    ),
+                    Text(
+                      '4.3',
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                  width: 60,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      side: const BorderSide(color: Colors.black),
+                      foregroundColor: AppColors.grey3,
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: Text(
+                      'Add to cart',
+                      style: textTheme.bodySmall?.copyWith(fontSize: 8),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToListButton extends StatelessWidget {
+  const AddToListButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return SizedBox(
+      height: 25,
+      width: 75,
+      child: OutlinedButton(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          side: const BorderSide(color: Colors.black),
+          foregroundColor: AppColors.grey3,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 6,
+            vertical: 3,
+          ),
+          textStyle: textTheme.bodySmall
+              ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
+        ),
+        child: const Row(
+          children: [
+            Icon(
+              Icons.favorite_outline,
+              size: 12,
+              color: AppColors.grey3,
+            ),
+            SizedBox(
+              width: 3,
+            ),
+            Text(
+              'Add to list',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToListTextField extends StatefulWidget {
+  const AddToListTextField({super.key});
+
+  @override
+  State<AddToListTextField> createState() => _AddToListTextFieldState();
+}
+
+class _AddToListTextFieldState extends State<AddToListTextField> {
+  int countValue = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 25,
+      width: 80,
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.black,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Icon(
+            Icons.favorite_rounded,
+            size: 12,
+            color: Color.fromRGBO(167, 22, 0, 1),
+          ),
+          GestureDetector(
+            onTap: () => setState(() => countValue += 1),
+            child: const Icon(
+              Icons.add,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+          Text(countValue.toString()),
+          GestureDetector(
+            onTap: () => setState(() {
+              if (countValue > 1) {
+                countValue -= 1;
+              }
+            }),
+            child: const Icon(
+              Icons.remove,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+List<QuickPick> quickPickList = <QuickPick>[
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_2.png', title: 'Fresh Spices', editable: true),
+  QuickPick(image: 'quick_pick_3.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_4.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_5.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_6.png', title: 'Fresh Spices', editable: false),
+];

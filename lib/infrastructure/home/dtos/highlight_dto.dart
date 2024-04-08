@@ -15,5 +15,9 @@ class HighlightDto with _$HighlightDto {
   factory HighlightDto.fromJson(Map<String, dynamic> json) =>
       _$HighlightDtoFromJson(json);
 
-  Highlight get toDomain => Highlight(title: title, image: image);
+  Highlight get toDomain => Highlight(
+        title: title,
+        image: image,
+        discount: false,
+      );
 }

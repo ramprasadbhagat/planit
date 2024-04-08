@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:planit/utils/png_image.dart';
 
 class ShoppingBanner extends StatelessWidget {
   const ShoppingBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl =
-        'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2160/layout-engine/2022-05/Group-33704.jpg';
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      clipBehavior: Clip.antiAlias,
       child: FlutterCarousel(
         options: CarouselOptions(
           height: 160.0,
@@ -27,8 +30,8 @@ class ShoppingBanner extends StatelessWidget {
             builder: (BuildContext context) {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  imageUrl,
+                child: Image.asset(
+                  PngImage.banner,
                   width: 120,
                   height: 150,
                   fit: BoxFit.fitHeight,

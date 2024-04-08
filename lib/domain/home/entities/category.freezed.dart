@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return _Category.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Category {
   String get title => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
@@ -105,12 +100,9 @@ class __$$CategoryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$CategoryImpl implements _Category {
   _$CategoryImpl({required this.title, required this.image});
-
-  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryImplFromJson(json);
 
   @override
   final String title;
@@ -131,7 +123,6 @@ class _$CategoryImpl implements _Category {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title, image);
 
@@ -140,22 +131,12 @@ class _$CategoryImpl implements _Category {
   @pragma('vm:prefer-inline')
   _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
       __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Category implements Category {
   factory _Category(
       {required final String title,
       required final String image}) = _$CategoryImpl;
-
-  factory _Category.fromJson(Map<String, dynamic> json) =
-      _$CategoryImpl.fromJson;
 
   @override
   String get title;

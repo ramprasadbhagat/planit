@@ -8,7 +8,7 @@ import 'package:collection/collection.dart';
 
 class HomePageMobile extends StatelessWidget {
   const HomePageMobile({super.key});
-  static List<String> tabs = ['shop', 'Read', 'Plan'];
+  static List<String> tabs = ['Shop', 'Read', 'Plan'];
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class HomePageMobile extends StatelessWidget {
       appBar: AppBar(
         title: const LocationPin(),
         automaticallyImplyLeading: false,
+        elevation: 0,
       ),
       body: Column(
         children: [
@@ -29,31 +30,36 @@ class HomePageMobile extends StatelessWidget {
                   Column(
                     children: [
                       TabBar(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 10,
+                        ),
                         controller: tabController,
+                        labelStyle: textTheme.labelMedium,
                         indicator: const BoxDecoration(),
+                        labelColor: AppColors.white,
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 4),
                         tabs: tabs.mapIndexed(
                           (index, title) {
                             final isSelected = tabController.index == index;
-                            return Card(
-                              child: Tab(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: isSelected
-                                        ? AppColors.primary
-                                        : AppColors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    title,
-                                    style: textTheme.labelMedium!.copyWith(
-                                      color: isSelected
-                                          ? AppColors.white
-                                          : AppColors.black,
-                                    ),
-                                  ),
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 0.31,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                              ),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isSelected
+                                    ? AppColors.black
+                                    : AppColors.white,
+                                border: Border.all(
+                                  color: AppColors.black,
                                 ),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(20)),
+                              ),
+                              child: Text(
+                                title,
                               ),
                             );
                           },

@@ -7,5 +7,6 @@ class Highlight with _$Highlight {
   factory Highlight({
     required String title,
     required String image,
+    required bool discount,
   }) = _Highlight;
 }

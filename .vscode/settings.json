@@ -26,7 +26,12 @@
     "editor.guides.indentation": true,
     "editor.defaultFormatter": "Dart-Code.dart-code",
   },
-
+  // Hide the file from explorer
+  "files.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/*.gr.dart": true
+  },
   "dart.flutterSdkPath": ".fvm/versions/3.19.3",
   "dart.sdkPath": ".fvm/versions/3.19.3/bin/dart",
     // Remove .fvm files from search

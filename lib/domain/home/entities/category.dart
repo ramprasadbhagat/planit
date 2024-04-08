@@ -8,7 +8,4 @@ class Category with _$Category {
     required String title,
     required String image,
   }) = _Category;
-
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
 }

@@ -1,7 +1,9 @@
 {
     "data":[
         {
-            "title": "Roasted & Salted Cashew"
+            "title": "Roasted & Salted Cashew",
+            "image": "",
+            "backGroundColor":"0xffefe4d3"
         }
     ]
 }

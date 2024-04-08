@@ -32,7 +32,6 @@ class CategoryAlertDialog extends StatelessWidget {
     'Powdered spices',
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -90,7 +89,7 @@ class CategoryAlertDialog extends StatelessWidget {
                     ],
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       context.router.maybePop();
                     },
                     child: const Icon(
@@ -113,7 +112,7 @@ class CategoryAlertDialog extends StatelessWidget {
                     spacing: 10,
                     runSpacing: 10,
                     children: [
-                      for(int i=0;i<10;i++)
+                      for (int i = 0; i < 10; i++)
                         Container(
                           height: 98,
                           width: 102,
@@ -122,7 +121,7 @@ class CategoryAlertDialog extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color:  Colors.white,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(6),
                             boxShadow: [
                               BoxShadow(

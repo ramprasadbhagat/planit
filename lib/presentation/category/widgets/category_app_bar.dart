@@ -4,8 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/presentation/category/widgets/category_dialog.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
-
-class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
+class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final double width;
   const CategoryAppBar({super.key, required this.height, required this.width});
@@ -51,7 +50,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
                   width: 12,
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     showDialog(
                       context: context,
                       barrierDismissible: false,
@@ -76,7 +75,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget{
                         children: [
                           Text(
                             'See all categories',
-                            style:  GoogleFonts.montserrat(
+                            style: GoogleFonts.montserrat(
                               textStyle: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
