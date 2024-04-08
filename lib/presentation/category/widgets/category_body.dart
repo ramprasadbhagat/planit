@@ -72,16 +72,56 @@ class CategoryBody extends StatelessWidget {
   ];
 
   final List<CategoryItem> categoryItems = [
-    CategoryItem(title: '', image: 'gridItem_1.png', editable: false),
-    CategoryItem(title: '', image: 'almonds.png', editable: false),
-    CategoryItem(title: '', image: 'pista.png', editable: false),
-    CategoryItem(title: '', image: 'gridItem_2.png', editable: false),
-    CategoryItem(title: '', image: 'gridItem_3.png', editable: false),
-    CategoryItem(title: '', image: 'gridItem_4.png', editable: false),
-    CategoryItem(title: '', image: 'gridItem_1.png', editable: false),
-    CategoryItem(title: '', image: 'almonds.png', editable: false),
-    CategoryItem(title: '', image: 'pista.png', editable: false),
-    CategoryItem(title: '', image: 'gridItem_2.png', editable: false),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_1.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'almonds.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'pista.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_2.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_3.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_4.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_1.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'almonds.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'pista.png',
+      editable: false,
+    ),
+    CategoryItem(
+      title: 'Johnson Roasted Cashew',
+      image: 'gridItem_2.png',
+      editable: false,
+    ),
   ];
 
   @override
@@ -226,7 +266,7 @@ class CategoryBody extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: Responsive.isWeb(context) ? 5 : 2,
-                    mainAxisExtent: 200,
+                    mainAxisExtent: 170,
                   ),
                   itemCount: categoryItems.length,
                   shrinkWrap: true,
@@ -234,8 +274,8 @@ class CategoryBody extends StatelessWidget {
                     horizontal: 14,
                   ),
                   itemBuilder: (context, index) {
-                    return CategoryItemCard(
-                      categoryItem: categoryItems.elementAt(index),
+                    return CategoryCart2(
+                      item: categoryItems.elementAt(index),
                     );
                   },
                 ),
@@ -247,6 +287,227 @@ class CategoryBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class CategoryCart2 extends StatelessWidget {
+  final CategoryItem item;
+
+  const CategoryCart2({
+    super.key,
+    required this.item,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Card(
+      child: Container(
+        width: MediaQuery.sizeOf(context).width * 0.28,
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.sizeOf(context).height * 0.1,
+                  child: Image.asset(PngImage.genericDemo(item.image)),
+                ),
+                item.editable
+                    ? const AddToListTextField()
+                    : const AddToListButton(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    item.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                  ),
+                ),
+                Text(
+                  '1g',
+                  style: textTheme.bodySmall?.copyWith(
+                    color: AppColors.grey1,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Text(
+                  '\$430 ',
+                  style: textTheme.bodySmall?.copyWith(
+                    fontSize: 9,
+                  ),
+                ),
+                Text(
+                  ' 470',
+                  style: textTheme.bodySmall!.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                    color: AppColors.lightGray,
+                    fontSize: 9,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      size: 9,
+                    ),
+                    Text(
+                      '4.3',
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 9,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.03,
+                  width: MediaQuery.sizeOf(context).width * 0.17,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      side: const BorderSide(color: Colors.black),
+                      foregroundColor: AppColors.grey3,
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                    ),
+                    child: Text(
+                      'Add to cart',
+                      style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToListButton extends StatelessWidget {
+  const AddToListButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return SizedBox(
+      height: 25,
+      width: 75,
+      child: OutlinedButton(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          side: const BorderSide(color: Colors.black),
+          foregroundColor: AppColors.grey3,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 6,
+            vertical: 3,
+          ),
+          textStyle: textTheme.bodySmall
+              ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
+        ),
+        child: const Row(
+          children: [
+            Icon(
+              Icons.favorite_outline,
+              size: 12,
+              color: AppColors.grey3,
+            ),
+            SizedBox(
+              width: 3,
+            ),
+            Text(
+              'Add to list',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToListTextField extends StatefulWidget {
+  const AddToListTextField({super.key});
+
+  @override
+  State<AddToListTextField> createState() => _AddToListTextFieldState();
+}
+
+class _AddToListTextFieldState extends State<AddToListTextField> {
+  int countValue = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 25,
+      width: 80,
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.black,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Icon(
+            Icons.favorite_rounded,
+            size: 12,
+            color: Color.fromRGBO(167, 22, 0, 1),
+          ),
+          GestureDetector(
+            onTap: () => setState(() => countValue += 1),
+            child: const Icon(
+              Icons.add,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+          Text(countValue.toString()),
+          GestureDetector(
+            onTap: () => setState(() {
+              if (countValue > 1) {
+                countValue -= 1;
+              }
+            }),
+            child: const Icon(
+              Icons.remove,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
