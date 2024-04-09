@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/presentation/router/router.gr.dart';
+import 'package:planit/utils/svg_image.dart';
 import 'package:planit/utils/widget_keys.dart';
 
 @RoutePage()
@@ -35,51 +37,58 @@ class MainTabbar extends StatelessWidget {
 List<RouteItem> _getTabs(BuildContext context) {
   return [
     homeTabRouteItem,
+    talkToUsTabRouteItem,
     categoryTabRouteItem,
     wishlistTabRouteItem,
     cartTabRouteItem,
   ];
 }
 
-const RouteItem homeTabRouteItem = RouteItem(
-  route: HomeRoute(),
-  icon: Icon(
-    Icons.home_outlined,
-    key: Key('homeTab'),
+RouteItem homeTabRouteItem = RouteItem(
+  route: const HomeRoute(),
+  icon: SvgPicture.asset(
+    SvgImage.homeTabIcon,
   ),
   label: 'Home',
 );
 
-const RouteItem categoryTabRouteItem = RouteItem(
-  route: CategoryRoute(),
-  icon: Icon(
-    Icons.category_outlined,
-    key: Key('categoryTab'),
+RouteItem talkToUsTabRouteItem = RouteItem(
+  route: const CategoryRoute(),
+  icon: SvgPicture.asset(
+    SvgImage.talkUoUsTabIcon,
+    height: 26,
+    width: 26,
+  ),
+  label: 'Talk to us',
+);
+
+RouteItem categoryTabRouteItem = RouteItem(
+  route: const CategoryRoute(),
+  icon: SvgPicture.asset(
+    SvgImage.categoryTabIcon,
   ),
   label: 'Category',
 );
 
-const RouteItem wishlistTabRouteItem = RouteItem(
-  route: WishListRoute(),
-  icon: Icon(
-    Icons.fact_check_outlined,
-    key: Key('wishlistTab'),
+RouteItem wishlistTabRouteItem = RouteItem(
+  route: const WishListRoute(),
+  icon: SvgPicture.asset(
+    SvgImage.checkListTabIcon,
   ),
-  label: 'Wishlist',
+  label: 'Shopping list',
 );
 
-const RouteItem cartTabRouteItem = RouteItem(
-  route: CartRoute(),
-  icon: Icon(
-    Icons.shopping_cart,
-    key: Key('cartTabbar'),
+RouteItem cartTabRouteItem = RouteItem(
+  route: const CartRoute(),
+  icon: SvgPicture.asset(
+    SvgImage.cartTabIcon,
   ),
   label: 'Cart',
 );
 
 class RouteItem {
   final PageRouteInfo<dynamic> route;
-  final Icon icon;
+  final Widget icon;
   final String label;
 
   const RouteItem({
