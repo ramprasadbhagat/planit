@@ -45,8 +45,10 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
         child: Column(
           children: [
             TabBar(
-              labelPadding: const EdgeInsets.all(1),
-              labelStyle: textTheme.bodySmall!.copyWith(fontSize: 11),
+              labelPadding: EdgeInsets.zero,
+              labelStyle: textTheme.bodySmall!.copyWith(
+                fontSize: 11,
+              ),
               labelColor: AppColors.white,
               unselectedLabelColor: AppColors.black,
               indicator: const BoxDecoration(),
@@ -58,7 +60,7 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                   return Container(
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,
-                      horizontal: 8,
+                      horizontal: 7,
                     ),
                     decoration: BoxDecoration(
                       color: isSelected ? AppColors.black : AppColors.white,
@@ -69,6 +71,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                     ),
                     child: Text(
                       title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textScaler: const TextScaler.linear(0.9),
                     ),
                   );
                 },
@@ -107,8 +112,8 @@ class QuickPickTabView extends StatelessWidget {
           height: 10,
         ),
         Wrap(
-          runSpacing: 8,
-          spacing: 2,
+          runSpacing: 6,
+          spacing: 1,
           children: quickPickList
               .map(
                 (e) => QuickPickCard(
@@ -135,7 +140,7 @@ class QuickPickCard extends StatelessWidget {
 
     return Card(
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.28,
+        width: MediaQuery.sizeOf(context).width * 0.277,
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
@@ -157,11 +162,14 @@ class QuickPickCard extends StatelessWidget {
               children: [
                 Text(
                   item.title,
-                  style: textTheme.bodySmall,
+                  style: textTheme.bodySmall?.copyWith(fontSize: 10),
                 ),
                 Text(
                   '1g',
-                  style: textTheme.bodySmall?.copyWith(color: AppColors.grey1),
+                  style: textTheme.bodySmall?.copyWith(
+                    color: AppColors.grey1,
+                    fontSize: 10,
+                  ),
                 ),
               ],
             ),
@@ -172,13 +180,16 @@ class QuickPickCard extends StatelessWidget {
               children: [
                 Text(
                   '\$430 ',
-                  style: textTheme.bodySmall,
+                  style: textTheme.bodySmall?.copyWith(
+                    fontSize: 9,
+                  ),
                 ),
                 Text(
                   ' 470',
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGray,
+                    fontSize: 9,
                   ),
                 ),
               ],
@@ -193,19 +204,19 @@ class QuickPickCard extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.star,
-                      size: 12,
+                      size: 9,
                     ),
                     Text(
                       '4.3',
                       style: textTheme.bodySmall?.copyWith(
-                        fontSize: 10,
+                        fontSize: 9,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 25,
-                  width: 60,
+                  height: MediaQuery.sizeOf(context).height * 0.03,
+                  width: MediaQuery.sizeOf(context).width * 0.15,
                   child: OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
@@ -218,7 +229,7 @@ class QuickPickCard extends StatelessWidget {
                     ),
                     child: Text(
                       'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 8),
+                      style: textTheme.bodySmall?.copyWith(fontSize: 9),
                     ),
                   ),
                 ),
