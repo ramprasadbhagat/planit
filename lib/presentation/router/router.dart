@@ -1,15 +1,23 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:planit/presentation/home/home_page.dart';
 import 'package:planit/presentation/router/router.gr.dart';
+import 'package:planit/presentation/talk_to_us/talk_to_us.dart';
 
 @AutoRouterConfig()
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          path: '/main',
-          page: MainTabbar.page,
+          page: LoginRoute.page,
+          path: '/login',
           initial: true,
+        ),
+        AutoRoute(
+          page: LoginOtp.page,
+          path: '/otp',
+        ),
+        AutoRoute(
+          path: '/maintab',
+          page: MainTabbar.page,
           children: [
             AutoRoute(
               page: HomeRoute.page,
@@ -28,6 +36,10 @@ class AppRouter extends $AppRouter {
                   path: 'home/plan',
                 ),
               ],
+            ),
+            AutoRoute(
+              page: TalkToUsRoute.page,
+              path: 'talk_to_us',
             ),
             AutoRoute(
               page: CategoryRoute.page,

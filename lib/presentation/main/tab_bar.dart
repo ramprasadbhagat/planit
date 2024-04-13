@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/presentation/router/router.gr.dart';
+import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:planit/utils/widget_keys.dart';
 
@@ -17,6 +18,7 @@ class MainTabbar extends StatelessWidget {
         return BottomNavigationBar(
           key: WidgetKeys.homeTabBar,
           currentIndex: tabsRouter.activeIndex,
+          selectedItemColor: AppColors.black,
           onTap: (index) {
             tabsRouter.setActiveIndex(index);
           },
@@ -53,7 +55,7 @@ RouteItem homeTabRouteItem = RouteItem(
 );
 
 RouteItem talkToUsTabRouteItem = RouteItem(
-  route: const CategoryRoute(),
+  route: const TalkToUsRoute(),
   icon: SvgPicture.asset(
     SvgImage.talkUoUsTabIcon,
     height: 26,
