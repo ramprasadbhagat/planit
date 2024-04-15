@@ -25,6 +25,7 @@ dependencies:
   flutter_carousel_widget: ^2.2.0
   collection: ^1.16.0
   carousel_slider: ^4.2.1
+  flutter_otp_text_field: ^1.1.3+2
 
 dev_dependencies:
   flutter_test:
@@ -47,10 +48,8 @@ flutter:
     - assets/demo/
 
 flutter_icons:
-  image_path: assets/png/planit_logo.png
+  image_path: assets/png/splash.png
   android: true
-  adaptive_icon_background: "#023507"
-  adaptive_icon_foreground: assets/png/planit_logo.png
   ios: true
   remove_alpha_ios: true
   web:
@@ -61,12 +60,12 @@ flutter_native_splash:
   ios: true
   web: true
   color: "#F7F4DE"
-  image: assets/png/planit_logo.png
+  image: assets/png/splash.png
   ios_content_mode: center
   web_image_mode: center
   fullscreen: true
 
   android_12:
-    image: assets/png/planit_logo.png
-    icon_background_color: "#F7F4DE"
+    image: assets/png/splash.png
     color: "#F7F4DE"
+    fullscreen: true
