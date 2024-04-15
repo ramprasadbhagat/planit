@@ -6,4 +6,5 @@ abstract class SvgImage {
   static const String categoryTabIcon = '${_basePath}category_tab_icon.svg';
   static const String checkListTabIcon = '${_basePath}check_list_tab_icon.svg';
   static const String cartTabIcon = '${_basePath}cart_tab_icon.svg';
+  static const String chefHat = '${_basePath}chef_hat.svg';
 }
