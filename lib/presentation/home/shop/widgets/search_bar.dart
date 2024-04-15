@@ -6,15 +6,15 @@ class HomeSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const borderDecoration = OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
       borderSide: BorderSide.none,
     );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Material(
-        elevation: 10,
+        elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: const TextField(
           decoration: InputDecoration(

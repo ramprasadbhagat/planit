@@ -1,0 +1,107 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:planit/domain/home/entities/quick_pick.dart';
+import 'package:planit/presentation/home/shop/widgets/shoping_option_tab/quick_pick_tab_view.dart';
+import 'package:planit/presentation/theme/colors.dart';
+
+class ShoppingOptionTab extends StatefulWidget {
+  const ShoppingOptionTab({super.key});
+
+  @override
+  State<ShoppingOptionTab> createState() => _ShoppingOptionTabState();
+}
+
+class _ShoppingOptionTabState extends State<ShoppingOptionTab>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  int _selectedTab = 0;
+  static List<String> tabs = [
+    'Your favorite picks',
+    'Shop by category',
+    'Shop by occasion',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      initialIndex: 0,
+      length: 3,
+      vsync: this,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: [
+            TabBar(
+              labelPadding: EdgeInsets.zero,
+              labelStyle: textTheme.bodySmall!.copyWith(
+                fontSize: 11,
+              ),
+              labelColor: AppColors.white,
+              unselectedLabelColor: AppColors.black,
+              indicator: const BoxDecoration(),
+              controller: _tabController,
+              onTap: (value) => setState(() => _selectedTab = value),
+              tabs: tabs.mapIndexed(
+                (index, title) {
+                  final isSelected = _tabController.index == index;
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 7,
+                    ),
+                    decoration: BoxDecoration(
+                      color: isSelected ? AppColors.black : AppColors.white,
+                      border: Border.all(
+                        color: AppColors.black,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textScaler: const TextScaler.linear(0.9),
+                    ),
+                  );
+                },
+              ).toList(),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.5,
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  QuickPickTabView(),
+                  Center(child: Text('Shop by category')),
+                  Center(child: Text('Shop by occasion')),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+List<QuickPick> quickPickList = <QuickPick>[
+  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_2.png', title: 'Fresh Spices', editable: true),
+  QuickPick(image: 'quick_pick_3.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_4.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_5.png', title: 'Fresh Spices', editable: false),
+  QuickPick(image: 'quick_pick_6.png', title: 'Fresh Spices', editable: false),
+];

@@ -266,15 +266,15 @@ class CategoryBody extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: Responsive.isWeb(context) ? 5 : 2,
-                    mainAxisExtent: 170,
+                    mainAxisExtent: MediaQuery.sizeOf(context).height * 0.21,
                   ),
                   itemCount: categoryItems.length,
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
+                    horizontal: 10,
                   ),
                   itemBuilder: (context, index) {
-                    return CategoryCart2(
+                    return CategoryCart(
                       item: categoryItems.elementAt(index),
                     );
                   },
@@ -291,10 +291,10 @@ class CategoryBody extends StatelessWidget {
   }
 }
 
-class CategoryCart2 extends StatelessWidget {
+class CategoryCart extends StatelessWidget {
   final CategoryItem item;
 
-  const CategoryCart2({
+  const CategoryCart({
     super.key,
     required this.item,
   });
@@ -363,9 +363,7 @@ class CategoryCart2 extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -385,7 +383,7 @@ class CategoryCart2 extends StatelessWidget {
                 ),
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.03,
-                  width: MediaQuery.sizeOf(context).width * 0.17,
+                  width: MediaQuery.sizeOf(context).width * 0.18,
                   child: OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
