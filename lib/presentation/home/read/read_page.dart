@@ -12,11 +12,14 @@ class ReadPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       key: WidgetKeys.readPage,
-      body: Column(
-        children: [
-          TrendingRecipes(),
-          HotRecipes(),
-        ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: CustomScrollView(
+          slivers: [
+            TrendingRecipes(),
+            HotRecipes(),
+          ],
+        ),
       ),
     );
   }
