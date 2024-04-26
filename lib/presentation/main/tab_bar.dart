@@ -1,14 +1,37 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:planit/utils/widget_keys.dart';
 
 @RoutePage()
-class MainTabbar extends StatelessWidget {
+class MainTabbar extends StatefulWidget {
   const MainTabbar({super.key});
+
+  @override
+  State<MainTabbar> createState() => _MainTabbarState();
+}
+
+class _MainTabbarState extends State<MainTabbar> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<CategoryBloc>().add(
+          const CategoryEvent.fetch(),
+        );
+    context.read<HighlightProductBloc>().add(
+          const HighlightProductEvent.fetch(),
+        );
+    context.read<QuickPicksBloc>().add(
+          const QuickPicksEvent.fetch(),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {

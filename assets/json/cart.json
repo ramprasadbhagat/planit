@@ -1,0 +1,123 @@
+[
+    {
+        "_id": "662b46917af30e0013145c24",
+        "user_id": "662897e47acc8e00121fe28f",
+        "product_id": "6627679d7acc8e00121fe288",
+        "quantity": "2",
+        "total_price": "100",
+        "isActive": true,
+        "createdAt": "2024-04-26T06:15:45.615Z",
+        "updatedAt": "2024-04-26T06:15:45.615Z",
+        "users": [
+            {
+                "_id": "662897e47acc8e00121fe28f",
+                "mobile_number": "1234567890",
+                "email": "abc@gmail.com",
+                "is_active": "true",
+                "role": "user",
+                "fullName": "@abc_rty",
+                "firstName": "abc",
+                "lastName": "rty",
+                "gender": "Male",
+                "dob": "01/01/1990",
+                "salt": "00833c12726cb6a1",
+                "passwordHash": "575b2ba3ec3eb3f78b8f396b491952a527326fd011f0a638fe6c0d39536c647b49560fe9815da1331576c4a1db096e475d527d53c772fe203b54f5b39399944f"
+            }
+        ],
+        "products": [
+            {
+                "_id": "6627679d7acc8e00121fe288",
+                "categoryId": "6614e1a80fc9660a5488b574",
+                "subcategoryId": "6614e1de0fc9660a5488b575",
+                "productName": "salted fry Cashew",
+                "productDescription": "its taste nice",
+                "expiryDate": "1970-01-01T00:00:00.000Z",
+                "productMRP": null,
+                "productReview": null,
+                "productRating": null,
+                "productDiscount": null,
+                "productDiscountDate": "1970-01-01T00:00:00.000Z",
+                "sku": "1",
+                "sku_price": "111",
+                "sku_packsize": "10",
+                "sku_content": "good",
+                "sku_inventory": null,
+                "sku_vendorId": null,
+                "sku_vendorInfo": null,
+                "startingPrice": 999,
+                "ingredientsList": [
+                    "salt",
+                    "chilly",
+                    "Cashew",
+                    "oil"
+                ],
+                "nutritionalInformation": " Good for health",
+                "isDeleted": false,
+                "isActive": true,
+                "createdAt": "2024-04-23T07:47:41.608Z",
+                "updatedAt": "2024-04-23T07:47:41.608Z"
+            }
+        ]
+    },
+    {
+        "_id": "662b49027af30e0013145c27",
+        "user_id": "662897e47acc8e00121fe28f",
+        "product_id": "66276a1a7acc8e00121fe28a",
+        "quantity": "2",
+        "total_price": "100",
+        "isActive": true,
+        "createdAt": "2024-04-26T06:26:10.980Z",
+        "updatedAt": "2024-04-26T06:26:10.980Z",
+        "users": [
+            {
+                "_id": "662897e47acc8e00121fe28f",
+                "mobile_number": "1234567890",
+                "email": "abc@gmail.com",
+                "is_active": "true",
+                "role": "user",
+                "fullName": "@abc_rty",
+                "firstName": "abc",
+                "lastName": "rty",
+                "gender": "Male",
+                "dob": "01/01/1990",
+                "salt": "00833c12726cb6a1",
+                "passwordHash": "575b2ba3ec3eb3f78b8f396b491952a527326fd011f0a638fe6c0d39536c647b49560fe9815da1331576c4a1db096e475d527d53c772fe203b54f5b39399944f"
+            }
+        ],
+        "products": [
+            {
+                "_id": "66276a1a7acc8e00121fe28a",
+                "categoryId": "6614e1a80fc9660a5488b574",
+                "subcategoryId": "6614e1de0fc9660a5488b575",
+                "productName": "Masala Kaju ",
+                "productDescription": "Its amazing",
+                "expiryDate": "1970-01-01T00:00:00.000Z",
+                "productMRP": null,
+                "productReview": null,
+                "productRating": null,
+                "productDiscount": null,
+                "productDiscountDate": "1970-01-01T00:00:00.000Z",
+                "sku": "2",
+                "sku_price": "1050",
+                "sku_packsize": "10",
+                "sku_content": "good",
+                "sku_inventory": null,
+                "sku_vendorId": null,
+                "sku_vendorInfo": null,
+                "startingPrice": 1100,
+                "ingredientsList": [
+                    "masala",
+                    "salt",
+                    "chilly",
+                    "Cashew",
+                    "oil"
+                ],
+                "nutritionalInformation": "good in limited quantity",
+                "isDeleted": false,
+                "isActive": true,
+                "createdAt": "2024-04-23T07:58:18.620Z",
+                "updatedAt": "2024-04-23T07:58:18.620Z"
+            }
+        ]
+    }
+]

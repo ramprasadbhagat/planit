@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:planit/domain/home/entities/highlight.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -9,34 +11,40 @@ class HighLightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SectionTitle(
-            title: 'Highlights',
+    return BlocBuilder<HighlightProductBloc, HighlightProductState>(
+      buildWhen: (previous, current) => previous.products != current.products,
+      builder: (context, state) {
+        if (state.products.isEmpty) return const SizedBox.shrink();
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SectionTitle(
+                title: 'Highlights',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 180,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.products.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      HighlightItem(item: state.products.elementAt(index)),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 190,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: highlightList.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  HighlightItem(item: highlightList.elementAt(index)),
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
 
 class HighlightItem extends StatelessWidget {
-  final Highlight item;
+  final Product item;
   const HighlightItem({super.key, required this.item});
 
   @override
@@ -64,12 +72,12 @@ class HighlightItem extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset(PngImage.generic(item.image)),
+                  Image.asset(PngImage.generic('highlight_1.png')),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    item.title,
+                    item.name,
                     style: textTheme.bodySmall,
                     textAlign: TextAlign.center,
                   ),
@@ -78,7 +86,7 @@ class HighlightItem extends StatelessWidget {
             ),
           ),
         ),
-        if (item.discount)
+        if (true)
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 5,
@@ -97,21 +105,3 @@ class HighlightItem extends StatelessWidget {
     );
   }
 }
-
-List<Highlight> highlightList = <Highlight>[
-  Highlight(
-    title: 'Roasted & Salted \n Cashew',
-    image: 'highlight_1.png',
-    discount: true,
-  ),
-  Highlight(
-    title: 'Natural Fresh \n Almonds',
-    image: 'highlight_2.png',
-    discount: false,
-  ),
-  Highlight(
-    title: 'Aashirvaad Chakki \n Atta',
-    image: 'highlight_3.png',
-    discount: true,
-  ),
-];

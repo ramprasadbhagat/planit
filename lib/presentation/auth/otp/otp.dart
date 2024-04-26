@@ -1,9 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:planit/presentation/home/home_page.dart';
-import 'package:planit/presentation/main/tab_bar.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 @RoutePage()
 class LoginOtp extends StatelessWidget {
@@ -25,7 +23,7 @@ class LoginOtp extends StatelessWidget {
             Icons.arrow_back_ios_new_outlined,
             color: AppColors.lightGrey,
           ),
-          onPressed: () => context.router.pop(),
+          onPressed: () => context.router.maybePop(),
         ),
       ),
       body: Column(
