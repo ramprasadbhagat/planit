@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:planit/domain/home/entities/quick_pick.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
 class QuickPickCard extends StatelessWidget {
-  final QuickPick item;
+  final Product item;
   const QuickPickCard({
     super.key,
     required this.item,
@@ -26,19 +26,24 @@ class QuickPickCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomCenter,
                   height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.asset(PngImage.generic(item.image)),
+                  child: Image.asset(PngImage.generic('quick_pick_1.png')),
                 ),
-                item.editable
-                    ? const AddToListTextField()
-                    : const AddToListButton(),
+                false ? const AddToListTextField() : const AddToListButton(),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  item.title,
-                  style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                Container(
+                  height: MediaQuery.sizeOf(context).height * 0.05,
+                  width: MediaQuery.sizeOf(context).width * 0.18,
+                  alignment: Alignment.center,
+                  child: Text(
+                    item.name,
+                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
                 ),
                 Text(
                   '1g',

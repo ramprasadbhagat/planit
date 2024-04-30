@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:planit/domain/home/entities/quick_pick.dart';
 import 'package:planit/presentation/home/shop/widgets/shoping_option_tab/quick_pick_tab_view.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -80,7 +79,7 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
               height: 10,
             ),
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.5,
+              height: MediaQuery.sizeOf(context).height * 0.55,
               child: TabBarView(
                 controller: _tabController,
                 children: const [
@@ -96,12 +95,3 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
     );
   }
 }
-
-List<QuickPick> quickPickList = <QuickPick>[
-  QuickPick(image: 'quick_pick_1.png', title: 'Fresh Spices', editable: false),
-  QuickPick(image: 'quick_pick_2.png', title: 'Fresh Spices', editable: true),
-  QuickPick(image: 'quick_pick_3.png', title: 'Fresh Spices', editable: false),
-  QuickPick(image: 'quick_pick_4.png', title: 'Fresh Spices', editable: false),
-  QuickPick(image: 'quick_pick_5.png', title: 'Fresh Spices', editable: false),
-  QuickPick(image: 'quick_pick_6.png', title: 'Fresh Spices', editable: false),
-];

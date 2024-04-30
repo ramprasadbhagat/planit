@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:planit/presentation/router/router.gr.dart';
-import 'package:planit/presentation/talk_to_us/talk_to_us.dart';
 
 @AutoRouterConfig()
 class AppRouter extends $AppRouter {

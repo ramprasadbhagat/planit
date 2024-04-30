@@ -1,36 +1,15 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/domain/category/entities/category.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/application/category/category_bloc.dart';
 
 class CategoryAlertDialog extends StatelessWidget {
-  CategoryAlertDialog({super.key});
-
-  final List<String> categoryImageList = [
-    'assets/demo/almonds.png',
-    'assets/demo/dates.png',
-    'assets/demo/kiwi.png',
-    'assets/demo/cashew.png',
-    'assets/demo/cashew_bowl.png',
-    'assets/demo/kiwi_fruit.png',
-    'assets/demo/pista.png',
-    'assets/demo/plum.png',
-    'assets/demo/almonds.png',
-    'assets/demo/cashew.png',
-  ];
-
-  final List<String> categoryNameList = [
-    'Dry fruits',
-    'Gourmet cheese',
-    'Powdered spices',
-    'Dairy and breakfast',
-    'Premium pulses',
-    'Herbs',
-    'Fresh cashew',
-    'Fresh nuts',
-    'Fresh fruits',
-    'Powdered spices',
-  ];
+  const CategoryAlertDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -108,61 +87,90 @@ class CategoryAlertDialog extends StatelessWidget {
                     vertical: 16,
                     horizontal: 8,
                   ),
-                  child: Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: [
-                      for (int i = 0; i < 10; i++)
-                        Container(
-                          height: 98,
-                          width: 102,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 4,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 0.0,
-                                blurRadius: 3,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                categoryImageList[i],
-                                height: 45,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                ),
-                                child: Text(
-                                  categoryNameList[i],
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.inter(
-                                    textStyle: const TextStyle(
-                                      color: AppColors.textBlack,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                    ],
+                  child: BlocBuilder<CategoryBloc, CategoryState>(
+                    buildWhen: (previous, current) =>
+                        previous.validCategories != current.validCategories,
+                    builder: (context, state) {
+                      return Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: state.validCategories
+                            .map((e) => CategoryCard(category: e))
+                            .toList(),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryCard extends StatelessWidget {
+  final Category category;
+  const CategoryCard({
+    required this.category,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context.read<CategoryBloc>().add(CategoryEvent.select(category));
+        context.read<SubCategoryBloc>().add(
+              SubCategoryEvent.select(
+                category.subCategory.firstOrNull ?? SubCategory.empty(),
+              ),
+            );
+        context.router.maybePop();
+      },
+      child: Container(
+        height: MediaQuery.sizeOf(context).height * 0.12,
+        width: MediaQuery.sizeOf(context).width * 0.21,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 4,
+          vertical: 4,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 0.0,
+              blurRadius: 3,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/demo/almonds.png',
+              height: 45,
+              fit: BoxFit.fill,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+              ),
+              child: Text(
+                category.name.displayLabel,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                    color: AppColors.textBlack,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),

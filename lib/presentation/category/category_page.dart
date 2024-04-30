@@ -28,7 +28,7 @@ class CategoryPageMobile extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 70,
       ),
-      body: CategoryBody(),
+      body: const CategoryBody(),
     );
   }
 }
@@ -43,7 +43,7 @@ class CategoryPageWeb extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 70,
       ),
-      body: CategoryBody(),
+      body: const CategoryBody(),
     );
   }
 }

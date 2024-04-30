@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:planit/presentation/category/widgets/category_dialog.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/presentation/category/widgets/category_dialog.dart';
 
 class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
@@ -54,21 +56,28 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                     showDialog(
                       context: context,
                       barrierDismissible: false,
-                      builder: (_) => CategoryAlertDialog(),
+                      builder: (_) => const CategoryAlertDialog(),
                     );
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Dry fruits',
-                        style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textBlack,
-                          ),
-                        ),
+                      BlocBuilder<CategoryBloc, CategoryState>(
+                        buildWhen: (previous, current) =>
+                            previous.selectedCategory !=
+                            current.selectedCategory,
+                        builder: (context, state) {
+                          return Text(
+                            state.selectedCategory.name.displayLabel,
+                            style: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textBlack,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
