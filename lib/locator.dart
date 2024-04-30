@@ -3,6 +3,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_remote.dart';
@@ -64,8 +65,6 @@ void setupLocator() {
     ),
   );
 
-  ////////////////////////////////////////////////////////////////
-
   /////============================================================
   //  Product
   //============================================================
@@ -91,6 +90,17 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => QuickPicksBloc(
+      repository: locator<ProductRepository>(),
+    ),
+  );
+
+  ////////////////////////////////////////////////////////////////
+
+  /////============================================================
+  // Sub Categories
+  //============================================================
+  locator.registerLazySingleton(
+    () => SubCategoryBloc(
       repository: locator<ProductRepository>(),
     ),
   );

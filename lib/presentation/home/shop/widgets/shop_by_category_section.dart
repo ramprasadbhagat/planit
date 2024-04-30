@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/utils/png_image.dart';
@@ -86,7 +87,19 @@ class ShopByCategoryItem extends StatelessWidget {
 }
 
 List<Category> categoryList = <Category>[
-  Category(image: ['category_1.png'], name: StringValue('Dry fruits')),
-  Category(image: ['category_2.png'], name: StringValue('Gourmet cheese')),
-  Category(image: ['category_3.png'], name: StringValue('Powdered spices')),
+  Category(
+    image: ['category_1.png'],
+    name: StringValue('Dry fruits'),
+    subCategory: <SubCategory>[],
+  ),
+  Category(
+    image: ['category_2.png'],
+    name: StringValue('Gourmet cheese'),
+    subCategory: <SubCategory>[],
+  ),
+  Category(
+    image: ['category_3.png'],
+    name: StringValue('Powdered spices'),
+    subCategory: <SubCategory>[],
+  ),
 ];

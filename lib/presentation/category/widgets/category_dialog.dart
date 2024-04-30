@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/application/category/category_bloc.dart';
 
@@ -120,6 +122,11 @@ class CategoryCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         context.read<CategoryBloc>().add(CategoryEvent.select(category));
+        context.read<SubCategoryBloc>().add(
+              SubCategoryEvent.select(
+                category.subCategory.firstOrNull ?? SubCategory.empty(),
+              ),
+            );
         context.router.maybePop();
       },
       child: Container(

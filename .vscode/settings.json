@@ -42,4 +42,10 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
+  "cSpell.words": [
+    "dartz",
+    "datasource",
+    "dtos",
+    "planit"
+  ],
 }

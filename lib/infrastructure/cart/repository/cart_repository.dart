@@ -33,9 +33,7 @@ class CartRepository extends ICartRepository {
       final cartItems = await remoteDataSource.getCart();
 
       return Right(cartItems);
-    } catch (e, st) {
-      print(e);
-      print(st);
+    } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }
   }

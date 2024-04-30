@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'category_dto.dart';
+part of 'sub_category_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,43 +14,39 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-CategoryDto _$CategoryDtoFromJson(Map<String, dynamic> json) {
-  return _CategoryDto.fromJson(json);
+SubCategoryDto _$SubCategoryDtoFromJson(Map<String, dynamic> json) {
+  return _SubCategoryDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CategoryDto {
+mixin _$SubCategoryDto {
   @JsonKey(name: 'categoryName', defaultValue: '')
   String get categoryName => throw _privateConstructorUsedError;
   @JsonKey(name: 'categoryImages', defaultValue: [])
   List<String> get categoryImages => throw _privateConstructorUsedError;
-  @JsonKey(name: 'subcategories', defaultValue: [])
-  List<SubCategoryDto> get subcategories => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CategoryDtoCopyWith<CategoryDto> get copyWith =>
+  $SubCategoryDtoCopyWith<SubCategoryDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryDtoCopyWith<$Res> {
-  factory $CategoryDtoCopyWith(
-          CategoryDto value, $Res Function(CategoryDto) then) =
-      _$CategoryDtoCopyWithImpl<$Res, CategoryDto>;
+abstract class $SubCategoryDtoCopyWith<$Res> {
+  factory $SubCategoryDtoCopyWith(
+          SubCategoryDto value, $Res Function(SubCategoryDto) then) =
+      _$SubCategoryDtoCopyWithImpl<$Res, SubCategoryDto>;
   @useResult
   $Res call(
       {@JsonKey(name: 'categoryName', defaultValue: '') String categoryName,
       @JsonKey(name: 'categoryImages', defaultValue: [])
-      List<String> categoryImages,
-      @JsonKey(name: 'subcategories', defaultValue: [])
-      List<SubCategoryDto> subcategories});
+      List<String> categoryImages});
 }
 
 /// @nodoc
-class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
-    implements $CategoryDtoCopyWith<$Res> {
-  _$CategoryDtoCopyWithImpl(this._value, this._then);
+class _$SubCategoryDtoCopyWithImpl<$Res, $Val extends SubCategoryDto>
+    implements $SubCategoryDtoCopyWith<$Res> {
+  _$SubCategoryDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,7 +58,6 @@ class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
   $Res call({
     Object? categoryName = null,
     Object? categoryImages = null,
-    Object? subcategories = null,
   }) {
     return _then(_value.copyWith(
       categoryName: null == categoryName
@@ -73,36 +68,30 @@ class _$CategoryDtoCopyWithImpl<$Res, $Val extends CategoryDto>
           ? _value.categoryImages
           : categoryImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      subcategories: null == subcategories
-          ? _value.subcategories
-          : subcategories // ignore: cast_nullable_to_non_nullable
-              as List<SubCategoryDto>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$CategoryDtoImplCopyWith<$Res>
-    implements $CategoryDtoCopyWith<$Res> {
-  factory _$$CategoryDtoImplCopyWith(
-          _$CategoryDtoImpl value, $Res Function(_$CategoryDtoImpl) then) =
-      __$$CategoryDtoImplCopyWithImpl<$Res>;
+abstract class _$$SubCategoryDtoImplCopyWith<$Res>
+    implements $SubCategoryDtoCopyWith<$Res> {
+  factory _$$SubCategoryDtoImplCopyWith(_$SubCategoryDtoImpl value,
+          $Res Function(_$SubCategoryDtoImpl) then) =
+      __$$SubCategoryDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'categoryName', defaultValue: '') String categoryName,
       @JsonKey(name: 'categoryImages', defaultValue: [])
-      List<String> categoryImages,
-      @JsonKey(name: 'subcategories', defaultValue: [])
-      List<SubCategoryDto> subcategories});
+      List<String> categoryImages});
 }
 
 /// @nodoc
-class __$$CategoryDtoImplCopyWithImpl<$Res>
-    extends _$CategoryDtoCopyWithImpl<$Res, _$CategoryDtoImpl>
-    implements _$$CategoryDtoImplCopyWith<$Res> {
-  __$$CategoryDtoImplCopyWithImpl(
-      _$CategoryDtoImpl _value, $Res Function(_$CategoryDtoImpl) _then)
+class __$$SubCategoryDtoImplCopyWithImpl<$Res>
+    extends _$SubCategoryDtoCopyWithImpl<$Res, _$SubCategoryDtoImpl>
+    implements _$$SubCategoryDtoImplCopyWith<$Res> {
+  __$$SubCategoryDtoImplCopyWithImpl(
+      _$SubCategoryDtoImpl _value, $Res Function(_$SubCategoryDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,9 +99,8 @@ class __$$CategoryDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? categoryName = null,
     Object? categoryImages = null,
-    Object? subcategories = null,
   }) {
-    return _then(_$CategoryDtoImpl(
+    return _then(_$SubCategoryDtoImpl(
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -121,30 +109,23 @@ class __$$CategoryDtoImplCopyWithImpl<$Res>
           ? _value._categoryImages
           : categoryImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      subcategories: null == subcategories
-          ? _value._subcategories
-          : subcategories // ignore: cast_nullable_to_non_nullable
-              as List<SubCategoryDto>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CategoryDtoImpl extends _CategoryDto {
-  _$CategoryDtoImpl(
+class _$SubCategoryDtoImpl extends _SubCategoryDto {
+  _$SubCategoryDtoImpl(
       {@JsonKey(name: 'categoryName', defaultValue: '')
       required this.categoryName,
       @JsonKey(name: 'categoryImages', defaultValue: [])
-      required final List<String> categoryImages,
-      @JsonKey(name: 'subcategories', defaultValue: [])
-      required final List<SubCategoryDto> subcategories})
+      required final List<String> categoryImages})
       : _categoryImages = categoryImages,
-        _subcategories = subcategories,
         super._();
 
-  factory _$CategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryDtoImplFromJson(json);
+  factory _$SubCategoryDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubCategoryDtoImplFromJson(json);
 
   @override
   @JsonKey(name: 'categoryName', defaultValue: '')
@@ -158,67 +139,52 @@ class _$CategoryDtoImpl extends _CategoryDto {
     return EqualUnmodifiableListView(_categoryImages);
   }
 
-  final List<SubCategoryDto> _subcategories;
-  @override
-  @JsonKey(name: 'subcategories', defaultValue: [])
-  List<SubCategoryDto> get subcategories {
-    if (_subcategories is EqualUnmodifiableListView) return _subcategories;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subcategories);
-  }
-
   @override
   String toString() {
-    return 'CategoryDto(categoryName: $categoryName, categoryImages: $categoryImages, subcategories: $subcategories)';
+    return 'SubCategoryDto(categoryName: $categoryName, categoryImages: $categoryImages)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryDtoImpl &&
+            other is _$SubCategoryDtoImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
-                .equals(other._categoryImages, _categoryImages) &&
-            const DeepCollectionEquality()
-                .equals(other._subcategories, _subcategories));
+                .equals(other._categoryImages, _categoryImages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      categoryName,
-      const DeepCollectionEquality().hash(_categoryImages),
-      const DeepCollectionEquality().hash(_subcategories));
+  int get hashCode => Object.hash(runtimeType, categoryName,
+      const DeepCollectionEquality().hash(_categoryImages));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
-      __$$CategoryDtoImplCopyWithImpl<_$CategoryDtoImpl>(this, _$identity);
+  _$$SubCategoryDtoImplCopyWith<_$SubCategoryDtoImpl> get copyWith =>
+      __$$SubCategoryDtoImplCopyWithImpl<_$SubCategoryDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryDtoImplToJson(
+    return _$$SubCategoryDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _CategoryDto extends CategoryDto {
-  factory _CategoryDto(
+abstract class _SubCategoryDto extends SubCategoryDto {
+  factory _SubCategoryDto(
       {@JsonKey(name: 'categoryName', defaultValue: '')
       required final String categoryName,
       @JsonKey(name: 'categoryImages', defaultValue: [])
-      required final List<String> categoryImages,
-      @JsonKey(name: 'subcategories', defaultValue: [])
-      required final List<SubCategoryDto> subcategories}) = _$CategoryDtoImpl;
-  _CategoryDto._() : super._();
+      required final List<String> categoryImages}) = _$SubCategoryDtoImpl;
+  _SubCategoryDto._() : super._();
 
-  factory _CategoryDto.fromJson(Map<String, dynamic> json) =
-      _$CategoryDtoImpl.fromJson;
+  factory _SubCategoryDto.fromJson(Map<String, dynamic> json) =
+      _$SubCategoryDtoImpl.fromJson;
 
   @override
   @JsonKey(name: 'categoryName', defaultValue: '')
@@ -227,10 +193,7 @@ abstract class _CategoryDto extends CategoryDto {
   @JsonKey(name: 'categoryImages', defaultValue: [])
   List<String> get categoryImages;
   @override
-  @JsonKey(name: 'subcategories', defaultValue: [])
-  List<SubCategoryDto> get subcategories;
-  @override
   @JsonKey(ignore: true)
-  _$$CategoryDtoImplCopyWith<_$CategoryDtoImpl> get copyWith =>
+  _$$SubCategoryDtoImplCopyWith<_$SubCategoryDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
