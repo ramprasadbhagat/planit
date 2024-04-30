@@ -57,7 +57,7 @@ class _CartPageState extends State<CartPage> {
               previous.isCartEmpty != current.isCartEmpty,
           builder: (context, state) {
             if (state.isCartEmpty) return const EmptyCart();
-            return Column(
+            return ListView(
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12),

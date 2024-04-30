@@ -3,7 +3,10 @@ import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/entities/product_detail.dart';
+import 'package:planit/domain/product/entities/product_image.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/infrastructure/product/datasource/product_local.dart';
 import 'package:planit/infrastructure/product/datasource/product_remote.dart';
@@ -73,8 +76,35 @@ class ProductRepository extends IProductRepository {
       }
     }
     try {
-      final products =
-          await remoteDataSource.getSubCategoryProduct(subCategory);
+      final products = await remoteDataSource.getSubCategoryProduct(
+        subCategory.id.getValue(),
+      );
+
+      return Right(products);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, List<ProductImage>>> getProductImage(
+    ProductId productId,
+  ) async {
+    try {
+      final products = await remoteDataSource.getProductImage(productId);
+
+      return Right(products);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, ProductDetail>> getProductDetail(
+    ProductId productId,
+  ) async {
+    try {
+      final products = await remoteDataSource.getProductDetail(productId);
 
       return Right(products);
     } catch (e) {

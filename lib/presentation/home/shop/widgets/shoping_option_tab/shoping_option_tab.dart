@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/home/shop/widgets/shop_by_category_section.dart';
+import 'package:planit/presentation/home/shop/widgets/shop_by_occasion_section.dart';
 import 'package:planit/presentation/home/shop/widgets/shoping_option_tab/quick_pick_tab_view.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -84,8 +86,8 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                 controller: _tabController,
                 children: const [
                   QuickPickTabView(),
-                  Center(child: Text('Shop by category')),
-                  Center(child: Text('Shop by occasion')),
+                  ShopByCategory(),
+                  ShopByOccasion(),
                 ],
               ),
             ),

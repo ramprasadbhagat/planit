@@ -4,7 +4,6 @@ import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 
 class HighLightSection extends StatelessWidget {
   const HighLightSection({super.key});
@@ -72,7 +71,7 @@ class HighlightItem extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset(PngImage.generic('highlight_1.png')),
+                  Image.network(item.productImages.first),
                   const SizedBox(
                     height: 10,
                   ),

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -42,7 +41,7 @@ class SubCategoryProductCount extends StatelessWidget {
                     textStyle: const TextStyle(
                       fontWeight: FontWeight.w500,
                       color: AppColors.textBlack,
-                      fontSize: 16, //size.width * 0.04,
+                      fontSize: 16,
                     ),
                   ),
                 ),

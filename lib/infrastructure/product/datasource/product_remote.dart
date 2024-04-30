@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/domain/sub_category/entities/sub_category.dart';
+import 'package:planit/domain/product/entities/product_detail.dart';
+import 'package:planit/domain/product/entities/product_image.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
+import 'package:planit/infrastructure/product/dtos/product_detail_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
+import 'package:planit/infrastructure/product/dtos/product_image_dto.dart';
 
 class ProductRemoteDataSource {
   final HttpService httpService;
@@ -15,7 +19,7 @@ class ProductRemoteDataSource {
   Future<List<Product>> getHighlightedProduct() async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'products',
+      url: 'products/getHighlighted',
     );
     _exceptionChecker(res: res);
     final categories = res.data['items'];
@@ -24,22 +28,56 @@ class ProductRemoteDataSource {
         .toList();
   }
 
-  Future<List<Product>> getSubCategoryProduct(SubCategory subcategory) async {
+  Future<List<Product>> getQuickPackProduct() async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'products',
+      url: 'products/getQuickPick',
     );
     _exceptionChecker(res: res);
     final categories = res.data['items'];
     return List.from(categories)
         .map((e) => ProductDto.fromJson(e).toDomain)
         .toList();
+  }
+
+  Future<List<Product>> getSubCategoryProduct(String subcategoryId) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'products/getProductByCategory',
+      data: {
+        'categoryID': subcategoryId,
+      },
+    );
+    _exceptionChecker(res: res);
+    final categories = res.data['items'];
+    return List.from(categories)
+        .map((e) => ProductDto.fromJson(e).toDomain)
+        .toList();
+  }
+
+  Future<List<ProductImage>> getProductImage(ProductId productId) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'productImages/${productId.getValue()}',
+    );
+    _exceptionChecker(res: res);
+    return List.from(res.data)
+        .map((e) => ProductImageDto.fromJson(e).toDomain)
+        .toList();
+  }
+
+  Future<ProductDetail> getProductDetail(ProductId productId) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'products/${productId.getValue()}',
+    );
+    _exceptionChecker(res: res);
+    final productDetail = res.data;
+    return ProductDetailDto.fromJson(productDetail).toDomain;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {
-    if (res.data['errors'] != null && res.data['errors'].isNotEmpty) {
-      throw ServerException(message: res.data['errors']);
-    } else if (res.statusCode != 200) {
+    if (res.statusCode != 200) {
       throw ServerException(
         code: res.statusCode ?? 0,
         message: res.statusMessage ?? '',

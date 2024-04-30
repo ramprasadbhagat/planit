@@ -11,8 +11,10 @@ class CartItemDto with _$CartItemDto {
   const CartItemDto._();
   factory CartItemDto({
     @JsonKey(name: 'product_id', defaultValue: '') required String productId,
-    @JsonKey(name: 'quantity', defaultValue: '') required String quantity,
-    @JsonKey(name: 'total_price', defaultValue: '') required String totalPrice,
+    @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+    required int quantity,
+    @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+    required int totalPrice,
     @JsonKey(name: 'products', defaultValue: <ProductDto>[])
     required List<ProductDto> products,
   }) = _CartItemDto;
@@ -22,8 +24,14 @@ class CartItemDto with _$CartItemDto {
 
   CartItem get toDomain => CartItem(
         productId: productId,
-        quantity: IntegerValue.fromString(quantity),
-        totalPrice: IntegerValue.fromString(totalPrice),
+        quantity: IntegerValue(quantity),
+        totalPrice: IntegerValue(totalPrice),
         products: products.map((e) => e.toDomain).toList(),
       );
+}
+
+int intReadValue(Map json, String key) {
+  if (json[key] is int) return json[key];
+  if (json[key] is String) return int.tryParse(json[key]) ?? 0;
+  return 0;
 }

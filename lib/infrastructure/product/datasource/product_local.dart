@@ -26,4 +26,14 @@ class ProductLocalDataSource {
         .map((e) => ProductDto.fromJson(e).toDomain)
         .toList();
   }
+
+  Future<List<Product>> getProductImage() async {
+    final res = json.decode(
+      await rootBundle.loadString('assets/json/products.json'),
+    );
+    final categories = res['items'];
+    return List.from(categories)
+        .map((e) => ProductDto.fromJson(e).toDomain)
+        .toList();
+  }
 }

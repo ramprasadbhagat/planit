@@ -7,11 +7,13 @@ part 'sub_category.freezed.dart';
 class SubCategory with _$SubCategory {
   const SubCategory._();
   factory SubCategory({
+    required StringValue id,
     required StringValue name,
     required List<String> image,
   }) = _SubCategory;
 
   factory SubCategory.empty() => SubCategory(
+        id: StringValue(''),
         name: StringValue(''),
         image: [],
       );

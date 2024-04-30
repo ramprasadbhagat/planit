@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
+import 'package:planit/presentation/core/image_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/application/category/category_bloc.dart';
 
@@ -55,15 +56,21 @@ class CategoryAlertDialog extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        '18 categories',
-                        style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.lightOrange,
-                          ),
-                        ),
+                      BlocBuilder<CategoryBloc, CategoryState>(
+                        buildWhen: (previous, current) =>
+                            previous.validCategories != current.validCategories,
+                        builder: (context, state) {
+                          return Text(
+                            '${state.validCategories.length} categories',
+                            style: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.lightOrange,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -119,6 +126,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return InkWell(
       onTap: () {
         context.read<CategoryBloc>().add(CategoryEvent.select(category));
@@ -151,7 +160,7 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
+            ImageWidget(
               category.image.first,
               height: 45,
               fit: BoxFit.fill,
@@ -166,13 +175,8 @@ class CategoryCard extends StatelessWidget {
               child: Text(
                 category.name.displayLabel,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.inter(
-                  textStyle: const TextStyle(
-                    color: AppColors.textBlack,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                maxLines: 2,
               ),
             ),
           ],

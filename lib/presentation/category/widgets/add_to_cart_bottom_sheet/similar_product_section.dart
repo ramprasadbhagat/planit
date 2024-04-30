@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:planit/domain/home/entities/before_checkout.dart';
-import 'package:planit/presentation/cart/widgets/before_checkout_card.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_cart.dart';
 
 class SimilarProductSection extends StatelessWidget {
@@ -10,35 +9,26 @@ class SimilarProductSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Before you checkout',
-              style: textTheme.titleSmall?.copyWith(fontSize: 12),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.25,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: beforeCheckoutPickList.length,
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 0,
             ),
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.25,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: beforeCheckoutPickList.length,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 8,
-                ),
-                itemBuilder: (context, index) => SimilarProductCard(
-                  item: beforeCheckoutPickList.elementAt(index),
-                ),
-              ),
+            itemBuilder: (context, index) => SimilarProductCard(
+              item: beforeCheckoutPickList.elementAt(index),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

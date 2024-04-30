@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -28,8 +28,8 @@ class ProductCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomCenter,
                   height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.asset(
-                    PngImage.genericDemo('assets/demo/dates.png'),
+                  child: Image.network(
+                    product.productImages.first,
                   ),
                 ),
                 true ? const AddToListTextField() : const AddToListButton(),

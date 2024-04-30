@@ -55,13 +55,13 @@ class CartItemCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '\$430 ',
+                    '\$${cartItem.product.skuPrice.getOrDefaultValue(0)} ',
                     style: textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                     ),
                   ),
                   Text(
-                    ' 470',
+                    ' ${cartItem.product.startingPrice} ',
                     style: textTheme.bodySmall!.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: AppColors.lightGray,

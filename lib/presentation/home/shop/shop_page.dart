@@ -26,8 +26,6 @@ class ShopPage extends StatelessWidget {
                   ShoppingBanner(),
                   HighLightSection(),
                   ShoppingOptionTab(),
-                  ShopByCategory(),
-                  ShopByOccasion(),
                   BestSellerSection(),
                 ],
               ),

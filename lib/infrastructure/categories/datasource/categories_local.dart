@@ -11,7 +11,7 @@ class CategoriesLocalDataSource {
     final res = json.decode(
       await rootBundle.loadString('assets/json/categories.json'),
     );
-    final categories = res['items'];
+    final categories = res['Result'];
     return List.from(categories)
         .map((e) => CategoryDto.fromJson(e).toDomain)
         .toList();

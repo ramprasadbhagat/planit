@@ -17,8 +17,12 @@ class SimilarProductCard extends StatelessWidget {
 
     return Card(
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.35,
-        padding: const EdgeInsets.all(8),
+        width: MediaQuery.sizeOf(context).width * 0.36,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(width: 1, color: AppColors.extraLightGrey3),
+        ),
         child: Column(
           children: [
             Stack(
@@ -105,8 +109,8 @@ class SimilarProductCard extends StatelessWidget {
                       padding: EdgeInsets.zero,
                     ),
                     child: Text(
-                      'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                      'Add to ca',
+                      style: textTheme.bodySmall?.copyWith(fontSize: 8),
                     ),
                   ),
                 ),
@@ -127,7 +131,7 @@ class AddToListButton extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
-      height: 25,
+      height: 28,
       width: 75,
       child: OutlinedButton(
         onPressed: () {},
@@ -135,7 +139,9 @@ class AddToListButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          side: const BorderSide(color: Colors.black),
+          side: const BorderSide(
+            color: AppColors.grey3,
+          ),
           foregroundColor: AppColors.grey3,
           padding: const EdgeInsets.symmetric(
             horizontal: 6,

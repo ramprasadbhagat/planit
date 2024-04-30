@@ -9,6 +9,7 @@ part 'sub_category_dto.g.dart';
 class SubCategoryDto with _$SubCategoryDto {
   const SubCategoryDto._();
   factory SubCategoryDto({
+    @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'categoryName', defaultValue: '')
     required String categoryName,
     @JsonKey(name: 'categoryImages', defaultValue: [])
@@ -19,6 +20,7 @@ class SubCategoryDto with _$SubCategoryDto {
       _$SubCategoryDtoFromJson(json);
 
   SubCategory get toDomain => SubCategory(
+        id: StringValue(id),
         image: categoryImages,
         name: StringValue(categoryName),
       );
