@@ -11,6 +11,10 @@ _$ProductDetailDtoImpl _$$ProductDetailDtoImplFromJson(
     _$ProductDetailDtoImpl(
       productId: json['id'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
+      productImages: (json['productImages'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$ProductDetailDtoImplToJson(
@@ -18,4 +22,5 @@ Map<String, dynamic> _$$ProductDetailDtoImplToJson(
     <String, dynamic>{
       'id': instance.productId,
       'productDescription': instance.productDescription,
+      'productImages': instance.productImages,
     };

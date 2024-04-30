@@ -11,6 +11,8 @@ class ProductDetailDto with _$ProductDetailDto {
     @JsonKey(name: 'id', defaultValue: '') required String productId,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
+    @JsonKey(name: 'productImages', defaultValue: [])
+    required List<String> productImages,
   }) = _ProductDetailDto;
 
   factory ProductDetailDto.fromJson(Map<String, dynamic> json) =>
@@ -18,5 +20,6 @@ class ProductDetailDto with _$ProductDetailDto {
 
   ProductDetail get toDomain => ProductDetail(
         productDescription: productDescription,
+        productImages: productImages,
       );
 }

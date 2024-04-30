@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class HighLightSection extends StatelessWidget {
   const HighLightSection({super.key});
@@ -71,14 +73,27 @@ class HighlightItem extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.network(item.productImages.first),
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.12,
+                    child: CachedNetworkImage(
+                      imageUrl: item.productImages.firstOrNull ?? '',
+                      errorWidget: (context, url, error) =>
+                          Image.asset(PngImage.generic('highlight_2.png')),
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    item.name,
-                    style: textTheme.bodySmall,
-                    textAlign: TextAlign.center,
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.05,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    alignment: Alignment.center,
+                    child: Text(
+                      item.name,
+                      style: textTheme.bodySmall,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                    ),
                   ),
                 ],
               ),

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProductDetail {
   String get productDescription => throw _privateConstructorUsedError;
+  List<String> get productImages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductDetailCopyWith<ProductDetail> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $ProductDetailCopyWith<$Res> {
           ProductDetail value, $Res Function(ProductDetail) then) =
       _$ProductDetailCopyWithImpl<$Res, ProductDetail>;
   @useResult
-  $Res call({String productDescription});
+  $Res call({String productDescription, List<String> productImages});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$ProductDetailCopyWithImpl<$Res, $Val extends ProductDetail>
   @override
   $Res call({
     Object? productDescription = null,
+    Object? productImages = null,
   }) {
     return _then(_value.copyWith(
       productDescription: null == productDescription
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      productImages: null == productImages
+          ? _value.productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$ProductDetailImplCopyWith<$Res>
       __$$ProductDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String productDescription});
+  $Res call({String productDescription, List<String> productImages});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$ProductDetailImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? productDescription = null,
+    Object? productImages = null,
   }) {
     return _then(_$ProductDetailImpl(
       productDescription: null == productDescription
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      productImages: null == productImages
+          ? _value._productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -92,14 +103,25 @@ class __$$ProductDetailImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductDetailImpl extends _ProductDetail {
-  _$ProductDetailImpl({required this.productDescription}) : super._();
+  _$ProductDetailImpl(
+      {required this.productDescription,
+      required final List<String> productImages})
+      : _productImages = productImages,
+        super._();
 
   @override
   final String productDescription;
+  final List<String> _productImages;
+  @override
+  List<String> get productImages {
+    if (_productImages is EqualUnmodifiableListView) return _productImages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productImages);
+  }
 
   @override
   String toString() {
-    return 'ProductDetail(productDescription: $productDescription)';
+    return 'ProductDetail(productDescription: $productDescription, productImages: $productImages)';
   }
 
   @override
@@ -108,11 +130,14 @@ class _$ProductDetailImpl extends _ProductDetail {
         (other.runtimeType == runtimeType &&
             other is _$ProductDetailImpl &&
             (identical(other.productDescription, productDescription) ||
-                other.productDescription == productDescription));
+                other.productDescription == productDescription) &&
+            const DeepCollectionEquality()
+                .equals(other._productImages, _productImages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productDescription);
+  int get hashCode => Object.hash(runtimeType, productDescription,
+      const DeepCollectionEquality().hash(_productImages));
 
   @JsonKey(ignore: true)
   @override
@@ -122,12 +147,15 @@ class _$ProductDetailImpl extends _ProductDetail {
 }
 
 abstract class _ProductDetail extends ProductDetail {
-  factory _ProductDetail({required final String productDescription}) =
-      _$ProductDetailImpl;
+  factory _ProductDetail(
+      {required final String productDescription,
+      required final List<String> productImages}) = _$ProductDetailImpl;
   _ProductDetail._() : super._();
 
   @override
   String get productDescription;
+  @override
+  List<String> get productImages;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailImplCopyWith<_$ProductDetailImpl> get copyWith =>

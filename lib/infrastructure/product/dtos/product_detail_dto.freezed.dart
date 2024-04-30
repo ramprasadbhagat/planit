@@ -24,6 +24,8 @@ mixin _$ProductDetailDto {
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
+  @JsonKey(name: 'productImages', defaultValue: [])
+  List<String> get productImages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,9 @@ abstract class $ProductDetailDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
-      String productDescription});
+      String productDescription,
+      @JsonKey(name: 'productImages', defaultValue: [])
+      List<String> productImages});
 }
 
 /// @nodoc
@@ -58,6 +62,7 @@ class _$ProductDetailDtoCopyWithImpl<$Res, $Val extends ProductDetailDto>
   $Res call({
     Object? productId = null,
     Object? productDescription = null,
+    Object? productImages = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -68,6 +73,10 @@ class _$ProductDetailDtoCopyWithImpl<$Res, $Val extends ProductDetailDto>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      productImages: null == productImages
+          ? _value.productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -83,7 +92,9 @@ abstract class _$$ProductDetailDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
-      String productDescription});
+      String productDescription,
+      @JsonKey(name: 'productImages', defaultValue: [])
+      List<String> productImages});
 }
 
 /// @nodoc
@@ -99,6 +110,7 @@ class __$$ProductDetailDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? productId = null,
     Object? productDescription = null,
+    Object? productImages = null,
   }) {
     return _then(_$ProductDetailDtoImpl(
       productId: null == productId
@@ -109,6 +121,10 @@ class __$$ProductDetailDtoImplCopyWithImpl<$Res>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      productImages: null == productImages
+          ? _value._productImages
+          : productImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -119,8 +135,11 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
   _$ProductDetailDtoImpl(
       {@JsonKey(name: 'id', defaultValue: '') required this.productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
-      required this.productDescription})
-      : super._();
+      required this.productDescription,
+      @JsonKey(name: 'productImages', defaultValue: [])
+      required final List<String> productImages})
+      : _productImages = productImages,
+        super._();
 
   factory _$ProductDetailDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductDetailDtoImplFromJson(json);
@@ -131,10 +150,18 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
   @override
   @JsonKey(name: 'productDescription', defaultValue: '')
   final String productDescription;
+  final List<String> _productImages;
+  @override
+  @JsonKey(name: 'productImages', defaultValue: [])
+  List<String> get productImages {
+    if (_productImages is EqualUnmodifiableListView) return _productImages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productImages);
+  }
 
   @override
   String toString() {
-    return 'ProductDetailDto(productId: $productId, productDescription: $productDescription)';
+    return 'ProductDetailDto(productId: $productId, productDescription: $productDescription, productImages: $productImages)';
   }
 
   @override
@@ -145,12 +172,15 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.productDescription, productDescription) ||
-                other.productDescription == productDescription));
+                other.productDescription == productDescription) &&
+            const DeepCollectionEquality()
+                .equals(other._productImages, _productImages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, productDescription);
+  int get hashCode => Object.hash(runtimeType, productId, productDescription,
+      const DeepCollectionEquality().hash(_productImages));
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +201,9 @@ abstract class _ProductDetailDto extends ProductDetailDto {
   factory _ProductDetailDto(
       {@JsonKey(name: 'id', defaultValue: '') required final String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
-      required final String productDescription}) = _$ProductDetailDtoImpl;
+      required final String productDescription,
+      @JsonKey(name: 'productImages', defaultValue: [])
+      required final List<String> productImages}) = _$ProductDetailDtoImpl;
   _ProductDetailDto._() : super._();
 
   factory _ProductDetailDto.fromJson(Map<String, dynamic> json) =
@@ -183,6 +215,9 @@ abstract class _ProductDetailDto extends ProductDetailDto {
   @override
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription;
+  @override
+  @JsonKey(name: 'productImages', defaultValue: [])
+  List<String> get productImages;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailDtoImplCopyWith<_$ProductDetailDtoImpl> get copyWith =>

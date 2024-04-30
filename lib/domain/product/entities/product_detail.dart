@@ -7,7 +7,11 @@ class ProductDetail with _$ProductDetail {
   const ProductDetail._();
   factory ProductDetail({
     required String productDescription,
+    required List<String> productImages,
   }) = _ProductDetail;
 
-  factory ProductDetail.empty() => ProductDetail(productDescription: '');
+  factory ProductDetail.empty() => ProductDetail(
+        productDescription: '',
+        productImages: <String>[],
+      );
 }
