@@ -151,8 +151,8 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/demo/almonds.png',
+            Image.network(
+              category.image.first,
               height: 45,
               fit: BoxFit.fill,
             ),

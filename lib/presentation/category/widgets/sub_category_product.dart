@@ -25,7 +25,7 @@ class SubCategoryProduct extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return ProductCard(
-                item: state.products.elementAt(index),
+                product: state.products.elementAt(index),
               );
             },
           ),

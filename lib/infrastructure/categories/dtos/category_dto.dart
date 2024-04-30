@@ -23,7 +23,12 @@ class CategoryDto with _$CategoryDto {
 
   Category get toDomain => Category(
         name: StringValue(categoryName),
-        image: categoryImages,
+        image: categoryImages.map((e) => replaceLocalEndPoint(e)).toList(),
         subCategory: subcategories.map((e) => e.toDomain).toList(),
       );
 }
+
+String replaceLocalEndPoint(String value) => value.replaceFirst(
+      'http://localhost:3001/',
+      'http://nzms-dev-plantit.nzmsecurity.com/',
+    );

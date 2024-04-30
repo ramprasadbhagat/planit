@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/home/read/widgets/recipe_detials_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
 class ProductCard extends StatelessWidget {
-  final Product item;
+  final Product product;
 
   const ProductCard({
     super.key,
-    required this.item,
+    required this.product,
   });
 
   @override
@@ -39,7 +41,7 @@ class ProductCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    item.name,
+                    product.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: textTheme.bodySmall?.copyWith(fontSize: 10),
@@ -93,28 +95,50 @@ class ProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.03,
-                  width: MediaQuery.sizeOf(context).width * 0.18,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      side: const BorderSide(color: Colors.black),
-                      foregroundColor: AppColors.grey3,
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                    ),
-                    child: Text(
-                      'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 9),
-                    ),
-                  ),
+                AddToCartButton(
+                  product: product,
                 ),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddToCartButton extends StatelessWidget {
+  final Product product;
+  const AddToCartButton({
+    super.key,
+    required this.product,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.03,
+      width: MediaQuery.sizeOf(context).width * 0.18,
+      child: OutlinedButton(
+        onPressed: () => showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) => AddToCartBottomSheet(
+            product: product,
+          ),
+        ),
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          side: const BorderSide(color: Colors.black),
+          foregroundColor: AppColors.grey3,
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+        ),
+        child: Text(
+          'Add to cart',
+          style: textTheme.bodySmall?.copyWith(fontSize: 9),
         ),
       ),
     );
