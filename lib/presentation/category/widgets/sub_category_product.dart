@@ -10,8 +10,11 @@ class SubCategoryProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SubCategoryBloc, SubCategoryState>(
-      buildWhen: (previous, current) => previous.products != current.products,
+      buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
+        if (state.products.isEmpty) {
+          return const Expanded(child: Center(child: Text('No Item')));
+        }
         return Expanded(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -17,8 +17,7 @@ class SubCategoryProductCount extends StatelessWidget {
         bottom: 10,
       ),
       child: BlocBuilder<SubCategoryBloc, SubCategoryState>(
-        buildWhen: (previous, current) =>
-            previous.selectedSubCategory != current.selectedSubCategory,
+        buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
           final products = state.products;
           if (products.isEmpty) return const SizedBox.shrink();

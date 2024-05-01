@@ -38,16 +38,16 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 4,
-                  ),
-                  child: SvgPicture.asset(
-                    'assets/svg/back_arrow.svg',
-                    height: 23,
-                    width: 13,
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     top: 4,
+                //   ),
+                //   child: SvgPicture.asset(
+                //     'assets/svg/back_arrow.svg',
+                //     height: 23,
+                //     width: 13,
+                //   ),
+                // ),
                 const SizedBox(
                   width: 12,
                 ),
@@ -108,16 +108,16 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 4,
-              ),
-              child: SvgPicture.asset(
-                'assets/svg/search.svg',
-                height: 24,
-                width: 24,
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(
+            //     top: 4,
+            //   ),
+            //   child: SvgPicture.asset(
+            //     'assets/svg/search.svg',
+            //     height: 24,
+            //     width: 24,
+            //   ),
+            // ),
           ],
         ),
       ),

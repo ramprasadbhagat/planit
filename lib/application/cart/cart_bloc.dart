@@ -53,6 +53,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           (cartItems) => add(const _Fetch()),
         );
       },
+      removeFromCart: (_RemoveFromCart e) async {
+        final failureOrSuccess = await repository.removeFromCart(
+          cartItem: e.cartItem,
+        );
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
+          (cartItems) => add(const _Fetch()),
+        );
+      },
     );
   }
 }

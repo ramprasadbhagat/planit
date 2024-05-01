@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
-import 'package:planit/domain/core/value/value_objects.dart';
-import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/router/router.gr.dart';
+import 'package:planit/presentation/theme/colors.dart';
 
 class ShopByCategory extends StatelessWidget {
   const ShopByCategory({super.key});
@@ -21,6 +21,7 @@ class ShopByCategory extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SectionTitle(
                 title: 'Shop by category',
@@ -31,7 +32,6 @@ class ShopByCategory extends StatelessWidget {
               Wrap(
                 runSpacing: 10,
                 alignment: WrapAlignment.start,
-                runAlignment: WrapAlignment.start,
                 children: state.validCategories
                     .map(
                       (e) => ShopByCategoryItem(
@@ -72,10 +72,17 @@ class ShopByCategoryItem extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                child: Image.network(
-                  item.image.first,
+                child: CachedNetworkImage(
+                  imageUrl: item.image.firstOrNull ?? '',
                   fit: BoxFit.scaleDown,
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(
+                    color: AppColors.extraLightGray,
+                  ),
                 ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               Expanded(
                 child: Text(
@@ -93,21 +100,3 @@ class ShopByCategoryItem extends StatelessWidget {
     );
   }
 }
-
-List<Category> categoryList = <Category>[
-  Category(
-    image: ['category_1.png'],
-    name: StringValue('Dry fruits'),
-    subCategory: <SubCategory>[],
-  ),
-  Category(
-    image: ['category_2.png'],
-    name: StringValue('Gourmet cheese'),
-    subCategory: <SubCategory>[],
-  ),
-  Category(
-    image: ['category_3.png'],
-    name: StringValue('Powdered spices'),
-    subCategory: <SubCategory>[],
-  ),
-];

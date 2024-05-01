@@ -9,6 +9,8 @@ class TalkToUsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
         title: const Text('Talk To Us'),
       ),
       body: const Center(

@@ -56,4 +56,19 @@ class CartRepository extends ICartRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, Unit>> removeFromCart({
+    required CartItem cartItem,
+  }) async {
+    try {
+      final cartItems = await remoteDataSource.removeFromCart(
+        productId: cartItem.productId,
+      );
+
+      return Right(cartItems);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

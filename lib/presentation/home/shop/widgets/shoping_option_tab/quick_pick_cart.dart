@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -36,17 +37,18 @@ class QuickPickCard extends StatelessWidget {
               children: [
                 Container(
                   height: MediaQuery.sizeOf(context).height * 0.05,
-                  width: MediaQuery.sizeOf(context).width * 0.18,
-                  alignment: Alignment.center,
+                  width: MediaQuery.sizeOf(context).width * 0.15,
+                  padding: const EdgeInsets.only(left: 5),
+                  alignment: Alignment.centerLeft,
                   child: Text(
                     item.name,
                     style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                     maxLines: 2,
                   ),
                 ),
                 Text(
-                  '1g',
+                  item.attributeItem,
                   style: textTheme.bodySmall?.copyWith(
                     color: AppColors.grey1,
                     fontSize: 10,
@@ -99,7 +101,13 @@ class QuickPickCard extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).height * 0.03,
                   width: MediaQuery.sizeOf(context).width * 0.15,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => showModalBottomSheet<void>(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) => AddToCartBottomSheet(
+                        product: item,
+                      ),
+                    ),
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),

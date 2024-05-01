@@ -74,7 +74,7 @@ class HighlightItem extends StatelessWidget {
                     height: 20,
                   ),
                   SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.12,
+                    height: MediaQuery.sizeOf(context).height * 0.1,
                     child: CachedNetworkImage(
                       imageUrl: item.productImages.firstOrNull ?? '',
                       errorWidget: (context, url, error) =>

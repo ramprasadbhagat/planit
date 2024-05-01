@@ -81,7 +81,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
               height: 10,
             ),
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.55,
+              height: _selectedTab == 0
+                  ? MediaQuery.sizeOf(context).height * 0.55
+                  : MediaQuery.sizeOf(context).height * 0.23,
               child: TabBarView(
                 controller: _tabController,
                 children: const [

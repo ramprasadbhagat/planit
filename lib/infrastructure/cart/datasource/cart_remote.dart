@@ -42,6 +42,17 @@ class CartRemoteDataSource {
     return unit;
   }
 
+  Future<Unit> removeFromCart({
+    required String productId,
+  }) async {
+    final res = await httpService.request(
+      method: 'DELETE',
+      url: 'carts/$productId',
+    );
+    _exceptionChecker(res: res);
+    return unit;
+  }
+
   void _exceptionChecker({required Response<dynamic> res}) {
     if (res.statusCode != 200) {
       throw ServerException(

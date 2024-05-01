@@ -9,4 +9,7 @@ abstract class ICartRepository {
     required Product product,
     required int quantity,
   });
+  Future<Either<ApiFailure, Unit>> removeFromCart({
+    required CartItem cartItem,
+  });
 }

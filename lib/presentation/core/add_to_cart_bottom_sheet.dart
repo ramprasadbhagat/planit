@@ -23,147 +23,159 @@ class AddToCartBottomSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => locator<ProductDetailBloc>()
         ..add(ProductDetailEvent.fetch(product.productId)),
-      child: SizedBox(
-        height: MediaQuery.sizeOf(context).height * 0.9,
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ListView(
-                  children: [
-                    FlutterCarousel(
-                      options: CarouselOptions(
-                        height: MediaQuery.sizeOf(context).height * 0.3,
-                        viewportFraction: 1,
-                        showIndicator: true,
-                        slideIndicator: const CircularSlideIndicator(
-                          itemSpacing: 10,
-                          indicatorRadius: 4,
-                          currentIndicatorColor: AppColors.lightGray,
-                          indicatorBackgroundColor: AppColors.extraLightGray,
-                        ),
-                        indicatorMargin: 16,
-                      ),
-                      items: product.productImages
-                          .map(
-                            (e) => Image.network(
-                              e,
-                              fit: BoxFit.contain,
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      product.name,
-                      style: textTheme.labelLarge?.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    BlocBuilder<ProductDetailBloc, ProductDetailState>(
-                      buildWhen: (previous, current) =>
-                          previous.productDetail != current.productDetail,
-                      builder: (context, state) {
-                        return Text(
-                          state.productDetail.productDescription,
-                          style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    UnitList(
-                      product: product,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      'Similar Products',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    const SimilarProductSection(),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 70,
-              width: double.infinity,
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 8,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      child: SafeArea(
+        child: SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.8,
+          child: Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: ListView(
                     children: [
-                      Text(
-                        product.attributeItem,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                      FlutterCarousel(
+                        options: CarouselOptions(
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                          viewportFraction: 1,
+                          showIndicator: true,
+                          slideIndicator: const CircularSlideIndicator(
+                            itemSpacing: 10,
+                            indicatorRadius: 4,
+                            currentIndicatorColor: AppColors.lightGray,
+                            indicatorBackgroundColor: AppColors.extraLightGray,
+                          ),
+                          indicatorMargin: 16,
                         ),
+                        items: product.productImages
+                            .map(
+                              (e) => Image.network(
+                                e,
+                                fit: BoxFit.contain,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                      const SizedBox(
+                        height: 5,
                       ),
                       Text(
-                        'MRP ₹${product.skuPrice.getOrDefaultValue(0).toString()}',
-                        style: const TextStyle(
-                          fontSize: 13,
+                        product.name,
+                        style: textTheme.labelLarge?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      BlocBuilder<ProductDetailBloc, ProductDetailState>(
+                        buildWhen: (previous, current) =>
+                            previous.productDetail != current.productDetail,
+                        builder: (context, state) {
+                          return Text(
+                            state.productDetail.productDescription,
+                            style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                          );
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      UnitList(
+                        product: product,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       const Text(
-                        '(Inclusicve of all taxes)',
+                        'Similar Products',
                         style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
+                      const SimilarProductSection(),
                     ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<CartBloc>().add(
-                            CartEvent.addToCart(product: product, quantity: 1),
-                          );
-                      context.router.maybePop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(26.0),
+                ),
+              ),
+              Container(
+                height: 70,
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 8,
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          product.attributeItem,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          'MRP ₹${product.skuPrice.getOrDefaultValue(0).toString()}',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const Text(
+                          '(Inclusicve of all taxes)',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<CartBloc>().add(
+                              CartEvent.addToCart(
+                                product: product,
+                                quantity: 1,
+                              ),
+                            );
+                        context.router.maybePop();
+                        const snackBar = SnackBar(
+                          content: Text('Item added to cart'),
+                        );
+
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(26.0),
+                        ),
+                      ),
+                      child: Text(
+                        'Add to cart',
+                        style: textTheme.labelSmall
+                            ?.copyWith(color: AppColors.white),
                       ),
                     ),
-                    child: Text(
-                      'Add to cart',
-                      style: textTheme.labelSmall
-                          ?.copyWith(color: AppColors.white),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
