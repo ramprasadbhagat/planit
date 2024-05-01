@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/product/entities/product.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
@@ -36,6 +37,33 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               apiFailureOrSuccessOption: none(),
             ),
           ),
+        );
+      },
+      addToCart: (_AddToCart e) async {
+        final failureOrSuccess = await repository.addToCart(
+          product: e.product,
+          quantity: e.quantity,
+        );
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
+          (cartItems) => add(const _Fetch()),
+        );
+      },
+      removeFromCart: (_RemoveFromCart e) async {
+        final failureOrSuccess = await repository.removeFromCart(
+          cartItem: e.cartItem,
+        );
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
+          (cartItems) => add(const _Fetch()),
         );
       },
     );

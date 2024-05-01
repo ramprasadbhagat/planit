@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/presentation/cart/widgets/cart_checkout.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_section.dart';
-import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_section.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
@@ -32,17 +31,18 @@ class _CartPageState extends State<CartPage> {
       appBar: AppBar(
         title: Text(
           'Checkout',
-          style: textTheme.labelMedium,
+          style: textTheme.labelLarge,
         ),
         leadingWidth: 20,
         centerTitle: false,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: AppColors.lightGrey,
-          ),
-          onPressed: () => context.router.maybePop(),
-        ),
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios_new_outlined,
+        //     color: AppColors.lightGrey,
+        //   ),
+        //   onPressed: () => context.router.maybePop(),
+        // ),
       ),
       body: SmartRefresher(
         controller: _refreshController,
@@ -57,7 +57,7 @@ class _CartPageState extends State<CartPage> {
               previous.isCartEmpty != current.isCartEmpty,
           builder: (context, state) {
             if (state.isCartEmpty) return const EmptyCart();
-            return Column(
+            return ListView(
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12),

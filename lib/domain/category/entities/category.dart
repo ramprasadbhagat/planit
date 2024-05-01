@@ -18,4 +18,7 @@ class Category with _$Category {
         image: [],
         subCategory: <SubCategory>[],
       );
+
+  bool get isValid =>
+      name.isValid() && image.isNotEmpty && subCategory.isNotEmpty;
 }

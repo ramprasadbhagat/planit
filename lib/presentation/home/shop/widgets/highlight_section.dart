@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -72,14 +73,27 @@ class HighlightItem extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Image.asset(PngImage.generic('highlight_1.png')),
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.1,
+                    child: CachedNetworkImage(
+                      imageUrl: item.productImages.firstOrNull ?? '',
+                      errorWidget: (context, url, error) =>
+                          Image.asset(PngImage.generic('highlight_2.png')),
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    item.name,
-                    style: textTheme.bodySmall,
-                    textAlign: TextAlign.center,
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.05,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    alignment: Alignment.center,
+                    child: Text(
+                      item.name,
+                      style: textTheme.bodySmall,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                    ),
                   ),
                 ],
               ),

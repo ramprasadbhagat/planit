@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/exception.dart';
@@ -20,6 +21,36 @@ class CartRemoteDataSource {
     return List.from(res.data)
         .map((e) => CartItemDto.fromJson(e).toDomain)
         .toList();
+  }
+
+  Future<Unit> addToCart({
+    required String productId,
+    required int quantity,
+    required int totalPrice,
+  }) async {
+    final res = await httpService.request(
+      method: 'POST',
+      url: 'carts',
+      data: {
+        'user_id': '662897e47acc8e00121fe28f',
+        'product_id': productId,
+        'quantity': quantity,
+        'total_price': totalPrice,
+      },
+    );
+    _exceptionChecker(res: res);
+    return unit;
+  }
+
+  Future<Unit> removeFromCart({
+    required String productId,
+  }) async {
+    final res = await httpService.request(
+      method: 'DELETE',
+      url: 'carts/$productId',
+    );
+    _exceptionChecker(res: res);
+    return unit;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

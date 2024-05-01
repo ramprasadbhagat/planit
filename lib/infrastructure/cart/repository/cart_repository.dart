@@ -4,6 +4,7 @@ import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_remote.dart';
 
@@ -31,6 +32,39 @@ class CartRepository extends ICartRepository {
     }
     try {
       final cartItems = await remoteDataSource.getCart();
+
+      return Right(cartItems);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> addToCart({
+    required Product product,
+    required int quantity,
+  }) async {
+    try {
+      final cartItems = await remoteDataSource.addToCart(
+        productId: product.productId.getValue(),
+        quantity: quantity,
+        totalPrice: product.skuPrice.getValue() * quantity,
+      );
+
+      return Right(cartItems);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> removeFromCart({
+    required CartItem cartItem,
+  }) async {
+    try {
+      final cartItems = await remoteDataSource.removeFromCart(
+        productId: cartItem.productId,
+      );
 
       return Right(cartItems);
     } catch (e) {

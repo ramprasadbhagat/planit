@@ -16,4 +16,16 @@ class CartState with _$CartState {
       );
 
   bool get isCartEmpty => cartItems.isEmpty;
+
+  int get totalPrice => cartItems.fold(
+        0,
+        (previousValue, element) =>
+            previousValue + element.totalPrice.getOrDefaultValue(0),
+      );
+
+  int get totalItem => cartItems.fold(
+        0,
+        (previousValue, element) =>
+            previousValue + element.quantity.getOrDefaultValue(0),
+      );
 }

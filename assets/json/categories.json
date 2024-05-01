@@ -1,78 +1,286 @@
 {
     "Result": [
         {
-            "_id": "6614e1a80fc9660a5488b574",
+            "_id": "662a624d7af30e0013145c20",
             "pId": "0",
-            "categoryName": "Dry Fruits",
-            "categoryDescription": "e-mall-shop",
-            "categoryImages": [],
+            "categoryName": "Dry fruits",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "almonds.png"
+            ],
             "isDeleted": false,
             "isActive": true,
-            "createdAt": "2024-04-09T06:35:20.572Z",
-            "updatedAt": "2024-04-09T06:35:20.572Z",
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
             "subcategories": [
                 {
-                    "_id": "6614e1de0fc9660a5488b575",
-                    "pId": "6614e1a80fc9660a5488b574",
-                    "categoryName": "Cashew",
-                    "categoryDescription": "connecting people",
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
                     "categoryImages": [
-                        "http://localhost:3001/product-category-images/1712644574154.png"
+                        "almonds.png"
                     ],
                     "isDeleted": false,
                     "isActive": true,
-                    "createdAt": "2024-04-09T06:36:14.246Z",
-                    "updatedAt": "2024-04-09T06:36:14.246Z"
-                },
-                {
-                    "_id": "6614f1bd1bf91338e88b330c",
-                    "pId": "6614e1a80fc9660a5488b574",
-                    "categoryName": "Almond",
-                    "categoryDescription": "China",
-                    "categoryImages": [],
-                    "isDeleted": false,
-                    "isActive": true,
-                    "createdAt": "2024-04-09T07:43:57.559Z",
-                    "updatedAt": "2024-04-09T07:43:57.559Z"
-                },
-                {
-                    "_id": "66153263a98203197c2afe64",
-                    "pId": "6614e1a80fc9660a5488b574",
-                    "categoryName": "Walnut",
-                    "categoryDescription": "All mobile phones are designed and manufactured by Motorola Mobility LLC, a wholly owned subsidiary of Lenovo.",
-                    "categoryImages": [],
-                    "isDeleted": false,
-                    "isActive": true,
-                    "createdAt": "2024-04-09T12:19:47.860Z",
-                    "updatedAt": "2024-04-09T12:19:47.860Z"
-                },
-                {
-                    "_id": "662790dc7acc8e00121fe28d",
-                    "pId": "6614e1a80fc9660a5488b574",
-                    "categoryName": "Dates",
-                    "categoryDescription": "From Dried coconut",
-                    "categoryImages": [],
-                    "isDeleted": false,
-                    "isActive": true,
-                    "createdAt": "2024-04-23T10:43:40.571Z",
-                    "updatedAt": "2024-04-23T10:45:37.132Z"
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
                 }
             ]
         },
         {
             "_id": "662a624d7af30e0013145c20",
             "pId": "0",
-            "categoryName": "Fresh Fruit",
+            "categoryName": "Gourmet cheese",
             "categoryDescription": "Fresh fruit is good for heath",
             "categoryImages": [
-                "http://localhost:3001/product-category-images/1714053709193.png"
+                "gourmet_cheese.png"
             ],
             "isDeleted": false,
             "isActive": true,
             "createdAt": "2024-04-25T14:01:49.198Z",
             "updatedAt": "2024-04-25T14:01:49.198Z",
-            "subcategories": []
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Powdered spices",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "powdered_spices.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Dairy and breakfast",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "dairy_breakfast.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Premium pulses",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "premium_pulses.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Herbs",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "herbs.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Fresh cashew",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "almonds.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Fresh nuts",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "fresh_nuts.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Fresh fruits",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "fresh_fruits.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
+        },
+        {
+            "_id": "662a624d7af30e0013145c20",
+            "pId": "0",
+            "categoryName": "Fresh fruits",
+            "categoryDescription": "Fresh fruit is good for heath",
+            "categoryImages": [
+                "almonds.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-25T14:01:49.198Z",
+            "updatedAt": "2024-04-25T14:01:49.198Z",
+            "subcategories": [
+                {
+                    "_id": "66309d357af30e0013145c93",
+                    "pId": "662a624d7af30e0013145c20",
+                    "categoryName": "Mangoes & Melons",
+                    "categoryDescription": "Herbs",
+                    "categoryImages": [
+                        "almonds.png"
+                    ],
+                    "isDeleted": false,
+                    "isActive": true,
+                    "createdAt": "2024-04-30T07:26:45.022Z",
+                    "updatedAt": "2024-04-30T07:26:45.022Z"
+                }
+            ]
         }
+        
     ],
-    "TotalCount": 2
+    "TotalCount": 12
 }

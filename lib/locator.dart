@@ -2,6 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/product_detail/product_detail_bloc.dart';
+import 'package:planit/application/product_image/product_image_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/config.dart';
@@ -83,6 +85,12 @@ void setupLocator() {
       remoteDataSource: locator<ProductRemoteDataSource>(),
     ),
   );
+
+  locator.registerFactory(
+    () => ProductImageBloc(
+      repository: locator<ProductRepository>(),
+    ),
+  );
   locator.registerLazySingleton(
     () => HighlightProductBloc(
       repository: locator<ProductRepository>(),
@@ -90,6 +98,12 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => QuickPicksBloc(
+      repository: locator<ProductRepository>(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => ProductDetailBloc(
       repository: locator<ProductRepository>(),
     ),
   );

@@ -95,8 +95,8 @@ class SubCategoryCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/demo/almonds.png',
+                Image.network(
+                  subCategory.image.first,
                   height: 43,
                   width: 60,
                 ),
@@ -104,7 +104,7 @@ class SubCategoryCard extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  'wokking',
+                  subCategory.name.getValue(),
                   textAlign: TextAlign.center,
                   style: textTheme.bodySmall?.copyWith(fontSize: 12),
                   overflow: TextOverflow.ellipsis,

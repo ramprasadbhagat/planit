@@ -18,6 +18,9 @@ class CategoryState with _$CategoryState {
         isFetching: true,
       );
 
-  List<Category> get validCategories =>
-      categories.where((e) => e.name.isValid() && e.image.isNotEmpty).toList();
+  List<Category> get validCategories => categories
+      .where(
+        (e) => e.isValid,
+      )
+      .toList();
 }

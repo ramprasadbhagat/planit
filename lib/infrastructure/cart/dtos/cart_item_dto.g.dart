@@ -9,8 +9,8 @@ part of 'cart_item_dto.dart';
 _$CartItemDtoImpl _$$CartItemDtoImplFromJson(Map<String, dynamic> json) =>
     _$CartItemDtoImpl(
       productId: json['product_id'] as String? ?? '',
-      quantity: json['quantity'] as String? ?? '',
-      totalPrice: json['total_price'] as String? ?? '',
+      quantity: intReadValue(json, 'quantity') as int? ?? 0,
+      totalPrice: intReadValue(json, 'total_price') as int? ?? 0,
       products: (json['products'] as List<dynamic>?)
               ?.map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
               .toList() ??

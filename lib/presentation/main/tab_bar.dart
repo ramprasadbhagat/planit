@@ -2,9 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -31,30 +34,43 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<QuickPicksBloc>().add(
           const QuickPicksEvent.fetch(),
         );
+    context.read<CartBloc>().add(const CartEvent.fetch());
   }
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: _getTabs(context).map((item) => item.route).toList(),
-      bottomNavigationBuilder: (_, tabsRouter) {
-        return BottomNavigationBar(
-          key: WidgetKeys.homeTabBar,
-          currentIndex: tabsRouter.activeIndex,
-          selectedItemColor: AppColors.black,
-          onTap: (index) {
-            tabsRouter.setActiveIndex(index);
-          },
-          items: _getTabs(context)
-              .map(
-                (item) => BottomNavigationBarItem(
-                  icon: item.icon,
-                  label: item.label,
-                ),
-              )
-              .toList(),
-        );
+    return BlocListener<CategoryBloc, CategoryState>(
+      listenWhen: (previous, current) =>
+          previous.selectedCategory != current.selectedCategory,
+      listener: (context, state) {
+        context.read<SubCategoryBloc>().add(
+              SubCategoryEvent.select(
+                state.selectedCategory.subCategory.firstOrNull ??
+                    SubCategory.empty(),
+              ),
+            );
       },
+      child: AutoTabsScaffold(
+        routes: _getTabs(context).map((item) => item.route).toList(),
+        bottomNavigationBuilder: (_, tabsRouter) {
+          return BottomNavigationBar(
+            key: WidgetKeys.homeTabBar,
+            currentIndex: tabsRouter.activeIndex,
+            selectedItemColor: AppColors.black,
+            onTap: (index) {
+              tabsRouter.setActiveIndex(index);
+            },
+            items: _getTabs(context)
+                .map(
+                  (item) => BottomNavigationBarItem(
+                    icon: item.icon,
+                    label: item.label,
+                  ),
+                )
+                .toList(),
+          );
+        },
+      ),
     );
   }
 }

@@ -27,7 +27,7 @@ class QuickPicksBloc extends Bloc<QuickPicksEvent, QuickPicksState> {
     await event.map(
       initialized: (_) async => emit(QuickPicksState.initial()),
       fetch: (e) async {
-        final failureOrSuccess = await repository.getHighlightedProduct();
+        final failureOrSuccess = await repository.getQuickPackProduct();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(

@@ -22,10 +22,10 @@ CartItemDto _$CartItemDtoFromJson(Map<String, dynamic> json) {
 mixin _$CartItemDto {
   @JsonKey(name: 'product_id', defaultValue: '')
   String get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'quantity', defaultValue: '')
-  String get quantity => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_price', defaultValue: '')
-  String get totalPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+  int get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+  int get totalPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
   List<ProductDto> get products => throw _privateConstructorUsedError;
 
@@ -43,8 +43,10 @@ abstract class $CartItemDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'product_id', defaultValue: '') String productId,
-      @JsonKey(name: 'quantity', defaultValue: '') String quantity,
-      @JsonKey(name: 'total_price', defaultValue: '') String totalPrice,
+      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+      int quantity,
+      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       List<ProductDto> products});
 }
@@ -75,11 +77,11 @@ class _$CartItemDtoCopyWithImpl<$Res, $Val extends CartItemDto>
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -98,8 +100,10 @@ abstract class _$$CartItemDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'product_id', defaultValue: '') String productId,
-      @JsonKey(name: 'quantity', defaultValue: '') String quantity,
-      @JsonKey(name: 'total_price', defaultValue: '') String totalPrice,
+      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+      int quantity,
+      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       List<ProductDto> products});
 }
@@ -128,11 +132,11 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -146,8 +150,10 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
 class _$CartItemDtoImpl extends _CartItemDto {
   _$CartItemDtoImpl(
       {@JsonKey(name: 'product_id', defaultValue: '') required this.productId,
-      @JsonKey(name: 'quantity', defaultValue: '') required this.quantity,
-      @JsonKey(name: 'total_price', defaultValue: '') required this.totalPrice,
+      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+      required this.quantity,
+      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      required this.totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       required final List<ProductDto> products})
       : _products = products,
@@ -160,11 +166,11 @@ class _$CartItemDtoImpl extends _CartItemDto {
   @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
   @override
-  @JsonKey(name: 'quantity', defaultValue: '')
-  final String quantity;
+  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+  final int quantity;
   @override
-  @JsonKey(name: 'total_price', defaultValue: '')
-  final String totalPrice;
+  @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+  final int totalPrice;
   final List<ProductDto> _products;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
@@ -216,10 +222,10 @@ abstract class _CartItemDto extends CartItemDto {
   factory _CartItemDto(
       {@JsonKey(name: 'product_id', defaultValue: '')
       required final String productId,
-      @JsonKey(name: 'quantity', defaultValue: '')
-      required final String quantity,
-      @JsonKey(name: 'total_price', defaultValue: '')
-      required final String totalPrice,
+      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+      required final int quantity,
+      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      required final int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       required final List<ProductDto> products}) = _$CartItemDtoImpl;
   _CartItemDto._() : super._();
@@ -231,11 +237,11 @@ abstract class _CartItemDto extends CartItemDto {
   @JsonKey(name: 'product_id', defaultValue: '')
   String get productId;
   @override
-  @JsonKey(name: 'quantity', defaultValue: '')
-  String get quantity;
+  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
+  int get quantity;
   @override
-  @JsonKey(name: 'total_price', defaultValue: '')
-  String get totalPrice;
+  @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+  int get totalPrice;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
   List<ProductDto> get products;
