@@ -45,6 +45,7 @@ abstract class AppColors {
   static const Color boxShadowColor = Color.fromRGBO(0, 0, 0, 0.18);
   static const Color shadesBlack = Color.fromRGBO(15, 21, 21, 1);
   static const Color red = Color.fromRGBO(244, 67, 54, 1);
+  static const Color deepRed = Color.fromRGBO(167, 22, 0, 1);
   static const Color darkerGrey = Color.fromRGBO(101, 101, 101, 1);
   static const Color lightGrey = Color.fromRGBO(196, 196, 196, 1);
   static const Color lightRed = Color.fromRGBO(251, 208, 208, 1);
