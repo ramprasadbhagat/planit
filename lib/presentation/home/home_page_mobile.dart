@@ -53,7 +53,9 @@ class HomePageMobile extends StatelessWidget {
                                     ? AppColors.black
                                     : AppColors.white,
                                 border: Border.all(
-                                  color: AppColors.black,
+                                  color: isSelected
+                                      ? AppColors.black
+                                      : AppColors.lightGray2,
                                 ),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(20)),
