@@ -70,7 +70,7 @@ AppBarTheme _appBarTheme() {
   return AppBarTheme(
     centerTitle: true,
     color: Colors.white,
-    titleTextStyle: GoogleFonts.notoSans(
+    titleTextStyle: GoogleFonts.montserrat(
       fontSize: 18,
       color: AppColors.black,
     ),
@@ -145,11 +145,11 @@ NavigationRailThemeData _navigationRailTheme() {
     indicatorColor: AppColors.primary,
     // useIndicator: true,
     labelType: NavigationRailLabelType.all,
-    selectedLabelTextStyle: GoogleFonts.notoSans(
+    selectedLabelTextStyle: GoogleFonts.montserrat(
       fontSize: 18,
       color: AppColors.primary,
     ),
-    unselectedLabelTextStyle: GoogleFonts.notoSans(
+    unselectedLabelTextStyle: GoogleFonts.montserrat(
       fontSize: 18,
       color: AppColors.unselectedLabelColor,
     ),
@@ -164,50 +164,50 @@ NavigationRailThemeData _navigationRailTheme() {
 
 TextTheme _textTheme() {
   return ThemeData.light().textTheme.copyWith(
-        titleLarge: GoogleFonts.notoSans(
+        titleLarge: GoogleFonts.montserrat(
           fontSize: 18,
           color: AppColors.black,
           letterSpacing: 0.25,
         ),
-        titleMedium: GoogleFonts.notoSans(
+        titleMedium: GoogleFonts.montserrat(
           fontSize: 16,
           color: AppColors.black,
           letterSpacing: 0.25,
         ),
-        titleSmall: GoogleFonts.notoSans(
+        titleSmall: GoogleFonts.montserrat(
           fontSize: 14,
           color: AppColors.black,
           letterSpacing: 0.25,
         ),
-        labelLarge: GoogleFonts.notoSans(
+        labelLarge: GoogleFonts.montserrat(
           fontSize: 18,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
         ),
-        labelMedium: GoogleFonts.notoSans(
+        labelMedium: GoogleFonts.montserrat(
           fontSize: 16,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
         ),
-        labelSmall: GoogleFonts.notoSans(
+        labelSmall: GoogleFonts.montserrat(
           fontSize: 14,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
         ),
-        bodyLarge: GoogleFonts.notoSans(
+        bodyLarge: GoogleFonts.montserrat(
           fontSize: 14,
           color: AppColors.black,
           letterSpacing: 0.25,
         ),
-        bodyMedium: GoogleFonts.notoSans(
+        bodyMedium: GoogleFonts.montserrat(
           fontSize: 13,
           color: AppColors.black,
           letterSpacing: 0.25,
         ),
-        bodySmall: GoogleFonts.notoSans(
+        bodySmall: GoogleFonts.montserrat(
           fontSize: 12,
           color: AppColors.black,
           letterSpacing: 0.25,
@@ -227,10 +227,10 @@ InputDecorationTheme _inputDecorationTheme() {
   return InputDecorationTheme(
     isDense: true,
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-    labelStyle: GoogleFonts.notoSans(
+    labelStyle: GoogleFonts.montserrat(
       fontSize: 14.0,
     ),
-    hintStyle: GoogleFonts.notoSans(
+    hintStyle: GoogleFonts.montserrat(
       fontSize: 16,
       color: AppColors.neutralsGrey,
       letterSpacing: 0.25,
@@ -305,7 +305,7 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.notoSans(
+      textStyle: GoogleFonts.montserrat(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
@@ -320,7 +320,7 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
 TextButtonThemeData _textButtonTheme() {
   return TextButtonThemeData(
     style: TextButton.styleFrom(
-      textStyle: GoogleFonts.notoSans(
+      textStyle: GoogleFonts.montserrat(
         fontSize: 14,
         color: AppColors.textButtonColor,
         fontWeight: FontWeight.w600,
@@ -336,7 +336,7 @@ OutlinedButtonThemeData _outlinedButtonTheme() {
       backgroundColor: AppColors.white,
       side: const BorderSide(color: AppColors.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.notoSans(
+      textStyle: GoogleFonts.montserrat(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
