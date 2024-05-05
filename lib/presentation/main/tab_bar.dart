@@ -63,7 +63,10 @@ class _MainTabbarState extends State<MainTabbar> {
             items: _getTabs(context)
                 .map(
                   (item) => BottomNavigationBarItem(
-                    icon: item.icon,
+                    icon: SvgPicture.asset(
+                      item.icon,
+                      height: 25,
+                    ),
                     label: item.label,
                   ),
                 )
@@ -85,51 +88,39 @@ List<RouteItem> _getTabs(BuildContext context) {
   ];
 }
 
-RouteItem homeTabRouteItem = RouteItem(
-  route: const HomeRoute(),
-  icon: SvgPicture.asset(
-    SvgImage.homeTabIcon,
-  ),
+RouteItem homeTabRouteItem = const RouteItem(
+  route: HomeRoute(),
+  icon: SvgImage.homeTabIcon,
   label: 'Home',
 );
 
-RouteItem talkToUsTabRouteItem = RouteItem(
-  route: const TalkToUsRoute(),
-  icon: SvgPicture.asset(
-    SvgImage.talkUoUsTabIcon,
-    height: 26,
-    width: 26,
-  ),
+RouteItem talkToUsTabRouteItem = const RouteItem(
+  route: TalkToUsRoute(),
+  icon: SvgImage.talkUoUsTabIcon,
   label: 'Talk to us',
 );
 
-RouteItem categoryTabRouteItem = RouteItem(
-  route: const CategoryRoute(),
-  icon: SvgPicture.asset(
-    SvgImage.categoryTabIcon,
-  ),
+RouteItem categoryTabRouteItem = const RouteItem(
+  route: CategoryRoute(),
+  icon: SvgImage.categoryTabIcon,
   label: 'Category',
 );
 
-RouteItem wishlistTabRouteItem = RouteItem(
-  route: const WishListRoute(),
-  icon: SvgPicture.asset(
-    SvgImage.checkListTabIcon,
-  ),
+RouteItem wishlistTabRouteItem = const RouteItem(
+  route: WishListRoute(),
+  icon: SvgImage.checkListTabIcon,
   label: 'Shopping list',
 );
 
-RouteItem cartTabRouteItem = RouteItem(
-  route: const CartRoute(),
-  icon: SvgPicture.asset(
-    SvgImage.cartTabIcon,
-  ),
+RouteItem cartTabRouteItem = const RouteItem(
+  route: CartRoute(),
+  icon: SvgImage.cartTabIcon,
   label: 'Cart',
 );
 
 class RouteItem {
   final PageRouteInfo<dynamic> route;
-  final Widget icon;
+  final String icon;
   final String label;
 
   const RouteItem({
