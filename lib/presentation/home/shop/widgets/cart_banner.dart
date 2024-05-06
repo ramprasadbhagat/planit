@@ -26,6 +26,19 @@ class CartBanner extends StatelessWidget {
                 right: 16,
                 left: 16,
               ),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.lightGray,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 height: 50,
@@ -76,12 +89,24 @@ class CartBanner extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Transform.translate(
-                    offset: const Offset(0, 0),
-                    child: Row(
-                      children: [
-                        Image.asset(PngImage.cartBannerLogo),
+                  Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.lightGray,
+                          blurRadius: 5,
+                          offset: Offset(0, -4),
+                        ),
                       ],
+                    ),
+                    child: Transform.translate(
+                      offset: const Offset(0, 0),
+                      child: Row(
+                        children: [
+                          Image.asset(PngImage.cartBannerLogo),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(
