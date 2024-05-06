@@ -13,48 +13,67 @@ class ShoppingBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 3),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.lightGrey,
+            blurRadius: 3,
+          ),
+        ],
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 34,
-            width: double.infinity,
-            color: Colors.white,
-            alignment: Alignment.center,
-            child: const DealCountDown(),
+          const Padding(
+            padding: EdgeInsets.only(top: 2, bottom: 2),
+            child: DealCountDown(),
           ),
-          FlutterCarousel(
-            options: CarouselOptions(
-              height: 160.0,
-              viewportFraction: 1,
-              autoPlay: true,
-              showIndicator: true,
-              slideIndicator: const CircularSlideIndicator(
-                itemSpacing: 10,
-                indicatorRadius: 3,
-              ),
-              indicatorMargin: 16,
-            ),
-            items: [1, 2, 3, 4, 5].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Image.asset(
-                      PngImage.banner,
-                      width: 120,
-                      height: 150,
-                      fit: BoxFit.fitHeight,
-                    ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              FlutterCarousel(
+                options: CarouselOptions(
+                  height: 160.0,
+                  viewportFraction: 1,
+                  autoPlay: true,
+                  showIndicator: true,
+                  slideIndicator: const CircularSlideIndicator(
+                    itemSpacing: 10,
+                    indicatorRadius: 3,
+                  ),
+                  indicatorMargin: 15,
+                ),
+                items: [1, 2, 3, 4, 5].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset(
+                          PngImage.banner,
+                          height: 150,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      );
+                    },
                   );
-                },
-              );
-            }).toList(),
+                }).toList(),
+              ),
+              Positioned(
+                bottom: 12,
+                child: Container(
+                  height: 12,
+                  width: 70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.black.withOpacity(0.15),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
