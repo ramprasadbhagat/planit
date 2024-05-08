@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:planit/utils/png_image.dart';
+import 'package:planit/domain/similar_product/entities/similar_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/domain/home/entities/before_checkout.dart';
 
 class SimilarProductCard extends StatelessWidget {
-  final BeforeCheckout item;
+  final SimilarProduct item;
 
   const SimilarProductCard({
     super.key,
@@ -31,22 +30,35 @@ class SimilarProductCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomCenter,
                   height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.asset(PngImage.generic(item.image)),
+                  child: Image.network(item.productImages.first),
                 ),
-                item.editable
+                item.price.isEditable
                     ? const AddToListTextField()
                     : const AddToListButton(),
               ],
             ),
+            const SizedBox(
+              height: 5,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  item.title,
-                  style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                Expanded(
+                  child: Text(
+                    item.productName,
+                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const SizedBox(
+                  width: 5,
                 ),
                 Text(
-                  '1g',
+                  item.attributeItem,
                   style: textTheme.bodySmall?.copyWith(
                     color: AppColors.grey1,
                     fontSize: 10,
@@ -60,13 +72,13 @@ class SimilarProductCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '\$430 ',
+                  '₹${item.productMRP} ',
                   style: textTheme.bodySmall?.copyWith(
                     fontSize: 9,
                   ),
                 ),
                 Text(
-                  ' 470',
+                  item.skuPrice,
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGray,
@@ -88,7 +100,7 @@ class SimilarProductCard extends StatelessWidget {
                       size: 9,
                     ),
                     Text(
-                      '4.3',
+                      item.productRating.toString(),
                       style: textTheme.bodySmall?.copyWith(
                         fontSize: 9,
                       ),
@@ -109,7 +121,7 @@ class SimilarProductCard extends StatelessWidget {
                       padding: EdgeInsets.zero,
                     ),
                     child: Text(
-                      'Add to ca',
+                      'Add to cart',
                       style: textTheme.bodySmall?.copyWith(fontSize: 8),
                     ),
                   ),
@@ -150,18 +162,19 @@ class AddToListButton extends StatelessWidget {
           textStyle: textTheme.bodySmall
               ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.favorite_outline,
               size: 12,
               color: AppColors.grey3,
             ),
-            SizedBox(
+            const SizedBox(
               width: 3,
             ),
             Text(
               'Add to list',
+              style: textTheme.bodySmall?.copyWith(fontSize: 8),
             ),
           ],
         ),

@@ -3,6 +3,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/locator.dart';
@@ -39,6 +40,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<SubCategoryBloc>(
           create: (context) => locator<SubCategoryBloc>(),
+        ),
+        BlocProvider<SimilarProductBloc>(
+          create: (context) => locator<SimilarProductBloc>(),
         ),
       ],
       child: MaterialApp.router(

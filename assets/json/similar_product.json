@@ -1,0 +1,133 @@
+{
+    "items": [
+        {
+            "id": "662768d77acc8e00121fe289",
+            "categoryId": "6630a1839f9a56fa97676a54",
+            "subcategoryId": "6614e1de0fc9660a5488b575",
+            "productName": "Fried Cashew",
+            "productDescription": "Its very much tasty",
+            "expiryDate": "1970-01-01T00:00:00.000Z",
+            "productMRP": null,
+            "productReview": null,
+            "productRating": null,
+            "productDiscount": null,
+            "productDiscountDate": "1970-01-01T00:00:00.000Z",
+            "sku": "1",
+            "sku_price": "1000",
+            "sku_packsize": "10",
+            "sku_content": "good",
+            "sku_inventory": null,
+            "sku_vendorId": null,
+            "sku_vendorInfo": null,
+            "startingPrice": 1010,
+            "ingredientsList": [
+                "salt",
+                "Cashew",
+                "oil"
+            ],
+            "nutritionalInformation": "very good for health",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "discount": "10 %",
+            "createdAt": "2024-04-23T07:52:55.835Z",
+            "updatedAt": "2024-04-23T07:52:55.835Z",
+            "attributeName": "Size",
+            "attributeItem": "5 KG",
+            "price": {
+                "price": "500.00",
+                "quantity": 20
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714470480823.png"
+            ]
+        },
+        {
+            "id": "662768d77acc8e00121fe289",
+            "categoryId": "6630a1839f9a56fa97676a54",
+            "subcategoryId": "6614e1de0fc9660a5488b575",
+            "productName": "Fried Cashew",
+            "productDescription": "Its very much tasty",
+            "expiryDate": "1970-01-01T00:00:00.000Z",
+            "productMRP": null,
+            "productReview": null,
+            "productRating": null,
+            "productDiscount": null,
+            "productDiscountDate": "1970-01-01T00:00:00.000Z",
+            "sku": "1",
+            "sku_price": "1000",
+            "sku_packsize": "10",
+            "sku_content": "good",
+            "sku_inventory": null,
+            "sku_vendorId": null,
+            "sku_vendorInfo": null,
+            "startingPrice": 1010,
+            "ingredientsList": [
+                "salt",
+                "Cashew",
+                "oil"
+            ],
+            "nutritionalInformation": "very good for health",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "discount": "10 %",
+            "createdAt": "2024-04-23T07:52:55.835Z",
+            "updatedAt": "2024-04-23T07:52:55.835Z",
+            "attributeName": "Size",
+            "attributeItem": "1 KG",
+            "price": {
+                "price": "999",
+                "quantity": 190
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714470480823.png"
+            ]
+        },
+        {
+            "id": "66278c5c7acc8e00121fe28c",
+            "categoryId": "6630a1839f9a56fa97676a54",
+            "subcategoryId": "6614e1de0fc9660a5488b575",
+            "productName": "Rosted  Cashew",
+            "productDescription": "Highly recommended Roasted  Cashew",
+            "expiryDate": "1970-01-01T00:00:00.000Z",
+            "productMRP": null,
+            "productReview": null,
+            "productRating": null,
+            "productDiscount": "12",
+            "productDiscountDate": "1970-01-01T00:00:00.000Z",
+            "sku": "1",
+            "sku_price": "1100",
+            "sku_packsize": "10",
+            "sku_content": "11",
+            "sku_inventory": null,
+            "sku_vendorId": null,
+            "sku_vendorInfo": null,
+            "startingPrice": 1200,
+            "ingredientsList": [
+                "salt",
+                "chilly",
+                "Cashew",
+                "oil"
+            ],
+            "nutritionalInformation": "its contain high protein",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": false,
+            "createdAt": "2024-04-23T10:24:28.441Z",
+            "updatedAt": "2024-04-23T10:24:28.441Z",
+            "attributeName": "Size",
+            "attributeItem": "big",
+            "price": {
+                "price": "350.00",
+                "quantity": 25
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714470769904.png"
+            ]
+        }
+    ],
+    "totalCount": 10
+}
