@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/presentation/cart/cart_page.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/svg_image.dart';
 
 class CartBanner extends StatelessWidget {
   const CartBanner({super.key});
@@ -102,9 +105,18 @@ class CartBanner extends StatelessWidget {
                     ),
                     child: Transform.translate(
                       offset: const Offset(0, 0),
-                      child: Row(
+                      child: Stack(
                         children: [
-                          Image.asset(PngImage.cartBannerLogo),
+                          SvgPicture.asset(SvgImage.fabOutlineIcon),
+                          Positioned(
+                            left: 10,
+                            right: 10,
+                            bottom: 0,
+                            top: 0,
+                            child: Image.asset(
+                              PngImage.planitLoginLogo,
+                            ),
+                          ),
                         ],
                       ),
                     ),

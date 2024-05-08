@@ -10,31 +10,25 @@ class ShopByOccasion extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Text(
-              'Shop by occasion',
-              style: textTheme.titleMedium,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Shop by occasion',
+          style: textTheme.titleMedium,
+        ),
+        SizedBox(
+          height: 130,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: occasionList.length,
+            itemBuilder: (BuildContext context, int index) =>
+                ShopByOccasionItem(
+              item: occasionList.elementAt(index),
             ),
           ),
-          SizedBox(
-            height: 130,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: occasionList.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  ShopByOccasionItem(
-                item: occasionList.elementAt(index),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

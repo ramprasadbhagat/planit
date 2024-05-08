@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -15,116 +18,118 @@ class QuickPickCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.277,
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.topRight,
-              children: [
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.asset(PngImage.generic('quick_pick_1.png')),
-                ),
-                false ? const AddToListTextField() : const AddToListButton(),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: MediaQuery.sizeOf(context).height * 0.05,
-                  width: MediaQuery.sizeOf(context).width * 0.15,
-                  padding: const EdgeInsets.only(left: 5),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    item.name,
-                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                    textAlign: TextAlign.left,
-                    maxLines: 2,
+    return SizedBox(
+      width: 130,
+      height: 170,
+      child: Card(
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Image.asset(
+                    PngImage.generic('quick_pick_1.png'),
+                    height: 80,
                   ),
-                ),
-                Text(
-                  item.attributeItem,
-                  style: textTheme.bodySmall?.copyWith(
-                    color: AppColors.grey1,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Text(
-                  '\$430 ',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 9,
-                  ),
-                ),
-                Text(
-                  ' 470',
-                  style: textTheme.bodySmall!.copyWith(
-                    decoration: TextDecoration.lineThrough,
-                    color: AppColors.lightGray,
-                    fontSize: 9,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.star,
-                      size: 9,
-                    ),
-                    Text(
-                      '4.3',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.03,
-                  width: MediaQuery.sizeOf(context).width * 0.15,
-                  child: OutlinedButton(
-                    onPressed: () => showModalBottomSheet<void>(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) => AddToCartBottomSheet(
-                        product: item,
-                      ),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      side: const BorderSide(color: Colors.black),
-                      foregroundColor: AppColors.grey3,
-                      padding: EdgeInsets.zero,
-                    ),
+                  item.attributeItem == '5 KG'
+                      ? const AddToListTextField()
+                      : const AddToListButton(),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
                     child: Text(
-                      'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                      item.name,
+                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                      textAlign: TextAlign.left,
+                      maxLines: 2,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Text(
+                    item.attributeItem,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: AppColors.grey1,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '\$430 ',
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 9,
+                    ),
+                  ),
+                  Text(
+                    ' 470',
+                    style: textTheme.bodySmall!.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      color: AppColors.lightGray,
+                      fontSize: 9,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        size: 9,
+                      ),
+                      Text(
+                        '4.3',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 9,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                    width: 75,
+                    child: OutlinedButton(
+                      onPressed: () => showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) => AddToCartBottomSheet(
+                          product: item,
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        side: const BorderSide(color: Colors.black),
+                        foregroundColor: AppColors.grey3,
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: Text(
+                        'Add to cart',
+                        style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -140,7 +145,7 @@ class AddToListButton extends StatelessWidget {
 
     return SizedBox(
       height: 25,
-      width: 75,
+      width: 80,
       child: OutlinedButton(
         onPressed: () {},
         style: OutlinedButton.styleFrom(

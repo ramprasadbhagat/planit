@@ -8,4 +8,6 @@ abstract class SvgImage {
   static const String cartTabIcon = '${_basePath}cart_tab_icon.svg';
   static const String chefHat = '${_basePath}chef_hat.svg';
   static const String coupon = '${_basePath}coupon.svg';
+  static const String homeAppIcon = '${_basePath}home_app_icon.svg';
+  static const String fabOutlineIcon = '${_basePath}fab_outline_border.svg';
 }

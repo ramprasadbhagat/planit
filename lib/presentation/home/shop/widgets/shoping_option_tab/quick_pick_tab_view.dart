@@ -10,6 +10,7 @@ class QuickPickTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionTitle(title: 'Your quick picks'),
         const SizedBox(

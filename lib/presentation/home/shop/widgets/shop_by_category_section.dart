@@ -18,30 +18,27 @@ class ShopByCategory extends StatelessWidget {
           previous.isFetching != current.isFetching,
       builder: (context, state) {
         if (state.validCategories.isEmpty) return const SizedBox();
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SectionTitle(
-                title: 'Shop by category',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Wrap(
-                runSpacing: 10,
-                alignment: WrapAlignment.start,
-                children: state.validCategories
-                    .map(
-                      (e) => ShopByCategoryItem(
-                        item: e,
-                      ),
-                    )
-                    .toList(),
-              ),
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SectionTitle(
+              title: 'Shop by category',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Wrap(
+              runSpacing: 10,
+              alignment: WrapAlignment.start,
+              children: state.validCategories
+                  .map(
+                    (e) => ShopByCategoryItem(
+                      item: e,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ],
         );
       },
     );
@@ -64,11 +61,10 @@ class ShopByCategoryItem extends StatelessWidget {
         context.read<CategoryBloc>().add(CategoryEvent.select(item));
         context.router.navigate(const CategoryRoute());
       },
-      child: Card(
-        child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.25,
-          height: MediaQuery.sizeOf(context).height * 0.11,
-          padding: const EdgeInsets.symmetric(vertical: 9),
+      child: SizedBox(
+        width: 120,
+        height: 100,
+        child: Card(
           child: Column(
             children: [
               SizedBox(
@@ -84,14 +80,12 @@ class ShopByCategoryItem extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              Expanded(
-                child: Text(
-                  item.name.displayLabel,
-                  style: textTheme.bodySmall,
-                  maxLines: 1,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                ),
+              Text(
+                item.name.displayLabel,
+                style: textTheme.bodySmall,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

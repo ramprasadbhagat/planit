@@ -134,6 +134,7 @@ abstract class AppColors {
   static const Color highlight1 = Color(0xffefe4d3);
   static const Color availableTagColor = Color(0xFF8ABD7D);
   static const Color slateBlue = Color.fromRGBO(94, 123, 180, 1.0);
+  static const Color appIconBorderColor = Color.fromRGBO(146, 118, 77, 1.0);
 
   static const MaterialColor kPrimaryColor = MaterialColor(
     0xFF005d62,
