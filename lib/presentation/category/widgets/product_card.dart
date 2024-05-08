@@ -21,6 +21,7 @@ class ProductCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.28,
         padding: const EdgeInsets.all(8),
