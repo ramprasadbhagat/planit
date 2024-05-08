@@ -5,6 +5,7 @@ import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/application/product_image/product_image_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
@@ -18,6 +19,9 @@ import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dar
 import 'package:planit/infrastructure/product/datasource/product_local.dart';
 import 'package:planit/infrastructure/product/datasource/product_remote.dart';
 import 'package:planit/infrastructure/product/repository/product_repository.dart';
+import 'package:planit/infrastructure/similar_product/datasource/similar_product_local.dart';
+import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
+import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
 import 'package:planit/presentation/router/router.dart';
 
 GetIt locator = GetIt.instance;
@@ -145,4 +149,29 @@ void setupLocator() {
     ),
   );
   ////////////////////////////////////////////////////////////////
+  /////============================================================
+  // Similar Products
+  //============================================================
+  locator.registerLazySingleton(
+    () => const SimilarProductLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => SimilarProductRemoteDataSource(httpService: locator<HttpService>()),
+  );
+
+  locator.registerLazySingleton(
+    () => SimilarProductRepository(
+      config: locator<Config>(),
+      localDataSource: locator<SimilarProductLocalDataSource>(),
+      remoteDataSource: locator<SimilarProductRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => SimilarProductBloc(
+      repository: locator<SimilarProductRepository>(),
+    ),
+  );
+  ////////////////////////////////////////////////////////////////
+  /////
 }
