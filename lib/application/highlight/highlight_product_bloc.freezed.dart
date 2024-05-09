@@ -281,7 +281,7 @@ abstract class _Fetch implements HighlightProductEvent {
 
 /// @nodoc
 mixin _$HighlightProductState {
-  List<Product> get products => throw _privateConstructorUsedError;
+  List<Highlight> get highlights => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -298,7 +298,7 @@ abstract class $HighlightProductStateCopyWith<$Res> {
       _$HighlightProductStateCopyWithImpl<$Res, HighlightProductState>;
   @useResult
   $Res call(
-      {List<Product> products,
+      {List<Highlight> highlights,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 }
@@ -317,15 +317,15 @@ class _$HighlightProductStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? highlights = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_value.copyWith(
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+      highlights: null == highlights
+          ? _value.highlights
+          : highlights // ignore: cast_nullable_to_non_nullable
+              as List<Highlight>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -348,7 +348,7 @@ abstract class _$$HighlightProductStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Product> products,
+      {List<Highlight> highlights,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 }
@@ -365,15 +365,15 @@ class __$$HighlightProductStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? highlights = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_$HighlightProductStateImpl(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+      highlights: null == highlights
+          ? _value._highlights
+          : highlights // ignore: cast_nullable_to_non_nullable
+              as List<Highlight>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -390,17 +390,17 @@ class __$$HighlightProductStateImplCopyWithImpl<$Res>
 
 class _$HighlightProductStateImpl implements _HighlightProductState {
   const _$HighlightProductStateImpl(
-      {required final List<Product> products,
+      {required final List<Highlight> highlights,
       required this.apiFailureOrSuccessOption,
       required this.isFetching})
-      : _products = products;
+      : _highlights = highlights;
 
-  final List<Product> _products;
+  final List<Highlight> _highlights;
   @override
-  List<Product> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
+  List<Highlight> get highlights {
+    if (_highlights is EqualUnmodifiableListView) return _highlights;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
+    return EqualUnmodifiableListView(_highlights);
   }
 
   @override
@@ -410,7 +410,7 @@ class _$HighlightProductStateImpl implements _HighlightProductState {
 
   @override
   String toString() {
-    return 'HighlightProductState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'HighlightProductState(highlights: $highlights, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
   }
 
   @override
@@ -418,7 +418,8 @@ class _$HighlightProductStateImpl implements _HighlightProductState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HighlightProductStateImpl &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._highlights, _highlights) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
@@ -429,7 +430,7 @@ class _$HighlightProductStateImpl implements _HighlightProductState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_highlights),
       apiFailureOrSuccessOption,
       isFetching);
 
@@ -443,13 +444,13 @@ class _$HighlightProductStateImpl implements _HighlightProductState {
 
 abstract class _HighlightProductState implements HighlightProductState {
   const factory _HighlightProductState(
-      {required final List<Product> products,
+      {required final List<Highlight> highlights,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching}) = _$HighlightProductStateImpl;
 
   @override
-  List<Product> get products;
+  List<Highlight> get highlights;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

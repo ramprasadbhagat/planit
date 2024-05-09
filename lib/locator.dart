@@ -16,6 +16,9 @@ import 'package:planit/infrastructure/categories/datasource/categories_remote.da
 import 'package:planit/infrastructure/categories/repository/categories_repository.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dart';
+import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
+import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
+import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
 import 'package:planit/infrastructure/product/datasource/product_local.dart';
 import 'package:planit/infrastructure/product/datasource/product_remote.dart';
 import 'package:planit/infrastructure/product/repository/product_repository.dart';
@@ -96,11 +99,6 @@ void setupLocator() {
     ),
   );
   locator.registerLazySingleton(
-    () => HighlightProductBloc(
-      repository: locator<ProductRepository>(),
-    ),
-  );
-  locator.registerLazySingleton(
     () => QuickPicksBloc(
       repository: locator<ProductRepository>(),
     ),
@@ -170,6 +168,31 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => SimilarProductBloc(
       repository: locator<SimilarProductRepository>(),
+    ),
+  );
+  ////////////////////////////////////////////////////////////////
+  /////
+  // ============================================================
+  // Similar Products
+  //============================================================
+  locator.registerLazySingleton(
+    () => const HighlightLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => HighlightRemoteDataSource(httpService: locator<HttpService>()),
+  );
+
+  locator.registerLazySingleton(
+    () => HighlightRepository(
+      config: locator<Config>(),
+      localDataSource: locator<HighlightLocalDataSource>(),
+      remoteDataSource: locator<HighlightRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => HighlightProductBloc(
+      repository: locator<HighlightRepository>(),
     ),
   );
   ////////////////////////////////////////////////////////////////
