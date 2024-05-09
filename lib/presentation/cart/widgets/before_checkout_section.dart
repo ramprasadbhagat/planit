@@ -20,7 +20,7 @@ class BeforeCheckoutSection extends StatelessWidget {
               style: textTheme.titleSmall?.copyWith(fontSize: 12),
             ),
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.25,
+              height: 190,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const ScrollPhysics(),

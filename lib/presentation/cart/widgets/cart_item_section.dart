@@ -35,7 +35,7 @@ class CartItemSection extends StatelessWidget {
                             ),
                             const SizedBox(width: 4.0),
                             Text(
-                              'Delivering to110017',
+                              'Delivering to 110017',
                               style: textTheme.bodyMedium,
                             ),
                           ],
