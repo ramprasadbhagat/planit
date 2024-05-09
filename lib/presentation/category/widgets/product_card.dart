@@ -224,15 +224,6 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
             color: Color.fromRGBO(167, 22, 0, 1),
           ),
           GestureDetector(
-            onTap: () => setState(() => countValue += 1),
-            child: const Icon(
-              Icons.add,
-              size: 12,
-              color: AppColors.black,
-            ),
-          ),
-          Text(countValue.toString()),
-          GestureDetector(
             onTap: () => setState(() {
               if (countValue > 1) {
                 countValue -= 1;
@@ -240,6 +231,15 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
             }),
             child: const Icon(
               Icons.remove,
+              size: 12,
+              color: AppColors.black,
+            ),
+          ),
+          Text(countValue.toString()),
+          GestureDetector(
+            onTap: () => setState(() => countValue += 1),
+            child: const Icon(
+              Icons.add,
               size: 12,
               color: AppColors.black,
             ),
