@@ -17,9 +17,9 @@ class SubCategoryList extends StatelessWidget {
         return Container(
           height: double.infinity,
           width: 100,
-          margin: const EdgeInsets.only(
-            top: 5,
-          ),
+          // margin: const EdgeInsets.only(
+          //   top: 5,
+          // ),
           decoration: const BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -36,7 +36,7 @@ class SubCategoryList extends StatelessWidget {
             shrinkWrap: true,
             itemCount: categoryState.selectedCategory.subCategory.length,
             padding: const EdgeInsets.symmetric(
-              vertical: 10,
+              vertical: 2,
               horizontal: 8,
             ),
             itemBuilder: (context, index) => SubCategoryCard(
