@@ -1,9 +1,178 @@
 {
-    "data":[
+    "items": [
         {
-            "title": "Roasted & Salted Cashew",
-            "image": "",
-            "backGroundColor":"0xffefe4d3"
+            "id": "662768d77acc8e00121fe289",
+            "categoryId": "6630a1839f9a56fa97676a54",
+            "subcategoryId": "6614e1de0fc9660a5488b575",
+            "productName": "Fried Cashew",
+            "productDescription": "Its very much tasty",
+            "expiryDate": "1970-01-01T00:00:00.000Z",
+            "productMRP": null,
+            "productReview": null,
+            "productRating": null,
+            "productDiscount": null,
+            "productDiscountDate": "1970-01-01T00:00:00.000Z",
+            "sku": "1",
+            "sku_price": "1000",
+            "sku_packsize": "10",
+            "sku_content": "good",
+            "sku_inventory": null,
+            "sku_vendorId": null,
+            "sku_vendorInfo": null,
+            "startingPrice": 1010,
+            "ingredientsList": [
+                "salt",
+                "Cashew",
+                "oil"
+            ],
+            "nutritionalInformation": "very good for health",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "discount": "10 %",
+            "createdAt": "2024-04-23T07:52:55.835Z",
+            "updatedAt": "2024-04-23T07:52:55.835Z",
+            "attributeName": "Size",
+            "attributeItem": "5 KG",
+            "price": {
+                "price": "500.00",
+                "quantity": 20
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714470480823.png"
+            ]
+        },
+        {
+            "id": "662768d77acc8e00121fe289",
+            "categoryId": "6630a1839f9a56fa97676a54",
+            "subcategoryId": "6614e1de0fc9660a5488b575",
+            "productName": "Fried Cashew",
+            "productDescription": "Its very much tasty",
+            "expiryDate": "1970-01-01T00:00:00.000Z",
+            "productMRP": null,
+            "productReview": null,
+            "productRating": null,
+            "productDiscount": null,
+            "productDiscountDate": "1970-01-01T00:00:00.000Z",
+            "sku": "1",
+            "sku_price": "1000",
+            "sku_packsize": "10",
+            "sku_content": "good",
+            "sku_inventory": null,
+            "sku_vendorId": null,
+            "sku_vendorInfo": null,
+            "startingPrice": 1010,
+            "ingredientsList": [
+                "salt",
+                "Cashew",
+                "oil"
+            ],
+            "nutritionalInformation": "very good for health",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "discount": "10 %",
+            "createdAt": "2024-04-23T07:52:55.835Z",
+            "updatedAt": "2024-04-23T07:52:55.835Z",
+            "attributeName": "Size",
+            "attributeItem": "1 KG",
+            "price": {
+                "price": "999",
+                "quantity": 190
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714470480823.png"
+            ]
+        },
+        {
+            "id": "6630d424ebec392345f674cd",
+            "categoryId": "662b4f577af30e0013145c2e",
+            "subcategoryId": "6630d27debec392345f674c8",
+            "productName": "Extra Salted Cheddar Cheese",
+            "productDescription": "Very Popular in India",
+            "expiryDate": "2024-09-11T00:00:00.000Z",
+            "productMRP": "1000",
+            "productReview": "It is excellent",
+            "productRating": "8",
+            "productDiscount": "17%",
+            "productDiscountDate": "2024-03-02T00:00:00.000Z",
+            "sku": "8733884",
+            "sku_price": "230",
+            "sku_packsize": "3",
+            "sku_content": "This is great",
+            "sku_inventory": "items",
+            "sku_vendorId": "75478904846784",
+            "sku_vendorInfo": "Expensive Pvt Ltd",
+            "startingPrice": "56000",
+            "ingredientsList": [
+                "Hard-disk",
+                "CPU",
+                "Keyboard",
+                "Screen"
+            ],
+            "nutritionalInformation": "This is very smooth for use",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "createdAt": "2024-04-30T11:21:08.734Z",
+            "updatedAt": "2024-04-30T11:21:08.734Z",
+            "attributeName": "Size",
+            "attributeItem": "1 KG",
+            "price": {
+                "price": "700.00",
+                "quantity": 15
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714476484957.png"
+            ]
+        },
+        {
+            "id": "6630d49cebec392345f674ce",
+            "categoryId": "662b4f577af30e0013145c2e",
+            "subcategoryId": "6630d290ebec392345f674c9",
+            "productName": "Top Blue Cheese",
+            "productDescription": "Very Popular in India",
+            "expiryDate": "2024-09-11T00:00:00.000Z",
+            "productMRP": "100",
+            "productReview": "It is excellent",
+            "productRating": "8",
+            "productDiscount": "15",
+            "productDiscountDate": "2024-03-02T00:00:00.000Z",
+            "sku": "8733884",
+            "sku_price": "230",
+            "sku_packsize": "3",
+            "sku_content": "This is great",
+            "sku_inventory": "items",
+            "sku_vendorId": "75478904846784",
+            "sku_vendorInfo": "Expensive Pvt Ltd",
+            "startingPrice": "56000",
+            "ingredientsList": [
+                "Chese",
+                "salt",
+                "sugar",
+                "Cheese"
+            ],
+            "nutritionalInformation": "This is very smooth for use",
+            "isDeleted": false,
+            "isActive": true,
+            "isHighlighted": true,
+            "isQuickPick": false,
+            "discount": null,
+            "createdAt": "2024-04-30T11:23:08.187Z",
+            "updatedAt": "2024-04-30T11:23:08.187Z",
+            "attributeName": "Size",
+            "attributeItem": "1 KG",
+            "price": {
+                "price": 0,
+                "quantity": 0
+            },
+            "productImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/products/1714476661799.png"
+            ]
         }
-    ]
+    ],
+    "totalCount": 10
 }

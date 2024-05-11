@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
-import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/highlights/entities/highlight.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -13,9 +13,16 @@ class HighLightSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HighlightProductBloc, HighlightProductState>(
-      buildWhen: (previous, current) => previous.products != current.products,
       builder: (context, state) {
-        if (state.products.isEmpty) return const SizedBox.shrink();
+        if (state.isFetching) {
+          return const SizedBox(
+            height: 100,
+            width: double.infinity,
+            child: Center(child: CircularProgressIndicator()),
+          );
+        } else if (state.highlights.isEmpty) {
+          return const SizedBox.shrink();
+        }
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -31,9 +38,9 @@ class HighLightSection extends StatelessWidget {
                 height: 180,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: state.products.length,
+                  itemCount: state.highlights.length,
                   itemBuilder: (BuildContext context, int index) =>
-                      HighlightItem(item: state.products.elementAt(index)),
+                      HighlightItem(item: state.highlights.elementAt(index)),
                 ),
               ),
             ],
@@ -45,7 +52,7 @@ class HighLightSection extends StatelessWidget {
 }
 
 class HighlightItem extends StatelessWidget {
-  final Product item;
+  final Highlight item;
   const HighlightItem({super.key, required this.item});
 
   @override
@@ -89,7 +96,7 @@ class HighlightItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     alignment: Alignment.center,
                     child: Text(
-                      item.name,
+                      item.productName,
                       style: textTheme.bodySmall,
                       textAlign: TextAlign.center,
                       maxLines: 2,
@@ -100,21 +107,20 @@ class HighlightItem extends StatelessWidget {
             ),
           ),
         ),
-        if (true)
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 5,
-              vertical: 4,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: AppColors.black,
-            ),
-            child: Text(
-              '12 % off',
-              style: textTheme.bodySmall!.copyWith(color: AppColors.white),
-            ),
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 5,
+            vertical: 4,
           ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: AppColors.black,
+          ),
+          child: Text(
+            '${item.discountValue} % off',
+            style: textTheme.bodySmall!.copyWith(color: AppColors.white),
+          ),
+        ),
       ],
     );
   }
