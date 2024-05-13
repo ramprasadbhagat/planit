@@ -57,6 +57,7 @@ class LoginPage extends StatelessWidget {
                             FilteringTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(10),
                           ],
+                          maxLength: 10,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,

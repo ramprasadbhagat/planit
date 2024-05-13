@@ -61,3 +61,33 @@ class IntegerValue extends ValueObject<int> {
 
   const IntegerValue._(this.value);
 }
+
+class MobileNumber extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory MobileNumber(String input) {
+    return MobileNumber._(validateStringNotEmpty(input));
+  }
+
+  String get validPhoneNumber => getValidPhoneNumber(value.getOrElse(() => ''));
+
+  String get displayTelephoneNumber {
+    return naIfEmpty(validPhoneNumber);
+  }
+
+  const MobileNumber._(this.value);
+}
+
+class OTP extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory OTP(String input) {
+    return OTP._(validateStringNotEmpty(input));
+  }
+
+  String get validOtp => getValidOTP(value.getOrElse(() => ''));
+
+  const OTP._(this.value);
+}
