@@ -22,6 +22,9 @@ import 'package:planit/infrastructure/highlights/repository/highlight_repository
 import 'package:planit/infrastructure/product/datasource/product_local.dart';
 import 'package:planit/infrastructure/product/datasource/product_remote.dart';
 import 'package:planit/infrastructure/product/repository/product_repository.dart';
+import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_local.dart';
+import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_remote.dart';
+import 'package:planit/infrastructure/quick_picks/repository/quick_picks_repository.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_local.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
 import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
@@ -98,11 +101,6 @@ void setupLocator() {
       repository: locator<ProductRepository>(),
     ),
   );
-  locator.registerLazySingleton(
-    () => QuickPicksBloc(
-      repository: locator<ProductRepository>(),
-    ),
-  );
 
   locator.registerFactory(
     () => ProductDetailBloc(
@@ -173,7 +171,7 @@ void setupLocator() {
   ////////////////////////////////////////////////////////////////
   /////
   // ============================================================
-  // Similar Products
+  // Highlight Products
   //============================================================
   locator.registerLazySingleton(
     () => const HighlightLocalDataSource(),
@@ -197,4 +195,27 @@ void setupLocator() {
   );
   ////////////////////////////////////////////////////////////////
   /////
+  ///// Quick Picks
+  //============================================================
+  locator.registerLazySingleton(
+    () => const QuickPicksLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => QuickPicksRemoteDataSource(httpService: locator<HttpService>()),
+  );
+
+  locator.registerLazySingleton(
+    () => QuickPicksRepository(
+      config: locator<Config>(),
+      localDataSource: locator<QuickPicksLocalDataSource>(),
+      remoteDataSource: locator<QuickPicksRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => QuickPicksBloc(
+      repository: locator<QuickPicksRepository>(),
+    ),
+  );
+  ////////////////////////////////////////////////////////////////
 }
