@@ -280,7 +280,7 @@ abstract class _Fetch implements QuickPicksEvent {
 
 /// @nodoc
 mixin _$QuickPicksState {
-  List<Product> get products => throw _privateConstructorUsedError;
+  List<QuickPicks> get quicksPickProducts => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -297,7 +297,7 @@ abstract class $QuickPicksStateCopyWith<$Res> {
       _$QuickPicksStateCopyWithImpl<$Res, QuickPicksState>;
   @useResult
   $Res call(
-      {List<Product> products,
+      {List<QuickPicks> quicksPickProducts,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 }
@@ -315,15 +315,15 @@ class _$QuickPicksStateCopyWithImpl<$Res, $Val extends QuickPicksState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? quicksPickProducts = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_value.copyWith(
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+      quicksPickProducts: null == quicksPickProducts
+          ? _value.quicksPickProducts
+          : quicksPickProducts // ignore: cast_nullable_to_non_nullable
+              as List<QuickPicks>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -345,7 +345,7 @@ abstract class _$$QuickPicksStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Product> products,
+      {List<QuickPicks> quicksPickProducts,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 }
@@ -361,15 +361,15 @@ class __$$QuickPicksStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
+    Object? quicksPickProducts = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_$QuickPicksStateImpl(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+      quicksPickProducts: null == quicksPickProducts
+          ? _value._quicksPickProducts
+          : quicksPickProducts // ignore: cast_nullable_to_non_nullable
+              as List<QuickPicks>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -386,17 +386,18 @@ class __$$QuickPicksStateImplCopyWithImpl<$Res>
 
 class _$QuickPicksStateImpl implements _QuickPicksState {
   const _$QuickPicksStateImpl(
-      {required final List<Product> products,
+      {required final List<QuickPicks> quicksPickProducts,
       required this.apiFailureOrSuccessOption,
       required this.isFetching})
-      : _products = products;
+      : _quicksPickProducts = quicksPickProducts;
 
-  final List<Product> _products;
+  final List<QuickPicks> _quicksPickProducts;
   @override
-  List<Product> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
+  List<QuickPicks> get quicksPickProducts {
+    if (_quicksPickProducts is EqualUnmodifiableListView)
+      return _quicksPickProducts;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
+    return EqualUnmodifiableListView(_quicksPickProducts);
   }
 
   @override
@@ -406,7 +407,7 @@ class _$QuickPicksStateImpl implements _QuickPicksState {
 
   @override
   String toString() {
-    return 'QuickPicksState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'QuickPicksState(quicksPickProducts: $quicksPickProducts, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
   }
 
   @override
@@ -414,7 +415,8 @@ class _$QuickPicksStateImpl implements _QuickPicksState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuickPicksStateImpl &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._quicksPickProducts, _quicksPickProducts) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
@@ -425,7 +427,7 @@ class _$QuickPicksStateImpl implements _QuickPicksState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_quicksPickProducts),
       apiFailureOrSuccessOption,
       isFetching);
 
@@ -439,13 +441,13 @@ class _$QuickPicksStateImpl implements _QuickPicksState {
 
 abstract class _QuickPicksState implements QuickPicksState {
   const factory _QuickPicksState(
-      {required final List<Product> products,
+      {required final List<QuickPicks> quicksPickProducts,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching}) = _$QuickPicksStateImpl;
 
   @override
-  List<Product> get products;
+  List<QuickPicks> get quicksPickProducts;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

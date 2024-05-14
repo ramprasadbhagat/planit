@@ -10,6 +10,7 @@ class QuickPickTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionTitle(title: 'Your quick picks'),
@@ -17,15 +18,19 @@ class QuickPickTabView extends StatelessWidget {
           height: 10,
         ),
         BlocBuilder<QuickPicksBloc, QuickPicksState>(
-          buildWhen: (previous, current) =>
-              previous.products != current.products,
           builder: (context, state) {
-            if (state.products.isEmpty) const Text('Not Available');
+            if (state.isFetching) {
+              return const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Center(child: CircularProgressIndicator()),
+              );
+            } else if (state.quicksPickProducts.isEmpty) {
+              return const Center(child: Text('Not Available'));
+            }
             return Wrap(
               runSpacing: 6,
               spacing: 1,
-              children: state.products
-                  .take(6)
+              children: state.quicksPickProducts
                   .map(
                     (e) => QuickPickCard(
                       item: e,

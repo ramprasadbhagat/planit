@@ -1,14 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 
 class QuickPickCard extends StatelessWidget {
-  final Product item;
+  final QuickPicks item;
   const QuickPickCard({
     super.key,
     required this.item,
@@ -32,11 +28,13 @@ class QuickPickCard extends StatelessWidget {
               Stack(
                 alignment: Alignment.topRight,
                 children: [
-                  Image.asset(
-                    PngImage.generic('quick_pick_1.png'),
+                  Image.network(
+                    item.productImages.first,
                     height: 80,
+                    width: 110,
+                    fit: BoxFit.fill,
                   ),
-                  item.attributeItem == '5 KG'
+                  item.price.isEditable
                       ? const AddToListTextField()
                       : const AddToListButton(),
                 ],
@@ -47,10 +45,11 @@ class QuickPickCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      item.name,
+                      item.productName,
                       style: textTheme.bodySmall?.copyWith(fontSize: 10),
                       textAlign: TextAlign.left,
                       maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
@@ -68,13 +67,13 @@ class QuickPickCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '\$430 ',
+                    '₹${item.productMRP} ',
                     style: textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                     ),
                   ),
                   Text(
-                    ' 470',
+                    item.skuPrice,
                     style: textTheme.bodySmall!.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: AppColors.lightGray,
@@ -94,7 +93,7 @@ class QuickPickCard extends StatelessWidget {
                         size: 9,
                       ),
                       Text(
-                        '4.3',
+                        item.productRating.toString(),
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 9,
                         ),
@@ -109,7 +108,7 @@ class QuickPickCard extends StatelessWidget {
                         context: context,
                         isScrollControlled: true,
                         builder: (BuildContext context) => AddToCartBottomSheet(
-                          product: item,
+                          product: item.toProduct,
                         ),
                       ),
                       style: OutlinedButton.styleFrom(

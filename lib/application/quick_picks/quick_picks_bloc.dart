@@ -4,15 +4,15 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
-import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/domain/product/repository/i_product_repository.dart';
+import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
+import 'package:planit/domain/quick_picks/repository/i_quick_pick_repository.dart';
 
 part 'quick_picks_event.dart';
 part 'quick_picks_state.dart';
 part 'quick_picks_bloc.freezed.dart';
 
 class QuickPicksBloc extends Bloc<QuickPicksEvent, QuickPicksState> {
-  final IProductRepository repository;
+  final IQuickPicksRepository repository;
 
   QuickPicksBloc({
     required this.repository,
@@ -27,18 +27,23 @@ class QuickPicksBloc extends Bloc<QuickPicksEvent, QuickPicksState> {
     await event.map(
       initialized: (_) async => emit(QuickPicksState.initial()),
       fetch: (e) async {
-        final failureOrSuccess = await repository.getQuickPackProduct();
+        emit(state.copyWith(isFetching: true));
+        final failureOrSuccess = await repository.getQuickPicks();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              isFetching: false,
             ),
           ),
-          (highlightedProduct) => emit(
-            state.copyWith(
-              products: highlightedProduct,
-            ),
-          ),
+          (list) {
+            emit(
+              state.copyWith(
+                isFetching: false,
+                quicksPickProducts: list,
+              ),
+            );
+          },
         );
       },
     );
