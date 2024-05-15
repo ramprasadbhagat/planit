@@ -36,6 +36,11 @@ class StorageService {
     return Auth.empty();
   }
 
+  Future<String> getBearerToken() async {
+    final token = _authBox.getAt(0)!.token;
+    return 'Bearer $token';
+  }
+
   Future<void> deleteAuthData(int index) async {
     await _authBox.deleteAt(index);
   }
