@@ -1,0 +1,8 @@
+{
+    "msg": "Otp has been sent",
+    "ok": "1",
+    "otp": {
+        "user_id": "66432d749a1080001946a6c0",
+        "otp": "8907"
+    }
+}

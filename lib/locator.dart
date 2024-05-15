@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -8,6 +10,9 @@ import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/infrastructure/auth/datasources/auth_local.dart';
+import 'package:planit/infrastructure/auth/datasources/auth_remote.dart';
+import 'package:planit/infrastructure/auth/repository/auth_repository.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_remote.dart';
 import 'package:planit/infrastructure/cart/repository/cart_repository.dart';
@@ -29,6 +34,7 @@ import 'package:planit/infrastructure/similar_product/datasource/similar_product
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
 import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
 import 'package:planit/presentation/router/router.dart';
+import 'package:planit/utils/storage_service.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -44,11 +50,48 @@ void setupLocator() {
     ),
   );
   locator.registerLazySingleton(
+    () => StorageService(),
+  );
+  locator.registerLazySingleton(
     () => HttpService(
       config: locator<Config>(),
       interceptors: [
         locator<AuthInterceptor>(),
       ],
+    ),
+  );
+  ////////////////////////////////////////////////////////////////
+
+  /////============================================================
+  //  Auth
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const AuthLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => AuthRemoteDataSource(
+      httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => AuthRepository(
+      config: locator<Config>(),
+      localDataSource: locator<AuthLocalDataSource>(),
+      remoteDataSource: locator<AuthRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => LoginFormBloc(
+      authRepository: locator<AuthRepository>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => AuthBloc(
+      authRepository: locator<AuthRepository>(),
     ),
   );
   ////////////////////////////////////////////////////////////////

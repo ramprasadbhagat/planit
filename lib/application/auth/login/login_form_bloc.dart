@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/repository/i_auth_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,6 +49,7 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
           emit(
             state.copyWith(
               isSubmitting: true,
+              otp: OTP(''),
               authFailureOrSuccessOption: none(),
             ),
           );
@@ -65,16 +67,12 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
                 ),
               );
             },
-            (login) async {
-              await authRepository.storeToken(
-                token: login.access,
-              );
-
+            (loginOtp) async {
               emit(
                 state.copyWith(
                   isSubmitting: false,
                   showErrorMessages: false,
-                  mobileNumber: MobileNumber(''),
+                  otp: loginOtp.otp,
                   authFailureOrSuccessOption: optionOf(failureOrSuccess),
                 ),
               );
@@ -110,9 +108,9 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
                 ),
               );
             },
-            (login) async {
+            (authData) async {
               await authRepository.storeToken(
-                token: login.access,
+                auth: authData,
               );
 
               emit(
@@ -121,6 +119,7 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
                   showErrorMessages: false,
                   mobileNumber: MobileNumber(''),
                   otp: OTP(''),
+                  auth: authData,
                   authFailureOrSuccessOption: optionOf(failureOrSuccess),
                 ),
               );
