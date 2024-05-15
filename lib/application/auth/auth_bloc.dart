@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/repository/i_auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,9 +24,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authCheck: (e) async {
         final result = await authRepository.tokenValid();
         await result.fold(
-          (invalid) async => {/*error to be handled*/},
+          (invalid) async => emit(const AuthState.unauthenticated()),
           (valid) async {
-            emit(const AuthState.authenticated());
+            emit(AuthState.authenticated(auth: valid));
           },
         );
       },

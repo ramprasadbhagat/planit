@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -10,12 +15,15 @@ import 'package:planit/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/router/router.dart';
 import 'package:planit/presentation/theme/theme_data.dart';
+import 'package:planit/utils/storage_service.dart';
 
 Future<void> initialSetup({required Flavor flavor}) async {
-  WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   final config = locator<Config>();
+  final storageService = locator<StorageService>();
+  await storageService.init();
   config.appFlavor = flavor;
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class App extends StatelessWidget {
@@ -26,6 +34,12 @@ class App extends StatelessWidget {
     final router = locator<AppRouter>();
     return MultiBlocProvider(
       providers: [
+        BlocProvider<LoginFormBloc>(
+          create: (context) => locator<LoginFormBloc>(),
+        ),
+        BlocProvider<AuthBloc>(
+          create: (context) => locator<AuthBloc>(),
+        ),
         BlocProvider<CategoryBloc>(
           create: (context) => locator<CategoryBloc>(),
         ),

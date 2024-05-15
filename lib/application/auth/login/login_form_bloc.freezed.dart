@@ -611,6 +611,7 @@ abstract class _VerifyOTP implements LoginFormEvent {
 mixin _$LoginFormState {
   MobileNumber get mobileNumber => throw _privateConstructorUsedError;
   OTP get otp => throw _privateConstructorUsedError;
+  Auth get auth => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get authFailureOrSuccessOption =>
@@ -630,9 +631,12 @@ abstract class $LoginFormStateCopyWith<$Res> {
   $Res call(
       {MobileNumber mobileNumber,
       OTP otp,
+      Auth auth,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ApiFailure, dynamic>> authFailureOrSuccessOption});
+
+  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -650,6 +654,7 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
   $Res call({
     Object? mobileNumber = null,
     Object? otp = null,
+    Object? auth = null,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -663,6 +668,10 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as OTP,
+      auth: null == auth
+          ? _value.auth
+          : auth // ignore: cast_nullable_to_non_nullable
+              as Auth,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -677,6 +686,14 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
               as Option<Either<ApiFailure, dynamic>>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthCopyWith<$Res> get auth {
+    return $AuthCopyWith<$Res>(_value.auth, (value) {
+      return _then(_value.copyWith(auth: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -690,9 +707,13 @@ abstract class _$$LoginFormStateImplCopyWith<$Res>
   $Res call(
       {MobileNumber mobileNumber,
       OTP otp,
+      Auth auth,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ApiFailure, dynamic>> authFailureOrSuccessOption});
+
+  @override
+  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -708,6 +729,7 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
   $Res call({
     Object? mobileNumber = null,
     Object? otp = null,
+    Object? auth = null,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -721,6 +743,10 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as OTP,
+      auth: null == auth
+          ? _value.auth
+          : auth // ignore: cast_nullable_to_non_nullable
+              as Auth,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -743,6 +769,7 @@ class _$LoginFormStateImpl extends _LoginFormState {
   const _$LoginFormStateImpl(
       {required this.mobileNumber,
       required this.otp,
+      required this.auth,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.authFailureOrSuccessOption})
@@ -753,6 +780,8 @@ class _$LoginFormStateImpl extends _LoginFormState {
   @override
   final OTP otp;
   @override
+  final Auth auth;
+  @override
   final bool showErrorMessages;
   @override
   final bool isSubmitting;
@@ -761,7 +790,7 @@ class _$LoginFormStateImpl extends _LoginFormState {
 
   @override
   String toString() {
-    return 'LoginFormState(mobileNumber: $mobileNumber, otp: $otp, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'LoginFormState(mobileNumber: $mobileNumber, otp: $otp, auth: $auth, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -772,6 +801,7 @@ class _$LoginFormStateImpl extends _LoginFormState {
             (identical(other.mobileNumber, mobileNumber) ||
                 other.mobileNumber == mobileNumber) &&
             (identical(other.otp, otp) || other.otp == otp) &&
+            (identical(other.auth, auth) || other.auth == auth) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -783,7 +813,7 @@ class _$LoginFormStateImpl extends _LoginFormState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mobileNumber, otp,
+  int get hashCode => Object.hash(runtimeType, mobileNumber, otp, auth,
       showErrorMessages, isSubmitting, authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -798,6 +828,7 @@ abstract class _LoginFormState extends LoginFormState {
   const factory _LoginFormState(
       {required final MobileNumber mobileNumber,
       required final OTP otp,
+      required final Auth auth,
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ApiFailure, dynamic>>
@@ -808,6 +839,8 @@ abstract class _LoginFormState extends LoginFormState {
   MobileNumber get mobileNumber;
   @override
   OTP get otp;
+  @override
+  Auth get auth;
   @override
   bool get showErrorMessages;
   @override
