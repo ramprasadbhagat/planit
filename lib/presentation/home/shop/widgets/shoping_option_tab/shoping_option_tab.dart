@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/presentation/home/shop/widgets/shop_by_category_section.dart';
 import 'package:planit/presentation/home/shop/widgets/shop_by_occasion_section.dart';
 import 'package:planit/presentation/home/shop/widgets/shoping_option_tab/quick_pick_tab_view.dart';
@@ -81,7 +83,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
               height: 10,
             ),
             SizedBox(
-              height: _selectedTab == 0 ? 380 : 150,
+              height: _selectedTab == 0
+                  ? context.read<QuickPicksBloc>().state.quickPickProductsHeight
+                  : 150,
               child: TabBarView(
                 controller: _tabController,
                 children: const [

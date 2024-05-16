@@ -75,7 +75,7 @@ class _LoginOtpState extends State<LoginOtp> {
                     shape: PinCodeFieldShape.box,
                     borderRadius: BorderRadius.circular(8),
                     fieldHeight: 50,
-                    fieldWidth: 40,
+                    fieldWidth: 50,
                     activeFillColor: const Color.fromRGBO(0, 0, 0, 0.15),
                     inactiveColor: const Color.fromRGBO(0, 0, 0, 0.15),
                     inactiveFillColor: const Color.fromRGBO(0, 0, 0, 0.15),
@@ -83,7 +83,10 @@ class _LoginOtpState extends State<LoginOtp> {
                     selectedColor: const Color.fromRGBO(0, 0, 0, 0.15),
                     activeColor: const Color.fromRGBO(0, 0, 0, 0.15),
                   ),
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  separatorBuilder: (_, __) => const SizedBox(
+                    width: 20,
+                  ),
+                  mainAxisAlignment: MainAxisAlignment.center,
                   validator: (v) {
                     if (v!.length < 4) {
                       return 'Please enter valid otp';

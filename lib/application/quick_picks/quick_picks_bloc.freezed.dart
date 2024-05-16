@@ -384,12 +384,13 @@ class __$$QuickPicksStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$QuickPicksStateImpl implements _QuickPicksState {
+class _$QuickPicksStateImpl extends _QuickPicksState {
   const _$QuickPicksStateImpl(
       {required final List<QuickPicks> quicksPickProducts,
       required this.apiFailureOrSuccessOption,
       required this.isFetching})
-      : _quicksPickProducts = quicksPickProducts;
+      : _quicksPickProducts = quicksPickProducts,
+        super._();
 
   final List<QuickPicks> _quicksPickProducts;
   @override
@@ -439,12 +440,13 @@ class _$QuickPicksStateImpl implements _QuickPicksState {
           this, _$identity);
 }
 
-abstract class _QuickPicksState implements QuickPicksState {
+abstract class _QuickPicksState extends QuickPicksState {
   const factory _QuickPicksState(
       {required final List<QuickPicks> quicksPickProducts,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching}) = _$QuickPicksStateImpl;
+  const _QuickPicksState._() : super._();
 
   @override
   List<QuickPicks> get quicksPickProducts;
