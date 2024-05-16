@@ -4,28 +4,26 @@ part of 'cart_bloc.dart';
 class CartState with _$CartState {
   const CartState._();
   const factory CartState({
-    required List<CartItem> cartItems,
+    required CartItem cartItem,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
   }) = _CartState;
 
   factory CartState.initial() => CartState(
-        cartItems: <CartItem>[],
+        cartItem: CartItem.empty(),
         apiFailureOrSuccessOption: none(),
         isFetching: true,
       );
 
-  bool get isCartEmpty => cartItems.isEmpty;
+  bool get isCartEmpty => cartItem.products.isEmpty;
 
-  int get totalPrice => cartItems.fold(
+  int get totalCartProductsPrice => cartItem.products.fold(
         0,
-        (previousValue, element) =>
-            previousValue + element.totalPrice.getOrDefaultValue(0),
+        (previousValue, element) => previousValue + element.totalPrice,
       );
 
-  int get totalItem => cartItems.fold(
+  int get totalCartProductsCount => cartItem.products.fold(
         0,
-        (previousValue, element) =>
-            previousValue + element.quantity.getOrDefaultValue(0),
+        (previousValue, element) => previousValue + element.quantity,
       );
 }

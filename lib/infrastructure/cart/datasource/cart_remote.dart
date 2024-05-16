@@ -12,19 +12,18 @@ class CartRemoteDataSource {
     required this.httpService,
   });
 
-  Future<List<CartItem>> getCart() async {
+  Future<CartItem> getCart() async {
     final res = await httpService.request(
       method: 'GET',
       url: 'carts/getCart/662897e47acc8e00121fe28f',
     );
     _exceptionChecker(res: res);
-    return List.from(res.data)
-        .map((e) => CartItemDto.fromJson(e).toDomain)
-        .toList();
+    return CartItemDto.fromJson(res.data).toDomain;
   }
 
   Future<Unit> addToCart({
     required String productId,
+    required String attributeItemProductId,
     required int quantity,
     required int totalPrice,
   }) async {
@@ -36,6 +35,7 @@ class CartRemoteDataSource {
         'product_id': productId,
         'quantity': quantity,
         'total_price': totalPrice,
+        'attributeItemProductId': attributeItemProductId,
       },
     );
     _exceptionChecker(res: res);

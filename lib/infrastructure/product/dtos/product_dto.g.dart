@@ -17,6 +17,7 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
       skuPrice: intReadValue(json, 'sku_price') as int? ?? 0,
       startingPrice: intReadValue(json, 'startingPrice') as int? ?? 0,
       attributeItem: json['attributeItem'] as String? ?? '',
+      attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
@@ -27,4 +28,5 @@ Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
       'sku_price': instance.skuPrice,
       'startingPrice': instance.startingPrice,
       'attributeItem': instance.attributeItem,
+      'attributeItemProductId': instance.attributeItemProductId,
     };

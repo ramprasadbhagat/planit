@@ -34,6 +34,7 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
       discount: json['discount'] as String? ?? '',
       attributeName: json['attributeName'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
+      attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
       price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
@@ -65,6 +66,7 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'discount': instance.discount,
       'attributeName': instance.attributeName,
       'attributeItem': instance.attributeItem,
+      'attributeItemProductId': instance.attributeItemProductId,
       'price': instance.price,
       'productImages': instance.productImages,
     };

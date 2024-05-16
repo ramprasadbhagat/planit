@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
-import 'package:planit/presentation/cart/cart_page.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -52,7 +50,7 @@ class CartBanner extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      '${state.totalItem} items | \$ ${state.totalPrice}',
+                      '${state.totalCartProductsCount} items | \$ ${state.totalCartProductsPrice}',
                       style: textTheme.bodySmall?.copyWith(color: Colors.white),
                     ),
                     const SizedBox(
@@ -68,7 +66,7 @@ class CartBanner extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                       ),
                       child: Text(
-                        '\$ 16 saved',
+                        '₹16 saved',
                         style:
                             textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),

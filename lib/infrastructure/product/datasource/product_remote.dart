@@ -72,7 +72,7 @@ class ProductRemoteDataSource {
       url: 'products/${productId.getValue()}',
     );
     _exceptionChecker(res: res);
-    final productDetail = res.data;
+    final productDetail = res.data['items'];
     return ProductDetailDto.fromJson(productDetail).toDomain;
   }
 

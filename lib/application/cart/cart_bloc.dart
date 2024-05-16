@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
+import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product.dart';
@@ -24,22 +25,26 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     await event.map(
       initialized: (_) async => emit(CartState.initial()),
       fetch: (e) async {
+        emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.getCart();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
+              isFetching: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (cartItems) => emit(
+          (cart) => emit(
             state.copyWith(
-              cartItems: cartItems,
+              isFetching: false,
+              cartItem: cart,
               apiFailureOrSuccessOption: none(),
             ),
           ),
         );
       },
       addToCart: (_AddToCart e) async {
+        emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.addToCart(
           product: e.product,
           quantity: e.quantity,
@@ -47,6 +52,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
+              isFetching: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
@@ -54,12 +60,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         );
       },
       removeFromCart: (_RemoveFromCart e) async {
+        emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.removeFromCart(
-          cartItem: e.cartItem,
+          cartProduct: e.product,
         );
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
+              isFetching: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),

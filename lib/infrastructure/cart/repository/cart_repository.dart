@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
+import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
@@ -20,12 +21,12 @@ class CartRepository extends ICartRepository {
   });
 
   @override
-  Future<Either<ApiFailure, List<CartItem>>> getCart() async {
+  Future<Either<ApiFailure, CartItem>> getCart() async {
     if (config.appFlavor == Flavor.mock) {
       try {
-        final categories = await localDataSource.getCart();
+        final data = await localDataSource.getCart();
 
-        return Right(categories);
+        return Right(data);
       } catch (e) {
         return Left(FailureHandler.handleFailure(e));
       }
@@ -49,6 +50,7 @@ class CartRepository extends ICartRepository {
         productId: product.productId.getValue(),
         quantity: quantity,
         totalPrice: product.skuPrice.getValue() * quantity,
+        attributeItemProductId: product.attributeItemProductId,
       );
 
       return Right(cartItems);
@@ -59,11 +61,11 @@ class CartRepository extends ICartRepository {
 
   @override
   Future<Either<ApiFailure, Unit>> removeFromCart({
-    required CartItem cartItem,
+    required CartProduct cartProduct,
   }) async {
     try {
       final cartItems = await remoteDataSource.removeFromCart(
-        productId: cartItem.productId,
+        productId: cartProduct.id,
       );
 
       return Right(cartItems);

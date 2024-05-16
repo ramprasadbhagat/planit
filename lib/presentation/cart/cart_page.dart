@@ -6,6 +6,7 @@ import 'package:planit/presentation/cart/widgets/cart_checkout.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_section.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_section.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
@@ -52,46 +53,57 @@ class _CartPageState extends State<CartPage> {
           context.read<CartBloc>().add(const CartEvent.fetch());
           _refreshController.refreshCompleted();
         },
-        child: BlocBuilder<CartBloc, CartState>(
-          buildWhen: (previous, current) =>
-              previous.isCartEmpty != current.isCartEmpty,
+        child: BlocConsumer<CartBloc, CartState>(
+          listener: (context, state) {
+            const snackBar = SnackBar(
+              backgroundColor: Colors.red,
+              content: Text('Item removed from cart'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          listenWhen: (previous, current) =>
+              current.cartItem.products.length <
+              previous.cartItem.products.length,
           builder: (context, state) {
             if (state.isCartEmpty) return const EmptyCart();
-            return ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    children: <Widget>[
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Your Total Saving',
-                                style: textTheme.bodyMedium,
-                              ),
-                              Text(
-                                '₹30',
-                                style: textTheme.bodyMedium,
-                              ),
-                            ],
+            return Skeletonizer(
+              enabled: state.isFetching,
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Column(
+                      children: <Widget>[
+                        Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Your Total Saving',
+                                  style: textTheme.bodyMedium,
+                                ),
+                                Text(
+                                  '₹${state.cartItem.products.length * 30}',
+                                  style: textTheme.bodyMedium,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      const CartItemSection(),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const BeforeCheckoutSection(),
-                    ],
+                        const CartItemSection(),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const BeforeCheckoutSection(),
+                      ],
+                    ),
                   ),
-                ),
-                const Spacer(),
-                const CheckoutCard(),
-              ],
+                  const Spacer(),
+                  const CheckoutCard(),
+                ],
+              ),
             );
           },
         ),

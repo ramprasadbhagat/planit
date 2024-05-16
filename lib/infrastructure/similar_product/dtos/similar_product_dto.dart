@@ -32,6 +32,7 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: '') required String discount,
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItem,
+    @JsonKey(defaultValue: '') required String attributeItemProductId,
     required PriceDto price,
     required List<String> productImages,
   }) = _SimilarProductDto;
@@ -55,6 +56,7 @@ class SimilarProductDto with _$SimilarProductDto {
         productReview: productReview,
         ingredientsList: ingredientsList,
         nutritionalInformation: nutritionalInformation,
+        attributeItemProductId: attributeItemProductId,
         isDeleted: isDeleted,
         isActive: isActive,
         isHighlighted: isHighlighted,

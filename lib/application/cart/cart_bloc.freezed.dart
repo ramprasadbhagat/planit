@@ -21,7 +21,7 @@ mixin _$CartEvent {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
-    required TResult Function(CartItem cartItem) removeFromCart,
+    required TResult Function(CartProduct product) removeFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$CartEvent {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
-    TResult? Function(CartItem cartItem)? removeFromCart,
+    TResult? Function(CartProduct product)? removeFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$CartEvent {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
-    TResult Function(CartItem cartItem)? removeFromCart,
+    TResult Function(CartProduct product)? removeFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
-    required TResult Function(CartItem cartItem) removeFromCart,
+    required TResult Function(CartProduct product) removeFromCart,
   }) {
     return initialized();
   }
@@ -137,7 +137,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
-    TResult? Function(CartItem cartItem)? removeFromCart,
+    TResult? Function(CartProduct product)? removeFromCart,
   }) {
     return initialized?.call();
   }
@@ -148,7 +148,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
-    TResult Function(CartItem cartItem)? removeFromCart,
+    TResult Function(CartProduct product)? removeFromCart,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -240,7 +240,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
-    required TResult Function(CartItem cartItem) removeFromCart,
+    required TResult Function(CartProduct product) removeFromCart,
   }) {
     return fetch();
   }
@@ -251,7 +251,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
-    TResult? Function(CartItem cartItem)? removeFromCart,
+    TResult? Function(CartProduct product)? removeFromCart,
   }) {
     return fetch?.call();
   }
@@ -262,7 +262,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
-    TResult Function(CartItem cartItem)? removeFromCart,
+    TResult Function(CartProduct product)? removeFromCart,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -399,7 +399,7 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
-    required TResult Function(CartItem cartItem) removeFromCart,
+    required TResult Function(CartProduct product) removeFromCart,
   }) {
     return addToCart(product, quantity);
   }
@@ -410,7 +410,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
-    TResult? Function(CartItem cartItem)? removeFromCart,
+    TResult? Function(CartProduct product)? removeFromCart,
   }) {
     return addToCart?.call(product, quantity);
   }
@@ -421,7 +421,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
-    TResult Function(CartItem cartItem)? removeFromCart,
+    TResult Function(CartProduct product)? removeFromCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -486,9 +486,9 @@ abstract class _$$RemoveFromCartImplCopyWith<$Res> {
           $Res Function(_$RemoveFromCartImpl) then) =
       __$$RemoveFromCartImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CartItem cartItem});
+  $Res call({CartProduct product});
 
-  $CartItemCopyWith<$Res> get cartItem;
+  $CartProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -502,21 +502,21 @@ class __$$RemoveFromCartImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItem = null,
+    Object? product = null,
   }) {
     return _then(_$RemoveFromCartImpl(
-      cartItem: null == cartItem
-          ? _value.cartItem
-          : cartItem // ignore: cast_nullable_to_non_nullable
-              as CartItem,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as CartProduct,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CartItemCopyWith<$Res> get cartItem {
-    return $CartItemCopyWith<$Res>(_value.cartItem, (value) {
-      return _then(_value.copyWith(cartItem: value));
+  $CartProductCopyWith<$Res> get product {
+    return $CartProductCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
     });
   }
 }
@@ -524,14 +524,14 @@ class __$$RemoveFromCartImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RemoveFromCartImpl implements _RemoveFromCart {
-  const _$RemoveFromCartImpl({required this.cartItem});
+  const _$RemoveFromCartImpl({required this.product});
 
   @override
-  final CartItem cartItem;
+  final CartProduct product;
 
   @override
   String toString() {
-    return 'CartEvent.removeFromCart(cartItem: $cartItem)';
+    return 'CartEvent.removeFromCart(product: $product)';
   }
 
   @override
@@ -539,12 +539,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveFromCartImpl &&
-            (identical(other.cartItem, cartItem) ||
-                other.cartItem == cartItem));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cartItem);
+  int get hashCode => Object.hash(runtimeType, product);
 
   @JsonKey(ignore: true)
   @override
@@ -559,9 +558,9 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
-    required TResult Function(CartItem cartItem) removeFromCart,
+    required TResult Function(CartProduct product) removeFromCart,
   }) {
-    return removeFromCart(cartItem);
+    return removeFromCart(product);
   }
 
   @override
@@ -570,9 +569,9 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
-    TResult? Function(CartItem cartItem)? removeFromCart,
+    TResult? Function(CartProduct product)? removeFromCart,
   }) {
-    return removeFromCart?.call(cartItem);
+    return removeFromCart?.call(product);
   }
 
   @override
@@ -581,11 +580,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
-    TResult Function(CartItem cartItem)? removeFromCart,
+    TResult Function(CartProduct product)? removeFromCart,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
-      return removeFromCart(cartItem);
+      return removeFromCart(product);
     }
     return orElse();
   }
@@ -629,10 +628,10 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
 }
 
 abstract class _RemoveFromCart implements CartEvent {
-  const factory _RemoveFromCart({required final CartItem cartItem}) =
+  const factory _RemoveFromCart({required final CartProduct product}) =
       _$RemoveFromCartImpl;
 
-  CartItem get cartItem;
+  CartProduct get product;
   @JsonKey(ignore: true)
   _$$RemoveFromCartImplCopyWith<_$RemoveFromCartImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -640,7 +639,7 @@ abstract class _RemoveFromCart implements CartEvent {
 
 /// @nodoc
 mixin _$CartState {
-  List<CartItem> get cartItems => throw _privateConstructorUsedError;
+  CartItem get cartItem => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -656,9 +655,11 @@ abstract class $CartStateCopyWith<$Res> {
       _$CartStateCopyWithImpl<$Res, CartState>;
   @useResult
   $Res call(
-      {List<CartItem> cartItems,
+      {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
+
+  $CartItemCopyWith<$Res> get cartItem;
 }
 
 /// @nodoc
@@ -674,15 +675,15 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItems = null,
+    Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_value.copyWith(
-      cartItems: null == cartItems
-          ? _value.cartItems
-          : cartItems // ignore: cast_nullable_to_non_nullable
-              as List<CartItem>,
+      cartItem: null == cartItem
+          ? _value.cartItem
+          : cartItem // ignore: cast_nullable_to_non_nullable
+              as CartItem,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -692,6 +693,14 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CartItemCopyWith<$Res> get cartItem {
+    return $CartItemCopyWith<$Res>(_value.cartItem, (value) {
+      return _then(_value.copyWith(cartItem: value) as $Val);
+    });
   }
 }
 
@@ -704,9 +713,12 @@ abstract class _$$CartStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<CartItem> cartItems,
+      {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
+
+  @override
+  $CartItemCopyWith<$Res> get cartItem;
 }
 
 /// @nodoc
@@ -720,15 +732,15 @@ class __$$CartStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItems = null,
+    Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_$CartStateImpl(
-      cartItems: null == cartItems
-          ? _value._cartItems
-          : cartItems // ignore: cast_nullable_to_non_nullable
-              as List<CartItem>,
+      cartItem: null == cartItem
+          ? _value.cartItem
+          : cartItem // ignore: cast_nullable_to_non_nullable
+              as CartItem,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -745,20 +757,13 @@ class __$$CartStateImplCopyWithImpl<$Res>
 
 class _$CartStateImpl extends _CartState {
   const _$CartStateImpl(
-      {required final List<CartItem> cartItems,
+      {required this.cartItem,
       required this.apiFailureOrSuccessOption,
       required this.isFetching})
-      : _cartItems = cartItems,
-        super._();
+      : super._();
 
-  final List<CartItem> _cartItems;
   @override
-  List<CartItem> get cartItems {
-    if (_cartItems is EqualUnmodifiableListView) return _cartItems;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cartItems);
-  }
-
+  final CartItem cartItem;
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
@@ -766,7 +771,7 @@ class _$CartStateImpl extends _CartState {
 
   @override
   String toString() {
-    return 'CartState(cartItems: $cartItems, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'CartState(cartItem: $cartItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
   }
 
   @override
@@ -774,8 +779,8 @@ class _$CartStateImpl extends _CartState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CartStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other._cartItems, _cartItems) &&
+            (identical(other.cartItem, cartItem) ||
+                other.cartItem == cartItem) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
@@ -784,11 +789,8 @@ class _$CartStateImpl extends _CartState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_cartItems),
-      apiFailureOrSuccessOption,
-      isFetching);
+  int get hashCode =>
+      Object.hash(runtimeType, cartItem, apiFailureOrSuccessOption, isFetching);
 
   @JsonKey(ignore: true)
   @override
@@ -799,14 +801,14 @@ class _$CartStateImpl extends _CartState {
 
 abstract class _CartState extends CartState {
   const factory _CartState(
-      {required final List<CartItem> cartItems,
+      {required final CartItem cartItem,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching}) = _$CartStateImpl;
   const _CartState._() : super._();
 
   @override
-  List<CartItem> get cartItems;
+  CartItem get cartItem;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

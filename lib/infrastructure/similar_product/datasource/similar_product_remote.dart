@@ -24,7 +24,6 @@ class SimilarProductRemoteDataSource {
     );
     _exceptionChecker(res: res);
     final categories = res.data['items'];
-    print(res.data);
     return List.from(categories)
         .map((e) => SimilarProductDto.fromJson(e).toDomain)
         .toList();
