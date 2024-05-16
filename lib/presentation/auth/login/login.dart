@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                                 loginFormBloc
                                     .add(LoginFormEvent.mobileNumberChanged(e));
                               },
-                              maxLength: 10,
+                              // maxLength: 10,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,
