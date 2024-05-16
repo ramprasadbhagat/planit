@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
 import 'package:planit/presentation/core/section_title.dart';
+import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -15,11 +17,15 @@ class HighLightSection extends StatelessWidget {
     return BlocBuilder<HighlightProductBloc, HighlightProductState>(
       builder: (context, state) {
         if (state.isFetching) {
-          return const SizedBox(
-            height: 100,
-            width: double.infinity,
-            child: Center(child: CircularProgressIndicator()),
+          return const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Center(child: ShimmerItem()),
           );
+          // return const SizedBox(
+          //   height: 100,
+          //   width: double.infinity,
+          //   child: Center(child: CircularProgressIndicator()),
+          // );
         } else if (state.highlights.isEmpty) {
           return const SizedBox.shrink();
         }
