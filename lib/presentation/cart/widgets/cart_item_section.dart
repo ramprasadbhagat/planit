@@ -18,7 +18,7 @@ class CartItemSection extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: BlocBuilder<CartBloc, CartState>(
           buildWhen: (previous, current) =>
-              previous.cartItems != current.cartItems,
+              previous.cartItem != current.cartItem,
           builder: (context, state) {
             return Column(
               children: [
@@ -54,9 +54,9 @@ class CartItemSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                ...state.cartItems.map(
+                ...state.cartItem.products.map(
                   (e) => CartItemCard(
-                    cartItem: e,
+                    cartProduct: e,
                   ),
                 ),
               ],

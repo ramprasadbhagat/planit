@@ -14,6 +14,7 @@ class Product with _$Product {
     required IntegerValue skuPrice,
     required int startingPrice,
     required String attributeItem,
+    required String attributeItemProductId,
   }) = _Product;
 
   factory Product.empty() => Product(
@@ -23,5 +24,6 @@ class Product with _$Product {
         skuPrice: IntegerValue(0),
         startingPrice: 0,
         attributeItem: '',
+        attributeItemProductId: '',
       );
 }

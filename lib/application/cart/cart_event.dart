@@ -9,6 +9,6 @@ class CartEvent with _$CartEvent {
     required int quantity,
   }) = _AddToCart;
   const factory CartEvent.removeFromCart({
-    required CartItem cartItem,
+    required CartProduct product,
   }) = _RemoveFromCart;
 }

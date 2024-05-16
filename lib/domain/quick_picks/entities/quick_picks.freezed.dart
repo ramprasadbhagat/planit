@@ -35,6 +35,7 @@ mixin _$QuickPicks {
   String get discount => throw _privateConstructorUsedError;
   String get attributeName => throw _privateConstructorUsedError;
   String get attributeItem => throw _privateConstructorUsedError;
+  String get attributeItemProductId => throw _privateConstructorUsedError;
   int get productMRP => throw _privateConstructorUsedError;
   String get productReview => throw _privateConstructorUsedError;
   double get productRating => throw _privateConstructorUsedError;
@@ -72,6 +73,7 @@ abstract class $QuickPicksCopyWith<$Res> {
       String discount,
       String attributeName,
       String attributeItem,
+      String attributeItemProductId,
       int productMRP,
       String productReview,
       double productRating,
@@ -113,6 +115,7 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
     Object? discount = null,
     Object? attributeName = null,
     Object? attributeItem = null,
+    Object? attributeItemProductId = null,
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
@@ -196,6 +199,10 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
           ? _value.attributeItem
           : attributeItem // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemProductId: null == attributeItemProductId
+          ? _value.attributeItemProductId
+          : attributeItemProductId // ignore: cast_nullable_to_non_nullable
+              as String,
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
@@ -256,6 +263,7 @@ abstract class _$$QuickPicksImplCopyWith<$Res>
       String discount,
       String attributeName,
       String attributeItem,
+      String attributeItemProductId,
       int productMRP,
       String productReview,
       double productRating,
@@ -296,6 +304,7 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
     Object? discount = null,
     Object? attributeName = null,
     Object? attributeItem = null,
+    Object? attributeItemProductId = null,
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
@@ -379,6 +388,10 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
           ? _value.attributeItem
           : attributeItem // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemProductId: null == attributeItemProductId
+          ? _value.attributeItemProductId
+          : attributeItemProductId // ignore: cast_nullable_to_non_nullable
+              as String,
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
@@ -426,6 +439,7 @@ class _$QuickPicksImpl extends _QuickPicks {
       required this.discount,
       required this.attributeName,
       required this.attributeItem,
+      required this.attributeItemProductId,
       required this.productMRP,
       required this.productReview,
       required this.productRating,
@@ -480,6 +494,8 @@ class _$QuickPicksImpl extends _QuickPicks {
   @override
   final String attributeItem;
   @override
+  final String attributeItemProductId;
+  @override
   final int productMRP;
   @override
   final String productReview;
@@ -497,7 +513,7 @@ class _$QuickPicksImpl extends _QuickPicks {
 
   @override
   String toString() {
-    return 'QuickPicks(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
+    return 'QuickPicks(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -541,6 +557,8 @@ class _$QuickPicksImpl extends _QuickPicks {
                 other.attributeName == attributeName) &&
             (identical(other.attributeItem, attributeItem) ||
                 other.attributeItem == attributeItem) &&
+            (identical(other.attributeItemProductId, attributeItemProductId) ||
+                other.attributeItemProductId == attributeItemProductId) &&
             (identical(other.productMRP, productMRP) ||
                 other.productMRP == productMRP) &&
             (identical(other.productReview, productReview) ||
@@ -574,6 +592,7 @@ class _$QuickPicksImpl extends _QuickPicks {
         discount,
         attributeName,
         attributeItem,
+        attributeItemProductId,
         productMRP,
         productReview,
         productRating,
@@ -609,6 +628,7 @@ abstract class _QuickPicks extends QuickPicks {
       required final String discount,
       required final String attributeName,
       required final String attributeItem,
+      required final String attributeItemProductId,
       required final int productMRP,
       required final String productReview,
       required final double productRating,
@@ -654,6 +674,8 @@ abstract class _QuickPicks extends QuickPicks {
   String get attributeName;
   @override
   String get attributeItem;
+  @override
+  String get attributeItemProductId;
   @override
   int get productMRP;
   @override

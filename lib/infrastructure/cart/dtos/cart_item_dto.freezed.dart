@@ -20,14 +20,10 @@ CartItemDto _$CartItemDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartItemDto {
-  @JsonKey(name: 'product_id', defaultValue: '')
-  String get productId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-  int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-  List<ProductDto> get products => throw _privateConstructorUsedError;
+  List<CartProductDto> get products => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,13 +38,10 @@ abstract class $CartItemDtoCopyWith<$Res> {
       _$CartItemDtoCopyWithImpl<$Res, CartItemDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'product_id', defaultValue: '') String productId,
-      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-      int quantity,
-      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      {@JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-      List<ProductDto> products});
+      List<CartProductDto> products});
 }
 
 /// @nodoc
@@ -64,20 +57,10 @@ class _$CartItemDtoCopyWithImpl<$Res, $Val extends CartItemDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
-    Object? quantity = null,
     Object? totalPrice = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -85,7 +68,7 @@ class _$CartItemDtoCopyWithImpl<$Res, $Val extends CartItemDto>
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductDto>,
+              as List<CartProductDto>,
     ) as $Val);
   }
 }
@@ -99,13 +82,10 @@ abstract class _$$CartItemDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'product_id', defaultValue: '') String productId,
-      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-      int quantity,
-      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      {@JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-      List<ProductDto> products});
+      List<CartProductDto> products});
 }
 
 /// @nodoc
@@ -119,20 +99,10 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
-    Object? quantity = null,
     Object? totalPrice = null,
     Object? products = null,
   }) {
     return _then(_$CartItemDtoImpl(
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -140,7 +110,7 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductDto>,
+              as List<CartProductDto>,
     ));
   }
 }
@@ -149,13 +119,10 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CartItemDtoImpl extends _CartItemDto {
   _$CartItemDtoImpl(
-      {@JsonKey(name: 'product_id', defaultValue: '') required this.productId,
-      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-      required this.quantity,
-      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      {@JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       required this.totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-      required final List<ProductDto> products})
+      required final List<CartProductDto> products})
       : _products = products,
         super._();
 
@@ -163,18 +130,12 @@ class _$CartItemDtoImpl extends _CartItemDto {
       _$$CartItemDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: 'product_id', defaultValue: '')
-  final String productId;
-  @override
-  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-  final int quantity;
-  @override
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   final int totalPrice;
-  final List<ProductDto> _products;
+  final List<CartProductDto> _products;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-  List<ProductDto> get products {
+  List<CartProductDto> get products {
     if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_products);
@@ -182,7 +143,7 @@ class _$CartItemDtoImpl extends _CartItemDto {
 
   @override
   String toString() {
-    return 'CartItemDto(productId: $productId, quantity: $quantity, totalPrice: $totalPrice, products: $products)';
+    return 'CartItemDto(totalPrice: $totalPrice, products: $products)';
   }
 
   @override
@@ -190,10 +151,6 @@ class _$CartItemDtoImpl extends _CartItemDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CartItemDtoImpl &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
             const DeepCollectionEquality().equals(other._products, _products));
@@ -201,8 +158,8 @@ class _$CartItemDtoImpl extends _CartItemDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, quantity, totalPrice,
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(
+      runtimeType, totalPrice, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -220,31 +177,21 @@ class _$CartItemDtoImpl extends _CartItemDto {
 
 abstract class _CartItemDto extends CartItemDto {
   factory _CartItemDto(
-      {@JsonKey(name: 'product_id', defaultValue: '')
-      required final String productId,
-      @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-      required final int quantity,
-      @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+      {@JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       required final int totalPrice,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-      required final List<ProductDto> products}) = _$CartItemDtoImpl;
+      required final List<CartProductDto> products}) = _$CartItemDtoImpl;
   _CartItemDto._() : super._();
 
   factory _CartItemDto.fromJson(Map<String, dynamic> json) =
       _$CartItemDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'product_id', defaultValue: '')
-  String get productId;
-  @override
-  @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
-  int get quantity;
-  @override
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
-  List<ProductDto> get products;
+  List<CartProductDto> get products;
   @override
   @JsonKey(ignore: true)
   _$$CartItemDtoImplCopyWith<_$CartItemDtoImpl> get copyWith =>

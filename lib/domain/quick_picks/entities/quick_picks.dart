@@ -28,6 +28,7 @@ class QuickPicks with _$QuickPicks {
     required String discount,
     required String attributeName,
     required String attributeItem,
+    required String attributeItemProductId,
     required int productMRP,
     required String productReview,
     required double productRating,
@@ -41,6 +42,7 @@ class QuickPicks with _$QuickPicks {
         subcategoryId: '',
         productName: '',
         productDescription: '',
+        attributeItemProductId: '',
         productMRP: 0,
         productRating: 0,
         productReview: '',
@@ -68,6 +70,7 @@ class QuickPicks with _$QuickPicks {
         skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
         startingPrice: startingPrice,
         attributeItem: attributeItem,
+        attributeItemProductId: attributeItemProductId,
       );
 }
 

@@ -31,6 +31,7 @@ class QuickPicksDto with _$QuickPicksDto {
     @JsonKey(defaultValue: false) required bool isQuickPick,
     @JsonKey(defaultValue: '') required String discount,
     @JsonKey(defaultValue: '') required String attributeName,
+    @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: '') required String attributeItem,
     required PriceDto price,
     required List<String> productImages,
@@ -64,5 +65,6 @@ class QuickPicksDto with _$QuickPicksDto {
         attributeItem: attributeItem,
         price: price.toDomain,
         productImages: productImages,
+        attributeItemProductId: attributeItemProductId,
       );
 }
