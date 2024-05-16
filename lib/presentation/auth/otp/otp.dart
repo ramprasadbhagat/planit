@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -97,7 +98,7 @@ class _LoginOtpState extends State<LoginOtp> {
                   //   print("Pressed");
                   // },
                   onChanged: (value) {
-                    print(value);
+                    // print(value);
                   },
                   errorTextSpace: 20,
                   errorTextMargin:
@@ -136,24 +137,45 @@ class _LoginOtpState extends State<LoginOtp> {
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   width: MediaQuery.sizeOf(context).width * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        loginFormBloc.add(const LoginFormEvent.verifyOTP());
-                      }
+                  child: BlocListener<LoginFormBloc, LoginFormState>(
+                    listener: (context, state) {
+                      state.authFailureOrSuccessOption.fold(
+                        () {},
+                        (either) => either.fold(
+                          (failure) {
+                            final snackBar = SnackBar(
+                              backgroundColor: Colors.black,
+                              content: Text(failure.failureMessage),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          },
+                          (_) {},
+                        ),
+                      );
                     },
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      backgroundColor: AppColors.black,
-                      maximumSize: Size.fromWidth(
-                        MediaQuery.sizeOf(context).width * 0.7,
+                    listenWhen: (previous, current) =>
+                        previous.authFailureOrSuccessOption !=
+                        current.authFailureOrSuccessOption,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          loginFormBloc.add(const LoginFormEvent.verifyOTP());
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        backgroundColor: AppColors.black,
+                        maximumSize: Size.fromWidth(
+                          MediaQuery.sizeOf(context).width * 0.7,
+                        ),
                       ),
+                      child: state.isSubmitting
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text('Submit'),
                     ),
-                    child: state.isSubmitting
-                        ? const CircularProgressIndicator(
-                            color: Colors.white,
-                          )
-                        : const Text('Submit'),
                   ),
                 ),
                 const SizedBox(

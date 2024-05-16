@@ -8,6 +8,7 @@ import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_local.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_remote.dart';
+import 'package:planit/domain/core/error/exception.dart';
 
 class AuthRepository extends IAuthRepository {
   final Config config;
@@ -69,6 +70,9 @@ class AuthRepository extends IAuthRepository {
 
       return Right(res);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('OTP is not correct'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }
