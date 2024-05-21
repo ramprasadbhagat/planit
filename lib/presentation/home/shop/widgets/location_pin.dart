@@ -32,23 +32,16 @@ class LocationPin extends StatelessWidget {
                 ],
               ),
               Text(
-                'Order within 30 mins for delivery by 24-03-2024',
+                'Order within 30 mins for delivery by 6 pm on 24-03',
                 style: textTheme.labelSmall,
               ),
               const SizedBox(width: 4.0),
             ],
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 1,
-          child: CircleAvatar(
-            child: SizedBox(
-              height: 100,
-              child: ClipOval(
-                child: Image.asset(PngImage.generic('profile_pic.png')),
-              ),
-            ),
-          ),
+          child: Icon(Icons.exit_to_app_rounded),
         ),
       ],
     );
