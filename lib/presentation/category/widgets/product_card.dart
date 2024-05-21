@@ -211,6 +211,7 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
       width: 80,
       padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
+        color: Colors.white70,
         border: Border.all(
           color: AppColors.black,
         ),

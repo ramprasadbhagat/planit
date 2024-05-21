@@ -113,20 +113,23 @@ class HighlightItem extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 5,
-            vertical: 4,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: AppColors.black,
-          ),
-          child: Text(
-            '${item.discountValue} % off',
-            style: textTheme.bodySmall!.copyWith(color: AppColors.white),
-          ),
-        ),
+        item.discountValue == '0'
+            ? const SizedBox.shrink()
+            : Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                  vertical: 4,
+                ),
+                margin: const EdgeInsets.only(top: 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.black,
+                ),
+                child: Text(
+                  '${item.discountValue} % off',
+                  style: textTheme.bodySmall!.copyWith(color: AppColors.white),
+                ),
+              ),
       ],
     );
   }

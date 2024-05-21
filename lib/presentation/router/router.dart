@@ -15,6 +15,10 @@ class AppRouter extends $AppRouter {
           path: '/otp',
         ),
         AutoRoute(
+          page: ProfileRoute.page,
+          path: '/profile',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           children: [
