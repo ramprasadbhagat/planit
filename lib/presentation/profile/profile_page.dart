@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
+import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
 import 'package:planit/presentation/profile/widgets/user_details_section.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -40,7 +41,12 @@ class ProfilePage extends StatelessWidget {
               children: [
                 const UserDetailsSection(),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => showModalBottomSheet<void>(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) =>
+                        const EditProfileBottomSheet(),
+                  ),
                   child: const Icon(
                     Icons.edit_note,
                     color: AppColors.grey2,
