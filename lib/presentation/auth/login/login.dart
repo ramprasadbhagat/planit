@@ -134,6 +134,11 @@ class _LoginPageState extends State<LoginPage> {
                                 style:
                                     textTheme.bodySmall?.copyWith(fontSize: 11),
                               ),
+                              GestureDetector(
+                                onTap: () => context.router
+                                    .navigate(const SignupRoute()),
+                                child: const Text('Sign up'),
+                              ),
                             ],
                           ),
                           Container(
