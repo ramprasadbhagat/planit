@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -39,9 +41,19 @@ class LocationPin extends StatelessWidget {
             ],
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 1,
-          child: Icon(Icons.exit_to_app_rounded),
+          child: GestureDetector(
+            onTap: () => context.router.navigate(const ProfileRoute()),
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.lightGray2,
+              ),
+              child: const Icon(Icons.person),
+            ),
+          ),
         ),
       ],
     );
