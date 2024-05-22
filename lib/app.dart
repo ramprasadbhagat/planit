@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -54,6 +55,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<SimilarProductBloc>(
           create: (context) => locator<SimilarProductBloc>(),
+        ),
+        BlocProvider<BannerBloc>(
+          create: (context) => locator<BannerBloc>(),
         ),
       ],
       child: MaterialApp.router(

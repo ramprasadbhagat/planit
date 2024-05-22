@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -13,6 +14,9 @@ import 'package:planit/config.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_local.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_remote.dart';
 import 'package:planit/infrastructure/auth/repository/auth_repository.dart';
+import 'package:planit/infrastructure/banner/datasource/banner_local.dart';
+import 'package:planit/infrastructure/banner/datasource/banner_remote.dart';
+import 'package:planit/infrastructure/banner/repository/banner_repository.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_remote.dart';
 import 'package:planit/infrastructure/cart/repository/cart_repository.dart';
@@ -261,4 +265,27 @@ void setupLocator() {
     ),
   );
   ////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
+  /// Banner
+  //============================================================
+  locator.registerLazySingleton(
+    () => const BannersLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => BannersRemoteDataSource(httpService: locator<HttpService>()),
+  );
+
+  locator.registerLazySingleton(
+    () => BannerRepository(
+      config: locator<Config>(),
+      localDataSource: locator<BannersLocalDataSource>(),
+      remoteDataSource: locator<BannersRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => BannerBloc(
+      repository: locator<BannerRepository>(),
+    ),
+  );
 }

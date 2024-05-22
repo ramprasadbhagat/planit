@@ -9,7 +9,7 @@ part of 'price_dto.dart';
 _$PriceDtoImpl _$$PriceDtoImplFromJson(Map<String, dynamic> json) =>
     _$PriceDtoImpl(
       price: stringReadValue(json, 'price') as String? ?? '',
-      quantity: json['quantity'] as int? ?? 0,
+      quantity: (json['quantity'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$PriceDtoImplToJson(_$PriceDtoImpl instance) =>
