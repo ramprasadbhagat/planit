@@ -14,8 +14,9 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           [],
-      skuPrice: intReadValue(json, 'sku_price') as int? ?? 0,
-      startingPrice: intReadValue(json, 'startingPrice') as int? ?? 0,
+      skuPrice: (intReadValue(json, 'sku_price') as num?)?.toInt() ?? 0,
+      startingPrice:
+          (intReadValue(json, 'startingPrice') as num?)?.toInt() ?? 0,
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
     );

@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:planit/application/banner/banner_bloc.dart';
+import 'package:planit/presentation/home/shop/widgets/shimmer_loader.dart';
 import 'package:planit/utils/png_image.dart';
 
 import 'package:planit/presentation/theme/colors.dart';
@@ -12,71 +15,99 @@ class ShoppingBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 3),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.lightGrey,
-            blurRadius: 3,
-          ),
-        ],
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 2, bottom: 2),
-            child: DealCountDown(),
-          ),
-          Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              FlutterCarousel(
-                options: CarouselOptions(
-                  height: 160.0,
-                  viewportFraction: 1,
-                  autoPlay: true,
-                  showIndicator: true,
-                  slideIndicator: const CircularSlideIndicator(
-                    itemSpacing: 10,
-                    indicatorRadius: 3,
-                  ),
-                  indicatorMargin: 15,
+    return BlocBuilder<BannerBloc, BannerState>(
+      builder: (context, state) {
+        if (state.isFetching) {
+          return const Padding(
+            padding: EdgeInsets.all(0),
+            child: Center(child: ShimmerLoader()),
+          );
+          // return const SizedBox(
+          //   height: 100,
+          //   width: double.infinity,
+          //   child: Center(child: CircularProgressIndicator()),
+          // );
+        } else if (state.banner.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        return Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, top: 3),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.lightGrey,
+                  blurRadius: 3,
                 ),
-                items: [1, 2, 3, 4, 5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          PngImage.banner,
-                          height: 150,
-                          fit: BoxFit.fitHeight,
+              ],
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 2, bottom: 2),
+                  child: DealCountDown(),
+                ),
+                Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    FlutterCarousel(
+                      options: CarouselOptions(
+                        height: 160.0,
+                        viewportFraction: 1,
+                        autoPlay: true,
+                        showIndicator: true,
+                        slideIndicator: const CircularSlideIndicator(
+                          itemSpacing: 10,
+                          indicatorRadius: 3,
                         ),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              Positioned(
-                bottom: 12,
-                child: Container(
-                  height: 12,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.black.withOpacity(0.15),
-                  ),
+                        indicatorMargin: 15,
+                      ),
+                      items: state.banner.map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Image.network(
+                                i.bannerImages[0],
+                                height: 150,
+                                fit: BoxFit.fitHeight,
+                                errorBuilder: (context, error, stack) {
+                                  if (error is NetworkImageLoadException &&
+                                      error.statusCode == 404) {
+                                    return Image.asset(PngImage.banner);
+                                  }
+
+                                  return Image.asset(PngImage.banner);
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    Positioned(
+                      bottom: 12,
+                      child: Container(
+                        height: 12,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.black.withOpacity(0.15),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

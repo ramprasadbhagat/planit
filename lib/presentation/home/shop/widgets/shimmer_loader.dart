@@ -13,7 +13,7 @@ class ShimmerLoader extends StatelessWidget {
       baseColor: AppColors.extraLightGray,
       highlightColor: AppColors.lightGray,
       child: Container(
-        width: 150,
+        width: 380,
         height: 180,
         decoration: const BoxDecoration(
           color: AppColors.lightGray,

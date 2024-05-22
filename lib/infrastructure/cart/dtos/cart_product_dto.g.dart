@@ -15,8 +15,8 @@ _$CartProductDtoImpl _$$CartProductDtoImplFromJson(Map<String, dynamic> json) =>
       productDescription: json['productDescription'] as String? ?? '',
       attributeitem: json['attributeitem'] as String? ?? '',
       itemPrice: stringReadValue(json, 'itemPrice') as String? ?? '0.00',
-      quantity: intReadValue(json, 'quantity') as int? ?? 0,
-      totalPrice: intReadValue(json, 'total_price') as int? ?? 0,
+      quantity: (intReadValue(json, 'quantity') as num?)?.toInt() ?? 0,
+      totalPrice: (intReadValue(json, 'total_price') as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$CartProductDtoImplToJson(
