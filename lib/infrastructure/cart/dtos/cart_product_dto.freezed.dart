@@ -38,6 +38,7 @@ mixin _$CartProductDto {
   int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice => throw _privateConstructorUsedError;
+  int get discount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +66,8 @@ abstract class $CartProductDtoCopyWith<$Res> {
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
-      int totalPrice});
+      int totalPrice,
+      int discount});
 }
 
 /// @nodoc
@@ -90,6 +92,7 @@ class _$CartProductDtoCopyWithImpl<$Res, $Val extends CartProductDto>
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
+    Object? discount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -128,6 +131,10 @@ class _$CartProductDtoCopyWithImpl<$Res, $Val extends CartProductDto>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -154,7 +161,8 @@ abstract class _$$CartProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
-      int totalPrice});
+      int totalPrice,
+      int discount});
 }
 
 /// @nodoc
@@ -177,6 +185,7 @@ class __$$CartProductDtoImplCopyWithImpl<$Res>
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
+    Object? discount = null,
   }) {
     return _then(_$CartProductDtoImpl(
       id: null == id
@@ -215,6 +224,10 @@ class __$$CartProductDtoImplCopyWithImpl<$Res>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -237,7 +250,8 @@ class _$CartProductDtoImpl extends _CartProductDto {
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       required this.quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
-      required this.totalPrice})
+      required this.totalPrice,
+      required this.discount})
       : super._();
 
   factory _$CartProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -270,10 +284,12 @@ class _$CartProductDtoImpl extends _CartProductDto {
   @override
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   final int totalPrice;
+  @override
+  final int discount;
 
   @override
   String toString() {
-    return 'CartProductDto(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice)';
+    return 'CartProductDto(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice, discount: $discount)';
   }
 
   @override
@@ -296,7 +312,9 @@ class _$CartProductDtoImpl extends _CartProductDto {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice));
+                other.totalPrice == totalPrice) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount));
   }
 
   @JsonKey(ignore: true)
@@ -311,7 +329,8 @@ class _$CartProductDtoImpl extends _CartProductDto {
       attributeitem,
       itemPrice,
       quantity,
-      totalPrice);
+      totalPrice,
+      discount);
 
   @JsonKey(ignore: true)
   @override
@@ -345,7 +364,8 @@ abstract class _CartProductDto extends CartProductDto {
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       required final int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
-      required final int totalPrice}) = _$CartProductDtoImpl;
+      required final int totalPrice,
+      required final int discount}) = _$CartProductDtoImpl;
   const _CartProductDto._() : super._();
 
   factory _CartProductDto.fromJson(Map<String, dynamic> json) =
@@ -378,6 +398,8 @@ abstract class _CartProductDto extends CartProductDto {
   @override
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice;
+  @override
+  int get discount;
   @override
   @JsonKey(ignore: true)
   _$$CartProductDtoImplCopyWith<_$CartProductDtoImpl> get copyWith =>

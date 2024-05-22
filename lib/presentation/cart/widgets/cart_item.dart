@@ -86,7 +86,7 @@ class CartItemCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      ' ${cartProduct.totalPrice + 30} ',
+                      ' ${cartProduct.totalPrice + cartProduct.discount} ',
                       style: textTheme.bodySmall!.copyWith(
                         decoration: TextDecoration.lineThrough,
                         color: AppColors.lightGray,

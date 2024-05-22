@@ -16,6 +16,7 @@ class CartProduct with _$CartProduct {
     required String itemPrice,
     required int quantity,
     required int totalPrice,
+    required int discount,
   }) = _CartProduct;
 
   factory CartProduct.empty() => CartProduct(
@@ -28,5 +29,6 @@ class CartProduct with _$CartProduct {
         itemPrice: '',
         quantity: 0,
         totalPrice: 0,
+        discount: 0,
       );
 }

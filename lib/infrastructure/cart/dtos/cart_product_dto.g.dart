@@ -17,6 +17,7 @@ _$CartProductDtoImpl _$$CartProductDtoImplFromJson(Map<String, dynamic> json) =>
       itemPrice: stringReadValue(json, 'itemPrice') as String? ?? '0.00',
       quantity: (intReadValue(json, 'quantity') as num?)?.toInt() ?? 0,
       totalPrice: (intReadValue(json, 'total_price') as num?)?.toInt() ?? 0,
+      discount: (json['discount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$CartProductDtoImplToJson(
@@ -31,4 +32,5 @@ Map<String, dynamic> _$$CartProductDtoImplToJson(
       'itemPrice': instance.itemPrice,
       'quantity': instance.quantity,
       'total_price': instance.totalPrice,
+      'discount': instance.discount,
     };
