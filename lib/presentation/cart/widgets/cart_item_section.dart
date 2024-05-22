@@ -47,7 +47,7 @@ class CartItemSection extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Shipment of 2 items',
+                      'Shipment of ${state.cartItem.products.length} items',
                       style: textTheme.bodySmall?.copyWith(
                         color: AppColors.grey2,
                       ),

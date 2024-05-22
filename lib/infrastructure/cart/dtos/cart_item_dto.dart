@@ -11,8 +11,10 @@ part 'cart_item_dto.g.dart';
 class CartItemDto with _$CartItemDto {
   const CartItemDto._();
   factory CartItemDto({
-    @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
+    @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
+    @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
+    required int totalDiscount,
     @JsonKey(name: 'products', defaultValue: <ProductDto>[])
     required List<CartProductDto> products,
   }) = _CartItemDto;
@@ -21,6 +23,7 @@ class CartItemDto with _$CartItemDto {
       _$CartItemDtoFromJson(json);
 
   CartItem get toDomain => CartItem(
+        totalDiscount: IntegerValue(totalDiscount),
         totalPrice: IntegerValue(totalPrice),
         products: products.map((e) => e.toDomain).toList(),
       );

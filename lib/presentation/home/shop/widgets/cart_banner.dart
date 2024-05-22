@@ -50,7 +50,7 @@ class CartBanner extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      '${state.totalCartProductsCount} items | \$ ${state.totalCartProductsPrice}',
+                      '${state.totalCartProductsCount} items | ₹ ${state.cartItem.totalPrice.getValue()}',
                       style: textTheme.bodySmall?.copyWith(color: Colors.white),
                     ),
                     const SizedBox(
@@ -66,7 +66,7 @@ class CartBanner extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                       ),
                       child: Text(
-                        '₹16 saved',
+                        '₹ ${state.cartItem.totalDiscount.getValue()} saved',
                         style:
                             textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),

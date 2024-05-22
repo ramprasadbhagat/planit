@@ -85,7 +85,7 @@ class _CartPageState extends State<CartPage> {
                                   style: textTheme.bodyMedium,
                                 ),
                                 Text(
-                                  '₹${state.cartItem.products.length * 30}',
+                                  '₹${state.cartItem.totalDiscount.getValue()}',
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
