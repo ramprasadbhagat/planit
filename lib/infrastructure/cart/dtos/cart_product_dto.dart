@@ -27,6 +27,7 @@ class CartProductDto with _$CartProductDto {
     required int quantity,
     @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
+    required int discount,
   }) = _CartProductDto;
 
   CartProduct get toDomain => CartProduct(
@@ -39,6 +40,7 @@ class CartProductDto with _$CartProductDto {
         itemPrice: itemPrice,
         quantity: quantity,
         totalPrice: totalPrice,
+        discount: discount,
       );
 
   factory CartProductDto.fromJson(Map<String, dynamic> json) =>

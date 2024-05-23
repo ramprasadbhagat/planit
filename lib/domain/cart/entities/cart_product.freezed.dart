@@ -25,6 +25,7 @@ mixin _$CartProduct {
   String get itemPrice => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   int get totalPrice => throw _privateConstructorUsedError;
+  int get discount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartProductCopyWith<CartProduct> get copyWith =>
@@ -46,7 +47,8 @@ abstract class $CartProductCopyWith<$Res> {
       String attributeitem,
       String itemPrice,
       int quantity,
-      int totalPrice});
+      int totalPrice,
+      int discount});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$CartProductCopyWithImpl<$Res, $Val extends CartProduct>
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
+    Object? discount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -109,6 +112,10 @@ class _$CartProductCopyWithImpl<$Res, $Val extends CartProduct>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -130,7 +137,8 @@ abstract class _$$CartProductImplCopyWith<$Res>
       String attributeitem,
       String itemPrice,
       int quantity,
-      int totalPrice});
+      int totalPrice,
+      int discount});
 }
 
 /// @nodoc
@@ -153,6 +161,7 @@ class __$$CartProductImplCopyWithImpl<$Res>
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
+    Object? discount = null,
   }) {
     return _then(_$CartProductImpl(
       id: null == id
@@ -191,6 +200,10 @@ class __$$CartProductImplCopyWithImpl<$Res>
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
               as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -207,7 +220,8 @@ class _$CartProductImpl extends _CartProduct {
       required this.attributeitem,
       required this.itemPrice,
       required this.quantity,
-      required this.totalPrice})
+      required this.totalPrice,
+      required this.discount})
       : super._();
 
   @override
@@ -228,10 +242,12 @@ class _$CartProductImpl extends _CartProduct {
   final int quantity;
   @override
   final int totalPrice;
+  @override
+  final int discount;
 
   @override
   String toString() {
-    return 'CartProduct(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice)';
+    return 'CartProduct(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice, discount: $discount)';
   }
 
   @override
@@ -254,7 +270,9 @@ class _$CartProductImpl extends _CartProduct {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice));
+                other.totalPrice == totalPrice) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount));
   }
 
   @override
@@ -268,7 +286,8 @@ class _$CartProductImpl extends _CartProduct {
       attributeitem,
       itemPrice,
       quantity,
-      totalPrice);
+      totalPrice,
+      discount);
 
   @JsonKey(ignore: true)
   @override
@@ -287,7 +306,8 @@ abstract class _CartProduct extends CartProduct {
       required final String attributeitem,
       required final String itemPrice,
       required final int quantity,
-      required final int totalPrice}) = _$CartProductImpl;
+      required final int totalPrice,
+      required final int discount}) = _$CartProductImpl;
   const _CartProduct._() : super._();
 
   @override
@@ -308,6 +328,8 @@ abstract class _CartProduct extends CartProduct {
   int get quantity;
   @override
   int get totalPrice;
+  @override
+  int get discount;
   @override
   @JsonKey(ignore: true)
   _$$CartProductImplCopyWith<_$CartProductImpl> get copyWith =>

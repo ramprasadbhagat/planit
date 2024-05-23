@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CartItem {
   IntegerValue get totalPrice => throw _privateConstructorUsedError;
+  IntegerValue get totalDiscount => throw _privateConstructorUsedError;
   List<CartProduct> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,10 @@ abstract class $CartItemCopyWith<$Res> {
   factory $CartItemCopyWith(CartItem value, $Res Function(CartItem) then) =
       _$CartItemCopyWithImpl<$Res, CartItem>;
   @useResult
-  $Res call({IntegerValue totalPrice, List<CartProduct> products});
+  $Res call(
+      {IntegerValue totalPrice,
+      IntegerValue totalDiscount,
+      List<CartProduct> products});
 }
 
 /// @nodoc
@@ -46,12 +50,17 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
   @override
   $Res call({
     Object? totalPrice = null,
+    Object? totalDiscount = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      totalDiscount: null == totalDiscount
+          ? _value.totalDiscount
+          : totalDiscount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
       products: null == products
           ? _value.products
@@ -69,7 +78,10 @@ abstract class _$$CartItemImplCopyWith<$Res>
       __$$CartItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({IntegerValue totalPrice, List<CartProduct> products});
+  $Res call(
+      {IntegerValue totalPrice,
+      IntegerValue totalDiscount,
+      List<CartProduct> products});
 }
 
 /// @nodoc
@@ -84,12 +96,17 @@ class __$$CartItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? totalPrice = null,
+    Object? totalDiscount = null,
     Object? products = null,
   }) {
     return _then(_$CartItemImpl(
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      totalDiscount: null == totalDiscount
+          ? _value.totalDiscount
+          : totalDiscount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
       products: null == products
           ? _value._products
@@ -103,12 +120,16 @@ class __$$CartItemImplCopyWithImpl<$Res>
 
 class _$CartItemImpl extends _CartItem {
   _$CartItemImpl(
-      {required this.totalPrice, required final List<CartProduct> products})
+      {required this.totalPrice,
+      required this.totalDiscount,
+      required final List<CartProduct> products})
       : _products = products,
         super._();
 
   @override
   final IntegerValue totalPrice;
+  @override
+  final IntegerValue totalDiscount;
   final List<CartProduct> _products;
   @override
   List<CartProduct> get products {
@@ -119,7 +140,7 @@ class _$CartItemImpl extends _CartItem {
 
   @override
   String toString() {
-    return 'CartItem(totalPrice: $totalPrice, products: $products)';
+    return 'CartItem(totalPrice: $totalPrice, totalDiscount: $totalDiscount, products: $products)';
   }
 
   @override
@@ -129,12 +150,14 @@ class _$CartItemImpl extends _CartItem {
             other is _$CartItemImpl &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
+            (identical(other.totalDiscount, totalDiscount) ||
+                other.totalDiscount == totalDiscount) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, totalPrice, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, totalPrice, totalDiscount,
+      const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -146,11 +169,14 @@ class _$CartItemImpl extends _CartItem {
 abstract class _CartItem extends CartItem {
   factory _CartItem(
       {required final IntegerValue totalPrice,
+      required final IntegerValue totalDiscount,
       required final List<CartProduct> products}) = _$CartItemImpl;
   _CartItem._() : super._();
 
   @override
   IntegerValue get totalPrice;
+  @override
+  IntegerValue get totalDiscount;
   @override
   List<CartProduct> get products;
   @override
