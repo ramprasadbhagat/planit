@@ -70,21 +70,17 @@ class ShoppingBanner extends StatelessWidget {
                       items: state.banner.map((i) {
                         return Builder(
                           builder: (BuildContext context) {
-                            return SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              child: Image.network(
-                                i.bannerImages[0],
-                                height: 150,
-                                fit: BoxFit.fitHeight,
-                                errorBuilder: (context, error, stack) {
-                                  if (error is NetworkImageLoadException &&
-                                      error.statusCode == 404) {
-                                    return Image.asset(PngImage.banner);
-                                  }
-
+                            return Image.network(
+                              i.bannerImages[0],
+                              fit: BoxFit.fitHeight,
+                              errorBuilder: (context, error, stack) {
+                                if (error is NetworkImageLoadException &&
+                                    error.statusCode == 404) {
                                   return Image.asset(PngImage.banner);
-                                },
-                              ),
+                                }
+
+                                return Image.asset(PngImage.banner);
+                              },
                             );
                           },
                         );

@@ -68,9 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                             style: textTheme.titleMedium
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
-                          Container(
+                          Padding(
                             padding: const EdgeInsets.symmetric(vertical: 15.0),
-                            height: 80,
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
