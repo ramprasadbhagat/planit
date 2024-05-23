@@ -13,8 +13,7 @@ class CartItemDto with _$CartItemDto {
   factory CartItemDto({
     @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
-    @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
-    required int totalDiscount,
+    @JsonKey(name: 'totalDiscount', defaultValue: 0) required int totalDiscount,
     @JsonKey(name: 'products', defaultValue: <ProductDto>[])
     required List<CartProductDto> products,
   }) = _CartItemDto;
