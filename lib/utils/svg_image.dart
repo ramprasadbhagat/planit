@@ -10,4 +10,5 @@ abstract class SvgImage {
   static const String coupon = '${_basePath}coupon.svg';
   static const String homeAppIcon = '${_basePath}home_app_icon.svg';
   static const String fabOutlineIcon = '${_basePath}fab_outline_border.svg';
+  static const String noDataImage = '${_basePath}no_data.svg';
 }

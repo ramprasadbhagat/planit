@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shoping_option_tab/quick_pick_cart.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
@@ -26,7 +27,7 @@ class QuickPickTabView extends StatelessWidget {
                 child: Center(child: ShimmerItem()),
               );
             } else if (state.quicksPickProducts.isEmpty) {
-              return const Center(child: Text('Not Available'));
+              return const NoData();
             }
             return Wrap(
               runSpacing: 6,
