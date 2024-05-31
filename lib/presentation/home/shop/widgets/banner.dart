@@ -9,12 +9,15 @@ import 'package:planit/presentation/home/shop/widgets/shimmer_loader.dart';
 import 'package:planit/utils/png_image.dart';
 
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:intl/intl.dart';
 
 class ShoppingBanner extends StatelessWidget {
   const ShoppingBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
+    DateTime firstDate;
+    DateTime secondDate;
     return BlocBuilder<BannerBloc, BannerState>(
       builder: (context, state) {
         if (state.isFetching) {
@@ -30,6 +33,7 @@ class ShoppingBanner extends StatelessWidget {
         } else if (state.banner.isEmpty) {
           return const SizedBox.shrink();
         }
+
         return Padding(
           padding: const EdgeInsets.all(5.0),
           child: Container(
@@ -48,16 +52,16 @@ class ShoppingBanner extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 2, bottom: 2),
-                  child: DealCountDown(),
-                ),
+                // const Padding(
+                //   padding: EdgeInsets.only(top: 2, bottom: 2),
+                //   child: DealCountDown(),
+                // ),
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
                     FlutterCarousel(
                       options: CarouselOptions(
-                        height: 160.0,
+                        height: 200.0,
                         viewportFraction: 1,
                         autoPlay: true,
                         showIndicator: true,
@@ -70,17 +74,28 @@ class ShoppingBanner extends StatelessWidget {
                       items: state.banner.map((i) {
                         return Builder(
                           builder: (BuildContext context) {
-                            return Image.network(
-                              i.bannerImages[0],
-                              fit: BoxFit.fitHeight,
-                              errorBuilder: (context, error, stack) {
-                                if (error is NetworkImageLoadException &&
-                                    error.statusCode == 404) {
-                                  return Image.asset(PngImage.banner);
-                                }
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  DealCountDown(
+                                    startDate: i.startingDate,
+                                    endDate: i.endingDate,
+                                  ),
+                                  Image.network(
+                                    i.bannerImages[0],
+                                    fit: BoxFit.fitHeight,
+                                    errorBuilder: (context, error, stack) {
+                                      if (error is NetworkImageLoadException &&
+                                          error.statusCode == 404) {
+                                        return Image.asset(PngImage.banner);
+                                      }
 
-                                return Image.asset(PngImage.banner);
-                              },
+                                      return Image.asset(PngImage.banner);
+                                    },
+                                  ),
+                                ],
+                              ),
                             );
                           },
                         );
@@ -109,7 +124,13 @@ class ShoppingBanner extends StatelessWidget {
 }
 
 class DealCountDown extends StatefulWidget {
-  const DealCountDown({super.key});
+  const DealCountDown({
+    super.key,
+    required this.startDate,
+    required this.endDate,
+  });
+  final DateTime startDate;
+  final DateTime endDate;
 
   @override
   State<DealCountDown> createState() => _DealCountDownState();
@@ -145,10 +166,11 @@ class _DealCountDownState extends State<DealCountDown> {
   }
 
   String _formatDuration(Duration duration) {
+    final diff = widget.endDate.difference(widget.startDate);
     String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours.remainder(24));
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    final hours = twoDigits(diff.inHours.remainder(24));
+    final minutes = twoDigits(diff.inMinutes.remainder(60));
+    final seconds = twoDigits(diff.inSeconds.remainder(60));
     return 'Deal Ends in ${hours}h : ${minutes}m : ${seconds}s';
   }
 

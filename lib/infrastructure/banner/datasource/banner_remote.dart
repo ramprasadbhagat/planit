@@ -18,8 +18,6 @@ class BannersRemoteDataSource {
     );
     _exceptionChecker(res: res);
     final banner = res.data['items'];
-    print(res.data);
-    print('1111');
     return List.from(banner)
         .map((e) => BannerDto.fromJson(e).toDomain)
         .toList();
