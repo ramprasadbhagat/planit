@@ -38,6 +38,7 @@ mixin _$CartProductDto {
   int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
   int get discount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,7 +68,7 @@ abstract class $CartProductDtoCopyWith<$Res> {
       int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
-      int discount});
+      @JsonKey(defaultValue: 0) int discount});
 }
 
 /// @nodoc
@@ -162,7 +163,7 @@ abstract class _$$CartProductDtoImplCopyWith<$Res>
       int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
-      int discount});
+      @JsonKey(defaultValue: 0) int discount});
 }
 
 /// @nodoc
@@ -251,7 +252,7 @@ class _$CartProductDtoImpl extends _CartProductDto {
       required this.quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       required this.totalPrice,
-      required this.discount})
+      @JsonKey(defaultValue: 0) required this.discount})
       : super._();
 
   factory _$CartProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -285,6 +286,7 @@ class _$CartProductDtoImpl extends _CartProductDto {
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   final int totalPrice;
   @override
+  @JsonKey(defaultValue: 0)
   final int discount;
 
   @override
@@ -365,6 +367,7 @@ abstract class _CartProductDto extends CartProductDto {
       required final int quantity,
       @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
       required final int totalPrice,
+      @JsonKey(defaultValue: 0)
       required final int discount}) = _$CartProductDtoImpl;
   const _CartProductDto._() : super._();
 
@@ -399,6 +402,7 @@ abstract class _CartProductDto extends CartProductDto {
   @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
   int get totalPrice;
   @override
+  @JsonKey(defaultValue: 0)
   int get discount;
   @override
   @JsonKey(ignore: true)

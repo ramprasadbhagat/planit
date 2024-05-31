@@ -31,7 +31,7 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Checkout',
+          'Cart',
           style: textTheme.labelLarge,
         ),
         leadingWidth: 20,

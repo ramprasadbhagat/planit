@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/domain/home/entities/before_checkout.dart';
 
 class BeforeCheckOutCard extends StatelessWidget {
-  final BeforeCheckout item;
+  final WishlistProduct item;
 
   const BeforeCheckOutCard({
     super.key,
@@ -27,20 +30,25 @@ class BeforeCheckOutCard extends StatelessWidget {
                 alignment: Alignment.topRight,
                 children: [
                   Image.asset(
-                    PngImage.generic(item.image),
+                    PngImage.generic('quick_pick_1.png'),
                     height: 80,
                   ),
-                  item.editable
-                      ? const AddToListTextField()
-                      : const AddToListButton(),
+                  AddToListTextField(
+                    item: item,
+                  ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    item.title,
-                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      item.productName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                    ),
                   ),
                   Text(
                     '1g',
@@ -57,13 +65,13 @@ class BeforeCheckOutCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '\$430 ',
+                    '₹${item.productMRP} ',
                     style: textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                     ),
                   ),
                   Text(
-                    ' 470',
+                    ' ${item.skuPrice}',
                     style: textTheme.bodySmall!.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: AppColors.lightGray,
@@ -85,7 +93,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                         size: 9,
                       ),
                       Text(
-                        '4.3',
+                        item.productRating,
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 9,
                         ),
@@ -96,7 +104,15 @@ class BeforeCheckOutCard extends StatelessWidget {
                     height: 25,
                     width: 75,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<WishlistBloc>().add(
+                              WishlistEvent.addToCart(
+                                price: item.skuPrice,
+                                productId: item.id,
+                                quantity: '1',
+                              ),
+                            );
+                      },
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -167,7 +183,11 @@ class AddToListButton extends StatelessWidget {
 }
 
 class AddToListTextField extends StatefulWidget {
-  const AddToListTextField({super.key});
+  final WishlistProduct item;
+  const AddToListTextField({
+    super.key,
+    required this.item,
+  });
 
   @override
   State<AddToListTextField> createState() => _AddToListTextFieldState();
@@ -190,10 +210,19 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(
-            Icons.favorite_rounded,
-            size: 12,
-            color: Color.fromRGBO(167, 22, 0, 1),
+          GestureDetector(
+            onTap: () {
+              context.read<WishlistBloc>().add(
+                    WishlistEvent.removeFromWishlist(
+                      productId: widget.item.id,
+                    ),
+                  );
+            },
+            child: const Icon(
+              Icons.favorite_rounded,
+              size: 12,
+              color: Color.fromRGBO(167, 22, 0, 1),
+            ),
           ),
           GestureDetector(
             onTap: () => setState(() => countValue += 1),

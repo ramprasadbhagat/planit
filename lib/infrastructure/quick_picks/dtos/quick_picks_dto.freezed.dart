@@ -38,8 +38,8 @@ mixin _$QuickPicksDto {
   String get skuPacksize => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String get startingPrice => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0)
+  int get startingPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productMRP => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
@@ -91,7 +91,7 @@ abstract class $QuickPicksDtoCopyWith<$Res> {
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: '') String startingPrice,
+      @JsonKey(defaultValue: 0) int startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -190,7 +190,7 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
       startingPrice: null == startingPrice
           ? _value.startingPrice
           : startingPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
@@ -281,7 +281,7 @@ abstract class _$$QuickPicksDtoImplCopyWith<$Res>
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: '') String startingPrice,
+      @JsonKey(defaultValue: 0) int startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -379,7 +379,7 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
       startingPrice: null == startingPrice
           ? _value.startingPrice
           : startingPrice // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
@@ -458,7 +458,7 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
       @JsonKey(name: 'sku_packsize', defaultValue: '')
       required this.skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') required this.skuContent,
-      @JsonKey(defaultValue: '') required this.startingPrice,
+      @JsonKey(defaultValue: 0) required this.startingPrice,
       @JsonKey(defaultValue: '') required this.productMRP,
       @JsonKey(defaultValue: '') required this.productReview,
       @JsonKey(defaultValue: '') required this.productRating,
@@ -509,8 +509,8 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   final String skuContent;
   @override
-  @JsonKey(defaultValue: '')
-  final String startingPrice;
+  @JsonKey(defaultValue: 0)
+  final int startingPrice;
   @override
   @JsonKey(defaultValue: '')
   final String productMRP;
@@ -684,7 +684,7 @@ abstract class _QuickPicksDto extends QuickPicksDto {
       required final String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '')
       required final String skuContent,
-      @JsonKey(defaultValue: '') required final String startingPrice,
+      @JsonKey(defaultValue: 0) required final int startingPrice,
       @JsonKey(defaultValue: '') required final String productMRP,
       @JsonKey(defaultValue: '') required final String productReview,
       @JsonKey(defaultValue: '') required final String productRating,
@@ -733,8 +733,8 @@ abstract class _QuickPicksDto extends QuickPicksDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent;
   @override
-  @JsonKey(defaultValue: '')
-  String get startingPrice;
+  @JsonKey(defaultValue: 0)
+  int get startingPrice;
   @override
   @JsonKey(defaultValue: '')
   String get productMRP;

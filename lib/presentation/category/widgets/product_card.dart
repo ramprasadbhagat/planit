@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
@@ -33,8 +34,10 @@ class ProductCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomCenter,
                   height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.network(
-                    product.productImages.first,
+                  child: CachedNetworkImage(
+                    errorWidget: (context, url, error) =>
+                        Image.asset(PngImage.generic('highlight_2.png')),
+                    imageUrl: product.productImages.firstOrNull ?? '',
                   ),
                 ),
                 true ? const AddToListTextField() : const AddToListButton(),

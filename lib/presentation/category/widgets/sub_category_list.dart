@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class SubCategoryList extends StatelessWidget {
   const SubCategoryList({super.key});
@@ -95,10 +97,16 @@ class SubCategoryCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                  subCategory.image.first,
+                // Image.network(
+                //   subCategory.image.first,
+                //   height: 43,
+                //   width: 60,
+                // ),
+                CachedNetworkImage(
+                  errorWidget: (context, url, error) =>
+                      Image.asset(PngImage.generic('highlight_2.png')),
+                  imageUrl: subCategory.image.firstOrNull ?? '',
                   height: 43,
-                  width: 60,
                 ),
                 const SizedBox(
                   height: 4,

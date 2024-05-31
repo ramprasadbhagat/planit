@@ -1,6 +1,11 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class SimilarProductCard extends StatelessWidget {
   final SimilarProduct item;
@@ -30,11 +35,17 @@ class SimilarProductCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.bottomCenter,
                   height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: Image.network(item.productImages.first),
+                  child: CachedNetworkImage(
+                    errorWidget: (context, url, error) =>
+                        Image.asset(PngImage.generic('highlight_2.png')),
+                    imageUrl: item.productImages.firstOrNull ?? '',
+                  ),
                 ),
                 item.price.isEditable
                     ? const AddToListTextField()
-                    : const AddToListButton(),
+                    : AddToListButton(
+                        item: item,
+                      ),
               ],
             ),
             const SizedBox(
@@ -136,17 +147,25 @@ class SimilarProductCard extends StatelessWidget {
 }
 
 class AddToListButton extends StatelessWidget {
-  const AddToListButton({super.key});
+  final SimilarProduct item;
+  const AddToListButton({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final wishlistBloc = context.read<WishlistBloc>();
     return SizedBox(
       height: 28,
       width: 75,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          wishlistBloc.add(WishlistEvent.addToWishlist(productId: item.id));
+          context.router.maybePop();
+          const snackBar = SnackBar(
+            content: Text('Item added to wishlist'),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),

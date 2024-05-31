@@ -10,6 +10,7 @@ import 'package:planit/application/product_image/product_image_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_local.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_remote.dart';
@@ -37,6 +38,9 @@ import 'package:planit/infrastructure/quick_picks/repository/quick_picks_reposit
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_local.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
 import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
+import 'package:planit/infrastructure/wishlist/datasource/wishlist_local.dart';
+import 'package:planit/infrastructure/wishlist/datasource/wishlist_remote.dart';
+import 'package:planit/infrastructure/wishlist/repository/wishlist_repository.dart';
 import 'package:planit/presentation/router/router.dart';
 import 'package:planit/utils/storage_service.dart';
 
@@ -286,6 +290,30 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => BannerBloc(
       repository: locator<BannerRepository>(),
+    ),
+  );
+  ////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
+  /// Wishlist
+  //============================================================
+  locator.registerLazySingleton(
+    () => const WishlistLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => WishlistRemoteDataSource(httpService: locator<HttpService>()),
+  );
+
+  locator.registerLazySingleton(
+    () => WishlistRepository(
+      config: locator<Config>(),
+      localDataSource: locator<WishlistLocalDataSource>(),
+      remoteDataSource: locator<WishlistRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => WishlistBloc(
+      repository: locator<WishlistRepository>(),
     ),
   );
 }

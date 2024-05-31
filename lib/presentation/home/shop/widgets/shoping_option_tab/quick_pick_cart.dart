@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class QuickPickCard extends StatelessWidget {
   final QuickPicks item;
@@ -28,15 +32,25 @@ class QuickPickCard extends StatelessWidget {
               Stack(
                 alignment: Alignment.topRight,
                 children: [
-                  Image.network(
-                    item.productImages.first,
+                  // Image.network(
+                  //   item.productImages.first,
+                  //   height: 80,
+                  //   width: 110,
+                  //   fit: BoxFit.fill,
+                  // ),
+                  CachedNetworkImage(
+                    errorWidget: (context, url, error) =>
+                        Image.asset(PngImage.generic('highlight_2.png')),
+                    imageUrl: item.productImages.firstOrNull ?? '',
                     height: 80,
                     width: 110,
                     fit: BoxFit.fill,
                   ),
                   item.price.isEditable
                       ? const AddToListTextField()
-                      : const AddToListButton(),
+                      : AddToListButton(
+                          productId: item.id,
+                        ),
                 ],
               ),
               Row(
@@ -136,17 +150,25 @@ class QuickPickCard extends StatelessWidget {
 }
 
 class AddToListButton extends StatelessWidget {
-  const AddToListButton({super.key});
+  final String productId;
+  const AddToListButton({super.key, required this.productId});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final wishlistBloc = context.read<WishlistBloc>();
     return SizedBox(
       height: 25,
       width: 80,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          wishlistBloc.add(WishlistEvent.addToWishlist(productId: productId));
+          const snackBar = SnackBar(
+            content: Text('Item added to wishlist'),
+          );
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
