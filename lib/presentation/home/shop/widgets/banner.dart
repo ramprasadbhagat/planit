@@ -171,6 +171,10 @@ class _DealCountDownState extends State<DealCountDown> {
     final hours = twoDigits(diff.inHours.remainder(24));
     final minutes = twoDigits(diff.inMinutes.remainder(60));
     final seconds = twoDigits(diff.inSeconds.remainder(60));
+
+    if (hours == '00' && minutes == '00' && seconds == '00') {
+      return '';
+    }
     return 'Deal Ends in ${hours}h : ${minutes}m : ${seconds}s';
   }
 
