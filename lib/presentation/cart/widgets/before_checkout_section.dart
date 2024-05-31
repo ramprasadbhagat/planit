@@ -1,6 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/home/entities/before_checkout.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_card.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 
 class BeforeCheckoutSection extends StatelessWidget {
   const BeforeCheckoutSection({super.key});
@@ -15,25 +20,52 @@ class BeforeCheckoutSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Before you checkout',
-              style: textTheme.titleSmall?.copyWith(fontSize: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Before you checkout',
+                  style: textTheme.titleSmall?.copyWith(fontSize: 12),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print('............');
+                    context.router.navigate(const WishlistRoute());
+                  },
+                  child: Text(
+                    'view all',
+                    style: textTheme.titleSmall?.copyWith(fontSize: 12),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              height: 190,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: beforeCheckoutPickList.length,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 8,
-                ),
-                itemBuilder: (context, index) => BeforeCheckOutCard(
-                  item: beforeCheckoutPickList.elementAt(index),
-                ),
-              ),
+            BlocBuilder<WishlistBloc, WishlistState>(
+              builder: (context, state) {
+                if (state.isWishlistEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Text('No Wishlist Item'),
+                    ),
+                  );
+                }
+                return SizedBox(
+                  height: 190,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: state.getAllWishList.length,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 8,
+                    ),
+                    itemBuilder: (context, index) => BeforeCheckOutCard(
+                      item: state.getAllWishList[index],
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),

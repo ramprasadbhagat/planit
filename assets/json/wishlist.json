@@ -1,0 +1,92 @@
+[
+    {
+        "_id": "66582e519140ee0012ab2c94",
+        "user_id": "662897e47acc8e00121fe28f",
+        "product_id": "662768d77acc8e00121fe289",
+        "created_at": "2024-05-30T07:44:17.381Z",
+        "isActive": true,
+        "isDeleted": false,
+        "users": [],
+        "product": [
+            {
+                "_id": "662768d77acc8e00121fe289",
+                "categoryId": "6630a1839f9a56fa97676a54",
+                "subcategoryId": "6614e1de0fc9660a5488b575",
+                "productName": "Fried Cashew",
+                "productDescription": "Its very much tasty",
+                "expiryDate": "1970-01-01T00:00:00.000Z",
+                "productMRP": null,
+                "productReview": null,
+                "productRating": null,
+                "productDiscount": null,
+                "productDiscountDate": "1970-01-01T00:00:00.000Z",
+                "sku": "1",
+                "sku_price": "1000",
+                "sku_packsize": "10",
+                "sku_content": "good",
+                "sku_inventory": null,
+                "sku_vendorId": null,
+                "sku_vendorInfo": null,
+                "startingPrice": 1010,
+                "ingredientsList": [
+                    "salt",
+                    "Cashew",
+                    "oil"
+                ],
+                "nutritionalInformation": "very good for health",
+                "isDeleted": false,
+                "isActive": true,
+                "createdAt": "2024-04-23T07:52:55.835Z",
+                "updatedAt": "2024-04-23T07:52:55.835Z",
+                "isHighlighted": true,
+                "isQuickPick": false,
+                "discount": "10 %"
+            }
+        ]
+    },
+    {
+        "_id": "6658586c9140ee0012ab2ca9",
+        "user_id": "662897e47acc8e00121fe28f",
+        "product_id": "6630d424ebec392345f674cd",
+        "created_at": "2024-05-30T10:43:56.707Z",
+        "isActive": true,
+        "isDeleted": false,
+        "users": [],
+        "product": [
+            {
+                "_id": "6630d424ebec392345f674cd",
+                "categoryId": "662b4f577af30e0013145c2e",
+                "subcategoryId": "6630d27debec392345f674c8",
+                "productName": "Extra Salted Cheddar Cheese",
+                "productDescription": "Very Popular in India",
+                "expiryDate": "2024-09-11T00:00:00.000Z",
+                "productMRP": "1000",
+                "productReview": "It is excellent",
+                "productRating": "8",
+                "productDiscount": "17%",
+                "productDiscountDate": "2024-03-02T00:00:00.000Z",
+                "sku": "8733884",
+                "sku_price": "230",
+                "sku_packsize": "3",
+                "sku_content": "This is great",
+                "sku_inventory": "items",
+                "sku_vendorId": "75478904846784",
+                "sku_vendorInfo": "Expensive Pvt Ltd",
+                "startingPrice": "56000",
+                "ingredientsList": [
+                    "Hard-disk",
+                    "CPU",
+                    "Keyboard",
+                    "Screen"
+                ],
+                "nutritionalInformation": "This is very smooth for use",
+                "isHighlighted": true,
+                "isQuickPick": false,
+                "isDeleted": false,
+                "isActive": true,
+                "createdAt": "2024-04-30T11:21:08.734Z",
+                "updatedAt": "2024-04-30T11:21:08.734Z"
+            }
+        ]
+    }
+]

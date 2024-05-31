@@ -85,7 +85,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
             SizedBox(
               height: _selectedTab == 0
                   ? context.read<QuickPicksBloc>().state.quickPickProductsHeight
-                  : 150,
+                  : _selectedTab == 1
+                      ? 250
+                      : 150,
               child: TabBarView(
                 controller: _tabController,
                 children: const [

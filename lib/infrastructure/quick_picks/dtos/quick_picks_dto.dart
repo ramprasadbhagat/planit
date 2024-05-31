@@ -19,7 +19,7 @@ class QuickPicksDto with _$QuickPicksDto {
     @JsonKey(name: 'sku_packsize', defaultValue: '')
     required String skuPacksize,
     @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
-    @JsonKey(defaultValue: '') required String startingPrice,
+    @JsonKey(defaultValue: 0) required int startingPrice,
     @JsonKey(defaultValue: '') required String productMRP,
     @JsonKey(defaultValue: '') required String productReview,
     @JsonKey(defaultValue: '') required String productRating,
@@ -50,7 +50,7 @@ class QuickPicksDto with _$QuickPicksDto {
         skuPrice: skuPrice,
         skuPacksize: skuPacksize,
         skuContent: skuContent,
-        startingPrice: int.tryParse(startingPrice) ?? 0,
+        startingPrice: startingPrice,
         productMRP: int.tryParse(productMRP) ?? 0,
         productRating: double.tryParse(productRating) ?? 0.0,
         productReview: productReview,
