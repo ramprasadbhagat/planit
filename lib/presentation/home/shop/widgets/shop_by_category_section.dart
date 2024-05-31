@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -17,28 +18,31 @@ class ShopByCategory extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.isFetching != current.isFetching,
       builder: (context, state) {
-        if (state.validCategories.isEmpty) return const SizedBox();
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SectionTitle(
-              title: 'Shop by category',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Wrap(
-              runSpacing: 10,
-              alignment: WrapAlignment.start,
-              children: state.validCategories
-                  .map(
-                    (e) => ShopByCategoryItem(
-                      item: e,
-                    ),
-                  )
-                  .toList(),
-            ),
-          ],
+        if (state.validCategories.isEmpty) return const NoData();
+        return SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SectionTitle(
+                title: 'Shop by category',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Wrap(
+                runSpacing: 10,
+                alignment: WrapAlignment.start,
+                children: state.validCategories
+                    .map(
+                      (e) => ShopByCategoryItem(
+                        item: e,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ],
+          ),
         );
       },
     );

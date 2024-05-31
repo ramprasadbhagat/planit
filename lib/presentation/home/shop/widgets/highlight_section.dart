@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -27,7 +28,7 @@ class HighLightSection extends StatelessWidget {
           //   child: Center(child: CircularProgressIndicator()),
           // );
         } else if (state.highlights.isEmpty) {
-          return const SizedBox.shrink();
+          return const NoData();
         }
         return Padding(
           padding: const EdgeInsets.all(16.0),
