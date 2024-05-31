@@ -19,7 +19,8 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(name: 'sku_packsize', defaultValue: '')
     required String skuPacksize,
     @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
-    @JsonKey(defaultValue: '') required String startingPrice,
+    @JsonKey(defaultValue: '', readValue: stringReadValue)
+    required String startingPrice,
     @JsonKey(defaultValue: '') required String productMRP,
     @JsonKey(defaultValue: '') required String productReview,
     @JsonKey(defaultValue: '') required String productRating,
@@ -67,4 +68,10 @@ class SimilarProductDto with _$SimilarProductDto {
         price: price.toDomain,
         productImages: productImages,
       );
+}
+
+String stringReadValue(Map json, String key) {
+  if (json[key] is int) return json[key].toString();
+  if (json[key] is String) return json[key];
+  return '';
 }

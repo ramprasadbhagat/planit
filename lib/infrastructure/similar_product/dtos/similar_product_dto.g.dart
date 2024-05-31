@@ -18,7 +18,7 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
       skuPrice: json['sku_price'] as String? ?? '',
       skuPacksize: json['sku_packsize'] as String? ?? '',
       skuContent: json['sku_content'] as String? ?? '',
-      startingPrice: json['startingPrice'] as String? ?? '',
+      startingPrice: stringReadValue(json, 'startingPrice') as String? ?? '',
       productMRP: json['productMRP'] as String? ?? '',
       productReview: json['productReview'] as String? ?? '',
       productRating: json['productRating'] as String? ?? '',

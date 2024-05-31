@@ -38,7 +38,7 @@ mixin _$SimilarProductDto {
   String get skuPacksize => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
   String get startingPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productMRP => throw _privateConstructorUsedError;
@@ -91,7 +91,8 @@ abstract class $SimilarProductDtoCopyWith<$Res> {
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: '') String startingPrice,
+      @JsonKey(defaultValue: '', readValue: stringReadValue)
+      String startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -281,7 +282,8 @@ abstract class _$$SimilarProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: '') String startingPrice,
+      @JsonKey(defaultValue: '', readValue: stringReadValue)
+      String startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -458,7 +460,8 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
       @JsonKey(name: 'sku_packsize', defaultValue: '')
       required this.skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') required this.skuContent,
-      @JsonKey(defaultValue: '') required this.startingPrice,
+      @JsonKey(defaultValue: '', readValue: stringReadValue)
+      required this.startingPrice,
       @JsonKey(defaultValue: '') required this.productMRP,
       @JsonKey(defaultValue: '') required this.productReview,
       @JsonKey(defaultValue: '') required this.productRating,
@@ -509,7 +512,7 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   final String skuContent;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
   final String startingPrice;
   @override
   @JsonKey(defaultValue: '')
@@ -685,7 +688,8 @@ abstract class _SimilarProductDto extends SimilarProductDto {
       required final String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '')
       required final String skuContent,
-      @JsonKey(defaultValue: '') required final String startingPrice,
+      @JsonKey(defaultValue: '', readValue: stringReadValue)
+      required final String startingPrice,
       @JsonKey(defaultValue: '') required final String productMRP,
       @JsonKey(defaultValue: '') required final String productReview,
       @JsonKey(defaultValue: '') required final String productRating,
@@ -734,7 +738,7 @@ abstract class _SimilarProductDto extends SimilarProductDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
   String get startingPrice;
   @override
   @JsonKey(defaultValue: '')

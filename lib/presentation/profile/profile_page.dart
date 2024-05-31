@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
 import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
 import 'package:planit/presentation/profile/widgets/user_details_section.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()

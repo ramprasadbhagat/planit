@@ -4,18 +4,22 @@ import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/wishlist/entities/wish_list.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/wishlist/dtos/wishlist_dto.dart';
+import 'package:planit/utils/storage_service.dart';
 
 class WishlistRemoteDataSource {
   final HttpService httpService;
+  final StorageService storageService;
 
   WishlistRemoteDataSource({
     required this.httpService,
+    required this.storageService,
   });
 
   Future<List<Wishlist>> getWishlist() async {
+    final userId = await storageService.getUserId();
     final res = await httpService.request(
       method: 'GET',
-      url: 'favourites/product/662897e47acc8e00121fe28f',
+      url: 'favourites/product/$userId',
     );
     _exceptionChecker(res: res);
     return List.from(res.data)
@@ -26,11 +30,12 @@ class WishlistRemoteDataSource {
   Future<Unit> addToWishlist({
     required String productId,
   }) async {
+    final userId = await storageService.getUserId();
     final res = await httpService.request(
       method: 'POST',
       url: 'favourites',
       data: {
-        'user_id': '662897e47acc8e00121fe28f',
+        'user_id': userId,
         'product_id': productId,
       },
     );
@@ -43,11 +48,12 @@ class WishlistRemoteDataSource {
     required String quantity,
     required String price,
   }) async {
+    final userId = await storageService.getUserId();
     final res = await httpService.request(
       method: 'POST',
       url: 'favourites/addItemtoCart',
       data: {
-        'user_id': '662897e47acc8e00121fe28f',
+        'user_id': userId,
         'product_id': productId,
         'quantity': quantity,
         'price': price,
