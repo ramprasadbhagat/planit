@@ -18,44 +18,44 @@ class WishlistScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text('Wishlist'),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Your Wish List'),
-              const SizedBox(
-                height: 10,
-              ),
-              BlocBuilder<WishlistBloc, WishlistState>(
-                builder: (context, state) {
-                  if (state.isFetching) {
-                    return const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Center(child: ShimmerItem()),
-                    );
-                  } else if (state.isWishlistEmpty) {
-                    return const Center(
-                      child: Text('Any item has not been added to wishlist'),
-                    );
-                  }
-                  return Wrap(
-                    runSpacing: 8,
-                    spacing: 4,
-                    children: state.getAllWishList
-                        .map(
-                          (e) => BeforeCheckOutCard(
-                            item: e,
-                          ),
-                        )
-                        .toList(),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Your Wish List'),
+            const SizedBox(
+              height: 10,
+            ),
+            BlocBuilder<WishlistBloc, WishlistState>(
+              builder: (context, state) {
+                if (state.isFetching) {
+                  return const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Center(child: ShimmerItem()),
                   );
-                },
-              ),
-            ],
-          ),
+                } else if (state.isWishlistEmpty) {
+                  return const Center(
+                    child: Text('Any item has not been added to wishlist'),
+                  );
+                }
+                return Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 8.0,
+                    children:
+                        List.generate(state.getAllWishList.length, (index) {
+                      return BeforeCheckOutCard(
+                        item: state.getAllWishList[index],
+                      );
+                    }),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

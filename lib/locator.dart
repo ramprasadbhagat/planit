@@ -180,7 +180,10 @@ void setupLocator() {
   );
 
   locator.registerLazySingleton(
-    () => CartRemoteDataSource(httpService: locator<HttpService>()),
+    () => CartRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
   );
 
   locator.registerLazySingleton(
@@ -301,7 +304,10 @@ void setupLocator() {
   );
 
   locator.registerLazySingleton(
-    () => WishlistRemoteDataSource(httpService: locator<HttpService>()),
+    () => WishlistRemoteDataSource(
+      httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
+    ),
   );
 
   locator.registerLazySingleton(

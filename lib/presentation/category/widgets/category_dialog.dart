@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/image_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/utils/png_image.dart';
 
 class CategoryAlertDialog extends StatelessWidget {
   const CategoryAlertDialog({super.key});
@@ -160,10 +162,18 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ImageWidget(
-              category.image.first,
+            CachedNetworkImage(
+              imageUrl: category.image.firstOrNull ?? '',
               height: 45,
               fit: BoxFit.fill,
+              placeholder: (context, url) => const CircularProgressIndicator(
+                color: AppColors.extraLightGray,
+              ),
+              errorWidget: (context, error, stackTrace) => Image.asset(
+                PngImage.generic('category_1.png'),
+                height: 45,
+                fit: BoxFit.fill,
+              ),
             ),
             const SizedBox(
               height: 4,

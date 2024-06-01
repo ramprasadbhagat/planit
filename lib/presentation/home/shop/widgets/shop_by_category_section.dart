@@ -8,6 +8,7 @@ import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class ShopByCategory extends StatelessWidget {
   const ShopByCategory({super.key});
@@ -72,12 +73,16 @@ class ShopByCategoryItem extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
+                height: 60,
                 child: CachedNetworkImage(
                   imageUrl: item.image.firstOrNull ?? '',
                   fit: BoxFit.scaleDown,
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(
                     color: AppColors.extraLightGray,
+                  ),
+                  errorWidget: (context, error, stackTrace) => Image.asset(
+                    PngImage.generic('category_1.png'),
                   ),
                 ),
               ),
