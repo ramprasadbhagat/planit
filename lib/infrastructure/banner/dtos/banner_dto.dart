@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/banner/entities/banner.dart';
+import 'package:intl/intl.dart';
 
 part 'banner_dto.freezed.dart';
 part 'banner_dto.g.dart';
@@ -29,8 +30,12 @@ class BannerDto with _$BannerDto {
   Banner get toDomain => Banner(
         id: id,
         option: option,
-        startingDate: DateTime.tryParse(startingDate) ?? DateTime.now(),
-        endingDate: DateTime.tryParse(endingDate) ?? DateTime.now(),
+        startingDate:
+            DateFormat('EEE MMM dd yyyy HH:mm:ss').tryParse(startingDate) ??
+                DateTime.now(),
+        endingDate:
+            DateFormat('EEE MMM dd yyyy HH:mm:ss').tryParse(endingDate) ??
+                DateTime.now(),
         bannerImages: bannerImages,
         createdAt: DateTime.tryParse(createdAt) ?? DateTime.now(),
         updatedAt: DateTime.tryParse(updatedAt) ?? DateTime.now(),
