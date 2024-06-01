@@ -55,6 +55,21 @@ class ProductRemoteDataSource {
         .toList();
   }
 
+  Future<List<Product>> getSearchProduct({
+    required String searchKey,
+    required int pageNumber,
+  }) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'products?pageSize=10&pageNumber=$pageNumber&search=$searchKey',
+    );
+    _exceptionChecker(res: res);
+    final categories = res.data['items'];
+    return List.from(categories)
+        .map((e) => ProductDto.fromJson(e).toDomain)
+        .toList();
+  }
+
   Future<List<ProductImage>> getProductImage(ProductId productId) async {
     final res = await httpService.request(
       method: 'GET',

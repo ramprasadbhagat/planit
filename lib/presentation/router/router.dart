@@ -23,6 +23,10 @@ class AppRouter extends $AppRouter {
           path: '/profile',
         ),
         AutoRoute(
+          page: SearchProductRoute.page,
+          path: '/searchProduct',
+        ),
+        AutoRoute(
           page: WishlistRoute.page,
           path: '/wishlistPage',
         ),

@@ -1,4 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/search_product/search_product_bloc.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({super.key});
@@ -16,8 +20,18 @@ class HomeSearchBar extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: const TextField(
-          decoration: InputDecoration(
+        child: TextField(
+          onTap: () {
+            context.read<SearchProductBloc>().add(
+                  const SearchProductEvent.fetchProduct(
+                    searchKey: '',
+                    isScrolling: false,
+                  ),
+                );
+            context.router.navigate(const SearchProductRoute());
+          },
+          readOnly: true,
+          decoration: const InputDecoration(
             focusedBorder: borderDecoration,
             enabledBorder: borderDecoration,
             errorBorder: borderDecoration,
