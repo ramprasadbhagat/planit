@@ -30,7 +30,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                 alignment: Alignment.topRight,
                 children: [
                   Image.asset(
-                    PngImage.generic('quick_pick_1.png'),
+                    PngImage.placeholder,
                     height: 80,
                   ),
                   AddToListTextField(

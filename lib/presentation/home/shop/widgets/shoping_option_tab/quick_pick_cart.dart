@@ -40,7 +40,7 @@ class QuickPickCard extends StatelessWidget {
                   // ),
                   CachedNetworkImage(
                     errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.generic('highlight_2.png')),
+                        Image.asset(PngImage.placeholder),
                     imageUrl: item.productImages.firstOrNull ?? '',
                     height: 80,
                     width: 110,

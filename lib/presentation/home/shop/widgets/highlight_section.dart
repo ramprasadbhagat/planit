@@ -92,7 +92,7 @@ class HighlightItem extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: item.productImages.firstOrNull ?? '',
                       errorWidget: (context, url, error) =>
-                          Image.asset(PngImage.generic('highlight_2.png')),
+                          Image.asset(PngImage.placeholder),
                     ),
                   ),
                   const SizedBox(

@@ -52,7 +52,7 @@ class CartItemCard extends StatelessWidget {
                   color: AppColors.extraLightGray,
                 ),
                 errorWidget: (context, error, stackTrace) => Image.asset(
-                  PngImage.generic('category_1.png'),
+                  PngImage.placeholder,
                 ),
               ),
             ),

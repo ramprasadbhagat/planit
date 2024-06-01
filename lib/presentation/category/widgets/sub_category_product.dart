@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/presentation/category/widgets/product_card.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/utils/responsive.dart';
 
 class SubCategoryProduct extends StatelessWidget {
@@ -13,7 +14,7 @@ class SubCategoryProduct extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state.products.isEmpty) {
-          return const Expanded(child: Center(child: Text('No Item')));
+          return const NoData();
         }
         return Expanded(
           child: GridView.builder(

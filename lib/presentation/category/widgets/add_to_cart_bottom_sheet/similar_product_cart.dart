@@ -37,7 +37,7 @@ class SimilarProductCard extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).height * 0.1,
                   child: CachedNetworkImage(
                     errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.generic('highlight_2.png')),
+                        Image.asset(PngImage.placeholder),
                     imageUrl: item.productImages.firstOrNull ?? '',
                   ),
                 ),

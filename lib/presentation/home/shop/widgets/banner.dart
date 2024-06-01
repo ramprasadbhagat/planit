@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,10 +53,6 @@ class ShoppingBanner extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // const Padding(
-                //   padding: EdgeInsets.only(top: 2, bottom: 2),
-                //   child: DealCountDown(),
-                // ),
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
@@ -82,17 +79,26 @@ class ShoppingBanner extends StatelessWidget {
                                     startDate: i.startingDate,
                                     endDate: i.endingDate,
                                   ),
-                                  Image.network(
-                                    i.bannerImages[0],
-                                    fit: BoxFit.fitHeight,
-                                    errorBuilder: (context, error, stack) {
-                                      if (error is NetworkImageLoadException &&
-                                          error.statusCode == 404) {
-                                        return Image.asset(PngImage.banner);
-                                      }
+                                  Expanded(
+                                    child: Image.network(
+                                      i.bannerImages[0],
+                                      fit: BoxFit.fitHeight,
+                                      errorBuilder: (context, error, stack) {
+                                        if (error
+                                                is NetworkImageLoadException &&
+                                            error.statusCode == 404) {
+                                          return Image.asset(
+                                            PngImage.placeholder,
+                                            fit: BoxFit.fitHeight,
+                                          );
+                                        }
 
-                                      return Image.asset(PngImage.banner);
-                                    },
+                                        return Image.asset(
+                                          PngImage.placeholder,
+                                          fit: BoxFit.fitHeight,
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ],
                               ),
@@ -138,7 +144,11 @@ class DealCountDown extends StatefulWidget {
 
 class _DealCountDownState extends State<DealCountDown> {
   Timer? _timer;
-  Duration _duration = const Duration(hours: 5, minutes: 0); // Initial duration
+  Duration _duration = Duration(
+    hours: DateTime.now().hour,
+    minutes: DateTime.now().minute,
+    seconds: DateTime.now().second,
+  ); // Initial duration
   final Duration _tick = const Duration(seconds: 1);
 
   @override
@@ -166,13 +176,13 @@ class _DealCountDownState extends State<DealCountDown> {
   }
 
   String _formatDuration(Duration duration) {
-    final diff = widget.endDate.difference(widget.startDate);
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final diff = widget.endDate.difference(DateTime.now());
+    int twoDigits(int n) => int.parse(n.toString().padLeft(2, '0'));
     final hours = twoDigits(diff.inHours.remainder(24));
     final minutes = twoDigits(diff.inMinutes.remainder(60));
     final seconds = twoDigits(diff.inSeconds.remainder(60));
 
-    if (hours == '00' && minutes == '00' && seconds == '00') {
+    if (hours <= 0 && minutes <= 00 && seconds <= 00) {
       return '';
     }
     return 'Deal Ends in ${hours}h : ${minutes}m : ${seconds}s';
@@ -180,12 +190,14 @@ class _DealCountDownState extends State<DealCountDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _formatDuration(_duration),
-      style: GoogleFonts.bevan(
-        fontSize: 20,
-        color: AppColors.deepRed,
-      ),
-    );
+    return _formatDuration(_duration).isEmpty
+        ? const SizedBox.shrink()
+        : Text(
+            _formatDuration(_duration),
+            style: GoogleFonts.bevan(
+              fontSize: 20,
+              color: AppColors.deepRed,
+            ),
+          );
   }
 }

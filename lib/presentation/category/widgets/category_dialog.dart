@@ -170,7 +170,7 @@ class CategoryCard extends StatelessWidget {
                 color: AppColors.extraLightGray,
               ),
               errorWidget: (context, error, stackTrace) => Image.asset(
-                PngImage.generic('category_1.png'),
+                PngImage.placeholder,
                 height: 45,
                 fit: BoxFit.fill,
               ),

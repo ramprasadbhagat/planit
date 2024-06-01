@@ -65,7 +65,7 @@ class BestSellerItem extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        PngImage.generic(item.image),
+                        PngImage.placeholder,
                         width: 120,
                         height: 130,
                         fit: BoxFit.scaleDown,

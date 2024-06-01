@@ -29,7 +29,6 @@ class BeforeCheckoutSection extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print('............');
                     context.router.navigate(const WishlistRoute());
                   },
                   child: Text(

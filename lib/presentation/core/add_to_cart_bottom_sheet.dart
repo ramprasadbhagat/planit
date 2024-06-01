@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
@@ -8,6 +9,7 @@ import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/locator.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_section.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/png_image.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
   final Product product;
@@ -33,28 +35,40 @@ class AddToCartBottomSheet extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: ListView(
                     children: [
-                      FlutterCarousel(
-                        options: CarouselOptions(
-                          height: MediaQuery.sizeOf(context).height * 0.3,
-                          viewportFraction: 1,
-                          showIndicator: true,
-                          slideIndicator: const CircularSlideIndicator(
-                            itemSpacing: 10,
-                            indicatorRadius: 4,
-                            currentIndicatorColor: AppColors.lightGray,
-                            indicatorBackgroundColor: AppColors.extraLightGray,
-                          ),
-                          indicatorMargin: 16,
-                        ),
-                        items: product.productImages
-                            .map(
-                              (e) => Image.network(
-                                e,
-                                fit: BoxFit.contain,
+                      product.productImages.isEmpty
+                          ? SizedBox(
+                              height: 300,
+                              child: Center(
+                                child: Image.asset(
+                                  PngImage.placeholder,
+                                  height: 150,
+                                ),
                               ),
                             )
-                            .toList(),
-                      ),
+                          : FlutterCarousel(
+                              options: CarouselOptions(
+                                height: 300,
+                                viewportFraction: 1,
+                                showIndicator: true,
+                                slideIndicator: const CircularSlideIndicator(
+                                  itemSpacing: 10,
+                                  indicatorRadius: 4,
+                                  currentIndicatorColor: AppColors.lightGray,
+                                  indicatorBackgroundColor:
+                                      AppColors.extraLightGray,
+                                ),
+                                indicatorMargin: 16,
+                              ),
+                              items: product.productImages
+                                  .map(
+                                    (e) => CachedNetworkImage(
+                                      errorWidget: (context, url, error) =>
+                                          Image.asset(PngImage.placeholder),
+                                      imageUrl: e,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
                       const SizedBox(
                         height: 5,
                       ),

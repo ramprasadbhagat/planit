@@ -5,6 +5,8 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/presentation/cart/widgets/cart_checkout.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_section.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_section.dart';
+import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/utils/svg_image.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -117,6 +119,9 @@ class EmptyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('No Item Available'));
+    return const NoData(
+      message: 'No cart item added to cart.',
+      errorSvgImage: SvgImage.emptyCartImage,
+    );
   }
 }
