@@ -19,15 +19,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final loginFormBloc = context.read<LoginFormBloc>();
-    context.read<AuthBloc>().add(const AuthEvent.init());
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state != const AuthState.unauthenticated() &&
             state != const AuthState.initial()) {
+          _controller.clear();
           context.router.navigateNamed('/maintab');
         }
       },
@@ -69,8 +70,11 @@ class _LoginPageState extends State<LoginPage> {
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15.0),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 15.0,
+                            ),
                             child: TextFormField(
+                              controller: _controller,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.digitsOnly,
@@ -85,8 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                                 return null;
                               },
                               onChanged: (e) {
-                                loginFormBloc
-                                    .add(LoginFormEvent.mobileNumberChanged(e));
+                                loginFormBloc.add(
+                                  LoginFormEvent.mobileNumberChanged(e),
+                                );
                               },
                               // maxLength: 10,
                               decoration: InputDecoration(
@@ -155,6 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                 return ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
+                                      FocusScope.of(context).unfocus();
                                       loginFormBloc.add(
                                         const LoginFormEvent.initiateLogin(),
                                       );

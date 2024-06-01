@@ -17,12 +17,12 @@ import 'package:planit/presentation/theme/theme_data.dart';
 import 'package:planit/utils/storage_service.dart';
 
 Future<void> initialSetup({required Flavor flavor}) async {
+  WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   final config = locator<Config>();
   final storageService = locator<StorageService>();
   await storageService.init();
   config.appFlavor = flavor;
-  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class App extends StatelessWidget {
@@ -37,7 +37,7 @@ class App extends StatelessWidget {
           create: (context) => locator<LoginFormBloc>(),
         ),
         BlocProvider<AuthBloc>(
-          create: (context) => locator<AuthBloc>(),
+          create: (context) => locator<AuthBloc>()..add(const AuthEvent.init()),
         ),
         BlocProvider<CategoryBloc>(
           create: (context) => locator<CategoryBloc>(),

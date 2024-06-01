@@ -1,17 +1,18 @@
 import 'dart:io';
 
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/entities/user.dart';
 import 'package:planit/utils/hive_constants.dart';
 
 class StorageService {
-  final _path = Directory.systemTemp.path;
-
   late Box<Auth> _authBox;
 
   Future init() async {
-    Hive.init(_path);
+    final tempDir = await getTemporaryDirectory();
+    final path = tempDir.path;
+    Hive.init(path);
     _registAdapters();
     await _openBox();
   }
