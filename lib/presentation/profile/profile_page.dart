@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
 import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
 import 'package:planit/presentation/profile/widgets/user_details_section.dart';
@@ -92,7 +95,10 @@ class ProfilePage extends StatelessWidget {
               title: 'My complaints',
             ),
             CustomTile(
-              onTap: () {},
+              onTap: () {
+                context.read<AuthBloc>().add(const AuthEvent.logout());
+                context.router.navigate(const LoginRoute());
+              },
               leadingIcon: Icons.exit_to_app,
               title: 'Logout',
             ),
