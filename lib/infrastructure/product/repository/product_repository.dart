@@ -111,4 +111,30 @@ class ProductRepository extends IProductRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, List<Product>>> getSearchProduct({
+    required String searchKey,
+    required int pageNumber,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final categories = await localDataSource.getSubCategoryProduct();
+
+        return Right(categories);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final products = await remoteDataSource.getSearchProduct(
+        pageNumber: pageNumber,
+        searchKey: searchKey,
+      );
+
+      return Right(products);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

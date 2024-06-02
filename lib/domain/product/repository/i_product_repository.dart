@@ -12,6 +12,10 @@ abstract class IProductRepository {
   Future<Either<ApiFailure, List<Product>>> getSubCategoryProduct(
     SubCategory subCategory,
   );
+  Future<Either<ApiFailure, List<Product>>> getSearchProduct({
+    required String searchKey,
+    required int pageNumber,
+  });
   Future<Either<ApiFailure, List<ProductImage>>> getProductImage(
     ProductId productId,
   );

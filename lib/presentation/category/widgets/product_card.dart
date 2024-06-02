@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:planit/application/similar_product/similar_product_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
-
-import 'package:planit/locator.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -36,11 +34,14 @@ class ProductCard extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).height * 0.1,
                   child: CachedNetworkImage(
                     errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.generic('highlight_2.png')),
+                        Image.asset(PngImage.placeholder),
                     imageUrl: product.productImages.firstOrNull ?? '',
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
-                true ? const AddToListTextField() : const AddToListButton(),
+                AddToListButton(
+                  product: product,
+                ),
               ],
             ),
             Row(
@@ -55,7 +56,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '1g',
+                  product.attributeItem,
                   style: textTheme.bodySmall?.copyWith(
                     color: AppColors.grey1,
                     fontSize: 10,
@@ -69,13 +70,13 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '\$430 ',
+                  '\$${product.startingPrice} ',
                   style: textTheme.bodySmall?.copyWith(
                     fontSize: 9,
                   ),
                 ),
                 Text(
-                  ' 470',
+                  ' ${product.startingPrice + 30}',
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGray,
@@ -154,17 +155,29 @@ class AddToCartButton extends StatelessWidget {
 }
 
 class AddToListButton extends StatelessWidget {
-  const AddToListButton({super.key});
+  final Product product;
+  const AddToListButton({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    final wishlistBloc = context.read<WishlistBloc>();
     return SizedBox(
       height: 25,
-      width: 75,
+      width: 80,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          wishlistBloc.add(
+            WishlistEvent.addToWishlist(
+              productId: product.productId.getValue(),
+            ),
+          );
+          const snackBar = SnackBar(
+            content: Text('Item added to wishlist'),
+          );
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
