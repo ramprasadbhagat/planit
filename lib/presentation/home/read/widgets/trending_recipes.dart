@@ -61,7 +61,7 @@ class TrendingRecipeCard extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
-            PngImage.genericDemo(trendingRecipe.image),
+            PngImage.placeholder,
             height: MediaQuery.sizeOf(context).height * 0.25,
             width: MediaQuery.sizeOf(context).width * 0.7,
           ),

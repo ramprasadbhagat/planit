@@ -49,7 +49,8 @@ class HotRecipeCard extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              PngImage.genericDemo(hotRecipe.image),
+              PngImage.placeholder,
+              width: 120,
             ),
             const SizedBox(
               width: 10,

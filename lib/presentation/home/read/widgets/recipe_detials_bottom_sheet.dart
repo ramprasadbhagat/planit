@@ -51,7 +51,7 @@ class RecipeDetail extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.4,
           child: Image.asset(
-            PngImage.genericDemo('trending_recipe.png'),
+            PngImage.placeholder,
           ),
         ),
         Positioned(

@@ -1,6 +1,5 @@
 abstract class PngImage {
   static const String _basePath = 'assets/png/';
-  static const String _baseDemoPath = 'assets/demo/';
 
   static const String placeholder = '${_basePath}placeholder.png';
   static const String cartBannerLogo = '${_basePath}cart_banner_logo.png';
@@ -9,5 +8,4 @@ abstract class PngImage {
   static const String appPngimageLogo = '${_basePath}appPngimage.png';
 
   static String generic(image) => '$_basePath$image';
-  static String genericDemo(image) => '$_baseDemoPath$image';
 }

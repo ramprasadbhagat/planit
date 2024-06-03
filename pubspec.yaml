@@ -59,7 +59,6 @@ flutter:
     - assets/png/
     - assets/svg/
     - assets/json/
-    - assets/demo/
 
 
 flutter_icons:

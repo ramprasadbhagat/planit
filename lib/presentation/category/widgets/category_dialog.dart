@@ -166,8 +166,10 @@ class CategoryCard extends StatelessWidget {
               imageUrl: category.image.firstOrNull ?? '',
               height: 45,
               fit: BoxFit.fill,
-              placeholder: (context, url) => const CircularProgressIndicator(
-                color: AppColors.extraLightGray,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.extraLightGray,
+                ),
               ),
               errorWidget: (context, error, stackTrace) => Image.asset(
                 PngImage.placeholder,

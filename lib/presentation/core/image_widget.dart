@@ -17,7 +17,7 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return locator<Config>().appFlavor == Flavor.mock
-        ? Image.asset(PngImage.genericDemo(link))
+        ? Image.asset(PngImage.placeholder)
         : Image.network(
             link,
             height: height,

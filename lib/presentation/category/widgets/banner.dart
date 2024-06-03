@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/utils/png_image.dart';
 
 class SubcategoryBanner extends StatelessWidget {
   const SubcategoryBanner({super.key});
@@ -12,9 +13,9 @@ class SubcategoryBanner extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           image: const DecorationImage(
             image: AssetImage(
-              'assets/demo/banner.png',
+              PngImage.placeholder,
             ),
-            fit: BoxFit.fill,
+            fit: BoxFit.fitHeight,
           ),
         ),
       ),
@@ -23,9 +24,9 @@ class SubcategoryBanner extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           image: const DecorationImage(
             image: AssetImage(
-              'assets/demo/banner.png',
+              PngImage.placeholder,
             ),
-            fit: BoxFit.fill,
+            fit: BoxFit.fitHeight,
           ),
         ),
       ),
@@ -34,9 +35,9 @@ class SubcategoryBanner extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           image: const DecorationImage(
             image: AssetImage(
-              'assets/demo/banner.png',
+              PngImage.placeholder,
             ),
-            fit: BoxFit.fill,
+            fit: BoxFit.fitHeight,
           ),
         ),
       ),

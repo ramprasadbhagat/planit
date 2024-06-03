@@ -77,9 +77,10 @@ class ShopByCategoryItem extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: item.image.firstOrNull ?? '',
                   fit: BoxFit.scaleDown,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(
-                    color: AppColors.extraLightGray,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.extraLightGray,
+                    ),
                   ),
                   errorWidget: (context, error, stackTrace) => Image.asset(
                     PngImage.placeholder,

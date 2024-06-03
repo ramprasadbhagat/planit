@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         if (state != const AuthState.unauthenticated() &&
             state != const AuthState.initial()) {
           _controller.clear();
-          context.router.navigateNamed('/maintab');
+          context.router.replaceNamed('/maintab');
         }
       },
       listenWhen: (previous, current) => previous != current,
