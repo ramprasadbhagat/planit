@@ -9,8 +9,8 @@ part 'cart_product_dto.g.dart';
 class CartProductDto with _$CartProductDto {
   const CartProductDto._();
   const factory CartProductDto({
-    @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'product_id') required String productId,
+    @JsonKey(name: 'id', defaultValue: '') required String id,
+    @JsonKey(name: 'product_id', defaultValue: '') required String productId,
     @JsonKey(name: 'image', defaultValue: '') required String image,
     @JsonKey(name: 'productName', defaultValue: '') required String productName,
     @JsonKey(name: 'productDescription', defaultValue: '')

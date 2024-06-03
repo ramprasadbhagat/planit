@@ -100,13 +100,6 @@ class AddToCartBottomSheet extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Text(
-                        'Similar Products',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
                       SimilarProductSection(
                         product: product,
                       ),

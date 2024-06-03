@@ -20,9 +20,9 @@ CartProductDto _$CartProductDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartProductDto {
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', defaultValue: '')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'image', defaultValue: '')
   String get image => throw _privateConstructorUsedError;
@@ -54,8 +54,8 @@ abstract class $CartProductDtoCopyWith<$Res> {
       _$CartProductDtoCopyWithImpl<$Res, CartProductDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'product_id') String productId,
+      {@JsonKey(name: 'id', defaultValue: '') String id,
+      @JsonKey(name: 'product_id', defaultValue: '') String productId,
       @JsonKey(name: 'image', defaultValue: '') String image,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
@@ -149,8 +149,8 @@ abstract class _$$CartProductDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'product_id') String productId,
+      {@JsonKey(name: 'id', defaultValue: '') String id,
+      @JsonKey(name: 'product_id', defaultValue: '') String productId,
       @JsonKey(name: 'image', defaultValue: '') String image,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
@@ -237,8 +237,8 @@ class __$$CartProductDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CartProductDtoImpl extends _CartProductDto {
   const _$CartProductDtoImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'product_id') required this.productId,
+      {@JsonKey(name: 'id', defaultValue: '') required this.id,
+      @JsonKey(name: 'product_id', defaultValue: '') required this.productId,
       @JsonKey(name: 'image', defaultValue: '') required this.image,
       @JsonKey(name: 'productName', defaultValue: '') required this.productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
@@ -259,10 +259,10 @@ class _$CartProductDtoImpl extends _CartProductDto {
       _$$CartProductDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', defaultValue: '')
   final String id;
   @override
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
   @override
   @JsonKey(name: 'image', defaultValue: '')
@@ -351,8 +351,9 @@ class _$CartProductDtoImpl extends _CartProductDto {
 
 abstract class _CartProductDto extends CartProductDto {
   const factory _CartProductDto(
-      {@JsonKey(name: 'id') required final String id,
-      @JsonKey(name: 'product_id') required final String productId,
+      {@JsonKey(name: 'id', defaultValue: '') required final String id,
+      @JsonKey(name: 'product_id', defaultValue: '')
+      required final String productId,
       @JsonKey(name: 'image', defaultValue: '') required final String image,
       @JsonKey(name: 'productName', defaultValue: '')
       required final String productName,
@@ -375,10 +376,10 @@ abstract class _CartProductDto extends CartProductDto {
       _$CartProductDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id', defaultValue: '')
   String get id;
   @override
-  @JsonKey(name: 'product_id')
+  @JsonKey(name: 'product_id', defaultValue: '')
   String get productId;
   @override
   @JsonKey(name: 'image', defaultValue: '')

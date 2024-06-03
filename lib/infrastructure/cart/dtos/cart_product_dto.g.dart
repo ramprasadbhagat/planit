@@ -8,8 +8,8 @@ part of 'cart_product_dto.dart';
 
 _$CartProductDtoImpl _$$CartProductDtoImplFromJson(Map<String, dynamic> json) =>
     _$CartProductDtoImpl(
-      id: json['id'] as String,
-      productId: json['product_id'] as String,
+      id: json['id'] as String? ?? '',
+      productId: json['product_id'] as String? ?? '',
       image: json['image'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',

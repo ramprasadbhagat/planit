@@ -20,7 +20,8 @@ class ProductDto with _$ProductDto {
     required int startingPrice,
     @JsonKey(name: 'attributeItem', defaultValue: '')
     required String attributeItem,
-    @JsonKey(defaultValue: '') required String attributeItemProductId,
+    @JsonKey(name: 'attributeItemId', defaultValue: '')
+    required String attributeItemProductId,
   }) = _ProductDto;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) =>

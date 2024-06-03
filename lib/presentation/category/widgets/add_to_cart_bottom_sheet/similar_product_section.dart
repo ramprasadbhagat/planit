@@ -14,33 +14,47 @@ class SimilarProductSection extends StatelessWidget {
     context
         .read<SimilarProductBloc>()
         .add(SimilarProductEvent.fetch(product.productId));
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * 0.25,
-          child: BlocBuilder<SimilarProductBloc, SimilarProductState>(
-            builder: (context, state) {
-              if (state.isFetching) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: state.similarProductList.length,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 0,
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.3,
+      child: BlocBuilder<SimilarProductBloc, SimilarProductState>(
+        builder: (context, state) {
+          if (state.isFetching) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.similarProductList.isEmpty) {
+            return const SizedBox.shrink();
+          }
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Similar Products',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
-                itemBuilder: (context, index) => SimilarProductCard(
-                  item: state.similarProductList.elementAt(index),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.similarProductList.length,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 0,
+                  ),
+                  itemBuilder: (context, index) => SimilarProductCard(
+                    item: state.similarProductList.elementAt(index),
+                  ),
                 ),
-              );
-            },
-          ),
-        ),
-      ],
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
