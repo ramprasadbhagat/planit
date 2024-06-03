@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -122,7 +123,20 @@ class SimilarProductCard extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).height * 0.03,
                   width: MediaQuery.sizeOf(context).width * 0.17,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CartBloc>().add(
+                            CartEvent.addToCart(
+                              product: item.toProduct,
+                              quantity: 1,
+                            ),
+                          );
+                      context.router.maybePop();
+                      const snackBar = SnackBar(
+                        content: Text('Item added to cart'),
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
                     style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),

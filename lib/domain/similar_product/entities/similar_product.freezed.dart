@@ -418,7 +418,7 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SimilarProductImpl implements _SimilarProduct {
+class _$SimilarProductImpl extends _SimilarProduct {
   const _$SimilarProductImpl(
       {required this.id,
       required this.categoryId,
@@ -446,7 +446,8 @@ class _$SimilarProductImpl implements _SimilarProduct {
       required this.price,
       required final List<String> productImages})
       : _ingredientsList = ingredientsList,
-        _productImages = productImages;
+        _productImages = productImages,
+        super._();
 
   @override
   final String id;
@@ -607,7 +608,7 @@ class _$SimilarProductImpl implements _SimilarProduct {
           this, _$identity);
 }
 
-abstract class _SimilarProduct implements SimilarProduct {
+abstract class _SimilarProduct extends SimilarProduct {
   const factory _SimilarProduct(
       {required final String id,
       required final String categoryId,
@@ -634,6 +635,7 @@ abstract class _SimilarProduct implements SimilarProduct {
       required final double productRating,
       required final Price price,
       required final List<String> productImages}) = _$SimilarProductImpl;
+  const _SimilarProduct._() : super._();
 
   @override
   String get id;

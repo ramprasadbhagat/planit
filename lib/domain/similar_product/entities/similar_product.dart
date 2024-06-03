@@ -1,9 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
 
 part 'similar_product.freezed.dart';
 
 @freezed
 class SimilarProduct with _$SimilarProduct {
+  const SimilarProduct._();
   const factory SimilarProduct({
     required String id,
     required String categoryId,
@@ -58,6 +62,16 @@ class SimilarProduct with _$SimilarProduct {
         attributeItem: '',
         price: Price.empty(),
         productImages: <String>[],
+      );
+
+  Product get toProduct => Product(
+        productId: ProductId(id),
+        name: productName,
+        productImages: productImages,
+        skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
+        startingPrice: startingPrice,
+        attributeItem: attributeItem,
+        attributeItemProductId: attributeItemProductId,
       );
 }
 

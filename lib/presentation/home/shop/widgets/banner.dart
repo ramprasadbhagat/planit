@@ -50,75 +50,69 @@ class ShoppingBanner extends StatelessWidget {
               ],
             ),
             clipBehavior: Clip.antiAlias,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
               children: [
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    FlutterCarousel(
-                      options: CarouselOptions(
-                        height: 200.0,
-                        viewportFraction: 1,
-                        autoPlay: true,
-                        showIndicator: true,
-                        slideIndicator: const CircularSlideIndicator(
-                          itemSpacing: 10,
-                          indicatorRadius: 3,
-                        ),
-                        indicatorMargin: 15,
-                      ),
-                      items: state.banner.map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  DealCountDown(
-                                    startDate: i.startingDate,
-                                    endDate: i.endingDate,
-                                  ),
-                                  Expanded(
-                                    child: Image.network(
-                                      i.bannerImages[0],
-                                      fit: BoxFit.fitHeight,
-                                      errorBuilder: (context, error, stack) {
-                                        if (error
-                                                is NetworkImageLoadException &&
-                                            error.statusCode == 404) {
-                                          return Image.asset(
-                                            PngImage.placeholder,
-                                            fit: BoxFit.fitHeight,
-                                          );
-                                        }
-
-                                        return Image.asset(
-                                          PngImage.placeholder,
-                                          fit: BoxFit.fitHeight,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
+                FlutterCarousel(
+                  options: CarouselOptions(
+                    height: 200.0,
+                    viewportFraction: 1,
+                    autoPlay: true,
+                    showIndicator: true,
+                    slideIndicator: const CircularSlideIndicator(
+                      itemSpacing: 10,
+                      indicatorRadius: 3,
+                    ),
+                    indicatorMargin: 15,
+                  ),
+                  items: state.banner.map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              DealCountDown(
+                                startDate: i.startingDate,
+                                endDate: i.endingDate,
                               ),
-                            );
-                          },
+                              Expanded(
+                                child: Image.network(
+                                  i.bannerImages[0],
+                                  fit: BoxFit.fitHeight,
+                                  errorBuilder: (context, error, stack) {
+                                    if (error is NetworkImageLoadException &&
+                                        error.statusCode == 404) {
+                                      return Image.asset(
+                                        PngImage.placeholder,
+                                        fit: BoxFit.fitHeight,
+                                      );
+                                    }
+
+                                    return Image.asset(
+                                      PngImage.placeholder,
+                                      fit: BoxFit.fitHeight,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         );
-                      }).toList(),
+                      },
+                    );
+                  }).toList(),
+                ),
+                Positioned(
+                  bottom: 12,
+                  child: Container(
+                    height: 12,
+                    width: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.black.withOpacity(0.15),
                     ),
-                    Positioned(
-                      bottom: 12,
-                      child: Container(
-                        height: 12,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.black.withOpacity(0.15),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),

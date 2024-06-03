@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
@@ -15,33 +14,35 @@ class HighLightSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HighlightProductBloc, HighlightProductState>(
-      builder: (context, state) {
-        if (state.isFetching) {
-          return const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Center(child: ShimmerItem()),
-          );
-          // return const SizedBox(
-          //   height: 100,
-          //   width: double.infinity,
-          //   child: Center(child: CircularProgressIndicator()),
-          // );
-        } else if (state.highlights.isEmpty) {
-          return const NoData();
-        }
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SectionTitle(
-                title: 'Highlights',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          const SectionTitle(
+            title: 'Highlights',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          BlocBuilder<HighlightProductBloc, HighlightProductState>(
+            builder: (context, state) {
+              if (state.isFetching) {
+                return const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(child: ShimmerItem()),
+                );
+                // return const SizedBox(
+                //   height: 100,
+                //   width: double.infinity,
+                //   child: Center(child: CircularProgressIndicator()),
+                // );
+              } else if (state.highlights.isEmpty) {
+                return const SizedBox(
+                  height: 180,
+                  child: NoData(),
+                );
+              }
+              return SizedBox(
                 height: 180,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -49,11 +50,11 @@ class HighLightSection extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) =>
                       HighlightItem(item: state.highlights.elementAt(index)),
                 ),
-              ),
-            ],
+              );
+            },
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }

@@ -62,7 +62,7 @@ mixin _$WishlistProductDto {
   bool get isQuickPick => throw _privateConstructorUsedError;
   @JsonKey(name: 'isDeleted', defaultValue: false)
   bool get isDeleted => throw _privateConstructorUsedError;
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', defaultValue: false)
   bool get isActive => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -103,7 +103,7 @@ abstract class $WishlistProductDtoCopyWith<$Res> {
       @JsonKey(name: 'isHighlighted', defaultValue: false) bool isHighlighted,
       @JsonKey(name: 'isQuickPick', defaultValue: false) bool isQuickPick,
       @JsonKey(name: 'isDeleted', defaultValue: false) bool isDeleted,
-      @JsonKey(name: 'isActive') bool isActive});
+      @JsonKey(name: 'isActive', defaultValue: false) bool isActive});
 }
 
 /// @nodoc
@@ -269,7 +269,7 @@ abstract class _$$WishlistProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'isHighlighted', defaultValue: false) bool isHighlighted,
       @JsonKey(name: 'isQuickPick', defaultValue: false) bool isQuickPick,
       @JsonKey(name: 'isDeleted', defaultValue: false) bool isDeleted,
-      @JsonKey(name: 'isActive') bool isActive});
+      @JsonKey(name: 'isActive', defaultValue: false) bool isActive});
 }
 
 /// @nodoc
@@ -437,7 +437,7 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
       @JsonKey(name: 'isQuickPick', defaultValue: false)
       required this.isQuickPick,
       @JsonKey(name: 'isDeleted', defaultValue: false) required this.isDeleted,
-      @JsonKey(name: 'isActive') required this.isActive})
+      @JsonKey(name: 'isActive', defaultValue: false) required this.isActive})
       : _ingredientsList = ingredientsList,
         super._();
 
@@ -514,7 +514,7 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
   @JsonKey(name: 'isDeleted', defaultValue: false)
   final bool isDeleted;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', defaultValue: false)
   final bool isActive;
 
   @override
@@ -616,48 +616,48 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
 
 abstract class _WishlistProductDto extends WishlistProductDto {
   factory _WishlistProductDto(
-          {@JsonKey(name: '_id', defaultValue: '') required final String id,
-          @JsonKey(name: 'categoryId', defaultValue: '')
-          required final String categoryId,
-          @JsonKey(name: 'subcategoryId', defaultValue: '')
-          required final String subcategoryId,
-          @JsonKey(name: 'productName', defaultValue: '')
-          required final String productName,
-          @JsonKey(name: 'productDescription', defaultValue: '')
-          required final String productDescription,
-          @JsonKey(name: 'productMRP', defaultValue: '')
-          required final String productMRP,
-          @JsonKey(name: 'productReview', defaultValue: '')
-          required final String productReview,
-          @JsonKey(name: 'productRating', defaultValue: '')
-          required final String productRating,
-          @JsonKey(name: 'productDiscount', defaultValue: '')
-          required final String productDiscount,
-          @JsonKey(name: 'sku', defaultValue: '') required final String sku,
-          @JsonKey(name: 'sku_price', defaultValue: '')
-          required final String skuPrice,
-          @JsonKey(name: 'sku_packsize', defaultValue: '')
-          required final String skuPacksize,
-          @JsonKey(name: 'sku_content', defaultValue: '')
-          required final String skuContent,
-          @JsonKey(name: 'sku_inventory', defaultValue: '')
-          required final String skuInventory,
-          @JsonKey(name: 'sku_vendorId', defaultValue: '')
-          required final String skuVendorId,
-          @JsonKey(name: 'sku_vendorInfo', defaultValue: '')
-          required final String skuVendorInfo,
-          @JsonKey(name: 'ingredientsList', defaultValue: [])
-          required final List<String> ingredientsList,
-          @JsonKey(name: 'nutritionalInformation', defaultValue: '')
-          required final String nutritionalInformation,
-          @JsonKey(name: 'isHighlighted', defaultValue: false)
-          required final bool isHighlighted,
-          @JsonKey(name: 'isQuickPick', defaultValue: false)
-          required final bool isQuickPick,
-          @JsonKey(name: 'isDeleted', defaultValue: false)
-          required final bool isDeleted,
-          @JsonKey(name: 'isActive') required final bool isActive}) =
-      _$WishlistProductDtoImpl;
+      {@JsonKey(name: '_id', defaultValue: '') required final String id,
+      @JsonKey(name: 'categoryId', defaultValue: '')
+      required final String categoryId,
+      @JsonKey(name: 'subcategoryId', defaultValue: '')
+      required final String subcategoryId,
+      @JsonKey(name: 'productName', defaultValue: '')
+      required final String productName,
+      @JsonKey(name: 'productDescription', defaultValue: '')
+      required final String productDescription,
+      @JsonKey(name: 'productMRP', defaultValue: '')
+      required final String productMRP,
+      @JsonKey(name: 'productReview', defaultValue: '')
+      required final String productReview,
+      @JsonKey(name: 'productRating', defaultValue: '')
+      required final String productRating,
+      @JsonKey(name: 'productDiscount', defaultValue: '')
+      required final String productDiscount,
+      @JsonKey(name: 'sku', defaultValue: '') required final String sku,
+      @JsonKey(name: 'sku_price', defaultValue: '')
+      required final String skuPrice,
+      @JsonKey(name: 'sku_packsize', defaultValue: '')
+      required final String skuPacksize,
+      @JsonKey(name: 'sku_content', defaultValue: '')
+      required final String skuContent,
+      @JsonKey(name: 'sku_inventory', defaultValue: '')
+      required final String skuInventory,
+      @JsonKey(name: 'sku_vendorId', defaultValue: '')
+      required final String skuVendorId,
+      @JsonKey(name: 'sku_vendorInfo', defaultValue: '')
+      required final String skuVendorInfo,
+      @JsonKey(name: 'ingredientsList', defaultValue: [])
+      required final List<String> ingredientsList,
+      @JsonKey(name: 'nutritionalInformation', defaultValue: '')
+      required final String nutritionalInformation,
+      @JsonKey(name: 'isHighlighted', defaultValue: false)
+      required final bool isHighlighted,
+      @JsonKey(name: 'isQuickPick', defaultValue: false)
+      required final bool isQuickPick,
+      @JsonKey(name: 'isDeleted', defaultValue: false)
+      required final bool isDeleted,
+      @JsonKey(name: 'isActive', defaultValue: false)
+      required final bool isActive}) = _$WishlistProductDtoImpl;
   _WishlistProductDto._() : super._();
 
   factory _WishlistProductDto.fromJson(Map<String, dynamic> json) =
@@ -727,7 +727,7 @@ abstract class _WishlistProductDto extends WishlistProductDto {
   @JsonKey(name: 'isDeleted', defaultValue: false)
   bool get isDeleted;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', defaultValue: false)
   bool get isActive;
   @override
   @JsonKey(ignore: true)

@@ -9,10 +9,11 @@ part 'wishlist_dto.g.dart';
 class WishlistDto with _$WishlistDto {
   const WishlistDto._();
   factory WishlistDto({
-    @JsonKey(name: '_id') required String id,
-    @JsonKey(name: 'user_id') required String userId,
-    @JsonKey(name: 'product_id') required String productId,
-    @JsonKey(name: 'product') required List<WishlistProductDto> product,
+    @JsonKey(name: '_id', defaultValue: '') required String id,
+    @JsonKey(name: 'user_id', defaultValue: '') required String userId,
+    @JsonKey(name: 'product_id', defaultValue: '') required String productId,
+    @JsonKey(name: 'product', defaultValue: [])
+    required List<WishlistProductDto> product,
   }) = _WishlistDto;
 
   factory WishlistDto.fromJson(Map<String, dynamic> json) =>

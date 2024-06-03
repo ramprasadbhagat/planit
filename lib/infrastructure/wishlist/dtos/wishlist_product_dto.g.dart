@@ -33,7 +33,7 @@ _$WishlistProductDtoImpl _$$WishlistProductDtoImplFromJson(
       isHighlighted: json['isHighlighted'] as bool? ?? false,
       isQuickPick: json['isQuickPick'] as bool? ?? false,
       isDeleted: json['isDeleted'] as bool? ?? false,
-      isActive: json['isActive'] as bool,
+      isActive: json['isActive'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$WishlistProductDtoImplToJson(

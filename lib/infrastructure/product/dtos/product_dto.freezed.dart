@@ -32,7 +32,7 @@ mixin _$ProductDto {
   int get startingPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'attributeItem', defaultValue: '')
   String get attributeItem => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemProductId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +57,8 @@ abstract class $ProductDtoCopyWith<$Res> {
       @JsonKey(name: 'startingPrice', defaultValue: 0, readValue: intReadValue)
       int startingPrice,
       @JsonKey(name: 'attributeItem', defaultValue: '') String attributeItem,
-      @JsonKey(defaultValue: '') String attributeItemProductId});
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemProductId});
 }
 
 /// @nodoc
@@ -132,7 +133,8 @@ abstract class _$$ProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'startingPrice', defaultValue: 0, readValue: intReadValue)
       int startingPrice,
       @JsonKey(name: 'attributeItem', defaultValue: '') String attributeItem,
-      @JsonKey(defaultValue: '') String attributeItemProductId});
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemProductId});
 }
 
 /// @nodoc
@@ -201,7 +203,8 @@ class _$ProductDtoImpl extends _ProductDto {
       required this.startingPrice,
       @JsonKey(name: 'attributeItem', defaultValue: '')
       required this.attributeItem,
-      @JsonKey(defaultValue: '') required this.attributeItemProductId})
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required this.attributeItemProductId})
       : _productImages = productImages,
         super._();
 
@@ -233,7 +236,7 @@ class _$ProductDtoImpl extends _ProductDto {
   @JsonKey(name: 'attributeItem', defaultValue: '')
   final String attributeItem;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
   final String attributeItemProductId;
 
   @override
@@ -301,7 +304,7 @@ abstract class _ProductDto extends ProductDto {
       required final int startingPrice,
       @JsonKey(name: 'attributeItem', defaultValue: '')
       required final String attributeItem,
-      @JsonKey(defaultValue: '')
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
       required final String attributeItemProductId}) = _$ProductDtoImpl;
   _ProductDto._() : super._();
 
@@ -327,7 +330,7 @@ abstract class _ProductDto extends ProductDto {
   @JsonKey(name: 'attributeItem', defaultValue: '')
   String get attributeItem;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemProductId;
   @override
   @JsonKey(ignore: true)

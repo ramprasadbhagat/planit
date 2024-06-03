@@ -42,7 +42,7 @@ class WishlistProductDto with _$WishlistProductDto {
     @JsonKey(name: 'isQuickPick', defaultValue: false)
     required bool isQuickPick,
     @JsonKey(name: 'isDeleted', defaultValue: false) required bool isDeleted,
-    @JsonKey(name: 'isActive') required bool isActive,
+    @JsonKey(name: 'isActive', defaultValue: false) required bool isActive,
   }) = _WishlistProductDto;
 
   factory WishlistProductDto.fromJson(Map<String, dynamic> json) =>
