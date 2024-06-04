@@ -7,11 +7,13 @@ class PincodeState with _$PincodeState {
     required String pincode,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required bool showErrorMessages,
   }) = _PincodeState;
 
   factory PincodeState.initial() => PincodeState(
         pincode: '',
         apiFailureOrSuccessOption: none(),
-        isFetching: true,
+        isFetching: false,
+        showErrorMessages: true,
       );
 }

@@ -36,11 +36,14 @@ class PincodeRepository extends IPincodeRepository {
     // }
     try {
       final res = await remoteDataSource.checkPincode(pincode: pincode);
-      if (res == PincodeCheck.empty()) {
-        return const Left(ApiFailure.other('Pincode is not found'));
-      }
+      // if (res == PincodeCheck.empty()) {
+      //   return Left(FailureHandler.handleFailure(e));
+      // }
       return Right(res);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Pincode is not found'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }
@@ -60,11 +63,14 @@ class PincodeRepository extends IPincodeRepository {
     }
     try {
       final res = await remoteDataSource.savePincode(pincode: pincode);
-      if (res == Pincode.empty()) {
-        return const Left(ApiFailure.other('Pincode is not saved'));
-      }
+      // if (res == Pincode.empty()) {
+      //   return const Left(ApiFailure.other('Pincode is not saved'));
+      // }
       return Right(res);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Pincode is not saved'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }

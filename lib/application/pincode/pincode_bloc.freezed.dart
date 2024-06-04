@@ -474,6 +474,7 @@ mixin _$PincodeState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get showErrorMessages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PincodeStateCopyWith<PincodeState> get copyWith =>
@@ -489,7 +490,8 @@ abstract class $PincodeStateCopyWith<$Res> {
   $Res call(
       {String pincode,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool showErrorMessages});
 }
 
 /// @nodoc
@@ -508,6 +510,7 @@ class _$PincodeStateCopyWithImpl<$Res, $Val extends PincodeState>
     Object? pincode = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? showErrorMessages = null,
   }) {
     return _then(_value.copyWith(
       pincode: null == pincode
@@ -521,6 +524,10 @@ class _$PincodeStateCopyWithImpl<$Res, $Val extends PincodeState>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showErrorMessages: null == showErrorMessages
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -537,7 +544,8 @@ abstract class _$$PincodeStateImplCopyWith<$Res>
   $Res call(
       {String pincode,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool showErrorMessages});
 }
 
 /// @nodoc
@@ -554,6 +562,7 @@ class __$$PincodeStateImplCopyWithImpl<$Res>
     Object? pincode = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? showErrorMessages = null,
   }) {
     return _then(_$PincodeStateImpl(
       pincode: null == pincode
@@ -568,6 +577,10 @@ class __$$PincodeStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      showErrorMessages: null == showErrorMessages
+          ? _value.showErrorMessages
+          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -578,7 +591,8 @@ class _$PincodeStateImpl extends _PincodeState {
   const _$PincodeStateImpl(
       {required this.pincode,
       required this.apiFailureOrSuccessOption,
-      required this.isFetching})
+      required this.isFetching,
+      required this.showErrorMessages})
       : super._();
 
   @override
@@ -587,10 +601,12 @@ class _$PincodeStateImpl extends _PincodeState {
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool showErrorMessages;
 
   @override
   String toString() {
-    return 'PincodeState(pincode: $pincode, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'PincodeState(pincode: $pincode, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, showErrorMessages: $showErrorMessages)';
   }
 
   @override
@@ -603,12 +619,14 @@ class _$PincodeStateImpl extends _PincodeState {
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            (identical(other.showErrorMessages, showErrorMessages) ||
+                other.showErrorMessages == showErrorMessages));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pincode, apiFailureOrSuccessOption, isFetching);
+  int get hashCode => Object.hash(runtimeType, pincode,
+      apiFailureOrSuccessOption, isFetching, showErrorMessages);
 
   @JsonKey(ignore: true)
   @override
@@ -622,7 +640,8 @@ abstract class _PincodeState extends PincodeState {
       {required final String pincode,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$PincodeStateImpl;
+      required final bool isFetching,
+      required final bool showErrorMessages}) = _$PincodeStateImpl;
   const _PincodeState._() : super._();
 
   @override
@@ -631,6 +650,8 @@ abstract class _PincodeState extends PincodeState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get showErrorMessages;
   @override
   @JsonKey(ignore: true)
   _$$PincodeStateImplCopyWith<_$PincodeStateImpl> get copyWith =>

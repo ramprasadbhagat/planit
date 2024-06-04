@@ -50,14 +50,14 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
             state.copyWith(
               isFetching: false,
               pincode: '',
-              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              apiFailureOrSuccessOption: none(),
             ),
           ),
           (pincode) => emit(
             state.copyWith(
               isFetching: false,
               pincode: pincode.pincode,
-              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              apiFailureOrSuccessOption: none(),
             ),
           ),
         );
