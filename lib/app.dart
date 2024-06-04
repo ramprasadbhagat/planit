@@ -5,6 +5,7 @@ import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
@@ -67,6 +68,10 @@ class App extends StatelessWidget {
         BlocProvider<WishlistBloc>(
           create: (context) =>
               locator<WishlistBloc>()..add(const WishlistEvent.fetch()),
+        ),
+        BlocProvider<PincodeBloc>(
+          create: (context) =>
+              locator<PincodeBloc>()..add(const PincodeEvent.initialized()),
         ),
       ],
       child: MaterialApp.router(
