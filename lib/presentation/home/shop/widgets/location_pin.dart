@@ -1,15 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class LocationPin extends StatefulWidget {
@@ -59,10 +57,13 @@ class _LocationPinState extends State<LocationPin> {
                       const SizedBox(width: 4.0),
                       GestureDetector(
                         onTap: () {
-                          showDialog(
+                          showModalBottomSheet<void>(
                             context: context,
-                            barrierDismissible: false,
-                            builder: (_) => const PinCodeDialogBox(),
+                            isScrollControlled: true,
+                            builder: (BuildContext context) =>
+                                const CommonBottomSheet(
+                              child: PinCodeDialogBox(),
+                            ),
                           );
                         },
                         child: Text(
@@ -117,88 +118,102 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
   Widget build(BuildContext context) {
     final pincodeBloc = context.read<PincodeBloc>();
 
-    return AlertDialog(
-      insetPadding: const EdgeInsets.only(
-        top: 50,
-      ),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        // padding: const EdgeInsetsDirectional.only(top: 30.0),
-        child: Form(
-          key: _formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: SizedBox(
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: InkWell(
-                    onTap: () {
-                      context.router.maybePop();
-                    },
-                    child: const Icon(
-                      Icons.clear,
-                      color: AppColors.grey3,
-                      size: 30,
-                    ),
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.8,
+      child: Form(
+        key: _formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: SizedBox(
+          child: Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsetsDirectional.symmetric(horizontal: 24.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text(
+                        'Enter your pin code',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: myController,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(6),
+                        ],
+                        validator: (value) {
+                          if (value == null || value.trim() == '') {
+                            return "pincode can't be empty";
+                          } else if (value.length < 6) {
+                            return 'enter valid pincode';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Pin Code',
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                              width: 0.3,
+                            ),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                              width: 0.3,
+                            ),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                              width: 0.3,
+                            ),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const Text(
-                  'Enter your pin code',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  controller: myController,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(6),
+              ),
+              Container(
+                height: 70,
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 8,
+                    ),
                   ],
-                  validator: (value) {
-                    if (value == null || value.trim() == '') {
-                      return "pincode can't be empty";
-                    } else if (value.length < 6) {
-                      return 'enter valid pincode';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Pin Code',
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.3,
-                      ),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.3,
-                      ),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.3,
-                      ),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  width: MediaQuery.sizeOf(context).width * 0.8,
-                  margin: const EdgeInsets.only(top: 50),
-                  child: BlocBuilder<PincodeBloc, PincodeState>(
-                    builder: (context, state) {
-                      return ElevatedButton(
+                child: BlocBuilder<PincodeBloc, PincodeState>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      width: 169,
+                      child: ElevatedButton(
                         onPressed: () {
                           final pincodeValue = myController.text;
 
@@ -212,10 +227,9 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          shape: const StadiumBorder(),
                           backgroundColor: AppColors.black,
-                          maximumSize: Size.fromWidth(
-                            MediaQuery.sizeOf(context).width * 0.7,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(26.0),
                           ),
                         ),
                         child: state.isFetching
@@ -223,12 +237,12 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                                 color: Colors.white,
                               )
                             : const Text('Save Changes'),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
