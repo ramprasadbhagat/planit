@@ -12,4 +12,7 @@ abstract class SvgImage {
   static const String fabOutlineIcon = '${_basePath}fab_outline_border.svg';
   static const String noDataImage = '${_basePath}no_data.svg';
   static const String emptyCartImage = '${_basePath}empty_cart.svg';
+  static const String edit = '${_basePath}edit.svg';
+  static const String delete = '${_basePath}delete.svg';
+  static const String creditCard = '${_basePath}credit_card.svg';
 }

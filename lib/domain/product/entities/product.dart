@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
 part 'product.freezed.dart';
@@ -15,6 +16,7 @@ class Product with _$Product {
     required int startingPrice,
     required String attributeItem,
     required String attributeItemProductId,
+    required Price price,
   }) = _Product;
 
   factory Product.empty() => Product(
@@ -25,5 +27,6 @@ class Product with _$Product {
         startingPrice: 0,
         attributeItem: '',
         attributeItemProductId: '',
+        price: Price.empty(),
       );
 }

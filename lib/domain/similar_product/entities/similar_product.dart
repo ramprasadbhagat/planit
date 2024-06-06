@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/domain/product/entities/price.dart' as pp;
 
 part 'similar_product.freezed.dart';
 
@@ -72,6 +73,7 @@ class SimilarProduct with _$SimilarProduct {
         startingPrice: startingPrice,
         attributeItem: attributeItem,
         attributeItemProductId: attributeItemProductId,
+        price: pp.Price(price: price.price, quantity: price.quantity),
       );
 }
 

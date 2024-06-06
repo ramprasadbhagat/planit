@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
         automaticallyImplyLeading: true,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.router.maybePop();
           },
           icon: const Icon(
             Icons.arrow_back_ios_sharp,
@@ -72,7 +72,7 @@ class ProfilePage extends StatelessWidget {
               height: 20,
             ),
             CustomTile(
-              onTap: () {},
+              onTap: () => context.router.navigate(const AddressBookRoute()),
               leadingIcon: Icons.fact_check_outlined,
               title: 'Address Book',
             ),
