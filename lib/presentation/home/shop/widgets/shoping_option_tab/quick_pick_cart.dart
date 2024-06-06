@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -121,8 +122,10 @@ class QuickPickCard extends StatelessWidget {
                       onPressed: () => showModalBottomSheet<void>(
                         context: context,
                         isScrollControlled: true,
-                        builder: (BuildContext context) => AddToCartBottomSheet(
-                          product: item.toProduct,
+                        builder: (BuildContext context) => CommonBottomSheet(
+                          child: AddToCartBottomSheet(
+                            product: item.toProduct,
+                          ),
                         ),
                       ),
                       style: OutlinedButton.styleFrom(

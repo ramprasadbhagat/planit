@@ -243,9 +243,8 @@ class Unit extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.11,
-      width: MediaQuery.sizeOf(context).width * 0.22,
       margin: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: AppColors.extraLightGray,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -254,10 +253,15 @@ class Unit extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(product.attributeItem, style: textTheme.bodySmall),
-          const SizedBox(
-            height: 2,
-          ),
+          if (product.attributeItem.isNotEmpty) ...[
+            Text(
+              product.attributeItem,
+              style: textTheme.bodySmall?.copyWith(fontSize: 10),
+            ),
+            const SizedBox(
+              height: 2,
+            ),
+          ],
           Text(
             '₹ ${product.price.price}',
             style: textTheme.bodySmall?.copyWith(fontSize: 10),

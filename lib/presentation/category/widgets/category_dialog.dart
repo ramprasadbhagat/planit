@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
-import 'package:planit/presentation/core/image_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/utils/png_image.dart';

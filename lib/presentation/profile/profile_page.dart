@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
 import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
 import 'package:planit/presentation/profile/widgets/user_details_section.dart';
@@ -48,8 +49,9 @@ class ProfilePage extends StatelessWidget {
                   onTap: () => showModalBottomSheet<void>(
                     context: context,
                     isScrollControlled: true,
-                    builder: (BuildContext context) =>
-                        const EditProfileBottomSheet(),
+                    builder: (BuildContext context) => const CommonBottomSheet(
+                      child: EditProfileBottomSheet(),
+                    ),
                   ),
                   child: const Icon(
                     Icons.edit_note,

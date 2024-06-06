@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/domain/home/entities/trending_recipe.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/read/widgets/recipe_detials_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -54,8 +55,10 @@ class TrendingRecipeCard extends StatelessWidget {
     return InkWell(
       onTap: () => showModalBottomSheet<void>(
         context: context,
-        builder: (BuildContext context) => RecipeDetailsBottomSheet(
-          trendingRecipe: trendingRecipe,
+        builder: (BuildContext context) => CommonBottomSheet(
+          child: RecipeDetailsBottomSheet(
+            trendingRecipe: trendingRecipe,
+          ),
         ),
       ),
       child: Stack(
