@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/infrastructure/product/dtos/price_dto.dart';
 
 part 'product_dto.freezed.dart';
 part 'product_dto.g.dart';
@@ -22,6 +23,7 @@ class ProductDto with _$ProductDto {
     required String attributeItem,
     @JsonKey(name: 'attributeItemId', defaultValue: '')
     required String attributeItemProductId,
+    required PriceDto price,
   }) = _ProductDto;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) =>
@@ -35,6 +37,7 @@ class ProductDto with _$ProductDto {
         startingPrice: startingPrice,
         attributeItem: attributeItem,
         attributeItemProductId: attributeItemProductId,
+        price: price.toDomain,
       );
 }
 

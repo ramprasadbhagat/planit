@@ -138,7 +138,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'MRP ₹${product.skuPrice.getOrDefaultValue(0).toString()}',
+                          'MRP ₹${product.price.price}',
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -254,14 +254,14 @@ class Unit extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            product.attributeItem,
-            style: textTheme.bodySmall?.copyWith(fontSize: 10),
-          ),
+          Text(product.attributeItem, style: textTheme.bodySmall),
           const SizedBox(
             height: 2,
           ),
-          Text('\$ ${product.skuPrice.getValue()}', style: textTheme.bodySmall),
+          Text(
+            '₹ ${product.price.price}',
+            style: textTheme.bodySmall?.copyWith(fontSize: 10),
+          ),
         ],
       ),
     );
