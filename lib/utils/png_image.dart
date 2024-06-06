@@ -6,6 +6,7 @@ abstract class PngImage {
   static const String loginBackGround = '${_basePath}login_background.png';
   static const String planitLoginLogo = '${_basePath}planit_logo.png';
   static const String appPngimageLogo = '${_basePath}appPngimage.png';
+  static const String creditCard = '${_basePath}card.png';
 
   static String generic(image) => '$_basePath$image';
 }
