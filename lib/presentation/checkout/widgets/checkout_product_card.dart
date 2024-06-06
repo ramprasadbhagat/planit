@@ -30,6 +30,7 @@ class ChecoutItemCard extends StatelessWidget {
                 ),
                 height: MediaQuery.sizeOf(context).height * 0.08,
                 width: MediaQuery.sizeOf(context).width * 0.18,
+                padding: const EdgeInsets.all(5),
                 child: CachedNetworkImage(
                   imageUrl: cartProduct.image,
                   fit: BoxFit.scaleDown,
@@ -45,25 +46,32 @@ class ChecoutItemCard extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    cartProduct.productName,
-                    style: textTheme.bodySmall
-                        ?.copyWith(fontSize: 14, fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.start,
-                  ),
-                  Text(
-                    cartProduct.productDescription,
-                    style: textTheme.bodySmall?.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.lightGray,
+              SizedBox(
+                width: 150,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      cartProduct.productName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodySmall
+                          ?.copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.start,
                     ),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
+                    Text(
+                      cartProduct.productDescription,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.lightGray,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
               ),
               const Spacer(),
               Column(
