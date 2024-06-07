@@ -32,7 +32,8 @@ class AddToCartBottomSheet extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: ListView(
                     children: [
                       product.productImages.isEmpty
@@ -50,6 +51,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 height: 300,
                                 viewportFraction: 1,
                                 showIndicator: true,
+                                enableInfiniteScroll: true,
                                 slideIndicator: const CircularSlideIndicator(
                                   itemSpacing: 10,
                                   indicatorRadius: 4,

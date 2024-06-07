@@ -146,18 +146,19 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       const SizedBox(
                         height: 10,
                       ),
-                      state.canLoadMore
-                          ? const SizedBox.shrink()
-                          : const Center(
-                              child: Text(
-                                'No more data to load',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppColors.grey2,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
+                      // state.canLoadMore
+                      //     ? const SizedBox.shrink()
+                      //     :
+                      // const Center(
+                      //     child: Text(
+                      //       'No more data to load',
+                      //       style: TextStyle(
+                      //         fontSize: 16,
+                      //         color: AppColors.grey2,
+                      //         fontWeight: FontWeight.w500,
+                      //       ),
+                      //     ),
+                      //   ),
                       state.isScrolling
                           ? const Padding(
                               padding: EdgeInsets.only(bottom: 20),
