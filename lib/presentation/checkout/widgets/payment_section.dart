@@ -83,6 +83,32 @@ class PaymentSection extends StatelessWidget {
                 ),
               ],
             ),
+            Row(
+              children: [
+                Radio(
+                  fillColor: MaterialStateProperty.resolveWith((states) {
+                    // active
+                    if (states.contains(MaterialState.selected)) {
+                      return Colors.black;
+                    }
+                    // inactive
+                    return Colors.grey;
+                  }),
+                  value: 0,
+                  groupValue: 2,
+                  onChanged: (e) {},
+                ),
+                Text(
+                  'Cash on delivery',
+                  style: textTheme.bodySmall?.copyWith(
+                    fontSize: 13,
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
             const SizedBox(
               height: 5,
             ),
