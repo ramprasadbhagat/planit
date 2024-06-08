@@ -140,7 +140,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'MRP ₹${product.price.price}',
+                          'MRP ₹${product.getPriceValue}',
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -265,7 +265,7 @@ class Unit extends StatelessWidget {
             ),
           ],
           Text(
-            '₹ ${product.price.price}',
+            '₹ ${product.getPriceValue}',
             style: textTheme.bodySmall?.copyWith(fontSize: 10),
           ),
         ],

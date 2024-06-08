@@ -84,13 +84,13 @@ class SimilarProductCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '₹${item.productMRP} ',
+                  '₹${item.getPriceValue} ',
                   style: textTheme.bodySmall?.copyWith(
                     fontSize: 9,
                   ),
                 ),
                 Text(
-                  item.skuPrice,
+                  '${(double.tryParse(item.getPriceValue) ?? 0) + 30.0}',
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGray,

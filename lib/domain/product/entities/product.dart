@@ -19,6 +19,16 @@ class Product with _$Product {
     required Price price,
   }) = _Product;
 
+  String get getPriceValue {
+    if ((double.tryParse(price.price) ?? 0) > 0) {
+      return price.price;
+    } else if (startingPrice > 0) {
+      return startingPrice.toString();
+    } else {
+      return skuPrice.getValue().toString();
+    }
+  }
+
   factory Product.empty() => Product(
         productId: ProductId(''),
         name: '',

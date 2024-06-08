@@ -66,13 +66,54 @@ class _MainTabbarState extends State<MainTabbar> {
             },
             items: _getTabs(context)
                 .map(
-                  (item) => BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      item.icon,
-                      height: 25,
-                    ),
-                    label: item.label,
-                  ),
+                  (item) => item == cartTabRouteItem
+                      ? BottomNavigationBarItem(
+                          icon: BlocBuilder<CartBloc, CartState>(
+                            builder: (context, state) {
+                              return Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  SvgPicture.asset(
+                                    item.icon,
+                                    height: 25,
+                                  ),
+                                  Positioned(
+                                    top: -10,
+                                    right: -10,
+                                    child: state.isCartEmpty
+                                        ? const SizedBox.shrink()
+                                        : Container(
+                                            height: 20,
+                                            width: 20,
+                                            alignment: Alignment.center,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: AppColors.red,
+                                            ),
+                                            child: Text(
+                                              state.cartItem.products.length
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                color: AppColors.white,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                          label: item.label,
+                        )
+                      : BottomNavigationBarItem(
+                          icon: SvgPicture.asset(
+                            item.icon,
+                            height: 25,
+                          ),
+                          label: item.label,
+                        ),
                 )
                 .toList(),
           );

@@ -65,6 +65,18 @@ class SimilarProduct with _$SimilarProduct {
         productImages: <String>[],
       );
 
+  String get getPriceValue {
+    if ((double.tryParse(price.price) ?? 0) > 0) {
+      return price.price;
+    } else if (startingPrice > 0) {
+      return startingPrice.toString();
+    } else if (productMRP > 0) {
+      return productMRP.toString();
+    } else {
+      return skuPrice;
+    }
+  }
+
   Product get toProduct => Product(
         productId: ProductId(id),
         name: productName,

@@ -71,13 +71,13 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '₹${product.price.price} ',
+                  '₹${product.getPriceValue} ',
                   style: textTheme.bodySmall?.copyWith(
                     fontSize: 9,
                   ),
                 ),
                 Text(
-                  ' ${(double.tryParse(product.price.price) ?? 0) + 30.0}',
+                  ' ${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
                   style: textTheme.bodySmall!.copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGray,
