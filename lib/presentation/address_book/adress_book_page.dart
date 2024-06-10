@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
 import 'package:planit/presentation/address_book/widget/custom_text_field.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -18,170 +19,80 @@ class AddressBookPage extends StatefulWidget {
 }
 
 class _AddressBookPageState extends State<AddressBookPage> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _pincodeController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _mobileController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text(
+          'Address book',
+          style: textTheme.labelLarge,
+        ),
+        leadingWidth: 20,
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: AppColors.lightGrey,
+          ),
+          onPressed: () => context.router.maybePop(),
+        ),
+      ),
       body: Stack(
         children: [
           Image.asset(PngImage.loginBackGround),
           Padding(
             padding: const EdgeInsets.only(top: 120),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Column(
-                children: [
-                  Card(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Card(
                     elevation: 2,
                     margin: const EdgeInsets.all(16.0),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.75,
-                        child: SingleChildScrollView(
-                          physics: const ClampingScrollPhysics(),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'New User Adresss',
-                                style: textTheme.titleMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomTextField(
-                                controller: _nameController,
-                                hintText: 'Name',
-                                keyboardType: TextInputType.name,
-                                validator: (value) {
-                                  if (value == null || value.trim() == '') {
-                                    return "name can't be empty";
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomTextField(
-                                controller: _emailController,
-                                hintText: 'Email Address',
-                                keyboardType: TextInputType.emailAddress,
-                                validator: (value) {
-                                  bool emailValidate(String email) {
-                                    return RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-                                    ).hasMatch(email);
-                                  }
-
-                                  if (value == null || value.trim() == '') {
-                                    return "email can't be empty";
-                                  } else if (!emailValidate(value)) {
-                                    return 'please enter a valid email';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomTextField(
-                                controller: _pincodeController,
-                                hintText: 'Pin Code',
-                                keyboardType: TextInputType.number,
-                                validator: (value) {
-                                  if (value == null || value.trim() == '') {
-                                    return "pin code can't be empty";
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomTextField(
-                                controller: _addressController,
-                                hintText: 'Address',
-                                keyboardType: TextInputType.text,
-                                validator: (value) {
-                                  if (value == null || value.trim() == '') {
-                                    return "address can't be empty";
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustomTextField(
-                                controller: _mobileController,
-                                hintText: 'Mobile Number',
-                                keyboardType: TextInputType.number,
-                                validator: (value) {
-                                  if (value == null || value.trim() == '') {
-                                    return "mobile number can't be empty";
-                                  } else if (value.trim().length < 10) {
-                                    return 'enter valid mobile number';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  CustomCheckBox(
-                                    onChanged: (e) {},
-                                    value: true,
-                                  ),
-                                  Text(
-                                    'Prefered / Default',
-                                    style: textTheme.titleMedium?.copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      FocusScope.of(context).unfocus();
-                                    }
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: const StadiumBorder(),
-                                    backgroundColor: AppColors.black,
-                                    maximumSize: const Size(330, 50),
-                                  ),
-                                  child: const Text('Add Delivery Address'),
+                        //height: MediaQuery.of(context).size.height * 0.7,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Adresss Book',
+                                  style: textTheme.titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              ListView.builder(
+                                InkWell(
+                                  onTap: () {
+                                    showModalBottomSheet<void>(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      builder: (BuildContext context) =>
+                                          const CommonBottomSheet(
+                                        child: NewAddressBookSheet(),
+                                      ),
+                                    );
+                                  },
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: AppColors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Expanded(
+                              child: ListView.builder(
                                 padding: EdgeInsets.zero,
                                 itemCount: 2,
                                 physics: const ClampingScrollPhysics(),
-                                shrinkWrap: true,
+                                // shrinkWrap: true,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Container(
                                     width: double.infinity,
@@ -275,17 +186,172 @@ class _AddressBookPageState extends State<AddressBookPage> {
                                   );
                                 },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NewAddressBookSheet extends StatelessWidget {
+  const NewAddressBookSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final formKey = GlobalKey<FormState>();
+    final nameController = TextEditingController();
+    final emailController = TextEditingController();
+    final pincodeController = TextEditingController();
+    final addressController = TextEditingController();
+    final mobileController = TextEditingController();
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.8,
+      child: Form(
+        key: formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsetsDirectional.symmetric(horizontal: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'Add Adresss Book',
+                      style: textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: nameController,
+                      hintText: 'Name',
+                      keyboardType: TextInputType.name,
+                      validator: (value) {
+                        if (value == null || value.trim() == '') {
+                          return "name can't be empty";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: pincodeController,
+                      hintText: 'Pin Code',
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.trim() == '') {
+                          return "pin code can't be empty";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: addressController,
+                      hintText: 'Address',
+                      keyboardType: TextInputType.text,
+                      validator: (value) {
+                        if (value == null || value.trim() == '') {
+                          return "address can't be empty";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: mobileController,
+                      hintText: 'Mobile Number',
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.trim() == '') {
+                          return "mobile number can't be empty";
+                        } else if (value.trim().length < 10) {
+                          return 'enter valid mobile number';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CustomCheckBox(
+                          onChanged: (e) {},
+                          value: true,
+                        ),
+                        Text(
+                          'Prefered / Default',
+                          style: textTheme.titleMedium?.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: 70,
+              width: double.infinity,
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 8,
+                  ),
+                ],
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      FocusScope.of(context).unfocus();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    backgroundColor: AppColors.black,
+                    maximumSize: const Size(330, 50),
+                  ),
+                  child: const Text('Add Delivery Address'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
