@@ -9,12 +9,14 @@ class SubCategory with _$SubCategory {
   factory SubCategory({
     required StringValue id,
     required StringValue name,
+    required StringValue description,
     required List<String> image,
   }) = _SubCategory;
 
   factory SubCategory.empty() => SubCategory(
         id: StringValue(''),
         name: StringValue(''),
+        description: StringValue(''),
         image: [],
       );
 }

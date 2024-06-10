@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
-import 'package:planit/infrastructure/sub_categories/sub_category_dto.dart';
+import 'package:planit/infrastructure/sub_categories/dtos/sub_category_dto.dart';
 
 part 'category_dto.freezed.dart';
 part 'category_dto.g.dart';

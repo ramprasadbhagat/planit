@@ -21,6 +21,8 @@ mixin _$SubCategoryEvent {
     required TResult Function() initialized,
     required TResult Function(SubCategory subCategory) select,
     required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
     required TResult Function() loadMoreProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +31,8 @@ mixin _$SubCategoryEvent {
     TResult? Function()? initialized,
     TResult? Function(SubCategory subCategory)? select,
     TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
     TResult? Function()? loadMoreProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +41,8 @@ mixin _$SubCategoryEvent {
     TResult Function()? initialized,
     TResult Function(SubCategory subCategory)? select,
     TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
     TResult Function()? loadMoreProduct,
     required TResult orElse(),
   }) =>
@@ -46,6 +52,8 @@ mixin _$SubCategoryEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Select value) select,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
     required TResult Function(_LoadMoreProduct value) loadMoreProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +62,8 @@ mixin _$SubCategoryEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Select value)? select,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +72,8 @@ mixin _$SubCategoryEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Select value)? select,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult Function(_LoadMoreProduct value)? loadMoreProduct,
     required TResult orElse(),
   }) =>
@@ -127,6 +139,8 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function(SubCategory subCategory) select,
     required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
     required TResult Function() loadMoreProduct,
   }) {
     return initialized();
@@ -138,6 +152,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function(SubCategory subCategory)? select,
     TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
     TResult? Function()? loadMoreProduct,
   }) {
     return initialized?.call();
@@ -149,6 +165,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function(SubCategory subCategory)? select,
     TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
     TResult Function()? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -164,6 +182,8 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Select value) select,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
     required TResult Function(_LoadMoreProduct value) loadMoreProduct,
   }) {
     return initialized(this);
@@ -175,6 +195,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Select value)? select,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
   }) {
     return initialized?.call(this);
@@ -186,6 +208,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Select value)? select,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult Function(_LoadMoreProduct value)? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -278,6 +302,8 @@ class _$SelectImpl implements _Select {
     required TResult Function() initialized,
     required TResult Function(SubCategory subCategory) select,
     required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
     required TResult Function() loadMoreProduct,
   }) {
     return select(subCategory);
@@ -289,6 +315,8 @@ class _$SelectImpl implements _Select {
     TResult? Function()? initialized,
     TResult? Function(SubCategory subCategory)? select,
     TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
     TResult? Function()? loadMoreProduct,
   }) {
     return select?.call(subCategory);
@@ -300,6 +328,8 @@ class _$SelectImpl implements _Select {
     TResult Function()? initialized,
     TResult Function(SubCategory subCategory)? select,
     TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
     TResult Function()? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -315,6 +345,8 @@ class _$SelectImpl implements _Select {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Select value) select,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
     required TResult Function(_LoadMoreProduct value) loadMoreProduct,
   }) {
     return select(this);
@@ -326,6 +358,8 @@ class _$SelectImpl implements _Select {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Select value)? select,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
   }) {
     return select?.call(this);
@@ -337,6 +371,8 @@ class _$SelectImpl implements _Select {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Select value)? select,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult Function(_LoadMoreProduct value)? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -397,6 +433,8 @@ class _$FetchProductImpl implements _FetchProduct {
     required TResult Function() initialized,
     required TResult Function(SubCategory subCategory) select,
     required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
     required TResult Function() loadMoreProduct,
   }) {
     return fetchProduct();
@@ -408,6 +446,8 @@ class _$FetchProductImpl implements _FetchProduct {
     TResult? Function()? initialized,
     TResult? Function(SubCategory subCategory)? select,
     TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
     TResult? Function()? loadMoreProduct,
   }) {
     return fetchProduct?.call();
@@ -419,6 +459,8 @@ class _$FetchProductImpl implements _FetchProduct {
     TResult Function()? initialized,
     TResult Function(SubCategory subCategory)? select,
     TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
     TResult Function()? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -434,6 +476,8 @@ class _$FetchProductImpl implements _FetchProduct {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Select value) select,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
     required TResult Function(_LoadMoreProduct value) loadMoreProduct,
   }) {
     return fetchProduct(this);
@@ -445,6 +489,8 @@ class _$FetchProductImpl implements _FetchProduct {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Select value)? select,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
   }) {
     return fetchProduct?.call(this);
@@ -456,6 +502,8 @@ class _$FetchProductImpl implements _FetchProduct {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Select value)? select,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult Function(_LoadMoreProduct value)? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -468,6 +516,264 @@ class _$FetchProductImpl implements _FetchProduct {
 
 abstract class _FetchProduct implements SubCategoryEvent {
   const factory _FetchProduct() = _$FetchProductImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchGetShopByCategoryImplCopyWith<$Res> {
+  factory _$$FetchGetShopByCategoryImplCopyWith(
+          _$FetchGetShopByCategoryImpl value,
+          $Res Function(_$FetchGetShopByCategoryImpl) then) =
+      __$$FetchGetShopByCategoryImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchGetShopByCategoryImplCopyWithImpl<$Res>
+    extends _$SubCategoryEventCopyWithImpl<$Res, _$FetchGetShopByCategoryImpl>
+    implements _$$FetchGetShopByCategoryImplCopyWith<$Res> {
+  __$$FetchGetShopByCategoryImplCopyWithImpl(
+      _$FetchGetShopByCategoryImpl _value,
+      $Res Function(_$FetchGetShopByCategoryImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchGetShopByCategoryImpl implements _FetchGetShopByCategory {
+  const _$FetchGetShopByCategoryImpl();
+
+  @override
+  String toString() {
+    return 'SubCategoryEvent.getShopByCategory()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchGetShopByCategoryImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(SubCategory subCategory) select,
+    required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
+    required TResult Function() loadMoreProduct,
+  }) {
+    return getShopByCategory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(SubCategory subCategory)? select,
+    TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
+    TResult? Function()? loadMoreProduct,
+  }) {
+    return getShopByCategory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(SubCategory subCategory)? select,
+    TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
+    TResult Function()? loadMoreProduct,
+    required TResult orElse(),
+  }) {
+    if (getShopByCategory != null) {
+      return getShopByCategory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Select value) select,
+    required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
+    required TResult Function(_LoadMoreProduct value) loadMoreProduct,
+  }) {
+    return getShopByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Select value)? select,
+    TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
+    TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
+  }) {
+    return getShopByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Select value)? select,
+    TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
+    TResult Function(_LoadMoreProduct value)? loadMoreProduct,
+    required TResult orElse(),
+  }) {
+    if (getShopByCategory != null) {
+      return getShopByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchGetShopByCategory implements SubCategoryEvent {
+  const factory _FetchGetShopByCategory() = _$FetchGetShopByCategoryImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchGetShopByOcassionImplCopyWith<$Res> {
+  factory _$$FetchGetShopByOcassionImplCopyWith(
+          _$FetchGetShopByOcassionImpl value,
+          $Res Function(_$FetchGetShopByOcassionImpl) then) =
+      __$$FetchGetShopByOcassionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchGetShopByOcassionImplCopyWithImpl<$Res>
+    extends _$SubCategoryEventCopyWithImpl<$Res, _$FetchGetShopByOcassionImpl>
+    implements _$$FetchGetShopByOcassionImplCopyWith<$Res> {
+  __$$FetchGetShopByOcassionImplCopyWithImpl(
+      _$FetchGetShopByOcassionImpl _value,
+      $Res Function(_$FetchGetShopByOcassionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchGetShopByOcassionImpl implements _FetchGetShopByOcassion {
+  const _$FetchGetShopByOcassionImpl();
+
+  @override
+  String toString() {
+    return 'SubCategoryEvent.getShopByOcassion()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchGetShopByOcassionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(SubCategory subCategory) select,
+    required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
+    required TResult Function() loadMoreProduct,
+  }) {
+    return getShopByOcassion();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(SubCategory subCategory)? select,
+    TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
+    TResult? Function()? loadMoreProduct,
+  }) {
+    return getShopByOcassion?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(SubCategory subCategory)? select,
+    TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
+    TResult Function()? loadMoreProduct,
+    required TResult orElse(),
+  }) {
+    if (getShopByOcassion != null) {
+      return getShopByOcassion();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Select value) select,
+    required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
+    required TResult Function(_LoadMoreProduct value) loadMoreProduct,
+  }) {
+    return getShopByOcassion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Select value)? select,
+    TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
+    TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
+  }) {
+    return getShopByOcassion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Select value)? select,
+    TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
+    TResult Function(_LoadMoreProduct value)? loadMoreProduct,
+    required TResult orElse(),
+  }) {
+    if (getShopByOcassion != null) {
+      return getShopByOcassion(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchGetShopByOcassion implements SubCategoryEvent {
+  const factory _FetchGetShopByOcassion() = _$FetchGetShopByOcassionImpl;
 }
 
 /// @nodoc
@@ -511,6 +817,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     required TResult Function() initialized,
     required TResult Function(SubCategory subCategory) select,
     required TResult Function() fetchProduct,
+    required TResult Function() getShopByCategory,
+    required TResult Function() getShopByOcassion,
     required TResult Function() loadMoreProduct,
   }) {
     return loadMoreProduct();
@@ -522,6 +830,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     TResult? Function()? initialized,
     TResult? Function(SubCategory subCategory)? select,
     TResult? Function()? fetchProduct,
+    TResult? Function()? getShopByCategory,
+    TResult? Function()? getShopByOcassion,
     TResult? Function()? loadMoreProduct,
   }) {
     return loadMoreProduct?.call();
@@ -533,6 +843,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     TResult Function()? initialized,
     TResult Function(SubCategory subCategory)? select,
     TResult Function()? fetchProduct,
+    TResult Function()? getShopByCategory,
+    TResult Function()? getShopByOcassion,
     TResult Function()? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -548,6 +860,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Select value) select,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_FetchGetShopByCategory value) getShopByCategory,
+    required TResult Function(_FetchGetShopByOcassion value) getShopByOcassion,
     required TResult Function(_LoadMoreProduct value) loadMoreProduct,
   }) {
     return loadMoreProduct(this);
@@ -559,6 +873,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Select value)? select,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult? Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult? Function(_LoadMoreProduct value)? loadMoreProduct,
   }) {
     return loadMoreProduct?.call(this);
@@ -570,6 +886,8 @@ class _$LoadMoreProductImpl implements _LoadMoreProduct {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Select value)? select,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_FetchGetShopByCategory value)? getShopByCategory,
+    TResult Function(_FetchGetShopByOcassion value)? getShopByOcassion,
     TResult Function(_LoadMoreProduct value)? loadMoreProduct,
     required TResult orElse(),
   }) {
@@ -586,6 +904,10 @@ abstract class _LoadMoreProduct implements SubCategoryEvent {
 
 /// @nodoc
 mixin _$SubCategoryState {
+  List<SubCategory> get shopByCategoryList =>
+      throw _privateConstructorUsedError;
+  List<SubCategory> get shopByOcassionList =>
+      throw _privateConstructorUsedError;
   SubCategory get selectedSubCategory => throw _privateConstructorUsedError;
   List<Product> get products => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
@@ -605,7 +927,9 @@ abstract class $SubCategoryStateCopyWith<$Res> {
       _$SubCategoryStateCopyWithImpl<$Res, SubCategoryState>;
   @useResult
   $Res call(
-      {SubCategory selectedSubCategory,
+      {List<SubCategory> shopByCategoryList,
+      List<SubCategory> shopByOcassionList,
+      SubCategory selectedSubCategory,
       List<Product> products,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
@@ -627,6 +951,8 @@ class _$SubCategoryStateCopyWithImpl<$Res, $Val extends SubCategoryState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? shopByCategoryList = null,
+    Object? shopByOcassionList = null,
     Object? selectedSubCategory = null,
     Object? products = null,
     Object? apiFailureOrSuccessOption = null,
@@ -634,6 +960,14 @@ class _$SubCategoryStateCopyWithImpl<$Res, $Val extends SubCategoryState>
     Object? canLoadMore = null,
   }) {
     return _then(_value.copyWith(
+      shopByCategoryList: null == shopByCategoryList
+          ? _value.shopByCategoryList
+          : shopByCategoryList // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>,
+      shopByOcassionList: null == shopByOcassionList
+          ? _value.shopByOcassionList
+          : shopByOcassionList // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>,
       selectedSubCategory: null == selectedSubCategory
           ? _value.selectedSubCategory
           : selectedSubCategory // ignore: cast_nullable_to_non_nullable
@@ -675,7 +1009,9 @@ abstract class _$$SubCategoryStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {SubCategory selectedSubCategory,
+      {List<SubCategory> shopByCategoryList,
+      List<SubCategory> shopByOcassionList,
+      SubCategory selectedSubCategory,
       List<Product> products,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
@@ -696,6 +1032,8 @@ class __$$SubCategoryStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? shopByCategoryList = null,
+    Object? shopByOcassionList = null,
     Object? selectedSubCategory = null,
     Object? products = null,
     Object? apiFailureOrSuccessOption = null,
@@ -703,6 +1041,14 @@ class __$$SubCategoryStateImplCopyWithImpl<$Res>
     Object? canLoadMore = null,
   }) {
     return _then(_$SubCategoryStateImpl(
+      shopByCategoryList: null == shopByCategoryList
+          ? _value._shopByCategoryList
+          : shopByCategoryList // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>,
+      shopByOcassionList: null == shopByOcassionList
+          ? _value._shopByOcassionList
+          : shopByOcassionList // ignore: cast_nullable_to_non_nullable
+              as List<SubCategory>,
       selectedSubCategory: null == selectedSubCategory
           ? _value.selectedSubCategory
           : selectedSubCategory // ignore: cast_nullable_to_non_nullable
@@ -731,13 +1077,35 @@ class __$$SubCategoryStateImplCopyWithImpl<$Res>
 
 class _$SubCategoryStateImpl extends _SubCategoryState {
   const _$SubCategoryStateImpl(
-      {required this.selectedSubCategory,
+      {required final List<SubCategory> shopByCategoryList,
+      required final List<SubCategory> shopByOcassionList,
+      required this.selectedSubCategory,
       required final List<Product> products,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
       required this.canLoadMore})
-      : _products = products,
+      : _shopByCategoryList = shopByCategoryList,
+        _shopByOcassionList = shopByOcassionList,
+        _products = products,
         super._();
+
+  final List<SubCategory> _shopByCategoryList;
+  @override
+  List<SubCategory> get shopByCategoryList {
+    if (_shopByCategoryList is EqualUnmodifiableListView)
+      return _shopByCategoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shopByCategoryList);
+  }
+
+  final List<SubCategory> _shopByOcassionList;
+  @override
+  List<SubCategory> get shopByOcassionList {
+    if (_shopByOcassionList is EqualUnmodifiableListView)
+      return _shopByOcassionList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shopByOcassionList);
+  }
 
   @override
   final SubCategory selectedSubCategory;
@@ -758,7 +1126,7 @@ class _$SubCategoryStateImpl extends _SubCategoryState {
 
   @override
   String toString() {
-    return 'SubCategoryState(selectedSubCategory: $selectedSubCategory, products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, canLoadMore: $canLoadMore)';
+    return 'SubCategoryState(shopByCategoryList: $shopByCategoryList, shopByOcassionList: $shopByOcassionList, selectedSubCategory: $selectedSubCategory, products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, canLoadMore: $canLoadMore)';
   }
 
   @override
@@ -766,6 +1134,10 @@ class _$SubCategoryStateImpl extends _SubCategoryState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SubCategoryStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._shopByCategoryList, _shopByCategoryList) &&
+            const DeepCollectionEquality()
+                .equals(other._shopByOcassionList, _shopByOcassionList) &&
             (identical(other.selectedSubCategory, selectedSubCategory) ||
                 other.selectedSubCategory == selectedSubCategory) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
@@ -781,6 +1153,8 @@ class _$SubCategoryStateImpl extends _SubCategoryState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_shopByCategoryList),
+      const DeepCollectionEquality().hash(_shopByOcassionList),
       selectedSubCategory,
       const DeepCollectionEquality().hash(_products),
       apiFailureOrSuccessOption,
@@ -797,7 +1171,9 @@ class _$SubCategoryStateImpl extends _SubCategoryState {
 
 abstract class _SubCategoryState extends SubCategoryState {
   const factory _SubCategoryState(
-      {required final SubCategory selectedSubCategory,
+      {required final List<SubCategory> shopByCategoryList,
+      required final List<SubCategory> shopByOcassionList,
+      required final SubCategory selectedSubCategory,
       required final List<Product> products,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
@@ -805,6 +1181,10 @@ abstract class _SubCategoryState extends SubCategoryState {
       required final bool canLoadMore}) = _$SubCategoryStateImpl;
   const _SubCategoryState._() : super._();
 
+  @override
+  List<SubCategory> get shopByCategoryList;
+  @override
+  List<SubCategory> get shopByOcassionList;
   @override
   SubCategory get selectedSubCategory;
   @override

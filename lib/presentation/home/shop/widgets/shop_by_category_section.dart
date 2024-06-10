@@ -3,9 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/category/entities/category.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
+import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -15,11 +18,15 @@ class ShopByCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryBloc, CategoryState>(
+    return BlocBuilder<SubCategoryBloc, SubCategoryState>(
       buildWhen: (previous, current) =>
           previous.isFetching != current.isFetching,
       builder: (context, state) {
-        if (state.validCategories.isEmpty) return const NoData();
+        if (state.isFetching) {
+          return const ShimmerItem();
+        } else if (state.shopByCategoryList.isEmpty) {
+          return const NoData();
+        }
         return SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -34,7 +41,7 @@ class ShopByCategory extends StatelessWidget {
               Wrap(
                 runSpacing: 10,
                 alignment: WrapAlignment.start,
-                children: state.validCategories
+                children: state.shopByCategoryList
                     .map(
                       (e) => ShopByCategoryItem(
                         item: e,
@@ -51,7 +58,7 @@ class ShopByCategory extends StatelessWidget {
 }
 
 class ShopByCategoryItem extends StatelessWidget {
-  final Category item;
+  final SubCategory item;
   const ShopByCategoryItem({
     super.key,
     required this.item,
@@ -63,7 +70,18 @@ class ShopByCategoryItem extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        context.read<CategoryBloc>().add(CategoryEvent.select(item));
+        final categoryBloc = context.read<CategoryBloc>();
+        categoryBloc.add(
+          CategoryEvent.select(
+            categoryBloc.state.validCategories
+                .where(
+                  (element) => element.name.displayLabel == 'Shop By Category',
+                )
+                .toList()
+                .first,
+          ),
+        );
+        context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
         context.router.navigate(const CategoryRoute());
       },
       child: SizedBox(

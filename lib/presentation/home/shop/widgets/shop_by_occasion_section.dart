@@ -1,5 +1,14 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/domain/home/entities/occasion.dart';
+import 'package:planit/domain/sub_category/entities/sub_category.dart';
+import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -17,16 +26,25 @@ class ShopByOccasion extends StatelessWidget {
           'Shop by occasion',
           style: textTheme.titleMedium,
         ),
-        SizedBox(
-          height: 130,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: occasionList.length,
-            itemBuilder: (BuildContext context, int index) =>
-                ShopByOccasionItem(
-              item: occasionList.elementAt(index),
-            ),
-          ),
+        BlocBuilder<SubCategoryBloc, SubCategoryState>(
+          builder: (context, state) {
+            if (state.isFetching) {
+              return const ShimmerItem();
+            } else if (state.shopByOcassionList.isEmpty) {
+              return const NoData();
+            }
+            return SizedBox(
+              height: 130,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: state.shopByOcassionList.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    ShopByOccasionItem(
+                  item: state.shopByOcassionList.elementAt(index),
+                ),
+              ),
+            );
+          },
         ),
       ],
     );
@@ -34,7 +52,7 @@ class ShopByOccasion extends StatelessWidget {
 }
 
 class ShopByOccasionItem extends StatelessWidget {
-  final Occasion item;
+  final SubCategory item;
   const ShopByOccasionItem({
     super.key,
     required this.item,
@@ -42,41 +60,63 @@ class ShopByOccasionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 4,
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
+    return InkWell(
+      onTap: () {
+        final categoryBloc = context.read<CategoryBloc>();
+        categoryBloc.add(
+          CategoryEvent.select(
+            categoryBloc.state.validCategories
+                .where(
+                  (element) => element.name.displayLabel == 'Shop By occasion',
+                )
+                .toList()
+                .first,
+          ),
+        );
+        context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
+        context.router.navigate(const CategoryRoute());
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 4,
+                    blurRadius: 5,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: CircleAvatar(
+                radius: 40,
+                backgroundColor: AppColors.white,
+                child: CachedNetworkImage(
+                  imageUrl: item.image.firstOrNull ?? '',
+                  fit: BoxFit.scaleDown,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.extraLightGray,
+                    ),
+                  ),
+                  errorWidget: (context, error, stackTrace) => Image.asset(
+                    PngImage.placeholder,
+                  ),
                 ),
-              ],
+              ),
             ),
-            child: CircleAvatar(
-              radius: 40,
-              backgroundColor: AppColors.white,
-              child: Image.asset(PngImage.generic(item.image)),
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(item.title),
-        ],
+            Text(item.name.displayLabel),
+          ],
+        ),
       ),
     );
   }
 }
-
-List<Occasion> occasionList = <Occasion>[
-  Occasion(image: 'occasion_1.png', title: 'Birthday'),
-  Occasion(image: 'occasion_2.png', title: 'Travel'),
-  Occasion(image: 'occasion_3.png', title: 'House party'),
-  Occasion(image: 'occasion_4.png', title: 'Gifting'),
-];

@@ -43,6 +43,9 @@ import 'package:planit/infrastructure/quick_picks/repository/quick_picks_reposit
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_local.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
 import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
+import 'package:planit/infrastructure/sub_categories/datasource/sub_category_local.dart';
+import 'package:planit/infrastructure/sub_categories/datasource/sub_cetegory_remote.dart';
+import 'package:planit/infrastructure/sub_categories/repository/sub_category_repository.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_local.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_remote.dart';
 import 'package:planit/infrastructure/wishlist/repository/wishlist_repository.dart';
@@ -170,8 +173,27 @@ void setupLocator() {
   // Sub Categories
   //============================================================
   locator.registerLazySingleton(
+    () => const SubCategoryLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => SubCategoryRemoteDataSource(
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => SubCategoryRepository(
+      config: locator<Config>(),
+      localDataSource: locator<SubCategoryLocalDataSource>(),
+      remoteDataSource: locator<SubCategoryRemoteDataSource>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
     () => SubCategoryBloc(
       repository: locator<ProductRepository>(),
+      subCategoryRepository: locator<SubCategoryRepository>(),
     ),
   );
   /////============================================================
