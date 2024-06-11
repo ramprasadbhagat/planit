@@ -35,6 +35,12 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<QuickPicksBloc>().add(
           const QuickPicksEvent.fetch(),
         );
+    context.read<SubCategoryBloc>().add(
+          const SubCategoryEvent.getShopByCategory(),
+        );
+    context.read<SubCategoryBloc>().add(
+          const SubCategoryEvent.getShopByOcassion(),
+        );
     context.read<CartBloc>().add(const CartEvent.fetch());
     context.read<BannerBloc>().add(
           const BannerEvent.fetch(),

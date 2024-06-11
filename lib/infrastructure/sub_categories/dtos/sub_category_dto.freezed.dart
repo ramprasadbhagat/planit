@@ -24,6 +24,8 @@ mixin _$SubCategoryDto {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'categoryName', defaultValue: '')
   String get categoryName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'categoryDescription', defaultValue: '')
+  String get categoryDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'categoryImages', defaultValue: [])
   List<String> get categoryImages => throw _privateConstructorUsedError;
 
@@ -42,6 +44,8 @@ abstract class $SubCategoryDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'categoryName', defaultValue: '') String categoryName,
+      @JsonKey(name: 'categoryDescription', defaultValue: '')
+      String categoryDescription,
       @JsonKey(name: 'categoryImages', defaultValue: [])
       List<String> categoryImages});
 }
@@ -61,6 +65,7 @@ class _$SubCategoryDtoCopyWithImpl<$Res, $Val extends SubCategoryDto>
   $Res call({
     Object? id = null,
     Object? categoryName = null,
+    Object? categoryDescription = null,
     Object? categoryImages = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +76,10 @@ class _$SubCategoryDtoCopyWithImpl<$Res, $Val extends SubCategoryDto>
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryDescription: null == categoryDescription
+          ? _value.categoryDescription
+          : categoryDescription // ignore: cast_nullable_to_non_nullable
               as String,
       categoryImages: null == categoryImages
           ? _value.categoryImages
@@ -91,6 +100,8 @@ abstract class _$$SubCategoryDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'categoryName', defaultValue: '') String categoryName,
+      @JsonKey(name: 'categoryDescription', defaultValue: '')
+      String categoryDescription,
       @JsonKey(name: 'categoryImages', defaultValue: [])
       List<String> categoryImages});
 }
@@ -108,6 +119,7 @@ class __$$SubCategoryDtoImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? categoryName = null,
+    Object? categoryDescription = null,
     Object? categoryImages = null,
   }) {
     return _then(_$SubCategoryDtoImpl(
@@ -118,6 +130,10 @@ class __$$SubCategoryDtoImplCopyWithImpl<$Res>
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryDescription: null == categoryDescription
+          ? _value.categoryDescription
+          : categoryDescription // ignore: cast_nullable_to_non_nullable
               as String,
       categoryImages: null == categoryImages
           ? _value._categoryImages
@@ -134,6 +150,8 @@ class _$SubCategoryDtoImpl extends _SubCategoryDto {
       {@JsonKey(name: '_id', defaultValue: '') required this.id,
       @JsonKey(name: 'categoryName', defaultValue: '')
       required this.categoryName,
+      @JsonKey(name: 'categoryDescription', defaultValue: '')
+      required this.categoryDescription,
       @JsonKey(name: 'categoryImages', defaultValue: [])
       required final List<String> categoryImages})
       : _categoryImages = categoryImages,
@@ -148,6 +166,9 @@ class _$SubCategoryDtoImpl extends _SubCategoryDto {
   @override
   @JsonKey(name: 'categoryName', defaultValue: '')
   final String categoryName;
+  @override
+  @JsonKey(name: 'categoryDescription', defaultValue: '')
+  final String categoryDescription;
   final List<String> _categoryImages;
   @override
   @JsonKey(name: 'categoryImages', defaultValue: [])
@@ -159,7 +180,7 @@ class _$SubCategoryDtoImpl extends _SubCategoryDto {
 
   @override
   String toString() {
-    return 'SubCategoryDto(id: $id, categoryName: $categoryName, categoryImages: $categoryImages)';
+    return 'SubCategoryDto(id: $id, categoryName: $categoryName, categoryDescription: $categoryDescription, categoryImages: $categoryImages)';
   }
 
   @override
@@ -170,13 +191,19 @@ class _$SubCategoryDtoImpl extends _SubCategoryDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
+            (identical(other.categoryDescription, categoryDescription) ||
+                other.categoryDescription == categoryDescription) &&
             const DeepCollectionEquality()
                 .equals(other._categoryImages, _categoryImages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, categoryName,
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      categoryName,
+      categoryDescription,
       const DeepCollectionEquality().hash(_categoryImages));
 
   @JsonKey(ignore: true)
@@ -199,6 +226,8 @@ abstract class _SubCategoryDto extends SubCategoryDto {
       {@JsonKey(name: '_id', defaultValue: '') required final String id,
       @JsonKey(name: 'categoryName', defaultValue: '')
       required final String categoryName,
+      @JsonKey(name: 'categoryDescription', defaultValue: '')
+      required final String categoryDescription,
       @JsonKey(name: 'categoryImages', defaultValue: [])
       required final List<String> categoryImages}) = _$SubCategoryDtoImpl;
   _SubCategoryDto._() : super._();
@@ -212,6 +241,9 @@ abstract class _SubCategoryDto extends SubCategoryDto {
   @override
   @JsonKey(name: 'categoryName', defaultValue: '')
   String get categoryName;
+  @override
+  @JsonKey(name: 'categoryDescription', defaultValue: '')
+  String get categoryDescription;
   @override
   @JsonKey(name: 'categoryImages', defaultValue: [])
   List<String> get categoryImages;

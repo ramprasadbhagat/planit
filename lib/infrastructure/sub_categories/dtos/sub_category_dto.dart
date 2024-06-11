@@ -12,6 +12,8 @@ class SubCategoryDto with _$SubCategoryDto {
     @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'categoryName', defaultValue: '')
     required String categoryName,
+    @JsonKey(name: 'categoryDescription', defaultValue: '')
+    required String categoryDescription,
     @JsonKey(name: 'categoryImages', defaultValue: [])
     required List<String> categoryImages,
   }) = _SubCategoryDto;
@@ -23,5 +25,6 @@ class SubCategoryDto with _$SubCategoryDto {
         id: StringValue(id),
         image: categoryImages,
         name: StringValue(categoryName),
+        description: StringValue(categoryDescription),
       );
 }

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SubCategory {
   StringValue get id => throw _privateConstructorUsedError;
   StringValue get name => throw _privateConstructorUsedError;
+  StringValue get description => throw _privateConstructorUsedError;
   List<String> get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,11 @@ abstract class $SubCategoryCopyWith<$Res> {
           SubCategory value, $Res Function(SubCategory) then) =
       _$SubCategoryCopyWithImpl<$Res, SubCategory>;
   @useResult
-  $Res call({StringValue id, StringValue name, List<String> image});
+  $Res call(
+      {StringValue id,
+      StringValue name,
+      StringValue description,
+      List<String> image});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? description = null,
     Object? image = null,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +65,10 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as StringValue,
       image: null == image
           ? _value.image
@@ -76,7 +86,11 @@ abstract class _$$SubCategoryImplCopyWith<$Res>
       __$$SubCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StringValue id, StringValue name, List<String> image});
+  $Res call(
+      {StringValue id,
+      StringValue name,
+      StringValue description,
+      List<String> image});
 }
 
 /// @nodoc
@@ -92,6 +106,7 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? description = null,
     Object? image = null,
   }) {
     return _then(_$SubCategoryImpl(
@@ -102,6 +117,10 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as StringValue,
       image: null == image
           ? _value._image
@@ -115,7 +134,10 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
 
 class _$SubCategoryImpl extends _SubCategory {
   _$SubCategoryImpl(
-      {required this.id, required this.name, required final List<String> image})
+      {required this.id,
+      required this.name,
+      required this.description,
+      required final List<String> image})
       : _image = image,
         super._();
 
@@ -123,6 +145,8 @@ class _$SubCategoryImpl extends _SubCategory {
   final StringValue id;
   @override
   final StringValue name;
+  @override
+  final StringValue description;
   final List<String> _image;
   @override
   List<String> get image {
@@ -133,7 +157,7 @@ class _$SubCategoryImpl extends _SubCategory {
 
   @override
   String toString() {
-    return 'SubCategory(id: $id, name: $name, image: $image)';
+    return 'SubCategory(id: $id, name: $name, description: $description, image: $image)';
   }
 
   @override
@@ -143,12 +167,14 @@ class _$SubCategoryImpl extends _SubCategory {
             other is _$SubCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             const DeepCollectionEquality().equals(other._image, _image));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, const DeepCollectionEquality().hash(_image));
+  int get hashCode => Object.hash(runtimeType, id, name, description,
+      const DeepCollectionEquality().hash(_image));
 
   @JsonKey(ignore: true)
   @override
@@ -161,6 +187,7 @@ abstract class _SubCategory extends SubCategory {
   factory _SubCategory(
       {required final StringValue id,
       required final StringValue name,
+      required final StringValue description,
       required final List<String> image}) = _$SubCategoryImpl;
   _SubCategory._() : super._();
 
@@ -168,6 +195,8 @@ abstract class _SubCategory extends SubCategory {
   StringValue get id;
   @override
   StringValue get name;
+  @override
+  StringValue get description;
   @override
   List<String> get image;
   @override

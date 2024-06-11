@@ -1,0 +1,95 @@
+{
+    "SubCategory": [
+        {
+            "_id": "6659a96fb109ee67c895f955",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Fresh Nuts",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717152111422.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T10:41:51.471Z",
+            "updatedAt": "2024-05-31T10:41:51.471Z"
+        },
+        {
+            "_id": "6659aaa6b109ee67c895f956",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Seasonal",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717152422284.jpg"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T10:47:02.335Z",
+            "updatedAt": "2024-05-31T10:47:02.335Z"
+        },
+        {
+            "_id": "6659ad1bb109ee67c895f957",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Kahmir Spl",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717153051508.jpg"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T10:57:31.574Z",
+            "updatedAt": "2024-05-31T10:57:31.574Z"
+        },
+        {
+            "_id": "6659ad73b109ee67c895f958",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Roasted",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717153139368.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T10:58:59.421Z",
+            "updatedAt": "2024-05-31T10:58:59.421Z"
+        },
+        {
+            "_id": "6659ad8cb109ee67c895f959",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Calories",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717153164523.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T10:59:24.592Z",
+            "updatedAt": "2024-05-31T10:59:24.592Z"
+        },
+        {
+            "_id": "6659ae07b109ee67c895f95a",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Low Calories",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717153287682.jpeg"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T11:01:27.737Z",
+            "updatedAt": "2024-05-31T11:01:27.737Z"
+        },
+        {
+            "_id": "6659ae26b109ee67c895f95b",
+            "pId": "6659cbd69140ee0012ab2d7e",
+            "categoryName": "Weight Loss",
+            "categoryDescription": "Excellent",
+            "categoryImages": [
+                "https://nzms-dev-plantit.nzmsecurity.com/product-category-images/1717153318274.png"
+            ],
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-05-31T11:01:58.322Z",
+            "updatedAt": "2024-05-31T11:01:58.322Z"
+        }
+    ]
+}

@@ -5,5 +5,7 @@ class SubCategoryEvent with _$SubCategoryEvent {
   const factory SubCategoryEvent.initialized() = _Initialized;
   const factory SubCategoryEvent.select(SubCategory subCategory) = _Select;
   const factory SubCategoryEvent.fetchProduct() = _FetchProduct;
+  const factory SubCategoryEvent.getShopByCategory() = _FetchGetShopByCategory;
+  const factory SubCategoryEvent.getShopByOcassion() = _FetchGetShopByOcassion;
   const factory SubCategoryEvent.loadMoreProduct() = _LoadMoreProduct;
 }
