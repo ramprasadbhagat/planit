@@ -234,7 +234,7 @@ class _AddressBookPageState extends State<AddressBookPage> {
                                                             width: 5,
                                                           ),
                                                           Text(
-                                                            'Deliver Address ${index + 1}',
+                                                            'Delivery Address ${index + 1}',
                                                             style: textTheme
                                                                 .titleMedium
                                                                 ?.copyWith(
