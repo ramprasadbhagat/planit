@@ -16,7 +16,7 @@ class CartRemoteDataSource {
   });
 
   Future<CartItem> getCart() async {
-    final userId = await storageService.getUserId();
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'GET',
       url: 'carts/getCart/$userId',
@@ -31,7 +31,7 @@ class CartRemoteDataSource {
     required int quantity,
     required int totalPrice,
   }) async {
-    final userId = await storageService.getUserId();
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'POST',
       url: 'carts',

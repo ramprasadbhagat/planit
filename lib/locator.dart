@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
@@ -14,6 +15,9 @@ import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
+import 'package:planit/infrastructure/address_book/datasources/address_book_remote.dart';
+import 'package:planit/infrastructure/address_book/repository/address_book_repository.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_local.dart';
 import 'package:planit/infrastructure/auth/datasources/auth_remote.dart';
 import 'package:planit/infrastructure/auth/repository/auth_repository.dart';
@@ -382,6 +386,32 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => PincodeBloc(
       repository: locator<PincodeRepository>(),
+    ),
+  );
+  /////============================================================
+  //  AddressBook
+  //============================================================
+  locator.registerLazySingleton(
+    () => const AddressBookLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => AddressBookRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => AddressBookRepository(
+      config: locator<Config>(),
+      localDataSource: locator<AddressBookLocalDataSource>(),
+      remoteDataSource: locator<AddressBookRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => AddressBookBloc(
+      repository: locator<AddressBookRepository>(),
     ),
   );
 }

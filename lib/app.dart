@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
@@ -72,6 +73,9 @@ class App extends StatelessWidget {
         BlocProvider<PincodeBloc>(
           create: (context) =>
               locator<PincodeBloc>()..add(const PincodeEvent.initialized()),
+        ),
+        BlocProvider<AddressBookBloc>(
+          create: (context) => locator<AddressBookBloc>(),
         ),
       ],
       child: MaterialApp.router(
