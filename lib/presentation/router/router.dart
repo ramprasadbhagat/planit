@@ -27,6 +27,14 @@ class AppRouter extends $AppRouter {
           path: '/addressbook',
         ),
         AutoRoute(
+          page: OrderListRoute.page,
+          path: '/orderList',
+        ),
+        AutoRoute(
+          page: TrackOrderRoute.page,
+          path: '/trackOrder',
+        ),
+        AutoRoute(
           page: SearchProductRoute.page,
           path: '/searchProduct',
         ),
