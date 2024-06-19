@@ -73,6 +73,7 @@ class BestSellerItem extends StatelessWidget {
                       Text(
                         item.title,
                         textAlign: TextAlign.center,
+                        style: textTheme.bodyMedium,
                       ),
                     ],
                   ),

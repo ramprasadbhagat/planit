@@ -25,7 +25,7 @@ class BeforeCheckoutSection extends StatelessWidget {
               children: [
                 Text(
                   'Before you checkout',
-                  style: textTheme.titleSmall?.copyWith(fontSize: 12),
+                  style: textTheme.titleSmall,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -33,7 +33,7 @@ class BeforeCheckoutSection extends StatelessWidget {
                   },
                   child: Text(
                     'view all',
-                    style: textTheme.titleSmall?.copyWith(fontSize: 12),
+                    style: textTheme.titleSmall,
                   ),
                 ),
               ],

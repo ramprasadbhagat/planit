@@ -64,7 +64,10 @@ class CartItemCard extends StatelessWidget {
               children: [
                 Text(
                   cartProduct.productName,
-                  style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                  style: textTheme.bodySmall?.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textBlackDeep),
                   textAlign: TextAlign.start,
                 ),
                 const SizedBox(
@@ -72,7 +75,11 @@ class CartItemCard extends StatelessWidget {
                 ),
                 Text(
                   cartProduct.attributeitem,
-                  style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                  style: textTheme.bodySmall?.copyWith(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.lightGrey,
+                  ),
                 ),
                 const SizedBox(
                   height: 5,
@@ -82,7 +89,7 @@ class CartItemCard extends StatelessWidget {
                     Text(
                       '₹${cartProduct.totalPrice} ',
                       style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
+                        fontSize: 11,
                       ),
                     ),
                     Text(

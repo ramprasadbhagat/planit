@@ -164,53 +164,62 @@ NavigationRailThemeData _navigationRailTheme() {
 
 TextTheme _textTheme() {
   return ThemeData.light().textTheme.copyWith(
-        titleLarge: GoogleFonts.montserrat(
+        titleLarge: const TextStyle(
           fontSize: 18,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        titleMedium: GoogleFonts.montserrat(
+        titleMedium: const TextStyle(
           fontSize: 16,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        titleSmall: GoogleFonts.montserrat(
+        titleSmall: const TextStyle(
           fontSize: 14,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        labelLarge: GoogleFonts.montserrat(
+        labelLarge: const TextStyle(
           fontSize: 18,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        labelMedium: GoogleFonts.montserrat(
+        labelMedium: const TextStyle(
           fontSize: 16,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        labelSmall: GoogleFonts.montserrat(
+        labelSmall: const TextStyle(
           fontSize: 14,
           color: AppColors.black,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        bodyLarge: GoogleFonts.montserrat(
+        bodyLarge: const TextStyle(
           fontSize: 14,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        bodyMedium: GoogleFonts.montserrat(
+        bodyMedium: const TextStyle(
           fontSize: 13,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
-        bodySmall: GoogleFonts.montserrat(
+        bodySmall: const TextStyle(
           fontSize: 12,
           color: AppColors.black,
           letterSpacing: 0.25,
+          fontFamily: 'UberMove',
         ),
       );
 }

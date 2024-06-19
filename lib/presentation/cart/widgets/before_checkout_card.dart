@@ -47,14 +47,14 @@ class BeforeCheckOutCard extends StatelessWidget {
                       item.productName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                      style: textTheme.bodySmall?.copyWith(fontSize: 11),
                     ),
                   ),
                   Text(
                     '1g',
                     style: textTheme.bodySmall?.copyWith(
                       color: AppColors.grey1,
-                      fontSize: 10,
+                      fontSize: 11,
                     ),
                   ),
                 ],

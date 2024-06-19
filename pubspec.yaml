@@ -59,6 +59,11 @@ flutter:
     - assets/png/
     - assets/svg/
     - assets/json/
+  
+  fonts:
+    - family: UberMove
+      fonts:
+        - asset: fonts/UberMoveMedium.otf
 
 
 flutter_icons:

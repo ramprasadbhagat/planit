@@ -13,6 +13,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Container(
         height: 58,
@@ -70,11 +71,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                           return Text(
                             state.selectedCategory.name.displayLabel,
                             style: GoogleFonts.montserrat(
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.textBlack,
-                              ),
+                              textStyle: textTheme.labelLarge,
                             ),
                           );
                         },
@@ -84,12 +81,8 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                         children: [
                           Text(
                             'See all categories',
-                            style: GoogleFonts.montserrat(
-                              textStyle: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.deepOrange,
-                              ),
+                            style: textTheme.labelSmall?.copyWith(
+                              color: AppColors.deepOrange,
                             ),
                           ),
                           const SizedBox(
