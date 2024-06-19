@@ -37,12 +37,15 @@ class StorageService {
     return Auth.empty();
   }
 
-  Future<String> getBearerToken() async {
-    final token = _authBox.getAt(0)!.token;
-    return 'Bearer $token';
+  String getBearerToken() {
+    if (_authBox.isNotEmpty) {
+      final token = _authBox.getAt(0)!.token;
+      return 'Bearer $token';
+    }
+    return '';
   }
 
-  Future<String> getUserId() async {
+  String getUserId() {
     final id = _authBox.getAt(0)!.user.id;
     return id;
   }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
@@ -45,6 +46,7 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<BannerBloc>().add(
           const BannerEvent.fetch(),
         );
+    context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
   }
 
   @override
