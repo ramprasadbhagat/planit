@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class LocationPin extends StatefulWidget {
   const LocationPin({super.key});
@@ -28,7 +30,8 @@ class _LocationPinState extends State<LocationPin> {
           child: BlocConsumer<PincodeBloc, PincodeState>(
             listenWhen: (previous, current) =>
                 previous.apiFailureOrSuccessOption !=
-                current.apiFailureOrSuccessOption,
+                    current.apiFailureOrSuccessOption ||
+                previous.pincode != current.pincode,
             listener: (context, state) {
               state.apiFailureOrSuccessOption.fold(
                 () {},
@@ -43,36 +46,46 @@ class _LocationPinState extends State<LocationPin> {
                   (_) {},
                 ),
               );
+              if (state.pincode.isNotEmpty) {
+                const snackBar = SnackBar(
+                  content: Text('Pincode saved successfully'),
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             },
             builder: (context, state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      SvgPicture.asset(
-                        SvgImage.locationPin,
-                      ),
-                      const SizedBox(width: 4.0),
-                      GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (BuildContext context) =>
-                                const CommonBottomSheet(
-                              child: PinCodeDialogBox(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Delivering to  ${state.pincode}',
-                          style: textTheme.bodyMedium
-                              ?.copyWith(color: AppColors.grey2),
+                  Skeletonizer(
+                    enabled: state.isFetching,
+                    child: Row(
+                      children: <Widget>[
+                        SvgPicture.asset(
+                          SvgImage.locationPin,
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 4.0),
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet<void>(
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (BuildContext context) =>
+                                  const CommonBottomSheet(
+                                child: PinCodeDialogBox(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Delivering to  ${state.pincode}',
+                            style: textTheme.bodyMedium
+                                ?.copyWith(color: AppColors.grey2),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Text(
                     'Order within 30 mins for delivery by 6 pm on 24-03',
@@ -209,7 +222,15 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                     ),
                   ],
                 ),
-                child: BlocBuilder<PincodeBloc, PincodeState>(
+                child: BlocConsumer<PincodeBloc, PincodeState>(
+                  listener: (context, state) {
+                    context.router.maybePop();
+                  },
+                  listenWhen: (previous, current) =>
+                      (previous.apiFailureOrSuccessOption !=
+                              current.apiFailureOrSuccessOption &&
+                          previous.apiFailureOrSuccessOption == dartz.none()) ||
+                      current.pincode.isNotEmpty,
                   builder: (context, state) {
                     return SizedBox(
                       width: 169,
@@ -223,7 +244,6 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                                 pincode: pincodeValue,
                               ),
                             );
-                            Navigator.pop(context, true);
                           }
                         },
                         style: ElevatedButton.styleFrom(

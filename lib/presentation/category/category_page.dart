@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/category/widgets/category_app_bar.dart';
 import 'package:planit/presentation/category/widgets/category_body.dart';
+import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/utils/responsive.dart';
 
 @RoutePage()
@@ -28,7 +29,12 @@ class CategoryPageMobile extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 70,
       ),
-      body: const CategoryBody(),
+      body: const Column(
+        children: [
+          Expanded(child: CategoryBody()),
+          CartBanner(),
+        ],
+      ),
     );
   }
 }

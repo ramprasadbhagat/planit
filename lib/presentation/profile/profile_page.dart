@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
 import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
@@ -99,6 +100,9 @@ class ProfilePage extends StatelessWidget {
             CustomTile(
               onTap: () {
                 context.read<AuthBloc>().add(const AuthEvent.logout());
+                context
+                    .read<PincodeBloc>()
+                    .add(const PincodeEvent.initialized());
                 context.router.navigate(const LoginRoute());
               },
               leadingIcon: Icons.exit_to_app,

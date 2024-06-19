@@ -25,7 +25,12 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
     await event.map(
       initialized: (_) async => emit(PincodeState.initial()),
       checkPincode: (value) async {
-        emit(state.copyWith(isFetching: true, pincode: value.pincode));
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
         final failureOrSuccess = await repository.checkPincode(
           pincode: value.pincode,
         );
@@ -37,7 +42,7 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (pincode) => add(_PincodeSave(pincode: state.pincode)),
+          (pincode) => add(_PincodeSave(pincode: value.pincode)),
         );
       },
       savePincode: (value) async {
