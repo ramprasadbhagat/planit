@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/add_money/widgets/add_money_form.dart';
+import 'package:planit/presentation/add_money/widgets/add_money_success_dialog.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()
@@ -35,7 +36,11 @@ class AddMoneyPage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              // context.router.navigate(const AddMoneyRoute());
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) => const AddMoneySuccessDialog(),
+              );
             },
             child: Text(
               'Add money',
