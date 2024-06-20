@@ -22,6 +22,7 @@ import 'package:planit/presentation/home/read/read_page.dart' as _i13;
 import 'package:planit/presentation/home/shop/shop_page.dart' as _i15;
 import 'package:planit/presentation/main/tab_bar.dart' as _i8;
 import 'package:planit/presentation/order/order_details.dart' as _i9;
+import 'package:planit/presentation/my_wallet/my_wallet_page.dart' as _i9;
 import 'package:planit/presentation/order_list/order_list_page.dart' as _i10;
 import 'package:planit/presentation/profile/profile_page.dart' as _i12;
 import 'package:planit/presentation/search_product/serach_product_page.dart'
@@ -88,6 +89,10 @@ abstract class $AppRouter extends _i21.RootStackRouter {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i9.OrderDetailsPage(),
+    MyWalletRoute.name: (routeData) {
+      return _i21.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i9.MyWalletPage(),
       );
     },
     OrderListRoute.name: (routeData) {
@@ -281,6 +286,15 @@ class OrderDetailsRoute extends _i21.PageRouteInfo<void> {
         );
 
   static const String name = 'OrderDetailsRoute';
+/// [_i9.MyWalletPage]
+class MyWalletRoute extends _i21.PageRouteInfo<void> {
+  const MyWalletRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          MyWalletRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyWalletRoute';
 
   static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
 }
