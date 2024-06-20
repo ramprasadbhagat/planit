@@ -20,7 +20,7 @@ class SubCategoryProduct extends StatelessWidget {
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: Responsive.isWeb(context) ? 5 : 2,
-              mainAxisExtent: MediaQuery.sizeOf(context).height * 0.21,
+              mainAxisExtent: 180,
             ),
             itemCount: state.products.length,
             shrinkWrap: true,
@@ -28,8 +28,11 @@ class SubCategoryProduct extends StatelessWidget {
               horizontal: 10,
             ),
             itemBuilder: (context, index) {
-              return ProductCard(
-                product: state.products.elementAt(index),
+              return Padding(
+                padding: const EdgeInsets.only(top: 6, bottom: 5),
+                child: ProductCard(
+                  product: state.products.elementAt(index),
+                ),
               );
             },
           ),

@@ -131,8 +131,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount:
                                       Responsive.isWeb(context) ? 5 : 2,
-                                  mainAxisExtent:
-                                      MediaQuery.sizeOf(context).height * 0.21,
+                                  mainAxisExtent: 180,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 8.0,
                                 ),
@@ -142,8 +141,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                   horizontal: 10,
                                 ),
                                 itemBuilder: (context, index) {
-                                  return ProductCard(
-                                    product: state.products.elementAt(index),
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 5,
+                                      bottom: 0,
+                                    ),
+                                    child: ProductCard(
+                                      product: state.products.elementAt(index),
+                                    ),
                                   );
                                 },
                               ),
