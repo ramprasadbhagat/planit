@@ -250,10 +250,11 @@ InputDecorationTheme _inputDecorationTheme() {
     labelStyle: GoogleFonts.montserrat(
       fontSize: 14.0,
     ),
-    hintStyle: GoogleFonts.montserrat(
-      fontSize: 16,
+    hintStyle: const TextStyle(
+      fontSize: 14,
       color: AppColors.neutralsGrey,
       letterSpacing: 0.25,
+      fontFamily: 'UberMove',
     ),
     floatingLabelStyle: const TextStyle(
       color: AppColors.primary,
