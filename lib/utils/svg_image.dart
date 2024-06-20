@@ -15,4 +15,17 @@ abstract class SvgImage {
   static const String edit = '${_basePath}edit.svg';
   static const String delete = '${_basePath}delete.svg';
   static const String creditCard = '${_basePath}credit_card.svg';
+  static const String money = '${_basePath}money.svg';
+  static const String truck = '${_basePath}truck.svg';
+  static const String wallet = '${_basePath}wallet.svg';
+  static const String calendar = '${_basePath}calendar.svg';
+  static const String clock = '${_basePath}clock.svg';
+  static const String orderStatusIcon = '${_basePath}order_status_icon.svg';
+  static const String box = '${_basePath}box.svg';
+  static const String fabOutlinedFullBlackIcon =
+      '${_basePath}fab_outlined_full_black_border.svg';
+  static const String fabOutlinedFullGrayIcon =
+      '${_basePath}fab_outlined_full_gray_border.svg';
+  static const String roundArrowIcon = '${_basePath}round_arrow.svg';
+  static const String thumsupIcon = '${_basePath}thumsup.svg';
 }
