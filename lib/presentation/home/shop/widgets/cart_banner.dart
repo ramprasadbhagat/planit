@@ -18,6 +18,9 @@ class CartBanner extends StatelessWidget {
     return BlocBuilder<CartBloc, CartState>(
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
+        if (state.isCartEmpty) {
+          return const SizedBox();
+        }
         return Stack(
           children: [
             Container(
@@ -49,28 +52,34 @@ class CartBanner extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      '${state.totalCartProductsCount} items | ₹ ${state.cartItem.totalPrice.getValue()}',
-                      style: textTheme.bodySmall?.copyWith(color: Colors.white),
-                    ),
+                    state.totalCartProductsCount > 0
+                        ? Text(
+                            '${state.totalCartProductsCount} items | ₹ ${state.cartItem.totalPrice.getValue()}',
+                            style: textTheme.bodySmall
+                                ?.copyWith(color: Colors.white),
+                          )
+                        : const SizedBox.shrink(),
                     const SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      decoration: const BoxDecoration(
-                        color: AppColors.grey2,
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
-                      ),
-                      child: Text(
-                        '₹ ${state.cartItem.totalDiscount.getValue()} saved',
-                        style:
-                            textTheme.bodySmall?.copyWith(color: Colors.white),
-                      ),
-                    ),
+                    state.cartItem.totalDiscount.getValue() > 0
+                        ? Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 4,
+                            ),
+                            decoration: const BoxDecoration(
+                              color: AppColors.grey2,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(4)),
+                            ),
+                            child: Text(
+                              '₹ ${state.cartItem.totalDiscount.getValue()} saved',
+                              style: textTheme.bodySmall
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                          )
+                        : const SizedBox.shrink(),
                     const Spacer(),
                     TextButton(
                       onPressed: () =>
@@ -122,20 +131,44 @@ class CartBanner extends StatelessWidget {
                   const SizedBox(
                     width: 5,
                   ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Add Items Worth Rs. 120 and Unlock ',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Free Delivery',
-                          style: textTheme.bodySmall?.copyWith(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
+                  BlocBuilder<CartBloc, CartState>(
+                    builder: (context, state) {
+                      if (state.cartItem.totalPrice.getValue() > 120) {
+                        return RichText(
+                          text: TextSpan(
+                            text: 'Hooray ! FREE DELIVERY',
+                            style: textTheme.bodySmall?.copyWith(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: ' unlocked',
+                                style: textTheme.bodySmall?.copyWith(
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
                           ),
+                        );
+                      }
+                      return RichText(
+                        text: TextSpan(
+                          text:
+                              'Add Items Worth Rs. ${120 - state.cartItem.totalPrice.getValue()} and Unlock ',
+                          style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Free Delivery',
+                              style: textTheme.bodySmall?.copyWith(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),

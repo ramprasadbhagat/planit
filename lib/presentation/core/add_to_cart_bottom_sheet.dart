@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/locator.dart';
@@ -157,18 +158,30 @@ class AddToCartBottomSheet extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        context.read<CartBloc>().add(
-                              CartEvent.addToCart(
-                                product: product,
-                                quantity: 1,
-                              ),
-                            );
-                        context.router.maybePop();
-                        const snackBar = SnackBar(
-                          content: Text('Item added to cart'),
-                        );
+                        if (context.read<PincodeBloc>().state.pincode.isEmpty) {
+                          context.router.maybePop();
+                          const snackBar = SnackBar(
+                            backgroundColor: AppColors.black,
+                            content: Text(
+                              'Pincode has not been selected yet. Select pincode to add item in cart',
+                            ),
+                          );
 
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          context.read<CartBloc>().add(
+                                CartEvent.addToCart(
+                                  product: product,
+                                  quantity: 1,
+                                ),
+                              );
+                          context.router.maybePop();
+                          const snackBar = SnackBar(
+                            content: Text('Item added to cart'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.black,
