@@ -9,6 +9,14 @@ enum AppTheme {
 
 final appThemeData = {
   AppTheme.light: ThemeData.light(useMaterial3: false).copyWith(
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (_) {
+        return const Icon(
+          Icons.arrow_back_ios_new_outlined,
+          color: AppColors.lightGrey,
+        );
+      },
+    ),
     //Colors
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
@@ -67,12 +75,15 @@ ColorScheme _colorScheme() {
 //============================================================
 
 AppBarTheme _appBarTheme() {
-  return AppBarTheme(
+  return const AppBarTheme(
     centerTitle: true,
     color: Colors.white,
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.black,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.25,
+      fontFamily: 'UberMove',
     ),
     elevation: 5,
     shadowColor: AppColors.boxShadowColor,
@@ -239,10 +250,11 @@ InputDecorationTheme _inputDecorationTheme() {
     labelStyle: GoogleFonts.montserrat(
       fontSize: 14.0,
     ),
-    hintStyle: GoogleFonts.montserrat(
-      fontSize: 16,
+    hintStyle: const TextStyle(
+      fontSize: 14,
       color: AppColors.neutralsGrey,
       letterSpacing: 0.25,
+      fontFamily: 'UberMove',
     ),
     floatingLabelStyle: const TextStyle(
       color: AppColors.primary,

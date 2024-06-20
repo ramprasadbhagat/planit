@@ -47,6 +47,14 @@ class AppRouter extends $AppRouter {
           path: '/checkout',
         ),
         AutoRoute(
+          page: MyWalletRoute.page,
+          path: '/myWallet',
+        ),
+        AutoRoute(
+          page: AddMoneyRoute.page,
+          path: '/myWallet/addMoney',
+        ),
+        AutoRoute(
           page: OrderDetailsRoute.page,
           path: '/orderDetails',
         ),

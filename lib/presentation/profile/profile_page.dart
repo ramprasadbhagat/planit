@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
-import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
@@ -88,7 +87,7 @@ class ProfilePage extends StatelessWidget {
               title: 'Order Details',
             ),
             CustomTile(
-              onTap: () {},
+              onTap: () => context.router.navigate(const MyWalletRoute()),
               leadingIcon: Icons.wallet,
               title: 'My wallet',
             ),
