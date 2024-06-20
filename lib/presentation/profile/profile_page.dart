@@ -89,13 +89,28 @@ class ProfilePage extends StatelessWidget {
             ),
             CustomTile(
               onTap: () {},
-              leadingIcon: Icons.star_border_outlined,
-              title: 'My reviews & ratings',
+              leadingIcon: Icons.receipt,
+              title: 'My complaints',
             ),
             CustomTile(
               onTap: () {},
-              leadingIcon: Icons.receipt,
-              title: 'My complaints',
+              leadingIcon: Icons.star_border_outlined,
+              title: 'My favourite recipes',
+            ),
+            CustomTile(
+              onTap: () {},
+              leadingIcon: Icons.privacy_tip_outlined,
+              title: 'Terms and conditions',
+            ),
+            CustomTile(
+              onTap: () {},
+              leadingIcon: Icons.policy_outlined,
+              title: 'Privacy policy',
+            ),
+            CustomTile(
+              onTap: () {},
+              leadingIcon: Icons.admin_panel_settings_outlined,
+              title: 'About',
             ),
             CustomTile(
               onTap: () {

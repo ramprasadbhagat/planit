@@ -60,6 +60,7 @@ class ShopByOccasionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: () {
         final categoryBloc = context.read<CategoryBloc>();
@@ -113,7 +114,10 @@ class ShopByOccasionItem extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text(item.name.displayLabel),
+            Text(
+              item.name.displayLabel,
+              style: textTheme.bodyMedium,
+            ),
           ],
         ),
       ),

@@ -185,18 +185,21 @@ class AddToListButton extends StatelessWidget {
           textStyle: textTheme.bodySmall
               ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.favorite_outline,
               size: 12,
               color: AppColors.grey3,
             ),
-            SizedBox(
+            const SizedBox(
               width: 3,
             ),
             Text(
               'Add to list',
+              style: textTheme.bodySmall?.copyWith(
+                fontSize: 9,
+              ),
             ),
           ],
         ),

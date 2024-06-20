@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ class SubCategoryProductCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.only(
         left: 14,
@@ -26,23 +28,13 @@ class SubCategoryProductCount extends StatelessWidget {
               children: [
                 TextSpan(
                   text: '${state.products.length} Items',
-                  style: GoogleFonts.montserrat(
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textBlack,
-                      fontSize: 16, //size.width * 0.04,
-                    ),
+                  style: textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 TextSpan(
                   text: ' in ${state.selectedSubCategory.name.displayLabel}',
-                  style: GoogleFonts.montserrat(
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.textBlack,
-                      fontSize: 16,
-                    ),
-                  ),
+                  style: textTheme.labelMedium
                 ),
               ],
             ),
