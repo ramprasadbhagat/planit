@@ -83,6 +83,11 @@ class ProfilePage extends StatelessWidget {
               title: 'My orders',
             ),
             CustomTile(
+              onTap: () => context.router.navigate(const OrderDetailsRoute()),
+              leadingIcon: Icons.subtitles_outlined,
+              title: 'Order Details',
+            ),
+            CustomTile(
               onTap: () {},
               leadingIcon: Icons.wallet,
               title: 'My wallet',
