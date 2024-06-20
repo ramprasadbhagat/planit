@@ -134,6 +134,7 @@ abstract class AppColors {
   static const Color grey3 = Color(0xFF666666);
   static const Color grey4 = Color(0xFF777777);
   static const Color grey5 = Color(0xFFF3F3F3);
+  static const Color grey6 = Color(0xFF424446);
   static const Color highlight1 = Color(0xffefe4d3);
   static const Color availableTagColor = Color(0xFF8ABD7D);
   static const Color slateBlue = Color.fromRGBO(94, 123, 180, 1.0);
