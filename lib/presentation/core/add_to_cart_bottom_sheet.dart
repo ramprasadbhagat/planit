@@ -10,6 +10,7 @@ import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/locator.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_section.dart';
+import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -289,6 +290,36 @@ class AddToCartBottomSheet extends StatelessWidget {
                             ?.copyWith(color: AppColors.white),
                       ),
                     ),
+                    AddToCartButton.fromBottomSheet(
+                      product: product,
+                    ),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     context.read<CartBloc>().add(
+                    //           CartEvent.addToCart(
+                    //             product: product,
+                    //             quantity: 1,
+                    //           ),
+                    //         );
+                    //     context.router.maybePop();
+                    //     const snackBar = SnackBar(
+                    //       content: Text('Item added to cart'),
+                    //     );
+
+                    //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: AppColors.black,
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(26.0),
+                    //     ),
+                    //   ),
+                    //   child: Text(
+                    //     'Add to cart',
+                    //     style: textTheme.labelSmall
+                    //         ?.copyWith(color: AppColors.white),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

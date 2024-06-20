@@ -20,4 +20,16 @@ class CartEvent with _$CartEvent {
   }) = _DeleteCartLocal;
   const factory CartEvent.clearAllCartLocal() = _ClearAllCartLocal;
   const factory CartEvent.sendLocalServerCart() = _SendLocalServerCart;
+
+  const factory CartEvent.updateProductQuantity({
+    required Product product,
+    required int quantity,
+  }) = _UpdateProductQuantity;
+  const factory CartEvent.incrementQuantity({
+    required Product product,
+  }) = _IncrementQuantity;
+
+  const factory CartEvent.decrementQuantity({
+    required Product product,
+  }) = _DecrementQuantity;
 }

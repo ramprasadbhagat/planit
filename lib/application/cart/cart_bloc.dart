@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -9,6 +11,7 @@ import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/presentation/search_product/serach_product_page.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
@@ -21,6 +24,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }) : super(CartState.initial()) {
     on<CartEvent>(_onEvent);
   }
+  final debouncer = Debouncer(milliseconds: 300);
 
   FutureOr<void> _onEvent(CartEvent event, Emitter<CartState> emit) async {
     await event.map(
@@ -141,6 +145,63 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           ),
           (cartItems) => add(const _Fetch()),
         );
+      },
+      updateProductQuantity: (e) {
+        log('e.quantity:${e.quantity}');
+        final updatedProductList = state.cartItem.products.map((p) {
+          if (e.product.productId == p.productId) {
+            return p.copyWith(
+              quantity: e.quantity,
+            );
+          }
+          return p;
+        }).toList();
+
+        emit(
+          state.copyWith(
+            cartItem: state.cartItem.copyWith(
+              products: updatedProductList,
+            ),
+          ),
+        );
+
+        debouncer.run(() {
+          if (e.quantity > 0) {
+            add(
+              CartEvent.addToCart(
+                product: e.product,
+                quantity: e.quantity,
+              ),
+            );
+          }
+        });
+      },
+      incrementQuantity: (value) {
+        add(
+          CartEvent.updateProductQuantity(
+            product: value.product,
+            quantity: state.getProductQuantity(value.product) + 1,
+          ),
+        );
+      },
+      decrementQuantity: (value) {
+        log('decrement: ${state.getProductQuantity(value.product)}');
+        if (state.getProductQuantity(value.product) == 1) {
+          add(
+            CartEvent.removeFromCart(
+              product: state.cartItem.products.firstWhere(
+                (element) => element.productId == value.product.productId,
+              ),
+            ),
+          );
+        } else {
+          add(
+            CartEvent.updateProductQuantity(
+              product: value.product,
+              quantity: state.getProductQuantity(value.product) - 1,
+            ),
+          );
+        }
       },
     );
   }
