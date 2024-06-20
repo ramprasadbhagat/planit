@@ -20,7 +20,7 @@ class CartProductLocal with _$CartProductLocal {
     @HiveField(4) required int startingPrice,
     @HiveField(5) required String attributeItem,
     @HiveField(6) required String attributeItemProductId,
-    @HiveField(7) required Price price,
+    @HiveField(7) required String price,
   }) = _CartProductLocal;
   factory CartProductLocal.empty() => CartProductLocal(
         name: '',
@@ -30,6 +30,6 @@ class CartProductLocal with _$CartProductLocal {
         startingPrice: 0,
         attributeItem: '',
         attributeItemProductId: '',
-        price: Price.empty(),
+        price: '',
       );
 }

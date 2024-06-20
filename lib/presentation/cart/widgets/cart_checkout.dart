@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -45,7 +47,12 @@ class CheckoutCard extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height * 0.05,
               child: ElevatedButton(
                 onPressed: () {
-                  context.router.navigate(const CheckoutRoute());
+                  if (context.read<AuthBloc>().state ==
+                      const AuthState.unauthenticated()) {
+                    context.router.navigate(const LoginRoute());
+                  } else {
+                    context.router.navigate(const CheckoutRoute());
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),

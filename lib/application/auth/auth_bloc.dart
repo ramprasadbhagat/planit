@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository authRepository;
   AuthBloc({
     required this.authRepository,
-  }) : super(const AuthState.initial()) {
+  }) : super(const AuthState.unauthenticated()) {
     on<AuthEvent>(_onEvent);
   }
 

@@ -52,7 +52,8 @@ class App extends StatelessWidget {
           create: (context) => locator<QuickPicksBloc>(),
         ),
         BlocProvider<CartBloc>(
-          create: (context) => locator<CartBloc>(),
+          create: (context) =>
+              locator<CartBloc>()..add(const CartEvent.getCartLocal()),
         ),
         BlocProvider<SubCategoryBloc>(
           create: (context) => locator<SubCategoryBloc>(),

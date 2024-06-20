@@ -39,7 +39,7 @@ class Product with _$Product {
       startingPrice: startingPrice,
       attributeItem: attributeItem,
       attributeItemProductId: attributeItemProductId,
-      price: price,
+      price: getPriceValue,
     );
   }
 

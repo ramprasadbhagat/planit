@@ -159,24 +159,11 @@ class AddToCartBottomSheet extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if(context.read<AuthBloc>().state == AuthState.unauthenticated()) {
-                          
-                        }
-                        if (context.read<PincodeBloc>().state.pincode.isEmpty) {
-                          context.router.maybePop();
-                          const snackBar = SnackBar(
-                            backgroundColor: AppColors.black,
-                            content: Text(
-                              'Pincode has not been selected yet. Select pincode to add item in cart',
-                            ),
-                          );
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        } else {
+                        if (context.read<AuthBloc>().state ==
+                            const AuthState.unauthenticated()) {
                           context.read<CartBloc>().add(
-                                CartEvent.addToCart(
+                                CartEvent.addToCartLocal(
                                   product: product,
-                                  quantity: 1,
                                 ),
                               );
                           context.router.maybePop();
@@ -185,6 +172,37 @@ class AddToCartBottomSheet extends StatelessWidget {
                           );
 
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          if (context
+                              .read<PincodeBloc>()
+                              .state
+                              .pincode
+                              .isEmpty) {
+                            context.router.maybePop();
+                            const snackBar = SnackBar(
+                              backgroundColor: AppColors.black,
+                              content: Text(
+                                'Pincode has not been selected yet. Select pincode to add item in cart',
+                              ),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          } else {
+                            context.read<CartBloc>().add(
+                                  CartEvent.addToCart(
+                                    product: product,
+                                    quantity: 1,
+                                  ),
+                                );
+                            context.router.maybePop();
+                            const snackBar = SnackBar(
+                              content: Text('Item added to cart'),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(

@@ -96,7 +96,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       },
       deletCartLocal: (_DeleteCartLocal e) async {
         emit(state.copyWith(isFetching: true));
-        final failureOrSuccess = await repository.getCartLocal();
+        final failureOrSuccess =
+            await repository.deleteCartLocal(index: e.index);
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
@@ -109,7 +110,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       },
       clearAllCartLocal: (_ClearAllCartLocal e) async {
         emit(state.copyWith(isFetching: true));
-        final failureOrSuccess = await repository.getCartLocal();
+        final failureOrSuccess = await repository.clearAllCartLocal();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(

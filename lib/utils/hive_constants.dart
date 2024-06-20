@@ -4,7 +4,7 @@ class HiveConstants {
   /// Type Id Constants
   static const int userTypeId = 0;
   static const int authTypeId = 1;
-  static const int cartTypeId = 1;
+  static const int cartTypeId = 2;
 
   /// hive adapter constants
   static const String userAdapter = 'UserAdapter';

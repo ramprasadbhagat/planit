@@ -69,10 +69,13 @@ class StorageService {
 
   Future<List<CartProductLocal>> getCartData() async {
     final cartproduct = <CartProductLocal>[];
-    for (final element in _cartProductLocalBox.values) {
-      cartproduct.add(element);
+    if (_cartProductLocalBox.isNotEmpty) {
+      for (final element in _cartProductLocalBox.values) {
+        cartproduct.add(element);
+      }
+      return cartproduct;
     }
-    return cartproduct;
+    return [];
   }
 
   Future<void> deleteCartData(int index) async {

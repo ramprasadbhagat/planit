@@ -31,7 +31,7 @@ mixin _$CartProductLocal {
   @HiveField(6)
   String get attributeItemProductId => throw _privateConstructorUsedError;
   @HiveField(7)
-  Price get price => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartProductLocalCopyWith<CartProductLocal> get copyWith =>
@@ -52,9 +52,7 @@ abstract class $CartProductLocalCopyWith<$Res> {
       @HiveField(4) int startingPrice,
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
-      @HiveField(7) Price price});
-
-  $PriceCopyWith<$Res> get price;
+      @HiveField(7) String price});
 }
 
 /// @nodoc
@@ -111,16 +109,8 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Price,
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res> get price {
-    return $PriceCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
-    });
   }
 }
 
@@ -140,10 +130,7 @@ abstract class _$$CartProductLocalImplCopyWith<$Res>
       @HiveField(4) int startingPrice,
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
-      @HiveField(7) Price price});
-
-  @override
-  $PriceCopyWith<$Res> get price;
+      @HiveField(7) String price});
 }
 
 /// @nodoc
@@ -198,7 +185,7 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Price,
+              as String,
     ));
   }
 }
@@ -248,7 +235,7 @@ class _$CartProductLocalImpl implements _CartProductLocal {
   final String attributeItemProductId;
   @override
   @HiveField(7)
-  final Price price;
+  final String price;
 
   @override
   String toString() {
@@ -305,7 +292,7 @@ abstract class _CartProductLocal implements CartProductLocal {
       @HiveField(4) required final int startingPrice,
       @HiveField(5) required final String attributeItem,
       @HiveField(6) required final String attributeItemProductId,
-      @HiveField(7) required final Price price}) = _$CartProductLocalImpl;
+      @HiveField(7) required final String price}) = _$CartProductLocalImpl;
 
   @override
   @HiveField(0)
@@ -330,7 +317,7 @@ abstract class _CartProductLocal implements CartProductLocal {
   String get attributeItemProductId;
   @override
   @HiveField(7)
-  Price get price;
+  String get price;
   @override
   @JsonKey(ignore: true)
   _$$CartProductLocalImplCopyWith<_$CartProductLocalImpl> get copyWith =>

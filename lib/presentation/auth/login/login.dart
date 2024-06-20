@@ -26,8 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     final loginFormBloc = context.read<LoginFormBloc>();
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state != const AuthState.unauthenticated() &&
-            state != const AuthState.initial()) {
+        if (state != const AuthState.unauthenticated()) {
           _controller.clear();
           context.router.replaceNamed('/maintab');
         }

@@ -8,7 +8,7 @@ part of 'cart_product_local.dart';
 
 class CartAdapter extends TypeAdapter<_$CartProductLocalImpl> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
   _$CartProductLocalImpl read(BinaryReader reader) {
@@ -24,7 +24,7 @@ class CartAdapter extends TypeAdapter<_$CartProductLocalImpl> {
       startingPrice: fields[4] as int,
       attributeItem: fields[5] as String,
       attributeItemProductId: fields[6] as String,
-      price: fields[7] as Price,
+      price: fields[7] as String,
     );
   }
 
