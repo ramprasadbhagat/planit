@@ -19,132 +19,145 @@ class QuickPickCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return SizedBox(
-      width: 130,
-      height: 170,
-      child: Card(
-        elevation: 4,
-        child: Padding(
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 10,
+      ),
+      child: SizedBox(
+        child: Container(
+          width: 130,
+          height: 165,
           padding: const EdgeInsets.all(4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  // Image.network(
-                  //   item.productImages.first,
-                  //   height: 80,
-                  //   width: 110,
-                  //   fit: BoxFit.fill,
-                  // ),
-                  CachedNetworkImage(
-                    errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.placeholder),
-                    imageUrl: item.productImages.firstOrNull ?? '',
-                    height: 80,
-                    width: 110,
-                    fit: BoxFit.fill,
-                  ),
-                  item.price.isEditable
-                      ? const AddToListTextField()
-                      : AddToListButton(
-                          productId: item.id,
-                        ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      item.productName,
-                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                      textAlign: TextAlign.left,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Text(
-                    item.attributeItem,
-                    style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.grey1,
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: [
-                  Text(
-                    '₹${item.productMRP} ',
-                    style: textTheme.bodySmall?.copyWith(
-                      fontSize: 9,
-                    ),
-                  ),
-                  Text(
-                    item.skuPrice,
-                    style: textTheme.bodySmall!.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      color: AppColors.lightGray,
-                      fontSize: 9,
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        size: 9,
-                      ),
-                      Text(
-                        item.productRating.toString(),
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 9,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 25,
-                    width: 75,
-                    child: OutlinedButton(
-                      onPressed: () => showModalBottomSheet<void>(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (BuildContext context) => CommonBottomSheet(
-                          child: AddToCartBottomSheet(
-                            product: item.toProduct,
-                          ),
-                        ),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        side: const BorderSide(color: Colors.black),
-                        foregroundColor: AppColors.grey3,
-                        padding: EdgeInsets.zero,
-                      ),
-                      child: Text(
-                        'Add to cart',
-                        style: textTheme.bodySmall?.copyWith(fontSize: 9),
-                      ),
-                    ),
-                  ),
-                ],
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                color: AppColors.extraLightGrey2,
+                spreadRadius: 1,
+                blurRadius: 2,
               ),
             ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CachedNetworkImage(
+                        errorWidget: (context, url, error) =>
+                            Image.asset(PngImage.placeholder),
+                        imageUrl: item.productImages.firstOrNull ?? '',
+                        height: 80,
+                        width: double.infinity,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                    item.price.isEditable
+                        ? const AddToListTextField()
+                        : AddToListButton(
+                            productId: item.id,
+                          ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        item.productName,
+                        style: textTheme.bodySmall?.copyWith(fontSize: 12),
+                        textAlign: TextAlign.left,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Text(
+                      item.attributeItem,
+                      style: textTheme.bodySmall?.copyWith(
+                        color: AppColors.grey1,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '₹${item.price.price} ',
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      '${(double.tryParse(item.price.price) ?? 0) + (double.tryParse(item.discount) ?? 0)}',
+                      style: textTheme.bodySmall!.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                        color: AppColors.lightGray,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 9,
+                        ),
+                        Text(
+                          item.productRating.toString(),
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 9,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                      width: 75,
+                      child: OutlinedButton(
+                        onPressed: () => showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) => CommonBottomSheet(
+                            child: AddToCartBottomSheet(
+                              product: item.toProduct,
+                            ),
+                          ),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          side: const BorderSide(color: Colors.black),
+                          foregroundColor: AppColors.grey3,
+                          padding: EdgeInsets.zero,
+                        ),
+                        child: Text(
+                          'Add to cart',
+                          style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

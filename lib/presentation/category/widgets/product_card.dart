@@ -20,96 +20,144 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.28,
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.topRight,
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 10,
+      ),
+      child: SizedBox(
+        child: Container(
+          width: 130,
+          height: 165,
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                color: AppColors.extraLightGrey2,
+                spreadRadius: 1,
+                blurRadius: 2,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: CachedNetworkImage(
-                    errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.placeholder),
-                    imageUrl: product.productImages.firstOrNull ?? '',
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-                AddToListButton(
-                  product: product,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    product.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                  ),
-                ),
-                Text(
-                  product.attributeItem,
-                  style: textTheme.bodySmall?.copyWith(
-                    color: AppColors.grey1,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Text(
-                  '₹${product.getPriceValue} ',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 9,
-                  ),
-                ),
-                Text(
-                  ' ${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
-                  style: textTheme.bodySmall!.copyWith(
-                    decoration: TextDecoration.lineThrough,
-                    color: AppColors.lightGray,
-                    fontSize: 9,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
+                Stack(
+                  alignment: Alignment.topRight,
                   children: [
-                    const Icon(
-                      Icons.star,
-                      size: 9,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CachedNetworkImage(
+                        errorWidget: (context, url, error) =>
+                            Image.asset(PngImage.placeholder),
+                        imageUrl: product.productImages.firstOrNull ?? '',
+                        height: 80,
+                        width: double.infinity,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                    AddToListButton(
+                      product: product,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        product.name,
+                        style: textTheme.bodySmall?.copyWith(fontSize: 12),
+                        textAlign: TextAlign.left,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     Text(
-                      '4.3',
+                      product.attributeItem,
                       style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
+                        color: AppColors.grey1,
+                        fontSize: 11,
                       ),
                     ),
                   ],
                 ),
-                AddToCartButton(
-                  product: product,
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '₹${product.getPriceValue} ',
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      '${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
+                      style: textTheme.bodySmall!.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                        color: AppColors.lightGray,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 9,
+                        ),
+                        Text(
+                          '4.3',
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 9,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                      width: 75,
+                      child: OutlinedButton(
+                        onPressed: () => showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) => CommonBottomSheet(
+                            child: AddToCartBottomSheet(
+                              product: product,
+                            ),
+                          ),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          side: const BorderSide(color: Colors.black),
+                          foregroundColor: AppColors.grey3,
+                          padding: EdgeInsets.zero,
+                        ),
+                        child: Text(
+                          'Add to cart',
+                          style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
