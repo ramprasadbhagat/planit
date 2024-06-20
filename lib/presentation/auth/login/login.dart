@@ -34,6 +34,22 @@ class _LoginPageState extends State<LoginPage> {
       },
       listenWhen: (previous, current) => previous != current,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Login',
+            style: textTheme.labelLarge,
+          ),
+          leadingWidth: 20,
+          centerTitle: false,
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: AppColors.lightGrey,
+            ),
+            onPressed: () => context.router.maybePop(),
+          ),
+        ),
         body: Stack(
           children: [
             Image.asset(PngImage.loginBackGround),

@@ -230,6 +230,7 @@ void setupLocator() {
       config: locator<Config>(),
       localDataSource: locator<CartLocalDataSource>(),
       remoteDataSource: locator<CartRemoteDataSource>(),
+      storageService: locator<StorageService>(),
     ),
   );
   locator.registerLazySingleton(

@@ -8,7 +8,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: LoginRoute.page,
           path: '/login',
-          initial: true,
+          // initial: true,
         ),
         AutoRoute(
           page: LoginOtp.page,
@@ -49,6 +49,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
+          initial: true,
           children: [
             AutoRoute(
               page: HomeRoute.page,

@@ -7,12 +7,14 @@ class CartState with _$CartState {
     required CartItem cartItem,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required List<CartProductLocal> cartData,
   }) = _CartState;
 
   factory CartState.initial() => CartState(
         cartItem: CartItem.empty(),
         apiFailureOrSuccessOption: none(),
         isFetching: true,
+        cartData:  [],
       );
 
   bool get isCartEmpty => cartItem.products.isEmpty;

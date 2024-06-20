@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
@@ -27,6 +28,19 @@ class Product with _$Product {
     } else {
       return skuPrice.getValue().toString();
     }
+  }
+
+  CartProductLocal get getCartProductLocal {
+    return CartProductLocal(
+      productId: productId.getValue(),
+      name: name,
+      productImages: productImages,
+      skuPrice: double.tryParse(skuPrice.toString()) ?? 0,
+      startingPrice: startingPrice,
+      attributeItem: attributeItem,
+      attributeItemProductId: attributeItemProductId,
+      price: price,
+    );
   }
 
   factory Product.empty() => Product(
