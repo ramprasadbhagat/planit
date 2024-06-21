@@ -98,7 +98,8 @@ class ProfilePage extends StatelessWidget {
                   title: 'My wallet',
                 ),
                 CustomTile(
-                  onTap: () {},
+                  onTap: () =>
+                      context.router.navigate(const MyComplainsRoute()),
                   leadingIcon: Icons.receipt,
                   title: 'My complaints',
                 ),

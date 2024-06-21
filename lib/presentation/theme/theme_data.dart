@@ -325,9 +325,11 @@ FloatingActionButtonThemeData _floatingActionButtonTheme() {
 ElevatedButtonThemeData _elevatedButtonTheme() {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.black,
       foregroundColor: AppColors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+      ),
       textStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.white,

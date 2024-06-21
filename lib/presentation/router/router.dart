@@ -55,6 +55,10 @@ class AppRouter extends $AppRouter {
           path: '/myWallet/addMoney',
         ),
         AutoRoute(
+          page: MyComplainsRoute.page,
+          path: '/myComplains',
+        ),
+        AutoRoute(
           page: OrderDetailsRoute.page,
           path: '/orderDetails',
         ),
