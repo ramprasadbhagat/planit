@@ -55,8 +55,10 @@ class CartBanner extends StatelessWidget {
                     state.totalCartProductsCount > 0
                         ? Text(
                             '${state.totalCartProductsCount} items | ₹ ${state.cartItem.totalPrice.getValue()}',
-                            style: textTheme.bodySmall
-                                ?.copyWith(color: Colors.white),
+                            style: textTheme.bodySmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
                           )
                         : const SizedBox.shrink(),
                     const SizedBox(
@@ -87,7 +89,7 @@ class CartBanner extends StatelessWidget {
                       child: Text(
                         'View Cart',
                         style:
-                            textTheme.bodySmall?.copyWith(color: Colors.white),
+                            textTheme.bodyLarge?.copyWith(color: Colors.white),
                       ),
                     ),
                   ],
@@ -138,15 +140,12 @@ class CartBanner extends StatelessWidget {
                           text: TextSpan(
                             text: 'Hooray ! FREE DELIVERY',
                             style: textTheme.bodySmall?.copyWith(
-                              fontSize: 10,
                               fontWeight: FontWeight.bold,
                             ),
                             children: <TextSpan>[
                               TextSpan(
                                 text: ' unlocked',
-                                style: textTheme.bodySmall?.copyWith(
-                                  fontSize: 10,
-                                ),
+                                style: textTheme.bodySmall,
                               ),
                             ],
                           ),
@@ -156,13 +155,12 @@ class CartBanner extends StatelessWidget {
                         text: TextSpan(
                           text:
                               'Add Items Worth Rs. ${120 - state.cartItem.totalPrice.getValue()} and Unlock ',
-                          style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                          style: textTheme.bodySmall,
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Free Delivery',
                               style: textTheme.bodySmall?.copyWith(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ],

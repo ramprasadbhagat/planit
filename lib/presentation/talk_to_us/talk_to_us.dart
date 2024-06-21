@@ -7,11 +7,15 @@ class TalkToUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
-        title: const Text('Talk To Us'),
+        title: Text(
+          'Talk To Us',
+          style: textTheme.labelLarge,
+        ),
       ),
       body: const Center(
         child: Column(

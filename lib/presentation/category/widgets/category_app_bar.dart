@@ -70,9 +70,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
                         builder: (context, state) {
                           return Text(
                             state.selectedCategory.name.displayLabel,
-                            style: GoogleFonts.montserrat(
-                              textStyle: textTheme.labelLarge,
-                            ),
+                            style: textTheme.labelLarge,
                           );
                         },
                       ),

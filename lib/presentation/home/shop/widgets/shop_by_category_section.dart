@@ -110,7 +110,7 @@ class ShopByCategoryItem extends StatelessWidget {
               ),
               Text(
                 item.name.displayLabel,
-                style: textTheme.bodySmall,
+                style: textTheme.bodyMedium,
                 maxLines: 1,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,

@@ -62,6 +62,12 @@ class HomePageMobile extends StatelessWidget {
                               ),
                               child: Text(
                                 title,
+                                style: textTheme.labelSmall?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: isSelected
+                                      ? AppColors.white
+                                      : AppColors.black,
+                                ),
                               ),
                             );
                           },

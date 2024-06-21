@@ -46,6 +46,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     const borderDecoration = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
       borderSide: BorderSide.none,
@@ -54,7 +55,10 @@ class _SearchProductPageState extends State<SearchProductPage> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: false,
-        title: const Text('Products'),
+        title: Text(
+          'Products',
+          style: textTheme.labelLarge,
+        ),
       ),
       body: Column(
         children: [
@@ -113,12 +117,9 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           children: [
                             Text(
                               '${state.products.length} products found',
-                              style: GoogleFonts.montserrat(
-                                textStyle: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.textBlack,
-                                  fontSize: 12, //size.width * 0.04,
-                                ),
+                              style: textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textBlack,
                               ),
                             ),
                             const SizedBox(
