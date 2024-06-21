@@ -22,6 +22,7 @@ abstract class SvgImage {
   static const String calendar2 = '${_basePath}calendar-2.svg';
   static const String clock = '${_basePath}clock.svg';
   static const String orderStatusIcon = '${_basePath}order_status_icon.svg';
+  static const String orderIdIcon = '${_basePath}order_id.svg';
   static const String box = '${_basePath}box.svg';
   static const String fabOutlinedFullBlackIcon =
       '${_basePath}fab_outlined_full_black_border.svg';
