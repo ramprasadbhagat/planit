@@ -82,20 +82,24 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
-              height: _selectedTab == 0
-                  ? context.read<QuickPicksBloc>().state.quickPickProductsHeight
-                  : _selectedTab == 1
-                      ? 250
-                      : 150,
-              child: TabBarView(
-                controller: _tabController,
-                children: const [
-                  QuickPickTabView(),
-                  ShopByCategory(),
-                  ShopByOccasion(),
-                ],
-              ),
+            BlocBuilder<QuickPicksBloc, QuickPicksState>(
+              builder: (context, state) {
+                return SizedBox(
+                  height: _selectedTab == 0
+                      ? state.quickPickProductsHeight
+                      : _selectedTab == 1
+                          ? 250
+                          : 150,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const [
+                      QuickPickTabView(),
+                      ShopByCategory(),
+                      ShopByOccasion(),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
