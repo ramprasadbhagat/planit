@@ -32,7 +32,7 @@ class ShoppingBanner extends StatelessWidget {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 3),
+          margin: const EdgeInsets.only(left: 17, right: 17, top: 3),
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
