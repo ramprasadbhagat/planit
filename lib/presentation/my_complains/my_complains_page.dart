@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/my_complains/widgets/complains_list.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()
@@ -21,7 +22,7 @@ class MyComplainsPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => context.router.navigate(const AddComplainsRoute()),
             child: const Text('Add Complain'),
           ),
         ),
