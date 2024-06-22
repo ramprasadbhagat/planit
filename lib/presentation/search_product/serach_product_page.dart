@@ -144,7 +144,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                   return Padding(
                                     padding: const EdgeInsets.only(
                                       top: 5,
-                                      bottom: 0,
+                                      bottom: 5,
                                     ),
                                     child: ProductCard(
                                       product: state.products.elementAt(index),
@@ -156,19 +156,6 @@ class _SearchProductPageState extends State<SearchProductPage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            // state.canLoadMore
-                            //     ? const SizedBox.shrink()
-                            //     :
-                            // const Center(
-                            //     child: Text(
-                            //       'No more data to load',
-                            //       style: TextStyle(
-                            //         fontSize: 16,
-                            //         color: AppColors.grey2,
-                            //         fontWeight: FontWeight.w500,
-                            //       ),
-                            //     ),
-                            //   ),
                             state.isScrolling
                                 ? const Padding(
                                     padding: EdgeInsets.only(bottom: 20),

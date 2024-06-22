@@ -16,5 +16,5 @@ class QuickPicksState with _$QuickPicksState {
       );
 
   double get quickPickProductsHeight =>
-      quicksPickProducts.length > 3 ? 380 : 200;
+      quicksPickProducts.length > 2 ? 400 : 220;
 }
