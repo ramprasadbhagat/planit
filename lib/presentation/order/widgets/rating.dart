@@ -34,3 +34,45 @@ class _StarRatingState extends State<StarRating> {
     );
   }
 }
+
+class StarRatingShow extends StatefulWidget {
+  const StarRatingShow({
+    super.key,
+    required this.starValue,
+  });
+  final double starValue;
+
+  @override
+  State<StarRatingShow> createState() => _StarRatingShowState();
+}
+
+class _StarRatingShowState extends State<StarRatingShow> {
+  @override
+  Widget build(BuildContext context) {
+    return RatingBar(
+      // minRating: 1,
+      // maxRating: 5,
+
+      allowHalfRating: true,
+      itemSize: 20,
+      initialRating: widget.starValue,
+      ratingWidget: RatingWidget(
+        full: const Icon(
+          Icons.star,
+          color: Color.fromRGBO(255, 194, 37, 1),
+        ),
+        half: const Icon(
+          Icons.star_half,
+          color: Color.fromRGBO(255, 194, 37, 1),
+        ),
+        empty: const Icon(
+          Icons.star_border_outlined,
+          color: Color.fromRGBO(255, 194, 37, 1),
+        ),
+      ),
+      onRatingUpdate: (rating) {
+        print(rating);
+      },
+    );
+  }
+}

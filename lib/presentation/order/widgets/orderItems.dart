@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/order/widgets/rating.dart';
 import 'package:planit/presentation/order/widgets/review_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -12,12 +15,16 @@ class OrderItems extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               PngImage.orderItem1,
               width: 70,
+              alignment: Alignment.topCenter,
             ),
             const SizedBox(
               width: 10,
@@ -28,10 +35,12 @@ class OrderItems extends StatelessWidget {
                 children: [
                   Text(
                     'Johnson Almonds',
-                    style: textTheme.labelSmall,
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontSize: 15,
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    padding: const EdgeInsets.symmetric(vertical: 0),
                     child: Text(
                       'Johnson Fresh almonds 1 kg pack',
                       style: textTheme.bodySmall?.copyWith(
@@ -40,12 +49,16 @@ class OrderItems extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Text(
+                    'Roasted Cashew/Kaju | Premium Quality | 100% Pure& Natural | 100% Fresh & Nitrogen Flushed.',
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 14,
+                      color: AppColors.grey2,
+                    ),
+                  ),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.star,
-                        size: 15,
-                      ),
+                      const StarRatingShow(starValue: 4),
                       const SizedBox(
                         width: 3,
                       ),
@@ -79,9 +92,34 @@ class OrderItems extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
-                        '3 X ₹ 699.00  ',
-                        style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: Color.fromRGBO(240, 240, 240, 1),
+                            ),
+                            padding: const EdgeInsets.all(6),
+                            width: 22,
+                            alignment: Alignment.center,
+                            child: Text(
+                              '3',
+                              style: textTheme.labelSmall?.copyWith(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            ' X ',
+                            style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                          ),
+                          Text(
+                            '₹ 699.00  ',
+                            style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                          ),
+                        ],
                       ),
                       const Spacer(),
                       ElevatedButton(
@@ -124,6 +162,8 @@ class OrderItems extends StatelessWidget {
           height: 10,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               PngImage.orderItem2,
@@ -137,30 +177,36 @@ class OrderItems extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Johnson Almonds',
-                    style: textTheme.labelSmall,
+                    'Soft Drinks and snacks',
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontSize: 15,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
-                      'Johnson Fresh almonds 1 kg pack',
+                      '10gm 7 packets',
                       style: textTheme.bodySmall?.copyWith(
                         fontSize: 14,
                         color: AppColors.grey2,
                       ),
                     ),
                   ),
+                  Text(
+                    'Mineral Water Glass Pack of 24. 5% Off. Mineral Water Glass Pack .(Bisleri ) · Soft Drink. 6% Off. Soft Drink (Pepsi)',
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 14,
+                      color: AppColors.grey2,
+                    ),
+                  ),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.star,
-                        size: 15,
-                      ),
+                      const StarRatingShow(starValue: 3.5),
                       const SizedBox(
                         width: 3,
                       ),
                       Text(
-                        '4',
+                        '3.5',
                         style: textTheme.bodyMedium?.copyWith(
                           fontSize: 12,
                         ),
@@ -183,9 +229,34 @@ class OrderItems extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
-                        '2 X ₹ 385.00  ',
-                        style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                              color: Color.fromRGBO(240, 240, 240, 1),
+                            ),
+                            padding: const EdgeInsets.all(6),
+                            width: 22,
+                            alignment: Alignment.center,
+                            child: Text(
+                              '2',
+                              style: textTheme.labelSmall?.copyWith(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            ' X ',
+                            style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                          ),
+                          Text(
+                            '₹ 385.00  ',
+                            style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                          ),
+                        ],
                       ),
                       const Spacer(),
                       ElevatedButton(
