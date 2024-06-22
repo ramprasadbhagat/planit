@@ -74,6 +74,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textScaler: const TextScaler.linear(0.9),
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: isSelected ? AppColors.white : AppColors.black,
+                      ),
                     ),
                   );
                 },

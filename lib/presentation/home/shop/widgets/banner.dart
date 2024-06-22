@@ -159,12 +159,14 @@ class _DealCountDownState extends State<DealCountDown> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return _formatDuration(_duration).isEmpty
         ? const SizedBox.shrink()
         : Text(
             _formatDuration(_duration),
-            style: GoogleFonts.bevan(
+            style: textTheme.labelLarge?.copyWith(
               fontSize: 22,
+              fontWeight: FontWeight.bold,
               color: AppColors.deepRed,
             ),
           );

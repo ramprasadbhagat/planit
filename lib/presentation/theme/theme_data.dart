@@ -150,23 +150,24 @@ DrawerThemeData _drawerTheme() {
 }
 
 NavigationRailThemeData _navigationRailTheme() {
-  return NavigationRailThemeData(
+  return const NavigationRailThemeData(
     elevation: 2,
     backgroundColor: AppColors.white,
     indicatorColor: AppColors.primary,
     // useIndicator: true,
     labelType: NavigationRailLabelType.all,
-    selectedLabelTextStyle: GoogleFonts.montserrat(
+    selectedLabelTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.primary,
+      fontFamily: 'UberMove',
     ),
-    unselectedLabelTextStyle: GoogleFonts.montserrat(
+    unselectedLabelTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.unselectedLabelColor,
+      fontFamily: 'UberMove',
     ),
-    selectedIconTheme: const IconThemeData(color: AppColors.primary),
-    unselectedIconTheme:
-        const IconThemeData(color: AppColors.unselectedLabelColor),
+    selectedIconTheme: IconThemeData(color: AppColors.primary),
+    unselectedIconTheme: IconThemeData(color: AppColors.unselectedLabelColor),
   );
 }
 //============================================================
@@ -247,7 +248,8 @@ InputDecorationTheme _inputDecorationTheme() {
   return InputDecorationTheme(
     isDense: true,
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-    labelStyle: GoogleFonts.montserrat(
+    labelStyle: const TextStyle(
+      fontFamily: 'UberMove',
       fontSize: 14.0,
     ),
     hintStyle: const TextStyle(
@@ -326,10 +328,11 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.montserrat(
+      textStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
+        fontFamily: 'UberMove',
       ),
       elevation: 0,
       disabledBackgroundColor: AppColors.lightPrimary,
@@ -341,11 +344,12 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
 TextButtonThemeData _textButtonTheme() {
   return TextButtonThemeData(
     style: TextButton.styleFrom(
-      textStyle: GoogleFonts.montserrat(
+      textStyle: const TextStyle(
         fontSize: 14,
         color: AppColors.textButtonColor,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.25,
+        fontFamily: 'UberMove',
       ),
     ),
   );
@@ -357,11 +361,12 @@ OutlinedButtonThemeData _outlinedButtonTheme() {
       backgroundColor: AppColors.white,
       side: const BorderSide(color: AppColors.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.montserrat(
+      textStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.25,
+        fontFamily: 'UberMove',
       ),
       elevation: 0,
       minimumSize: const Size(120, 45),

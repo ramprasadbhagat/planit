@@ -15,6 +15,7 @@ class CategoryAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(
         vertical: 50,
@@ -50,11 +51,9 @@ class CategoryAlertDialog extends StatelessWidget {
                     children: [
                       Text(
                         'Shop by category',
-                        style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        style: textTheme.titleLarge?.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       BlocBuilder<CategoryBloc, CategoryState>(
@@ -63,12 +62,10 @@ class CategoryAlertDialog extends StatelessWidget {
                         builder: (context, state) {
                           return Text(
                             '${state.validCategories.length} categories',
-                            style: GoogleFonts.montserrat(
-                              textStyle: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.lightOrange,
-                              ),
+                            style: textTheme.labelSmall?.copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.lightOrange,
                             ),
                           );
                         },

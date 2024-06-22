@@ -55,6 +55,7 @@ class _MainTabbarState extends State<MainTabbar> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return BlocListener<CategoryBloc, CategoryState>(
       listenWhen: (previous, current) =>
           previous.selectedCategory != current.selectedCategory,
@@ -105,7 +106,8 @@ class _MainTabbarState extends State<MainTabbar> {
                                             child: Text(
                                               state.cartItem.products.length
                                                   .toString(),
-                                              style: const TextStyle(
+                                              style:
+                                                  textTheme.bodySmall?.copyWith(
                                                 color: AppColors.white,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w700,
