@@ -89,8 +89,8 @@ class AppRouter extends $AppRouter {
               path: 'category',
             ),
             AutoRoute(
-              page: WishListRoute.page,
-              path: 'wishlist',
+              page: ShoppingListRoute.page,
+              path: 'shoppingList',
             ),
             AutoRoute(
               page: CartRoute.page,

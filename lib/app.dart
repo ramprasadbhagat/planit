@@ -67,8 +67,7 @@ class App extends StatelessWidget {
           create: (context) => locator<SearchProductBloc>(),
         ),
         BlocProvider<WishlistBloc>(
-          create: (context) =>
-              locator<WishlistBloc>()..add(const WishlistEvent.fetch()),
+          create: (context) => locator<WishlistBloc>(),
         ),
         BlocProvider<PincodeBloc>(
           create: (context) =>
