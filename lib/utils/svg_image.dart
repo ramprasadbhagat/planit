@@ -30,4 +30,5 @@ abstract class SvgImage {
   static const String roundArrowIcon = '${_basePath}round_arrow.svg';
   static const String thumsupIcon = '${_basePath}thumsup.svg';
   static const String currencyIcon = '${_basePath}currency.svg';
+  static const String calenderIcon = '${_basePath}calendar_icon.svg';
 }

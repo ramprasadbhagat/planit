@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
+import 'package:planit/presentation/checkout/widgets/delivery_date_section.dart';
 import 'package:planit/presentation/checkout/widgets/payment_section.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/svg_image.dart';
 
 @RoutePage()
 class CheckoutPage extends StatelessWidget {
@@ -55,6 +59,29 @@ class CheckoutPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
+                      'Select Your Delivery Date',
+                      style: textTheme.titleMedium?.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.black,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const DeliveryDateSection(),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      '* Your expected date of delivery is on 7th June 2024 , Monday , at 7:00 - 8:00 pm',
+                      style: textTheme.labelSmall
+                          ?.copyWith(color: AppColors.grey2, fontSize: 12),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
                       'Delivery Address',
                       style: textTheme.titleMedium?.copyWith(
                         fontSize: 16,
@@ -101,14 +128,44 @@ class CheckoutPage extends StatelessWidget {
                 ),
               ],
             ),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(),
-                backgroundColor: AppColors.black,
-                maximumSize: const Size(330, 50),
-              ),
-              child: const Text('Proceed to payment'),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      SvgImage.coupon,
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    Text(
+                      'Use Coupons',
+                      style: textTheme.bodyMedium,
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 14,
+                      color: AppColors.grey2,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      backgroundColor: AppColors.black,
+                      maximumSize: const Size(330, 50),
+                    ),
+                    child: const Text('Proceed to payment'),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
