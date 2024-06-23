@@ -7,6 +7,7 @@ import 'package:planit/domain/highlights/entities/highlight.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -23,9 +24,9 @@ class HighLightSection extends StatelessWidget {
             title: 'Highlights',
             onTap: () {
               context.read<HighlightProductBloc>().add(
-                  const HighlightProductEvent.fetch(),
-                );
-            // context.router.navigate(const HighLightRoute());
+                    const HighlightProductEvent.fetch(),
+                  );
+              context.router.navigate(const HighLightsRoute());
             },
           ),
           const SizedBox(

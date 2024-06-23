@@ -1,4 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/domain/product/entities/price.dart' as pp;
 
 part 'highlight.freezed.dart';
 
@@ -74,6 +78,16 @@ class Highlight with _$Highlight {
         attributeItem: '',
         price: Price.empty(),
         productImages: <String>[],
+      );
+  Product get toProduct => Product(
+        productId: ProductId(id),
+        name: productName,
+        productImages: productImages,
+        skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
+        startingPrice: 100,
+        attributeItem: attributeItem,
+        attributeItemProductId: 'abc',
+        price: pp.Price(price: price.price, quantity: price.quantity),
       );
 }
 
