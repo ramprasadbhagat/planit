@@ -32,8 +32,9 @@ class ShopByCategory extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SectionTitle(
+              SectionTitle(
                 title: 'Shop by category',
+                onTap: () {},
               ),
               const SizedBox(
                 height: 10,

@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i26;
+<<<<<<< HEAD
 import 'package:planit/presentation/add_money/add_money.dart' as _i2;
 import 'package:planit/presentation/address_book/adress_book_page.dart' as _i3;
 import 'package:planit/presentation/auth/login/login.dart' as _i9;
@@ -30,6 +31,27 @@ import 'package:planit/presentation/my_wallet/my_wallet_page.dart' as _i12;
 import 'package:planit/presentation/order/order_details.dart' as _i13;
 import 'package:planit/presentation/order_list/order_list_page.dart' as _i14;
 import 'package:planit/presentation/profile/profile_page.dart' as _i16;
+=======
+import 'package:planit/presentation/add_money/add_money.dart' as _i1;
+import 'package:planit/presentation/address_book/adress_book_page.dart' as _i2;
+import 'package:planit/presentation/auth/login/login.dart' as _i9;
+import 'package:planit/presentation/auth/otp/otp.dart' as _i8;
+import 'package:planit/presentation/auth/signup/signup.dart' as _i21;
+import 'package:planit/presentation/cart/cart_page.dart' as _i3;
+import 'package:planit/presentation/category/category_page.dart' as _i4;
+import 'package:planit/presentation/checkout/checkout_page.dart' as _i5;
+import 'package:planit/presentation/highlights/highLights.dart' as _i6;
+import 'package:planit/presentation/home/home_page.dart' as _i7;
+import 'package:planit/presentation/home/plan/plan_page.dart' as _i14;
+import 'package:planit/presentation/home/read/read_page.dart' as _i17;
+import 'package:planit/presentation/home/shop/shop_page.dart' as _i19;
+import 'package:planit/presentation/main/tab_bar.dart' as _i10;
+import 'package:planit/presentation/my_wallet/my_wallet_page.dart' as _i11;
+import 'package:planit/presentation/order/order_details.dart' as _i12;
+import 'package:planit/presentation/order_list/order_list_page.dart' as _i13;
+import 'package:planit/presentation/profile/profile_page.dart' as _i15;
+import 'package:planit/presentation/quick_picks/quick_picks.dart' as _i16;
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 import 'package:planit/presentation/search_product/serach_product_page.dart'
     as _i18;
 import 'package:planit/presentation/shopping_list/shopping_list.dart' as _i20;
@@ -43,7 +65,11 @@ abstract class $AppRouter extends _i26.RootStackRouter {
 
   @override
   final Map<String, _i26.PageFactory> pagesMap = {
+<<<<<<< HEAD
     AddComplainsRoute.name: (routeData) {
+=======
+    AddMoneyRoute.name: (routeData) {
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AddComplainsPage(),
@@ -79,9 +105,21 @@ abstract class $AppRouter extends _i26.RootStackRouter {
         child: const _i6.CheckoutPage(),
       );
     },
+<<<<<<< HEAD
     HomeRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+=======
+    HighLightsRoute.name: (routeData) {
+      return _i26.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i6.HighLightsPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i26.AutoRoutePage<dynamic>(
+        routeData: routeData,
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
         child: const _i7.HomePage(),
       );
     },
@@ -101,42 +139,71 @@ abstract class $AppRouter extends _i26.RootStackRouter {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i10.MainTabbar(),
+<<<<<<< HEAD
       );
     },
     MyComplainsRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i11.MyComplainsPage(),
+=======
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     MyWalletRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+<<<<<<< HEAD
         child: const _i12.MyWalletPage(),
+=======
+        child: const _i11.MyWalletPage(),
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     OrderDetailsRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+<<<<<<< HEAD
         child: const _i13.OrderDetailsPage(),
+=======
+        child: const _i12.OrderDetailsPage(),
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     OrderListRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+<<<<<<< HEAD
         child: const _i14.OrderListPage(),
+=======
+        child: const _i13.OrderListPage(),
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     PlanRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+<<<<<<< HEAD
         child: const _i15.PlanPage(),
+=======
+        child: const _i14.PlanPage(),
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     ProfileRoute.name: (routeData) {
       return _i26.AutoRoutePage<dynamic>(
         routeData: routeData,
+<<<<<<< HEAD
         child: const _i16.ProfilePage(),
+=======
+        child: const _i15.ProfilePage(),
+      );
+    },
+    QuickPicksRoute.name: (routeData) {
+      return _i26.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i16.QuickPicksPage(),
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
       );
     },
     ReadRoute.name: (routeData) {
@@ -197,6 +264,7 @@ abstract class $AppRouter extends _i26.RootStackRouter {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i1.AddComplainsPage]
 class AddComplainsRoute extends _i26.PageRouteInfo<void> {
   const AddComplainsRoute({List<_i26.PageRouteInfo>? children})
@@ -212,6 +280,9 @@ class AddComplainsRoute extends _i26.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AddMoneyPage]
+=======
+/// [_i1.AddMoneyPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class AddMoneyRoute extends _i26.PageRouteInfo<void> {
   const AddMoneyRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -225,7 +296,11 @@ class AddMoneyRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i3.AddressBookPage]
+=======
+/// [_i2.AddressBookPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class AddressBookRoute extends _i26.PageRouteInfo<void> {
   const AddressBookRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -239,7 +314,11 @@ class AddressBookRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i4.CartPage]
+=======
+/// [_i3.CartPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class CartRoute extends _i26.PageRouteInfo<void> {
   const CartRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -253,7 +332,11 @@ class CartRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i5.CategoryPage]
+=======
+/// [_i4.CategoryPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class CategoryRoute extends _i26.PageRouteInfo<void> {
   const CategoryRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -267,7 +350,11 @@ class CategoryRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i6.CheckoutPage]
+=======
+/// [_i5.CheckoutPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class CheckoutRoute extends _i26.PageRouteInfo<void> {
   const CheckoutRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -281,6 +368,23 @@ class CheckoutRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
+=======
+/// [_i6.HighLightsPage]
+class HighLightsRoute extends _i26.PageRouteInfo<void> {
+  const HighLightsRoute({List<_i26.PageRouteInfo>? children})
+      : super(
+          HighLightsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HighLightsRoute';
+
+  static const _i26.PageInfo<void> page = _i26.PageInfo<void>(name);
+}
+
+/// generated route for
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 /// [_i7.HomePage]
 class HomeRoute extends _i26.PageRouteInfo<void> {
   const HomeRoute({List<_i26.PageRouteInfo>? children})
@@ -337,6 +441,7 @@ class MainTabbar extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i11.MyComplainsPage]
 class MyComplainsRoute extends _i26.PageRouteInfo<void> {
   const MyComplainsRoute({List<_i26.PageRouteInfo>? children})
@@ -352,6 +457,9 @@ class MyComplainsRoute extends _i26.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.MyWalletPage]
+=======
+/// [_i11.MyWalletPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class MyWalletRoute extends _i26.PageRouteInfo<void> {
   const MyWalletRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -365,7 +473,11 @@ class MyWalletRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i13.OrderDetailsPage]
+=======
+/// [_i12.OrderDetailsPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class OrderDetailsRoute extends _i26.PageRouteInfo<void> {
   const OrderDetailsRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -379,7 +491,11 @@ class OrderDetailsRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i14.OrderListPage]
+=======
+/// [_i13.OrderListPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class OrderListRoute extends _i26.PageRouteInfo<void> {
   const OrderListRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -393,7 +509,11 @@ class OrderListRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i15.PlanPage]
+=======
+/// [_i14.PlanPage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class PlanRoute extends _i26.PageRouteInfo<void> {
   const PlanRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -407,7 +527,11 @@ class PlanRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
 /// [_i16.ProfilePage]
+=======
+/// [_i15.ProfilePage]
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 class ProfileRoute extends _i26.PageRouteInfo<void> {
   const ProfileRoute({List<_i26.PageRouteInfo>? children})
       : super(
@@ -421,6 +545,23 @@ class ProfileRoute extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
+<<<<<<< HEAD
+=======
+/// [_i16.QuickPicksPage]
+class QuickPicksRoute extends _i26.PageRouteInfo<void> {
+  const QuickPicksRoute({List<_i26.PageRouteInfo>? children})
+      : super(
+          QuickPicksRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuickPicksRoute';
+
+  static const _i26.PageInfo<void> page = _i26.PageInfo<void>(name);
+}
+
+/// generated route for
+>>>>>>> a038988 (Feat/Added quickPicks viewAll Screen)
 /// [_i17.ReadPage]
 class ReadRoute extends _i26.PageRouteInfo<void> {
   const ReadRoute({List<_i26.PageRouteInfo>? children})

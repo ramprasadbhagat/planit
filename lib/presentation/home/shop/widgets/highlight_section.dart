@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,8 +19,14 @@ class HighLightSection extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          const SectionTitle(
+          SectionTitle(
             title: 'Highlights',
+            onTap: () {
+              context.read<HighlightProductBloc>().add(
+                  const HighlightProductEvent.fetch(),
+                );
+            // context.router.navigate(const HighLightRoute());
+            },
           ),
           const SizedBox(
             height: 10,

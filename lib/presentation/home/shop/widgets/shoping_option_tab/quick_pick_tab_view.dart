@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 
 class QuickPickTabView extends StatelessWidget {
   const QuickPickTabView({super.key});
@@ -16,7 +18,15 @@ class QuickPickTabView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle(title: 'Your quick picks'),
+        SectionTitle(
+          title: 'Your quick picks',
+          onTap: () {
+            context.read<QuickPicksBloc>().add(
+                  const QuickPicksEvent.fetch(),
+                );
+            context.router.navigate(const QuickPicksRoute());
+          },
+        ),
         const SizedBox(
           height: 10,
         ),

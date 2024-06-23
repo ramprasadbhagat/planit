@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
-  const SectionTitle({super.key, required this.title});
+  final Function() onTap;
+  const SectionTitle({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,12 @@ class SectionTitle extends StatelessWidget {
           title,
           style: textTheme.titleMedium,
         ),
-        Text(
-          'View all',
-          style: textTheme.bodySmall,
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            'View all',
+            style: textTheme.bodySmall,
+          ),
         ),
       ],
     );
