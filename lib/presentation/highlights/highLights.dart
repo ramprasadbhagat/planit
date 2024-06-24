@@ -115,4 +115,10 @@ class _HighLightsPageState extends State<HighLightsPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 }

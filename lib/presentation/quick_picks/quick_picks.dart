@@ -115,4 +115,10 @@ class _QuickPicksPageState extends State<QuickPicksPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 }
