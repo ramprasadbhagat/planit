@@ -20,6 +20,7 @@ class Highlight with _$Highlight {
     required String skuPrice,
     required String skuPacksize,
     required String skuContent,
+    required int startingPrice,
     required List<String> ingredientsList,
     required String nutritionalInformation,
     required bool isDeleted,
@@ -33,6 +34,7 @@ class Highlight with _$Highlight {
     required String productReview,
     required double productRating,
     required Price price,
+    required String attributeItemProductId,
     required List<String> productImages,
   }) = _Highlight;
 
@@ -66,6 +68,8 @@ class Highlight with _$Highlight {
         skuPrice: '',
         skuPacksize: '',
         skuContent: '',
+        startingPrice: 0,
+        attributeItemProductId: '',
         ingredientsList: [],
         nutritionalInformation: '',
         isDeleted: false,
@@ -79,14 +83,15 @@ class Highlight with _$Highlight {
         price: Price.empty(),
         productImages: <String>[],
       );
+
   Product get toProduct => Product(
         productId: ProductId(id),
         name: productName,
         productImages: productImages,
         skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
-        startingPrice: 100,
+        startingPrice: startingPrice,
         attributeItem: attributeItem,
-        attributeItemProductId: 'abc',
+        attributeItemProductId: attributeItemProductId,
         price: pp.Price(price: price.price, quantity: price.quantity),
       );
 }

@@ -21,9 +21,6 @@ class QuickPickTabView extends StatelessWidget {
         SectionTitle(
           title: 'Your quick picks',
           onTap: () {
-            context.read<QuickPicksBloc>().add(
-                  const QuickPicksEvent.fetch(),
-                );
             context.router.navigate(const QuickPicksRoute());
           },
         ),

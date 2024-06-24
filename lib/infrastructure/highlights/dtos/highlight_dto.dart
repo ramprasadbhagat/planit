@@ -20,6 +20,7 @@ class HighlightDto with _$HighlightDto {
     required String skuPacksize,
     @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
     @JsonKey(defaultValue: '') required String productMRP,
+    @JsonKey(defaultValue: 0, readValue: intReadValue) required int startingPrice,
     @JsonKey(defaultValue: '') required String productReview,
     @JsonKey(defaultValue: '') required String productRating,
     @JsonKey(defaultValue: '') required String productDiscount,
@@ -32,6 +33,7 @@ class HighlightDto with _$HighlightDto {
     @JsonKey(defaultValue: '') required String discount,
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItem,
+    @JsonKey(defaultValue: '') required String attributeItemProductId,
     required PriceDto price,
     required List<String> productImages,
   }) = _HighlightDto;
@@ -49,6 +51,7 @@ class HighlightDto with _$HighlightDto {
         skuPrice: skuPrice,
         skuPacksize: skuPacksize,
         skuContent: skuContent,
+        startingPrice: startingPrice,
         productMRP: int.tryParse(productMRP) ?? 0,
         productRating: double.tryParse(productRating) ?? 0.0,
         productReview: productReview,
@@ -64,5 +67,12 @@ class HighlightDto with _$HighlightDto {
         attributeItem: attributeItem,
         price: price.toDomain,
         productImages: productImages,
+        attributeItemProductId: attributeItemProductId,
       );
+}
+
+int intReadValue(Map json, String key) {
+  if (json[key] is int) return json[key];
+  if (json[key] is String) return int.tryParse(json[key]) ?? 0;
+  return 0;
 }

@@ -26,6 +26,7 @@ mixin _$Highlight {
   String get skuPrice => throw _privateConstructorUsedError;
   String get skuPacksize => throw _privateConstructorUsedError;
   String get skuContent => throw _privateConstructorUsedError;
+  int get startingPrice => throw _privateConstructorUsedError;
   List<String> get ingredientsList => throw _privateConstructorUsedError;
   String get nutritionalInformation => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ mixin _$Highlight {
   String get productReview => throw _privateConstructorUsedError;
   double get productRating => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
+  String get attributeItemProductId => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -62,6 +64,7 @@ abstract class $HighlightCopyWith<$Res> {
       String skuPrice,
       String skuPacksize,
       String skuContent,
+      int startingPrice,
       List<String> ingredientsList,
       String nutritionalInformation,
       bool isDeleted,
@@ -75,6 +78,7 @@ abstract class $HighlightCopyWith<$Res> {
       String productReview,
       double productRating,
       Price price,
+      String attributeItemProductId,
       List<String> productImages});
 
   $PriceCopyWith<$Res> get price;
@@ -103,6 +107,7 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
     Object? skuPrice = null,
     Object? skuPacksize = null,
     Object? skuContent = null,
+    Object? startingPrice = null,
     Object? ingredientsList = null,
     Object? nutritionalInformation = null,
     Object? isDeleted = null,
@@ -116,6 +121,7 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
     Object? productReview = null,
     Object? productRating = null,
     Object? price = null,
+    Object? attributeItemProductId = null,
     Object? productImages = null,
   }) {
     return _then(_value.copyWith(
@@ -159,6 +165,10 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.skuContent
           : skuContent // ignore: cast_nullable_to_non_nullable
               as String,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
+              as int,
       ingredientsList: null == ingredientsList
           ? _value.ingredientsList
           : ingredientsList // ignore: cast_nullable_to_non_nullable
@@ -211,6 +221,10 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price,
+      attributeItemProductId: null == attributeItemProductId
+          ? _value.attributeItemProductId
+          : attributeItemProductId // ignore: cast_nullable_to_non_nullable
+              as String,
       productImages: null == productImages
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -246,6 +260,7 @@ abstract class _$$HighlightImplCopyWith<$Res>
       String skuPrice,
       String skuPacksize,
       String skuContent,
+      int startingPrice,
       List<String> ingredientsList,
       String nutritionalInformation,
       bool isDeleted,
@@ -259,6 +274,7 @@ abstract class _$$HighlightImplCopyWith<$Res>
       String productReview,
       double productRating,
       Price price,
+      String attributeItemProductId,
       List<String> productImages});
 
   @override
@@ -286,6 +302,7 @@ class __$$HighlightImplCopyWithImpl<$Res>
     Object? skuPrice = null,
     Object? skuPacksize = null,
     Object? skuContent = null,
+    Object? startingPrice = null,
     Object? ingredientsList = null,
     Object? nutritionalInformation = null,
     Object? isDeleted = null,
@@ -299,6 +316,7 @@ class __$$HighlightImplCopyWithImpl<$Res>
     Object? productReview = null,
     Object? productRating = null,
     Object? price = null,
+    Object? attributeItemProductId = null,
     Object? productImages = null,
   }) {
     return _then(_$HighlightImpl(
@@ -342,6 +360,10 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value.skuContent
           : skuContent // ignore: cast_nullable_to_non_nullable
               as String,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
+              as int,
       ingredientsList: null == ingredientsList
           ? _value._ingredientsList
           : ingredientsList // ignore: cast_nullable_to_non_nullable
@@ -394,6 +416,10 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price,
+      attributeItemProductId: null == attributeItemProductId
+          ? _value.attributeItemProductId
+          : attributeItemProductId // ignore: cast_nullable_to_non_nullable
+              as String,
       productImages: null == productImages
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -416,6 +442,7 @@ class _$HighlightImpl extends _Highlight {
       required this.skuPrice,
       required this.skuPacksize,
       required this.skuContent,
+      required this.startingPrice,
       required final List<String> ingredientsList,
       required this.nutritionalInformation,
       required this.isDeleted,
@@ -429,6 +456,7 @@ class _$HighlightImpl extends _Highlight {
       required this.productReview,
       required this.productRating,
       required this.price,
+      required this.attributeItemProductId,
       required final List<String> productImages})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
@@ -454,6 +482,8 @@ class _$HighlightImpl extends _Highlight {
   final String skuPacksize;
   @override
   final String skuContent;
+  @override
+  final int startingPrice;
   final List<String> _ingredientsList;
   @override
   List<String> get ingredientsList {
@@ -486,6 +516,8 @@ class _$HighlightImpl extends _Highlight {
   final double productRating;
   @override
   final Price price;
+  @override
+  final String attributeItemProductId;
   final List<String> _productImages;
   @override
   List<String> get productImages {
@@ -496,7 +528,7 @@ class _$HighlightImpl extends _Highlight {
 
   @override
   String toString() {
-    return 'Highlight(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
+    return 'Highlight(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, attributeItemProductId: $attributeItemProductId, productImages: $productImages)';
   }
 
   @override
@@ -522,6 +554,8 @@ class _$HighlightImpl extends _Highlight {
                 other.skuPacksize == skuPacksize) &&
             (identical(other.skuContent, skuContent) ||
                 other.skuContent == skuContent) &&
+            (identical(other.startingPrice, startingPrice) ||
+                other.startingPrice == startingPrice) &&
             const DeepCollectionEquality()
                 .equals(other._ingredientsList, _ingredientsList) &&
             (identical(other.nutritionalInformation, nutritionalInformation) ||
@@ -547,6 +581,8 @@ class _$HighlightImpl extends _Highlight {
             (identical(other.productRating, productRating) ||
                 other.productRating == productRating) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.attributeItemProductId, attributeItemProductId) ||
+                other.attributeItemProductId == attributeItemProductId) &&
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages));
   }
@@ -564,6 +600,7 @@ class _$HighlightImpl extends _Highlight {
         skuPrice,
         skuPacksize,
         skuContent,
+        startingPrice,
         const DeepCollectionEquality().hash(_ingredientsList),
         nutritionalInformation,
         isDeleted,
@@ -577,6 +614,7 @@ class _$HighlightImpl extends _Highlight {
         productReview,
         productRating,
         price,
+        attributeItemProductId,
         const DeepCollectionEquality().hash(_productImages)
       ]);
 
@@ -599,6 +637,7 @@ abstract class _Highlight extends Highlight {
       required final String skuPrice,
       required final String skuPacksize,
       required final String skuContent,
+      required final int startingPrice,
       required final List<String> ingredientsList,
       required final String nutritionalInformation,
       required final bool isDeleted,
@@ -612,6 +651,7 @@ abstract class _Highlight extends Highlight {
       required final String productReview,
       required final double productRating,
       required final Price price,
+      required final String attributeItemProductId,
       required final List<String> productImages}) = _$HighlightImpl;
   const _Highlight._() : super._();
 
@@ -635,6 +675,8 @@ abstract class _Highlight extends Highlight {
   String get skuPacksize;
   @override
   String get skuContent;
+  @override
+  int get startingPrice;
   @override
   List<String> get ingredientsList;
   @override
@@ -661,6 +703,8 @@ abstract class _Highlight extends Highlight {
   double get productRating;
   @override
   Price get price;
+  @override
+  String get attributeItemProductId;
   @override
   List<String> get productImages;
   @override

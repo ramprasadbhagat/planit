@@ -6,6 +6,7 @@ import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/quick_picks/widget/search_textfeld_widget.dart';
+import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/responsive.dart';
 
@@ -48,7 +49,7 @@ class _QuickPicksPageState extends State<QuickPicksPage> {
                   BlocBuilder<QuickPicksBloc, QuickPicksState>(
                     builder: (context, state) {
                       if (state.isFetching) {
-                        return Container();
+                        return const ShimmerItem();
                       } else if (state.quicksPickProducts.isEmpty) {
                         return const NoData();
                       }
@@ -100,14 +101,6 @@ class _QuickPicksPageState extends State<QuickPicksPage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            // state.isScrolling
-                            //     ? const Padding(
-                            //         padding: EdgeInsets.only(bottom: 20),
-                            //         child: Center(
-                            //           child: CircularProgressIndicator(),
-                            //         ),
-                            //       )
-                            //     : const SizedBox.shrink(),
                           ],
                         ),
                       );

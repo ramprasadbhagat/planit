@@ -23,9 +23,6 @@ class HighLightSection extends StatelessWidget {
           SectionTitle(
             title: 'Highlights',
             onTap: () {
-              context.read<HighlightProductBloc>().add(
-                    const HighlightProductEvent.fetch(),
-                  );
               context.router.navigate(const HighLightsRoute());
             },
           ),
