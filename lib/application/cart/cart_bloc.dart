@@ -109,7 +109,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         );
       },
       clearAllCartLocal: (_ClearAllCartLocal e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(state.copyWith(isFetching: true, cartItem: CartItem.empty()));
         final failureOrSuccess = await repository.clearAllCartLocal();
         failureOrSuccess.fold(
           (failure) => emit(
@@ -120,6 +120,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           ),
           (cartItems) => add(const _GetCartLocal()),
         );
+      },
+      sendLocalServerCart: (value) {
+        emit(state.copyWith(isFetching: true));
+        for (final element in state.cartData) {
+          add(_AddToCart(product: element.toProduct, quantity: 1));
+        }
       },
       removeFromCart: (_RemoveFromCart e) async {
         emit(state.copyWith(isFetching: true));

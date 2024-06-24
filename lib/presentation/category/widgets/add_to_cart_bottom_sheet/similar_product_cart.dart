@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
@@ -125,21 +126,11 @@ class SimilarProductCard extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width * 0.17,
                   child: OutlinedButton(
                     onPressed: () {
-                      if (context.read<PincodeBloc>().state.pincode.isEmpty) {
-                        context.router.maybePop();
-                        const snackBar = SnackBar(
-                          backgroundColor: AppColors.black,
-                          content: Text(
-                            'Pincode has not been selected yet. Select pincode to add item in cart',
-                          ),
-                        );
-
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      } else {
+                      if (context.read<AuthBloc>().state ==
+                          const AuthState.unauthenticated()) {
                         context.read<CartBloc>().add(
-                              CartEvent.addToCart(
+                              CartEvent.addToCartLocal(
                                 product: item.toProduct,
-                                quantity: 1,
                               ),
                             );
                         context.router.maybePop();
@@ -148,6 +139,31 @@ class SimilarProductCard extends StatelessWidget {
                         );
 
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      } else {
+                        if (context.read<PincodeBloc>().state.pincode.isEmpty) {
+                          context.router.maybePop();
+                          const snackBar = SnackBar(
+                            backgroundColor: AppColors.black,
+                            content: Text(
+                              'Pincode has not been selected yet. Select pincode to add item in cart',
+                            ),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          context.read<CartBloc>().add(
+                                CartEvent.addToCart(
+                                  product: item.toProduct,
+                                  quantity: 1,
+                                ),
+                              );
+                          context.router.maybePop();
+                          const snackBar = SnackBar(
+                            content: Text('Item added to cart'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
                       }
                     },
                     style: OutlinedButton.styleFrom(

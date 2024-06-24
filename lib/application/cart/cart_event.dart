@@ -19,4 +19,5 @@ class CartEvent with _$CartEvent {
     required int index,
   }) = _DeleteCartLocal;
   const factory CartEvent.clearAllCartLocal() = _ClearAllCartLocal;
+  const factory CartEvent.sendLocalServerCart() = _SendLocalServerCart;
 }

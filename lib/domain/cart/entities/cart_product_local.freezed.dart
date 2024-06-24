@@ -194,7 +194,7 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
 
 @HiveType(
     typeId: HiveConstants.cartTypeId, adapterName: HiveConstants.cartAdapter)
-class _$CartProductLocalImpl implements _CartProductLocal {
+class _$CartProductLocalImpl extends _CartProductLocal {
   _$CartProductLocalImpl(
       {@HiveField(0) required this.productId,
       @HiveField(1) required this.name,
@@ -204,7 +204,8 @@ class _$CartProductLocalImpl implements _CartProductLocal {
       @HiveField(5) required this.attributeItem,
       @HiveField(6) required this.attributeItemProductId,
       @HiveField(7) required this.price})
-      : _productImages = productImages;
+      : _productImages = productImages,
+        super._();
 
   @override
   @HiveField(0)
@@ -283,7 +284,7 @@ class _$CartProductLocalImpl implements _CartProductLocal {
           this, _$identity);
 }
 
-abstract class _CartProductLocal implements CartProductLocal {
+abstract class _CartProductLocal extends CartProductLocal {
   factory _CartProductLocal(
       {@HiveField(0) required final String productId,
       @HiveField(1) required final String name,
@@ -293,6 +294,7 @@ abstract class _CartProductLocal implements CartProductLocal {
       @HiveField(5) required final String attributeItem,
       @HiveField(6) required final String attributeItemProductId,
       @HiveField(7) required final String price}) = _$CartProductLocalImpl;
+  _CartProductLocal._() : super._();
 
   @override
   @HiveField(0)

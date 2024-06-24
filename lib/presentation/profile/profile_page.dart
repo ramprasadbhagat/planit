@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
@@ -116,9 +117,13 @@ class ProfilePage extends StatelessWidget {
               onTap: () {
                 context.read<AuthBloc>().add(const AuthEvent.logout());
                 context
+                    .read<CartBloc>()
+                    .add(const CartEvent.clearAllCartLocal());
+                context
                     .read<PincodeBloc>()
                     .add(const PincodeEvent.initialized());
-                context.router.navigate(const LoginRoute());
+                context.router.maybePop();
+                //context.router.navigate(const LoginRoute());
               },
               leadingIcon: Icons.exit_to_app,
               title: 'Logout',

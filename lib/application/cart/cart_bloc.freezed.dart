@@ -26,6 +26,7 @@ mixin _$CartEvent {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$CartEvent {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$CartEvent {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$CartEvent {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$CartEvent {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$CartEvent {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return initialized();
   }
@@ -170,6 +177,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return initialized?.call();
   }
@@ -185,6 +193,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -204,6 +213,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return initialized(this);
   }
@@ -219,6 +229,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return initialized?.call(this);
   }
@@ -234,6 +245,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -293,6 +305,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return fetch();
   }
@@ -308,6 +321,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return fetch?.call();
   }
@@ -323,6 +337,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -342,6 +357,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return fetch(this);
   }
@@ -357,6 +373,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return fetch?.call(this);
   }
@@ -372,6 +389,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -476,6 +494,7 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return addToCart(product, quantity);
   }
@@ -491,6 +510,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return addToCart?.call(product, quantity);
   }
@@ -506,6 +526,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -525,6 +546,7 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return addToCart(this);
   }
@@ -540,6 +562,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return addToCart?.call(this);
   }
@@ -555,6 +578,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -659,6 +683,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return removeFromCart(product);
   }
@@ -674,6 +699,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return removeFromCart?.call(product);
   }
@@ -689,6 +715,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -708,6 +735,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return removeFromCart(this);
   }
@@ -723,6 +751,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return removeFromCart?.call(this);
   }
@@ -738,6 +767,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -840,6 +870,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return addToCartLocal(product);
   }
@@ -855,6 +886,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return addToCartLocal?.call(product);
   }
@@ -870,6 +902,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCartLocal != null) {
@@ -889,6 +922,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return addToCartLocal(this);
   }
@@ -904,6 +938,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return addToCartLocal?.call(this);
   }
@@ -919,6 +954,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCartLocal != null) {
@@ -984,6 +1020,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return getCartLocal();
   }
@@ -999,6 +1036,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return getCartLocal?.call();
   }
@@ -1014,6 +1052,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (getCartLocal != null) {
@@ -1033,6 +1072,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return getCartLocal(this);
   }
@@ -1048,6 +1088,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return getCartLocal?.call(this);
   }
@@ -1063,6 +1104,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (getCartLocal != null) {
@@ -1149,6 +1191,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return deletCartLocal(index);
   }
@@ -1164,6 +1207,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return deletCartLocal?.call(index);
   }
@@ -1179,6 +1223,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (deletCartLocal != null) {
@@ -1198,6 +1243,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return deletCartLocal(this);
   }
@@ -1213,6 +1259,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return deletCartLocal?.call(this);
   }
@@ -1228,6 +1275,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (deletCartLocal != null) {
@@ -1293,6 +1341,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return clearAllCartLocal();
   }
@@ -1308,6 +1357,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return clearAllCartLocal?.call();
   }
@@ -1323,6 +1373,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (clearAllCartLocal != null) {
@@ -1342,6 +1393,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     required TResult Function(_GetCartLocal value) getCartLocal,
     required TResult Function(_DeleteCartLocal value) deletCartLocal,
     required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return clearAllCartLocal(this);
   }
@@ -1357,6 +1409,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult? Function(_GetCartLocal value)? getCartLocal,
     TResult? Function(_DeleteCartLocal value)? deletCartLocal,
     TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return clearAllCartLocal?.call(this);
   }
@@ -1372,6 +1425,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult Function(_GetCartLocal value)? getCartLocal,
     TResult Function(_DeleteCartLocal value)? deletCartLocal,
     TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (clearAllCartLocal != null) {
@@ -1383,6 +1437,151 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
 
 abstract class _ClearAllCartLocal implements CartEvent {
   const factory _ClearAllCartLocal() = _$ClearAllCartLocalImpl;
+}
+
+/// @nodoc
+abstract class _$$SendLocalServerCartImplCopyWith<$Res> {
+  factory _$$SendLocalServerCartImplCopyWith(_$SendLocalServerCartImpl value,
+          $Res Function(_$SendLocalServerCartImpl) then) =
+      __$$SendLocalServerCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendLocalServerCartImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$SendLocalServerCartImpl>
+    implements _$$SendLocalServerCartImplCopyWith<$Res> {
+  __$$SendLocalServerCartImplCopyWithImpl(_$SendLocalServerCartImpl _value,
+      $Res Function(_$SendLocalServerCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SendLocalServerCartImpl implements _SendLocalServerCart {
+  const _$SendLocalServerCartImpl();
+
+  @override
+  String toString() {
+    return 'CartEvent.sendLocalServerCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendLocalServerCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return sendLocalServerCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return sendLocalServerCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (sendLocalServerCart != null) {
+      return sendLocalServerCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return sendLocalServerCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return sendLocalServerCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (sendLocalServerCart != null) {
+      return sendLocalServerCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendLocalServerCart implements CartEvent {
+  const factory _SendLocalServerCart() = _$SendLocalServerCartImpl;
 }
 
 /// @nodoc
