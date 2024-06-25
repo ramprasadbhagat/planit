@@ -24,6 +24,87 @@ class AddToCartBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
+    Future<void> showErrorAlert() async {
+      await showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return Dialog(
+            child: SizedBox(
+              height: 150,
+              width: 250,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  children: [
+                    Transform.translate(
+                      offset: const Offset(0, -30),
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        alignment: Alignment.center,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.grey2,
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: Image.asset(
+                          PngImage.location,
+                          height: 35,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Enter your delivery pincode to add this item to your cart and check availability.',
+                      style: textTheme.labelSmall?.copyWith(
+                        color: const Color(0xff424446),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: 80,
+                      height: 28,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.router.maybePop();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          backgroundColor: AppColors.black,
+                          maximumSize: const Size(330, 50),
+                        ),
+                        child: Text(
+                          'OK',
+                          style: textTheme.labelSmall?.copyWith(
+                            color: AppColors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return BlocProvider(
       create: (context) => locator<ProductDetailBloc>()
         ..add(ProductDetailEvent.fetch(product.productId)),
@@ -178,16 +259,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                               .state
                               .pincode
                               .isEmpty) {
-                            context.router.maybePop();
-                            const snackBar = SnackBar(
-                              backgroundColor: AppColors.black,
-                              content: Text(
-                                'Pincode has not been selected yet. Select pincode to add item in cart',
-                              ),
-                            );
-
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                            showErrorAlert();
                           } else {
                             context.read<CartBloc>().add(
                                   CartEvent.addToCart(

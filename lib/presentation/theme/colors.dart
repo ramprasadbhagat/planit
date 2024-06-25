@@ -4,6 +4,8 @@ abstract class AppColors {
   static const Color darkGray = Color.fromRGBO(128, 128, 128, 1.0);
   static const Color lightGreen = Color.fromRGBO(192, 212, 47, 0.5);
   static const Color green = Color.fromRGBO(76, 175, 80, 1.0);
+  static const Color successBorderGreen = Color.fromRGBO(80, 198, 77, 0.25);
+  static const Color successStatusGreen = Color.fromRGBO(80, 198, 77, 1);
   static const Color extraDarkGreen = Color.fromRGBO(16, 131, 119, 1);
   static const Color darkGreen = Color.fromRGBO(128, 128, 0, 1.0);
   static const Color darkerGreen = Color.fromRGBO(5, 38, 8, 1.0);
@@ -131,6 +133,9 @@ abstract class AppColors {
   static const Color grey1 = Color(0xFF555555);
   static const Color grey2 = Color(0xFF888888);
   static const Color grey3 = Color(0xFF666666);
+  static const Color grey4 = Color(0xFF777777);
+  static const Color grey5 = Color(0xFFF3F3F3);
+  static const Color grey6 = Color(0xFF424446);
   static const Color highlight1 = Color(0xffefe4d3);
   static const Color availableTagColor = Color(0xFF8ABD7D);
   static const Color slateBlue = Color.fromRGBO(94, 123, 180, 1.0);

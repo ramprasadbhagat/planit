@@ -74,6 +74,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textScaler: const TextScaler.linear(0.9),
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: isSelected ? AppColors.white : AppColors.black,
+                      ),
                     ),
                   );
                 },
@@ -82,20 +85,24 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
-              height: _selectedTab == 0
-                  ? context.read<QuickPicksBloc>().state.quickPickProductsHeight
-                  : _selectedTab == 1
-                      ? 250
-                      : 150,
-              child: TabBarView(
-                controller: _tabController,
-                children: const [
-                  QuickPickTabView(),
-                  ShopByCategory(),
-                  ShopByOccasion(),
-                ],
-              ),
+            BlocBuilder<QuickPicksBloc, QuickPicksState>(
+              builder: (context, state) {
+                return SizedBox(
+                  height: _selectedTab == 0
+                      ? state.quickPickProductsHeight
+                      : _selectedTab == 1
+                          ? 250
+                          : 150,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const [
+                      QuickPickTabView(),
+                      ShopByCategory(),
+                      ShopByOccasion(),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),

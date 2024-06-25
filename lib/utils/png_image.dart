@@ -7,6 +7,12 @@ abstract class PngImage {
   static const String planitLoginLogo = '${_basePath}planit_logo.png';
   static const String appPngimageLogo = '${_basePath}appPngimage.png';
   static const String creditCard = '${_basePath}card.png';
-
+  static const String orderStatusImage = '${_basePath}group.png';
+  static const String orderItem1 = '${_basePath}orderItem1.png';
+  static const String orderItem2 = '${_basePath}orderItem2.png';
+  static const String dollar = '${_basePath}dollar.png';
+  static const String coupon = '${_basePath}coupon.png';
+  static const String orderItemIcon = '${_basePath}orderItemIcon.png';
+  static const String location = '${_basePath}location.png';
   static String generic(image) => '$_basePath$image';
 }

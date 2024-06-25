@@ -19,8 +19,10 @@ abstract class SvgImage {
   static const String truck = '${_basePath}truck.svg';
   static const String wallet = '${_basePath}wallet.svg';
   static const String calendar = '${_basePath}calendar.svg';
+  static const String calendar2 = '${_basePath}calendar-2.svg';
   static const String clock = '${_basePath}clock.svg';
   static const String orderStatusIcon = '${_basePath}order_status_icon.svg';
+  static const String orderIdIcon = '${_basePath}order_id.svg';
   static const String box = '${_basePath}box.svg';
   static const String fabOutlinedFullBlackIcon =
       '${_basePath}fab_outlined_full_black_border.svg';
@@ -28,4 +30,6 @@ abstract class SvgImage {
       '${_basePath}fab_outlined_full_gray_border.svg';
   static const String roundArrowIcon = '${_basePath}round_arrow.svg';
   static const String thumsupIcon = '${_basePath}thumsup.svg';
+  static const String currencyIcon = '${_basePath}currency.svg';
+  static const String calenderIcon = '${_basePath}calendar_icon.svg';
 }

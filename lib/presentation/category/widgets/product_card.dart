@@ -20,96 +20,141 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+    return SizedBox(
       child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.28,
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.topRight,
-              children: [
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  height: MediaQuery.sizeOf(context).height * 0.1,
-                  child: CachedNetworkImage(
-                    errorWidget: (context, url, error) =>
-                        Image.asset(PngImage.placeholder),
-                    imageUrl: product.productImages.firstOrNull ?? '',
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
-                AddToListButton(
-                  product: product,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    product.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                  ),
-                ),
-                Text(
-                  product.attributeItem,
-                  style: textTheme.bodySmall?.copyWith(
-                    color: AppColors.grey1,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Row(
-              children: [
-                Text(
-                  '₹${product.getPriceValue} ',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 9,
-                  ),
-                ),
-                Text(
-                  ' ${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
-                  style: textTheme.bodySmall!.copyWith(
-                    decoration: TextDecoration.lineThrough,
-                    color: AppColors.lightGray,
-                    fontSize: 9,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.star,
-                      size: 9,
-                    ),
-                    Text(
-                      '4.3',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
-                      ),
-                    ),
-                  ],
-                ),
-                AddToCartButton(
-                  product: product,
-                ),
-              ],
+        width: 130,
+        height: 170,
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: AppColors.extraLightGrey2,
+              spreadRadius: 1,
+              blurRadius: 2,
             ),
           ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: CachedNetworkImage(
+                      errorWidget: (context, url, error) =>
+                          Image.asset(PngImage.placeholder),
+                      imageUrl: product.productImages.firstOrNull ?? '',
+                      height: 80,
+                      width: double.infinity,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  product.price.quantity > 1
+                      ? AddToListTextField(product: product)
+                      : AddToListButton(
+                          product: product,
+                        ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      product.name,
+                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                      textAlign: TextAlign.left,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Text(
+                    product.attributeItem,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: AppColors.grey1,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '₹${product.getPriceValue} ',
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 9,
+                    ),
+                  ),
+                  Text(
+                    '${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
+                    style: textTheme.bodySmall!.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      color: AppColors.lightGray,
+                      fontSize: 9,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        size: 9,
+                      ),
+                      Text(
+                        '4.3',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 9,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                    width: 75,
+                    child: OutlinedButton(
+                      onPressed: () => showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) => CommonBottomSheet(
+                          child: AddToCartBottomSheet(
+                            product: product,
+                          ),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        side: const BorderSide(color: Colors.black),
+                        foregroundColor: AppColors.grey3,
+                        padding: EdgeInsets.zero,
+                      ),
+                      child: Text(
+                        'Add to cart',
+                        style: textTheme.bodySmall?.copyWith(fontSize: 9),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -187,12 +232,13 @@ class AddToListButton extends StatelessWidget {
           ),
           side: const BorderSide(color: Colors.black),
           foregroundColor: AppColors.grey3,
+          backgroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(
             horizontal: 6,
             vertical: 3,
           ),
           textStyle: textTheme.bodySmall
-              ?.copyWith(fontSize: 9, color: AppColors.lightGrey),
+              ?.copyWith(fontSize: 9, color: AppColors.grey3),
         ),
         child: const Row(
           children: [
@@ -215,7 +261,8 @@ class AddToListButton extends StatelessWidget {
 }
 
 class AddToListTextField extends StatefulWidget {
-  const AddToListTextField({super.key});
+  final Product product;
+  const AddToListTextField({super.key, required this.product});
 
   @override
   State<AddToListTextField> createState() => _AddToListTextFieldState();
@@ -225,12 +272,13 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
   int countValue = 1;
   @override
   Widget build(BuildContext context) {
+    final wishlistBloc = context.read<WishlistBloc>();
     return Container(
       height: 25,
       width: 80,
       padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
-        color: Colors.white70,
+        color: Colors.white,
         border: Border.all(
           color: AppColors.black,
         ),
@@ -239,10 +287,24 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(
-            Icons.favorite_rounded,
-            size: 12,
-            color: Color.fromRGBO(167, 22, 0, 1),
+          GestureDetector(
+            onTap: () {
+              wishlistBloc.add(
+                WishlistEvent.addToWishlist(
+                  productId: widget.product.productId.getValue(),
+                ),
+              );
+              const snackBar = SnackBar(
+                content: Text('Item added to wishlist'),
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            child: const Icon(
+              Icons.favorite_rounded,
+              size: 12,
+              color: Color.fromRGBO(167, 22, 0, 1),
+            ),
           ),
           GestureDetector(
             onTap: () => setState(() {

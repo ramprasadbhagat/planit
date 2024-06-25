@@ -44,7 +44,7 @@ class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
               );
             }, (products) async {
               final forS = await repository.getSearchProduct(
-                pageNumber: state.pageNumber + 1,
+                pageNumber: 2,
                 searchKey: e.searchKey,
               );
               var canLoad = false;

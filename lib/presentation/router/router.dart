@@ -47,6 +47,26 @@ class AppRouter extends $AppRouter {
           path: '/checkout',
         ),
         AutoRoute(
+          page: MyWalletRoute.page,
+          path: '/myWallet',
+        ),
+        AutoRoute(
+          page: AddMoneyRoute.page,
+          path: '/myWallet/addMoney',
+        ),
+        AutoRoute(
+          page: MyComplainsRoute.page,
+          path: '/myComplains',
+        ),
+        AutoRoute(
+          page: AddComplainsRoute.page,
+          path: '/myComplains/addComplains',
+        ),
+        AutoRoute(
+          page: OrderDetailsRoute.page,
+          path: '/orderDetails',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           initial: true,
@@ -78,8 +98,8 @@ class AppRouter extends $AppRouter {
               path: 'category',
             ),
             AutoRoute(
-              page: WishListRoute.page,
-              path: 'wishlist',
+              page: ShoppingListRoute.page,
+              path: 'shoppingList',
             ),
             AutoRoute(
               page: CartRoute.page,

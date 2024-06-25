@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,15 +9,12 @@ import 'package:planit/presentation/home/shop/widgets/shimmer_loader.dart';
 import 'package:planit/utils/png_image.dart';
 
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:intl/intl.dart';
 
 class ShoppingBanner extends StatelessWidget {
   const ShoppingBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DateTime firstDate;
-    DateTime secondDate;
     return BlocBuilder<BannerBloc, BannerState>(
       builder: (context, state) {
         if (state.isFetching) {
@@ -26,96 +22,75 @@ class ShoppingBanner extends StatelessWidget {
             padding: EdgeInsets.all(0),
             child: Center(child: ShimmerLoader()),
           );
-          // return const SizedBox(
-          //   height: 100,
-          //   width: double.infinity,
-          //   child: Center(child: CircularProgressIndicator()),
-          // );
         } else if (state.banner.isEmpty) {
           return const SizedBox.shrink();
         }
 
-        return Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 3),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.lightGrey,
-                  blurRadius: 3,
-                ),
-              ],
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                FlutterCarousel(
-                  options: CarouselOptions(
-                    height: 200.0,
-                    viewportFraction: 1,
-                    autoPlay: true,
-                    showIndicator: true,
-                    slideIndicator: const CircularSlideIndicator(
-                      itemSpacing: 10,
-                      indicatorRadius: 3,
-                    ),
-                    indicatorMargin: 15,
+        return Card(
+          elevation: 3,
+          clipBehavior: Clip.hardEdge,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+          margin: const EdgeInsets.only(left: 17, right: 17, top: 3),
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              FlutterCarousel(
+                options: CarouselOptions(
+                  height: 184.0,
+                  viewportFraction: 1,
+                  autoPlay: true,
+                  showIndicator: true,
+                  slideIndicator: const CircularSlideIndicator(
+                    itemSpacing: 10,
+                    indicatorRadius: 3,
                   ),
-                  items: state.banner.map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              DealCountDown(
-                                startDate: i.startingDate,
-                                endDate: i.endingDate,
-                              ),
-                              Expanded(
-                                child: Image.network(
-                                  i.bannerImages[0],
-                                  fit: BoxFit.fitHeight,
-                                  errorBuilder: (context, error, stack) {
-                                    if (error is NetworkImageLoadException &&
-                                        error.statusCode == 404) {
-                                      return Image.asset(
-                                        PngImage.placeholder,
-                                        fit: BoxFit.fitHeight,
-                                      );
-                                    }
+                  indicatorMargin: 15,
+                ),
+                items: state.banner.map((i) {
+                  return Column(
+                    children: [
+                      DealCountDown(
+                        startDate: i.startingDate,
+                        endDate: i.endingDate,
+                      ),
+                      Expanded(
+                        child: Image.network(
+                          i.bannerImages[0],
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stack) {
+                            if (error is NetworkImageLoadException &&
+                                error.statusCode == 404) {
+                              return Image.asset(
+                                PngImage.placeholder,
+                                fit: BoxFit.fitHeight,
+                              );
+                            }
 
-                                    return Image.asset(
-                                      PngImage.placeholder,
-                                      fit: BoxFit.fitHeight,
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  }).toList(),
-                ),
-                Positioned(
-                  bottom: 12,
-                  child: Container(
-                    height: 12,
-                    width: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.black.withOpacity(0.15),
-                    ),
+                            return Image.asset(
+                              PngImage.placeholder,
+                              fit: BoxFit.fitHeight,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
+              Positioned(
+                bottom: 12,
+                child: Container(
+                  height: 12,
+                  width: 70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: AppColors.black.withOpacity(0.2),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
@@ -143,7 +118,7 @@ class _DealCountDownState extends State<DealCountDown> {
     minutes: DateTime.now().minute,
     seconds: DateTime.now().second,
   ); // Initial duration
-  final Duration _tick = const Duration(seconds: 1);
+  final Duration _tick = const Duration(seconds: 60);
 
   @override
   void initState() {
@@ -179,17 +154,19 @@ class _DealCountDownState extends State<DealCountDown> {
     if (hours <= 0 && minutes <= 00 && seconds <= 00) {
       return '';
     }
-    return 'Deal Ends in ${hours}h : ${minutes}m : ${seconds}s';
+    return 'Deal Ends in ${hours}h : ${minutes}m';
   }
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return _formatDuration(_duration).isEmpty
         ? const SizedBox.shrink()
         : Text(
             _formatDuration(_duration),
-            style: GoogleFonts.bevan(
-              fontSize: 20,
+            style: textTheme.labelLarge?.copyWith(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
               color: AppColors.deepRed,
             ),
           );

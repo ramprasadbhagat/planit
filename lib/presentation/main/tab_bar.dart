@@ -10,6 +10,7 @@ import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -43,6 +44,9 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<SubCategoryBloc>().add(
           const SubCategoryEvent.getShopByOcassion(),
         );
+    context.read<WishlistBloc>().add(
+          const WishlistEvent.fetch(),
+        );
     context.read<CartBloc>().add(const CartEvent.fetch());
     context.read<BannerBloc>().add(
           const BannerEvent.fetch(),
@@ -52,6 +56,7 @@ class _MainTabbarState extends State<MainTabbar> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return BlocListener<CategoryBloc, CategoryState>(
       listenWhen: (previous, current) =>
           previous.selectedCategory != current.selectedCategory,
@@ -167,7 +172,7 @@ RouteItem categoryTabRouteItem = const RouteItem(
 );
 
 RouteItem wishlistTabRouteItem = const RouteItem(
-  route: WishListRoute(),
+  route: ShoppingListRoute(),
   icon: SvgImage.checkListTabIcon,
   label: 'Shopping list',
 );

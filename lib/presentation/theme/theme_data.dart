@@ -9,6 +9,14 @@ enum AppTheme {
 
 final appThemeData = {
   AppTheme.light: ThemeData.light(useMaterial3: false).copyWith(
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (_) {
+        return const Icon(
+          Icons.arrow_back_ios_new_outlined,
+          color: AppColors.lightGrey,
+        );
+      },
+    ),
     //Colors
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
@@ -67,12 +75,15 @@ ColorScheme _colorScheme() {
 //============================================================
 
 AppBarTheme _appBarTheme() {
-  return AppBarTheme(
+  return const AppBarTheme(
     centerTitle: true,
     color: Colors.white,
-    titleTextStyle: GoogleFonts.montserrat(
+    titleTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.black,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.25,
+      fontFamily: 'UberMove',
     ),
     elevation: 5,
     shadowColor: AppColors.boxShadowColor,
@@ -139,23 +150,24 @@ DrawerThemeData _drawerTheme() {
 }
 
 NavigationRailThemeData _navigationRailTheme() {
-  return NavigationRailThemeData(
+  return const NavigationRailThemeData(
     elevation: 2,
     backgroundColor: AppColors.white,
     indicatorColor: AppColors.primary,
     // useIndicator: true,
     labelType: NavigationRailLabelType.all,
-    selectedLabelTextStyle: GoogleFonts.montserrat(
+    selectedLabelTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.primary,
+      fontFamily: 'UberMove',
     ),
-    unselectedLabelTextStyle: GoogleFonts.montserrat(
+    unselectedLabelTextStyle: TextStyle(
       fontSize: 18,
       color: AppColors.unselectedLabelColor,
+      fontFamily: 'UberMove',
     ),
-    selectedIconTheme: const IconThemeData(color: AppColors.primary),
-    unselectedIconTheme:
-        const IconThemeData(color: AppColors.unselectedLabelColor),
+    selectedIconTheme: IconThemeData(color: AppColors.primary),
+    unselectedIconTheme: IconThemeData(color: AppColors.unselectedLabelColor),
   );
 }
 //============================================================
@@ -236,13 +248,15 @@ InputDecorationTheme _inputDecorationTheme() {
   return InputDecorationTheme(
     isDense: true,
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-    labelStyle: GoogleFonts.montserrat(
+    labelStyle: const TextStyle(
+      fontFamily: 'UberMove',
       fontSize: 14.0,
     ),
-    hintStyle: GoogleFonts.montserrat(
-      fontSize: 16,
+    hintStyle: const TextStyle(
+      fontSize: 14,
       color: AppColors.neutralsGrey,
       letterSpacing: 0.25,
+      fontFamily: 'UberMove',
     ),
     floatingLabelStyle: const TextStyle(
       color: AppColors.primary,
@@ -311,13 +325,16 @@ FloatingActionButtonThemeData _floatingActionButtonTheme() {
 ElevatedButtonThemeData _elevatedButtonTheme() {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.black,
       foregroundColor: AppColors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.montserrat(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+      ),
+      textStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
+        fontFamily: 'UberMove',
       ),
       elevation: 0,
       disabledBackgroundColor: AppColors.lightPrimary,
@@ -329,11 +346,12 @@ ElevatedButtonThemeData _elevatedButtonTheme() {
 TextButtonThemeData _textButtonTheme() {
   return TextButtonThemeData(
     style: TextButton.styleFrom(
-      textStyle: GoogleFonts.montserrat(
+      textStyle: const TextStyle(
         fontSize: 14,
         color: AppColors.textButtonColor,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.25,
+        fontFamily: 'UberMove',
       ),
     ),
   );
@@ -345,11 +363,12 @@ OutlinedButtonThemeData _outlinedButtonTheme() {
       backgroundColor: AppColors.white,
       side: const BorderSide(color: AppColors.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      textStyle: GoogleFonts.montserrat(
+      textStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.white,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.25,
+        fontFamily: 'UberMove',
       ),
       elevation: 0,
       minimumSize: const Size(120, 45),

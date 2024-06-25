@@ -19,26 +19,6 @@ class CheckoutCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  SvgImage.coupon,
-                ),
-                const SizedBox(
-                  width: 3,
-                ),
-                Text(
-                  'Use Coupons',
-                  style: textTheme.bodyMedium,
-                ),
-                const Spacer(),
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                  color: AppColors.grey2,
-                ),
-              ],
-            ),
             const SizedBox(
               height: 10,
             ),

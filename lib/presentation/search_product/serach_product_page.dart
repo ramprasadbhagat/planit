@@ -46,6 +46,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     const borderDecoration = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
       borderSide: BorderSide.none,
@@ -54,7 +55,10 @@ class _SearchProductPageState extends State<SearchProductPage> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: false,
-        title: const Text('Products'),
+        title: Text(
+          'Products',
+          style: textTheme.labelLarge,
+        ),
       ),
       body: Column(
         children: [
@@ -113,12 +117,9 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           children: [
                             Text(
                               '${state.products.length} products found',
-                              style: GoogleFonts.montserrat(
-                                textStyle: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.textBlack,
-                                  fontSize: 12, //size.width * 0.04,
-                                ),
+                              style: textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textBlack,
                               ),
                             ),
                             const SizedBox(
@@ -131,8 +132,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount:
                                       Responsive.isWeb(context) ? 5 : 2,
-                                  mainAxisExtent:
-                                      MediaQuery.sizeOf(context).height * 0.21,
+                                  mainAxisExtent: 180,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 8.0,
                                 ),
@@ -142,8 +142,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                   horizontal: 10,
                                 ),
                                 itemBuilder: (context, index) {
-                                  return ProductCard(
-                                    product: state.products.elementAt(index),
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 5,
+                                      bottom: 5,
+                                    ),
+                                    child: ProductCard(
+                                      product: state.products.elementAt(index),
+                                    ),
                                   );
                                 },
                               ),
@@ -151,19 +157,6 @@ class _SearchProductPageState extends State<SearchProductPage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            // state.canLoadMore
-                            //     ? const SizedBox.shrink()
-                            //     :
-                            // const Center(
-                            //     child: Text(
-                            //       'No more data to load',
-                            //       style: TextStyle(
-                            //         fontSize: 16,
-                            //         color: AppColors.grey2,
-                            //         fontWeight: FontWeight.w500,
-                            //       ),
-                            //     ),
-                            //   ),
                             state.isScrolling
                                 ? const Padding(
                                     padding: EdgeInsets.only(bottom: 20),

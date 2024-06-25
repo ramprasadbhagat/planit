@@ -45,6 +45,7 @@ class WishlistScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 8.0,
+                    childAspectRatio: 150 / 170,
                     children:
                         List.generate(state.getAllWishList.length, (index) {
                       return BeforeCheckOutCard(
