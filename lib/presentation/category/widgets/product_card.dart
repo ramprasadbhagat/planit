@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -133,32 +135,8 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 25,
-                      width: 75,
-                      child: OutlinedButton(
-                        onPressed: () => showModalBottomSheet<void>(
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (BuildContext context) => CommonBottomSheet(
-                            child: AddToCartBottomSheet(
-                              product: product,
-                            ),
-                          ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          side: const BorderSide(color: Colors.black),
-                          foregroundColor: AppColors.grey3,
-                          padding: EdgeInsets.zero,
-                        ),
-                        child: Text(
-                          'Add to cart',
-                          style: textTheme.bodySmall?.copyWith(fontSize: 9),
-                        ),
-                      ),
+                    AddToCartButton.fromProductCard(
+                      product: product,
                     ),
                   ],
                 ),

@@ -23,6 +23,7 @@ class AddToCartButton extends StatelessWidget {
 
   factory AddToCartButton.fromBottomSheet({
     required Product product,
+    required VoidCallback onTap,
   }) {
     return AddToCartButton._(
       product: product,
@@ -32,20 +33,7 @@ class AddToCartButton extends StatelessWidget {
       addToCartButton: Builder(
         builder: (context) {
           return ElevatedButton(
-            onPressed: () {
-              context.read<CartBloc>().add(
-                    CartEvent.addToCart(
-                      product: product,
-                      quantity: 1,
-                    ),
-                  );
-              // context.router.maybePop();
-              const snackBar = SnackBar(
-                content: Text('Item added to cart'),
-              );
-
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
+            onPressed: onTap,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.black,
               shape: RoundedRectangleBorder(

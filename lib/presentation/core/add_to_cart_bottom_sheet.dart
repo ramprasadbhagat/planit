@@ -32,11 +32,11 @@ class AddToCartBottomSheet extends StatelessWidget {
         builder: (BuildContext context) {
           return Dialog(
             child: SizedBox(
-              height: 150,
               width: 250,
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Transform.translate(
                       offset: const Offset(0, -30),
@@ -96,6 +96,9 @@ class AddToCartBottomSheet extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      height: 15,
                     ),
                   ],
                 ),
@@ -239,8 +242,9 @@ class AddToCartBottomSheet extends StatelessWidget {
                         ),
                       ],
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    AddToCartButton.fromBottomSheet(
+                      product: product,
+                      onTap: () {
                         if (context.read<AuthBloc>().state ==
                             const AuthState.unauthenticated()) {
                           context.read<CartBloc>().add(
@@ -278,48 +282,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                           }
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(26.0),
-                        ),
-                      ),
-                      child: Text(
-                        'Add to cart',
-                        style: textTheme.labelSmall
-                            ?.copyWith(color: AppColors.white),
-                      ),
                     ),
-                    AddToCartButton.fromBottomSheet(
-                      product: product,
-                    ),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     context.read<CartBloc>().add(
-                    //           CartEvent.addToCart(
-                    //             product: product,
-                    //             quantity: 1,
-                    //           ),
-                    //         );
-                    //     context.router.maybePop();
-                    //     const snackBar = SnackBar(
-                    //       content: Text('Item added to cart'),
-                    //     );
-
-                    //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: AppColors.black,
-                    //     shape: RoundedRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(26.0),
-                    //     ),
-                    //   ),
-                    //   child: Text(
-                    //     'Add to cart',
-                    //     style: textTheme.labelSmall
-                    //         ?.copyWith(color: AppColors.white),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
