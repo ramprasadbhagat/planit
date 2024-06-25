@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/order_list/widgets/order_actions_button.dart';
 import 'package:planit/presentation/order_list/widgets/order_status_widget.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
@@ -186,7 +188,10 @@ class OrderListItem extends StatelessWidget {
                         width: 24,
                       ),
                       OrderActionButton(
-                          label: 'Track your Order', onTap: () {}),
+                        label: 'Track your Order',
+                        onTap: () =>
+                            context.router.navigate(const TrackOrderRoute()),
+                      ),
                     ],
                   ),
                   OrderActionButton(label: 'Reorder', onTap: () {}),

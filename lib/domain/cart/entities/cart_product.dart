@@ -31,4 +31,11 @@ class CartProduct with _$CartProduct {
         totalPrice: 0,
         discount: 0,
       );
+
+  Map<String, dynamic> get toMap => {
+        'productId': productId.getValue(),
+        'quantity': quantity.toString(),
+        'unitPrice': (double.tryParse(itemPrice) ?? 0.0).toInt(),
+        'subTotal': totalPrice,
+      };
 }
