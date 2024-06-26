@@ -1,11 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
 import 'package:planit/presentation/checkout/widgets/delivery_date_section.dart';
 import 'package:planit/presentation/checkout/widgets/payment_section.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
@@ -16,6 +22,7 @@ class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    var date = '';
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -69,7 +76,11 @@ class CheckoutPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const DeliveryDateSection(),
+                    DeliveryDateSection(
+                      onChanged: (e) {
+                        date = DateFormat('yyyy-MM-dd').format(e!);
+                      },
+                    ),
                     const SizedBox(
                       height: 6,
                     ),
@@ -156,7 +167,23 @@ class CheckoutPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      final cartState = context.read<CartBloc>().state;
+                      final addressState =
+                          context.read<AddressBookBloc>().state;
+                      context.read<OrderBloc>().add(
+                            OrderEvent.submitOrder(
+                              cartItem: cartState.cartItem,
+                              addressBook: addressState.selectedAddress,
+                              date: date,
+                            ),
+                          );
+                      const snackBar = SnackBar(
+                        content: Text('Order placed successfully'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      context.router.navigate(const OrderListRoute());
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
                       backgroundColor: AppColors.black,

@@ -6,6 +6,7 @@ import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/application/product_image/product_image_bloc.dart';
@@ -35,6 +36,8 @@ import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dar
 import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
 import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
+import 'package:planit/infrastructure/order/datasource/order_remote.dart';
+import 'package:planit/infrastructure/order/repository/order_repository.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_local.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_remote.dart';
 import 'package:planit/infrastructure/pincode/repository/pincode_repository.dart';
@@ -412,6 +415,27 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => AddressBookBloc(
       repository: locator<AddressBookRepository>(),
+    ),
+  );
+  /////============================================================
+  //  Order
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => OrderRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => OrderRepository(
+      config: locator<Config>(),
+      remoteDataSource: locator<OrderRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => OrderBloc(
+      repository: locator<OrderRepository>(),
     ),
   );
 }

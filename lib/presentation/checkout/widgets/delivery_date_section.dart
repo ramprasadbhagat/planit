@@ -1,16 +1,13 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class DeliveryDateSection extends StatefulWidget {
-  const DeliveryDateSection({super.key});
+  const DeliveryDateSection({super.key, required this.onChanged});
+  final Function(DateTime?) onChanged;
 
   @override
   State<DeliveryDateSection> createState() => _DeliveryDateSectionState();
@@ -77,6 +74,7 @@ class _DeliveryDateSectionState extends State<DeliveryDateSection> {
                 if (pickedDate != null) {
                   setState(() {
                     selectedDate = pickedDate;
+                    widget.onChanged(pickedDate);
                   });
                 }
               },
