@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:planit/domain/order/order_status.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/order_list/widgets/order_actions_button.dart';
 import 'package:planit/presentation/order_list/widgets/order_status_widget.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -9,8 +9,8 @@ import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class OrderListItem extends StatelessWidget {
-  final int index;
-  const OrderListItem({super.key, required this.index});
+  final Order order;
+  const OrderListItem({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class OrderListItem extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
           child: Column(
             children: [
               const SizedBox(
@@ -46,7 +46,7 @@ class OrderListItem extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                          text: 'ORD 10786420007',
+                          text: order.id.displayLabel,
                           style: textTheme.bodySmall?.copyWith(
                             fontWeight: FontWeight.w500,
                           ),
@@ -69,7 +69,7 @@ class OrderListItem extends StatelessWidget {
                       width: 6,
                     ),
                     Text(
-                      'Placed on 10th March , 2024',
+                      'Placed on ${order.getOrderDate}',
                       style: textTheme.labelSmall,
                     ),
                   ],
@@ -93,7 +93,7 @@ class OrderListItem extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                          text: '13 th March, 2024',
+                          text: order.deliveryDate.getDisplayValue,
                           style: textTheme.bodySmall?.copyWith(
                             fontWeight: FontWeight.w500,
                           ),
@@ -130,7 +130,7 @@ class OrderListItem extends StatelessWidget {
                           ),
                           children: [
                             TextSpan(
-                              text: '₹ 699.00',
+                              text: order.getTotalPrice,
                               style: textTheme.bodySmall?.copyWith(
                                 fontWeight: FontWeight.w400,
                               ),
@@ -180,9 +180,7 @@ class OrderListItem extends StatelessWidget {
                   Row(
                     children: [
                       OrderStatusWidget(
-                        status: index.isEven
-                            ? const OrderStatus.processing()
-                            : const OrderStatus.delivered(),
+                        status: order.getOrderStatus,
                       ),
                       const SizedBox(
                         width: 24,

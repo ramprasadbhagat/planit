@@ -11,7 +11,7 @@ class OrderStatusWidget extends StatelessWidget {
     return Row(
       children: [
         status.when(
-          processing: () => const Icon(
+          processing: (_) => const Icon(
             Icons.local_shipping_outlined,
             color: AppColors.black,
             size: 20,

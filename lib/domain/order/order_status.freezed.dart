@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() processing,
+    required TResult Function(String status) processing,
     required TResult Function() delivered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? processing,
+    TResult? Function(String status)? processing,
     TResult? Function()? delivered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? processing,
+    TResult Function(String status)? processing,
     TResult Function()? delivered,
     required TResult orElse(),
   }) =>
@@ -79,6 +79,8 @@ abstract class _$$OrderProcessingImplCopyWith<$Res> {
   factory _$$OrderProcessingImplCopyWith(_$OrderProcessingImpl value,
           $Res Function(_$OrderProcessingImpl) then) =
       __$$OrderProcessingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String status});
 }
 
 /// @nodoc
@@ -88,54 +90,79 @@ class __$$OrderProcessingImplCopyWithImpl<$Res>
   __$$OrderProcessingImplCopyWithImpl(
       _$OrderProcessingImpl _value, $Res Function(_$OrderProcessingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$OrderProcessingImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OrderProcessingImpl implements _OrderProcessing {
-  const _$OrderProcessingImpl();
+  const _$OrderProcessingImpl({required this.status});
+
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'OrderStatus.processing()';
+    return 'OrderStatus.processing(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OrderProcessingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$OrderProcessingImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderProcessingImplCopyWith<_$OrderProcessingImpl> get copyWith =>
+      __$$OrderProcessingImplCopyWithImpl<_$OrderProcessingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() processing,
+    required TResult Function(String status) processing,
     required TResult Function() delivered,
   }) {
-    return processing();
+    return processing(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? processing,
+    TResult? Function(String status)? processing,
     TResult? Function()? delivered,
   }) {
-    return processing?.call();
+    return processing?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? processing,
+    TResult Function(String status)? processing,
     TResult Function()? delivered,
     required TResult orElse(),
   }) {
     if (processing != null) {
-      return processing();
+      return processing(status);
     }
     return orElse();
   }
@@ -173,7 +200,13 @@ class _$OrderProcessingImpl implements _OrderProcessing {
 }
 
 abstract class _OrderProcessing implements OrderStatus {
-  const factory _OrderProcessing() = _$OrderProcessingImpl;
+  const factory _OrderProcessing({required final String status}) =
+      _$OrderProcessingImpl;
+
+  String get status;
+  @JsonKey(ignore: true)
+  _$$OrderProcessingImplCopyWith<_$OrderProcessingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -214,7 +247,7 @@ class _$OrderDeliveredImpl implements _OrderDelivered {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() processing,
+    required TResult Function(String status) processing,
     required TResult Function() delivered,
   }) {
     return delivered();
@@ -223,7 +256,7 @@ class _$OrderDeliveredImpl implements _OrderDelivered {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? processing,
+    TResult? Function(String status)? processing,
     TResult? Function()? delivered,
   }) {
     return delivered?.call();
@@ -232,7 +265,7 @@ class _$OrderDeliveredImpl implements _OrderDelivered {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? processing,
+    TResult Function(String status)? processing,
     TResult Function()? delivered,
     required TResult orElse(),
   }) {
