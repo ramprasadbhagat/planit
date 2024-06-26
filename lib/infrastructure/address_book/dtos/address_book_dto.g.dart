@@ -8,7 +8,7 @@ part of 'address_book_dto.dart';
 
 _$AddressBookDtoImpl _$$AddressBookDtoImplFromJson(Map<String, dynamic> json) =>
     _$AddressBookDtoImpl(
-      id: json['id'] as String,
+      id: idFromJson(json, 'id') as String? ?? '',
       userId: json['user_id'] as String? ?? '',
       fullName: json['fullName'] as String? ?? '',
       phoneNumber: json['phoneNumber'] as String? ?? '',

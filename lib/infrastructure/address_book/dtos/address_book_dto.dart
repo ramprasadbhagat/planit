@@ -8,6 +8,10 @@ part 'address_book_dto.g.dart';
 class AddressBookDto with _$AddressBookDto {
   const AddressBookDto._();
   factory AddressBookDto({
+    @JsonKey(
+      defaultValue: '',
+      readValue: idFromJson,
+    )
     required String id,
     @JsonKey(name: 'user_id', defaultValue: '') required String userId,
     @JsonKey(defaultValue: '') required String fullName,
@@ -29,4 +33,10 @@ class AddressBookDto with _$AddressBookDto {
         address: address,
         isDefault: isDefault == 1,
       );
+}
+
+String idFromJson(json, key) {
+  if (json[key] != null) return json[key];
+  if (json['_id'] != null) return json['_id'];
+  return '';
 }

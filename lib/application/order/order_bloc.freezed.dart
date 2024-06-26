@@ -22,6 +22,7 @@ mixin _$OrderEvent {
     required TResult Function(
             CartItem cartItem, AddressBook addressBook, String date)
         submitOrder,
+    required TResult Function() fetchOrders,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$OrderEvent {
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult? Function()? fetchOrders,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$OrderEvent {
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult Function()? fetchOrders,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,18 +46,21 @@ mixin _$OrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(
             CartItem cartItem, AddressBook addressBook, String date)
         submitOrder,
+    required TResult Function() fetchOrders,
   }) {
     return initialized();
   }
@@ -130,6 +137,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult? Function()? fetchOrders,
   }) {
     return initialized?.call();
   }
@@ -140,6 +148,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult Function()? fetchOrders,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -153,6 +162,7 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
   }) {
     return initialized(this);
   }
@@ -162,6 +172,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
   }) {
     return initialized?.call(this);
   }
@@ -171,6 +182,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -290,6 +302,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     required TResult Function(
             CartItem cartItem, AddressBook addressBook, String date)
         submitOrder,
+    required TResult Function() fetchOrders,
   }) {
     return submitOrder(cartItem, addressBook, date);
   }
@@ -300,6 +313,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult? Function()? fetchOrders,
   }) {
     return submitOrder?.call(cartItem, addressBook, date);
   }
@@ -310,6 +324,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date)?
         submitOrder,
+    TResult Function()? fetchOrders,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
@@ -323,6 +338,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
   }) {
     return submitOrder(this);
   }
@@ -332,6 +348,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
   }) {
     return submitOrder?.call(this);
   }
@@ -341,6 +358,7 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
@@ -365,10 +383,124 @@ abstract class _SubmitOrder implements OrderEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchOrdersImplCopyWith<$Res> {
+  factory _$$FetchOrdersImplCopyWith(
+          _$FetchOrdersImpl value, $Res Function(_$FetchOrdersImpl) then) =
+      __$$FetchOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchOrdersImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$FetchOrdersImpl>
+    implements _$$FetchOrdersImplCopyWith<$Res> {
+  __$$FetchOrdersImplCopyWithImpl(
+      _$FetchOrdersImpl _value, $Res Function(_$FetchOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchOrdersImpl implements _FetchOrders {
+  const _$FetchOrdersImpl();
+
+  @override
+  String toString() {
+    return 'OrderEvent.fetchOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(
+            CartItem cartItem, AddressBook addressBook, String date)
+        submitOrder,
+    required TResult Function() fetchOrders,
+  }) {
+    return fetchOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+  }) {
+    return fetchOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    required TResult orElse(),
+  }) {
+    if (fetchOrders != null) {
+      return fetchOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+  }) {
+    return fetchOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+  }) {
+    return fetchOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    required TResult orElse(),
+  }) {
+    if (fetchOrders != null) {
+      return fetchOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchOrders implements OrderEvent {
+  const factory _FetchOrders() = _$FetchOrdersImpl;
+}
+
+/// @nodoc
 mixin _$OrderState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get isFetchingOrders => throw _privateConstructorUsedError;
+  List<Order> get orders => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderStateCopyWith<OrderState> get copyWith =>
@@ -383,7 +515,9 @@ abstract class $OrderStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isFetchingOrders,
+      List<Order> orders});
 }
 
 /// @nodoc
@@ -401,6 +535,8 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
   $Res call({
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isFetchingOrders = null,
+    Object? orders = null,
   }) {
     return _then(_value.copyWith(
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
@@ -411,6 +547,14 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingOrders: null == isFetchingOrders
+          ? _value.isFetchingOrders
+          : isFetchingOrders // ignore: cast_nullable_to_non_nullable
+              as bool,
+      orders: null == orders
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<Order>,
     ) as $Val);
   }
 }
@@ -425,7 +569,9 @@ abstract class _$$OrderStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isFetchingOrders,
+      List<Order> orders});
 }
 
 /// @nodoc
@@ -441,6 +587,8 @@ class __$$OrderStateImplCopyWithImpl<$Res>
   $Res call({
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isFetchingOrders = null,
+    Object? orders = null,
   }) {
     return _then(_$OrderStateImpl(
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
@@ -451,6 +599,14 @@ class __$$OrderStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingOrders: null == isFetchingOrders
+          ? _value.isFetchingOrders
+          : isFetchingOrders // ignore: cast_nullable_to_non_nullable
+              as bool,
+      orders: null == orders
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<Order>,
     ));
   }
 }
@@ -459,17 +615,30 @@ class __$$OrderStateImplCopyWithImpl<$Res>
 
 class _$OrderStateImpl extends _OrderState {
   const _$OrderStateImpl(
-      {required this.apiFailureOrSuccessOption, required this.isFetching})
-      : super._();
+      {required this.apiFailureOrSuccessOption,
+      required this.isFetching,
+      required this.isFetchingOrders,
+      required final List<Order> orders})
+      : _orders = orders,
+        super._();
 
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool isFetchingOrders;
+  final List<Order> _orders;
+  @override
+  List<Order> get orders {
+    if (_orders is EqualUnmodifiableListView) return _orders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orders);
+  }
 
   @override
   String toString() {
-    return 'OrderState(apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'OrderState(apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isFetchingOrders: $isFetchingOrders, orders: $orders)';
   }
 
   @override
@@ -481,12 +650,19 @@ class _$OrderStateImpl extends _OrderState {
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            (identical(other.isFetchingOrders, isFetchingOrders) ||
+                other.isFetchingOrders == isFetchingOrders) &&
+            const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, apiFailureOrSuccessOption, isFetching);
+  int get hashCode => Object.hash(
+      runtimeType,
+      apiFailureOrSuccessOption,
+      isFetching,
+      isFetchingOrders,
+      const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
   @override
@@ -499,13 +675,19 @@ abstract class _OrderState extends OrderState {
   const factory _OrderState(
       {required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$OrderStateImpl;
+      required final bool isFetching,
+      required final bool isFetchingOrders,
+      required final List<Order> orders}) = _$OrderStateImpl;
   const _OrderState._() : super._();
 
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get isFetchingOrders;
+  @override
+  List<Order> get orders;
   @override
   @JsonKey(ignore: true)
   _$$OrderStateImplCopyWith<_$OrderStateImpl> get copyWith =>

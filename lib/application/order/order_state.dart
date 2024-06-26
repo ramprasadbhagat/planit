@@ -6,10 +6,14 @@ class OrderState with _$OrderState {
   const factory OrderState({
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required bool isFetchingOrders,
+    required List<Order> orders,
   }) = _OrderState;
 
   factory OrderState.initial() => OrderState(
         apiFailureOrSuccessOption: none(),
         isFetching: false,
+        isFetchingOrders: false,
+        orders: [],
       );
 }

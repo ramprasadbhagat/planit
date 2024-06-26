@@ -20,6 +20,7 @@ AddressBookDto _$AddressBookDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AddressBookDto {
+  @JsonKey(defaultValue: '', readValue: idFromJson)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id', defaultValue: '')
   String get userId => throw _privateConstructorUsedError;
@@ -47,7 +48,7 @@ abstract class $AddressBookDtoCopyWith<$Res> {
       _$AddressBookDtoCopyWithImpl<$Res, AddressBookDto>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(defaultValue: '', readValue: idFromJson) String id,
       @JsonKey(name: 'user_id', defaultValue: '') String userId,
       @JsonKey(defaultValue: '') String fullName,
       @JsonKey(defaultValue: '') String phoneNumber,
@@ -119,7 +120,7 @@ abstract class _$$AddressBookDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(defaultValue: '', readValue: idFromJson) String id,
       @JsonKey(name: 'user_id', defaultValue: '') String userId,
       @JsonKey(defaultValue: '') String fullName,
       @JsonKey(defaultValue: '') String phoneNumber,
@@ -184,7 +185,7 @@ class __$$AddressBookDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AddressBookDtoImpl extends _AddressBookDto {
   _$AddressBookDtoImpl(
-      {required this.id,
+      {@JsonKey(defaultValue: '', readValue: idFromJson) required this.id,
       @JsonKey(name: 'user_id', defaultValue: '') required this.userId,
       @JsonKey(defaultValue: '') required this.fullName,
       @JsonKey(defaultValue: '') required this.phoneNumber,
@@ -197,6 +198,7 @@ class _$AddressBookDtoImpl extends _AddressBookDto {
       _$$AddressBookDtoImplFromJson(json);
 
   @override
+  @JsonKey(defaultValue: '', readValue: idFromJson)
   final String id;
   @override
   @JsonKey(name: 'user_id', defaultValue: '')
@@ -261,7 +263,8 @@ class _$AddressBookDtoImpl extends _AddressBookDto {
 
 abstract class _AddressBookDto extends AddressBookDto {
   factory _AddressBookDto(
-      {required final String id,
+      {@JsonKey(defaultValue: '', readValue: idFromJson)
+      required final String id,
       @JsonKey(name: 'user_id', defaultValue: '') required final String userId,
       @JsonKey(defaultValue: '') required final String fullName,
       @JsonKey(defaultValue: '') required final String phoneNumber,
@@ -275,6 +278,7 @@ abstract class _AddressBookDto extends AddressBookDto {
       _$AddressBookDtoImpl.fromJson;
 
   @override
+  @JsonKey(defaultValue: '', readValue: idFromJson)
   String get id;
   @override
   @JsonKey(name: 'user_id', defaultValue: '')

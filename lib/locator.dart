@@ -36,6 +36,7 @@ import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dar
 import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
 import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
+import 'package:planit/infrastructure/order/datasource/order_local.dart';
 import 'package:planit/infrastructure/order/datasource/order_remote.dart';
 import 'package:planit/infrastructure/order/repository/order_repository.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_local.dart';
@@ -422,6 +423,10 @@ void setupLocator() {
   //============================================================
 
   locator.registerLazySingleton(
+    () => OrderLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
     () => OrderRemoteDataSource(
       storageService: locator<StorageService>(),
       httpService: locator<HttpService>(),
@@ -431,6 +436,7 @@ void setupLocator() {
     () => OrderRepository(
       config: locator<Config>(),
       remoteDataSource: locator<OrderRemoteDataSource>(),
+      localDataSource: locator<OrderLocalDataSource>(),
     ),
   );
   locator.registerLazySingleton(
