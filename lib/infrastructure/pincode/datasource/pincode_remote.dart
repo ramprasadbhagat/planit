@@ -52,8 +52,8 @@ class PincodeRemoteDataSource {
       data: data,
     );
     _exceptionChecker(res: res);
-    final pincodeData = res.data;
-    if (pincodeData['msg'] == 'Pincode has been saved successfully') {
+    // final pincodeData = res.data;
+    if (res.statusCode == 200) {
       return Pincode(pincode: pincode);
     } else {
       return Pincode.empty();
