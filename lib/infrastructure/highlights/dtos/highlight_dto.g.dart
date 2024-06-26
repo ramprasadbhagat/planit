@@ -18,6 +18,8 @@ _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
       skuPacksize: json['sku_packsize'] as String? ?? '',
       skuContent: json['sku_content'] as String? ?? '',
       productMRP: json['productMRP'] as String? ?? '',
+      startingPrice:
+          (intReadValue(json, 'startingPrice') as num?)?.toInt() ?? 0,
       productReview: json['productReview'] as String? ?? '',
       productRating: json['productRating'] as String? ?? '',
       productDiscount: json['productDiscount'] as String? ?? '',
@@ -33,6 +35,7 @@ _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
       discount: json['discount'] as String? ?? '',
       attributeName: json['attributeName'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
+      attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
       price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
@@ -51,6 +54,7 @@ Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
       'sku_packsize': instance.skuPacksize,
       'sku_content': instance.skuContent,
       'productMRP': instance.productMRP,
+      'startingPrice': instance.startingPrice,
       'productReview': instance.productReview,
       'productRating': instance.productRating,
       'productDiscount': instance.productDiscount,
@@ -63,6 +67,7 @@ Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
       'discount': instance.discount,
       'attributeName': instance.attributeName,
       'attributeItem': instance.attributeItem,
+      'attributeItemProductId': instance.attributeItemProductId,
       'price': instance.price,
       'productImages': instance.productImages,
     };

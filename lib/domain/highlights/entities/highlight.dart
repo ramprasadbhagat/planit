@@ -1,4 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/domain/product/entities/price.dart' as pp;
 
 part 'highlight.freezed.dart';
 
@@ -16,6 +20,7 @@ class Highlight with _$Highlight {
     required String skuPrice,
     required String skuPacksize,
     required String skuContent,
+    required int startingPrice,
     required List<String> ingredientsList,
     required String nutritionalInformation,
     required bool isDeleted,
@@ -29,6 +34,7 @@ class Highlight with _$Highlight {
     required String productReview,
     required double productRating,
     required Price price,
+    required String attributeItemProductId,
     required List<String> productImages,
   }) = _Highlight;
 
@@ -62,6 +68,8 @@ class Highlight with _$Highlight {
         skuPrice: '',
         skuPacksize: '',
         skuContent: '',
+        startingPrice: 0,
+        attributeItemProductId: '',
         ingredientsList: [],
         nutritionalInformation: '',
         isDeleted: false,
@@ -74,6 +82,17 @@ class Highlight with _$Highlight {
         attributeItem: '',
         price: Price.empty(),
         productImages: <String>[],
+      );
+
+  Product get toProduct => Product(
+        productId: ProductId(id),
+        name: productName,
+        productImages: productImages,
+        skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
+        startingPrice: startingPrice,
+        attributeItem: attributeItem,
+        attributeItemProductId: attributeItemProductId,
+        price: pp.Price(price: price.price, quantity: price.quantity),
       );
 }
 

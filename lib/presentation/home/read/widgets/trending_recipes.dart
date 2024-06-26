@@ -16,7 +16,10 @@ class TrendingRecipes extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Column(
         children: [
-          const SectionTitle(title: 'Trending Recipes'),
+          SectionTitle(
+            title: 'Trending Recipes',
+            onTap: () {},
+          ),
           const SizedBox(
             height: 10,
           ),

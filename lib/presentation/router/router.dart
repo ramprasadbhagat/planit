@@ -63,6 +63,14 @@ class AppRouter extends $AppRouter {
           path: '/myComplains/addComplains',
         ),
         AutoRoute(
+          page: QuickPicksRoute.page,
+          path: '/quickPicks',
+        ),
+        AutoRoute(
+          page: HighLightsRoute.page,
+          path: '/highLights',
+        ),
+        AutoRoute(
           page: OrderDetailsRoute.page,
           path: '/orderDetails',
         ),
