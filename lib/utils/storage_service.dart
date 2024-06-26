@@ -4,10 +4,12 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/entities/user.dart';
+import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/utils/hive_constants.dart';
 
 class StorageService {
   late Box<Auth> _authBox;
+  late Box<CartProductLocal> _cartProductLocalBox;
 
   Future init() async {
     final tempDir = await getTemporaryDirectory();
@@ -20,10 +22,13 @@ class StorageService {
   void _registAdapters() {
     Hive.registerAdapter(UserAdapter());
     Hive.registerAdapter(AuthAdapter());
+    Hive.registerAdapter(CartAdapter());
   }
 
   Future<void> _openBox() async {
     _authBox = await Hive.openBox<Auth>(HiveConstants.authBox);
+    _cartProductLocalBox =
+        await Hive.openBox<CartProductLocal>(HiveConstants.cartBox);
   }
 
   Future<void> addAuthData(Auth auth) async {
@@ -56,5 +61,28 @@ class StorageService {
 
   Future<void> clearAllAuthData() async {
     await _authBox.clear();
+  }
+
+  Future<void> addCartData(CartProductLocal cartProductLocal) async {
+    await _cartProductLocalBox.add(cartProductLocal);
+  }
+
+  Future<List<CartProductLocal>> getCartData() async {
+    final cartproduct = <CartProductLocal>[];
+    if (_cartProductLocalBox.isNotEmpty) {
+      for (final element in _cartProductLocalBox.values) {
+        cartproduct.add(element);
+      }
+      return cartproduct;
+    }
+    return [];
+  }
+
+  Future<void> deleteCartData(int index) async {
+    await _cartProductLocalBox.deleteAt(index);
+  }
+
+  Future<void> clearAllCartData() async {
+    await _cartProductLocalBox.clear();
   }
 }

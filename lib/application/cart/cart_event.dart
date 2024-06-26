@@ -11,4 +11,13 @@ class CartEvent with _$CartEvent {
   const factory CartEvent.removeFromCart({
     required CartProduct product,
   }) = _RemoveFromCart;
+  const factory CartEvent.addToCartLocal({
+    required Product product,
+  }) = _AddToCartLocal;
+  const factory CartEvent.getCartLocal() = _GetCartLocal;
+  const factory CartEvent.deletCartLocal({
+    required int index,
+  }) = _DeleteCartLocal;
+  const factory CartEvent.clearAllCartLocal() = _ClearAllCartLocal;
+  const factory CartEvent.sendLocalServerCart() = _SendLocalServerCart;
 }

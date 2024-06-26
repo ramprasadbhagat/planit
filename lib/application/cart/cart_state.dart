@@ -7,15 +7,17 @@ class CartState with _$CartState {
     required CartItem cartItem,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required List<CartProductLocal> cartData,
   }) = _CartState;
 
   factory CartState.initial() => CartState(
         cartItem: CartItem.empty(),
         apiFailureOrSuccessOption: none(),
         isFetching: true,
+        cartData: [],
       );
 
-  bool get isCartEmpty => cartItem.products.isEmpty;
+  bool get isCartEmpty => cartItem.products.isEmpty && cartData.isEmpty;
 
   int get totalCartProductsPrice => cartItem.products.fold(
         0,
@@ -25,5 +27,10 @@ class CartState with _$CartState {
   int get totalCartProductsCount => cartItem.products.fold(
         0,
         (previousValue, element) => previousValue + element.quantity,
+      );
+  int get totalLocalCartProductsPrice => cartData.fold(
+        0,
+        (previousValue, element) =>
+            previousValue + (double.tryParse(element.price) ?? 0.0).toInt(),
       );
 }

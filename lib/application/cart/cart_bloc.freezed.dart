@@ -22,6 +22,11 @@ mixin _$CartEvent {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +35,11 @@ mixin _$CartEvent {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +48,11 @@ mixin _$CartEvent {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +62,11 @@ mixin _$CartEvent {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +75,11 @@ mixin _$CartEvent {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +88,11 @@ mixin _$CartEvent {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +157,11 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return initialized();
   }
@@ -138,6 +173,11 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return initialized?.call();
   }
@@ -149,6 +189,11 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -164,6 +209,11 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return initialized(this);
   }
@@ -175,6 +225,11 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return initialized?.call(this);
   }
@@ -186,6 +241,11 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -241,6 +301,11 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return fetch();
   }
@@ -252,6 +317,11 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return fetch?.call();
   }
@@ -263,6 +333,11 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -278,6 +353,11 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return fetch(this);
   }
@@ -289,6 +369,11 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return fetch?.call(this);
   }
@@ -300,6 +385,11 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -400,6 +490,11 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return addToCart(product, quantity);
   }
@@ -411,6 +506,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return addToCart?.call(product, quantity);
   }
@@ -422,6 +522,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -437,6 +542,11 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return addToCart(this);
   }
@@ -448,6 +558,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return addToCart?.call(this);
   }
@@ -459,6 +574,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -559,6 +679,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
   }) {
     return removeFromCart(product);
   }
@@ -570,6 +695,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
   }) {
     return removeFromCart?.call(product);
   }
@@ -581,6 +711,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -596,6 +731,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
   }) {
     return removeFromCart(this);
   }
@@ -607,6 +747,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
   }) {
     return removeFromCart?.call(this);
   }
@@ -618,6 +763,11 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -638,11 +788,809 @@ abstract class _RemoveFromCart implements CartEvent {
 }
 
 /// @nodoc
+abstract class _$$AddToCartLocalImplCopyWith<$Res> {
+  factory _$$AddToCartLocalImplCopyWith(_$AddToCartLocalImpl value,
+          $Res Function(_$AddToCartLocalImpl) then) =
+      __$$AddToCartLocalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Product product});
+
+  $ProductCopyWith<$Res> get product;
+}
+
+/// @nodoc
+class __$$AddToCartLocalImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$AddToCartLocalImpl>
+    implements _$$AddToCartLocalImplCopyWith<$Res> {
+  __$$AddToCartLocalImplCopyWithImpl(
+      _$AddToCartLocalImpl _value, $Res Function(_$AddToCartLocalImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+  }) {
+    return _then(_$AddToCartLocalImpl(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res> get product {
+    return $ProductCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddToCartLocalImpl implements _AddToCartLocal {
+  const _$AddToCartLocalImpl({required this.product});
+
+  @override
+  final Product product;
+
+  @override
+  String toString() {
+    return 'CartEvent.addToCartLocal(product: $product)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddToCartLocalImpl &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddToCartLocalImplCopyWith<_$AddToCartLocalImpl> get copyWith =>
+      __$$AddToCartLocalImplCopyWithImpl<_$AddToCartLocalImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return addToCartLocal(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return addToCartLocal?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (addToCartLocal != null) {
+      return addToCartLocal(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return addToCartLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return addToCartLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (addToCartLocal != null) {
+      return addToCartLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddToCartLocal implements CartEvent {
+  const factory _AddToCartLocal({required final Product product}) =
+      _$AddToCartLocalImpl;
+
+  Product get product;
+  @JsonKey(ignore: true)
+  _$$AddToCartLocalImplCopyWith<_$AddToCartLocalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetCartLocalImplCopyWith<$Res> {
+  factory _$$GetCartLocalImplCopyWith(
+          _$GetCartLocalImpl value, $Res Function(_$GetCartLocalImpl) then) =
+      __$$GetCartLocalImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetCartLocalImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$GetCartLocalImpl>
+    implements _$$GetCartLocalImplCopyWith<$Res> {
+  __$$GetCartLocalImplCopyWithImpl(
+      _$GetCartLocalImpl _value, $Res Function(_$GetCartLocalImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetCartLocalImpl implements _GetCartLocal {
+  const _$GetCartLocalImpl();
+
+  @override
+  String toString() {
+    return 'CartEvent.getCartLocal()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetCartLocalImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return getCartLocal();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return getCartLocal?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (getCartLocal != null) {
+      return getCartLocal();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return getCartLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return getCartLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (getCartLocal != null) {
+      return getCartLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCartLocal implements CartEvent {
+  const factory _GetCartLocal() = _$GetCartLocalImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteCartLocalImplCopyWith<$Res> {
+  factory _$$DeleteCartLocalImplCopyWith(_$DeleteCartLocalImpl value,
+          $Res Function(_$DeleteCartLocalImpl) then) =
+      __$$DeleteCartLocalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$DeleteCartLocalImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$DeleteCartLocalImpl>
+    implements _$$DeleteCartLocalImplCopyWith<$Res> {
+  __$$DeleteCartLocalImplCopyWithImpl(
+      _$DeleteCartLocalImpl _value, $Res Function(_$DeleteCartLocalImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$DeleteCartLocalImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteCartLocalImpl implements _DeleteCartLocal {
+  const _$DeleteCartLocalImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'CartEvent.deletCartLocal(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteCartLocalImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteCartLocalImplCopyWith<_$DeleteCartLocalImpl> get copyWith =>
+      __$$DeleteCartLocalImplCopyWithImpl<_$DeleteCartLocalImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return deletCartLocal(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return deletCartLocal?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (deletCartLocal != null) {
+      return deletCartLocal(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return deletCartLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return deletCartLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (deletCartLocal != null) {
+      return deletCartLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteCartLocal implements CartEvent {
+  const factory _DeleteCartLocal({required final int index}) =
+      _$DeleteCartLocalImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$DeleteCartLocalImplCopyWith<_$DeleteCartLocalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearAllCartLocalImplCopyWith<$Res> {
+  factory _$$ClearAllCartLocalImplCopyWith(_$ClearAllCartLocalImpl value,
+          $Res Function(_$ClearAllCartLocalImpl) then) =
+      __$$ClearAllCartLocalImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearAllCartLocalImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$ClearAllCartLocalImpl>
+    implements _$$ClearAllCartLocalImplCopyWith<$Res> {
+  __$$ClearAllCartLocalImplCopyWithImpl(_$ClearAllCartLocalImpl _value,
+      $Res Function(_$ClearAllCartLocalImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
+  const _$ClearAllCartLocalImpl();
+
+  @override
+  String toString() {
+    return 'CartEvent.clearAllCartLocal()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearAllCartLocalImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return clearAllCartLocal();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return clearAllCartLocal?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (clearAllCartLocal != null) {
+      return clearAllCartLocal();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return clearAllCartLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return clearAllCartLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (clearAllCartLocal != null) {
+      return clearAllCartLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearAllCartLocal implements CartEvent {
+  const factory _ClearAllCartLocal() = _$ClearAllCartLocalImpl;
+}
+
+/// @nodoc
+abstract class _$$SendLocalServerCartImplCopyWith<$Res> {
+  factory _$$SendLocalServerCartImplCopyWith(_$SendLocalServerCartImpl value,
+          $Res Function(_$SendLocalServerCartImpl) then) =
+      __$$SendLocalServerCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendLocalServerCartImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$SendLocalServerCartImpl>
+    implements _$$SendLocalServerCartImplCopyWith<$Res> {
+  __$$SendLocalServerCartImplCopyWithImpl(_$SendLocalServerCartImpl _value,
+      $Res Function(_$SendLocalServerCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SendLocalServerCartImpl implements _SendLocalServerCart {
+  const _$SendLocalServerCartImpl();
+
+  @override
+  String toString() {
+    return 'CartEvent.sendLocalServerCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendLocalServerCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+  }) {
+    return sendLocalServerCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+  }) {
+    return sendLocalServerCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (sendLocalServerCart != null) {
+      return sendLocalServerCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+  }) {
+    return sendLocalServerCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+  }) {
+    return sendLocalServerCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    required TResult orElse(),
+  }) {
+    if (sendLocalServerCart != null) {
+      return sendLocalServerCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendLocalServerCart implements CartEvent {
+  const factory _SendLocalServerCart() = _$SendLocalServerCartImpl;
+}
+
+/// @nodoc
 mixin _$CartState {
   CartItem get cartItem => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  List<CartProductLocal> get cartData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartStateCopyWith<CartState> get copyWith =>
@@ -657,7 +1605,8 @@ abstract class $CartStateCopyWith<$Res> {
   $Res call(
       {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      List<CartProductLocal> cartData});
 
   $CartItemCopyWith<$Res> get cartItem;
 }
@@ -678,6 +1627,7 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? cartData = null,
   }) {
     return _then(_value.copyWith(
       cartItem: null == cartItem
@@ -692,6 +1642,10 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      cartData: null == cartData
+          ? _value.cartData
+          : cartData // ignore: cast_nullable_to_non_nullable
+              as List<CartProductLocal>,
     ) as $Val);
   }
 
@@ -715,7 +1669,8 @@ abstract class _$$CartStateImplCopyWith<$Res>
   $Res call(
       {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      List<CartProductLocal> cartData});
 
   @override
   $CartItemCopyWith<$Res> get cartItem;
@@ -735,6 +1690,7 @@ class __$$CartStateImplCopyWithImpl<$Res>
     Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? cartData = null,
   }) {
     return _then(_$CartStateImpl(
       cartItem: null == cartItem
@@ -749,6 +1705,10 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      cartData: null == cartData
+          ? _value._cartData
+          : cartData // ignore: cast_nullable_to_non_nullable
+              as List<CartProductLocal>,
     ));
   }
 }
@@ -759,8 +1719,10 @@ class _$CartStateImpl extends _CartState {
   const _$CartStateImpl(
       {required this.cartItem,
       required this.apiFailureOrSuccessOption,
-      required this.isFetching})
-      : super._();
+      required this.isFetching,
+      required final List<CartProductLocal> cartData})
+      : _cartData = cartData,
+        super._();
 
   @override
   final CartItem cartItem;
@@ -768,10 +1730,17 @@ class _$CartStateImpl extends _CartState {
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  final List<CartProductLocal> _cartData;
+  @override
+  List<CartProductLocal> get cartData {
+    if (_cartData is EqualUnmodifiableListView) return _cartData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cartData);
+  }
 
   @override
   String toString() {
-    return 'CartState(cartItem: $cartItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'CartState(cartItem: $cartItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, cartData: $cartData)';
   }
 
   @override
@@ -785,12 +1754,17 @@ class _$CartStateImpl extends _CartState {
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            const DeepCollectionEquality().equals(other._cartData, _cartData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, cartItem, apiFailureOrSuccessOption, isFetching);
+  int get hashCode => Object.hash(
+      runtimeType,
+      cartItem,
+      apiFailureOrSuccessOption,
+      isFetching,
+      const DeepCollectionEquality().hash(_cartData));
 
   @JsonKey(ignore: true)
   @override
@@ -804,7 +1778,8 @@ abstract class _CartState extends CartState {
       {required final CartItem cartItem,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$CartStateImpl;
+      required final bool isFetching,
+      required final List<CartProductLocal> cartData}) = _$CartStateImpl;
   const _CartState._() : super._();
 
   @override
@@ -813,6 +1788,8 @@ abstract class _CartState extends CartState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  List<CartProductLocal> get cartData;
   @override
   @JsonKey(ignore: true)
   _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>

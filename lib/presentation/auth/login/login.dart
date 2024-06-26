@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -26,14 +27,36 @@ class _LoginPageState extends State<LoginPage> {
     final loginFormBloc = context.read<LoginFormBloc>();
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state != const AuthState.unauthenticated() &&
-            state != const AuthState.initial()) {
+        if (state != const AuthState.unauthenticated()) {
+          final cartBloc = context.read<CartBloc>();
+          if (cartBloc.state.cartData.isNotEmpty) {
+            cartBloc.add(const CartEvent.sendLocalServerCart());
+          } else {}
           _controller.clear();
-          context.router.replaceNamed('/maintab');
+          context.router.maybePop();
+          Future.delayed(const Duration(milliseconds: 100), () {
+            context.router.maybePop();
+          });
         }
       },
       listenWhen: (previous, current) => previous != current,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Login',
+            style: textTheme.labelLarge,
+          ),
+          leadingWidth: 20,
+          centerTitle: false,
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: AppColors.lightGrey,
+            ),
+            onPressed: () => context.router.maybePop(),
+          ),
+        ),
         body: Stack(
           children: [
             Image.asset(PngImage.loginBackGround),

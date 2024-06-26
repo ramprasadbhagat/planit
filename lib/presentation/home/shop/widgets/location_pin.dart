@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
@@ -100,7 +101,14 @@ class _LocationPinState extends State<LocationPin> {
         Expanded(
           flex: 1,
           child: GestureDetector(
-            onTap: () => context.router.navigate(const ProfileRoute()),
+            onTap: () {
+              if (context.read<AuthBloc>().state ==
+                  const AuthState.unauthenticated()) {
+                context.router.navigate(const LoginRoute());
+              } else {
+                context.router.navigate(const ProfileRoute());
+              }
+            },
             child: Container(
               padding: const EdgeInsets.all(4),
               decoration: const BoxDecoration(

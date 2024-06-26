@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
@@ -239,13 +240,11 @@ class AddToCartBottomSheet extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (context.read<PincodeBloc>().state.pincode.isEmpty) {
-                          showErrorAlert();
-                        } else {
+                        if (context.read<AuthBloc>().state ==
+                            const AuthState.unauthenticated()) {
                           context.read<CartBloc>().add(
-                                CartEvent.addToCart(
+                                CartEvent.addToCartLocal(
                                   product: product,
-                                  quantity: 1,
                                 ),
                               );
                           context.router.maybePop();
@@ -254,6 +253,28 @@ class AddToCartBottomSheet extends StatelessWidget {
                           );
 
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          if (context
+                              .read<PincodeBloc>()
+                              .state
+                              .pincode
+                              .isEmpty) {
+                            showErrorAlert();
+                          } else {
+                            context.read<CartBloc>().add(
+                                  CartEvent.addToCart(
+                                    product: product,
+                                    quantity: 1,
+                                  ),
+                                );
+                            context.router.maybePop();
+                            const snackBar = SnackBar(
+                              content: Text('Item added to cart'),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(
