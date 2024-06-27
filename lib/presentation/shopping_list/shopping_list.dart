@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/shopping_list/widget/empty_shopping_list.dart';
 import 'package:planit/presentation/shopping_list/widget/shopping_list_item_card.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class ShoppingListPage extends StatefulWidget {
@@ -18,8 +20,6 @@ class ShoppingListPage extends StatefulWidget {
 }
 
 class _ShoppingListPageState extends State<ShoppingListPage> {
-  bool isChecked = false;
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -38,7 +38,19 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           BlocBuilder<WishlistBloc, WishlistState>(
             builder: (context, state) {
               if (state.isFetching) {
-                return Container();
+                return Skeletonizer(
+                  enabled: state.isFetching,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: List.generate(4, (index) {
+                      return ShoppingListItemCard(
+                        isSelected: false,
+                        item: WishlistProduct.empty(),
+                        onTap: () {},
+                      );
+                    }),
+                  ),
+                );
               } else if (state.isWishlistEmpty) {
                 return const EmptyShoppingList();
               }
@@ -59,7 +71,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                               ),
                             ),
                             Checkbox(
-                              value: isChecked,
+                              value: state.isAllSelected,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(2.0),
                               ),
@@ -75,9 +87,16 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                               activeColor: Colors.black,
                               autofocus: true,
                               onChanged: (bool? value) {
-                                setState(() {
-                                  isChecked = value!;
-                                });
+                                if (state.isAllSelected) {
+                                  context.read<WishlistBloc>().add(
+                                        const WishlistEvent.disselectAll(),
+                                      );
+                                } else {
+                                  context.read<WishlistBloc>().add(
+                                        const WishlistEvent.selectAll(),
+                                      );
+                                }
+                                // state.isAllSelected = value;
                               },
                             ),
                           ],
@@ -87,7 +106,28 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                           children: List.generate(state.getAllWishList.length,
                               (index) {
                             return ShoppingListItemCard(
+                              isSelected: state.selectedItemList
+                                  .contains(state.getAllWishList[index]),
                               item: state.getAllWishList[index],
+                              onTap: () {
+                                if (state.selectedItemList
+                                    .contains(state.getAllWishList[index])) {
+                                  context.read<WishlistBloc>().add(
+                                        WishlistEvent.disselectItem(
+                                          disselectedItem:
+                                              state.getAllWishList[index],
+                                        ),
+                                      );
+                                } else {
+                                  context.read<WishlistBloc>().add(
+                                        WishlistEvent.selectItem(
+                                          selectedItem:
+                                              state.getAllWishList[index],
+                                          allItem: state.getAllWishList,
+                                        ),
+                                      );
+                                }
+                              },
                             );
                           }),
                         ),
@@ -98,7 +138,14 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
               );
             },
           ),
-          const CartBanner(),
+          BlocBuilder<WishlistBloc, WishlistState>(
+            builder: (context, state) {
+              return CartBanner(
+                itemCount: state.selectedItemList.length,
+                shoppingListValue: state.totalSelectedItemPrice,
+              );
+            },
+          ),
         ],
       ),
     );

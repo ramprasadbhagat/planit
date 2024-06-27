@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WishlistProduct {
   String get id => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
+  String get attributeItemProductID => throw _privateConstructorUsedError;
   String get subcategoryId => throw _privateConstructorUsedError;
   String get productName => throw _privateConstructorUsedError;
   String get productDescription => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ mixin _$WishlistProduct {
   bool get isQuickPick => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
+  int get startingPrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WishlistProductCopyWith<WishlistProduct> get copyWith =>
@@ -53,6 +55,7 @@ abstract class $WishlistProductCopyWith<$Res> {
   $Res call(
       {String id,
       String categoryId,
+      String attributeItemProductID,
       String subcategoryId,
       String productName,
       String productDescription,
@@ -72,7 +75,8 @@ abstract class $WishlistProductCopyWith<$Res> {
       bool isHighlighted,
       bool isQuickPick,
       bool isDeleted,
-      bool isActive});
+      bool isActive,
+      int startingPrice});
 }
 
 /// @nodoc
@@ -90,6 +94,7 @@ class _$WishlistProductCopyWithImpl<$Res, $Val extends WishlistProduct>
   $Res call({
     Object? id = null,
     Object? categoryId = null,
+    Object? attributeItemProductID = null,
     Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
@@ -110,6 +115,7 @@ class _$WishlistProductCopyWithImpl<$Res, $Val extends WishlistProduct>
     Object? isQuickPick = null,
     Object? isDeleted = null,
     Object? isActive = null,
+    Object? startingPrice = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -119,6 +125,10 @@ class _$WishlistProductCopyWithImpl<$Res, $Val extends WishlistProduct>
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
               as String,
       subcategoryId: null == subcategoryId
           ? _value.subcategoryId
@@ -200,6 +210,10 @@ class _$WishlistProductCopyWithImpl<$Res, $Val extends WishlistProduct>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -215,6 +229,7 @@ abstract class _$$WishlistProductImplCopyWith<$Res>
   $Res call(
       {String id,
       String categoryId,
+      String attributeItemProductID,
       String subcategoryId,
       String productName,
       String productDescription,
@@ -234,7 +249,8 @@ abstract class _$$WishlistProductImplCopyWith<$Res>
       bool isHighlighted,
       bool isQuickPick,
       bool isDeleted,
-      bool isActive});
+      bool isActive,
+      int startingPrice});
 }
 
 /// @nodoc
@@ -250,6 +266,7 @@ class __$$WishlistProductImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? categoryId = null,
+    Object? attributeItemProductID = null,
     Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
@@ -270,6 +287,7 @@ class __$$WishlistProductImplCopyWithImpl<$Res>
     Object? isQuickPick = null,
     Object? isDeleted = null,
     Object? isActive = null,
+    Object? startingPrice = null,
   }) {
     return _then(_$WishlistProductImpl(
       id: null == id
@@ -279,6 +297,10 @@ class __$$WishlistProductImplCopyWithImpl<$Res>
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
               as String,
       subcategoryId: null == subcategoryId
           ? _value.subcategoryId
@@ -360,6 +382,10 @@ class __$$WishlistProductImplCopyWithImpl<$Res>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -370,6 +396,7 @@ class _$WishlistProductImpl extends _WishlistProduct {
   _$WishlistProductImpl(
       {required this.id,
       required this.categoryId,
+      required this.attributeItemProductID,
       required this.subcategoryId,
       required this.productName,
       required this.productDescription,
@@ -389,7 +416,8 @@ class _$WishlistProductImpl extends _WishlistProduct {
       required this.isHighlighted,
       required this.isQuickPick,
       required this.isDeleted,
-      required this.isActive})
+      required this.isActive,
+      required this.startingPrice})
       : _ingredientsList = ingredientsList,
         super._();
 
@@ -397,6 +425,8 @@ class _$WishlistProductImpl extends _WishlistProduct {
   final String id;
   @override
   final String categoryId;
+  @override
+  final String attributeItemProductID;
   @override
   final String subcategoryId;
   @override
@@ -443,10 +473,12 @@ class _$WishlistProductImpl extends _WishlistProduct {
   final bool isDeleted;
   @override
   final bool isActive;
+  @override
+  final int startingPrice;
 
   @override
   String toString() {
-    return 'WishlistProduct(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive)';
+    return 'WishlistProduct(id: $id, categoryId: $categoryId, attributeItemProductID: $attributeItemProductID, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive, startingPrice: $startingPrice)';
   }
 
   @override
@@ -457,6 +489,8 @@ class _$WishlistProductImpl extends _WishlistProduct {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
+            (identical(other.attributeItemProductID, attributeItemProductID) ||
+                other.attributeItemProductID == attributeItemProductID) &&
             (identical(other.subcategoryId, subcategoryId) ||
                 other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
@@ -495,7 +529,9 @@ class _$WishlistProductImpl extends _WishlistProduct {
             (identical(other.isDeleted, isDeleted) ||
                 other.isDeleted == isDeleted) &&
             (identical(other.isActive, isActive) ||
-                other.isActive == isActive));
+                other.isActive == isActive) &&
+            (identical(other.startingPrice, startingPrice) ||
+                other.startingPrice == startingPrice));
   }
 
   @override
@@ -503,6 +539,7 @@ class _$WishlistProductImpl extends _WishlistProduct {
         runtimeType,
         id,
         categoryId,
+        attributeItemProductID,
         subcategoryId,
         productName,
         productDescription,
@@ -522,7 +559,8 @@ class _$WishlistProductImpl extends _WishlistProduct {
         isHighlighted,
         isQuickPick,
         isDeleted,
-        isActive
+        isActive,
+        startingPrice
       ]);
 
   @JsonKey(ignore: true)
@@ -537,6 +575,7 @@ abstract class _WishlistProduct extends WishlistProduct {
   factory _WishlistProduct(
       {required final String id,
       required final String categoryId,
+      required final String attributeItemProductID,
       required final String subcategoryId,
       required final String productName,
       required final String productDescription,
@@ -556,13 +595,16 @@ abstract class _WishlistProduct extends WishlistProduct {
       required final bool isHighlighted,
       required final bool isQuickPick,
       required final bool isDeleted,
-      required final bool isActive}) = _$WishlistProductImpl;
+      required final bool isActive,
+      required final int startingPrice}) = _$WishlistProductImpl;
   _WishlistProduct._() : super._();
 
   @override
   String get id;
   @override
   String get categoryId;
+  @override
+  String get attributeItemProductID;
   @override
   String get subcategoryId;
   @override
@@ -603,6 +645,8 @@ abstract class _WishlistProduct extends WishlistProduct {
   bool get isDeleted;
   @override
   bool get isActive;
+  @override
+  int get startingPrice;
   @override
   @JsonKey(ignore: true)
   _$$WishlistProductImplCopyWith<_$WishlistProductImpl> get copyWith =>

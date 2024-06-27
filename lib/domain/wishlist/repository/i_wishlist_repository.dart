@@ -11,6 +11,7 @@ abstract class IWishlistRepository {
     required String productId,
     required String quantity,
     required String price,
+    required String attributeItemProductID,
   });
   Future<Either<ApiFailure, Unit>> removeFromWishlist({
     required String productId,

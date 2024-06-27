@@ -12,7 +12,7 @@ import 'package:planit/locator.dart';
 
 part 'wishlist_event.dart';
 part 'wishlist_state.dart';
-part 'wishlist_bloc.freezed.dart';
+part 'wishlist_bloc.freezed.dart';  
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   final IWishlistRepository repository;
@@ -65,6 +65,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           productId: e.productId,
           price: e.price,
           quantity: e.quantity,
+          attributeItemProductID: e.attributeItemProductID,
         );
         failureOrSuccess.fold(
           (failure) => emit(
@@ -83,6 +84,45 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
               ),
             );
           },
+        );
+      },
+      selectItem: (e) {
+        final selectedItemsList = <WishlistProduct>[
+          ...state.selectedItemList,
+          e.selectedItem,
+        ];
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemsList,
+          ),
+        );
+      },
+      disselectItem: (e) {
+        final selectedItemsList = <WishlistProduct>[
+          ...state.selectedItemList,
+        ];
+        selectedItemsList.remove(e.disselectedItem);
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemsList,
+          ),
+        );
+      },
+      selectAll: (e) {
+        final selectedItemList = <WishlistProduct>[
+          ...state.getAllWishList,
+        ];
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemList,
+          ),
+        );
+      },
+      disselectAll: (e) {
+        emit(
+          state.copyWith(
+            selectedItemList: [],
+          ),
         );
       },
       removeFromWishlist: (e) async {

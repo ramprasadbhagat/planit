@@ -4,13 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class CartBanner extends StatelessWidget {
-  const CartBanner({super.key});
+  const CartBanner({super.key, this.itemCount = 0, this.shoppingListValue = 0});
+  final int shoppingListValue;
+  final int itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class CartBanner extends StatelessWidget {
         return BlocBuilder<CartBloc, CartState>(
           buildWhen: (previous, current) => previous != current,
           builder: (context, state) {
-            if (state.isCartEmpty) {
+            if (state.isCartEmpty && itemCount == 0) {
               return const SizedBox();
             } else if (authState == const AuthState.unauthenticated()) {
               return Stack(
@@ -73,8 +76,9 @@ class CartBanner extends StatelessWidget {
                                   ),
                                   decoration: const BoxDecoration(
                                     color: AppColors.grey2,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(4)),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(4),
+                                    ),
                                   ),
                                   child: Text(
                                     '₹ ${state.cartItem.totalDiscount.getValue()} saved',
@@ -211,9 +215,9 @@ class CartBanner extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        state.totalCartProductsCount > 0
+                        state.totalCartProductsCount + itemCount > 0
                             ? Text(
-                                '${state.totalCartProductsCount} items | ₹ ${state.cartItem.totalPrice.getValue()}',
+                                '${state.totalCartProductsCount + itemCount} items | ₹ ${state.cartItem.totalPrice.getValue() + shoppingListValue}',
                                 style: textTheme.bodySmall
                                     ?.copyWith(color: Colors.white),
                               )
@@ -244,7 +248,7 @@ class CartBanner extends StatelessWidget {
                           onPressed: () =>
                               context.router.navigate(const CartRoute()),
                           child: Text(
-                            'View Cart',
+                            itemCount > 0 ? 'Add to Cart' : 'View Cart',
                             style: textTheme.bodySmall
                                 ?.copyWith(color: Colors.white),
                           ),
