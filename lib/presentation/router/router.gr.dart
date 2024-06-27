@@ -9,6 +9,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i28;
+import 'package:flutter/material.dart' as _i29;
+import 'package:planit/domain/order/entities/order.dart' as _i30;
 import 'package:planit/presentation/add_money/add_money.dart' as _i2;
 import 'package:planit/presentation/address_book/adress_book_page.dart' as _i3;
 import 'package:planit/presentation/auth/login/login.dart' as _i10;
@@ -124,9 +126,13 @@ abstract class $AppRouter extends _i28.RootStackRouter {
       );
     },
     OrderDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderDetailsRouteArgs>();
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i14.OrderDetailsPage(),
+        child: _i14.OrderDetailsPage(
+          key: args.key,
+          order: args.order,
+        ),
       );
     },
     OrderListRoute.name: (routeData) {
@@ -394,16 +400,40 @@ class MyWalletRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.OrderDetailsPage]
-class OrderDetailsRoute extends _i28.PageRouteInfo<void> {
-  const OrderDetailsRoute({List<_i28.PageRouteInfo>? children})
-      : super(
+class OrderDetailsRoute extends _i28.PageRouteInfo<OrderDetailsRouteArgs> {
+  OrderDetailsRoute({
+    _i29.Key? key,
+    required _i30.Order order,
+    List<_i28.PageRouteInfo>? children,
+  }) : super(
           OrderDetailsRoute.name,
+          args: OrderDetailsRouteArgs(
+            key: key,
+            order: order,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OrderDetailsRoute';
 
-  static const _i28.PageInfo<void> page = _i28.PageInfo<void>(name);
+  static const _i28.PageInfo<OrderDetailsRouteArgs> page =
+      _i28.PageInfo<OrderDetailsRouteArgs>(name);
+}
+
+class OrderDetailsRouteArgs {
+  const OrderDetailsRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final _i29.Key? key;
+
+  final _i30.Order order;
+
+  @override
+  String toString() {
+    return 'OrderDetailsRouteArgs{key: $key, order: $order}';
+  }
 }
 
 /// generated route for

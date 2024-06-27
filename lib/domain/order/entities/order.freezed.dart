@@ -31,6 +31,7 @@ mixin _$Order {
   DeliveryDate get deliveryDate => throw _privateConstructorUsedError;
   bool get isCouponApplied => throw _privateConstructorUsedError;
   List<AddressBook> get deliveryAddress => throw _privateConstructorUsedError;
+  List<OrderItem> get orderItem => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
@@ -56,7 +57,8 @@ abstract class $OrderCopyWith<$Res> {
       DateTime orderDate,
       DeliveryDate deliveryDate,
       bool isCouponApplied,
-      List<AddressBook> deliveryAddress});
+      List<AddressBook> deliveryAddress,
+      List<OrderItem> orderItem});
 }
 
 /// @nodoc
@@ -87,6 +89,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? deliveryDate = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
+    Object? orderItem = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -149,6 +152,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as List<AddressBook>,
+      orderItem: null == orderItem
+          ? _value.orderItem
+          : orderItem // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>,
     ) as $Val);
   }
 }
@@ -175,7 +182,8 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       DateTime orderDate,
       DeliveryDate deliveryDate,
       bool isCouponApplied,
-      List<AddressBook> deliveryAddress});
+      List<AddressBook> deliveryAddress,
+      List<OrderItem> orderItem});
 }
 
 /// @nodoc
@@ -204,6 +212,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? deliveryDate = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
+    Object? orderItem = null,
   }) {
     return _then(_$OrderImpl(
       id: null == id
@@ -266,6 +275,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value._deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as List<AddressBook>,
+      orderItem: null == orderItem
+          ? _value._orderItem
+          : orderItem // ignore: cast_nullable_to_non_nullable
+              as List<OrderItem>,
     ));
   }
 }
@@ -288,8 +301,10 @@ class _$OrderImpl implements _Order {
       required this.orderDate,
       required this.deliveryDate,
       required this.isCouponApplied,
-      required final List<AddressBook> deliveryAddress})
-      : _deliveryAddress = deliveryAddress;
+      required final List<AddressBook> deliveryAddress,
+      required final List<OrderItem> orderItem})
+      : _deliveryAddress = deliveryAddress,
+        _orderItem = orderItem;
 
   @override
   final StringValue id;
@@ -327,9 +342,17 @@ class _$OrderImpl implements _Order {
     return EqualUnmodifiableListView(_deliveryAddress);
   }
 
+  final List<OrderItem> _orderItem;
+  @override
+  List<OrderItem> get orderItem {
+    if (_orderItem is EqualUnmodifiableListView) return _orderItem;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orderItem);
+  }
+
   @override
   String toString() {
-    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress)';
+    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -364,7 +387,9 @@ class _$OrderImpl implements _Order {
             (identical(other.isCouponApplied, isCouponApplied) ||
                 other.isCouponApplied == isCouponApplied) &&
             const DeepCollectionEquality()
-                .equals(other._deliveryAddress, _deliveryAddress));
+                .equals(other._deliveryAddress, _deliveryAddress) &&
+            const DeepCollectionEquality()
+                .equals(other._orderItem, _orderItem));
   }
 
   @override
@@ -384,7 +409,8 @@ class _$OrderImpl implements _Order {
       orderDate,
       deliveryDate,
       isCouponApplied,
-      const DeepCollectionEquality().hash(_deliveryAddress));
+      const DeepCollectionEquality().hash(_deliveryAddress),
+      const DeepCollectionEquality().hash(_orderItem));
 
   @JsonKey(ignore: true)
   @override
@@ -409,7 +435,8 @@ abstract class _Order implements Order {
       required final DateTime orderDate,
       required final DeliveryDate deliveryDate,
       required final bool isCouponApplied,
-      required final List<AddressBook> deliveryAddress}) = _$OrderImpl;
+      required final List<AddressBook> deliveryAddress,
+      required final List<OrderItem> orderItem}) = _$OrderImpl;
 
   @override
   StringValue get id;
@@ -441,6 +468,8 @@ abstract class _Order implements Order {
   bool get isCouponApplied;
   @override
   List<AddressBook> get deliveryAddress;
+  @override
+  List<OrderItem> get orderItem;
   @override
   @JsonKey(ignore: true)
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>

@@ -37,7 +37,7 @@ class OrderDto with _$OrderDto {
     @JsonKey(name: 'deliveryAddress', defaultValue: [])
     required List<Map<String, dynamic>> deliveryAddress,
     @JsonKey(name: 'orderItem', defaultValue: [])
-    required List<OrderItemDto> orderItem,
+    required List<Map<String, dynamic>> orderItem,
   }) = _OrderDto;
 
   factory OrderDto.fromJson(Map<String, dynamic> json) =>
@@ -61,6 +61,8 @@ class OrderDto with _$OrderDto {
             .map((e) => AddressBookDto.fromJson(e).toDomain)
             .toList(),
         deliveryDate: DeliveryDate(deliveryDate),
+        orderItem:
+            orderItem.map((e) => OrderItemDto.fromJson(e).toDomain).toList(),
       );
 }
 
