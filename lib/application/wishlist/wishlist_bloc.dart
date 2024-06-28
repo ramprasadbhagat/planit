@@ -55,6 +55,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
             ),
           );
         }
+        emit(state.copyWith(selectedItemList: []));
       },
       addToWishlist: (e) async {
         emit(state.copyWith(isFetching: true));
