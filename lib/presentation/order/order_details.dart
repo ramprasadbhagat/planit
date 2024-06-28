@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:planit/domain/order/entities/order.dart';
+import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/order/widgets/orderItems.dart';
 import 'package:planit/presentation/order/widgets/review_order.dart';
@@ -8,7 +10,8 @@ import 'package:planit/utils/png_image.dart';
 
 @RoutePage()
 class OrderDetailsPage extends StatelessWidget {
-  const OrderDetailsPage({super.key});
+  final Order order;
+  const OrderDetailsPage({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,6 @@ class OrderDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(color: Color.fromRGBO(0, 0, b, opacity)),
                         color: Colors.white,
                         boxShadow: const [
                           BoxShadow(
@@ -78,7 +80,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Order ID : ORD10786420 ',
+                                ' Order ID : ${order.id.displayLabel}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -97,7 +99,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Order Date : 30th April 2024 ',
+                                ' Order Date : ${order.getOrderDate}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -116,7 +118,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Delivery Date :  1st June 2024 ',
+                                ' Delivery Date : ${order.deliveryDate.getDisplayValue}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -154,7 +156,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 width: 20,
                               ),
                               Text(
-                                ' Order Status : Processing ',
+                                ' Order Status : ${order.getOrderStatus.getDisplayStatus}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -213,7 +215,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Recipient Name : Andrew Max ',
+                                ' Recipient Name : ${order.deliveryAddress.first.fullName}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -232,7 +234,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Mobile Number : 8910328103 ',
+                                ' Mobile Number : ${order.getDeliveryPhoneNumber}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -244,6 +246,7 @@ class OrderDetailsPage extends StatelessWidget {
                             height: 10,
                           ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Icon(
                                 Icons.home_outlined,
@@ -251,10 +254,19 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Address : 83, Beadon Street , Near -Main Road',
+                                ' Address : ',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  order.getDeliveryAddress,
+                                  style: textTheme.titleMedium?.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ],
@@ -302,7 +314,9 @@ class OrderDetailsPage extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          const OrderItems(),
+                          OrderItems(
+                            order: order,
+                          ),
                         ],
                       ),
                     ),
@@ -313,7 +327,6 @@ class OrderDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(color: Color.fromRGBO(0, 0, b, opacity)),
                         color: Colors.white,
                         boxShadow: const [
                           BoxShadow(
@@ -354,7 +367,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Order No : ORD10786420007 ',
+                                ' Order No : ${order.id.displayLabel}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -388,30 +401,31 @@ class OrderDetailsPage extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
                               children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      PngImage.coupon,
-                                      height: 14,
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      ' Coupon ',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
+                                if (order.isCouponApplied)
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        PngImage.coupon,
+                                        height: 14,
+                                        width: 15,
                                       ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      'You saved ₹ 100.00 ',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
+                                      Text(
+                                        ' Coupon ',
+                                        style: textTheme.titleMedium?.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                      const Spacer(),
+                                      Text(
+                                        'You saved ${order.totalDiscount.getValue().toPrice()} ',
+                                        style: textTheme.titleMedium?.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 const SizedBox(
                                   height: 20,
                                 ),
@@ -426,7 +440,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '₹ 6.45',
+                                      0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -448,7 +462,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '₹ 36.00',
+                                      order.deliveryCharge.getValue().toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -470,7 +484,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '₹ 10.08',
+                                      0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -492,7 +506,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '₹ 0.45',
+                                      0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
@@ -525,7 +539,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      '₹ 2699.00',
+                                      order.getTotalPrice,
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -547,33 +561,37 @@ class OrderDetailsPage extends StatelessWidget {
           Container(
             width: double.infinity,
             margin: const EdgeInsets.only(top: 2),
-            padding: const EdgeInsets.all(15),
-            // decoration: const BoxDecoration(
-            //   color: Colors.white,
-            //   boxShadow: [
-            //     BoxShadow(
-            //       blurRadius: 1,
-            //       spreadRadius: 3,
-            //       color: AppColors.extraLightGray,
-            //       offset: Offset(0, 0),
-            //     ),
-            //   ],
-            // ),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.black,
-                    minimumSize: const Size(330, 50),
+                MaterialButton(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(14)),
                   ),
-                  child: const Text('Reorder'),
+                  minWidth: double.maxFinite,
+                  height: 45,
+                  color: AppColors.black,
+                  elevation: 4,
+                  onPressed: () {},
+                  child: Text(
+                    'Reorder',
+                    style: textTheme.titleLarge?.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 14,
                 ),
-                ElevatedButton(
+                MaterialButton(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(14)),
+                  ),
+                  minWidth: double.maxFinite,
+                  height: 43,
+                  color: AppColors.whiteBgCard,
+                  elevation: 4,
                   onPressed: () {
                     showModalBottomSheet<void>(
                       context: context,
@@ -584,17 +602,9 @@ class OrderDetailsPage extends StatelessWidget {
                       ),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.white,
-                    minimumSize: const Size(330, 50),
-                    side: const BorderSide(
-                      width: 1,
-                      color: Color.fromARGB(255, 177, 172, 172),
-                    ),
-                  ),
-                  child: const Text(
+                  child: Text(
                     'Rate Your Order',
-                    style: TextStyle(color: AppColors.black),
+                    style: textTheme.titleLarge,
                   ),
                 ),
               ],

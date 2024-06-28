@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
+import 'package:planit/domain/product/entities/product_image.dart';
 part 'order_item_dto.freezed.dart';
 part 'order_item_dto.g.dart';
 
@@ -19,6 +20,12 @@ class OrderItemDto with _$OrderItemDto {
     required int subTotal,
     @JsonKey(name: 'product', defaultValue: {})
     required Map<String, dynamic> product,
+    @JsonKey(
+      name: 'productImage',
+      defaultValue: [],
+      readValue: productImageUrlFromMap,
+    )
+    required List<String> productImage,
   }) = _OrderItemDto;
 
   factory OrderItemDto.fromJson(Map<String, dynamic> json) =>
@@ -32,6 +39,9 @@ class OrderItemDto with _$OrderItemDto {
         unitPrice: IntegerValue(unitPrice),
         subTotal: IntegerValue(subTotal),
         product: OrderItemProductDto.fromJson(product).toDomain,
+        productImage: productImage
+            .map((e) => ProductImage(image: StringValue(e)))
+            .toList(),
       );
 }
 
@@ -40,6 +50,10 @@ int intReadValue(Map json, String key) {
   if (json[key] is double) return (json[key] as double).toInt();
   if (json[key] is String) return int.tryParse(json[key]) ?? 0;
   return 0;
+}
+
+List<String> productImageUrlFromMap(Map json, String key) {
+  return (json[key] as List).map<String>((e) => e['image']).toList();
 }
 
 @freezed
@@ -61,6 +75,7 @@ class OrderItemProductDto with _$OrderItemProductDto {
     required int productDiscount,
     @JsonKey(name: 'productDiscountDate', defaultValue: '')
     required String productDiscountDate,
+    @JsonKey(name: 'sku', defaultValue: '') required String sku,
   }) = _OrderItemProductDto;
 
   factory OrderItemProductDto.fromJson(Map<String, dynamic> json) =>
@@ -77,5 +92,6 @@ class OrderItemProductDto with _$OrderItemProductDto {
         productDiscount: IntegerValue(productDiscount),
         productDiscountDate:
             DateTime.tryParse(productDiscountDate) ?? DateTime.now(),
+        sku: StringValue(sku),
       );
 }

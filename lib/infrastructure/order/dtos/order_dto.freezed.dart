@@ -52,7 +52,8 @@ mixin _$OrderDto {
   List<Map<String, dynamic>> get deliveryAddress =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'orderItem', defaultValue: [])
-  List<OrderItemDto> get orderItem => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get orderItem =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -89,7 +90,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
       List<Map<String, dynamic>> deliveryAddress,
       @JsonKey(name: 'orderItem', defaultValue: [])
-      List<OrderItemDto> orderItem});
+      List<Map<String, dynamic>> orderItem});
 }
 
 /// @nodoc
@@ -186,7 +187,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       orderItem: null == orderItem
           ? _value.orderItem
           : orderItem // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemDto>,
+              as List<Map<String, dynamic>>,
     ) as $Val);
   }
 }
@@ -223,7 +224,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
       List<Map<String, dynamic>> deliveryAddress,
       @JsonKey(name: 'orderItem', defaultValue: [])
-      List<OrderItemDto> orderItem});
+      List<Map<String, dynamic>> orderItem});
 }
 
 /// @nodoc
@@ -318,7 +319,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       orderItem: null == orderItem
           ? _value._orderItem
           : orderItem // ignore: cast_nullable_to_non_nullable
-              as List<OrderItemDto>,
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -352,7 +353,7 @@ class _$OrderDtoImpl extends _OrderDto {
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
       required final List<Map<String, dynamic>> deliveryAddress,
       @JsonKey(name: 'orderItem', defaultValue: [])
-      required final List<OrderItemDto> orderItem})
+      required final List<Map<String, dynamic>> orderItem})
       : _deliveryAddress = deliveryAddress,
         _orderItem = orderItem,
         super._();
@@ -411,10 +412,10 @@ class _$OrderDtoImpl extends _OrderDto {
     return EqualUnmodifiableListView(_deliveryAddress);
   }
 
-  final List<OrderItemDto> _orderItem;
+  final List<Map<String, dynamic>> _orderItem;
   @override
   @JsonKey(name: 'orderItem', defaultValue: [])
-  List<OrderItemDto> get orderItem {
+  List<Map<String, dynamic>> get orderItem {
     if (_orderItem is EqualUnmodifiableListView) return _orderItem;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_orderItem);
@@ -528,7 +529,7 @@ abstract class _OrderDto extends OrderDto {
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
       required final List<Map<String, dynamic>> deliveryAddress,
       @JsonKey(name: 'orderItem', defaultValue: [])
-      required final List<OrderItemDto> orderItem}) = _$OrderDtoImpl;
+      required final List<Map<String, dynamic>> orderItem}) = _$OrderDtoImpl;
   const _OrderDto._() : super._();
 
   factory _OrderDto.fromJson(Map<String, dynamic> json) =
@@ -581,7 +582,7 @@ abstract class _OrderDto extends OrderDto {
   List<Map<String, dynamic>> get deliveryAddress;
   @override
   @JsonKey(name: 'orderItem', defaultValue: [])
-  List<OrderItemDto> get orderItem;
+  List<Map<String, dynamic>> get orderItem;
   @override
   @JsonKey(ignore: true)
   _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>

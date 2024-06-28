@@ -29,7 +29,7 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           [],
       orderItem: (json['orderItem'] as List<dynamic>?)
-              ?.map((e) => OrderItemDto.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => e as Map<String, dynamic>)
               .toList() ??
           [],
     );

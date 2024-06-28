@@ -34,6 +34,9 @@ mixin _$OrderItemDto {
   int get subTotal => throw _privateConstructorUsedError;
   @JsonKey(name: 'product', defaultValue: {})
   Map<String, dynamic> get product => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+  List<String> get productImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,8 +60,12 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       int unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
-      @JsonKey(name: 'product', defaultValue: {})
-      Map<String, dynamic> product});
+      @JsonKey(name: 'product', defaultValue: {}) Map<String, dynamic> product,
+      @JsonKey(
+          name: 'productImage',
+          defaultValue: [],
+          readValue: productImageUrlFromMap)
+      List<String> productImage});
 }
 
 /// @nodoc
@@ -81,6 +88,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? unitPrice = null,
     Object? subTotal = null,
     Object? product = null,
+    Object? productImage = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -111,6 +119,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      productImage: null == productImage
+          ? _value.productImage
+          : productImage // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -133,8 +145,12 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       int unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
-      @JsonKey(name: 'product', defaultValue: {})
-      Map<String, dynamic> product});
+      @JsonKey(name: 'product', defaultValue: {}) Map<String, dynamic> product,
+      @JsonKey(
+          name: 'productImage',
+          defaultValue: [],
+          readValue: productImageUrlFromMap)
+      List<String> productImage});
 }
 
 /// @nodoc
@@ -155,6 +171,7 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
     Object? unitPrice = null,
     Object? subTotal = null,
     Object? product = null,
+    Object? productImage = null,
   }) {
     return _then(_$OrderItemDtoImpl(
       id: null == id
@@ -185,6 +202,10 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
           ? _value._product
           : product // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      productImage: null == productImage
+          ? _value._productImage
+          : productImage // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -203,8 +224,14 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required this.subTotal,
       @JsonKey(name: 'product', defaultValue: {})
-      required final Map<String, dynamic> product})
+      required final Map<String, dynamic> product,
+      @JsonKey(
+          name: 'productImage',
+          defaultValue: [],
+          readValue: productImageUrlFromMap)
+      required final List<String> productImage})
       : _product = product,
+        _productImage = productImage,
         super._();
 
   factory _$OrderItemDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -237,9 +264,19 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
     return EqualUnmodifiableMapView(_product);
   }
 
+  final List<String> _productImage;
+  @override
+  @JsonKey(
+      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+  List<String> get productImage {
+    if (_productImage is EqualUnmodifiableListView) return _productImage;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productImage);
+  }
+
   @override
   String toString() {
-    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product)';
+    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
   }
 
   @override
@@ -257,13 +294,23 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
                 other.unitPrice == unitPrice) &&
             (identical(other.subTotal, subTotal) ||
                 other.subTotal == subTotal) &&
-            const DeepCollectionEquality().equals(other._product, _product));
+            const DeepCollectionEquality().equals(other._product, _product) &&
+            const DeepCollectionEquality()
+                .equals(other._productImage, _productImage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, orderId, productId, quantity,
-      unitPrice, subTotal, const DeepCollectionEquality().hash(_product));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      orderId,
+      productId,
+      quantity,
+      unitPrice,
+      subTotal,
+      const DeepCollectionEquality().hash(_product),
+      const DeepCollectionEquality().hash(_productImage));
 
   @JsonKey(ignore: true)
   @override
@@ -292,7 +339,12 @@ abstract class _OrderItemDto extends OrderItemDto {
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required final int subTotal,
       @JsonKey(name: 'product', defaultValue: {})
-      required final Map<String, dynamic> product}) = _$OrderItemDtoImpl;
+      required final Map<String, dynamic> product,
+      @JsonKey(
+          name: 'productImage',
+          defaultValue: [],
+          readValue: productImageUrlFromMap)
+      required final List<String> productImage}) = _$OrderItemDtoImpl;
   const _OrderItemDto._() : super._();
 
   factory _OrderItemDto.fromJson(Map<String, dynamic> json) =
@@ -319,6 +371,10 @@ abstract class _OrderItemDto extends OrderItemDto {
   @override
   @JsonKey(name: 'product', defaultValue: {})
   Map<String, dynamic> get product;
+  @override
+  @JsonKey(
+      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+  List<String> get productImage;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
@@ -349,6 +405,8 @@ mixin _$OrderItemProductDto {
   int get productDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDiscountDate', defaultValue: '')
   String get productDiscountDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sku', defaultValue: '')
+  String get sku => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -376,7 +434,8 @@ abstract class $OrderItemProductDtoCopyWith<$Res> {
           name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
       int productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
-      String productDiscountDate});
+      String productDiscountDate,
+      @JsonKey(name: 'sku', defaultValue: '') String sku});
 }
 
 /// @nodoc
@@ -401,6 +460,7 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
     Object? productMRP = null,
     Object? productDiscount = null,
     Object? productDiscountDate = null,
+    Object? sku = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -439,6 +499,10 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
           ? _value.productDiscountDate
           : productDiscountDate // ignore: cast_nullable_to_non_nullable
               as String,
+      sku: null == sku
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -465,7 +529,8 @@ abstract class _$$OrderItemProductDtoImplCopyWith<$Res>
           name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
       int productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
-      String productDiscountDate});
+      String productDiscountDate,
+      @JsonKey(name: 'sku', defaultValue: '') String sku});
 }
 
 /// @nodoc
@@ -488,6 +553,7 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
     Object? productMRP = null,
     Object? productDiscount = null,
     Object? productDiscountDate = null,
+    Object? sku = null,
   }) {
     return _then(_$OrderItemProductDtoImpl(
       id: null == id
@@ -526,6 +592,10 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
           ? _value.productDiscountDate
           : productDiscountDate // ignore: cast_nullable_to_non_nullable
               as String,
+      sku: null == sku
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -548,7 +618,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
           name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
       required this.productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
-      required this.productDiscountDate})
+      required this.productDiscountDate,
+      @JsonKey(name: 'sku', defaultValue: '') required this.sku})
       : super._();
 
   factory _$OrderItemProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -581,10 +652,13 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   @override
   @JsonKey(name: 'productDiscountDate', defaultValue: '')
   final String productDiscountDate;
+  @override
+  @JsonKey(name: 'sku', defaultValue: '')
+  final String sku;
 
   @override
   String toString() {
-    return 'OrderItemProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate)';
+    return 'OrderItemProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
   }
 
   @override
@@ -608,7 +682,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
             (identical(other.productDiscount, productDiscount) ||
                 other.productDiscount == productDiscount) &&
             (identical(other.productDiscountDate, productDiscountDate) ||
-                other.productDiscountDate == productDiscountDate));
+                other.productDiscountDate == productDiscountDate) &&
+            (identical(other.sku, sku) || other.sku == sku));
   }
 
   @JsonKey(ignore: true)
@@ -623,7 +698,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
       expiryDate,
       productMRP,
       productDiscount,
-      productDiscountDate);
+      productDiscountDate,
+      sku);
 
   @JsonKey(ignore: true)
   @override
@@ -642,24 +718,26 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
 
 abstract class _OrderItemProductDto extends OrderItemProductDto {
   const factory _OrderItemProductDto(
-      {@JsonKey(name: '_id', defaultValue: '') required final String id,
-      @JsonKey(name: 'categoryId', defaultValue: '')
-      required final String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '')
-      required final String subcategoryId,
-      @JsonKey(name: 'productName', defaultValue: '')
-      required final String productName,
-      @JsonKey(name: 'productDescription', defaultValue: '')
-      required final String productDescription,
-      @JsonKey(name: 'expiryDate', defaultValue: '')
-      required final String expiryDate,
-      @JsonKey(name: 'productMRP', defaultValue: 0, readValue: intReadValue)
-      required final int productMRP,
-      @JsonKey(
-          name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
-      required final int productDiscount,
-      @JsonKey(name: 'productDiscountDate', defaultValue: '')
-      required final String productDiscountDate}) = _$OrderItemProductDtoImpl;
+          {@JsonKey(name: '_id', defaultValue: '') required final String id,
+          @JsonKey(name: 'categoryId', defaultValue: '')
+          required final String categoryId,
+          @JsonKey(name: 'subcategoryId', defaultValue: '')
+          required final String subcategoryId,
+          @JsonKey(name: 'productName', defaultValue: '')
+          required final String productName,
+          @JsonKey(name: 'productDescription', defaultValue: '')
+          required final String productDescription,
+          @JsonKey(name: 'expiryDate', defaultValue: '')
+          required final String expiryDate,
+          @JsonKey(name: 'productMRP', defaultValue: 0, readValue: intReadValue)
+          required final int productMRP,
+          @JsonKey(
+              name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
+          required final int productDiscount,
+          @JsonKey(name: 'productDiscountDate', defaultValue: '')
+          required final String productDiscountDate,
+          @JsonKey(name: 'sku', defaultValue: '') required final String sku}) =
+      _$OrderItemProductDtoImpl;
   const _OrderItemProductDto._() : super._();
 
   factory _OrderItemProductDto.fromJson(Map<String, dynamic> json) =
@@ -692,6 +770,9 @@ abstract class _OrderItemProductDto extends OrderItemProductDto {
   @override
   @JsonKey(name: 'productDiscountDate', defaultValue: '')
   String get productDiscountDate;
+  @override
+  @JsonKey(name: 'sku', defaultValue: '')
+  String get sku;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemProductDtoImplCopyWith<_$OrderItemProductDtoImpl> get copyWith =>

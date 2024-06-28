@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/product/entities/product_image.dart';
 part 'order_item.freezed.dart';
 
 @freezed
@@ -12,6 +13,7 @@ class OrderItem with _$OrderItem {
     required IntegerValue unitPrice,
     required IntegerValue subTotal,
     required OrderItemProduct product,
+    required List<ProductImage> productImage,
   }) = _OrderItem;
 }
 
@@ -27,5 +29,6 @@ class OrderItemProduct with _$OrderItemProduct {
     required IntegerValue productMRP,
     required IntegerValue productDiscount,
     required DateTime productDiscountDate,
+    required StringValue sku,
   }) = _OrderItemProduct;
 }

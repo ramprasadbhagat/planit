@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_loader.dart';
 import 'package:planit/utils/png_image.dart';
@@ -56,23 +55,26 @@ class ShoppingBanner extends StatelessWidget {
                         endDate: i.endingDate,
                       ),
                       Expanded(
-                        child: Image.network(
-                          i.bannerImages[0],
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stack) {
-                            if (error is NetworkImageLoadException &&
-                                error.statusCode == 404) {
+                        child: SizedBox(
+                          width: double.maxFinite,
+                          child: Image.network(
+                            i.bannerImages.firstOrNull ?? '',
+                            fit: BoxFit.fill,
+                            errorBuilder: (context, error, stack) {
+                              if (error is NetworkImageLoadException &&
+                                  error.statusCode == 404) {
+                                return Image.asset(
+                                  PngImage.placeholder,
+                                  fit: BoxFit.fitHeight,
+                                );
+                              }
+
                               return Image.asset(
                                 PngImage.placeholder,
                                 fit: BoxFit.fitHeight,
                               );
-                            }
-
-                            return Image.asset(
-                              PngImage.placeholder,
-                              fit: BoxFit.fitHeight,
-                            );
-                          },
+                            },
+                          ),
                         ),
                       ),
                     ],
