@@ -28,6 +28,7 @@ mixin _$WishlistEvent {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -45,6 +46,7 @@ mixin _$WishlistEvent {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -62,6 +64,7 @@ mixin _$WishlistEvent {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -78,6 +81,7 @@ mixin _$WishlistEvent {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +95,7 @@ mixin _$WishlistEvent {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -104,6 +109,7 @@ mixin _$WishlistEvent {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) =>
@@ -176,6 +182,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -196,6 +203,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -216,6 +224,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -238,6 +247,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return initialized(this);
@@ -254,6 +264,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return initialized?.call(this);
@@ -270,6 +281,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -332,6 +344,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -352,6 +365,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -372,6 +386,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -394,6 +409,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return fetch(this);
@@ -410,6 +426,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return fetch?.call(this);
@@ -426,6 +443,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -515,6 +533,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -535,6 +554,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -555,6 +575,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -577,6 +598,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return addToWishlist(this);
@@ -593,6 +615,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return addToWishlist?.call(this);
@@ -609,6 +632,7 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -705,6 +729,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -725,6 +750,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -745,6 +771,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -767,6 +794,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return removeFromWishlist(this);
@@ -783,6 +811,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return removeFromWishlist?.call(this);
@@ -799,6 +828,7 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -921,6 +951,7 @@ class _$SelectItemImpl implements _SelectItem {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -941,6 +972,7 @@ class _$SelectItemImpl implements _SelectItem {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -961,6 +993,7 @@ class _$SelectItemImpl implements _SelectItem {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -983,6 +1016,7 @@ class _$SelectItemImpl implements _SelectItem {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return selectItem(this);
@@ -999,6 +1033,7 @@ class _$SelectItemImpl implements _SelectItem {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return selectItem?.call(this);
@@ -1015,6 +1050,7 @@ class _$SelectItemImpl implements _SelectItem {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -1085,6 +1121,7 @@ class _$SelectAllImpl implements _SelectAll {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -1105,6 +1142,7 @@ class _$SelectAllImpl implements _SelectAll {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1125,6 +1163,7 @@ class _$SelectAllImpl implements _SelectAll {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1147,6 +1186,7 @@ class _$SelectAllImpl implements _SelectAll {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return selectAll(this);
@@ -1163,6 +1203,7 @@ class _$SelectAllImpl implements _SelectAll {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return selectAll?.call(this);
@@ -1179,6 +1220,7 @@ class _$SelectAllImpl implements _SelectAll {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -1241,6 +1283,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -1261,6 +1304,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1281,6 +1325,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1303,6 +1348,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return disselectAll(this);
@@ -1319,6 +1365,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return disselectAll?.call(this);
@@ -1335,6 +1382,7 @@ class _$DisselectAllImpl implements _DisselectAll {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -1435,6 +1483,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -1455,6 +1504,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1475,6 +1525,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1497,6 +1548,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return disselectItem(this);
@@ -1513,6 +1565,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return disselectItem?.call(this);
@@ -1529,6 +1582,7 @@ class _$DisselectedItemImpl implements _DisselectedItem {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -1547,6 +1601,168 @@ abstract class _DisselectedItem implements WishlistEvent {
   @JsonKey(ignore: true)
   _$$DisselectedItemImplCopyWith<_$DisselectedItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddAllItemToCartImplCopyWith<$Res> {
+  factory _$$AddAllItemToCartImplCopyWith(_$AddAllItemToCartImpl value,
+          $Res Function(_$AddAllItemToCartImpl) then) =
+      __$$AddAllItemToCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddAllItemToCartImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$AddAllItemToCartImpl>
+    implements _$$AddAllItemToCartImplCopyWith<$Res> {
+  __$$AddAllItemToCartImplCopyWithImpl(_$AddAllItemToCartImpl _value,
+      $Res Function(_$AddAllItemToCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddAllItemToCartImpl implements _AddAllItemToCart {
+  const _$AddAllItemToCartImpl();
+
+  @override
+  String toString() {
+    return 'WishlistEvent.addAllItemToCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AddAllItemToCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return addAllItemToCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return addAllItemToCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (addAllItemToCart != null) {
+      return addAllItemToCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return addAllItemToCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return addAllItemToCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (addAllItemToCart != null) {
+      return addAllItemToCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddAllItemToCart implements WishlistEvent {
+  const factory _AddAllItemToCart() = _$AddAllItemToCartImpl;
 }
 
 /// @nodoc
@@ -1659,6 +1875,7 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() selectAll,
     required TResult Function() disselectAll,
     required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
     required TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)
         addToCart,
@@ -1679,6 +1896,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? selectAll,
     TResult? Function()? disselectAll,
     TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
     TResult? Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1699,6 +1917,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? selectAll,
     TResult Function()? disselectAll,
     TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
     TResult Function(String productId, String quantity, String price,
             String attributeItemProductID)?
         addToCart,
@@ -1721,6 +1940,7 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function(_SelectAll value) selectAll,
     required TResult Function(_DisselectAll value) disselectAll,
     required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return addToCart(this);
@@ -1737,6 +1957,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function(_SelectAll value)? selectAll,
     TResult? Function(_DisselectAll value)? disselectAll,
     TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return addToCart?.call(this);
@@ -1753,6 +1974,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function(_SelectAll value)? selectAll,
     TResult Function(_DisselectAll value)? disselectAll,
     TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {

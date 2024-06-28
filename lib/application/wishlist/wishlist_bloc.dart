@@ -12,7 +12,7 @@ import 'package:planit/locator.dart';
 
 part 'wishlist_event.dart';
 part 'wishlist_state.dart';
-part 'wishlist_bloc.freezed.dart';  
+part 'wishlist_bloc.freezed.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   final IWishlistRepository repository;
@@ -43,6 +43,18 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
             ),
           ),
         );
+      },
+      addAllItemToCart: (_) {
+        for (final e in state.selectedItemList) {
+          add(
+            _AddToCart(
+              productId: e.id,
+              price: e.startingPrice.toString(),
+              quantity: '1',
+              attributeItemProductID: e.attributeItemProductID,
+            ),
+          );
+        }
       },
       addToWishlist: (e) async {
         emit(state.copyWith(isFetching: true));

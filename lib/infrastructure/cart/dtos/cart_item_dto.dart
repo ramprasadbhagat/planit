@@ -30,6 +30,7 @@ class CartItemDto with _$CartItemDto {
 
 int intReadValue(Map json, String key) {
   if (json[key] is int) return json[key];
+  if (json[key] is double) return (json[key] as double).toInt();
   if (json[key] is String) return int.tryParse(json[key]) ?? 0;
   return 0;
 }

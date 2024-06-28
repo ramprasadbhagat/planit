@@ -65,28 +65,6 @@ class CartBanner extends StatelessWidget {
                                       ?.copyWith(color: Colors.white),
                                 )
                               : const SizedBox.shrink(),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          state.cartItem.totalDiscount.getValue() > 0
-                              ? Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 4,
-                                  ),
-                                  decoration: const BoxDecoration(
-                                    color: AppColors.grey2,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(4),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    '₹ ${state.cartItem.totalDiscount.getValue()} saved',
-                                    style: textTheme.bodySmall
-                                        ?.copyWith(color: Colors.white),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
                           const Spacer(),
                           TextButton(
                             onPressed: () =>
@@ -222,31 +200,24 @@ class CartBanner extends StatelessWidget {
                                     ?.copyWith(color: Colors.white),
                               )
                             : const SizedBox.shrink(),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        state.cartItem.totalDiscount.getValue() > 0
-                            ? Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                  vertical: 4,
-                                ),
-                                decoration: const BoxDecoration(
-                                  color: AppColors.grey2,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(4)),
-                                ),
-                                child: Text(
-                                  '₹ ${state.cartItem.totalDiscount.getValue()} saved',
-                                  style: textTheme.bodySmall
-                                      ?.copyWith(color: Colors.white),
-                                ),
-                              )
-                            : const SizedBox.shrink(),
                         const Spacer(),
                         TextButton(
-                          onPressed: () =>
-                              context.router.navigate(const CartRoute()),
+                          onPressed: () {
+                            if (itemCount == 0) {
+                              context.router.navigate(
+                                const CartRoute(),
+                              );
+                            } else {
+                              context
+                                  .read<WishlistBloc>()
+                                  .add(const WishlistEvent.addAllItemToCart());
+                              const snackBar = SnackBar(
+                                content: Text('Item Added to Cart'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+                          },
                           child: Text(
                             itemCount > 0 ? 'Add to Cart' : 'View Cart',
                             style: textTheme.bodySmall

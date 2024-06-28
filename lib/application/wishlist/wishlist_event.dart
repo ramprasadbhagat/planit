@@ -19,6 +19,7 @@ class WishlistEvent with _$WishlistEvent {
   const factory WishlistEvent.disselectItem({
     required WishlistProduct disselectedItem,
   }) = _DisselectedItem;
+  const factory WishlistEvent.addAllItemToCart() = _AddAllItemToCart;
   const factory WishlistEvent.addToCart({
     required String productId,
     required String quantity,

@@ -14,7 +14,7 @@ class WishlistState with _$WishlistState {
         wishlist: [],
         selectedItemList: [],
         apiFailureOrSuccessOption: none(),
-        isFetching: true,
+        isFetching: false,
       );
 
   bool get isWishlistEmpty => wishlist.isEmpty;

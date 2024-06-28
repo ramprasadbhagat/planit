@@ -39,7 +39,7 @@ class EmptyShoppingList extends StatelessWidget {
                     style: textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
-                  ),
+                  ), 
                   const WidgetSpan(
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 2.0),
