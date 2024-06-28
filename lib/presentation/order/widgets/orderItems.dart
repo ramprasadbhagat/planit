@@ -49,8 +49,15 @@ class OrderItemWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          PngImage.orderItem1,
+        Image.network(
+          orderItem.productImage.firstOrNull?.image.displayLabel ?? '',
+          errorBuilder: (_, __, ___) {
+            return Image.asset(
+              PngImage.placeholder,
+              width: 70,
+              alignment: Alignment.topCenter,
+            );
+          },
           width: 70,
           alignment: Alignment.topCenter,
         ),
@@ -70,7 +77,7 @@ class OrderItemWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0),
                 child: Text(
-                  'Johnson Fresh almonds 1 kg pack',
+                  orderItem.product.sku.displayLabel,
                   style: textTheme.bodySmall?.copyWith(
                     fontSize: 14,
                     color: AppColors.grey2,
