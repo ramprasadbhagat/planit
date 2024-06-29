@@ -31,7 +31,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -131,9 +130,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     PaymentSection(
                       onPaymentChanged: (value) {
-                        setState(() {
-                          paymentMethod = value!;
-                        });
+                        paymentMethod = value!;
                       },
                     ),
                   ],
