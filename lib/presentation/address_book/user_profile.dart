@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:planit/presentation/address_book/widget/address_book.dart';
 import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
 import 'package:planit/presentation/address_book/widget/custom_text_field.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/svg_image.dart';
 
 @RoutePage()
 class UserProfilePage extends StatefulWidget {
@@ -17,6 +19,10 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   bool showEditButton = false;
+  final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController(text: 'Thomas Jones');
+  final mobileController = TextEditingController(text: '9898980');
+  final emailAddressController = TextEditingController(text: 'test@gmail.com');
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +48,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Padding(
-                padding: const EdgeInsets.all(15),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
                     Row(
@@ -59,6 +67,19 @@ class _UserProfilePageState extends State<UserProfilePage> {
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.left,
+                        ),
+                        Checkbox(
+                          fillColor: nameController.text.isEmpty ||
+                                  mobileController.text.isEmpty ||
+                                  emailAddressController.text.isEmpty
+                              ? const MaterialStatePropertyAll(
+                                  Colors.grey,
+                                )
+                              : const MaterialStatePropertyAll(
+                                  Colors.green,
+                                ),
+                          value: true,
+                          onChanged: (e) {},
                         ),
                       ],
                     ),
@@ -93,9 +114,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                       showEditButton = !showEditButton;
                                     }),
                                   },
-                                  child: const Icon(
-                                    Icons.edit_note,
-                                    color: AppColors.grey2,
+                                  child: SvgPicture.asset(
+                                    SvgImage.edit,
+                                    height: 18,
+                                    fit: BoxFit.fitHeight,
                                   ),
                                 ),
                               ),
@@ -130,10 +152,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                           shape: BoxShape.circle,
                                           color: AppColors.extraLightGrey3,
                                         ),
-                                        child: const Icon(
-                                          Icons.edit,
-                                          size: 14,
-                                          color: AppColors.grey1,
+                                        child: SvgPicture.asset(
+                                          SvgImage.edit,
+                                          height: 18,
+                                          fit: BoxFit.fitHeight,
                                         ),
                                       )
                                     : const Icon(null),
@@ -146,9 +168,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           TextFormField(
                             readOnly: showEditButton ? false : true,
                             keyboardType: TextInputType.name,
-                            controller: TextEditingController(
-                              text: 'Thomas Jones',
-                            ),
+                            controller: nameController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               fillColor: Colors.white,
@@ -172,9 +192,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           TextFormField(
                             readOnly: showEditButton ? false : true,
                             keyboardType: TextInputType.number,
-                            controller: TextEditingController(
-                              text: '9856658799',
-                            ),
+                            controller: mobileController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               fillColor: Colors.white,
@@ -183,6 +201,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                 fontSize: 11,
                                 color: AppColors.lightGrey,
                               ),
+                              errorStyle: const TextStyle(height: 0),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Colors.grey,
@@ -198,9 +217,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           TextFormField(
                             readOnly: showEditButton ? false : true,
                             keyboardType: TextInputType.emailAddress,
-                            controller: TextEditingController(
-                              text: 'test@gmail.com',
-                            ),
+                            controller: emailAddressController,
                             decoration: InputDecoration(
                               border: const UnderlineInputBorder(),
                               fillColor: Colors.white,
@@ -300,6 +317,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    nameController.clear();
+    emailAddressController.clear();
+    mobileController.clear();
+    super.dispose();
   }
 }
 
