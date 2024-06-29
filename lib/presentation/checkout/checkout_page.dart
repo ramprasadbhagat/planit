@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -23,6 +22,7 @@ class CheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     var date = '';
+    var paymentMethod = '';
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -118,7 +118,11 @@ class CheckoutPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const PaymentSection(),
+                    PaymentSection(
+                      onPaymentChanged: (value) {
+                        paymentMethod = value!;
+                      },
+                    ),
                   ],
                 ),
               ),

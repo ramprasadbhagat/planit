@@ -55,31 +55,31 @@ class DeliveryAddressSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Checkbox(
-                      fillColor: const MaterialStatePropertyAll(Colors.black),
-                      value: true,
-                      onChanged: (e) {},
-                    ),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      'Same as shipping address',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 13,
-                        color: AppColors.grey1,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Checkbox(
+                //       fillColor: const MaterialStatePropertyAll(Colors.black),
+                //       value: true,
+                //       onChanged: (e) {},
+                //     ),
+                //     const SizedBox(
+                //       width: 6,
+                //     ),
+                //     Text(
+                //       'Same as shipping address',
+                //       style: textTheme.bodySmall?.copyWith(
+                //         fontSize: 13,
+                //         color: AppColors.grey1,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //       textAlign: TextAlign.start,
+                //     ),
+                //   ],
+                // ),
               ],
             );
           },

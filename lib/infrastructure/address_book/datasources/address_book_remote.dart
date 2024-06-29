@@ -61,11 +61,13 @@ class AddressBookRemoteDataSource {
   Future<Unit> makeDefaultAddress({
     required String id,
   }) async {
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'PATCH',
       url: 'deliveryaddress/makeDefault',
       data: {
         'id': id,
+        'userId': userId,
         'isDefault': '1',
       },
     );
