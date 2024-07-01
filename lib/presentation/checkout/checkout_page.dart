@@ -130,7 +130,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     PaymentSection(
                       onPaymentChanged: (value) {
-                        paymentMethod = value!;
+                        setState(() {
+                          paymentMethod = value!;
+                        });
                       },
                     ),
                   ],

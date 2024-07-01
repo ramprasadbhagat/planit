@@ -27,7 +27,7 @@ class OrderRemoteDataSource {
   }) async {
     final userId = storageService.getUserId();
     final data = json.encode({
-      'cart_id': cartItem.id.getValue(),
+      'cart_id': cartItem.id,
       'userId': userId,
       'deliveryAddressId': address.id,
       'couponId': coupon.id,

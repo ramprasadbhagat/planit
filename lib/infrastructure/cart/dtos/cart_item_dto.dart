@@ -19,6 +19,7 @@ class CartItemDto with _$CartItemDto {
     @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
     @JsonKey(name: 'totalDiscount', defaultValue: 0) required int totalDiscount,
+    @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'products', defaultValue: <ProductDto>[])
     required List<CartProductDto> products,
   }) = _CartItemDto;
@@ -30,6 +31,7 @@ class CartItemDto with _$CartItemDto {
         id: StringValue(id),
         totalDiscount: IntegerValue(totalDiscount),
         totalPrice: IntegerValue(totalPrice),
+        id: id,
         products: products.map((e) => e.toDomain).toList(),
       );
 }

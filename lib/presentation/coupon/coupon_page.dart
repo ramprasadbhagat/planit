@@ -23,11 +23,7 @@ class CouponListPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('Select a coupon to get discount'),
-            BlocConsumer<CouponBloc, CouponState>(
-              listener: (context, state) => context.router.maybePop(),
-              listenWhen: (previous, current) =>
-                  previous.isApplying != current.isApplying &&
-                  !current.isApplying,
+            BlocBuilder<CouponBloc, CouponState>(
               builder: (context, state) {
                 if (state.couponList.isEmpty) {
                   return const Text('No coupons available');
@@ -40,7 +36,7 @@ class CouponListPage extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 8,
-                          vertical: 12,
+                          vertical: 6,
                         ),
                         margin: const EdgeInsets.only(top: 15),
                         decoration: BoxDecoration(

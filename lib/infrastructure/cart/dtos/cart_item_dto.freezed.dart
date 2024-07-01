@@ -26,6 +26,8 @@ mixin _$CartItemDto {
   int get totalPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'totalDiscount', defaultValue: 0)
   int get totalDiscount => throw _privateConstructorUsedError;
+  @JsonKey(name: '_id', defaultValue: '')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
   List<CartProductDto> get products => throw _privateConstructorUsedError;
 
@@ -46,6 +48,7 @@ abstract class $CartItemDtoCopyWith<$Res> {
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
       @JsonKey(name: 'totalDiscount', defaultValue: 0) int totalDiscount,
+      @JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       List<CartProductDto> products});
 }
@@ -66,6 +69,7 @@ class _$CartItemDtoCopyWithImpl<$Res, $Val extends CartItemDto>
     Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
+    Object? id = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +85,10 @@ class _$CartItemDtoCopyWithImpl<$Res, $Val extends CartItemDto>
           ? _value.totalDiscount
           : totalDiscount // ignore: cast_nullable_to_non_nullable
               as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -102,6 +110,7 @@ abstract class _$$CartItemDtoImplCopyWith<$Res>
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
       @JsonKey(name: 'totalDiscount', defaultValue: 0) int totalDiscount,
+      @JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       List<CartProductDto> products});
 }
@@ -120,6 +129,7 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
+    Object? id = null,
     Object? products = null,
   }) {
     return _then(_$CartItemDtoImpl(
@@ -135,6 +145,10 @@ class __$$CartItemDtoImplCopyWithImpl<$Res>
           ? _value.totalDiscount
           : totalDiscount // ignore: cast_nullable_to_non_nullable
               as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -152,6 +166,7 @@ class _$CartItemDtoImpl extends _CartItemDto {
       required this.totalPrice,
       @JsonKey(name: 'totalDiscount', defaultValue: 0)
       required this.totalDiscount,
+      @JsonKey(name: '_id', defaultValue: '') required this.id,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       required final List<CartProductDto> products})
       : _products = products,
@@ -169,6 +184,9 @@ class _$CartItemDtoImpl extends _CartItemDto {
   @override
   @JsonKey(name: 'totalDiscount', defaultValue: 0)
   final int totalDiscount;
+  @override
+  @JsonKey(name: '_id', defaultValue: '')
+  final String id;
   final List<CartProductDto> _products;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
@@ -180,7 +198,7 @@ class _$CartItemDtoImpl extends _CartItemDto {
 
   @override
   String toString() {
-    return 'CartItemDto(id: $id, totalPrice: $totalPrice, totalDiscount: $totalDiscount, products: $products)';
+    return 'CartItemDto(id: $id, totalPrice: $totalPrice, totalDiscount: $totalDiscount, id: $id, products: $products)';
   }
 
   @override
@@ -193,13 +211,14 @@ class _$CartItemDtoImpl extends _CartItemDto {
                 other.totalPrice == totalPrice) &&
             (identical(other.totalDiscount, totalDiscount) ||
                 other.totalDiscount == totalDiscount) &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, totalPrice, totalDiscount,
-      const DeepCollectionEquality().hash(_products));
+      id, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -222,6 +241,7 @@ abstract class _CartItemDto extends CartItemDto {
       required final int totalPrice,
       @JsonKey(name: 'totalDiscount', defaultValue: 0)
       required final int totalDiscount,
+      @JsonKey(name: '_id', defaultValue: '') required final String id,
       @JsonKey(name: 'products', defaultValue: <ProductDto>[])
       required final List<CartProductDto> products}) = _$CartItemDtoImpl;
   _CartItemDto._() : super._();
@@ -238,6 +258,9 @@ abstract class _CartItemDto extends CartItemDto {
   @override
   @JsonKey(name: 'totalDiscount', defaultValue: 0)
   int get totalDiscount;
+  @override
+  @JsonKey(name: '_id', defaultValue: '')
+  String get id;
   @override
   @JsonKey(name: 'products', defaultValue: <ProductDto>[])
   List<CartProductDto> get products;
