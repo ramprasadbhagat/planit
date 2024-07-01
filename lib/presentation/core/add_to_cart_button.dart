@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
-import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 class AddToCartButton extends StatelessWidget {
@@ -55,6 +54,7 @@ class AddToCartButton extends StatelessWidget {
 
   factory AddToCartButton.fromProductCard({
     required Product product,
+    required VoidCallback? onPressed,
   }) {
     return AddToCartButton._(
       product: product,
@@ -64,15 +64,7 @@ class AddToCartButton extends StatelessWidget {
       addToCartButton: Builder(
         builder: (context) {
           return OutlinedButton(
-            onPressed: () => showModalBottomSheet<void>(
-              context: context,
-              isScrollControlled: true,
-              builder: (BuildContext context) => CommonBottomSheet(
-                child: AddToCartBottomSheet(
-                  product: product,
-                ),
-              ),
-            ),
+            onPressed: onPressed,
             style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
@@ -101,7 +93,10 @@ class AddToCartButton extends StatelessWidget {
       width: width,
       child: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
-          final itemCount = state.getProductQuantity(product);
+          final itemCount = context.read<AuthBloc>().state.when(
+                authenticated: (_) => state.getProductQuantity(product),
+                unauthenticated: () => state.getProductQuantityLocal(product),
+              );
 
           if (itemCount == 0) {
             return addToCartButton;
@@ -120,6 +115,10 @@ class AddToCartButton extends StatelessWidget {
                     context.read<CartBloc>().add(
                           CartEvent.decrementQuantity(
                             product: product,
+                            isLocal: context
+                                .read<AuthBloc>()
+                                .state
+                                .isUnAuthenticated,
                           ),
                         );
                   },
@@ -144,6 +143,10 @@ class AddToCartButton extends StatelessWidget {
                     context.read<CartBloc>().add(
                           CartEvent.incrementQuantity(
                             product: product,
+                            isLocal: context
+                                .read<AuthBloc>()
+                                .state
+                                .isUnAuthenticated,
                           ),
                         );
                   },

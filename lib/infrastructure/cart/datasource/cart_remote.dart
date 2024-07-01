@@ -47,6 +47,24 @@ class CartRemoteDataSource {
     return unit;
   }
 
+  Future<Unit> updateCartItem({
+    required String productId,
+    required String cartId,
+    required int quantity,
+  }) async {
+    final res = await httpService.request(
+      method: 'PATCH',
+      url: 'carts',
+      data: {
+        'product_id': productId,
+        'quantity': quantity,
+        'cart_id': cartId,
+      },
+    );
+    _exceptionChecker(res: res);
+    return unit;
+  }
+
   Future<Unit> removeFromCart({
     required String productId,
   }) async {

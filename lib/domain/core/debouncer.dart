@@ -1,18 +1,29 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-
 class Debouncer {
   final int milliseconds;
-  VoidCallback? action;
+  Function? action;
   Timer? _timer;
+  Completer<void>? _completer;
 
   Debouncer({required this.milliseconds});
 
-  void run(VoidCallback action) {
+  Future<void> run(Function action) {
     if (_timer != null) {
       _timer!.cancel();
     }
-    _timer = Timer(Duration(milliseconds: milliseconds), action);
+
+    if (_completer != null && !_completer!.isCompleted) {
+      _completer!.complete();
+    }
+
+    _completer = Completer<void>();
+
+    _timer = Timer(Duration(milliseconds: milliseconds), () async {
+      await action();
+      _completer!.complete();
+    });
+
+    return _completer!.future;
   }
 }

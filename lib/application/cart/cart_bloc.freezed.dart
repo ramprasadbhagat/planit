@@ -22,15 +22,15 @@ mixin _$CartEvent {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,14 +39,15 @@ mixin _$CartEvent {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,14 +56,15 @@ mixin _$CartEvent {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,15 +179,15 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return initialized();
   }
@@ -197,14 +199,15 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return initialized?.call();
   }
@@ -216,14 +219,15 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -341,15 +345,15 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return fetch();
   }
@@ -361,14 +365,15 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return fetch?.call();
   }
@@ -380,14 +385,15 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -550,15 +556,15 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return addToCart(product, quantity);
   }
@@ -570,14 +576,15 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return addToCart?.call(product, quantity);
   }
@@ -589,14 +596,15 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -759,15 +767,15 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return removeFromCart(product);
   }
@@ -779,14 +787,15 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return removeFromCart?.call(product);
   }
@@ -798,14 +807,15 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -893,7 +903,7 @@ abstract class _$$AddToCartLocalImplCopyWith<$Res> {
           $Res Function(_$AddToCartLocalImpl) then) =
       __$$AddToCartLocalImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({Product product, int quantity});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -910,12 +920,17 @@ class __$$AddToCartLocalImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = null,
+    Object? quantity = null,
   }) {
     return _then(_$AddToCartLocalImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -931,14 +946,16 @@ class __$$AddToCartLocalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddToCartLocalImpl implements _AddToCartLocal {
-  const _$AddToCartLocalImpl({required this.product});
+  const _$AddToCartLocalImpl({required this.product, required this.quantity});
 
   @override
   final Product product;
+  @override
+  final int quantity;
 
   @override
   String toString() {
-    return 'CartEvent.addToCartLocal(product: $product)';
+    return 'CartEvent.addToCartLocal(product: $product, quantity: $quantity)';
   }
 
   @override
@@ -946,11 +963,13 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddToCartLocalImpl &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product);
+  int get hashCode => Object.hash(runtimeType, product, quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -966,17 +985,17 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
-    return addToCartLocal(product);
+    return addToCartLocal(product, quantity);
   }
 
   @override
@@ -986,16 +1005,17 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
-    return addToCartLocal?.call(product);
+    return addToCartLocal?.call(product, quantity);
   }
 
   @override
@@ -1005,18 +1025,19 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (addToCartLocal != null) {
-      return addToCartLocal(product);
+      return addToCartLocal(product, quantity);
     }
     return orElse();
   }
@@ -1085,10 +1106,12 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
 }
 
 abstract class _AddToCartLocal implements CartEvent {
-  const factory _AddToCartLocal({required final Product product}) =
-      _$AddToCartLocalImpl;
+  const factory _AddToCartLocal(
+      {required final Product product,
+      required final int quantity}) = _$AddToCartLocalImpl;
 
   Product get product;
+  int get quantity;
   @JsonKey(ignore: true)
   _$$AddToCartLocalImplCopyWith<_$AddToCartLocalImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1136,15 +1159,15 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return getCartLocal();
   }
@@ -1156,14 +1179,15 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return getCartLocal?.call();
   }
@@ -1175,14 +1199,15 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (getCartLocal != null) {
@@ -1327,15 +1352,15 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return deletCartLocal(index);
   }
@@ -1347,14 +1372,15 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return deletCartLocal?.call(index);
   }
@@ -1366,14 +1392,15 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (deletCartLocal != null) {
@@ -1497,15 +1524,15 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return clearAllCartLocal();
   }
@@ -1517,14 +1544,15 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return clearAllCartLocal?.call();
   }
@@ -1536,14 +1564,15 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (clearAllCartLocal != null) {
@@ -1662,15 +1691,15 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
     return sendLocalServerCart();
   }
@@ -1682,14 +1711,15 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
     return sendLocalServerCart?.call();
   }
@@ -1701,14 +1731,15 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (sendLocalServerCart != null) {
@@ -1791,7 +1822,7 @@ abstract class _$$UpdateProductQuantityImplCopyWith<$Res> {
           $Res Function(_$UpdateProductQuantityImpl) then) =
       __$$UpdateProductQuantityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product, int quantity});
+  $Res call({Product product, int quantity, bool isLocal});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -1809,6 +1840,7 @@ class __$$UpdateProductQuantityImplCopyWithImpl<$Res>
   $Res call({
     Object? product = null,
     Object? quantity = null,
+    Object? isLocal = null,
   }) {
     return _then(_$UpdateProductQuantityImpl(
       product: null == product
@@ -1819,6 +1851,10 @@ class __$$UpdateProductQuantityImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      isLocal: null == isLocal
+          ? _value.isLocal
+          : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -1835,16 +1871,18 @@ class __$$UpdateProductQuantityImplCopyWithImpl<$Res>
 
 class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
   const _$UpdateProductQuantityImpl(
-      {required this.product, required this.quantity});
+      {required this.product, required this.quantity, required this.isLocal});
 
   @override
   final Product product;
   @override
   final int quantity;
+  @override
+  final bool isLocal;
 
   @override
   String toString() {
-    return 'CartEvent.updateProductQuantity(product: $product, quantity: $quantity)';
+    return 'CartEvent.updateProductQuantity(product: $product, quantity: $quantity, isLocal: $isLocal)';
   }
 
   @override
@@ -1854,11 +1892,12 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
             other is _$UpdateProductQuantityImpl &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
+                other.quantity == quantity) &&
+            (identical(other.isLocal, isLocal) || other.isLocal == isLocal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product, quantity);
+  int get hashCode => Object.hash(runtimeType, product, quantity, isLocal);
 
   @JsonKey(ignore: true)
   @override
@@ -1874,17 +1913,17 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
-    return updateProductQuantity(product, quantity);
+    return updateProductQuantity(product, quantity, isLocal);
   }
 
   @override
@@ -1894,16 +1933,17 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
-    return updateProductQuantity?.call(product, quantity);
+    return updateProductQuantity?.call(product, quantity, isLocal);
   }
 
   @override
@@ -1913,18 +1953,19 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (updateProductQuantity != null) {
-      return updateProductQuantity(product, quantity);
+      return updateProductQuantity(product, quantity, isLocal);
     }
     return orElse();
   }
@@ -1995,10 +2036,12 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
 abstract class _UpdateProductQuantity implements CartEvent {
   const factory _UpdateProductQuantity(
       {required final Product product,
-      required final int quantity}) = _$UpdateProductQuantityImpl;
+      required final int quantity,
+      required final bool isLocal}) = _$UpdateProductQuantityImpl;
 
   Product get product;
   int get quantity;
+  bool get isLocal;
   @JsonKey(ignore: true)
   _$$UpdateProductQuantityImplCopyWith<_$UpdateProductQuantityImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2010,7 +2053,7 @@ abstract class _$$IncrementQuantityImplCopyWith<$Res> {
           $Res Function(_$IncrementQuantityImpl) then) =
       __$$IncrementQuantityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({Product product, bool isLocal});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -2027,12 +2070,17 @@ class __$$IncrementQuantityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = null,
+    Object? isLocal = null,
   }) {
     return _then(_$IncrementQuantityImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
+      isLocal: null == isLocal
+          ? _value.isLocal
+          : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -2048,14 +2096,16 @@ class __$$IncrementQuantityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$IncrementQuantityImpl implements _IncrementQuantity {
-  const _$IncrementQuantityImpl({required this.product});
+  const _$IncrementQuantityImpl({required this.product, required this.isLocal});
 
   @override
   final Product product;
+  @override
+  final bool isLocal;
 
   @override
   String toString() {
-    return 'CartEvent.incrementQuantity(product: $product)';
+    return 'CartEvent.incrementQuantity(product: $product, isLocal: $isLocal)';
   }
 
   @override
@@ -2063,11 +2113,12 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IncrementQuantityImpl &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.isLocal, isLocal) || other.isLocal == isLocal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product);
+  int get hashCode => Object.hash(runtimeType, product, isLocal);
 
   @JsonKey(ignore: true)
   @override
@@ -2083,17 +2134,17 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
-    return incrementQuantity(product);
+    return incrementQuantity(product, isLocal);
   }
 
   @override
@@ -2103,16 +2154,17 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
-    return incrementQuantity?.call(product);
+    return incrementQuantity?.call(product, isLocal);
   }
 
   @override
@@ -2122,18 +2174,19 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (incrementQuantity != null) {
-      return incrementQuantity(product);
+      return incrementQuantity(product, isLocal);
     }
     return orElse();
   }
@@ -2202,10 +2255,12 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
 }
 
 abstract class _IncrementQuantity implements CartEvent {
-  const factory _IncrementQuantity({required final Product product}) =
-      _$IncrementQuantityImpl;
+  const factory _IncrementQuantity(
+      {required final Product product,
+      required final bool isLocal}) = _$IncrementQuantityImpl;
 
   Product get product;
+  bool get isLocal;
   @JsonKey(ignore: true)
   _$$IncrementQuantityImplCopyWith<_$IncrementQuantityImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2217,7 +2272,7 @@ abstract class _$$DecrementQuantityImplCopyWith<$Res> {
           $Res Function(_$DecrementQuantityImpl) then) =
       __$$DecrementQuantityImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Product product});
+  $Res call({Product product, bool isLocal});
 
   $ProductCopyWith<$Res> get product;
 }
@@ -2234,12 +2289,17 @@ class __$$DecrementQuantityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? product = null,
+    Object? isLocal = null,
   }) {
     return _then(_$DecrementQuantityImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
+      isLocal: null == isLocal
+          ? _value.isLocal
+          : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -2255,14 +2315,16 @@ class __$$DecrementQuantityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DecrementQuantityImpl implements _DecrementQuantity {
-  const _$DecrementQuantityImpl({required this.product});
+  const _$DecrementQuantityImpl({required this.product, required this.isLocal});
 
   @override
   final Product product;
+  @override
+  final bool isLocal;
 
   @override
   String toString() {
-    return 'CartEvent.decrementQuantity(product: $product)';
+    return 'CartEvent.decrementQuantity(product: $product, isLocal: $isLocal)';
   }
 
   @override
@@ -2270,11 +2332,12 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DecrementQuantityImpl &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.isLocal, isLocal) || other.isLocal == isLocal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product);
+  int get hashCode => Object.hash(runtimeType, product, isLocal);
 
   @JsonKey(ignore: true)
   @override
@@ -2290,17 +2353,17 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     required TResult Function() fetch,
     required TResult Function(Product product, int quantity) addToCart,
     required TResult Function(CartProduct product) removeFromCart,
-    required TResult Function(Product product) addToCartLocal,
+    required TResult Function(Product product, int quantity) addToCartLocal,
     required TResult Function() getCartLocal,
     required TResult Function(int index) deletCartLocal,
     required TResult Function() clearAllCartLocal,
     required TResult Function() sendLocalServerCart,
-    required TResult Function(Product product, int quantity)
+    required TResult Function(Product product, int quantity, bool isLocal)
         updateProductQuantity,
-    required TResult Function(Product product) incrementQuantity,
-    required TResult Function(Product product) decrementQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
   }) {
-    return decrementQuantity(product);
+    return decrementQuantity(product, isLocal);
   }
 
   @override
@@ -2310,16 +2373,17 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     TResult? Function()? fetch,
     TResult? Function(Product product, int quantity)? addToCart,
     TResult? Function(CartProduct product)? removeFromCart,
-    TResult? Function(Product product)? addToCartLocal,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
     TResult? Function()? getCartLocal,
     TResult? Function(int index)? deletCartLocal,
     TResult? Function()? clearAllCartLocal,
     TResult? Function()? sendLocalServerCart,
-    TResult? Function(Product product, int quantity)? updateProductQuantity,
-    TResult? Function(Product product)? incrementQuantity,
-    TResult? Function(Product product)? decrementQuantity,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
   }) {
-    return decrementQuantity?.call(product);
+    return decrementQuantity?.call(product, isLocal);
   }
 
   @override
@@ -2329,18 +2393,19 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     TResult Function()? fetch,
     TResult Function(Product product, int quantity)? addToCart,
     TResult Function(CartProduct product)? removeFromCart,
-    TResult Function(Product product)? addToCartLocal,
+    TResult Function(Product product, int quantity)? addToCartLocal,
     TResult Function()? getCartLocal,
     TResult Function(int index)? deletCartLocal,
     TResult Function()? clearAllCartLocal,
     TResult Function()? sendLocalServerCart,
-    TResult Function(Product product, int quantity)? updateProductQuantity,
-    TResult Function(Product product)? incrementQuantity,
-    TResult Function(Product product)? decrementQuantity,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
     required TResult orElse(),
   }) {
     if (decrementQuantity != null) {
-      return decrementQuantity(product);
+      return decrementQuantity(product, isLocal);
     }
     return orElse();
   }
@@ -2409,10 +2474,12 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
 }
 
 abstract class _DecrementQuantity implements CartEvent {
-  const factory _DecrementQuantity({required final Product product}) =
-      _$DecrementQuantityImpl;
+  const factory _DecrementQuantity(
+      {required final Product product,
+      required final bool isLocal}) = _$DecrementQuantityImpl;
 
   Product get product;
+  bool get isLocal;
   @JsonKey(ignore: true)
   _$$DecrementQuantityImplCopyWith<_$DecrementQuantityImpl> get copyWith =>
       throw _privateConstructorUsedError;

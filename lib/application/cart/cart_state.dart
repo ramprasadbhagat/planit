@@ -37,8 +37,18 @@ class CartState with _$CartState {
   int getProductQuantity(Product product) {
     return (cartItem.products.firstWhereOrNull(
           (element) {
-            return element.productId == product.productId &&
-                element.attributeitem == product.attributeItem;
+            return element.productId == product.productId;
+          },
+        )?.quantity) ??
+        0;
+  }
+
+  int getProductQuantityLocal(Product product) {
+    return (cartData.firstWhereOrNull(
+          (element) {
+            return (element.productId == product.productId.getValue()) &&
+                element.attributeItemProductId ==
+                    product.attributeItemProductId;
           },
         )?.quantity) ??
         0;

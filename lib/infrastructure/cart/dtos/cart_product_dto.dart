@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
 part 'cart_product_dto.freezed.dart';
@@ -17,6 +18,8 @@ class CartProductDto with _$CartProductDto {
     required String productDescription,
     @JsonKey(name: 'attributeitem', defaultValue: '')
     required String attributeitem,
+    @JsonKey(name: 'attributeItemId', defaultValue: '')
+    required String attributeItemId,
     @JsonKey(
       name: 'itemPrice',
       defaultValue: '0.00',
@@ -41,6 +44,7 @@ class CartProductDto with _$CartProductDto {
         quantity: quantity,
         totalPrice: totalPrice,
         discount: discount,
+        attributeitemId: StringValue(attributeItemId),
       );
 
   factory CartProductDto.fromJson(Map<String, dynamic> json) =>

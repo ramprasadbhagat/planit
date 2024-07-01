@@ -9,9 +9,9 @@ import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
+import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/presentation/search_product/serach_product_page.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
@@ -24,7 +24,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }) : super(CartState.initial()) {
     on<CartEvent>(_onEvent);
   }
-  final debouncer = Debouncer(milliseconds: 300);
+  final debouncer = Debouncer(milliseconds: 600);
 
   FutureOr<void> _onEvent(CartEvent event, Emitter<CartState> emit) async {
     await event.map(
@@ -68,6 +68,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.addToCartLocal(
           product: e.product,
+          quantity: e.quantity,
         );
         failureOrSuccess.fold(
           (failure) => emit(
@@ -128,7 +129,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       sendLocalServerCart: (value) {
         emit(state.copyWith(isFetching: true));
         for (final element in state.cartData) {
-          add(_AddToCart(product: element.toProduct, quantity: 1));
+          add(
+            _AddToCart(
+              product: element.toProduct,
+              quantity: element.quantity,
+            ),
+          );
         }
       },
       removeFromCart: (_RemoveFromCart e) async {
@@ -146,47 +152,117 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           (cartItems) => add(const _Fetch()),
         );
       },
-      updateProductQuantity: (e) {
+      updateProductQuantity: (e) async {
         log('e.quantity:${e.quantity}');
-        final updatedProductList = state.cartItem.products.map((p) {
-          if (e.product.productId == p.productId) {
-            return p.copyWith(
-              quantity: e.quantity,
-            );
-          }
-          return p;
-        }).toList();
 
-        emit(
-          state.copyWith(
-            cartItem: state.cartItem.copyWith(
-              products: updatedProductList,
+        if (e.isLocal) {
+          final updatedProductList = state.cartData.map((p) {
+            if (e.product.productId.getValue() == p.productId &&
+                e.product.attributeItemProductId == p.attributeItemProductId) {
+              return p.copyWith(
+                quantity: e.quantity,
+              );
+            }
+            return p;
+          }).toList();
+
+          emit(
+            state.copyWith(
+              cartData: updatedProductList,
             ),
-          ),
-        );
+          );
 
-        debouncer.run(() {
-          if (e.quantity > 0) {
-            add(
-              CartEvent.addToCart(
+          await debouncer.run(() async {
+            log('updating quantity local....${e.quantity}');
+            if (e.quantity > 0) {
+              emit(state.copyWith(isFetching: true));
+              final failureOrSuccess = await repository.addToCartLocal(
                 product: e.product,
                 quantity: e.quantity,
+              );
+              failureOrSuccess.fold(
+                (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ),
+                (cartItems) => add(const _GetCartLocal()),
+              );
+            }
+          });
+        } else {
+          final updatedProductList = state.cartItem.products.map((p) {
+            if (e.product.productId == p.productId) {
+              return p.copyWith(
+                quantity: e.quantity,
+              );
+            }
+            return p;
+          }).toList();
+
+          emit(
+            state.copyWith(
+              cartItem: state.cartItem.copyWith(
+                products: updatedProductList,
               ),
-            );
-          }
-        });
+            ),
+          );
+
+          await debouncer.run(() async {
+            log('updating quantity....${e.quantity}');
+            if (e.quantity > 0) {
+              emit(state.copyWith(isFetching: true));
+              final failureOrSuccess = await repository.updateCartQuantity(
+                product: e.product,
+                quantity: e.quantity,
+                cartId: state.cartItem.id.getValue(),
+              );
+              failureOrSuccess.fold(
+                (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ),
+                (cartItems) => add(const _Fetch()),
+              );
+            }
+          });
+        }
       },
       incrementQuantity: (value) {
+        final qty = (value.isLocal
+            ? state.getProductQuantityLocal(value.product)
+            : state.getProductQuantity(value.product));
         add(
           CartEvent.updateProductQuantity(
             product: value.product,
-            quantity: state.getProductQuantity(value.product) + 1,
+            quantity: qty + 1,
+            isLocal: value.isLocal,
           ),
         );
       },
       decrementQuantity: (value) {
-        log('decrement: ${state.getProductQuantity(value.product)}');
-        if (state.getProductQuantity(value.product) == 1) {
+        final qty = (value.isLocal
+            ? state.getProductQuantityLocal(value.product)
+            : state.getProductQuantity(value.product));
+
+        if (qty == 1) {
+          if (value.isLocal) {
+            add(
+              CartEvent.deletCartLocal(
+                index: state.cartData.indexWhere(
+                  (element) =>
+                      element.productId == value.product.productId.getValue() &&
+                      element.attributeItemProductId ==
+                          value.product.attributeItemProductId,
+                ),
+              ),
+            );
+            return;
+          }
+
           add(
             CartEvent.removeFromCart(
               product: state.cartItem.products.firstWhere(
@@ -198,7 +274,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           add(
             CartEvent.updateProductQuantity(
               product: value.product,
-              quantity: state.getProductQuantity(value.product) - 1,
+              quantity: qty - 1,
+              isLocal: value.isLocal,
             ),
           );
         }

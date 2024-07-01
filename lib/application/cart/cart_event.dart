@@ -13,6 +13,7 @@ class CartEvent with _$CartEvent {
   }) = _RemoveFromCart;
   const factory CartEvent.addToCartLocal({
     required Product product,
+    required int quantity,
   }) = _AddToCartLocal;
   const factory CartEvent.getCartLocal() = _GetCartLocal;
   const factory CartEvent.deletCartLocal({
@@ -24,12 +25,15 @@ class CartEvent with _$CartEvent {
   const factory CartEvent.updateProductQuantity({
     required Product product,
     required int quantity,
+    required bool isLocal,
   }) = _UpdateProductQuantity;
   const factory CartEvent.incrementQuantity({
     required Product product,
+    required bool isLocal,
   }) = _IncrementQuantity;
 
   const factory CartEvent.decrementQuantity({
     required Product product,
+    required bool isLocal,
   }) = _DecrementQuantity;
 }

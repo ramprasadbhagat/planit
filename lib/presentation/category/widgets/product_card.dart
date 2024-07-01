@@ -1,11 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -137,6 +141,51 @@ class ProductCard extends StatelessWidget {
                     ),
                     AddToCartButton.fromProductCard(
                       product: product,
+                      onPressed: () async {
+                        if (context.read<AuthBloc>().state.isUnAuthenticated) {
+                          context.read<CartBloc>().add(
+                                CartEvent.addToCartLocal(
+                                  product: product,
+                                  quantity: 1,
+                                ),
+                              );
+
+                          const snackBar = SnackBar(
+                            content: Text('Item added to cart'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          if (context
+                              .read<PincodeBloc>()
+                              .state
+                              .pincode
+                              .isEmpty) {
+                            await showDialog<void>(
+                              context: context,
+                              barrierDismissible:
+                                  false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return const NoPincodeErrorDialog();
+                              },
+                            );
+                          } else {
+                            context.read<CartBloc>().add(
+                                  CartEvent.addToCart(
+                                    product: product,
+                                    quantity: 1,
+                                  ),
+                                );
+
+                            const snackBar = SnackBar(
+                              content: Text('Item added to cart'),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
+                        }
+                      },
                     ),
                   ],
                 ),

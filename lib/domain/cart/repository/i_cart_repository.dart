@@ -17,9 +17,16 @@ abstract class ICartRepository {
   Future<Either<ApiFailure, List<CartProductLocal>>> getCartLocal();
   Future<Either<ApiFailure, Unit>> addToCartLocal({
     required Product product,
+    required int quantity,
   });
   Future<Either<ApiFailure, Unit>> deleteCartLocal({
     required int index,
   });
   Future<Either<ApiFailure, Unit>> clearAllCartLocal();
+
+  Future<Either<ApiFailure, Unit>> updateCartQuantity({
+    required Product product,
+    required int quantity,
+    required String cartId,
+  });
 }

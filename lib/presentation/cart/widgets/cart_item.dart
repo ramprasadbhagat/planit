@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -65,9 +67,10 @@ class CartItemCard extends StatelessWidget {
                 Text(
                   cartProduct.productName,
                   style: textTheme.bodySmall?.copyWith(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textBlackDeep),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textBlackDeep,
+                  ),
                   textAlign: TextAlign.start,
                 ),
                 const SizedBox(
@@ -105,7 +108,9 @@ class CartItemCard extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const AddToCart(),
+            AddToCart(
+              product: cartProduct.toProductWithAttributeIdAndProductId,
+            ),
           ],
         ),
       ),
@@ -113,63 +118,81 @@ class CartItemCard extends StatelessWidget {
   }
 }
 
-class AddToCart extends StatefulWidget {
-  const AddToCart({super.key});
+class AddToCart extends StatelessWidget {
+  final Product product;
+  const AddToCart({
+    super.key,
+    required this.product,
+  });
 
-  @override
-  State<AddToCart> createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
-  int countValue = 1;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      height: 25,
-      width: 70,
-      color: AppColors.black,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () => setState(() {
-              if (countValue > 1) {
-                countValue -= 1;
-              }
-            }),
-            child: Container(
-              width: 12,
-              color: AppColors.white,
-              child: const Icon(
-                Icons.remove,
-                size: 12,
-                color: AppColors.black,
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        final itemCount = context.read<AuthBloc>().state.when(
+              authenticated: (_) => state.getProductQuantity(product),
+              unauthenticated: () => state.getProductQuantityLocal(product),
+            );
+        return Container(
+          height: 25,
+          width: 70,
+          color: AppColors.black,
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.read<CartBloc>().add(
+                        CartEvent.decrementQuantity(
+                          product: product,
+                          isLocal:
+                              context.read<AuthBloc>().state.isUnAuthenticated,
+                        ),
+                      );
+                },
+                child: Container(
+                  width: 12,
+                  color: AppColors.white,
+                  child: const Icon(
+                    Icons.remove,
+                    size: 12,
+                    color: AppColors.black,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Text(
-            countValue.toString(),
-            style: textTheme.bodySmall?.copyWith(
-              color: AppColors.white,
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() => countValue += 1),
-            child: Container(
-              width: 12,
-              color: AppColors.white,
-              child: const Icon(
-                Icons.add,
-                size: 12,
-                color: AppColors.black,
+              Text(
+                itemCount.toString(),
+                style: textTheme.bodySmall?.copyWith(
+                  color: AppColors.white,
+                ),
               ),
-            ),
+              GestureDetector(
+                onTap: () {
+                  context.read<CartBloc>().add(
+                        CartEvent.incrementQuantity(
+                          product: product,
+                          isLocal:
+                              context.read<AuthBloc>().state.isUnAuthenticated,
+                        ),
+                      );
+                },
+                child: Container(
+                  width: 12,
+                  color: AppColors.white,
+                  child: const Icon(
+                    Icons.add,
+                    size: 12,
+                    color: AppColors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

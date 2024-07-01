@@ -505,8 +505,8 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticatedImpl implements _Authenticated {
-  const _$AuthenticatedImpl({required this.auth});
+class _$AuthenticatedImpl extends _Authenticated {
+  const _$AuthenticatedImpl({required this.auth}) : super._();
 
   @override
   final Auth auth;
@@ -596,9 +596,10 @@ class _$AuthenticatedImpl implements _Authenticated {
   }
 }
 
-abstract class _Authenticated implements AuthState {
+abstract class _Authenticated extends AuthState {
   const factory _Authenticated({required final Auth auth}) =
       _$AuthenticatedImpl;
+  const _Authenticated._() : super._();
 
   Auth get auth;
   @JsonKey(ignore: true)
@@ -624,8 +625,8 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnauthenticatedImpl implements _Unauthenticated {
-  const _$UnauthenticatedImpl();
+class _$UnauthenticatedImpl extends _Unauthenticated {
+  const _$UnauthenticatedImpl() : super._();
 
   @override
   String toString() {
@@ -704,6 +705,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   }
 }
 
-abstract class _Unauthenticated implements AuthState {
+abstract class _Unauthenticated extends AuthState {
   const factory _Unauthenticated() = _$UnauthenticatedImpl;
+  const _Unauthenticated._() : super._();
 }

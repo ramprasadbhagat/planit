@@ -30,7 +30,7 @@ class Product with _$Product {
     }
   }
 
-  CartProductLocal get getCartProductLocal {
+  CartProductLocal getCartProductLocal({int quantity = 1}) {
     return CartProductLocal(
       productId: productId.getValue(),
       name: name,
@@ -40,6 +40,7 @@ class Product with _$Product {
       attributeItem: attributeItem,
       attributeItemProductId: attributeItemProductId,
       price: getPriceValue,
+      quantity: quantity,
     );
   }
 
