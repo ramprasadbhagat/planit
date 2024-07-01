@@ -11,6 +11,7 @@ class CartItem with _$CartItem {
     required StringValue id,
     required IntegerValue totalPrice,
     required IntegerValue totalDiscount,
+    required String id,
     required List<CartProduct> products,
   }) = _CartItem;
 
@@ -19,5 +20,6 @@ class CartItem with _$CartItem {
         totalPrice: IntegerValue(0),
         totalDiscount: IntegerValue(0),
         products: <CartProduct>[],
+        id: '',
       );
 }

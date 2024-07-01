@@ -4,6 +4,7 @@ import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/infrastructure/order/dtos/order_dto.dart';
 
 class OrderLocalDataSource {
+  const OrderLocalDataSource();
   Future<List<Order>> getOrders() async {
     final res = json.decode(
       await rootBundle.loadString('assets/json/orders.json'),

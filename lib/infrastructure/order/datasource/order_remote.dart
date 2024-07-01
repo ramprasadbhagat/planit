@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/exception.dart';
+import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/order/dtos/order_dto.dart';
@@ -21,19 +22,26 @@ class OrderRemoteDataSource {
   Future<Unit> submitOrder({
     required CartItem cartItem,
     required AddressBook address,
+    required Coupon coupon,
     required String date,
   }) async {
     final userId = storageService.getUserId();
     final data = json.encode({
+      'cart_id': cartItem.id,
       'userId': userId,
       'deliveryAddressId': address.id,
-      'couponId': '',
+      'couponId': coupon.id,
+      'deliveryDate': date,
+      'deliveryTime': '15:30',
+      'taxes': '54',
+      'packingCharges': '50.00',
+      'productRating': '7.9',
       'paymentStatus': 'not done',
       'orderStatus': 'pending',
       'totalPrice': cartItem.totalPrice.getValue().toString(),
       'deliveryCharge': '40.00',
-      'deliveryDate': date,
-      'totalDiscount': cartItem.totalDiscount.getValue().toString(),
+      'totalDiscount':
+          (cartItem.totalDiscount.getValue() + coupon.amount).toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),
     });
     final res = await httpService.request(

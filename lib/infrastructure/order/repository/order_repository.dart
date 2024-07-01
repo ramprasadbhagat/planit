@@ -4,6 +4,7 @@ import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
+import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
 import 'package:planit/infrastructure/order/datasource/order_local.dart';
@@ -23,12 +24,14 @@ class OrderRepository extends IOrderRepository {
     required CartItem cartItem,
     required AddressBook address,
     required String date,
+    required Coupon coupon,
   }) async {
     try {
       final success = await remoteDataSource.submitOrder(
         cartItem: cartItem,
         address: address,
         date: date,
+        coupon: coupon,
       );
 
       return Right(success);

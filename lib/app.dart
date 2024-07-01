@@ -5,6 +5,7 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
@@ -80,6 +81,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<OrderBloc>(
           create: (context) => locator<OrderBloc>(),
+        ),
+        BlocProvider<CouponBloc>(
+          create: (context) => locator<CouponBloc>(),
         ),
       ],
       child: MaterialApp.router(

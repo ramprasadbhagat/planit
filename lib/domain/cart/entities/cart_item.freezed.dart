@@ -19,6 +19,7 @@ mixin _$CartItem {
   StringValue get id => throw _privateConstructorUsedError;
   IntegerValue get totalPrice => throw _privateConstructorUsedError;
   IntegerValue get totalDiscount => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   List<CartProduct> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,6 +36,7 @@ abstract class $CartItemCopyWith<$Res> {
       {StringValue id,
       IntegerValue totalPrice,
       IntegerValue totalDiscount,
+      String id,
       List<CartProduct> products});
 }
 
@@ -54,6 +56,7 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
     Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
+    Object? id = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +72,10 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
           ? _value.totalDiscount
           : totalDiscount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
+      id: null == id
+          ? _value.id!
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -89,6 +96,7 @@ abstract class _$$CartItemImplCopyWith<$Res>
       {StringValue id,
       IntegerValue totalPrice,
       IntegerValue totalDiscount,
+      String id,
       List<CartProduct> products});
 }
 
@@ -106,6 +114,7 @@ class __$$CartItemImplCopyWithImpl<$Res>
     Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
+    Object? id = null,
     Object? products = null,
   }) {
     return _then(_$CartItemImpl(
@@ -121,6 +130,10 @@ class __$$CartItemImplCopyWithImpl<$Res>
           ? _value.totalDiscount
           : totalDiscount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
+      id: null == id
+          ? _value.id!
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -136,6 +149,7 @@ class _$CartItemImpl extends _CartItem {
       {required this.id,
       required this.totalPrice,
       required this.totalDiscount,
+      required this.id,
       required final List<CartProduct> products})
       : _products = products,
         super._();
@@ -146,6 +160,8 @@ class _$CartItemImpl extends _CartItem {
   final IntegerValue totalPrice;
   @override
   final IntegerValue totalDiscount;
+  @override
+  final String id;
   final List<CartProduct> _products;
   @override
   List<CartProduct> get products {
@@ -156,7 +172,7 @@ class _$CartItemImpl extends _CartItem {
 
   @override
   String toString() {
-    return 'CartItem(id: $id, totalPrice: $totalPrice, totalDiscount: $totalDiscount, products: $products)';
+    return 'CartItem(id: $id, totalPrice: $totalPrice, totalDiscount: $totalDiscount, id: $id, products: $products)';
   }
 
   @override
@@ -169,12 +185,13 @@ class _$CartItemImpl extends _CartItem {
                 other.totalPrice == totalPrice) &&
             (identical(other.totalDiscount, totalDiscount) ||
                 other.totalDiscount == totalDiscount) &&
+            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, totalPrice, totalDiscount,
-      const DeepCollectionEquality().hash(_products));
+      id, const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -188,6 +205,7 @@ abstract class _CartItem extends CartItem {
       {required final StringValue id,
       required final IntegerValue totalPrice,
       required final IntegerValue totalDiscount,
+      required final String id,
       required final List<CartProduct> products}) = _$CartItemImpl;
   _CartItem._() : super._();
 
@@ -197,6 +215,8 @@ abstract class _CartItem extends CartItem {
   IntegerValue get totalPrice;
   @override
   IntegerValue get totalDiscount;
+  @override
+  String get id;
   @override
   List<CartProduct> get products;
   @override

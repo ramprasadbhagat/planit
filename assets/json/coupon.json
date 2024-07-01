@@ -1,0 +1,38 @@
+{
+    "items": [
+        {
+            "id": "66824f63ac2bf006649a5615",
+            "couponCode": "476587529358230571573758",
+            "amount": "345",
+            "shortDescription": "Huge offer for short time",
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-07-01T06:40:35.029Z",
+            "updatedAt": "2024-07-01T06:40:35.029Z",
+            "expireAt": "2024-10-12T00:00:00.000Z"
+        },
+        {
+            "id": "662669bf2e187935d86ee5d2",
+            "couponCode": "2wer345eesdr4453dfdf455sdwghr",
+            "amount": "450",
+            "shortDescription": "This is very good",
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-22T13:44:31.681Z",
+            "updatedAt": "2024-04-22T13:50:48.212Z",
+            "expireAt": "2024-10-12T00:00:00.000Z"
+        },
+        {
+            "id": "662668dac92ab53ae4dbf270",
+            "couponCode": "2wer345eesdr4453dfdf455",
+            "amount": "345",
+            "shortDescription": "This is very nice",
+            "isDeleted": false,
+            "isActive": true,
+            "createdAt": "2024-04-22T13:40:42.473Z",
+            "updatedAt": "2024-04-22T13:42:55.538Z",
+            "expireAt": "2024-10-12T00:00:00.000Z"
+        }
+    ],
+    "totalCount": 3
+}
