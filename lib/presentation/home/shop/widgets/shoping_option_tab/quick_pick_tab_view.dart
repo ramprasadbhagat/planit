@@ -38,22 +38,24 @@ class QuickPickTabView extends StatelessWidget {
               } else if (state.quicksPickProducts.isEmpty) {
                 return const NoData();
               }
-              return SizedBox(
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(top: 5, bottom: 5, left: 10),
-                  child: Wrap(
-                    runSpacing: 10,
-                    spacing: 20,
-                    children: state.quicksPickProducts
-                        .map(
-                          (e) => ProductCard(
-                            product: e.toProduct,
-                          ),
-                        )
-                        .toList(),
-                  ),
+              return GridView.builder(
+                primary: false,
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                itemCount: state.quicksPickProducts.length,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 140,
+                  mainAxisExtent: 170,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 10,
                 ),
+                itemBuilder: (context, index) {
+                  return FittedBox(
+                    fit: BoxFit.fill,
+                    child: ProductCard(
+                      product: state.quicksPickProducts[index].toProduct,
+                    ),
+                  );
+                },
               );
             },
           ),
