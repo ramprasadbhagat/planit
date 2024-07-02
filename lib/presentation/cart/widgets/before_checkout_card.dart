@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
@@ -101,7 +100,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 24,
                     width: 75,
                     child: OutlinedButton(
                       onPressed: () {

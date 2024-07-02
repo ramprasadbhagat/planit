@@ -84,7 +84,6 @@ class _CartPageState extends State<CartPage> {
                       ],
                     ),
                   ),
-                  Spacer(),
                   CheckoutCard(),
                 ],
               ),
