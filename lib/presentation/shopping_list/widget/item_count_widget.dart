@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 class ItemCountWidget extends StatefulWidget {
-  const ItemCountWidget({super.key});
+  const ItemCountWidget({
+    super.key,
+    required this.item,
+  });
+  final WishlistProduct item;
 
   @override
   State<ItemCountWidget> createState() => _ItemCountWidgetState();
@@ -17,6 +24,7 @@ class _ItemCountWidgetState extends State<ItemCountWidget> {
       width: 80,
       padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
+        color: Colors.white,
         border: Border.all(
           color: AppColors.black,
         ),
@@ -31,20 +39,28 @@ class _ItemCountWidgetState extends State<ItemCountWidget> {
             color: Color.fromRGBO(167, 22, 0, 1),
           ),
           GestureDetector(
-            onTap: () => setState(() {
-              if (countValue > 1) {
-                countValue -= 1;
-              }
-            }),
+            onTap: () => context.read<WishlistBloc>().add(
+                  WishlistEvent.updateProductQuantity(
+                    id: widget.item.uid,
+                    quantity: (widget.item.quantity - 1).toString(),
+                  ),
+                ),
             child: const Icon(
               Icons.remove,
               size: 12,
               color: AppColors.black,
             ),
           ),
-          Text(countValue.toString()),
+          Text(widget.item.quantity.toString()),
           GestureDetector(
-            onTap: () => setState(() => countValue += 1),
+            onTap: () {
+              context.read<WishlistBloc>().add(
+                    WishlistEvent.updateProductQuantity(
+                      id: widget.item.uid,
+                      quantity: (widget.item.quantity + 1).toString(),
+                    ),
+                  );
+            },
             child: const Icon(
               Icons.add,
               size: 12,

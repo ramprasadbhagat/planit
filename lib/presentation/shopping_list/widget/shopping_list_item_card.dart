@@ -129,7 +129,9 @@ class ShoppingListItemCard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const ItemCountWidget(),
+                      ItemCountWidget(
+                        item: item,
+                      ),
                     ],
                   ),
                 ],

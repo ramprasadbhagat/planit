@@ -10,6 +10,7 @@ import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
+import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -71,11 +72,17 @@ class ProductCard extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    product.price.quantity > 1
-                        ? AddToListTextField(product: product)
-                        : AddToListButton(
-                            product: product,
-                          ),
+                    BlocBuilder<WishlistBloc, WishlistState>(
+                      builder: (context, state) {
+                        final item = state.getwishlistProduct(product);
+                        if (item == null) {
+                          return AddToListButton(product: product);
+                        }
+                        return ItemCountWidget(
+                          item: item,
+                        );
+                      },
+                    ),
                   ],
                 ),
                 Row(
@@ -254,7 +261,7 @@ class AddToListButton extends StatelessWidget {
         onPressed: () {
           wishlistBloc.add(
             WishlistEvent.addToWishlist(
-              productId: product.productId.getValue(),
+              product: product,
             ),
           );
           const snackBar = SnackBar(
@@ -328,7 +335,7 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
             onTap: () {
               wishlistBloc.add(
                 WishlistEvent.addToWishlist(
-                  productId: widget.product.productId.getValue(),
+                  product: widget.product,
                 ),
               );
               const snackBar = SnackBar(

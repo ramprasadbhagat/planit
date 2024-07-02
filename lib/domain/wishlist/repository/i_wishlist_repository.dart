@@ -6,14 +6,22 @@ abstract class IWishlistRepository {
   Future<Either<ApiFailure, List<Wishlist>>> getWishlist();
   Future<Either<ApiFailure, Unit>> addToWishlist({
     required String productId,
+    required String attributeItemId,
+    required String quantity,
+    required String price,
   });
   Future<Either<ApiFailure, Unit>> addToCart({
     required String productId,
     required String quantity,
     required String price,
-    required String attributeItemProductID,
+    required String attributeItemId,
   });
   Future<Either<ApiFailure, Unit>> removeFromWishlist({
     required String productId,
+  });
+
+  Future<Either<ApiFailure, Unit>> updateProductQuantity({
+    required String productId,
+    required String quantity,
   });
 }

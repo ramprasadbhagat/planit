@@ -25,8 +25,26 @@ class WishlistState with _$WishlistState {
 
   int get totalSelectedItemPrice => selectedItemList.fold(
         0,
-        (previousValue, element) => previousValue + element.startingPrice,
+        (previousValue, element) => previousValue + element.price,
       );
+
+  int get productCount => selectedItemList.fold(
+        0,
+        (previousValue, element) => previousValue + element.quantity,
+      );
+
+  WishlistProduct? getwishlistProduct(Product product) {
+    return getAllWishList.firstWhereOrNull(
+      (element) {
+        final checkAttributeExistAndMatch = element.attributeItemId.isNotEmpty
+            ? element.attributeItemId == product.attributeItemProductId
+            : true;
+
+        return (element.id == product.productId.getValue()) &&
+            checkAttributeExistAndMatch;
+      },
+    );
+  }
 
   List<WishlistProduct> get getAllWishList {
     final list = <WishlistProduct>[];

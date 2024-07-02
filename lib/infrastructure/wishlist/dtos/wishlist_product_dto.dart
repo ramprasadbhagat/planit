@@ -50,14 +50,17 @@ class WishlistProductDto with _$WishlistProductDto {
   factory WishlistProductDto.fromJson(Map<String, dynamic> json) =>
       _$WishlistProductDtoFromJson(json);
   WishlistProduct get toDomain => WishlistProduct(
+        quantity: 0,
         id: id,
+        price: 0,
         categoryId: categoryId,
         subcategoryId: subcategoryId,
         productName: productName,
         productDescription: productDescription,
         productMRP: productMRP,
         productReview: productReview,
-        attributeItemProductID: '',
+        attributeItemId: '',
+        uid: '',
         productRating: productRating,
         productDiscount: productDiscount,
         sku: sku,

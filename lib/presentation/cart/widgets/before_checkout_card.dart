@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
+import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -32,7 +33,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                     PngImage.placeholder,
                     height: 80,
                   ),
-                  AddToListTextField(
+                  ItemCountWidget(
                     item: item,
                   ),
                 ],
@@ -106,11 +107,10 @@ class BeforeCheckOutCard extends StatelessWidget {
                       onPressed: () {
                         context.read<WishlistBloc>().add(
                               WishlistEvent.addToCart(
-                                price: item.skuPrice,
+                                price: item.price.toString(),
                                 productId: item.id,
-                                quantity: '1',
-                                attributeItemProductID:
-                                    item.attributeItemProductID,
+                                quantity: item.quantity.toString(),
+                                attributeItemId: item.attributeItemId,
                               ),
                             );
                       },
@@ -213,11 +213,11 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
         children: [
           GestureDetector(
             onTap: () {
-              context.read<WishlistBloc>().add(
-                    WishlistEvent.removeFromWishlist(
-                      productId: widget.item.id,
-                    ),
-                  );
+              // context.read<WishlistBloc>().add(
+              //       WishlistEvent.removeFromWishlist(
+              //         productId: widget.item.id,
+              //       ),
+              //     );
             },
             child: const Icon(
               Icons.favorite_rounded,
