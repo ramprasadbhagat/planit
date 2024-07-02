@@ -88,7 +88,7 @@ class CartRepository extends ICartRepository {
   }) async {
     try {
       final cartItems = await remoteDataSource.removeFromCart(
-        productId: cartProduct.id,
+        cartProduct: cartProduct,
       );
 
       return Right(cartItems);

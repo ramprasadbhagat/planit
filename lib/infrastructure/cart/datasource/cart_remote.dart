@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
+import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/infrastructure/cart/dtos/cart_item_dto.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
@@ -66,11 +67,23 @@ class CartRemoteDataSource {
   }
 
   Future<Unit> removeFromCart({
-    required String productId,
+    required CartProduct cartProduct,
   }) async {
+    final userId = storageService.getUserId();
+    final postData = {
+      'user_id': userId,
+      'product_id': cartProduct.productId.getValue(),
+      'attributeItemProductId': null,
+    };
+
+    if (cartProduct.attributeitemId.isValid()) {
+      postData['attributeItemId'] = cartProduct.attributeitemId.getValue();
+    }
+
     final res = await httpService.request(
-      method: 'DELETE',
-      url: 'carts/$productId',
+      method: 'PATCH',
+      url: '/carts/deleteItemfromCart',
+      data: postData,
     );
     _exceptionChecker(res: res);
     return unit;

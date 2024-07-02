@@ -15,7 +15,7 @@ class NoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox.expand(
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
