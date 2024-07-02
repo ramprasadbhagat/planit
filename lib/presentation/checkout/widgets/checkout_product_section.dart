@@ -70,7 +70,7 @@ class CheckoutProductSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Shipping',
+                        'Delivery',
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 14,
                           color: AppColors.lightGray,
@@ -79,7 +79,7 @@ class CheckoutProductSection extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                       Text(
-                        '₹20',
+                        '₹40',
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
@@ -89,6 +89,36 @@ class CheckoutProductSection extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     left: 6,
+                //     right: 6,
+                //     top: 5,
+                //     bottom: 5,
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       Text(
+                //         'Tax',
+                //         style: textTheme.bodySmall?.copyWith(
+                //           fontSize: 14,
+                //           color: AppColors.lightGray,
+                //           fontWeight: FontWeight.w400,
+                //         ),
+                //         textAlign: TextAlign.start,
+                //       ),
+                //       Text(
+                //         '₹10',
+                //         style: textTheme.bodySmall?.copyWith(
+                //           fontSize: 13,
+                //           fontWeight: FontWeight.w400,
+                //         ),
+                //         textAlign: TextAlign.start,
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 6,
@@ -100,7 +130,7 @@ class CheckoutProductSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Tax',
+                        'total',
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 14,
                           color: AppColors.lightGray,
@@ -109,37 +139,7 @@ class CheckoutProductSection extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                       Text(
-                        '₹10',
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 6,
-                    right: 6,
-                    top: 5,
-                    bottom: 5,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Subtotal',
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 14,
-                          color: AppColors.lightGray,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                      Text(
-                        '₹${state.cartItem.totalPrice.getValue() + 30}',
+                        '₹${state.cartItem.totalPrice.getValue() + 40}',
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
