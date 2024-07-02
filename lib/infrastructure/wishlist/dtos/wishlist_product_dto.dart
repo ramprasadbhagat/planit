@@ -18,6 +18,8 @@ class WishlistProductDto with _$WishlistProductDto {
     @JsonKey(name: 'productMRP', defaultValue: '') required String productMRP,
     @JsonKey(name: 'productReview', defaultValue: '')
     required String productReview,
+    @JsonKey(name: 'startingPrice', defaultValue: '')
+    required String startingPrice,
     @JsonKey(name: 'productRating', defaultValue: '')
     required String productRating,
     @JsonKey(name: 'productDiscount', defaultValue: '')
@@ -55,12 +57,14 @@ class WishlistProductDto with _$WishlistProductDto {
         productDescription: productDescription,
         productMRP: productMRP,
         productReview: productReview,
+        attributeItemProductID: '',
         productRating: productRating,
         productDiscount: productDiscount,
         sku: sku,
         skuPrice: skuPrice,
         skuPacksize: skuPacksize,
         skuContent: skuContent,
+        startingPrice: int.tryParse(startingPrice) ?? 0,
         skuInventory: skuInventory,
         skuVendorId: skuVendorId,
         skuVendorInfo: skuVendorInfo,

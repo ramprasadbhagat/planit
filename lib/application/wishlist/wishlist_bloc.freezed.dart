@@ -22,7 +22,15 @@ mixin _$WishlistEvent {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +40,15 @@ mixin _$WishlistEvent {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +58,15 @@ mixin _$WishlistEvent {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) =>
@@ -53,6 +77,11 @@ mixin _$WishlistEvent {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +91,11 @@ mixin _$WishlistEvent {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +105,11 @@ mixin _$WishlistEvent {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) =>
@@ -137,7 +176,15 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) {
     return initialized();
@@ -150,7 +197,15 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) {
     return initialized?.call();
@@ -163,7 +218,15 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) {
@@ -180,6 +243,11 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return initialized(this);
@@ -192,6 +260,11 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return initialized?.call(this);
@@ -204,6 +277,11 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -260,7 +338,15 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) {
     return fetch();
@@ -273,7 +359,15 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) {
     return fetch?.call();
@@ -286,7 +380,15 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) {
@@ -303,6 +405,11 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return fetch(this);
@@ -315,6 +422,11 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return fetch?.call(this);
@@ -327,6 +439,11 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -410,7 +527,15 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) {
     return addToWishlist(productId);
@@ -423,7 +548,15 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) {
     return addToWishlist?.call(productId);
@@ -436,7 +569,15 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) {
@@ -453,6 +594,11 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return addToWishlist(this);
@@ -465,6 +611,11 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return addToWishlist?.call(this);
@@ -477,6 +628,11 @@ class _$AddToWishlistImpl implements _AddToWishlist {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -567,7 +723,15 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) {
     return removeFromWishlist(productId);
@@ -580,7 +744,15 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) {
     return removeFromWishlist?.call(productId);
@@ -593,7 +765,15 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) {
@@ -610,6 +790,11 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return removeFromWishlist(this);
@@ -622,6 +807,11 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return removeFromWishlist?.call(this);
@@ -634,6 +824,11 @@ class _$RemoveFromWishlistImpl implements _RemoveFromWishlist {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -655,12 +850,932 @@ abstract class _RemoveFromWishlist implements WishlistEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectItemImplCopyWith<$Res> {
+  factory _$$SelectItemImplCopyWith(
+          _$SelectItemImpl value, $Res Function(_$SelectItemImpl) then) =
+      __$$SelectItemImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WishlistProduct selectedItem, List<WishlistProduct> allItem});
+
+  $WishlistProductCopyWith<$Res> get selectedItem;
+}
+
+/// @nodoc
+class __$$SelectItemImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$SelectItemImpl>
+    implements _$$SelectItemImplCopyWith<$Res> {
+  __$$SelectItemImplCopyWithImpl(
+      _$SelectItemImpl _value, $Res Function(_$SelectItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedItem = null,
+    Object? allItem = null,
+  }) {
+    return _then(_$SelectItemImpl(
+      selectedItem: null == selectedItem
+          ? _value.selectedItem
+          : selectedItem // ignore: cast_nullable_to_non_nullable
+              as WishlistProduct,
+      allItem: null == allItem
+          ? _value._allItem
+          : allItem // ignore: cast_nullable_to_non_nullable
+              as List<WishlistProduct>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WishlistProductCopyWith<$Res> get selectedItem {
+    return $WishlistProductCopyWith<$Res>(_value.selectedItem, (value) {
+      return _then(_value.copyWith(selectedItem: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SelectItemImpl implements _SelectItem {
+  const _$SelectItemImpl(
+      {required this.selectedItem,
+      required final List<WishlistProduct> allItem})
+      : _allItem = allItem;
+
+  @override
+  final WishlistProduct selectedItem;
+  final List<WishlistProduct> _allItem;
+  @override
+  List<WishlistProduct> get allItem {
+    if (_allItem is EqualUnmodifiableListView) return _allItem;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allItem);
+  }
+
+  @override
+  String toString() {
+    return 'WishlistEvent.selectItem(selectedItem: $selectedItem, allItem: $allItem)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectItemImpl &&
+            (identical(other.selectedItem, selectedItem) ||
+                other.selectedItem == selectedItem) &&
+            const DeepCollectionEquality().equals(other._allItem, _allItem));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, selectedItem, const DeepCollectionEquality().hash(_allItem));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectItemImplCopyWith<_$SelectItemImpl> get copyWith =>
+      __$$SelectItemImplCopyWithImpl<_$SelectItemImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return selectItem(selectedItem, allItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return selectItem?.call(selectedItem, allItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (selectItem != null) {
+      return selectItem(selectedItem, allItem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return selectItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return selectItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (selectItem != null) {
+      return selectItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectItem implements WishlistEvent {
+  const factory _SelectItem(
+      {required final WishlistProduct selectedItem,
+      required final List<WishlistProduct> allItem}) = _$SelectItemImpl;
+
+  WishlistProduct get selectedItem;
+  List<WishlistProduct> get allItem;
+  @JsonKey(ignore: true)
+  _$$SelectItemImplCopyWith<_$SelectItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectAllImplCopyWith<$Res> {
+  factory _$$SelectAllImplCopyWith(
+          _$SelectAllImpl value, $Res Function(_$SelectAllImpl) then) =
+      __$$SelectAllImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SelectAllImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$SelectAllImpl>
+    implements _$$SelectAllImplCopyWith<$Res> {
+  __$$SelectAllImplCopyWithImpl(
+      _$SelectAllImpl _value, $Res Function(_$SelectAllImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SelectAllImpl implements _SelectAll {
+  const _$SelectAllImpl();
+
+  @override
+  String toString() {
+    return 'WishlistEvent.selectAll()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SelectAllImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return selectAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return selectAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (selectAll != null) {
+      return selectAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return selectAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return selectAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (selectAll != null) {
+      return selectAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectAll implements WishlistEvent {
+  const factory _SelectAll() = _$SelectAllImpl;
+}
+
+/// @nodoc
+abstract class _$$DisselectAllImplCopyWith<$Res> {
+  factory _$$DisselectAllImplCopyWith(
+          _$DisselectAllImpl value, $Res Function(_$DisselectAllImpl) then) =
+      __$$DisselectAllImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisselectAllImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$DisselectAllImpl>
+    implements _$$DisselectAllImplCopyWith<$Res> {
+  __$$DisselectAllImplCopyWithImpl(
+      _$DisselectAllImpl _value, $Res Function(_$DisselectAllImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisselectAllImpl implements _DisselectAll {
+  const _$DisselectAllImpl();
+
+  @override
+  String toString() {
+    return 'WishlistEvent.disselectAll()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DisselectAllImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return disselectAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return disselectAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (disselectAll != null) {
+      return disselectAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return disselectAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return disselectAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (disselectAll != null) {
+      return disselectAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisselectAll implements WishlistEvent {
+  const factory _DisselectAll() = _$DisselectAllImpl;
+}
+
+/// @nodoc
+abstract class _$$DisselectedItemImplCopyWith<$Res> {
+  factory _$$DisselectedItemImplCopyWith(_$DisselectedItemImpl value,
+          $Res Function(_$DisselectedItemImpl) then) =
+      __$$DisselectedItemImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WishlistProduct disselectedItem});
+
+  $WishlistProductCopyWith<$Res> get disselectedItem;
+}
+
+/// @nodoc
+class __$$DisselectedItemImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$DisselectedItemImpl>
+    implements _$$DisselectedItemImplCopyWith<$Res> {
+  __$$DisselectedItemImplCopyWithImpl(
+      _$DisselectedItemImpl _value, $Res Function(_$DisselectedItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? disselectedItem = null,
+  }) {
+    return _then(_$DisselectedItemImpl(
+      disselectedItem: null == disselectedItem
+          ? _value.disselectedItem
+          : disselectedItem // ignore: cast_nullable_to_non_nullable
+              as WishlistProduct,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WishlistProductCopyWith<$Res> get disselectedItem {
+    return $WishlistProductCopyWith<$Res>(_value.disselectedItem, (value) {
+      return _then(_value.copyWith(disselectedItem: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DisselectedItemImpl implements _DisselectedItem {
+  const _$DisselectedItemImpl({required this.disselectedItem});
+
+  @override
+  final WishlistProduct disselectedItem;
+
+  @override
+  String toString() {
+    return 'WishlistEvent.disselectItem(disselectedItem: $disselectedItem)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DisselectedItemImpl &&
+            (identical(other.disselectedItem, disselectedItem) ||
+                other.disselectedItem == disselectedItem));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, disselectedItem);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DisselectedItemImplCopyWith<_$DisselectedItemImpl> get copyWith =>
+      __$$DisselectedItemImplCopyWithImpl<_$DisselectedItemImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return disselectItem(disselectedItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return disselectItem?.call(disselectedItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (disselectItem != null) {
+      return disselectItem(disselectedItem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return disselectItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return disselectItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (disselectItem != null) {
+      return disselectItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisselectedItem implements WishlistEvent {
+  const factory _DisselectedItem(
+      {required final WishlistProduct disselectedItem}) = _$DisselectedItemImpl;
+
+  WishlistProduct get disselectedItem;
+  @JsonKey(ignore: true)
+  _$$DisselectedItemImplCopyWith<_$DisselectedItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddAllItemToCartImplCopyWith<$Res> {
+  factory _$$AddAllItemToCartImplCopyWith(_$AddAllItemToCartImpl value,
+          $Res Function(_$AddAllItemToCartImpl) then) =
+      __$$AddAllItemToCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddAllItemToCartImplCopyWithImpl<$Res>
+    extends _$WishlistEventCopyWithImpl<$Res, _$AddAllItemToCartImpl>
+    implements _$$AddAllItemToCartImplCopyWith<$Res> {
+  __$$AddAllItemToCartImplCopyWithImpl(_$AddAllItemToCartImpl _value,
+      $Res Function(_$AddAllItemToCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddAllItemToCartImpl implements _AddAllItemToCart {
+  const _$AddAllItemToCartImpl();
+
+  @override
+  String toString() {
+    return 'WishlistEvent.addAllItemToCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AddAllItemToCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String productId) addToWishlist,
+    required TResult Function(String productId) removeFromWishlist,
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
+        addToCart,
+  }) {
+    return addAllItemToCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String productId)? addToWishlist,
+    TResult? Function(String productId)? removeFromWishlist,
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+  }) {
+    return addAllItemToCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String productId)? addToWishlist,
+    TResult Function(String productId)? removeFromWishlist,
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
+        addToCart,
+    required TResult orElse(),
+  }) {
+    if (addAllItemToCart != null) {
+      return addAllItemToCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToWishlist value) addToWishlist,
+    required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
+    required TResult Function(_AddToCart value) addToCart,
+  }) {
+    return addAllItemToCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToWishlist value)? addToWishlist,
+    TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult? Function(_AddToCart value)? addToCart,
+  }) {
+    return addAllItemToCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToWishlist value)? addToWishlist,
+    TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
+    TResult Function(_AddToCart value)? addToCart,
+    required TResult orElse(),
+  }) {
+    if (addAllItemToCart != null) {
+      return addAllItemToCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddAllItemToCart implements WishlistEvent {
+  const factory _AddAllItemToCart() = _$AddAllItemToCartImpl;
+}
+
+/// @nodoc
 abstract class _$$AddToCartImplCopyWith<$Res> {
   factory _$$AddToCartImplCopyWith(
           _$AddToCartImpl value, $Res Function(_$AddToCartImpl) then) =
       __$$AddToCartImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String productId, String quantity, String price});
+  $Res call(
+      {String productId,
+      String quantity,
+      String price,
+      String attributeItemProductID});
 }
 
 /// @nodoc
@@ -677,6 +1792,7 @@ class __$$AddToCartImplCopyWithImpl<$Res>
     Object? productId = null,
     Object? quantity = null,
     Object? price = null,
+    Object? attributeItemProductID = null,
   }) {
     return _then(_$AddToCartImpl(
       productId: null == productId
@@ -691,6 +1807,10 @@ class __$$AddToCartImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -699,7 +1819,10 @@ class __$$AddToCartImplCopyWithImpl<$Res>
 
 class _$AddToCartImpl implements _AddToCart {
   const _$AddToCartImpl(
-      {required this.productId, required this.quantity, required this.price});
+      {required this.productId,
+      required this.quantity,
+      required this.price,
+      required this.attributeItemProductID});
 
   @override
   final String productId;
@@ -707,10 +1830,12 @@ class _$AddToCartImpl implements _AddToCart {
   final String quantity;
   @override
   final String price;
+  @override
+  final String attributeItemProductID;
 
   @override
   String toString() {
-    return 'WishlistEvent.addToCart(productId: $productId, quantity: $quantity, price: $price)';
+    return 'WishlistEvent.addToCart(productId: $productId, quantity: $quantity, price: $price, attributeItemProductID: $attributeItemProductID)';
   }
 
   @override
@@ -722,11 +1847,14 @@ class _$AddToCartImpl implements _AddToCart {
                 other.productId == productId) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.attributeItemProductID, attributeItemProductID) ||
+                other.attributeItemProductID == attributeItemProductID));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId, quantity, price);
+  int get hashCode => Object.hash(
+      runtimeType, productId, quantity, price, attributeItemProductID);
 
   @JsonKey(ignore: true)
   @override
@@ -741,10 +1869,18 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function() fetch,
     required TResult Function(String productId) addToWishlist,
     required TResult Function(String productId) removeFromWishlist,
-    required TResult Function(String productId, String quantity, String price)
+    required TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)
+        selectItem,
+    required TResult Function() selectAll,
+    required TResult Function() disselectAll,
+    required TResult Function(WishlistProduct disselectedItem) disselectItem,
+    required TResult Function() addAllItemToCart,
+    required TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)
         addToCart,
   }) {
-    return addToCart(productId, quantity, price);
+    return addToCart(productId, quantity, price, attributeItemProductID);
   }
 
   @override
@@ -754,10 +1890,18 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function()? fetch,
     TResult? Function(String productId)? addToWishlist,
     TResult? Function(String productId)? removeFromWishlist,
-    TResult? Function(String productId, String quantity, String price)?
+    TResult? Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult? Function()? selectAll,
+    TResult? Function()? disselectAll,
+    TResult? Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult? Function()? addAllItemToCart,
+    TResult? Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
   }) {
-    return addToCart?.call(productId, quantity, price);
+    return addToCart?.call(productId, quantity, price, attributeItemProductID);
   }
 
   @override
@@ -767,12 +1911,20 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function()? fetch,
     TResult Function(String productId)? addToWishlist,
     TResult Function(String productId)? removeFromWishlist,
-    TResult Function(String productId, String quantity, String price)?
+    TResult Function(
+            WishlistProduct selectedItem, List<WishlistProduct> allItem)?
+        selectItem,
+    TResult Function()? selectAll,
+    TResult Function()? disselectAll,
+    TResult Function(WishlistProduct disselectedItem)? disselectItem,
+    TResult Function()? addAllItemToCart,
+    TResult Function(String productId, String quantity, String price,
+            String attributeItemProductID)?
         addToCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
-      return addToCart(productId, quantity, price);
+      return addToCart(productId, quantity, price, attributeItemProductID);
     }
     return orElse();
   }
@@ -784,6 +1936,11 @@ class _$AddToCartImpl implements _AddToCart {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToWishlist value) addToWishlist,
     required TResult Function(_RemoveFromWishlist value) removeFromWishlist,
+    required TResult Function(_SelectItem value) selectItem,
+    required TResult Function(_SelectAll value) selectAll,
+    required TResult Function(_DisselectAll value) disselectAll,
+    required TResult Function(_DisselectedItem value) disselectItem,
+    required TResult Function(_AddAllItemToCart value) addAllItemToCart,
     required TResult Function(_AddToCart value) addToCart,
   }) {
     return addToCart(this);
@@ -796,6 +1953,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToWishlist value)? addToWishlist,
     TResult? Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult? Function(_SelectItem value)? selectItem,
+    TResult? Function(_SelectAll value)? selectAll,
+    TResult? Function(_DisselectAll value)? disselectAll,
+    TResult? Function(_DisselectedItem value)? disselectItem,
+    TResult? Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult? Function(_AddToCart value)? addToCart,
   }) {
     return addToCart?.call(this);
@@ -808,6 +1970,11 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToWishlist value)? addToWishlist,
     TResult Function(_RemoveFromWishlist value)? removeFromWishlist,
+    TResult Function(_SelectItem value)? selectItem,
+    TResult Function(_SelectAll value)? selectAll,
+    TResult Function(_DisselectAll value)? disselectAll,
+    TResult Function(_DisselectedItem value)? disselectItem,
+    TResult Function(_AddAllItemToCart value)? addAllItemToCart,
     TResult Function(_AddToCart value)? addToCart,
     required TResult orElse(),
   }) {
@@ -822,11 +1989,13 @@ abstract class _AddToCart implements WishlistEvent {
   const factory _AddToCart(
       {required final String productId,
       required final String quantity,
-      required final String price}) = _$AddToCartImpl;
+      required final String price,
+      required final String attributeItemProductID}) = _$AddToCartImpl;
 
   String get productId;
   String get quantity;
   String get price;
+  String get attributeItemProductID;
   @JsonKey(ignore: true)
   _$$AddToCartImplCopyWith<_$AddToCartImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -838,6 +2007,8 @@ mixin _$WishlistState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  List<WishlistProduct> get selectedItemList =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WishlistStateCopyWith<WishlistState> get copyWith =>
@@ -853,7 +2024,8 @@ abstract class $WishlistStateCopyWith<$Res> {
   $Res call(
       {List<Wishlist> wishlist,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      List<WishlistProduct> selectedItemList});
 }
 
 /// @nodoc
@@ -872,6 +2044,7 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
     Object? wishlist = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? selectedItemList = null,
   }) {
     return _then(_value.copyWith(
       wishlist: null == wishlist
@@ -886,6 +2059,10 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectedItemList: null == selectedItemList
+          ? _value.selectedItemList
+          : selectedItemList // ignore: cast_nullable_to_non_nullable
+              as List<WishlistProduct>,
     ) as $Val);
   }
 }
@@ -901,7 +2078,8 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
   $Res call(
       {List<Wishlist> wishlist,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      List<WishlistProduct> selectedItemList});
 }
 
 /// @nodoc
@@ -918,6 +2096,7 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
     Object? wishlist = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? selectedItemList = null,
   }) {
     return _then(_$WishlistStateImpl(
       wishlist: null == wishlist
@@ -932,6 +2111,10 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectedItemList: null == selectedItemList
+          ? _value._selectedItemList
+          : selectedItemList // ignore: cast_nullable_to_non_nullable
+              as List<WishlistProduct>,
     ));
   }
 }
@@ -942,8 +2125,10 @@ class _$WishlistStateImpl extends _WishlistState {
   const _$WishlistStateImpl(
       {required final List<Wishlist> wishlist,
       required this.apiFailureOrSuccessOption,
-      required this.isFetching})
+      required this.isFetching,
+      required final List<WishlistProduct> selectedItemList})
       : _wishlist = wishlist,
+        _selectedItemList = selectedItemList,
         super._();
 
   final List<Wishlist> _wishlist;
@@ -958,10 +2143,18 @@ class _$WishlistStateImpl extends _WishlistState {
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  final List<WishlistProduct> _selectedItemList;
+  @override
+  List<WishlistProduct> get selectedItemList {
+    if (_selectedItemList is EqualUnmodifiableListView)
+      return _selectedItemList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedItemList);
+  }
 
   @override
   String toString() {
-    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedItemList: $selectedItemList)';
   }
 
   @override
@@ -974,7 +2167,9 @@ class _$WishlistStateImpl extends _WishlistState {
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedItemList, _selectedItemList));
   }
 
   @override
@@ -982,7 +2177,8 @@ class _$WishlistStateImpl extends _WishlistState {
       runtimeType,
       const DeepCollectionEquality().hash(_wishlist),
       apiFailureOrSuccessOption,
-      isFetching);
+      isFetching,
+      const DeepCollectionEquality().hash(_selectedItemList));
 
   @JsonKey(ignore: true)
   @override
@@ -993,10 +2189,12 @@ class _$WishlistStateImpl extends _WishlistState {
 
 abstract class _WishlistState extends WishlistState {
   const factory _WishlistState(
-      {required final List<Wishlist> wishlist,
-      required final Option<Either<ApiFailure, dynamic>>
-          apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$WishlistStateImpl;
+          {required final List<Wishlist> wishlist,
+          required final Option<Either<ApiFailure, dynamic>>
+              apiFailureOrSuccessOption,
+          required final bool isFetching,
+          required final List<WishlistProduct> selectedItemList}) =
+      _$WishlistStateImpl;
   const _WishlistState._() : super._();
 
   @override
@@ -1005,6 +2203,8 @@ abstract class _WishlistState extends WishlistState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  List<WishlistProduct> get selectedItemList;
   @override
   @JsonKey(ignore: true)
   _$$WishlistStateImplCopyWith<_$WishlistStateImpl> get copyWith =>

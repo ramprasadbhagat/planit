@@ -34,6 +34,8 @@ mixin _$WishlistProductDto {
   String get productMRP => throw _privateConstructorUsedError;
   @JsonKey(name: 'productReview', defaultValue: '')
   String get productReview => throw _privateConstructorUsedError;
+  @JsonKey(name: 'startingPrice', defaultValue: '')
+  String get startingPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'productRating', defaultValue: '')
   String get productRating => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDiscount', defaultValue: '')
@@ -86,6 +88,7 @@ abstract class $WishlistProductDtoCopyWith<$Res> {
       String productDescription,
       @JsonKey(name: 'productMRP', defaultValue: '') String productMRP,
       @JsonKey(name: 'productReview', defaultValue: '') String productReview,
+      @JsonKey(name: 'startingPrice', defaultValue: '') String startingPrice,
       @JsonKey(name: 'productRating', defaultValue: '') String productRating,
       @JsonKey(name: 'productDiscount', defaultValue: '')
       String productDiscount,
@@ -126,6 +129,7 @@ class _$WishlistProductDtoCopyWithImpl<$Res, $Val extends WishlistProductDto>
     Object? productDescription = null,
     Object? productMRP = null,
     Object? productReview = null,
+    Object? startingPrice = null,
     Object? productRating = null,
     Object? productDiscount = null,
     Object? sku = null,
@@ -170,6 +174,10 @@ class _$WishlistProductDtoCopyWithImpl<$Res, $Val extends WishlistProductDto>
       productReview: null == productReview
           ? _value.productReview
           : productReview // ignore: cast_nullable_to_non_nullable
+              as String,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
               as String,
       productRating: null == productRating
           ? _value.productRating
@@ -252,6 +260,7 @@ abstract class _$$WishlistProductDtoImplCopyWith<$Res>
       String productDescription,
       @JsonKey(name: 'productMRP', defaultValue: '') String productMRP,
       @JsonKey(name: 'productReview', defaultValue: '') String productReview,
+      @JsonKey(name: 'startingPrice', defaultValue: '') String startingPrice,
       @JsonKey(name: 'productRating', defaultValue: '') String productRating,
       @JsonKey(name: 'productDiscount', defaultValue: '')
       String productDiscount,
@@ -290,6 +299,7 @@ class __$$WishlistProductDtoImplCopyWithImpl<$Res>
     Object? productDescription = null,
     Object? productMRP = null,
     Object? productReview = null,
+    Object? startingPrice = null,
     Object? productRating = null,
     Object? productDiscount = null,
     Object? sku = null,
@@ -334,6 +344,10 @@ class __$$WishlistProductDtoImplCopyWithImpl<$Res>
       productReview: null == productReview
           ? _value.productReview
           : productReview // ignore: cast_nullable_to_non_nullable
+              as String,
+      startingPrice: null == startingPrice
+          ? _value.startingPrice
+          : startingPrice // ignore: cast_nullable_to_non_nullable
               as String,
       productRating: null == productRating
           ? _value.productRating
@@ -413,6 +427,8 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
       @JsonKey(name: 'productMRP', defaultValue: '') required this.productMRP,
       @JsonKey(name: 'productReview', defaultValue: '')
       required this.productReview,
+      @JsonKey(name: 'startingPrice', defaultValue: '')
+      required this.startingPrice,
       @JsonKey(name: 'productRating', defaultValue: '')
       required this.productRating,
       @JsonKey(name: 'productDiscount', defaultValue: '')
@@ -465,6 +481,9 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
   @override
   @JsonKey(name: 'productReview', defaultValue: '')
   final String productReview;
+  @override
+  @JsonKey(name: 'startingPrice', defaultValue: '')
+  final String startingPrice;
   @override
   @JsonKey(name: 'productRating', defaultValue: '')
   final String productRating;
@@ -519,7 +538,7 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
 
   @override
   String toString() {
-    return 'WishlistProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive)';
+    return 'WishlistProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, startingPrice: $startingPrice, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive)';
   }
 
   @override
@@ -540,6 +559,8 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
                 other.productMRP == productMRP) &&
             (identical(other.productReview, productReview) ||
                 other.productReview == productReview) &&
+            (identical(other.startingPrice, startingPrice) ||
+                other.startingPrice == startingPrice) &&
             (identical(other.productRating, productRating) ||
                 other.productRating == productRating) &&
             (identical(other.productDiscount, productDiscount) ||
@@ -582,6 +603,7 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
         productDescription,
         productMRP,
         productReview,
+        startingPrice,
         productRating,
         productDiscount,
         sku,
@@ -629,6 +651,8 @@ abstract class _WishlistProductDto extends WishlistProductDto {
       required final String productMRP,
       @JsonKey(name: 'productReview', defaultValue: '')
       required final String productReview,
+      @JsonKey(name: 'startingPrice', defaultValue: '')
+      required final String startingPrice,
       @JsonKey(name: 'productRating', defaultValue: '')
       required final String productRating,
       @JsonKey(name: 'productDiscount', defaultValue: '')
@@ -684,6 +708,9 @@ abstract class _WishlistProductDto extends WishlistProductDto {
   @override
   @JsonKey(name: 'productReview', defaultValue: '')
   String get productReview;
+  @override
+  @JsonKey(name: 'startingPrice', defaultValue: '')
+  String get startingPrice;
   @override
   @JsonKey(name: 'productRating', defaultValue: '')
   String get productRating;

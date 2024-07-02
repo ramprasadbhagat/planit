@@ -72,12 +72,14 @@ class WishlistRepository extends IWishlistRepository {
     required String productId,
     required String quantity,
     required String price,
+    required String attributeItemProductID,
   }) async {
     try {
       final wishlist = await remoteDataSource.addToCart(
         productId: productId,
         price: price,
         quantity: quantity,
+        attributeItemProductID: attributeItemProductID,
       );
 
       return Right(wishlist);

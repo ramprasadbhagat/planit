@@ -44,6 +44,19 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           ),
         );
       },
+      addAllItemToCart: (_) {
+        for (final e in state.selectedItemList) {
+          add(
+            _AddToCart(
+              productId: e.id,
+              price: e.startingPrice.toString(),
+              quantity: '1',
+              attributeItemProductID: e.attributeItemProductID,
+            ),
+          );
+        }
+        emit(state.copyWith(selectedItemList: []));
+      },
       addToWishlist: (e) async {
         emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.addToWishlist(
@@ -65,6 +78,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           productId: e.productId,
           price: e.price,
           quantity: e.quantity,
+          attributeItemProductID: e.attributeItemProductID,
         );
         failureOrSuccess.fold(
           (failure) => emit(
@@ -83,6 +97,45 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
               ),
             );
           },
+        );
+      },
+      selectItem: (e) {
+        final selectedItemsList = <WishlistProduct>[
+          ...state.selectedItemList,
+          e.selectedItem,
+        ];
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemsList,
+          ),
+        );
+      },
+      disselectItem: (e) {
+        final selectedItemsList = <WishlistProduct>[
+          ...state.selectedItemList,
+        ];
+        selectedItemsList.remove(e.disselectedItem);
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemsList,
+          ),
+        );
+      },
+      selectAll: (e) {
+        final selectedItemList = <WishlistProduct>[
+          ...state.getAllWishList,
+        ];
+        emit(
+          state.copyWith(
+            selectedItemList: selectedItemList,
+          ),
+        );
+      },
+      disselectAll: (e) {
+        emit(
+          state.copyWith(
+            selectedItemList: [],
+          ),
         );
       },
       removeFromWishlist: (e) async {

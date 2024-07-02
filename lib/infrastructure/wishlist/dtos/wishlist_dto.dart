@@ -12,6 +12,10 @@ class WishlistDto with _$WishlistDto {
     @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'user_id', defaultValue: '') required String userId,
     @JsonKey(name: 'product_id', defaultValue: '') required String productId,
+    @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+    required String attributeItemProductID,
+    @JsonKey(name: 'attributeItemId', defaultValue: '')
+    required String attributeItemId,
     @JsonKey(name: 'product', defaultValue: [])
     required List<WishlistProductDto> product,
   }) = _WishlistDto;
@@ -23,6 +27,13 @@ class WishlistDto with _$WishlistDto {
         id: id,
         userId: userId,
         productId: productId,
-        product: product.map((e) => e.toDomain).toList(),
+        attributeItemProductID: attributeItemProductID,
+        attributeItemId: attributeItemId,
+        product: product
+            .map(
+              (e) => e.toDomain
+                  .copyWith(attributeItemProductID: attributeItemProductID),
+            )
+            .toList(),
       );
 }

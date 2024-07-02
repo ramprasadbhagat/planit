@@ -8,6 +8,7 @@ class WishlistProduct with _$WishlistProduct {
   factory WishlistProduct({
     required String id,
     required String categoryId,
+    required String attributeItemProductID,
     required String subcategoryId,
     required String productName,
     required String productDescription,
@@ -28,12 +29,14 @@ class WishlistProduct with _$WishlistProduct {
     required bool isQuickPick,
     required bool isDeleted,
     required bool isActive,
+    required int startingPrice,
   }) = _WishlistProduct;
 
   factory WishlistProduct.empty() => WishlistProduct(
         id: '',
         categoryId: '',
         subcategoryId: '',
+        attributeItemProductID: '',
         productName: '',
         productDescription: '',
         productMRP: '',
@@ -44,6 +47,7 @@ class WishlistProduct with _$WishlistProduct {
         skuPrice: '',
         skuPacksize: '',
         skuContent: '',
+        startingPrice: 0,
         skuInventory: '',
         skuVendorId: '',
         skuVendorInfo: '',

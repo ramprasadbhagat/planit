@@ -7,20 +7,33 @@ class WishlistState with _$WishlistState {
     required List<Wishlist> wishlist,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required List<WishlistProduct> selectedItemList,
   }) = _WishlistState;
 
   factory WishlistState.initial() => WishlistState(
         wishlist: [],
+        selectedItemList: [],
         apiFailureOrSuccessOption: none(),
-        isFetching: true,
+        isFetching: false,
       );
 
   bool get isWishlistEmpty => wishlist.isEmpty;
+
+  bool get isAllSelected {
+    return getAllWishList.length == selectedItemList.length;
+  }
+
+  int get totalSelectedItemPrice => selectedItemList.fold(
+        0,
+        (previousValue, element) => previousValue + element.startingPrice,
+      );
+
   List<WishlistProduct> get getAllWishList {
     final list = <WishlistProduct>[];
     for (final e in wishlist) {
       list.addAll(e.product);
     }
-    return list;
+    final getAllWishListSet = list.toSet();
+    return getAllWishListSet.toList();
   }
 }

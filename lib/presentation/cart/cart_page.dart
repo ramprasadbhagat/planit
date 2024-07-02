@@ -71,39 +71,21 @@ class _CartPageState extends State<CartPage> {
             return Skeletonizer(
               enabled: state.isFetching,
               child: ListView(
-                children: [
+                children: const [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 12),
                     child: Column(
                       children: <Widget>[
-                        Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Your Total Saving',
-                                  style: textTheme.bodyMedium,
-                                ),
-                                Text(
-                                  '₹${state.cartItem.totalDiscount.getValue()}',
-                                  style: textTheme.bodyMedium,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const CartItemSection(),
-                        const SizedBox(
+                        CartItemSection(),
+                        SizedBox(
                           height: 10,
                         ),
-                        const BeforeCheckoutSection(),
+                        BeforeCheckoutSection(),
                       ],
                     ),
                   ),
-                  const Spacer(),
-                  const CheckoutCard(),
+                  Spacer(),
+                  CheckoutCard(),
                 ],
               ),
             );

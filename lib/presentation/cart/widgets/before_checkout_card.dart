@@ -110,6 +110,8 @@ class BeforeCheckOutCard extends StatelessWidget {
                                 price: item.skuPrice,
                                 productId: item.id,
                                 quantity: '1',
+                                attributeItemProductID:
+                                    item.attributeItemProductID,
                               ),
                             );
                       },

@@ -19,6 +19,8 @@ mixin _$Wishlist {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get productId => throw _privateConstructorUsedError;
+  String get attributeItemProductID => throw _privateConstructorUsedError;
+  String get attributeItemId => throw _privateConstructorUsedError;
   List<WishlistProduct> get product => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,6 +37,8 @@ abstract class $WishlistCopyWith<$Res> {
       {String id,
       String userId,
       String productId,
+      String attributeItemProductID,
+      String attributeItemId,
       List<WishlistProduct> product});
 }
 
@@ -54,6 +58,8 @@ class _$WishlistCopyWithImpl<$Res, $Val extends Wishlist>
     Object? id = null,
     Object? userId = null,
     Object? productId = null,
+    Object? attributeItemProductID = null,
+    Object? attributeItemId = null,
     Object? product = null,
   }) {
     return _then(_value.copyWith(
@@ -68,6 +74,14 @@ class _$WishlistCopyWithImpl<$Res, $Val extends Wishlist>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       product: null == product
           ? _value.product
@@ -89,6 +103,8 @@ abstract class _$$WishlistImplCopyWith<$Res>
       {String id,
       String userId,
       String productId,
+      String attributeItemProductID,
+      String attributeItemId,
       List<WishlistProduct> product});
 }
 
@@ -106,6 +122,8 @@ class __$$WishlistImplCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? productId = null,
+    Object? attributeItemProductID = null,
+    Object? attributeItemId = null,
     Object? product = null,
   }) {
     return _then(_$WishlistImpl(
@@ -120,6 +138,14 @@ class __$$WishlistImplCopyWithImpl<$Res>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       product: null == product
           ? _value._product
@@ -136,6 +162,8 @@ class _$WishlistImpl extends _Wishlist {
       {required this.id,
       required this.userId,
       required this.productId,
+      required this.attributeItemProductID,
+      required this.attributeItemId,
       required final List<WishlistProduct> product})
       : _product = product,
         super._();
@@ -146,6 +174,10 @@ class _$WishlistImpl extends _Wishlist {
   final String userId;
   @override
   final String productId;
+  @override
+  final String attributeItemProductID;
+  @override
+  final String attributeItemId;
   final List<WishlistProduct> _product;
   @override
   List<WishlistProduct> get product {
@@ -156,7 +188,7 @@ class _$WishlistImpl extends _Wishlist {
 
   @override
   String toString() {
-    return 'Wishlist(id: $id, userId: $userId, productId: $productId, product: $product)';
+    return 'Wishlist(id: $id, userId: $userId, productId: $productId, attributeItemProductID: $attributeItemProductID, attributeItemId: $attributeItemId, product: $product)';
   }
 
   @override
@@ -168,11 +200,21 @@ class _$WishlistImpl extends _Wishlist {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
+            (identical(other.attributeItemProductID, attributeItemProductID) ||
+                other.attributeItemProductID == attributeItemProductID) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             const DeepCollectionEquality().equals(other._product, _product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, productId,
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      productId,
+      attributeItemProductID,
+      attributeItemId,
       const DeepCollectionEquality().hash(_product));
 
   @JsonKey(ignore: true)
@@ -187,6 +229,8 @@ abstract class _Wishlist extends Wishlist {
       {required final String id,
       required final String userId,
       required final String productId,
+      required final String attributeItemProductID,
+      required final String attributeItemId,
       required final List<WishlistProduct> product}) = _$WishlistImpl;
   _Wishlist._() : super._();
 
@@ -196,6 +240,10 @@ abstract class _Wishlist extends Wishlist {
   String get userId;
   @override
   String get productId;
+  @override
+  String get attributeItemProductID;
+  @override
+  String get attributeItemId;
   @override
   List<WishlistProduct> get product;
   @override

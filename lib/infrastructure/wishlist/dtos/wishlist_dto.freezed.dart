@@ -26,6 +26,10 @@ mixin _$WishlistDto {
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'product_id', defaultValue: '')
   String get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+  String get attributeItemProductID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId => throw _privateConstructorUsedError;
   @JsonKey(name: 'product', defaultValue: [])
   List<WishlistProductDto> get product => throw _privateConstructorUsedError;
 
@@ -45,6 +49,10 @@ abstract class $WishlistDtoCopyWith<$Res> {
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'user_id', defaultValue: '') String userId,
       @JsonKey(name: 'product_id', defaultValue: '') String productId,
+      @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+      String attributeItemProductID,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(name: 'product', defaultValue: [])
       List<WishlistProductDto> product});
 }
@@ -65,6 +73,8 @@ class _$WishlistDtoCopyWithImpl<$Res, $Val extends WishlistDto>
     Object? id = null,
     Object? userId = null,
     Object? productId = null,
+    Object? attributeItemProductID = null,
+    Object? attributeItemId = null,
     Object? product = null,
   }) {
     return _then(_value.copyWith(
@@ -79,6 +89,14 @@ class _$WishlistDtoCopyWithImpl<$Res, $Val extends WishlistDto>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       product: null == product
           ? _value.product
@@ -100,6 +118,10 @@ abstract class _$$WishlistDtoImplCopyWith<$Res>
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'user_id', defaultValue: '') String userId,
       @JsonKey(name: 'product_id', defaultValue: '') String productId,
+      @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+      String attributeItemProductID,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(name: 'product', defaultValue: [])
       List<WishlistProductDto> product});
 }
@@ -118,6 +140,8 @@ class __$$WishlistDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? userId = null,
     Object? productId = null,
+    Object? attributeItemProductID = null,
+    Object? attributeItemId = null,
     Object? product = null,
   }) {
     return _then(_$WishlistDtoImpl(
@@ -132,6 +156,14 @@ class __$$WishlistDtoImplCopyWithImpl<$Res>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemProductID: null == attributeItemProductID
+          ? _value.attributeItemProductID
+          : attributeItemProductID // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       product: null == product
           ? _value._product
@@ -148,6 +180,10 @@ class _$WishlistDtoImpl extends _WishlistDto {
       {@JsonKey(name: '_id', defaultValue: '') required this.id,
       @JsonKey(name: 'user_id', defaultValue: '') required this.userId,
       @JsonKey(name: 'product_id', defaultValue: '') required this.productId,
+      @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+      required this.attributeItemProductID,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required this.attributeItemId,
       @JsonKey(name: 'product', defaultValue: [])
       required final List<WishlistProductDto> product})
       : _product = product,
@@ -165,6 +201,12 @@ class _$WishlistDtoImpl extends _WishlistDto {
   @override
   @JsonKey(name: 'product_id', defaultValue: '')
   final String productId;
+  @override
+  @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+  final String attributeItemProductID;
+  @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  final String attributeItemId;
   final List<WishlistProductDto> _product;
   @override
   @JsonKey(name: 'product', defaultValue: [])
@@ -176,7 +218,7 @@ class _$WishlistDtoImpl extends _WishlistDto {
 
   @override
   String toString() {
-    return 'WishlistDto(id: $id, userId: $userId, productId: $productId, product: $product)';
+    return 'WishlistDto(id: $id, userId: $userId, productId: $productId, attributeItemProductID: $attributeItemProductID, attributeItemId: $attributeItemId, product: $product)';
   }
 
   @override
@@ -188,12 +230,22 @@ class _$WishlistDtoImpl extends _WishlistDto {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
+            (identical(other.attributeItemProductID, attributeItemProductID) ||
+                other.attributeItemProductID == attributeItemProductID) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             const DeepCollectionEquality().equals(other._product, _product));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, productId,
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      productId,
+      attributeItemProductID,
+      attributeItemId,
       const DeepCollectionEquality().hash(_product));
 
   @JsonKey(ignore: true)
@@ -216,6 +268,10 @@ abstract class _WishlistDto extends WishlistDto {
       @JsonKey(name: 'user_id', defaultValue: '') required final String userId,
       @JsonKey(name: 'product_id', defaultValue: '')
       required final String productId,
+      @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+      required final String attributeItemProductID,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required final String attributeItemId,
       @JsonKey(name: 'product', defaultValue: [])
       required final List<WishlistProductDto> product}) = _$WishlistDtoImpl;
   _WishlistDto._() : super._();
@@ -232,6 +288,12 @@ abstract class _WishlistDto extends WishlistDto {
   @override
   @JsonKey(name: 'product_id', defaultValue: '')
   String get productId;
+  @override
+  @JsonKey(name: 'attributeItemProductID', defaultValue: '')
+  String get attributeItemProductID;
+  @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId;
   @override
   @JsonKey(name: 'product', defaultValue: [])
   List<WishlistProductDto> get product;
