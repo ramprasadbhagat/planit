@@ -40,7 +40,7 @@ class CouponListPage extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 8,
-                          vertical: 6,
+                          vertical: 12,
                         ),
                         margin: const EdgeInsets.only(top: 15),
                         decoration: BoxDecoration(

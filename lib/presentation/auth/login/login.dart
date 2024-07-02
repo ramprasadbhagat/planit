@@ -2,9 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -35,6 +37,11 @@ class _LoginPageState extends State<LoginPage> {
           _controller.clear();
           context.router.maybePop();
           Future.delayed(const Duration(milliseconds: 100), () {
+            context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
+            context.read<WishlistBloc>().add(
+                  const WishlistEvent.fetch(),
+                );
+            context.read<CartBloc>().add(const CartEvent.fetch());
             context.router.maybePop();
           });
         }
