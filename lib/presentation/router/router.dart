@@ -75,6 +75,10 @@ class AppRouter extends $AppRouter {
           path: '/orderDetails',
         ),
         AutoRoute(
+          page: UserProfileRoute.page,
+          path: '/userProfile',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           initial: true,
