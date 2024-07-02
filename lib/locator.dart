@@ -5,6 +5,7 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
+import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
@@ -33,6 +34,9 @@ import 'package:planit/infrastructure/categories/datasource/categories_remote.da
 import 'package:planit/infrastructure/categories/repository/categories_repository.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dart';
+import 'package:planit/infrastructure/coupon/datasource/coupon_local.dart';
+import 'package:planit/infrastructure/coupon/datasource/coupon_remote.dart';
+import 'package:planit/infrastructure/coupon/repository/coupon_repository.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
 import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
@@ -424,7 +428,7 @@ void setupLocator() {
   //============================================================
 
   locator.registerLazySingleton(
-    () => OrderLocalDataSource(),
+    () => const OrderLocalDataSource(),
   );
 
   locator.registerLazySingleton(
@@ -443,6 +447,32 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => OrderBloc(
       repository: locator<OrderRepository>(),
+    ),
+  );
+  /////============================================================
+  //  Coupon
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const CouponLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => CouponRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => CouponRepository(
+      config: locator<Config>(),
+      remoteDataSource: locator<CouponRemoteDataSource>(),
+      localDataSource: locator<CouponLocalDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => CouponBloc(
+      repository: locator<CouponRepository>(),
     ),
   );
 }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
+import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -24,15 +25,21 @@ class DeliveryAddressSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 13,
-                        color: AppColors.grey1,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
+                    state.selectedAddress == AddressBook.empty()
+                        ? const Expanded(
+                            child: Text(
+                              'No addresses added yet. please add and select address to place order',
+                            ),
+                          )
+                        : Text(
+                            '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
+                            style: textTheme.bodySmall?.copyWith(
+                              fontSize: 13,
+                              color: AppColors.grey1,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
                     SizedBox(
                       height: 25,
                       width: 70,
@@ -46,40 +53,44 @@ class DeliveryAddressSection extends StatelessWidget {
                           ),
                           backgroundColor: Colors.white,
                         ),
-                        child: const Text(
-                          'Change',
-                          style:
-                              TextStyle(color: AppColors.black, fontSize: 10),
+                        child: Text(
+                          state.selectedAddress == AddressBook.empty()
+                              ? 'add'
+                              : 'Change',
+                          style: const TextStyle(
+                            color: AppColors.black,
+                            fontSize: 10,
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Checkbox(
-                      fillColor: const MaterialStatePropertyAll(Colors.black),
-                      value: true,
-                      onChanged: (e) {},
-                    ),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      'Same as shipping address',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 13,
-                        color: AppColors.grey1,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Checkbox(
+                //       fillColor: const MaterialStatePropertyAll(Colors.black),
+                //       value: true,
+                //       onChanged: (e) {},
+                //     ),
+                //     const SizedBox(
+                //       width: 6,
+                //     ),
+                //     Text(
+                //       'Same as shipping address',
+                //       style: textTheme.bodySmall?.copyWith(
+                //         fontSize: 13,
+                //         color: AppColors.grey1,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //       textAlign: TextAlign.start,
+                //     ),
+                //   ],
+                // ),
               ],
             );
           },

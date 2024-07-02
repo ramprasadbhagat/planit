@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
 
@@ -30,6 +31,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           address: e.addressBook,
           cartItem: e.cartItem,
           date: e.date,
+          coupon: e.coupon,
         );
         failureOrSuccess.fold(
           (failure) => emit(
