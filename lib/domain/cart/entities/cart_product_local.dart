@@ -25,6 +25,7 @@ class CartProductLocal with _$CartProductLocal {
     @HiveField(5) required String attributeItem,
     @HiveField(6) required String attributeItemProductId,
     @HiveField(7) required String price,
+    @HiveField(8) required int quantity,
   }) = _CartProductLocal;
   factory CartProductLocal.empty() => CartProductLocal(
         name: '',
@@ -35,6 +36,7 @@ class CartProductLocal with _$CartProductLocal {
         attributeItem: '',
         attributeItemProductId: '',
         price: '',
+        quantity: 0,
       );
   Product get toProduct => Product(
         productId: ProductId(productId),

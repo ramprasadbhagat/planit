@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
+import 'package:planit/presentation/cart/widgets/cart_item.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -108,70 +109,11 @@ class CartItemLocal extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const AddToCart(),
+            AddToCart(
+              product: cartProduct.toProduct,
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class AddToCart extends StatefulWidget {
-  const AddToCart({super.key});
-
-  @override
-  State<AddToCart> createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
-  int countValue = 1;
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Container(
-      height: 25,
-      width: 70,
-      color: AppColors.black,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () => setState(() {
-              if (countValue > 1) {
-                countValue -= 1;
-              }
-            }),
-            child: Container(
-              width: 12,
-              color: AppColors.white,
-              child: const Icon(
-                Icons.remove,
-                size: 12,
-                color: AppColors.black,
-              ),
-            ),
-          ),
-          Text(
-            countValue.toString(),
-            style: textTheme.bodySmall?.copyWith(
-              color: AppColors.white,
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() => countValue += 1),
-            child: Container(
-              width: 12,
-              color: AppColors.white,
-              child: const Icon(
-                Icons.add,
-                size: 12,
-                color: AppColors.black,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

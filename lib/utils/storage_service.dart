@@ -64,7 +64,18 @@ class StorageService {
   }
 
   Future<void> addCartData(CartProductLocal cartProductLocal) async {
-    await _cartProductLocalBox.add(cartProductLocal);
+    final index = _cartProductLocalBox.values.toList().indexWhere(
+          (element) =>
+              element.productId == cartProductLocal.productId &&
+              element.attributeItemProductId ==
+                  cartProductLocal.attributeItemProductId,
+        );
+    if (index != -1) {
+      await _cartProductLocalBox.putAt(index, cartProductLocal);
+    } else {
+      // Item does not exist, add it
+      await _cartProductLocalBox.add(cartProductLocal);
+    }
   }
 
   Future<List<CartProductLocal>> getCartData() async {

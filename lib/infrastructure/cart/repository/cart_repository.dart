@@ -64,6 +64,25 @@ class CartRepository extends ICartRepository {
   }
 
   @override
+  Future<Either<ApiFailure, Unit>> updateCartQuantity({
+    required Product product,
+    required int quantity,
+    required String cartId,
+  }) async {
+    try {
+      final cartItems = await remoteDataSource.updateCartItem(
+        productId: product.productId.getValue(),
+        quantity: quantity,
+        cartId: cartId,
+      );
+
+      return Right(cartItems);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
   Future<Either<ApiFailure, Unit>> removeFromCart({
     required CartProduct cartProduct,
   }) async {
@@ -81,9 +100,11 @@ class CartRepository extends ICartRepository {
   @override
   Future<Either<ApiFailure, Unit>> addToCartLocal({
     required Product product,
+    required int quantity,
   }) async {
     try {
-      await storageService.addCartData(product.getCartProductLocal);
+      await storageService
+          .addCartData(product.getCartProductLocal(quantity: quantity));
 
       return const Right(unit);
     } catch (e) {

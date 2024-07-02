@@ -8,12 +8,14 @@ part 'cart_item.freezed.dart';
 class CartItem with _$CartItem {
   const CartItem._();
   factory CartItem({
+    required StringValue id,
     required IntegerValue totalPrice,
     required IntegerValue totalDiscount,
     required List<CartProduct> products,
   }) = _CartItem;
 
   factory CartItem.empty() => CartItem(
+        id: StringValue(''),
         totalPrice: IntegerValue(0),
         totalDiscount: IntegerValue(0),
         products: <CartProduct>[],

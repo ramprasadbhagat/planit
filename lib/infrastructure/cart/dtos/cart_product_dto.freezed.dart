@@ -32,6 +32,8 @@ mixin _$CartProductDto {
   String get productDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'attributeitem', defaultValue: '')
   String get attributeitem => throw _privateConstructorUsedError;
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
   String get itemPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
@@ -61,6 +63,8 @@ abstract class $CartProductDtoCopyWith<$Res> {
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
       @JsonKey(name: 'attributeitem', defaultValue: '') String attributeitem,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(
           name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
       String itemPrice,
@@ -90,6 +94,7 @@ class _$CartProductDtoCopyWithImpl<$Res, $Val extends CartProductDto>
     Object? productName = null,
     Object? productDescription = null,
     Object? attributeitem = null,
+    Object? attributeItemId = null,
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
@@ -119,6 +124,10 @@ class _$CartProductDtoCopyWithImpl<$Res, $Val extends CartProductDto>
       attributeitem: null == attributeitem
           ? _value.attributeitem
           : attributeitem // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       itemPrice: null == itemPrice
           ? _value.itemPrice
@@ -156,6 +165,8 @@ abstract class _$$CartProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
       @JsonKey(name: 'attributeitem', defaultValue: '') String attributeitem,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(
           name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
       String itemPrice,
@@ -183,6 +194,7 @@ class __$$CartProductDtoImplCopyWithImpl<$Res>
     Object? productName = null,
     Object? productDescription = null,
     Object? attributeitem = null,
+    Object? attributeItemId = null,
     Object? itemPrice = null,
     Object? quantity = null,
     Object? totalPrice = null,
@@ -212,6 +224,10 @@ class __$$CartProductDtoImplCopyWithImpl<$Res>
       attributeitem: null == attributeitem
           ? _value.attributeitem
           : attributeitem // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       itemPrice: null == itemPrice
           ? _value.itemPrice
@@ -245,6 +261,8 @@ class _$CartProductDtoImpl extends _CartProductDto {
       required this.productDescription,
       @JsonKey(name: 'attributeitem', defaultValue: '')
       required this.attributeitem,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required this.attributeItemId,
       @JsonKey(
           name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
       required this.itemPrice,
@@ -277,6 +295,9 @@ class _$CartProductDtoImpl extends _CartProductDto {
   @JsonKey(name: 'attributeitem', defaultValue: '')
   final String attributeitem;
   @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  final String attributeItemId;
+  @override
   @JsonKey(name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
   final String itemPrice;
   @override
@@ -291,7 +312,7 @@ class _$CartProductDtoImpl extends _CartProductDto {
 
   @override
   String toString() {
-    return 'CartProductDto(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice, discount: $discount)';
+    return 'CartProductDto(id: $id, productId: $productId, image: $image, productName: $productName, productDescription: $productDescription, attributeitem: $attributeitem, attributeItemId: $attributeItemId, itemPrice: $itemPrice, quantity: $quantity, totalPrice: $totalPrice, discount: $discount)';
   }
 
   @override
@@ -309,6 +330,8 @@ class _$CartProductDtoImpl extends _CartProductDto {
                 other.productDescription == productDescription) &&
             (identical(other.attributeitem, attributeitem) ||
                 other.attributeitem == attributeitem) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             (identical(other.itemPrice, itemPrice) ||
                 other.itemPrice == itemPrice) &&
             (identical(other.quantity, quantity) ||
@@ -329,6 +352,7 @@ class _$CartProductDtoImpl extends _CartProductDto {
       productName,
       productDescription,
       attributeitem,
+      attributeItemId,
       itemPrice,
       quantity,
       totalPrice,
@@ -361,6 +385,8 @@ abstract class _CartProductDto extends CartProductDto {
       required final String productDescription,
       @JsonKey(name: 'attributeitem', defaultValue: '')
       required final String attributeitem,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required final String attributeItemId,
       @JsonKey(
           name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
       required final String itemPrice,
@@ -393,6 +419,9 @@ abstract class _CartProductDto extends CartProductDto {
   @override
   @JsonKey(name: 'attributeitem', defaultValue: '')
   String get attributeitem;
+  @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId;
   @override
   @JsonKey(name: 'itemPrice', defaultValue: '0.00', readValue: stringReadValue)
   String get itemPrice;

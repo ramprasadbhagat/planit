@@ -1,10 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -134,32 +139,53 @@ class ProductCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 25,
-                      width: 75,
-                      child: OutlinedButton(
-                        onPressed: () => showModalBottomSheet<void>(
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (BuildContext context) => CommonBottomSheet(
-                            child: AddToCartBottomSheet(
-                              product: product,
-                            ),
-                          ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          side: const BorderSide(color: Colors.black),
-                          foregroundColor: AppColors.grey3,
-                          padding: EdgeInsets.zero,
-                        ),
-                        child: Text(
-                          'Add to cart',
-                          style: textTheme.bodySmall?.copyWith(fontSize: 9),
-                        ),
-                      ),
+                    AddToCartButton.fromProductCard(
+                      product: product,
+                      onPressed: () async {
+                        if (context.read<AuthBloc>().state.isUnAuthenticated) {
+                          context.read<CartBloc>().add(
+                                CartEvent.addToCartLocal(
+                                  product: product,
+                                  quantity: 1,
+                                ),
+                              );
+
+                          const snackBar = SnackBar(
+                            content: Text('Item added to cart'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          if (context
+                              .read<PincodeBloc>()
+                              .state
+                              .pincode
+                              .isEmpty) {
+                            await showDialog<void>(
+                              context: context,
+                              barrierDismissible:
+                                  false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return const NoPincodeErrorDialog();
+                              },
+                            );
+                          } else {
+                            context.read<CartBloc>().add(
+                                  CartEvent.addToCart(
+                                    product: product,
+                                    quantity: 1,
+                                  ),
+                                );
+
+                            const snackBar = SnackBar(
+                              content: Text('Item added to cart'),
+                            );
+
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -172,46 +198,46 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-class AddToCartButton extends StatelessWidget {
-  final Product product;
-  const AddToCartButton({
-    super.key,
-    required this.product,
-  });
+// class AddToCartButton extends StatelessWidget {
+//   final Product product;
+//   const AddToCartButton({
+//     super.key,
+//     required this.product,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+//   @override
+//   Widget build(BuildContext context) {
+//     final textTheme = Theme.of(context).textTheme;
 
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.03,
-      width: MediaQuery.sizeOf(context).width * 0.18,
-      child: OutlinedButton(
-        onPressed: () => showModalBottomSheet<void>(
-          context: context,
-          isScrollControlled: true,
-          builder: (BuildContext context) => CommonBottomSheet(
-            child: AddToCartBottomSheet(
-              product: product,
-            ),
-          ),
-        ),
-        style: OutlinedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          side: const BorderSide(color: Colors.black),
-          foregroundColor: AppColors.grey3,
-          padding: const EdgeInsets.symmetric(horizontal: 2),
-        ),
-        child: Text(
-          'Add to cart',
-          style: textTheme.bodySmall?.copyWith(fontSize: 9),
-        ),
-      ),
-    );
-  }
-}
+//     return SizedBox(
+//       height: MediaQuery.sizeOf(context).height * 0.03,
+//       width: MediaQuery.sizeOf(context).width * 0.18,
+//       child: OutlinedButton(
+//         onPressed: () => showModalBottomSheet<void>(
+//           context: context,
+//           isScrollControlled: true,
+//           builder: (BuildContext context) => CommonBottomSheet(
+//             child: AddToCartBottomSheet(
+//               product: product,
+//             ),
+//           ),
+//         ),
+//         style: OutlinedButton.styleFrom(
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(30.0),
+//           ),
+//           side: const BorderSide(color: Colors.black),
+//           foregroundColor: AppColors.grey3,
+//           padding: const EdgeInsets.symmetric(horizontal: 2),
+//         ),
+//         child: Text(
+//           'Add to cart',
+//           style: textTheme.bodySmall?.copyWith(fontSize: 9),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class AddToListButton extends StatelessWidget {
   final Product product;
@@ -223,7 +249,7 @@ class AddToListButton extends StatelessWidget {
     final wishlistBloc = context.read<WishlistBloc>();
     return SizedBox(
       height: 25,
-      width: 80,
+      width: 82,
       child: OutlinedButton(
         onPressed: () {
           wishlistBloc.add(

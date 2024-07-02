@@ -33,4 +33,24 @@ class CartState with _$CartState {
         (previousValue, element) =>
             previousValue + (double.tryParse(element.price) ?? 0.0).toInt(),
       );
+
+  int getProductQuantity(Product product) {
+    return (cartItem.products.firstWhereOrNull(
+          (element) {
+            return element.productId == product.productId;
+          },
+        )?.quantity) ??
+        0;
+  }
+
+  int getProductQuantityLocal(Product product) {
+    return (cartData.firstWhereOrNull(
+          (element) {
+            return (element.productId == product.productId.getValue()) &&
+                element.attributeItemProductId ==
+                    product.attributeItemProductId;
+          },
+        )?.quantity) ??
+        0;
+  }
 }

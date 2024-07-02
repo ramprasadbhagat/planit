@@ -1,10 +1,8 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
+import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
@@ -185,20 +183,5 @@ class _SearchProductPageState extends State<SearchProductPage> {
     searchController.clear();
     scrollController.removeListener(_scrollListener);
     super.dispose();
-  }
-}
-
-class Debouncer {
-  final int milliseconds;
-  VoidCallback? action;
-  Timer? _timer;
-
-  Debouncer({required this.milliseconds});
-
-  void run(VoidCallback action) {
-    if (null != _timer) {
-      _timer?.cancel();
-    }
-    _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 }

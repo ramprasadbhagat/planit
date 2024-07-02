@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CartItem {
+  StringValue get id => throw _privateConstructorUsedError;
   IntegerValue get totalPrice => throw _privateConstructorUsedError;
   IntegerValue get totalDiscount => throw _privateConstructorUsedError;
   List<CartProduct> get products => throw _privateConstructorUsedError;
@@ -31,7 +32,8 @@ abstract class $CartItemCopyWith<$Res> {
       _$CartItemCopyWithImpl<$Res, CartItem>;
   @useResult
   $Res call(
-      {IntegerValue totalPrice,
+      {StringValue id,
+      IntegerValue totalPrice,
       IntegerValue totalDiscount,
       List<CartProduct> products});
 }
@@ -49,11 +51,16 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -79,7 +86,8 @@ abstract class _$$CartItemImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {IntegerValue totalPrice,
+      {StringValue id,
+      IntegerValue totalPrice,
       IntegerValue totalDiscount,
       List<CartProduct> products});
 }
@@ -95,11 +103,16 @@ class __$$CartItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? totalPrice = null,
     Object? totalDiscount = null,
     Object? products = null,
   }) {
     return _then(_$CartItemImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -120,12 +133,15 @@ class __$$CartItemImplCopyWithImpl<$Res>
 
 class _$CartItemImpl extends _CartItem {
   _$CartItemImpl(
-      {required this.totalPrice,
+      {required this.id,
+      required this.totalPrice,
       required this.totalDiscount,
       required final List<CartProduct> products})
       : _products = products,
         super._();
 
+  @override
+  final StringValue id;
   @override
   final IntegerValue totalPrice;
   @override
@@ -140,7 +156,7 @@ class _$CartItemImpl extends _CartItem {
 
   @override
   String toString() {
-    return 'CartItem(totalPrice: $totalPrice, totalDiscount: $totalDiscount, products: $products)';
+    return 'CartItem(id: $id, totalPrice: $totalPrice, totalDiscount: $totalDiscount, products: $products)';
   }
 
   @override
@@ -148,6 +164,7 @@ class _$CartItemImpl extends _CartItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CartItemImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
             (identical(other.totalDiscount, totalDiscount) ||
@@ -156,7 +173,7 @@ class _$CartItemImpl extends _CartItem {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, totalPrice, totalDiscount,
+  int get hashCode => Object.hash(runtimeType, id, totalPrice, totalDiscount,
       const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
@@ -168,11 +185,14 @@ class _$CartItemImpl extends _CartItem {
 
 abstract class _CartItem extends CartItem {
   factory _CartItem(
-      {required final IntegerValue totalPrice,
+      {required final StringValue id,
+      required final IntegerValue totalPrice,
       required final IntegerValue totalDiscount,
       required final List<CartProduct> products}) = _$CartItemImpl;
   _CartItem._() : super._();
 
+  @override
+  StringValue get id;
   @override
   IntegerValue get totalPrice;
   @override

@@ -32,6 +32,8 @@ mixin _$CartProductLocal {
   String get attributeItemProductId => throw _privateConstructorUsedError;
   @HiveField(7)
   String get price => throw _privateConstructorUsedError;
+  @HiveField(8)
+  int get quantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartProductLocalCopyWith<CartProductLocal> get copyWith =>
@@ -52,7 +54,8 @@ abstract class $CartProductLocalCopyWith<$Res> {
       @HiveField(4) int startingPrice,
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
-      @HiveField(7) String price});
+      @HiveField(7) String price,
+      @HiveField(8) int quantity});
 }
 
 /// @nodoc
@@ -76,6 +79,7 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? price = null,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -110,6 +114,10 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -130,7 +138,8 @@ abstract class _$$CartProductLocalImplCopyWith<$Res>
       @HiveField(4) int startingPrice,
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
-      @HiveField(7) String price});
+      @HiveField(7) String price,
+      @HiveField(8) int quantity});
 }
 
 /// @nodoc
@@ -152,6 +161,7 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? price = null,
+    Object? quantity = null,
   }) {
     return _then(_$CartProductLocalImpl(
       productId: null == productId
@@ -186,6 +196,10 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -203,7 +217,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       @HiveField(4) required this.startingPrice,
       @HiveField(5) required this.attributeItem,
       @HiveField(6) required this.attributeItemProductId,
-      @HiveField(7) required this.price})
+      @HiveField(7) required this.price,
+      @HiveField(8) required this.quantity})
       : _productImages = productImages,
         super._();
 
@@ -237,10 +252,13 @@ class _$CartProductLocalImpl extends _CartProductLocal {
   @override
   @HiveField(7)
   final String price;
+  @override
+  @HiveField(8)
+  final int quantity;
 
   @override
   String toString() {
-    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price)';
+    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, quantity: $quantity)';
   }
 
   @override
@@ -261,7 +279,9 @@ class _$CartProductLocalImpl extends _CartProductLocal {
                 other.attributeItem == attributeItem) &&
             (identical(other.attributeItemProductId, attributeItemProductId) ||
                 other.attributeItemProductId == attributeItemProductId) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
@@ -274,7 +294,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       startingPrice,
       attributeItem,
       attributeItemProductId,
-      price);
+      price,
+      quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -293,7 +314,8 @@ abstract class _CartProductLocal extends CartProductLocal {
       @HiveField(4) required final int startingPrice,
       @HiveField(5) required final String attributeItem,
       @HiveField(6) required final String attributeItemProductId,
-      @HiveField(7) required final String price}) = _$CartProductLocalImpl;
+      @HiveField(7) required final String price,
+      @HiveField(8) required final int quantity}) = _$CartProductLocalImpl;
   _CartProductLocal._() : super._();
 
   @override
@@ -320,6 +342,9 @@ abstract class _CartProductLocal extends CartProductLocal {
   @override
   @HiveField(7)
   String get price;
+  @override
+  @HiveField(8)
+  int get quantity;
   @override
   @JsonKey(ignore: true)
   _$$CartProductLocalImplCopyWith<_$CartProductLocalImpl> get copyWith =>

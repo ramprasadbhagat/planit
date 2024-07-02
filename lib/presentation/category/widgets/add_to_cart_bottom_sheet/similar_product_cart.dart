@@ -7,6 +7,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
+import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -201,16 +202,31 @@ class SimilarProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.03,
-                  width: MediaQuery.sizeOf(context).width * 0.17,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      if (context.read<AuthBloc>().state ==
-                          const AuthState.unauthenticated()) {
+                AddToCartButton.fromProductCard(
+                  product: item.toProduct,
+                  onPressed: () {
+                    if (context.read<AuthBloc>().state ==
+                        const AuthState.unauthenticated()) {
+                      context.read<CartBloc>().add(
+                            CartEvent.addToCartLocal(
+                              product: item.toProduct,
+                              quantity: 1,
+                            ),
+                          );
+                      context.router.maybePop();
+                      const snackBar = SnackBar(
+                        content: Text('Item added to cart'),
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      if (context.read<PincodeBloc>().state.pincode.isEmpty) {
+                        showErrorAlert();
+                      } else {
                         context.read<CartBloc>().add(
-                              CartEvent.addToCartLocal(
+                              CartEvent.addToCart(
                                 product: item.toProduct,
+                                quantity: 1,
                               ),
                             );
                         context.router.maybePop();
@@ -219,38 +235,9 @@ class SimilarProductCard extends StatelessWidget {
                         );
 
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      } else {
-                        if (context.read<PincodeBloc>().state.pincode.isEmpty) {
-                          showErrorAlert();
-                        } else {
-                          context.read<CartBloc>().add(
-                                CartEvent.addToCart(
-                                  product: item.toProduct,
-                                  quantity: 1,
-                                ),
-                              );
-                          context.router.maybePop();
-                          const snackBar = SnackBar(
-                            content: Text('Item added to cart'),
-                          );
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
                       }
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      side: const BorderSide(color: Colors.black),
-                      foregroundColor: AppColors.grey3,
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: Text(
-                      'Add to cart',
-                      style: textTheme.bodySmall?.copyWith(fontSize: 8),
-                    ),
-                  ),
+                    }
+                  },
                 ),
               ],
             ),
