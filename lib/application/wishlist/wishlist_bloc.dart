@@ -73,21 +73,49 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
                 apiFailureOrSuccessOption: optionOf(failureOrSuccess),
               ),
             ),
-            (success) => add(const _Fetch()),
+            (success) {
+              final item = state.selectedItemList.firstWhereOrNull(
+                (element) {
+                  return (element.uid == e.id);
+                },
+              );
+
+              final list = <WishlistProduct>[...state.selectedItemList];
+              list.remove(item);
+              emit(
+                state.copyWith(
+                  selectedItemList: list,
+                ),
+              );
+              add(const _Fetch());
+            },
           );
         } else if (int.tryParse(e.quantity)! == 0) {
           final failureOrSuccess = await repository.removeFromWishlist(
             productId: e.id,
           );
           failureOrSuccess.fold(
-            (failure) => emit(
+              (failure) => emit(
+                    state.copyWith(
+                      isFetching: false,
+                      apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                    ),
+                  ), (success) {
+            final item = state.selectedItemList.firstWhereOrNull(
+              (element) {
+                return (element.uid == e.id);
+              },
+            );
+
+            final list = <WishlistProduct>[...state.selectedItemList];
+            list.remove(item);
+            emit(
               state.copyWith(
-                isFetching: false,
-                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                selectedItemList: list,
               ),
-            ),
-            (success) => add(const _Fetch()),
-          );
+            );
+            add(const _Fetch());
+          });
         }
       },
       addToWishlist: (e) async {
@@ -195,14 +223,27 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           productId: e.productId,
         );
         failureOrSuccess.fold(
-          (failure) => emit(
+            (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ), (unit) {
+          final item = state.selectedItemList.firstWhereOrNull(
+            (element) {
+              return (element.uid == e.productId);
+            },
+          );
+
+          final list = <WishlistProduct>[...state.selectedItemList];
+          list.remove(item);
+          emit(
             state.copyWith(
-              isFetching: false,
-              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              selectedItemList: list,
             ),
-          ),
-          (unit) => add(const _Fetch()),
-        );
+          );
+          add(const _Fetch());
+        });
       },
     );
   }
