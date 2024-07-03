@@ -51,7 +51,7 @@ class _QuickPicksPageState extends State<QuickPicksPage> {
                       if (state.isFetching) {
                         return const ShimmerItem();
                       } else if (state.quicksPickProducts.isEmpty) {
-                        return const NoData();
+                        return const Expanded(child: NoData());
                       }
                       return Expanded(
                         child: Column(

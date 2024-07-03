@@ -107,7 +107,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       if (state.isFetching) {
                         return const ShimmerItem();
                       } else if (state.isProductListEmpty) {
-                        return const NoData();
+                        return const Expanded(child: NoData());
                       }
                       return Expanded(
                         child: Column(
