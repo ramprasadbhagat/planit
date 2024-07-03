@@ -264,11 +264,6 @@ class AddToListButton extends StatelessWidget {
               product: product,
             ),
           );
-          const snackBar = SnackBar(
-            content: Text('Item added to wishlist'),
-          );
-
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -299,79 +294,6 @@ class AddToListButton extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class AddToListTextField extends StatefulWidget {
-  final Product product;
-  const AddToListTextField({super.key, required this.product});
-
-  @override
-  State<AddToListTextField> createState() => _AddToListTextFieldState();
-}
-
-class _AddToListTextFieldState extends State<AddToListTextField> {
-  int countValue = 1;
-  @override
-  Widget build(BuildContext context) {
-    final wishlistBloc = context.read<WishlistBloc>();
-    return Container(
-      height: 25,
-      width: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          color: AppColors.black,
-        ),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () {
-              wishlistBloc.add(
-                WishlistEvent.addToWishlist(
-                  product: widget.product,
-                ),
-              );
-              const snackBar = SnackBar(
-                content: Text('Item added to wishlist'),
-              );
-
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
-            child: const Icon(
-              Icons.favorite_rounded,
-              size: 12,
-              color: Color.fromRGBO(167, 22, 0, 1),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() {
-              if (countValue > 1) {
-                countValue -= 1;
-              }
-            }),
-            child: const Icon(
-              Icons.remove,
-              size: 12,
-              color: AppColors.black,
-            ),
-          ),
-          Text(countValue.toString()),
-          GestureDetector(
-            onTap: () => setState(() => countValue += 1),
-            child: const Icon(
-              Icons.add,
-              size: 12,
-              color: AppColors.black,
-            ),
-          ),
-        ],
       ),
     );
   }

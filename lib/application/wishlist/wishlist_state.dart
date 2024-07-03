@@ -7,6 +7,7 @@ class WishlistState with _$WishlistState {
     required List<Wishlist> wishlist,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required bool showSnackBar,
     required List<WishlistProduct> selectedItemList,
   }) = _WishlistState;
 
@@ -15,6 +16,7 @@ class WishlistState with _$WishlistState {
         selectedItemList: [],
         apiFailureOrSuccessOption: none(),
         isFetching: false,
+        showSnackBar: false,
       );
 
   bool get isWishlistEmpty => wishlist.isEmpty;

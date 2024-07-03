@@ -104,7 +104,7 @@ class ShoppingListItemCard extends StatelessWidget {
                               ?.copyWith(fontWeight: FontWeight.w500),
                         ),
                         TextSpan(
-                          text: '₹ ${item.startingPrice}',
+                          text: '₹ ${item.price}',
                           style: textTheme.bodySmall
                               ?.copyWith(fontWeight: FontWeight.w500),
                         ),

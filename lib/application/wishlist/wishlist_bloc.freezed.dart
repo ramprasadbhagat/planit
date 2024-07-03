@@ -2294,6 +2294,7 @@ mixin _$WishlistState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get showSnackBar => throw _privateConstructorUsedError;
   List<WishlistProduct> get selectedItemList =>
       throw _privateConstructorUsedError;
 
@@ -2312,6 +2313,7 @@ abstract class $WishlistStateCopyWith<$Res> {
       {List<Wishlist> wishlist,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
+      bool showSnackBar,
       List<WishlistProduct> selectedItemList});
 }
 
@@ -2331,6 +2333,7 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
     Object? wishlist = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? showSnackBar = null,
     Object? selectedItemList = null,
   }) {
     return _then(_value.copyWith(
@@ -2345,6 +2348,10 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSnackBar: null == showSnackBar
+          ? _value.showSnackBar
+          : showSnackBar // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedItemList: null == selectedItemList
           ? _value.selectedItemList
@@ -2366,6 +2373,7 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
       {List<Wishlist> wishlist,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
+      bool showSnackBar,
       List<WishlistProduct> selectedItemList});
 }
 
@@ -2383,6 +2391,7 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
     Object? wishlist = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? showSnackBar = null,
     Object? selectedItemList = null,
   }) {
     return _then(_$WishlistStateImpl(
@@ -2397,6 +2406,10 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSnackBar: null == showSnackBar
+          ? _value.showSnackBar
+          : showSnackBar // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedItemList: null == selectedItemList
           ? _value._selectedItemList
@@ -2413,6 +2426,7 @@ class _$WishlistStateImpl extends _WishlistState {
       {required final List<Wishlist> wishlist,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
+      required this.showSnackBar,
       required final List<WishlistProduct> selectedItemList})
       : _wishlist = wishlist,
         _selectedItemList = selectedItemList,
@@ -2430,6 +2444,8 @@ class _$WishlistStateImpl extends _WishlistState {
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool showSnackBar;
   final List<WishlistProduct> _selectedItemList;
   @override
   List<WishlistProduct> get selectedItemList {
@@ -2441,7 +2457,7 @@ class _$WishlistStateImpl extends _WishlistState {
 
   @override
   String toString() {
-    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedItemList: $selectedItemList)';
+    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, showSnackBar: $showSnackBar, selectedItemList: $selectedItemList)';
   }
 
   @override
@@ -2455,6 +2471,8 @@ class _$WishlistStateImpl extends _WishlistState {
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            (identical(other.showSnackBar, showSnackBar) ||
+                other.showSnackBar == showSnackBar) &&
             const DeepCollectionEquality()
                 .equals(other._selectedItemList, _selectedItemList));
   }
@@ -2465,6 +2483,7 @@ class _$WishlistStateImpl extends _WishlistState {
       const DeepCollectionEquality().hash(_wishlist),
       apiFailureOrSuccessOption,
       isFetching,
+      showSnackBar,
       const DeepCollectionEquality().hash(_selectedItemList));
 
   @JsonKey(ignore: true)
@@ -2480,6 +2499,7 @@ abstract class _WishlistState extends WishlistState {
           required final Option<Either<ApiFailure, dynamic>>
               apiFailureOrSuccessOption,
           required final bool isFetching,
+          required final bool showSnackBar,
           required final List<WishlistProduct> selectedItemList}) =
       _$WishlistStateImpl;
   const _WishlistState._() : super._();
@@ -2490,6 +2510,8 @@ abstract class _WishlistState extends WishlistState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get showSnackBar;
   @override
   List<WishlistProduct> get selectedItemList;
   @override

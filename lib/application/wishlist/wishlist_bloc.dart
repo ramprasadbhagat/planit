@@ -91,7 +91,13 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         }
       },
       addToWishlist: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+            showSnackBar: false,
+          ),
+        );
         final failureOrSuccess = await repository.addToWishlist(
           productId: e.product.productId.getValue(),
           attributeItemId: e.product.attributeItemProductId,
@@ -105,11 +111,19 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (unit) => add(const _Fetch()),
+          (unit) {
+            emit(state.copyWith(showSnackBar: true));
+            add(const _Fetch());
+          },
         );
       },
       addToCart: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
         final failureOrSuccess = await repository.addToCart(
           productId: e.productId,
           price: e.price,

@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -202,20 +204,35 @@ class CartBanner extends StatelessWidget {
                             : const SizedBox.shrink(),
                         const Spacer(),
                         TextButton(
-                          onPressed: () {
-                            if (itemCount == 0) {
-                              context.router.navigate(
-                                const CartRoute(),
+                          onPressed: () async {
+                            if (context
+                                .read<PincodeBloc>()
+                                .state
+                                .pincode
+                                .isEmpty) {
+                              await showDialog<void>(
+                                context: context,
+                                barrierDismissible:
+                                    false, // user must tap button!
+                                builder: (BuildContext context) {
+                                  return const NoPincodeErrorDialog();
+                                },
                               );
                             } else {
-                              context
-                                  .read<WishlistBloc>()
-                                  .add(const WishlistEvent.addAllItemToCart());
-                              const snackBar = SnackBar(
-                                content: Text('Item Added to Cart'),
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
+                              if (itemCount == 0) {
+                                await context.router.navigate(
+                                  const CartRoute(),
+                                );
+                              } else {
+                                context.read<WishlistBloc>().add(
+                                      const WishlistEvent.addAllItemToCart(),
+                                    );
+                                const snackBar = SnackBar(
+                                  content: Text('Item Added to Cart'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
                             }
                           },
                           child: Text(

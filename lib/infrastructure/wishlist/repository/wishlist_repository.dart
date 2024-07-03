@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/wishlist/entities/wish_list.dart';
 import 'package:planit/domain/wishlist/repository/i_wishlist_repository.dart';
@@ -55,6 +56,9 @@ class WishlistRepository extends IWishlistRepository {
 
       return Right(wishlist);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }
@@ -91,6 +95,9 @@ class WishlistRepository extends IWishlistRepository {
 
       return Right(wishlist);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }
@@ -108,6 +115,9 @@ class WishlistRepository extends IWishlistRepository {
 
       return Right(wishlist);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }

@@ -12,6 +12,7 @@ import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -59,17 +60,53 @@ class _MainTabbarState extends State<MainTabbar> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return BlocListener<CategoryBloc, CategoryState>(
-      listenWhen: (previous, current) =>
-          previous.selectedCategory != current.selectedCategory,
-      listener: (context, state) {
-        context.read<SubCategoryBloc>().add(
-              SubCategoryEvent.select(
-                state.selectedCategory.subCategory.firstOrNull ??
-                    SubCategory.empty(),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<WishlistBloc, WishlistState>(
+          listener: (context, state) {
+            state.apiFailureOrSuccessOption.fold(
+              () {},
+              (either) => either.fold(
+                (failure) {
+                  final snackBar = SnackBar(
+                    backgroundColor: Colors.black,
+                    content: Text(failure.failureMessage),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                (_) {},
               ),
             );
-      },
+          },
+          listenWhen: (previous, current) =>
+              previous.apiFailureOrSuccessOption !=
+              current.apiFailureOrSuccessOption,
+        ),
+        BlocListener<WishlistBloc, WishlistState>(
+          listener: (context, state) {
+            if (state.showSnackBar) {
+              const snackBar = SnackBar(
+                content: Text('Item Added to WishList'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+          },
+          listenWhen: (previous, current) =>
+              previous.getAllWishList.length < current.getAllWishList.length,
+        ),
+        BlocListener<CategoryBloc, CategoryState>(
+          listenWhen: (previous, current) =>
+              previous.selectedCategory != current.selectedCategory,
+          listener: (context, state) {
+            context.read<SubCategoryBloc>().add(
+                  SubCategoryEvent.select(
+                    state.selectedCategory.subCategory.firstOrNull ??
+                        SubCategory.empty(),
+                  ),
+                );
+          },
+        ),
+      ],
       child: AutoTabsScaffold(
         routes: _getTabs(context).map((item) => item.route).toList(),
         bottomNavigationBuilder: (_, tabsRouter) {
