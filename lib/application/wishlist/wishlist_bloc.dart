@@ -108,6 +108,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           (failure) => emit(
             state.copyWith(
               isFetching: false,
+              showSnackBar: true,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
