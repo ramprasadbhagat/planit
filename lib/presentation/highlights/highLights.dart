@@ -51,7 +51,7 @@ class _HighLightsPageState extends State<HighLightsPage> {
                       if (state.isFetching) {
                         return const ShimmerItem();
                       } else if (state.highlights.isEmpty) {
-                        return const NoData();
+                        return const Expanded(child: NoData());
                       }
                       return Expanded(
                         child: Column(

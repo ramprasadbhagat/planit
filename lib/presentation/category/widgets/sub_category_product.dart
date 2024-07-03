@@ -14,7 +14,7 @@ class SubCategoryProduct extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state.products.isEmpty) {
-          return const NoData();
+          return const Expanded(child: NoData());
         }
         return Expanded(
           child: GridView.builder(
