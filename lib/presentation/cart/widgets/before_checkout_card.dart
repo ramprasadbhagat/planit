@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
@@ -105,14 +106,22 @@ class BeforeCheckOutCard extends StatelessWidget {
                     width: 75,
                     child: OutlinedButton(
                       onPressed: () {
-                        context.read<WishlistBloc>().add(
-                              WishlistEvent.addToCart(
-                                price: item.price.toString(),
-                                productId: item.id,
-                                quantity: item.quantity.toString(),
-                                attributeItemId: item.attributeItemId,
-                              ),
-                            );
+                        if (!context.read<AuthBloc>().state.isUnAuthenticated) {
+                          context.read<WishlistBloc>().add(
+                                WishlistEvent.addToCart(
+                                  price: item.price.toString(),
+                                  productId: item.id,
+                                  quantity: item.quantity.toString(),
+                                  attributeItemId: item.attributeItemId,
+                                ),
+                              );
+                        } else {
+                          const snackBar = SnackBar(
+                            content: Text(
+                                'Please Login to add items to shopping list.'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
                       },
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(

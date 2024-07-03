@@ -64,19 +64,21 @@ class _MainTabbarState extends State<MainTabbar> {
       listeners: [
         BlocListener<WishlistBloc, WishlistState>(
           listener: (context, state) {
-            state.apiFailureOrSuccessOption.fold(
-              () {},
-              (either) => either.fold(
-                (failure) {
-                  final snackBar = SnackBar(
-                    backgroundColor: Colors.black,
-                    content: Text(failure.failureMessage),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                (_) {},
-              ),
-            );
+            if (state.showSnackBar) {
+              state.apiFailureOrSuccessOption.fold(
+                () {},
+                (either) => either.fold(
+                  (failure) {
+                    final snackBar = SnackBar(
+                      backgroundColor: Colors.black,
+                      content: Text(failure.failureMessage),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  (_) {},
+                ),
+              );
+            }
           },
           listenWhen: (previous, current) =>
               previous.apiFailureOrSuccessOption !=

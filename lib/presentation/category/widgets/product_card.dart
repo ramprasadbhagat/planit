@@ -259,11 +259,18 @@ class AddToListButton extends StatelessWidget {
       width: 82,
       child: OutlinedButton(
         onPressed: () {
-          wishlistBloc.add(
-            WishlistEvent.addToWishlist(
-              product: product,
-            ),
-          );
+          if (!context.read<AuthBloc>().state.isUnAuthenticated) {
+            wishlistBloc.add(
+              WishlistEvent.addToWishlist(
+                product: product,
+              ),
+            );
+          } else {
+            const snackBar = SnackBar(
+              content: Text('Please Login to add items to shopping list'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
         },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
