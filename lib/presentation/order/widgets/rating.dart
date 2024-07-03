@@ -28,7 +28,7 @@ class _StarRatingState extends State<StarRating> {
           color: Colors.yellow,
         ),
         onRatingUpdate: (rating) {
-          print(rating);
+          // print(rating);
         },
       ),
     );
@@ -71,7 +71,7 @@ class _StarRatingShowState extends State<StarRatingShow> {
         ),
       ),
       onRatingUpdate: (rating) {
-        print(rating);
+        // print(rating);
       },
     );
   }

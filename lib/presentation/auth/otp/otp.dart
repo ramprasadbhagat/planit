@@ -6,7 +6,6 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 @RoutePage()

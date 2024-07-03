@@ -1,3 +1,5 @@
+// ignore_for_file: type_literal_in_constant_pattern
+
 import 'dart:async';
 import 'dart:io';
 import 'package:planit/domain/core/error/api_failures.dart';

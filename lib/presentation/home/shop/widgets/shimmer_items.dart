@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/presentation/theme/colors.dart';

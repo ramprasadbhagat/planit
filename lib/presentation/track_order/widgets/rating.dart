@@ -35,7 +35,7 @@ class _StarRatingState extends State<StarRating> {
               ratingValue = rating;
 
               setState(() {});
-              print(rating);
+              // print(rating);
             },
           ),
           if (ratingValue > 0) ...[

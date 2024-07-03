@@ -59,7 +59,6 @@ class _MainTabbarState extends State<MainTabbar> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return MultiBlocListener(
       listeners: [
         BlocListener<WishlistBloc, WishlistState>(
