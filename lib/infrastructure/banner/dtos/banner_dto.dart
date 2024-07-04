@@ -1,4 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/banner/entities/banner.dart';
 import 'package:intl/intl.dart';
