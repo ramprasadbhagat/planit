@@ -149,6 +149,7 @@ class _DealCountDownState extends State<DealCountDown> {
   String _formatDuration(Duration duration) {
     final diff = widget.endDate.difference(DateTime.now());
     int twoDigits(int n) => int.parse(n.toString().padLeft(2, '0'));
+    final days = diff.inDays;
     final hours = twoDigits(diff.inHours.remainder(24));
     final minutes = twoDigits(diff.inMinutes.remainder(60));
     final seconds = twoDigits(diff.inSeconds.remainder(60));
@@ -156,7 +157,7 @@ class _DealCountDownState extends State<DealCountDown> {
     if (hours <= 0 && minutes <= 00 && seconds <= 00) {
       return '';
     }
-    return 'Deal Ends in ${hours}h : ${minutes}m';
+    return 'Deal Ends in ${days > 0 ? '${days}d : ' : ''}${hours}h : ${minutes}m';
   }
 
   @override
