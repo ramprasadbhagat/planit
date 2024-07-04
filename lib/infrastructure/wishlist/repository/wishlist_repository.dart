@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/wishlist/entities/wish_list.dart';
 import 'package:planit/domain/wishlist/repository/i_wishlist_repository.dart';
@@ -41,13 +42,23 @@ class WishlistRepository extends IWishlistRepository {
   @override
   Future<Either<ApiFailure, Unit>> addToWishlist({
     required String productId,
+    required String attributeItemId,
+    required String quantity,
+    required String price,
   }) async {
     try {
-      final wishlist =
-          await remoteDataSource.addToWishlist(productId: productId);
+      final wishlist = await remoteDataSource.addToWishlist(
+        productId: productId,
+        attributeItemId: attributeItemId,
+        quantity: quantity,
+        price: price,
+      );
 
       return Right(wishlist);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }
@@ -72,18 +83,41 @@ class WishlistRepository extends IWishlistRepository {
     required String productId,
     required String quantity,
     required String price,
-    required String attributeItemProductID,
+    required String attributeItemId,
   }) async {
     try {
       final wishlist = await remoteDataSource.addToCart(
         productId: productId,
         price: price,
         quantity: quantity,
-        attributeItemProductID: attributeItemProductID,
+        attributeItemId: attributeItemId,
       );
 
       return Right(wishlist);
     } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> updateProductQuantity({
+    required String productId,
+    required String quantity,
+  }) async {
+    try {
+      final wishlist = await remoteDataSource.updateProductQuantity(
+        productId: productId,
+        quantity: quantity,
+      );
+
+      return Right(wishlist);
+    } catch (e) {
+      if (e is OtherException) {
+        return const Left(ApiFailure.other('Something Went Wrong'));
+      }
       return Left(FailureHandler.handleFailure(e));
     }
   }

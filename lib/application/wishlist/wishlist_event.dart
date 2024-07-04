@@ -5,7 +5,7 @@ class WishlistEvent with _$WishlistEvent {
   const factory WishlistEvent.initialized() = _Initialized;
   const factory WishlistEvent.fetch() = _Fetch;
   const factory WishlistEvent.addToWishlist({
-    required String productId,
+    required Product product,
   }) = _AddToWishlist;
   const factory WishlistEvent.removeFromWishlist({
     required String productId,
@@ -24,6 +24,10 @@ class WishlistEvent with _$WishlistEvent {
     required String productId,
     required String quantity,
     required String price,
-    required String attributeItemProductID,
+    required String attributeItemId,
   }) = _AddToCart;
+  const factory WishlistEvent.updateProductQuantity({
+    required String id,
+    required String quantity,
+  }) = _UpdateQuantity;
 }

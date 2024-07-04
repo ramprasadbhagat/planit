@@ -10,6 +10,7 @@ import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
+import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -71,11 +72,17 @@ class ProductCard extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    product.price.quantity > 1
-                        ? AddToListTextField(product: product)
-                        : AddToListButton(
-                            product: product,
-                          ),
+                    BlocBuilder<WishlistBloc, WishlistState>(
+                      builder: (context, state) {
+                        final item = state.getwishlistProduct(product);
+                        if (item == null) {
+                          return AddToListButton(product: product);
+                        }
+                        return ItemCountWidget(
+                          item: item,
+                        );
+                      },
+                    ),
                   ],
                 ),
                 Row(
@@ -252,16 +259,18 @@ class AddToListButton extends StatelessWidget {
       width: 82,
       child: OutlinedButton(
         onPressed: () {
-          wishlistBloc.add(
-            WishlistEvent.addToWishlist(
-              productId: product.productId.getValue(),
-            ),
-          );
-          const snackBar = SnackBar(
-            content: Text('Item added to wishlist'),
-          );
-
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          if (!context.read<AuthBloc>().state.isUnAuthenticated) {
+            wishlistBloc.add(
+              WishlistEvent.addToWishlist(
+                product: product,
+              ),
+            );
+          } else {
+            const snackBar = SnackBar(
+              content: Text('Please Login to add items to shopping list'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
         },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -292,79 +301,6 @@ class AddToListButton extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class AddToListTextField extends StatefulWidget {
-  final Product product;
-  const AddToListTextField({super.key, required this.product});
-
-  @override
-  State<AddToListTextField> createState() => _AddToListTextFieldState();
-}
-
-class _AddToListTextFieldState extends State<AddToListTextField> {
-  int countValue = 1;
-  @override
-  Widget build(BuildContext context) {
-    final wishlistBloc = context.read<WishlistBloc>();
-    return Container(
-      height: 25,
-      width: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          color: AppColors.black,
-        ),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () {
-              wishlistBloc.add(
-                WishlistEvent.addToWishlist(
-                  productId: widget.product.productId.getValue(),
-                ),
-              );
-              const snackBar = SnackBar(
-                content: Text('Item added to wishlist'),
-              );
-
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
-            child: const Icon(
-              Icons.favorite_rounded,
-              size: 12,
-              color: Color.fromRGBO(167, 22, 0, 1),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() {
-              if (countValue > 1) {
-                countValue -= 1;
-              }
-            }),
-            child: const Icon(
-              Icons.remove,
-              size: 12,
-              color: AppColors.black,
-            ),
-          ),
-          Text(countValue.toString()),
-          GestureDetector(
-            onTap: () => setState(() => countValue += 1),
-            child: const Icon(
-              Icons.add,
-              size: 12,
-              color: AppColors.black,
-            ),
-          ),
-        ],
       ),
     );
   }

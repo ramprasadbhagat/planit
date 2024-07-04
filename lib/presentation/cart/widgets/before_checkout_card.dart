@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
+import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -32,7 +34,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                     PngImage.placeholder,
                     height: 80,
                   ),
-                  AddToListTextField(
+                  ItemCountWidget(
                     item: item,
                   ),
                 ],
@@ -104,15 +106,22 @@ class BeforeCheckOutCard extends StatelessWidget {
                     width: 75,
                     child: OutlinedButton(
                       onPressed: () {
-                        context.read<WishlistBloc>().add(
-                              WishlistEvent.addToCart(
-                                price: item.skuPrice,
-                                productId: item.id,
-                                quantity: '1',
-                                attributeItemProductID:
-                                    item.attributeItemProductID,
-                              ),
-                            );
+                        if (!context.read<AuthBloc>().state.isUnAuthenticated) {
+                          context.read<WishlistBloc>().add(
+                                WishlistEvent.addToCart(
+                                  price: item.price.toString(),
+                                  productId: item.id,
+                                  quantity: item.quantity.toString(),
+                                  attributeItemId: item.attributeItemId,
+                                ),
+                              );
+                        } else {
+                          const snackBar = SnackBar(
+                            content: Text(
+                                'Please Login to add items to shopping list.'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
                       },
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -213,11 +222,11 @@ class _AddToListTextFieldState extends State<AddToListTextField> {
         children: [
           GestureDetector(
             onTap: () {
-              context.read<WishlistBloc>().add(
-                    WishlistEvent.removeFromWishlist(
-                      productId: widget.item.id,
-                    ),
-                  );
+              // context.read<WishlistBloc>().add(
+              //       WishlistEvent.removeFromWishlist(
+              //         productId: widget.item.id,
+              //       ),
+              //     );
             },
             child: const Icon(
               Icons.favorite_rounded,

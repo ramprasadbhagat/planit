@@ -142,7 +142,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           BlocBuilder<WishlistBloc, WishlistState>(
             builder: (context, state) {
               return CartBanner(
-                itemCount: state.selectedItemList.length,
+                itemCount: state.productCount,
                 shoppingListValue: state.totalSelectedItemPrice,
               );
             },

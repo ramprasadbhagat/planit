@@ -11,8 +11,9 @@ _$WishlistDtoImpl _$$WishlistDtoImplFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String? ?? '',
       userId: json['user_id'] as String? ?? '',
       productId: json['product_id'] as String? ?? '',
-      attributeItemProductID: json['attributeItemProductID'] as String? ?? '',
       attributeItemId: json['attributeItemId'] as String? ?? '',
+      quantity: json['quantity'] as String? ?? '',
+      price: (intReadValue(json, 'price') as num?)?.toInt() ?? 0,
       product: (json['product'] as List<dynamic>?)
               ?.map(
                   (e) => WishlistProductDto.fromJson(e as Map<String, dynamic>))
@@ -25,7 +26,8 @@ Map<String, dynamic> _$$WishlistDtoImplToJson(_$WishlistDtoImpl instance) =>
       '_id': instance.id,
       'user_id': instance.userId,
       'product_id': instance.productId,
-      'attributeItemProductID': instance.attributeItemProductID,
       'attributeItemId': instance.attributeItemId,
+      'quantity': instance.quantity,
+      'price': instance.price,
       'product': instance.product,
     };

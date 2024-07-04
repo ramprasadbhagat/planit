@@ -12,10 +12,11 @@ class WishlistDto with _$WishlistDto {
     @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'user_id', defaultValue: '') required String userId,
     @JsonKey(name: 'product_id', defaultValue: '') required String productId,
-    @JsonKey(name: 'attributeItemProductID', defaultValue: '')
-    required String attributeItemProductID,
     @JsonKey(name: 'attributeItemId', defaultValue: '')
     required String attributeItemId,
+    @JsonKey(name: 'quantity', defaultValue: '') required String quantity,
+    @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
+    required int price,
     @JsonKey(name: 'product', defaultValue: [])
     required List<WishlistProductDto> product,
   }) = _WishlistDto;
@@ -27,13 +28,22 @@ class WishlistDto with _$WishlistDto {
         id: id,
         userId: userId,
         productId: productId,
-        attributeItemProductID: attributeItemProductID,
         attributeItemId: attributeItemId,
         product: product
             .map(
-              (e) => e.toDomain
-                  .copyWith(attributeItemProductID: attributeItemProductID),
+              (e) => e.toDomain.copyWith(
+                quantity: int.tryParse(quantity) ?? 1,
+                attributeItemId: attributeItemId,
+                uid: id,
+                price: price,
+              ),
             )
             .toList(),
       );
+}
+
+int intReadValue(Map json, String key) {
+  if (json[key] is int) return json[key];
+  if (json[key] is String) return (double.tryParse(json[key]) ?? 0.0).toInt();
+  return 0;
 }

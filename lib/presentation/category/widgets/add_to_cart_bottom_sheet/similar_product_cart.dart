@@ -261,7 +261,8 @@ class AddToListButton extends StatelessWidget {
       width: 75,
       child: OutlinedButton(
         onPressed: () {
-          wishlistBloc.add(WishlistEvent.addToWishlist(productId: item.id));
+          wishlistBloc
+              .add(WishlistEvent.addToWishlist(product: item.toProduct));
           context.router.maybePop();
           const snackBar = SnackBar(
             content: Text('Item added to wishlist'),

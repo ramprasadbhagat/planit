@@ -16,7 +16,7 @@ class WishlistRemoteDataSource {
   });
 
   Future<List<Wishlist>> getWishlist() async {
-    final userId = await storageService.getUserId();
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'GET',
       url: 'favourites/product/$userId',
@@ -29,14 +29,36 @@ class WishlistRemoteDataSource {
 
   Future<Unit> addToWishlist({
     required String productId,
+    required String attributeItemId,
+    required String quantity,
+    required String price,
   }) async {
-    final userId = await storageService.getUserId();
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'POST',
       url: 'favourites',
       data: {
         'user_id': userId,
         'product_id': productId,
+        'attributeItemId': attributeItemId,
+        'quantity': quantity,
+        'price': price,
+      },
+    );
+    _exceptionChecker(res: res);
+    return unit;
+  }
+
+  Future<Unit> updateProductQuantity({
+    required String productId,
+    required String quantity,
+  }) async {
+    final res = await httpService.request(
+      method: 'PATCH',
+      url: 'favourites',
+      data: {
+        'id': productId,
+        'quantity': quantity,
       },
     );
     _exceptionChecker(res: res);
@@ -47,18 +69,18 @@ class WishlistRemoteDataSource {
     required String productId,
     required String quantity,
     required String price,
-    required String attributeItemProductID,
+    required String attributeItemId,
   }) async {
-    final userId = await storageService.getUserId();
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'POST',
       url: 'favourites/addItemtoCart',
       data: {
         'user_id': userId,
         'product_id': productId,
+        'attributeItemId': attributeItemId,
         'quantity': quantity,
         'price': price,
-        'attributeItemProductID' : attributeItemProductID,
       },
     );
     _exceptionChecker(res: res);

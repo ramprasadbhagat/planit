@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/wishlist/entities/wish_list.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/domain/wishlist/repository/i_wishlist_repository.dart';
@@ -49,36 +51,113 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           add(
             _AddToCart(
               productId: e.id,
-              price: e.startingPrice.toString(),
-              quantity: '1',
-              attributeItemProductID: e.attributeItemProductID,
+              price: e.price.toString(),
+              quantity: e.quantity.toString(),
+              attributeItemId: e.attributeItemId,
             ),
           );
         }
         emit(state.copyWith(selectedItemList: []));
       },
-      addToWishlist: (e) async {
+      updateProductQuantity: (e) async {
         emit(state.copyWith(isFetching: true));
+        if (int.tryParse(e.quantity)! > 0) {
+          final failureOrSuccess = await repository.updateProductQuantity(
+            productId: e.id,
+            quantity: e.quantity,
+          );
+          failureOrSuccess.fold(
+            (failure) => emit(
+              state.copyWith(
+                isFetching: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              ),
+            ),
+            (success) {
+              final item = state.selectedItemList.firstWhereOrNull(
+                (element) {
+                  return (element.uid == e.id);
+                },
+              );
+
+              final list = <WishlistProduct>[...state.selectedItemList];
+              list.remove(item);
+              emit(
+                state.copyWith(
+                  selectedItemList: list,
+                ),
+              );
+              add(const _Fetch());
+            },
+          );
+        } else if (int.tryParse(e.quantity)! == 0) {
+          final failureOrSuccess = await repository.removeFromWishlist(
+            productId: e.id,
+          );
+          failureOrSuccess.fold(
+              (failure) => emit(
+                    state.copyWith(
+                      isFetching: false,
+                      apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                    ),
+                  ), (success) {
+            final item = state.selectedItemList.firstWhereOrNull(
+              (element) {
+                return (element.uid == e.id);
+              },
+            );
+
+            final list = <WishlistProduct>[...state.selectedItemList];
+            list.remove(item);
+            emit(
+              state.copyWith(
+                selectedItemList: list,
+              ),
+            );
+            add(const _Fetch());
+          });
+        }
+      },
+      addToWishlist: (e) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+            showSnackBar: false,
+          ),
+        );
         final failureOrSuccess = await repository.addToWishlist(
-          productId: e.productId,
+          productId: e.product.productId.getValue(),
+          attributeItemId: e.product.attributeItemProductId,
+          price: e.product.getPriceValue,
+          quantity: '1',
         );
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
               isFetching: false,
+              showSnackBar: true,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (unit) => add(const _Fetch()),
+          (unit) {
+            emit(state.copyWith(showSnackBar: true));
+            add(const _Fetch());
+          },
         );
       },
       addToCart: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
         final failureOrSuccess = await repository.addToCart(
           productId: e.productId,
           price: e.price,
           quantity: e.quantity,
-          attributeItemProductID: e.attributeItemProductID,
+          attributeItemId: e.attributeItemId,
         );
         failureOrSuccess.fold(
           (failure) => emit(
@@ -144,14 +223,27 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           productId: e.productId,
         );
         failureOrSuccess.fold(
-          (failure) => emit(
+            (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ), (unit) {
+          final item = state.selectedItemList.firstWhereOrNull(
+            (element) {
+              return (element.uid == e.productId);
+            },
+          );
+
+          final list = <WishlistProduct>[...state.selectedItemList];
+          list.remove(item);
+          emit(
             state.copyWith(
-              isFetching: false,
-              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              selectedItemList: list,
             ),
-          ),
-          (unit) => add(const _Fetch()),
-        );
+          );
+          add(const _Fetch());
+        });
       },
     );
   }

@@ -10,15 +10,14 @@ class Wishlist with _$Wishlist {
     required String id,
     required String userId,
     required String productId,
-    required String attributeItemProductID,
     required String attributeItemId,
     required List<WishlistProduct> product,
   }) = _Wishlist;
   factory Wishlist.empty() => Wishlist(
-      id: '',
-      userId: '',
-      productId: '',
-      attributeItemProductID: '',
-      attributeItemId: '',
-      product: [],);
+        id: '',
+        userId: '',
+        productId: '',
+        attributeItemId: '',
+        product: [],
+      );
 }
