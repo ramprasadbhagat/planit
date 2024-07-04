@@ -10,8 +10,6 @@ class QuickPicksDto with _$QuickPicksDto {
   const QuickPicksDto._();
   const factory QuickPicksDto({
     @JsonKey(defaultValue: '') required String id,
-    @JsonKey(defaultValue: '') required String categoryId,
-    @JsonKey(defaultValue: '') required String subcategoryId,
     @JsonKey(defaultValue: '') required String productName,
     @JsonKey(defaultValue: '') required String productDescription,
     @JsonKey(defaultValue: '') required String sku,
@@ -19,7 +17,8 @@ class QuickPicksDto with _$QuickPicksDto {
     @JsonKey(name: 'sku_packsize', defaultValue: '')
     required String skuPacksize,
     @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
-    @JsonKey(defaultValue: 0) required int startingPrice,
+    @JsonKey(defaultValue: 0, readValue: intReadValue)
+    required int startingPrice,
     @JsonKey(defaultValue: '') required String productMRP,
     @JsonKey(defaultValue: '') required String productReview,
     @JsonKey(defaultValue: '') required String productRating,
@@ -42,8 +41,6 @@ class QuickPicksDto with _$QuickPicksDto {
 
   QuickPicks get toDomain => QuickPicks(
         id: id,
-        categoryId: categoryId,
-        subcategoryId: subcategoryId,
         productName: productName,
         productDescription: productDescription,
         sku: sku,
@@ -67,4 +64,10 @@ class QuickPicksDto with _$QuickPicksDto {
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
       );
+}
+
+int intReadValue(Map json, String key) {
+  if (json[key] is int) return json[key];
+  if (json[key] is String) return int.tryParse(json[key]) ?? 0;
+  return 0;
 }

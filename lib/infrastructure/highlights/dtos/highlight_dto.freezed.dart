@@ -23,10 +23,6 @@ mixin _$HighlightDto {
   @JsonKey(defaultValue: '')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
-  String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String get subcategoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
   String get productName => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
@@ -85,8 +81,6 @@ abstract class $HighlightDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
@@ -128,8 +122,6 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -158,14 +150,6 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -281,8 +265,6 @@ abstract class _$$HighlightDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
@@ -323,8 +305,6 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -353,14 +333,6 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -463,8 +435,6 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
 class _$HighlightDtoImpl extends _HighlightDto {
   const _$HighlightDtoImpl(
       {@JsonKey(defaultValue: '') required this.id,
-      @JsonKey(defaultValue: '') required this.categoryId,
-      @JsonKey(defaultValue: '') required this.subcategoryId,
       @JsonKey(defaultValue: '') required this.productName,
       @JsonKey(defaultValue: '') required this.productDescription,
       @JsonKey(defaultValue: '') required this.sku,
@@ -500,12 +470,6 @@ class _$HighlightDtoImpl extends _HighlightDto {
   @override
   @JsonKey(defaultValue: '')
   final String id;
-  @override
-  @JsonKey(defaultValue: '')
-  final String categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  final String subcategoryId;
   @override
   @JsonKey(defaultValue: '')
   final String productName;
@@ -587,7 +551,7 @@ class _$HighlightDtoImpl extends _HighlightDto {
 
   @override
   String toString() {
-    return 'HighlightDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
+    return 'HighlightDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -596,10 +560,6 @@ class _$HighlightDtoImpl extends _HighlightDto {
         (other.runtimeType == runtimeType &&
             other is _$HighlightDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -651,8 +611,6 @@ class _$HighlightDtoImpl extends _HighlightDto {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        categoryId,
-        subcategoryId,
         productName,
         productDescription,
         sku,
@@ -695,8 +653,6 @@ class _$HighlightDtoImpl extends _HighlightDto {
 abstract class _HighlightDto extends HighlightDto {
   const factory _HighlightDto(
       {@JsonKey(defaultValue: '') required final String id,
-      @JsonKey(defaultValue: '') required final String categoryId,
-      @JsonKey(defaultValue: '') required final String subcategoryId,
       @JsonKey(defaultValue: '') required final String productName,
       @JsonKey(defaultValue: '') required final String productDescription,
       @JsonKey(defaultValue: '') required final String sku,
@@ -732,12 +688,6 @@ abstract class _HighlightDto extends HighlightDto {
   @override
   @JsonKey(defaultValue: '')
   String get id;
-  @override
-  @JsonKey(defaultValue: '')
-  String get categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  String get subcategoryId;
   @override
   @JsonKey(defaultValue: '')
   String get productName;

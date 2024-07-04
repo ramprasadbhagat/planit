@@ -11,8 +11,6 @@ class Highlight with _$Highlight {
   const Highlight._();
   const factory Highlight({
     required String id,
-    required String categoryId,
-    required String subcategoryId,
     required String productName,
     required String productDescription,
     required String productDiscount,
@@ -57,8 +55,6 @@ class Highlight with _$Highlight {
 
   factory Highlight.empty() => Highlight(
         id: '',
-        categoryId: '',
-        subcategoryId: '',
         productName: '',
         productDescription: '',
         productMRP: 0,

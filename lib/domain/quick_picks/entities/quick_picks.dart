@@ -11,8 +11,6 @@ class QuickPicks with _$QuickPicks {
   const QuickPicks._();
   const factory QuickPicks({
     required String id,
-    required String categoryId,
-    required String subcategoryId,
     required String productName,
     required String productDescription,
     required String sku,
@@ -39,8 +37,6 @@ class QuickPicks with _$QuickPicks {
 
   factory QuickPicks.empty() => QuickPicks(
         id: '',
-        categoryId: '',
-        subcategoryId: '',
         productName: '',
         productDescription: '',
         attributeItemProductId: '',

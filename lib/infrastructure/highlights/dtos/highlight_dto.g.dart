@@ -9,8 +9,6 @@ part of 'highlight_dto.dart';
 _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
     _$HighlightDtoImpl(
       id: json['id'] as String? ?? '',
-      categoryId: json['categoryId'] as String? ?? '',
-      subcategoryId: json['subcategoryId'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
@@ -45,8 +43,6 @@ _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'categoryId': instance.categoryId,
-      'subcategoryId': instance.subcategoryId,
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'sku': instance.sku,
