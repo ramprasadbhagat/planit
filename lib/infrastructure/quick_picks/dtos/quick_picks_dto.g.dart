@@ -9,15 +9,14 @@ part of 'quick_picks_dto.dart';
 _$QuickPicksDtoImpl _$$QuickPicksDtoImplFromJson(Map<String, dynamic> json) =>
     _$QuickPicksDtoImpl(
       id: json['id'] as String? ?? '',
-      categoryId: json['categoryId'] as String? ?? '',
-      subcategoryId: json['subcategoryId'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
       skuPrice: json['sku_price'] as String? ?? '',
       skuPacksize: json['sku_packsize'] as String? ?? '',
       skuContent: json['sku_content'] as String? ?? '',
-      startingPrice: (json['startingPrice'] as num?)?.toInt() ?? 0,
+      startingPrice:
+          (intReadValue(json, 'startingPrice') as num?)?.toInt() ?? 0,
       productMRP: json['productMRP'] as String? ?? '',
       productReview: json['productReview'] as String? ?? '',
       productRating: json['productRating'] as String? ?? '',
@@ -43,8 +42,6 @@ _$QuickPicksDtoImpl _$$QuickPicksDtoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$QuickPicksDtoImplToJson(_$QuickPicksDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'categoryId': instance.categoryId,
-      'subcategoryId': instance.subcategoryId,
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'sku': instance.sku,

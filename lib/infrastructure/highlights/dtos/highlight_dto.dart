@@ -10,8 +10,6 @@ class HighlightDto with _$HighlightDto {
   const HighlightDto._();
   const factory HighlightDto({
     @JsonKey(defaultValue: '') required String id,
-    @JsonKey(defaultValue: '') required String categoryId,
-    @JsonKey(defaultValue: '') required String subcategoryId,
     @JsonKey(defaultValue: '') required String productName,
     @JsonKey(defaultValue: '') required String productDescription,
     @JsonKey(defaultValue: '') required String sku,
@@ -20,7 +18,8 @@ class HighlightDto with _$HighlightDto {
     required String skuPacksize,
     @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
     @JsonKey(defaultValue: '') required String productMRP,
-    @JsonKey(defaultValue: 0, readValue: intReadValue) required int startingPrice,
+    @JsonKey(defaultValue: 0, readValue: intReadValue)
+    required int startingPrice,
     @JsonKey(defaultValue: '') required String productReview,
     @JsonKey(defaultValue: '') required String productRating,
     @JsonKey(defaultValue: '') required String productDiscount,
@@ -43,8 +42,6 @@ class HighlightDto with _$HighlightDto {
 
   Highlight get toDomain => Highlight(
         id: id,
-        categoryId: categoryId,
-        subcategoryId: subcategoryId,
         productName: productName,
         productDescription: productDescription,
         sku: sku,

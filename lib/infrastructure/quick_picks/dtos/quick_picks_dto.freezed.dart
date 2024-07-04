@@ -23,10 +23,6 @@ mixin _$QuickPicksDto {
   @JsonKey(defaultValue: '')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
-  String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String get subcategoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
   String get productName => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
@@ -38,7 +34,7 @@ mixin _$QuickPicksDto {
   String get skuPacksize => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: 0)
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
   int get startingPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productMRP => throw _privateConstructorUsedError;
@@ -83,15 +79,13 @@ abstract class $QuickPicksDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: 0) int startingPrice,
+      @JsonKey(defaultValue: 0, readValue: intReadValue) int startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -125,8 +119,6 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -154,14 +146,6 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -273,15 +257,13 @@ abstract class _$$QuickPicksDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
       @JsonKey(name: 'sku_price', defaultValue: '') String skuPrice,
       @JsonKey(name: 'sku_packsize', defaultValue: '') String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') String skuContent,
-      @JsonKey(defaultValue: 0) int startingPrice,
+      @JsonKey(defaultValue: 0, readValue: intReadValue) int startingPrice,
       @JsonKey(defaultValue: '') String productMRP,
       @JsonKey(defaultValue: '') String productReview,
       @JsonKey(defaultValue: '') String productRating,
@@ -314,8 +296,6 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -343,14 +323,6 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -449,8 +421,6 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
 class _$QuickPicksDtoImpl extends _QuickPicksDto {
   const _$QuickPicksDtoImpl(
       {@JsonKey(defaultValue: '') required this.id,
-      @JsonKey(defaultValue: '') required this.categoryId,
-      @JsonKey(defaultValue: '') required this.subcategoryId,
       @JsonKey(defaultValue: '') required this.productName,
       @JsonKey(defaultValue: '') required this.productDescription,
       @JsonKey(defaultValue: '') required this.sku,
@@ -458,7 +428,8 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
       @JsonKey(name: 'sku_packsize', defaultValue: '')
       required this.skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '') required this.skuContent,
-      @JsonKey(defaultValue: 0) required this.startingPrice,
+      @JsonKey(defaultValue: 0, readValue: intReadValue)
+      required this.startingPrice,
       @JsonKey(defaultValue: '') required this.productMRP,
       @JsonKey(defaultValue: '') required this.productReview,
       @JsonKey(defaultValue: '') required this.productRating,
@@ -486,12 +457,6 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
   final String id;
   @override
   @JsonKey(defaultValue: '')
-  final String categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  final String subcategoryId;
-  @override
-  @JsonKey(defaultValue: '')
   final String productName;
   @override
   @JsonKey(defaultValue: '')
@@ -509,7 +474,7 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   final String skuContent;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
   final int startingPrice;
   @override
   @JsonKey(defaultValue: '')
@@ -568,7 +533,7 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
 
   @override
   String toString() {
-    return 'QuickPicksDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItemProductId: $attributeItemProductId, attributeItem: $attributeItem, price: $price, productImages: $productImages)';
+    return 'QuickPicksDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItemProductId: $attributeItemProductId, attributeItem: $attributeItem, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -577,10 +542,6 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
         (other.runtimeType == runtimeType &&
             other is _$QuickPicksDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -630,8 +591,6 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        categoryId,
-        subcategoryId,
         productName,
         productDescription,
         sku,
@@ -673,8 +632,6 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
 abstract class _QuickPicksDto extends QuickPicksDto {
   const factory _QuickPicksDto(
       {@JsonKey(defaultValue: '') required final String id,
-      @JsonKey(defaultValue: '') required final String categoryId,
-      @JsonKey(defaultValue: '') required final String subcategoryId,
       @JsonKey(defaultValue: '') required final String productName,
       @JsonKey(defaultValue: '') required final String productDescription,
       @JsonKey(defaultValue: '') required final String sku,
@@ -684,7 +641,8 @@ abstract class _QuickPicksDto extends QuickPicksDto {
       required final String skuPacksize,
       @JsonKey(name: 'sku_content', defaultValue: '')
       required final String skuContent,
-      @JsonKey(defaultValue: 0) required final int startingPrice,
+      @JsonKey(defaultValue: 0, readValue: intReadValue)
+      required final int startingPrice,
       @JsonKey(defaultValue: '') required final String productMRP,
       @JsonKey(defaultValue: '') required final String productReview,
       @JsonKey(defaultValue: '') required final String productRating,
@@ -710,12 +668,6 @@ abstract class _QuickPicksDto extends QuickPicksDto {
   String get id;
   @override
   @JsonKey(defaultValue: '')
-  String get categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  String get subcategoryId;
-  @override
-  @JsonKey(defaultValue: '')
   String get productName;
   @override
   @JsonKey(defaultValue: '')
@@ -733,7 +685,7 @@ abstract class _QuickPicksDto extends QuickPicksDto {
   @JsonKey(name: 'sku_content', defaultValue: '')
   String get skuContent;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
   int get startingPrice;
   @override
   @JsonKey(defaultValue: '')
