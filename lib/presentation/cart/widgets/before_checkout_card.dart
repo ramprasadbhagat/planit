@@ -118,7 +118,8 @@ class BeforeCheckOutCard extends StatelessWidget {
                         } else {
                           const snackBar = SnackBar(
                             content: Text(
-                                'Please Login to add items to shopping list.'),
+                              'Please Login to add items to shopping list.',
+                            ),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
