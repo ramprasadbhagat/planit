@@ -37,14 +37,14 @@ class CartState with _$CartState {
   int getProductQuantity(Product product) {
     return (cartItem.products.firstWhereOrNull(
           (element) {
-            final checkAttributeExistAndMatch =
+            bool checkAttributeExistAndMatch() =>
                 element.attributeitemId.isValid()
                     ? element.attributeitemId.getValue() ==
                         product.attributeItemProductId
                     : true;
 
             return (element.productId == product.productId) &&
-                checkAttributeExistAndMatch;
+                checkAttributeExistAndMatch();
           },
         )?.quantity) ??
         0;

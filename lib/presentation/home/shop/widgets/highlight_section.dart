@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
@@ -77,45 +79,56 @@ class HighlightItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: Card(
-            clipBehavior: Clip.hardEdge,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: Container(
-              width: MediaQuery.sizeOf(context).width * 0.33,
-              decoration: BoxDecoration(
-                color: AppColors.extraLightGray,
-                borderRadius: BorderRadius.circular(16),
+          child: InkWell(
+            onTap: () => showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) => CommonBottomSheet(
+                child: AddToCartBottomSheet(
+                  product: item.toProduct,
+                ),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: 80,
-                    child: CachedNetworkImage(
-                      imageUrl: item.productImages.firstOrNull ?? '',
-                      errorWidget: (context, url, error) =>
-                          Image.asset(PngImage.placeholder),
+            ),
+            child: Card(
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: Container(
+                width: MediaQuery.sizeOf(context).width * 0.33,
+                decoration: BoxDecoration(
+                  color: AppColors.extraLightGray,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: MediaQuery.sizeOf(context).height * 0.05,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    alignment: Alignment.center,
-                    child: Text(
-                      item.productName,
-                      style: textTheme.bodySmall,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
+                    SizedBox(
+                      height: 80,
+                      child: CachedNetworkImage(
+                        imageUrl: item.productImages.firstOrNull ?? '',
+                        errorWidget: (context, url, error) =>
+                            Image.asset(PngImage.placeholder),
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: MediaQuery.sizeOf(context).height * 0.05,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      alignment: Alignment.center,
+                      child: Text(
+                        item.productName,
+                        style: textTheme.bodySmall,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
