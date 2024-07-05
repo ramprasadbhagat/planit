@@ -7,7 +7,8 @@ import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
 class SubcategoryBanner extends StatefulWidget {
-  const SubcategoryBanner({super.key});
+  final bool showOccasionBanner;
+  const SubcategoryBanner({super.key, required this.showOccasionBanner});
 
   @override
   State<SubcategoryBanner> createState() => _SubcategoryBannerState();
@@ -16,17 +17,27 @@ class SubcategoryBanner extends StatefulWidget {
 class _SubcategoryBannerState extends State<SubcategoryBanner> {
   @override
   void initState() {
-    context.read<BannerBloc>().add(const BannerEvent.fetchCategoryBanner());
+    if (widget.showOccasionBanner) {
+      context.read<BannerBloc>().add(const BannerEvent.fetchOccassionBanner());
+    } else {
+      context.read<BannerBloc>().add(const BannerEvent.fetchCategoryBanner());
+    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BannerBloc, BannerState>(
-      buildWhen: (previous, current) =>
-          previous.isCategoryBannerFetching != current.isCategoryBannerFetching,
+      buildWhen: (previous, current) {
+        if (widget.showOccasionBanner) {
+          return previous.isOccassionBannerFetching !=
+              current.isOccassionBannerFetching;
+        }
+        return previous.isCategoryBannerFetching !=
+            current.isCategoryBannerFetching;
+      },
       builder: (context, state) {
-        if (state.isCategoryBannerFetching) {
+        if (state.isCategoryBannerFetching || state.isOccassionBannerFetching) {
           return const Padding(
             padding: EdgeInsets.only(
               top: 10,
@@ -35,7 +46,9 @@ class _SubcategoryBannerState extends State<SubcategoryBanner> {
             ),
             child: Center(child: SubCategoryBannerShimmer()),
           );
-        } else if (state.categoryBanner.isEmpty) {
+        } else if ((!widget.showOccasionBanner &&
+                state.categoryBanner.isEmpty) ||
+            (widget.showOccasionBanner && state.occassionBanner.isEmpty)) {
           return const SizedBox.shrink();
         }
 
@@ -65,7 +78,10 @@ class _SubcategoryBannerState extends State<SubcategoryBanner> {
                   ),
                   indicatorMargin: 10,
                 ),
-                items: state.categoryBanner.map((i) {
+                items: (widget.showOccasionBanner
+                        ? state.occassionBanner
+                        : state.categoryBanner)
+                    .map((i) {
                   return Column(
                     children: [
                       Expanded(

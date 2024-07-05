@@ -55,4 +55,24 @@ class BannerRepository extends IBannerRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, List<Banner>>> getOccassionBanner() async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final banner = await localDataSource.getBanner();
+
+        return Right(banner);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final banner = await remoteDataSource.getOccassionBanner();
+
+      return Right(banner);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

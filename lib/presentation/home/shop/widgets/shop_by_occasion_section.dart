@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
-import 'package:planit/domain/home/entities/occasion.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -17,14 +17,14 @@ class ShopByOccasion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Shop by occasion',
-          style: textTheme.titleMedium,
+        SectionTitle(
+          title: 'Shop by occasion',
+          onTap: () {
+            context.router.push(CategoryRoute(openFromOccassion: true));
+          },
         ),
         BlocBuilder<SubCategoryBloc, SubCategoryState>(
           builder: (context, state) {
@@ -75,7 +75,7 @@ class ShopByOccasionItem extends StatelessWidget {
           ),
         );
         context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
-        context.router.navigate(const CategoryRoute());
+        context.router.navigate(CategoryRoute(openFromOccassion: true));
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

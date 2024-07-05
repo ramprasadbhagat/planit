@@ -65,6 +65,26 @@ class BannerBloc extends Bloc<BannerEvent, BannerState> {
           },
         );
       },
+      fetchOccassionBanner: (_) async {
+        emit(state.copyWith(isOccassionBannerFetching: true));
+        final failureOrSuccess = await repository.getOccassionBanner();
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              isOccassionBannerFetching: false,
+            ),
+          ),
+          (list) {
+            emit(
+              state.copyWith(
+                isOccassionBannerFetching: false,
+                occassionBanner: list,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

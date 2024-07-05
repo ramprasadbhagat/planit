@@ -15,6 +15,9 @@ class QuickPicksState with _$QuickPicksState {
         isFetching: true,
       );
 
-  double get quickPickProductsHeight =>
-      quicksPickProducts.length > 2 ? 400 : 220;
+// calculate height based on product quantity
+  double get quickPickProductsHeight {
+    final rows = (quicksPickProducts.length + 2) ~/ 3;
+    return ((rows > 0 ? rows : 1) * 180) + 35;
+  }
 }

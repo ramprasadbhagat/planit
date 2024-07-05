@@ -92,7 +92,7 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
                       ? state.quickPickProductsHeight
                       : _selectedTab == 1
                           ? 250
-                          : 150,
+                          : 155,
                   child: TabBarView(
                     controller: _tabController,
                     children: const [

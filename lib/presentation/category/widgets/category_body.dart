@@ -5,23 +5,26 @@ import 'package:planit/presentation/category/widgets/sub_category_product.dart';
 import 'package:planit/presentation/category/widgets/sub_category_product_count.dart';
 
 class CategoryBody extends StatelessWidget {
-  const CategoryBody({super.key});
+  final bool openFromOccassion;
+  const CategoryBody({super.key, this.openFromOccassion = false});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SubCategoryList(),
+        const SubCategoryList(),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SubcategoryBanner(),
-              SubCategoryProductCount(),
-              SubCategoryProduct(),
-              SizedBox(
+              SubcategoryBanner(
+                showOccasionBanner: openFromOccassion,
+              ),
+              const SubCategoryProductCount(),
+              const SubCategoryProduct(),
+              const SizedBox(
                 height: 10,
               ),
             ],
