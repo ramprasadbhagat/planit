@@ -20,18 +20,24 @@ mixin _$BannerEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function() fetchCategoryBanner,
+    required TResult Function() fetchOccassionBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function()? fetchCategoryBanner,
+    TResult? Function()? fetchOccassionBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function()? fetchCategoryBanner,
+    TResult Function()? fetchOccassionBanner,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$BannerEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchCategoryBanner value) fetchCategoryBanner,
+    required TResult Function(_FetchOccassionBanner value) fetchOccassionBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult? Function(_FetchOccassionBanner value)? fetchOccassionBanner,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult Function(_FetchOccassionBanner value)? fetchOccassionBanner,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$InitializedImpl implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function() fetchCategoryBanner,
+    required TResult Function() fetchOccassionBanner,
   }) {
     return initialized();
   }
@@ -123,6 +137,8 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function()? fetchCategoryBanner,
+    TResult? Function()? fetchOccassionBanner,
   }) {
     return initialized?.call();
   }
@@ -132,6 +148,8 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function()? fetchCategoryBanner,
+    TResult Function()? fetchOccassionBanner,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -145,6 +163,8 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchCategoryBanner value) fetchCategoryBanner,
+    required TResult Function(_FetchOccassionBanner value) fetchOccassionBanner,
   }) {
     return initialized(this);
   }
@@ -154,6 +174,8 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult? Function(_FetchOccassionBanner value)? fetchOccassionBanner,
   }) {
     return initialized?.call(this);
   }
@@ -163,6 +185,8 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult Function(_FetchOccassionBanner value)? fetchOccassionBanner,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -216,6 +240,8 @@ class _$FetchImpl implements _Fetch {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function() fetchCategoryBanner,
+    required TResult Function() fetchOccassionBanner,
   }) {
     return fetch();
   }
@@ -225,6 +251,8 @@ class _$FetchImpl implements _Fetch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function()? fetchCategoryBanner,
+    TResult? Function()? fetchOccassionBanner,
   }) {
     return fetch?.call();
   }
@@ -234,6 +262,8 @@ class _$FetchImpl implements _Fetch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function()? fetchCategoryBanner,
+    TResult Function()? fetchOccassionBanner,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -247,6 +277,8 @@ class _$FetchImpl implements _Fetch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchCategoryBanner value) fetchCategoryBanner,
+    required TResult Function(_FetchOccassionBanner value) fetchOccassionBanner,
   }) {
     return fetch(this);
   }
@@ -256,6 +288,8 @@ class _$FetchImpl implements _Fetch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult? Function(_FetchOccassionBanner value)? fetchOccassionBanner,
   }) {
     return fetch?.call(this);
   }
@@ -265,6 +299,8 @@ class _$FetchImpl implements _Fetch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult Function(_FetchOccassionBanner value)? fetchOccassionBanner,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -279,11 +315,245 @@ abstract class _Fetch implements BannerEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchCategoryBannerImplCopyWith<$Res> {
+  factory _$$FetchCategoryBannerImplCopyWith(_$FetchCategoryBannerImpl value,
+          $Res Function(_$FetchCategoryBannerImpl) then) =
+      __$$FetchCategoryBannerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchCategoryBannerImplCopyWithImpl<$Res>
+    extends _$BannerEventCopyWithImpl<$Res, _$FetchCategoryBannerImpl>
+    implements _$$FetchCategoryBannerImplCopyWith<$Res> {
+  __$$FetchCategoryBannerImplCopyWithImpl(_$FetchCategoryBannerImpl _value,
+      $Res Function(_$FetchCategoryBannerImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchCategoryBannerImpl implements _FetchCategoryBanner {
+  const _$FetchCategoryBannerImpl();
+
+  @override
+  String toString() {
+    return 'BannerEvent.fetchCategoryBanner()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchCategoryBannerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function() fetchCategoryBanner,
+    required TResult Function() fetchOccassionBanner,
+  }) {
+    return fetchCategoryBanner();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function()? fetchCategoryBanner,
+    TResult? Function()? fetchOccassionBanner,
+  }) {
+    return fetchCategoryBanner?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function()? fetchCategoryBanner,
+    TResult Function()? fetchOccassionBanner,
+    required TResult orElse(),
+  }) {
+    if (fetchCategoryBanner != null) {
+      return fetchCategoryBanner();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchCategoryBanner value) fetchCategoryBanner,
+    required TResult Function(_FetchOccassionBanner value) fetchOccassionBanner,
+  }) {
+    return fetchCategoryBanner(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult? Function(_FetchOccassionBanner value)? fetchOccassionBanner,
+  }) {
+    return fetchCategoryBanner?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult Function(_FetchOccassionBanner value)? fetchOccassionBanner,
+    required TResult orElse(),
+  }) {
+    if (fetchCategoryBanner != null) {
+      return fetchCategoryBanner(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchCategoryBanner implements BannerEvent {
+  const factory _FetchCategoryBanner() = _$FetchCategoryBannerImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchOccassionBannerImplCopyWith<$Res> {
+  factory _$$FetchOccassionBannerImplCopyWith(_$FetchOccassionBannerImpl value,
+          $Res Function(_$FetchOccassionBannerImpl) then) =
+      __$$FetchOccassionBannerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchOccassionBannerImplCopyWithImpl<$Res>
+    extends _$BannerEventCopyWithImpl<$Res, _$FetchOccassionBannerImpl>
+    implements _$$FetchOccassionBannerImplCopyWith<$Res> {
+  __$$FetchOccassionBannerImplCopyWithImpl(_$FetchOccassionBannerImpl _value,
+      $Res Function(_$FetchOccassionBannerImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchOccassionBannerImpl implements _FetchOccassionBanner {
+  const _$FetchOccassionBannerImpl();
+
+  @override
+  String toString() {
+    return 'BannerEvent.fetchOccassionBanner()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchOccassionBannerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function() fetchCategoryBanner,
+    required TResult Function() fetchOccassionBanner,
+  }) {
+    return fetchOccassionBanner();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function()? fetchCategoryBanner,
+    TResult? Function()? fetchOccassionBanner,
+  }) {
+    return fetchOccassionBanner?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function()? fetchCategoryBanner,
+    TResult Function()? fetchOccassionBanner,
+    required TResult orElse(),
+  }) {
+    if (fetchOccassionBanner != null) {
+      return fetchOccassionBanner();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchCategoryBanner value) fetchCategoryBanner,
+    required TResult Function(_FetchOccassionBanner value) fetchOccassionBanner,
+  }) {
+    return fetchOccassionBanner(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult? Function(_FetchOccassionBanner value)? fetchOccassionBanner,
+  }) {
+    return fetchOccassionBanner?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchCategoryBanner value)? fetchCategoryBanner,
+    TResult Function(_FetchOccassionBanner value)? fetchOccassionBanner,
+    required TResult orElse(),
+  }) {
+    if (fetchOccassionBanner != null) {
+      return fetchOccassionBanner(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchOccassionBanner implements BannerEvent {
+  const factory _FetchOccassionBanner() = _$FetchOccassionBannerImpl;
+}
+
+/// @nodoc
 mixin _$BannerState {
   List<Banner> get banner => throw _privateConstructorUsedError;
+  List<Banner> get categoryBanner => throw _privateConstructorUsedError;
+  List<Banner> get occassionBanner => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get isCategoryBannerFetching => throw _privateConstructorUsedError;
+  bool get isOccassionBannerFetching => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BannerStateCopyWith<BannerState> get copyWith =>
@@ -298,8 +568,12 @@ abstract class $BannerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Banner> banner,
+      List<Banner> categoryBanner,
+      List<Banner> occassionBanner,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isCategoryBannerFetching,
+      bool isOccassionBannerFetching});
 }
 
 /// @nodoc
@@ -316,13 +590,25 @@ class _$BannerStateCopyWithImpl<$Res, $Val extends BannerState>
   @override
   $Res call({
     Object? banner = null,
+    Object? categoryBanner = null,
+    Object? occassionBanner = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isCategoryBannerFetching = null,
+    Object? isOccassionBannerFetching = null,
   }) {
     return _then(_value.copyWith(
       banner: null == banner
           ? _value.banner
           : banner // ignore: cast_nullable_to_non_nullable
+              as List<Banner>,
+      categoryBanner: null == categoryBanner
+          ? _value.categoryBanner
+          : categoryBanner // ignore: cast_nullable_to_non_nullable
+              as List<Banner>,
+      occassionBanner: null == occassionBanner
+          ? _value.occassionBanner
+          : occassionBanner // ignore: cast_nullable_to_non_nullable
               as List<Banner>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
@@ -331,6 +617,14 @@ class _$BannerStateCopyWithImpl<$Res, $Val extends BannerState>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCategoryBannerFetching: null == isCategoryBannerFetching
+          ? _value.isCategoryBannerFetching
+          : isCategoryBannerFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOccassionBannerFetching: null == isOccassionBannerFetching
+          ? _value.isOccassionBannerFetching
+          : isOccassionBannerFetching // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -346,8 +640,12 @@ abstract class _$$CustomerCodeStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<Banner> banner,
+      List<Banner> categoryBanner,
+      List<Banner> occassionBanner,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isCategoryBannerFetching,
+      bool isOccassionBannerFetching});
 }
 
 /// @nodoc
@@ -362,13 +660,25 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? banner = null,
+    Object? categoryBanner = null,
+    Object? occassionBanner = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isCategoryBannerFetching = null,
+    Object? isOccassionBannerFetching = null,
   }) {
     return _then(_$CustomerCodeStateImpl(
       banner: null == banner
           ? _value._banner
           : banner // ignore: cast_nullable_to_non_nullable
+              as List<Banner>,
+      categoryBanner: null == categoryBanner
+          ? _value._categoryBanner
+          : categoryBanner // ignore: cast_nullable_to_non_nullable
+              as List<Banner>,
+      occassionBanner: null == occassionBanner
+          ? _value._occassionBanner
+          : occassionBanner // ignore: cast_nullable_to_non_nullable
               as List<Banner>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
@@ -377,6 +687,14 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCategoryBannerFetching: null == isCategoryBannerFetching
+          ? _value.isCategoryBannerFetching
+          : isCategoryBannerFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOccassionBannerFetching: null == isOccassionBannerFetching
+          ? _value.isOccassionBannerFetching
+          : isOccassionBannerFetching // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -387,9 +705,15 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
 class _$CustomerCodeStateImpl extends _CustomerCodeState {
   const _$CustomerCodeStateImpl(
       {required final List<Banner> banner,
+      required final List<Banner> categoryBanner,
+      required final List<Banner> occassionBanner,
       required this.apiFailureOrSuccessOption,
-      required this.isFetching})
+      required this.isFetching,
+      required this.isCategoryBannerFetching,
+      required this.isOccassionBannerFetching})
       : _banner = banner,
+        _categoryBanner = categoryBanner,
+        _occassionBanner = occassionBanner,
         super._();
 
   final List<Banner> _banner;
@@ -400,14 +724,34 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
     return EqualUnmodifiableListView(_banner);
   }
 
+  final List<Banner> _categoryBanner;
+  @override
+  List<Banner> get categoryBanner {
+    if (_categoryBanner is EqualUnmodifiableListView) return _categoryBanner;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categoryBanner);
+  }
+
+  final List<Banner> _occassionBanner;
+  @override
+  List<Banner> get occassionBanner {
+    if (_occassionBanner is EqualUnmodifiableListView) return _occassionBanner;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_occassionBanner);
+  }
+
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool isCategoryBannerFetching;
+  @override
+  final bool isOccassionBannerFetching;
 
   @override
   String toString() {
-    return 'BannerState(banner: $banner, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'BannerState(banner: $banner, categoryBanner: $categoryBanner, occassionBanner: $occassionBanner, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isCategoryBannerFetching: $isCategoryBannerFetching, isOccassionBannerFetching: $isOccassionBannerFetching)';
   }
 
   @override
@@ -416,19 +760,33 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
         (other.runtimeType == runtimeType &&
             other is _$CustomerCodeStateImpl &&
             const DeepCollectionEquality().equals(other._banner, _banner) &&
+            const DeepCollectionEquality()
+                .equals(other._categoryBanner, _categoryBanner) &&
+            const DeepCollectionEquality()
+                .equals(other._occassionBanner, _occassionBanner) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            (identical(
+                    other.isCategoryBannerFetching, isCategoryBannerFetching) ||
+                other.isCategoryBannerFetching == isCategoryBannerFetching) &&
+            (identical(other.isOccassionBannerFetching,
+                    isOccassionBannerFetching) ||
+                other.isOccassionBannerFetching == isOccassionBannerFetching));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_banner),
+      const DeepCollectionEquality().hash(_categoryBanner),
+      const DeepCollectionEquality().hash(_occassionBanner),
       apiFailureOrSuccessOption,
-      isFetching);
+      isFetching,
+      isCategoryBannerFetching,
+      isOccassionBannerFetching);
 
   @JsonKey(ignore: true)
   @override
@@ -441,17 +799,29 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
 abstract class _CustomerCodeState extends BannerState {
   const factory _CustomerCodeState(
       {required final List<Banner> banner,
+      required final List<Banner> categoryBanner,
+      required final List<Banner> occassionBanner,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$CustomerCodeStateImpl;
+      required final bool isFetching,
+      required final bool isCategoryBannerFetching,
+      required final bool isOccassionBannerFetching}) = _$CustomerCodeStateImpl;
   const _CustomerCodeState._() : super._();
 
   @override
   List<Banner> get banner;
   @override
+  List<Banner> get categoryBanner;
+  @override
+  List<Banner> get occassionBanner;
+  @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get isCategoryBannerFetching;
+  @override
+  bool get isOccassionBannerFetching;
   @override
   @JsonKey(ignore: true)
   _$$CustomerCodeStateImplCopyWith<_$CustomerCodeStateImpl> get copyWith =>

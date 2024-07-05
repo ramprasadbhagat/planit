@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
-import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
@@ -34,7 +33,9 @@ class ShopByCategory extends StatelessWidget {
             children: [
               SectionTitle(
                 title: 'Shop by category',
-                onTap: () {},
+                onTap: () {
+                  context.router.push(CategoryRoute());
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -83,7 +84,7 @@ class ShopByCategoryItem extends StatelessWidget {
           ),
         );
         context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
-        context.router.navigate(const CategoryRoute());
+        context.router.navigate(CategoryRoute());
       },
       child: SizedBox(
         width: 120,

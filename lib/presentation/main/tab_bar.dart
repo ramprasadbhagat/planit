@@ -206,7 +206,7 @@ RouteItem talkToUsTabRouteItem = const RouteItem(
   label: 'Talk to us',
 );
 
-RouteItem categoryTabRouteItem = const RouteItem(
+RouteItem categoryTabRouteItem = RouteItem(
   route: CategoryRoute(),
   icon: SvgImage.categoryTabIcon,
   label: 'Category',

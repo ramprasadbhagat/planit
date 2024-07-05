@@ -82,9 +82,14 @@ abstract class $AppRouter extends _i31.RootStackRouter {
       );
     },
     CategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryRouteArgs>(
+          orElse: () => const CategoryRouteArgs());
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.CategoryPage(),
+        child: _i6.CategoryPage(
+          key: args.key,
+          openFromOccassion: args.openFromOccassion,
+        ),
       );
     },
     CheckoutRoute.name: (routeData) {
@@ -310,16 +315,40 @@ class CartRoute extends _i31.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CategoryPage]
-class CategoryRoute extends _i31.PageRouteInfo<void> {
-  const CategoryRoute({List<_i31.PageRouteInfo>? children})
-      : super(
+class CategoryRoute extends _i31.PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({
+    _i32.Key? key,
+    bool openFromOccassion = false,
+    List<_i31.PageRouteInfo>? children,
+  }) : super(
           CategoryRoute.name,
+          args: CategoryRouteArgs(
+            key: key,
+            openFromOccassion: openFromOccassion,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CategoryRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i31.PageInfo<CategoryRouteArgs> page =
+      _i31.PageInfo<CategoryRouteArgs>(name);
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({
+    this.key,
+    this.openFromOccassion = false,
+  });
+
+  final _i32.Key? key;
+
+  final bool openFromOccassion;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key, openFromOccassion: $openFromOccassion}';
+  }
 }
 
 /// generated route for

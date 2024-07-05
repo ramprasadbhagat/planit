@@ -14,7 +14,31 @@ class BannersRemoteDataSource {
   Future<List<Banner>> getBanner() async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'banner',
+      url: 'banner?filter=home_banner',
+    );
+    _exceptionChecker(res: res);
+    final banner = res.data['items'];
+    return List.from(banner)
+        .map((e) => BannerDto.fromJson(e).toDomain)
+        .toList();
+  }
+
+  Future<List<Banner>> getSubCategoryBanner() async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'banner?filter=category_banner',
+    );
+    _exceptionChecker(res: res);
+    final banner = res.data['items'];
+    return List.from(banner)
+        .map((e) => BannerDto.fromJson(e).toDomain)
+        .toList();
+  }
+
+  Future<List<Banner>> getOccassionBanner() async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'banner?filter=occassion_banner',
     );
     _exceptionChecker(res: res);
     final banner = res.data['items'];

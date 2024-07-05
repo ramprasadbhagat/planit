@@ -7,20 +7,29 @@ import 'package:planit/utils/responsive.dart';
 
 @RoutePage()
 class CategoryPage extends StatelessWidget {
-  const CategoryPage({super.key});
+  final bool openFromOccassion;
+  const CategoryPage({super.key, this.openFromOccassion = false});
 
   @override
   Widget build(BuildContext context) {
-    return const Responsive(
-      mobile: CategoryPageMobile(),
-      tablet: CategoryPageMobile(),
-      web: CategoryPageWeb(),
+    return Responsive(
+      mobile: CategoryPageMobile(
+        openFromOccassion: openFromOccassion,
+      ),
+      tablet: CategoryPageMobile(
+        openFromOccassion: openFromOccassion,
+      ),
+      web: const CategoryPageWeb(),
     );
   }
 }
 
 class CategoryPageMobile extends StatelessWidget {
-  const CategoryPageMobile({super.key});
+  final bool openFromOccassion;
+  const CategoryPageMobile({
+    super.key,
+    required this.openFromOccassion,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +38,14 @@ class CategoryPageMobile extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 70,
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Expanded(child: CategoryBody()),
-          CartBanner(),
+          Expanded(
+            child: CategoryBody(
+              openFromOccassion: openFromOccassion,
+            ),
+          ),
+          const CartBanner(),
         ],
       ),
     );
