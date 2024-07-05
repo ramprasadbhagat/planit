@@ -90,7 +90,7 @@ class _LocationPinState extends State<LocationPin> {
                   ),
                   Text(
                     'Order within 30 mins for delivery by 6 pm on 24-03',
-                    style: textTheme.labelSmall,
+                    style: textTheme.labelSmall?.copyWith(fontSize: 13),
                   ),
                   const SizedBox(width: 4.0),
                 ],

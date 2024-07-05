@@ -1,6 +1,7 @@
+// ignore_for_file: unused_import
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
@@ -26,7 +27,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    String name;
+    // String name;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Scaffold(

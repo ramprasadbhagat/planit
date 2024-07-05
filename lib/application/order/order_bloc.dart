@@ -44,7 +44,6 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             emit(
               state.copyWith(isFetching: false),
             );
-            add(const _FetchOrders());
           },
         );
       },

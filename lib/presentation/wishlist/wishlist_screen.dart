@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_card.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
