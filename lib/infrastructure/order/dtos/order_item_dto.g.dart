@@ -38,8 +38,6 @@ _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderItemProductDtoImpl(
       id: json['_id'] as String? ?? '',
-      categoryId: json['categoryId'] as String? ?? '',
-      subcategoryId: json['subcategoryId'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
       expiryDate: json['expiryDate'] as String? ?? '',
@@ -54,8 +52,6 @@ Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
         _$OrderItemProductDtoImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
-      'categoryId': instance.categoryId,
-      'subcategoryId': instance.subcategoryId,
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'expiryDate': instance.expiryDate,

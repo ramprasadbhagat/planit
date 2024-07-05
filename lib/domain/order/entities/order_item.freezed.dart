@@ -310,8 +310,6 @@ abstract class _OrderItem implements OrderItem {
 /// @nodoc
 mixin _$OrderItemProduct {
   StringValue get id => throw _privateConstructorUsedError;
-  StringValue get categoryId => throw _privateConstructorUsedError;
-  StringValue get subcategoryId => throw _privateConstructorUsedError;
   StringValue get productName => throw _privateConstructorUsedError;
   StringValue get productDescription => throw _privateConstructorUsedError;
   DateTime get expiryDate => throw _privateConstructorUsedError;
@@ -333,8 +331,6 @@ abstract class $OrderItemProductCopyWith<$Res> {
   @useResult
   $Res call(
       {StringValue id,
-      StringValue categoryId,
-      StringValue subcategoryId,
       StringValue productName,
       StringValue productDescription,
       DateTime expiryDate,
@@ -358,8 +354,6 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? expiryDate = null,
@@ -372,14 +366,6 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as StringValue,
       productName: null == productName
           ? _value.productName
@@ -423,8 +409,6 @@ abstract class _$$OrderItemProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {StringValue id,
-      StringValue categoryId,
-      StringValue subcategoryId,
       StringValue productName,
       StringValue productDescription,
       DateTime expiryDate,
@@ -446,8 +430,6 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? expiryDate = null,
@@ -460,14 +442,6 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as StringValue,
       productName: null == productName
           ? _value.productName
@@ -506,8 +480,6 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
 class _$OrderItemProductImpl implements _OrderItemProduct {
   const _$OrderItemProductImpl(
       {required this.id,
-      required this.categoryId,
-      required this.subcategoryId,
       required this.productName,
       required this.productDescription,
       required this.expiryDate,
@@ -518,10 +490,6 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
 
   @override
   final StringValue id;
-  @override
-  final StringValue categoryId;
-  @override
-  final StringValue subcategoryId;
   @override
   final StringValue productName;
   @override
@@ -539,7 +507,7 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
 
   @override
   String toString() {
-    return 'OrderItemProduct(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
+    return 'OrderItemProduct(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
   }
 
   @override
@@ -548,10 +516,6 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
         (other.runtimeType == runtimeType &&
             other is _$OrderItemProductImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -571,8 +535,6 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      categoryId,
-      subcategoryId,
       productName,
       productDescription,
       expiryDate,
@@ -592,8 +554,6 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
 abstract class _OrderItemProduct implements OrderItemProduct {
   const factory _OrderItemProduct(
       {required final StringValue id,
-      required final StringValue categoryId,
-      required final StringValue subcategoryId,
       required final StringValue productName,
       required final StringValue productDescription,
       required final DateTime expiryDate,
@@ -604,10 +564,6 @@ abstract class _OrderItemProduct implements OrderItemProduct {
 
   @override
   StringValue get id;
-  @override
-  StringValue get categoryId;
-  @override
-  StringValue get subcategoryId;
   @override
   StringValue get productName;
   @override

@@ -62,9 +62,6 @@ class OrderItemProductDto with _$OrderItemProductDto {
 
   const factory OrderItemProductDto({
     @JsonKey(name: '_id', defaultValue: '') required String id,
-    @JsonKey(name: 'categoryId', defaultValue: '') required String categoryId,
-    @JsonKey(name: 'subcategoryId', defaultValue: '')
-    required String subcategoryId,
     @JsonKey(name: 'productName', defaultValue: '') required String productName,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
@@ -83,8 +80,6 @@ class OrderItemProductDto with _$OrderItemProductDto {
 
   OrderItemProduct get toDomain => OrderItemProduct(
         id: StringValue(id),
-        categoryId: StringValue(categoryId),
-        subcategoryId: StringValue(subcategoryId),
         productName: StringValue(productName),
         productDescription: StringValue(productDescription),
         expiryDate: DateTime.tryParse(expiryDate) ?? DateTime.now(),
