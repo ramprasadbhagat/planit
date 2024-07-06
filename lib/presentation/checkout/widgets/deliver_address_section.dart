@@ -31,14 +31,16 @@ class DeliveryAddressSection extends StatelessWidget {
                               'No addresses added yet. please add and select address to place order',
                             ),
                           )
-                        : Text(
-                            '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
-                            style: textTheme.bodySmall?.copyWith(
-                              fontSize: 13,
-                              color: AppColors.grey1,
-                              fontWeight: FontWeight.w400,
+                        : Expanded(
+                            child: Text(
+                              '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
+                              style: textTheme.bodySmall?.copyWith(
+                                fontSize: 13,
+                                color: AppColors.grey1,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              textAlign: TextAlign.start,
                             ),
-                            textAlign: TextAlign.start,
                           ),
                     SizedBox(
                       height: 25,

@@ -23,10 +23,6 @@ mixin _$SimilarProductDto {
   @JsonKey(defaultValue: '')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
-  String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String get subcategoryId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
   String get productName => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
@@ -83,8 +79,6 @@ abstract class $SimilarProductDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
@@ -126,8 +120,6 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -155,14 +147,6 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -274,8 +258,6 @@ abstract class _$$SimilarProductDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(defaultValue: '') String id,
-      @JsonKey(defaultValue: '') String categoryId,
-      @JsonKey(defaultValue: '') String subcategoryId,
       @JsonKey(defaultValue: '') String productName,
       @JsonKey(defaultValue: '') String productDescription,
       @JsonKey(defaultValue: '') String sku,
@@ -316,8 +298,6 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
@@ -345,14 +325,6 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -451,8 +423,6 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
 class _$SimilarProductDtoImpl extends _SimilarProductDto {
   const _$SimilarProductDtoImpl(
       {@JsonKey(defaultValue: '') required this.id,
-      @JsonKey(defaultValue: '') required this.categoryId,
-      @JsonKey(defaultValue: '') required this.subcategoryId,
       @JsonKey(defaultValue: '') required this.productName,
       @JsonKey(defaultValue: '') required this.productDescription,
       @JsonKey(defaultValue: '') required this.sku,
@@ -487,12 +457,6 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
   @override
   @JsonKey(defaultValue: '')
   final String id;
-  @override
-  @JsonKey(defaultValue: '')
-  final String categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  final String subcategoryId;
   @override
   @JsonKey(defaultValue: '')
   final String productName;
@@ -571,7 +535,7 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
 
   @override
   String toString() {
-    return 'SimilarProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
+    return 'SimilarProductDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -580,10 +544,6 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
         (other.runtimeType == runtimeType &&
             other is _$SimilarProductDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -633,8 +593,6 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        categoryId,
-        subcategoryId,
         productName,
         productDescription,
         sku,
@@ -677,8 +635,6 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
 abstract class _SimilarProductDto extends SimilarProductDto {
   const factory _SimilarProductDto(
       {@JsonKey(defaultValue: '') required final String id,
-      @JsonKey(defaultValue: '') required final String categoryId,
-      @JsonKey(defaultValue: '') required final String subcategoryId,
       @JsonKey(defaultValue: '') required final String productName,
       @JsonKey(defaultValue: '') required final String productDescription,
       @JsonKey(defaultValue: '') required final String sku,
@@ -713,12 +669,6 @@ abstract class _SimilarProductDto extends SimilarProductDto {
   @override
   @JsonKey(defaultValue: '')
   String get id;
-  @override
-  @JsonKey(defaultValue: '')
-  String get categoryId;
-  @override
-  @JsonKey(defaultValue: '')
-  String get subcategoryId;
   @override
   @JsonKey(defaultValue: '')
   String get productName;

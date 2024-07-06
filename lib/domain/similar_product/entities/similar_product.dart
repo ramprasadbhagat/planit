@@ -11,8 +11,6 @@ class SimilarProduct with _$SimilarProduct {
   const SimilarProduct._();
   const factory SimilarProduct({
     required String id,
-    required String categoryId,
-    required String subcategoryId,
     required String productName,
     required String productDescription,
     required String sku,
@@ -39,8 +37,6 @@ class SimilarProduct with _$SimilarProduct {
 
   factory SimilarProduct.empty() => SimilarProduct(
         id: '',
-        categoryId: '',
-        subcategoryId: '',
         productName: '',
         attributeItemProductId: '',
         productDescription: '',

@@ -11,7 +11,11 @@ class ProductDetailDto with _$ProductDetailDto {
     @JsonKey(name: 'id', defaultValue: '') required String productId,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
-    @JsonKey(name: 'productImages', defaultValue: [])
+    @JsonKey(
+      name: 'productImages',
+      defaultValue: [],
+      readValue: parseProductImages,
+    )
     required List<String> productImages,
   }) = _ProductDetailDto;
 
@@ -22,4 +26,20 @@ class ProductDetailDto with _$ProductDetailDto {
         productDescription: productDescription,
         productImages: productImages,
       );
+}
+
+List parseProductImages(dynamic json, String key) {
+  if (json[key] is List) {
+    return (json[key] as List).map((e) {
+      if (e is String) {
+        return e;
+      }
+      if (e is Map && e.containsKey('image')) {
+        return e['image'] as String;
+      }
+
+      return '';
+    }).toList();
+  }
+  return [];
 }

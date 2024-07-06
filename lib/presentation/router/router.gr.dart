@@ -8,236 +8,228 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i31;
-import 'package:flutter/material.dart' as _i32;
-import 'package:planit/domain/order/entities/order.dart' as _i33;
+import 'package:auto_route/auto_route.dart' as _i30;
+import 'package:flutter/material.dart' as _i31;
+import 'package:planit/domain/order/entities/order.dart' as _i32;
 import 'package:planit/presentation/add_money/add_money.dart' as _i2;
 import 'package:planit/presentation/address_book/adress_book_page.dart' as _i3;
-import 'package:planit/presentation/address_book/user_profile.dart' as _i28;
-import 'package:planit/presentation/address_book/widget/address_book.dart'
-    as _i4;
-import 'package:planit/presentation/auth/login/login.dart' as _i12;
-import 'package:planit/presentation/auth/otp/otp.dart' as _i11;
-import 'package:planit/presentation/auth/signup/signup.dart' as _i25;
-import 'package:planit/presentation/cart/cart_page.dart' as _i5;
-import 'package:planit/presentation/category/category_page.dart' as _i6;
-import 'package:planit/presentation/checkout/checkout_page.dart' as _i7;
-import 'package:planit/presentation/coupon/coupon_page.dart' as _i8;
-import 'package:planit/presentation/highlights/highLights.dart' as _i9;
-import 'package:planit/presentation/home/home_page.dart' as _i10;
-import 'package:planit/presentation/home/plan/plan_page.dart' as _i18;
-import 'package:planit/presentation/home/read/read_page.dart' as _i21;
-import 'package:planit/presentation/home/shop/shop_page.dart' as _i23;
-import 'package:planit/presentation/main/tab_bar.dart' as _i13;
+import 'package:planit/presentation/address_book/user_profile.dart' as _i27;
+import 'package:planit/presentation/auth/login/login.dart' as _i11;
+import 'package:planit/presentation/auth/otp/otp.dart' as _i10;
+import 'package:planit/presentation/auth/signup/signup.dart' as _i24;
+import 'package:planit/presentation/cart/cart_page.dart' as _i4;
+import 'package:planit/presentation/category/category_page.dart' as _i5;
+import 'package:planit/presentation/checkout/checkout_page.dart' as _i6;
+import 'package:planit/presentation/coupon/coupon_page.dart' as _i7;
+import 'package:planit/presentation/highlights/highLights.dart' as _i8;
+import 'package:planit/presentation/home/home_page.dart' as _i9;
+import 'package:planit/presentation/home/plan/plan_page.dart' as _i17;
+import 'package:planit/presentation/home/read/read_page.dart' as _i20;
+import 'package:planit/presentation/home/shop/shop_page.dart' as _i22;
+import 'package:planit/presentation/main/tab_bar.dart' as _i12;
 import 'package:planit/presentation/my_complains/add_complains/add_complains_page.dart'
     as _i1;
 import 'package:planit/presentation/my_complains/my_complains_page.dart'
-    as _i14;
-import 'package:planit/presentation/my_wallet/my_wallet_page.dart' as _i15;
-import 'package:planit/presentation/order/order_details.dart' as _i16;
-import 'package:planit/presentation/order_list/order_list_page.dart' as _i17;
-import 'package:planit/presentation/profile/profile_page.dart' as _i19;
-import 'package:planit/presentation/quick_picks/quick_picks.dart' as _i20;
+    as _i13;
+import 'package:planit/presentation/my_wallet/my_wallet_page.dart' as _i14;
+import 'package:planit/presentation/order/order_details.dart' as _i15;
+import 'package:planit/presentation/order_list/order_list_page.dart' as _i16;
+import 'package:planit/presentation/profile/profile_page.dart' as _i18;
+import 'package:planit/presentation/quick_picks/quick_picks.dart' as _i19;
 import 'package:planit/presentation/search_product/serach_product_page.dart'
-    as _i22;
-import 'package:planit/presentation/shopping_list/shopping_list.dart' as _i24;
-import 'package:planit/presentation/talk_to_us/talk_to_us.dart' as _i26;
-import 'package:planit/presentation/track_order/track_order_page.dart' as _i27;
-import 'package:planit/presentation/wishlist/wishlist.dart' as _i29;
-import 'package:planit/presentation/wishlist/wishlist_screen.dart' as _i30;
+    as _i21;
+import 'package:planit/presentation/shopping_list/shopping_list.dart' as _i23;
+import 'package:planit/presentation/talk_to_us/talk_to_us.dart' as _i25;
+import 'package:planit/presentation/track_order/track_order_page.dart' as _i26;
+import 'package:planit/presentation/wishlist/wishlist.dart' as _i28;
+import 'package:planit/presentation/wishlist/wishlist_screen.dart' as _i29;
 
-abstract class $AppRouter extends _i31.RootStackRouter {
+abstract class $AppRouter extends _i30.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i31.PageFactory> pagesMap = {
+  final Map<String, _i30.PageFactory> pagesMap = {
     AddComplainsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AddComplainsPage(),
       );
     },
     AddMoneyRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.AddMoneyPage(),
       );
     },
     AddressBookRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.AddressBookPage(),
       );
     },
-    AddressBooks.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i4.AddressBooks(),
-      );
-    },
     CartRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.CartPage(),
+        child: const _i4.CartPage(),
       );
     },
     CategoryRoute.name: (routeData) {
       final args = routeData.argsAs<CategoryRouteArgs>(
           orElse: () => const CategoryRouteArgs());
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.CategoryPage(
+        child: _i5.CategoryPage(
           key: args.key,
           openFromOccassion: args.openFromOccassion,
         ),
       );
     },
     CheckoutRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.CheckoutPage(),
+        child: const _i6.CheckoutPage(),
       );
     },
     CouponListRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.CouponListPage(),
+        child: const _i7.CouponListPage(),
       );
     },
     HighLightsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.HighLightsPage(),
+        child: const _i8.HighLightsPage(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i10.HomePage(),
+        child: const _i9.HomePage(),
       );
     },
     LoginOtp.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.LoginOtp(),
+        child: const _i10.LoginOtp(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.LoginPage(),
+        child: const _i11.LoginPage(),
       );
     },
     MainTabbar.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i13.MainTabbar(),
+        child: const _i12.MainTabbar(),
       );
     },
     MyComplainsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i14.MyComplainsPage(),
+        child: const _i13.MyComplainsPage(),
       );
     },
     MyWalletRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i15.MyWalletPage(),
+        child: const _i14.MyWalletPage(),
       );
     },
     OrderDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<OrderDetailsRouteArgs>();
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i16.OrderDetailsPage(
+        child: _i15.OrderDetailsPage(
           key: args.key,
           order: args.order,
         ),
       );
     },
     OrderListRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i17.OrderListPage(),
+        child: const _i16.OrderListPage(),
       );
     },
     PlanRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i18.PlanPage(),
+        child: const _i17.PlanPage(),
       );
     },
     ProfileRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i19.ProfilePage(),
+        child: const _i18.ProfilePage(),
       );
     },
     QuickPicksRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.QuickPicksPage(),
+        child: const _i19.QuickPicksPage(),
       );
     },
     ReadRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i21.ReadPage(),
+        child: const _i20.ReadPage(),
       );
     },
     SearchProductRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i22.SearchProductPage(),
+        child: const _i21.SearchProductPage(),
       );
     },
     ShopRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i23.ShopPage(),
+        child: const _i22.ShopPage(),
       );
     },
     ShoppingListRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i24.ShoppingListPage(),
+        child: const _i23.ShoppingListPage(),
       );
     },
     SignupRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i25.SignupPage(),
+        child: const _i24.SignupPage(),
       );
     },
     TalkToUsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i26.TalkToUsPage(),
+        child: const _i25.TalkToUsPage(),
       );
     },
     TrackOrderRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i27.TrackOrderPage(),
+        child: const _i26.TrackOrderPage(),
       );
     },
     UserProfileRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i28.UserProfilePage(),
+        child: const _i27.UserProfilePage(),
       );
     },
     WishListRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i29.WishListPage(),
+        child: const _i28.WishListPage(),
       );
     },
     WishlistRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i30.WishlistScreen(),
+        child: const _i29.WishlistScreen(),
       );
     },
   };
@@ -245,8 +237,8 @@ abstract class $AppRouter extends _i31.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddComplainsPage]
-class AddComplainsRoute extends _i31.PageRouteInfo<void> {
-  const AddComplainsRoute({List<_i31.PageRouteInfo>? children})
+class AddComplainsRoute extends _i30.PageRouteInfo<void> {
+  const AddComplainsRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AddComplainsRoute.name,
           initialChildren: children,
@@ -254,13 +246,13 @@ class AddComplainsRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'AddComplainsRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.AddMoneyPage]
-class AddMoneyRoute extends _i31.PageRouteInfo<void> {
-  const AddMoneyRoute({List<_i31.PageRouteInfo>? children})
+class AddMoneyRoute extends _i30.PageRouteInfo<void> {
+  const AddMoneyRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AddMoneyRoute.name,
           initialChildren: children,
@@ -268,13 +260,13 @@ class AddMoneyRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'AddMoneyRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.AddressBookPage]
-class AddressBookRoute extends _i31.PageRouteInfo<void> {
-  const AddressBookRoute({List<_i31.PageRouteInfo>? children})
+class AddressBookRoute extends _i30.PageRouteInfo<void> {
+  const AddressBookRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AddressBookRoute.name,
           initialChildren: children,
@@ -282,27 +274,13 @@ class AddressBookRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'AddressBookRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i4.AddressBooks]
-class AddressBooks extends _i31.PageRouteInfo<void> {
-  const AddressBooks({List<_i31.PageRouteInfo>? children})
-      : super(
-          AddressBooks.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AddressBooks';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i5.CartPage]
-class CartRoute extends _i31.PageRouteInfo<void> {
-  const CartRoute({List<_i31.PageRouteInfo>? children})
+/// [_i4.CartPage]
+class CartRoute extends _i30.PageRouteInfo<void> {
+  const CartRoute({List<_i30.PageRouteInfo>? children})
       : super(
           CartRoute.name,
           initialChildren: children,
@@ -310,16 +288,16 @@ class CartRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'CartRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.CategoryPage]
-class CategoryRoute extends _i31.PageRouteInfo<CategoryRouteArgs> {
+/// [_i5.CategoryPage]
+class CategoryRoute extends _i30.PageRouteInfo<CategoryRouteArgs> {
   CategoryRoute({
-    _i32.Key? key,
+    _i31.Key? key,
     bool openFromOccassion = false,
-    List<_i31.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           CategoryRoute.name,
           args: CategoryRouteArgs(
@@ -331,8 +309,8 @@ class CategoryRoute extends _i31.PageRouteInfo<CategoryRouteArgs> {
 
   static const String name = 'CategoryRoute';
 
-  static const _i31.PageInfo<CategoryRouteArgs> page =
-      _i31.PageInfo<CategoryRouteArgs>(name);
+  static const _i30.PageInfo<CategoryRouteArgs> page =
+      _i30.PageInfo<CategoryRouteArgs>(name);
 }
 
 class CategoryRouteArgs {
@@ -341,7 +319,7 @@ class CategoryRouteArgs {
     this.openFromOccassion = false,
   });
 
-  final _i32.Key? key;
+  final _i31.Key? key;
 
   final bool openFromOccassion;
 
@@ -352,9 +330,9 @@ class CategoryRouteArgs {
 }
 
 /// generated route for
-/// [_i7.CheckoutPage]
-class CheckoutRoute extends _i31.PageRouteInfo<void> {
-  const CheckoutRoute({List<_i31.PageRouteInfo>? children})
+/// [_i6.CheckoutPage]
+class CheckoutRoute extends _i30.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i30.PageRouteInfo>? children})
       : super(
           CheckoutRoute.name,
           initialChildren: children,
@@ -362,13 +340,13 @@ class CheckoutRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'CheckoutRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i8.CouponListPage]
-class CouponListRoute extends _i31.PageRouteInfo<void> {
-  const CouponListRoute({List<_i31.PageRouteInfo>? children})
+/// [_i7.CouponListPage]
+class CouponListRoute extends _i30.PageRouteInfo<void> {
+  const CouponListRoute({List<_i30.PageRouteInfo>? children})
       : super(
           CouponListRoute.name,
           initialChildren: children,
@@ -376,13 +354,13 @@ class CouponListRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'CouponListRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i9.HighLightsPage]
-class HighLightsRoute extends _i31.PageRouteInfo<void> {
-  const HighLightsRoute({List<_i31.PageRouteInfo>? children})
+/// [_i8.HighLightsPage]
+class HighLightsRoute extends _i30.PageRouteInfo<void> {
+  const HighLightsRoute({List<_i30.PageRouteInfo>? children})
       : super(
           HighLightsRoute.name,
           initialChildren: children,
@@ -390,13 +368,13 @@ class HighLightsRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'HighLightsRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.HomePage]
-class HomeRoute extends _i31.PageRouteInfo<void> {
-  const HomeRoute({List<_i31.PageRouteInfo>? children})
+/// [_i9.HomePage]
+class HomeRoute extends _i30.PageRouteInfo<void> {
+  const HomeRoute({List<_i30.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -404,13 +382,13 @@ class HomeRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i11.LoginOtp]
-class LoginOtp extends _i31.PageRouteInfo<void> {
-  const LoginOtp({List<_i31.PageRouteInfo>? children})
+/// [_i10.LoginOtp]
+class LoginOtp extends _i30.PageRouteInfo<void> {
+  const LoginOtp({List<_i30.PageRouteInfo>? children})
       : super(
           LoginOtp.name,
           initialChildren: children,
@@ -418,13 +396,13 @@ class LoginOtp extends _i31.PageRouteInfo<void> {
 
   static const String name = 'LoginOtp';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.LoginPage]
-class LoginRoute extends _i31.PageRouteInfo<void> {
-  const LoginRoute({List<_i31.PageRouteInfo>? children})
+/// [_i11.LoginPage]
+class LoginRoute extends _i30.PageRouteInfo<void> {
+  const LoginRoute({List<_i30.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -432,13 +410,13 @@ class LoginRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i13.MainTabbar]
-class MainTabbar extends _i31.PageRouteInfo<void> {
-  const MainTabbar({List<_i31.PageRouteInfo>? children})
+/// [_i12.MainTabbar]
+class MainTabbar extends _i30.PageRouteInfo<void> {
+  const MainTabbar({List<_i30.PageRouteInfo>? children})
       : super(
           MainTabbar.name,
           initialChildren: children,
@@ -446,13 +424,13 @@ class MainTabbar extends _i31.PageRouteInfo<void> {
 
   static const String name = 'MainTabbar';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i14.MyComplainsPage]
-class MyComplainsRoute extends _i31.PageRouteInfo<void> {
-  const MyComplainsRoute({List<_i31.PageRouteInfo>? children})
+/// [_i13.MyComplainsPage]
+class MyComplainsRoute extends _i30.PageRouteInfo<void> {
+  const MyComplainsRoute({List<_i30.PageRouteInfo>? children})
       : super(
           MyComplainsRoute.name,
           initialChildren: children,
@@ -460,13 +438,13 @@ class MyComplainsRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'MyComplainsRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i15.MyWalletPage]
-class MyWalletRoute extends _i31.PageRouteInfo<void> {
-  const MyWalletRoute({List<_i31.PageRouteInfo>? children})
+/// [_i14.MyWalletPage]
+class MyWalletRoute extends _i30.PageRouteInfo<void> {
+  const MyWalletRoute({List<_i30.PageRouteInfo>? children})
       : super(
           MyWalletRoute.name,
           initialChildren: children,
@@ -474,16 +452,16 @@ class MyWalletRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'MyWalletRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i16.OrderDetailsPage]
-class OrderDetailsRoute extends _i31.PageRouteInfo<OrderDetailsRouteArgs> {
+/// [_i15.OrderDetailsPage]
+class OrderDetailsRoute extends _i30.PageRouteInfo<OrderDetailsRouteArgs> {
   OrderDetailsRoute({
-    _i32.Key? key,
-    required _i33.Order order,
-    List<_i31.PageRouteInfo>? children,
+    _i31.Key? key,
+    required _i32.Order order,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           OrderDetailsRoute.name,
           args: OrderDetailsRouteArgs(
@@ -495,8 +473,8 @@ class OrderDetailsRoute extends _i31.PageRouteInfo<OrderDetailsRouteArgs> {
 
   static const String name = 'OrderDetailsRoute';
 
-  static const _i31.PageInfo<OrderDetailsRouteArgs> page =
-      _i31.PageInfo<OrderDetailsRouteArgs>(name);
+  static const _i30.PageInfo<OrderDetailsRouteArgs> page =
+      _i30.PageInfo<OrderDetailsRouteArgs>(name);
 }
 
 class OrderDetailsRouteArgs {
@@ -505,9 +483,9 @@ class OrderDetailsRouteArgs {
     required this.order,
   });
 
-  final _i32.Key? key;
+  final _i31.Key? key;
 
-  final _i33.Order order;
+  final _i32.Order order;
 
   @override
   String toString() {
@@ -516,9 +494,9 @@ class OrderDetailsRouteArgs {
 }
 
 /// generated route for
-/// [_i17.OrderListPage]
-class OrderListRoute extends _i31.PageRouteInfo<void> {
-  const OrderListRoute({List<_i31.PageRouteInfo>? children})
+/// [_i16.OrderListPage]
+class OrderListRoute extends _i30.PageRouteInfo<void> {
+  const OrderListRoute({List<_i30.PageRouteInfo>? children})
       : super(
           OrderListRoute.name,
           initialChildren: children,
@@ -526,13 +504,13 @@ class OrderListRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'OrderListRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i18.PlanPage]
-class PlanRoute extends _i31.PageRouteInfo<void> {
-  const PlanRoute({List<_i31.PageRouteInfo>? children})
+/// [_i17.PlanPage]
+class PlanRoute extends _i30.PageRouteInfo<void> {
+  const PlanRoute({List<_i30.PageRouteInfo>? children})
       : super(
           PlanRoute.name,
           initialChildren: children,
@@ -540,13 +518,13 @@ class PlanRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'PlanRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i19.ProfilePage]
-class ProfileRoute extends _i31.PageRouteInfo<void> {
-  const ProfileRoute({List<_i31.PageRouteInfo>? children})
+/// [_i18.ProfilePage]
+class ProfileRoute extends _i30.PageRouteInfo<void> {
+  const ProfileRoute({List<_i30.PageRouteInfo>? children})
       : super(
           ProfileRoute.name,
           initialChildren: children,
@@ -554,13 +532,13 @@ class ProfileRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i20.QuickPicksPage]
-class QuickPicksRoute extends _i31.PageRouteInfo<void> {
-  const QuickPicksRoute({List<_i31.PageRouteInfo>? children})
+/// [_i19.QuickPicksPage]
+class QuickPicksRoute extends _i30.PageRouteInfo<void> {
+  const QuickPicksRoute({List<_i30.PageRouteInfo>? children})
       : super(
           QuickPicksRoute.name,
           initialChildren: children,
@@ -568,13 +546,13 @@ class QuickPicksRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'QuickPicksRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i21.ReadPage]
-class ReadRoute extends _i31.PageRouteInfo<void> {
-  const ReadRoute({List<_i31.PageRouteInfo>? children})
+/// [_i20.ReadPage]
+class ReadRoute extends _i30.PageRouteInfo<void> {
+  const ReadRoute({List<_i30.PageRouteInfo>? children})
       : super(
           ReadRoute.name,
           initialChildren: children,
@@ -582,13 +560,13 @@ class ReadRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'ReadRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i22.SearchProductPage]
-class SearchProductRoute extends _i31.PageRouteInfo<void> {
-  const SearchProductRoute({List<_i31.PageRouteInfo>? children})
+/// [_i21.SearchProductPage]
+class SearchProductRoute extends _i30.PageRouteInfo<void> {
+  const SearchProductRoute({List<_i30.PageRouteInfo>? children})
       : super(
           SearchProductRoute.name,
           initialChildren: children,
@@ -596,13 +574,13 @@ class SearchProductRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'SearchProductRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i23.ShopPage]
-class ShopRoute extends _i31.PageRouteInfo<void> {
-  const ShopRoute({List<_i31.PageRouteInfo>? children})
+/// [_i22.ShopPage]
+class ShopRoute extends _i30.PageRouteInfo<void> {
+  const ShopRoute({List<_i30.PageRouteInfo>? children})
       : super(
           ShopRoute.name,
           initialChildren: children,
@@ -610,13 +588,13 @@ class ShopRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'ShopRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i24.ShoppingListPage]
-class ShoppingListRoute extends _i31.PageRouteInfo<void> {
-  const ShoppingListRoute({List<_i31.PageRouteInfo>? children})
+/// [_i23.ShoppingListPage]
+class ShoppingListRoute extends _i30.PageRouteInfo<void> {
+  const ShoppingListRoute({List<_i30.PageRouteInfo>? children})
       : super(
           ShoppingListRoute.name,
           initialChildren: children,
@@ -624,13 +602,13 @@ class ShoppingListRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'ShoppingListRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i25.SignupPage]
-class SignupRoute extends _i31.PageRouteInfo<void> {
-  const SignupRoute({List<_i31.PageRouteInfo>? children})
+/// [_i24.SignupPage]
+class SignupRoute extends _i30.PageRouteInfo<void> {
+  const SignupRoute({List<_i30.PageRouteInfo>? children})
       : super(
           SignupRoute.name,
           initialChildren: children,
@@ -638,13 +616,13 @@ class SignupRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'SignupRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i26.TalkToUsPage]
-class TalkToUsRoute extends _i31.PageRouteInfo<void> {
-  const TalkToUsRoute({List<_i31.PageRouteInfo>? children})
+/// [_i25.TalkToUsPage]
+class TalkToUsRoute extends _i30.PageRouteInfo<void> {
+  const TalkToUsRoute({List<_i30.PageRouteInfo>? children})
       : super(
           TalkToUsRoute.name,
           initialChildren: children,
@@ -652,13 +630,13 @@ class TalkToUsRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'TalkToUsRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i27.TrackOrderPage]
-class TrackOrderRoute extends _i31.PageRouteInfo<void> {
-  const TrackOrderRoute({List<_i31.PageRouteInfo>? children})
+/// [_i26.TrackOrderPage]
+class TrackOrderRoute extends _i30.PageRouteInfo<void> {
+  const TrackOrderRoute({List<_i30.PageRouteInfo>? children})
       : super(
           TrackOrderRoute.name,
           initialChildren: children,
@@ -666,13 +644,13 @@ class TrackOrderRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'TrackOrderRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i28.UserProfilePage]
-class UserProfileRoute extends _i31.PageRouteInfo<void> {
-  const UserProfileRoute({List<_i31.PageRouteInfo>? children})
+/// [_i27.UserProfilePage]
+class UserProfileRoute extends _i30.PageRouteInfo<void> {
+  const UserProfileRoute({List<_i30.PageRouteInfo>? children})
       : super(
           UserProfileRoute.name,
           initialChildren: children,
@@ -680,13 +658,13 @@ class UserProfileRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'UserProfileRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i29.WishListPage]
-class WishListRoute extends _i31.PageRouteInfo<void> {
-  const WishListRoute({List<_i31.PageRouteInfo>? children})
+/// [_i28.WishListPage]
+class WishListRoute extends _i30.PageRouteInfo<void> {
+  const WishListRoute({List<_i30.PageRouteInfo>? children})
       : super(
           WishListRoute.name,
           initialChildren: children,
@@ -694,13 +672,13 @@ class WishListRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'WishListRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i30.WishlistScreen]
-class WishlistRoute extends _i31.PageRouteInfo<void> {
-  const WishlistRoute({List<_i31.PageRouteInfo>? children})
+/// [_i29.WishlistScreen]
+class WishlistRoute extends _i30.PageRouteInfo<void> {
+  const WishlistRoute({List<_i30.PageRouteInfo>? children})
       : super(
           WishlistRoute.name,
           initialChildren: children,
@@ -708,5 +686,5 @@ class WishlistRoute extends _i31.PageRouteInfo<void> {
 
   static const String name = 'WishlistRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }

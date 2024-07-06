@@ -66,32 +66,34 @@ class AddressBookBloc extends Bloc<AddressBookEvent, AddressBookState> {
         );
       },
       addAddressBook: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isSubmitting: true,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
         final failureOrSuccess = await repository.addAddressBook(
           addressBook: e.addressBook,
         );
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
-              isFetching: false,
+              isSubmitting: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
           (address) async {
-            final failureOrSuccess = await repository.getAddressList();
-            failureOrSuccess.fold(
-                (failure) => emit(
-                      state.copyWith(
-                        isFetching: false,
-                        apiFailureOrSuccessOption: optionOf(failureOrSuccess),
-                      ),
-                    ), (list) {
-              if (e.isMakeDefault) {
-                add(_MakeDefaultAddress(id: list[0].id));
-              } else {
-                add(const _Fetch());
-              }
-            });
+            emit(
+              state.copyWith(
+                isSubmitting: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              ),
+            );
+            if (e.isMakeDefault) {
+              add(const _FetchFirstAndMarkDefault());
+            } else {
+              add(const _Fetch());
+            }
           },
         );
       },
@@ -127,6 +129,24 @@ class AddressBookBloc extends Bloc<AddressBookEvent, AddressBookState> {
       },
       selectAddress: (value) {
         emit(state.copyWith(selectedAddress: value.addressBook));
+      },
+      fetchFirstAndMarkDefault: (_) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
+        final failureOrSuccess = await repository.getAddressList();
+        failureOrSuccess.fold(
+            (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ), (list) {
+          add(_MakeDefaultAddress(id: list[0].id));
+        });
       },
     );
   }

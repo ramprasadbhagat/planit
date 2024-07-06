@@ -26,6 +26,7 @@ mixin _$AddressBookEvent {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$AddressBookEvent {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$AddressBookEvent {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +65,8 @@ mixin _$AddressBookEvent {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +78,8 @@ mixin _$AddressBookEvent {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +91,7 @@ mixin _$AddressBookEvent {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +161,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return initialized();
   }
@@ -168,6 +177,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return initialized?.call();
   }
@@ -183,6 +193,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -201,6 +212,8 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return initialized(this);
   }
@@ -215,6 +228,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return initialized?.call(this);
   }
@@ -229,6 +244,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -288,6 +304,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return fetch();
   }
@@ -303,6 +320,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return fetch?.call();
   }
@@ -318,6 +336,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -336,6 +355,8 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return fetch(this);
   }
@@ -350,6 +371,8 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return fetch?.call(this);
   }
@@ -364,6 +387,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -470,6 +494,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return addAddressBook(addressBook, isMakeDefault);
   }
@@ -485,6 +510,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return addAddressBook?.call(addressBook, isMakeDefault);
   }
@@ -500,6 +526,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (addAddressBook != null) {
@@ -518,6 +545,8 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return addAddressBook(this);
   }
@@ -532,6 +561,8 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return addAddressBook?.call(this);
   }
@@ -546,6 +577,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (addAddressBook != null) {
@@ -640,6 +672,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress(id);
   }
@@ -655,6 +688,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress?.call(id);
   }
@@ -670,6 +704,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (makeDefaultAddress != null) {
@@ -688,6 +723,8 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress(this);
   }
@@ -702,6 +739,8 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress?.call(this);
   }
@@ -716,6 +755,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (makeDefaultAddress != null) {
@@ -808,6 +848,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook(id);
   }
@@ -823,6 +864,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook?.call(id);
   }
@@ -838,6 +880,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (deleteAddressBook != null) {
@@ -856,6 +899,8 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook(this);
   }
@@ -870,6 +915,8 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook?.call(this);
   }
@@ -884,6 +931,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (deleteAddressBook != null) {
@@ -987,6 +1035,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return editAddressBook(addressBook);
   }
@@ -1002,6 +1051,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return editAddressBook?.call(addressBook);
   }
@@ -1017,6 +1067,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (editAddressBook != null) {
@@ -1035,6 +1086,8 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return editAddressBook(this);
   }
@@ -1049,6 +1102,8 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return editAddressBook?.call(this);
   }
@@ -1063,6 +1118,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (editAddressBook != null) {
@@ -1166,6 +1222,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return selectAddress(addressBook);
   }
@@ -1181,6 +1238,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return selectAddress?.call(addressBook);
   }
@@ -1196,6 +1254,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (selectAddress != null) {
@@ -1214,6 +1273,8 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
   }) {
     return selectAddress(this);
   }
@@ -1228,6 +1289,8 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
   }) {
     return selectAddress?.call(this);
   }
@@ -1242,6 +1305,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
     if (selectAddress != null) {
@@ -1262,12 +1326,159 @@ abstract class _SelectAddressBook implements AddressBookEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchFirstAndMarkDefaultImplCopyWith<$Res> {
+  factory _$$FetchFirstAndMarkDefaultImplCopyWith(
+          _$FetchFirstAndMarkDefaultImpl value,
+          $Res Function(_$FetchFirstAndMarkDefaultImpl) then) =
+      __$$FetchFirstAndMarkDefaultImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchFirstAndMarkDefaultImplCopyWithImpl<$Res>
+    extends _$AddressBookEventCopyWithImpl<$Res, _$FetchFirstAndMarkDefaultImpl>
+    implements _$$FetchFirstAndMarkDefaultImplCopyWith<$Res> {
+  __$$FetchFirstAndMarkDefaultImplCopyWithImpl(
+      _$FetchFirstAndMarkDefaultImpl _value,
+      $Res Function(_$FetchFirstAndMarkDefaultImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
+  const _$FetchFirstAndMarkDefaultImpl();
+
+  @override
+  String toString() {
+    return 'AddressBookEvent.fetchFirstAndMarkDefault()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchFirstAndMarkDefaultImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(AddressBook addressBook, bool isMakeDefault)
+        addAddressBook,
+    required TResult Function(String id) makeDefaultAddress,
+    required TResult Function(String id) deleteAddressBook,
+    required TResult Function(AddressBook addressBook) editAddressBook,
+    required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function() fetchFirstAndMarkDefault,
+  }) {
+    return fetchFirstAndMarkDefault();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(AddressBook addressBook, bool isMakeDefault)?
+        addAddressBook,
+    TResult? Function(String id)? makeDefaultAddress,
+    TResult? Function(String id)? deleteAddressBook,
+    TResult? Function(AddressBook addressBook)? editAddressBook,
+    TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function()? fetchFirstAndMarkDefault,
+  }) {
+    return fetchFirstAndMarkDefault?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(AddressBook addressBook, bool isMakeDefault)?
+        addAddressBook,
+    TResult Function(String id)? makeDefaultAddress,
+    TResult Function(String id)? deleteAddressBook,
+    TResult Function(AddressBook addressBook)? editAddressBook,
+    TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function()? fetchFirstAndMarkDefault,
+    required TResult orElse(),
+  }) {
+    if (fetchFirstAndMarkDefault != null) {
+      return fetchFirstAndMarkDefault();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddAdressBook value) addAddressBook,
+    required TResult Function(_MakeDefaultAddress value) makeDefaultAddress,
+    required TResult Function(_DeleteAddressBook value) deleteAddressBook,
+    required TResult Function(_EditAddressBook value) editAddressBook,
+    required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
+  }) {
+    return fetchFirstAndMarkDefault(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddAdressBook value)? addAddressBook,
+    TResult? Function(_MakeDefaultAddress value)? makeDefaultAddress,
+    TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
+    TResult? Function(_EditAddressBook value)? editAddressBook,
+    TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
+  }) {
+    return fetchFirstAndMarkDefault?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddAdressBook value)? addAddressBook,
+    TResult Function(_MakeDefaultAddress value)? makeDefaultAddress,
+    TResult Function(_DeleteAddressBook value)? deleteAddressBook,
+    TResult Function(_EditAddressBook value)? editAddressBook,
+    TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
+    required TResult orElse(),
+  }) {
+    if (fetchFirstAndMarkDefault != null) {
+      return fetchFirstAndMarkDefault(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchFirstAndMarkDefault implements AddressBookEvent {
+  const factory _FetchFirstAndMarkDefault() = _$FetchFirstAndMarkDefaultImpl;
+}
+
+/// @nodoc
 mixin _$AddressBookState {
   List<AddressBook> get addressList => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
   AddressBook get selectedAddress => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddressBookStateCopyWith<AddressBookState> get copyWith =>
@@ -1284,7 +1495,8 @@ abstract class $AddressBookStateCopyWith<$Res> {
       {List<AddressBook> addressList,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      AddressBook selectedAddress});
+      AddressBook selectedAddress,
+      bool isSubmitting});
 
   $AddressBookCopyWith<$Res> get selectedAddress;
 }
@@ -1306,6 +1518,7 @@ class _$AddressBookStateCopyWithImpl<$Res, $Val extends AddressBookState>
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? selectedAddress = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_value.copyWith(
       addressList: null == addressList
@@ -1324,6 +1537,10 @@ class _$AddressBookStateCopyWithImpl<$Res, $Val extends AddressBookState>
           ? _value.selectedAddress
           : selectedAddress // ignore: cast_nullable_to_non_nullable
               as AddressBook,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -1348,7 +1565,8 @@ abstract class _$$AddressBookStateImplCopyWith<$Res>
       {List<AddressBook> addressList,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      AddressBook selectedAddress});
+      AddressBook selectedAddress,
+      bool isSubmitting});
 
   @override
   $AddressBookCopyWith<$Res> get selectedAddress;
@@ -1369,6 +1587,7 @@ class __$$AddressBookStateImplCopyWithImpl<$Res>
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? selectedAddress = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_$AddressBookStateImpl(
       addressList: null == addressList
@@ -1387,6 +1606,10 @@ class __$$AddressBookStateImplCopyWithImpl<$Res>
           ? _value.selectedAddress
           : selectedAddress // ignore: cast_nullable_to_non_nullable
               as AddressBook,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1398,7 +1621,8 @@ class _$AddressBookStateImpl extends _AddressBookState {
       {required final List<AddressBook> addressList,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.selectedAddress})
+      required this.selectedAddress,
+      required this.isSubmitting})
       : _addressList = addressList,
         super._();
 
@@ -1416,10 +1640,12 @@ class _$AddressBookStateImpl extends _AddressBookState {
   final bool isFetching;
   @override
   final AddressBook selectedAddress;
+  @override
+  final bool isSubmitting;
 
   @override
   String toString() {
-    return 'AddressBookState(addressList: $addressList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedAddress: $selectedAddress)';
+    return 'AddressBookState(addressList: $addressList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedAddress: $selectedAddress, isSubmitting: $isSubmitting)';
   }
 
   @override
@@ -1435,7 +1661,9 @@ class _$AddressBookStateImpl extends _AddressBookState {
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
             (identical(other.selectedAddress, selectedAddress) ||
-                other.selectedAddress == selectedAddress));
+                other.selectedAddress == selectedAddress) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting));
   }
 
   @override
@@ -1444,7 +1672,8 @@ class _$AddressBookStateImpl extends _AddressBookState {
       const DeepCollectionEquality().hash(_addressList),
       apiFailureOrSuccessOption,
       isFetching,
-      selectedAddress);
+      selectedAddress,
+      isSubmitting);
 
   @JsonKey(ignore: true)
   @override
@@ -1460,7 +1689,8 @@ abstract class _AddressBookState extends AddressBookState {
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
-      required final AddressBook selectedAddress}) = _$AddressBookStateImpl;
+      required final AddressBook selectedAddress,
+      required final bool isSubmitting}) = _$AddressBookStateImpl;
   const _AddressBookState._() : super._();
 
   @override
@@ -1471,6 +1701,8 @@ abstract class _AddressBookState extends AddressBookState {
   bool get isFetching;
   @override
   AddressBook get selectedAddress;
+  @override
+  bool get isSubmitting;
   @override
   @JsonKey(ignore: true)
   _$$AddressBookStateImplCopyWith<_$AddressBookStateImpl> get copyWith =>

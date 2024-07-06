@@ -38,114 +38,100 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const UserDetailsSection(),
-                    InkWell(
-                      onTap: () => showModalBottomSheet<void>(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (BuildContext context) =>
-                            const CommonBottomSheet(
-                          child: EditProfileBottomSheet(),
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.edit_note,
-                        color: AppColors.grey2,
-                      ),
-                    ),
-                  ],
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const UserDetailsSection(),
+              InkWell(
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (BuildContext context) => const CommonBottomSheet(
+                    child: EditProfileBottomSheet(),
+                  ),
                 ),
-                const SizedBox(
-                  height: 20,
+                child: const Icon(
+                  Icons.edit_note,
+                  color: AppColors.grey2,
                 ),
-                Container(
-                  height: 0.8,
-                  width: double.infinity,
-                  color: AppColors.extraLightGrey3,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomTile(
-                  onTap: () =>
-                      context.router.navigate(const UserProfileRoute()),
-                  leadingIcon: Icons.fact_check_outlined,
-                  title: 'Profile',
-                ),
-                CustomTile(
-                  onTap: () =>
-                      context.router.navigate(const AddressBookRoute()),
-                  leadingIcon: Icons.fact_check_outlined,
-                  title: 'Address Book',
-                ),
-                CustomTile(
-                  onTap: () => context.router.navigate(const OrderListRoute()),
-                  leadingIcon: Icons.subtitles_outlined,
-                  title: 'My orders',
-                ),
-                CustomTile(
-                  onTap: () => context.router.navigate(const MyWalletRoute()),
-                  leadingIcon: Icons.wallet,
-                  title: 'My wallet',
-                ),
-                CustomTile(
-                  onTap: () =>
-                      context.router.navigate(const MyComplainsRoute()),
-                  leadingIcon: Icons.receipt,
-                  title: 'My complaints',
-                ),
-                CustomTile(
-                  onTap: () {},
-                  leadingIcon: Icons.star_border_outlined,
-                  title: 'My favourite recipes',
-                ),
-                CustomTile(
-                  onTap: () {},
-                  leadingIcon: Icons.privacy_tip_outlined,
-                  title: 'Terms and conditions',
-                ),
-                CustomTile(
-                  onTap: () {},
-                  leadingIcon: Icons.policy_outlined,
-                  title: 'Privacy policy',
-                ),
-                CustomTile(
-                  onTap: () {},
-                  leadingIcon: Icons.admin_panel_settings_outlined,
-                  title: 'About',
-                ),
-                CustomTile(
-                  onTap: () {
-                    context.read<AuthBloc>().add(const AuthEvent.logout());
-                    context
-                        .read<CartBloc>()
-                        .add(const CartEvent.clearAllCartLocal());
-                    context
-                        .read<PincodeBloc>()
-                        .add(const PincodeEvent.initialized());
-                    context
-                        .read<WishlistBloc>()
-                        .add(const WishlistEvent.initialized());
-                    context.router.maybePop();
-                    // context.router.navigate(const LoginRoute());
-                  },
-                  leadingIcon: Icons.exit_to_app,
-                  title: 'Logout',
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: 0.8,
+            width: double.infinity,
+            color: AppColors.extraLightGrey3,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTile(
+            onTap: () => context.router.navigate(const UserProfileRoute()),
+            leadingIcon: Icons.fact_check_outlined,
+            title: 'Profile',
+          ),
+          CustomTile(
+            onTap: () => context.router.navigate(const AddressBookRoute()),
+            leadingIcon: Icons.fact_check_outlined,
+            title: 'Address Book',
+          ),
+          CustomTile(
+            onTap: () => context.router.navigate(const OrderListRoute()),
+            leadingIcon: Icons.subtitles_outlined,
+            title: 'My orders',
+          ),
+          CustomTile(
+            onTap: () => context.router.navigate(const MyWalletRoute()),
+            leadingIcon: Icons.wallet,
+            title: 'My wallet',
+          ),
+          CustomTile(
+            onTap: () => context.router.navigate(const MyComplainsRoute()),
+            leadingIcon: Icons.receipt,
+            title: 'My complaints',
+          ),
+          CustomTile(
+            onTap: () {},
+            leadingIcon: Icons.star_border_outlined,
+            title: 'My favourite recipes',
+          ),
+          CustomTile(
+            onTap: () {},
+            leadingIcon: Icons.privacy_tip_outlined,
+            title: 'Terms and conditions',
+          ),
+          CustomTile(
+            onTap: () {},
+            leadingIcon: Icons.policy_outlined,
+            title: 'Privacy policy',
+          ),
+          CustomTile(
+            onTap: () {},
+            leadingIcon: Icons.admin_panel_settings_outlined,
+            title: 'About',
+          ),
+          CustomTile(
+            onTap: () {
+              context.read<AuthBloc>().add(const AuthEvent.logout());
+              context.read<CartBloc>().add(const CartEvent.clearAllCartLocal());
+              context.read<PincodeBloc>().add(const PincodeEvent.initialized());
+              context
+                  .read<WishlistBloc>()
+                  .add(const WishlistEvent.initialized());
+              context.router.maybePop();
+              // context.router.navigate(const LoginRoute());
+            },
+            leadingIcon: Icons.exit_to_app,
+            title: 'Logout',
+          ),
+        ],
       ),
     );
   }

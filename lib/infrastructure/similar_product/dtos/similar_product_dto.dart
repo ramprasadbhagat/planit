@@ -10,8 +10,6 @@ class SimilarProductDto with _$SimilarProductDto {
   const SimilarProductDto._();
   const factory SimilarProductDto({
     @JsonKey(defaultValue: '') required String id,
-    @JsonKey(defaultValue: '') required String categoryId,
-    @JsonKey(defaultValue: '') required String subcategoryId,
     @JsonKey(defaultValue: '') required String productName,
     @JsonKey(defaultValue: '') required String productDescription,
     @JsonKey(defaultValue: '') required String sku,
@@ -43,8 +41,6 @@ class SimilarProductDto with _$SimilarProductDto {
 
   SimilarProduct get toDomain => SimilarProduct(
         id: id,
-        categoryId: categoryId,
-        subcategoryId: subcategoryId,
         productName: productName,
         productDescription: productDescription,
         sku: sku,

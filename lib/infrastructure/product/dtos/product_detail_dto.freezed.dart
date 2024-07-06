@@ -24,7 +24,8 @@ mixin _$ProductDetailDto {
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
-  @JsonKey(name: 'productImages', defaultValue: [])
+  @JsonKey(
+      name: 'productImages', defaultValue: [], readValue: parseProductImages)
   List<String> get productImages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,10 @@ abstract class $ProductDetailDtoCopyWith<$Res> {
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(name: 'productImages', defaultValue: [])
+      @JsonKey(
+          name: 'productImages',
+          defaultValue: [],
+          readValue: parseProductImages)
       List<String> productImages});
 }
 
@@ -93,7 +97,10 @@ abstract class _$$ProductDetailDtoImplCopyWith<$Res>
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(name: 'productImages', defaultValue: [])
+      @JsonKey(
+          name: 'productImages',
+          defaultValue: [],
+          readValue: parseProductImages)
       List<String> productImages});
 }
 
@@ -136,7 +143,10 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
       {@JsonKey(name: 'id', defaultValue: '') required this.productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
-      @JsonKey(name: 'productImages', defaultValue: [])
+      @JsonKey(
+          name: 'productImages',
+          defaultValue: [],
+          readValue: parseProductImages)
       required final List<String> productImages})
       : _productImages = productImages,
         super._();
@@ -152,7 +162,8 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
   final String productDescription;
   final List<String> _productImages;
   @override
-  @JsonKey(name: 'productImages', defaultValue: [])
+  @JsonKey(
+      name: 'productImages', defaultValue: [], readValue: parseProductImages)
   List<String> get productImages {
     if (_productImages is EqualUnmodifiableListView) return _productImages;
     // ignore: implicit_dynamic_type
@@ -202,7 +213,10 @@ abstract class _ProductDetailDto extends ProductDetailDto {
       {@JsonKey(name: 'id', defaultValue: '') required final String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required final String productDescription,
-      @JsonKey(name: 'productImages', defaultValue: [])
+      @JsonKey(
+          name: 'productImages',
+          defaultValue: [],
+          readValue: parseProductImages)
       required final List<String> productImages}) = _$ProductDetailDtoImpl;
   _ProductDetailDto._() : super._();
 
@@ -216,7 +230,8 @@ abstract class _ProductDetailDto extends ProductDetailDto {
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription;
   @override
-  @JsonKey(name: 'productImages', defaultValue: [])
+  @JsonKey(
+      name: 'productImages', defaultValue: [], readValue: parseProductImages)
   List<String> get productImages;
   @override
   @JsonKey(ignore: true)
