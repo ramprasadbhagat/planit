@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TrackOrderDetails {
   String get id => throw _privateConstructorUsedError;
   String get orderId => throw _privateConstructorUsedError;
-  String get orderStatus => throw _privateConstructorUsedError;
+  OrderStatus get orderStatus => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ abstract class $TrackOrderDetailsCopyWith<$Res> {
           TrackOrderDetails value, $Res Function(TrackOrderDetails) then) =
       _$TrackOrderDetailsCopyWithImpl<$Res, TrackOrderDetails>;
   @useResult
-  $Res call({String id, String orderId, String orderStatus, String date});
+  $Res call({String id, String orderId, OrderStatus orderStatus, String date});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$TrackOrderDetailsCopyWithImpl<$Res, $Val extends TrackOrderDetails>
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderStatus,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$TrackOrderDetailsImplCopyWith<$Res>
       __$$TrackOrderDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String orderId, String orderStatus, String date});
+  $Res call({String id, String orderId, OrderStatus orderStatus, String date});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$TrackOrderDetailsImplCopyWithImpl<$Res>
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderStatus,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -137,7 +137,7 @@ class _$TrackOrderDetailsImpl extends _TrackOrderDetails {
   @override
   final String orderId;
   @override
-  final String orderStatus;
+  final OrderStatus orderStatus;
   @override
   final String date;
 
@@ -173,7 +173,7 @@ abstract class _TrackOrderDetails extends TrackOrderDetails {
   factory _TrackOrderDetails(
       {required final String id,
       required final String orderId,
-      required final String orderStatus,
+      required final OrderStatus orderStatus,
       required final String date}) = _$TrackOrderDetailsImpl;
   _TrackOrderDetails._() : super._();
 
@@ -182,7 +182,7 @@ abstract class _TrackOrderDetails extends TrackOrderDetails {
   @override
   String get orderId;
   @override
-  String get orderStatus;
+  OrderStatus get orderStatus;
   @override
   String get date;
   @override

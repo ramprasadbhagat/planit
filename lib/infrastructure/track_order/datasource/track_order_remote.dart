@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
-import 'package:planit/domain/track_order/entity/track_order.dart';
+import 'package:planit/domain/track_order/entity/track_order_details.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
-import 'package:planit/infrastructure/track_order/dtos/track_order_dto.dart';
+import 'package:planit/infrastructure/track_order/dtos/track_order_details_dto.dart';
 import 'package:planit/utils/storage_service.dart';
 
 class TrackOrderRemoteDataSource {
@@ -14,13 +14,16 @@ class TrackOrderRemoteDataSource {
     required this.storageService,
   });
 
-  Future<TrackOrder> getTrackOrder() async {
+  Future<TrackOrderDetails> getTrackOrderDetails({
+    required String orderId,
+  }) async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'orderTracking/',
+      url: 'orderTracking/$orderId',
     );
     _exceptionChecker(res: res);
-    return TrackOrderDto.fromJson(res.data).toDomain;
+    return TrackOrderDetailsDto.fromJson(res.data).toDomain;
+    // return TrackOrderDto.fromJson(res.data).toDomain;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

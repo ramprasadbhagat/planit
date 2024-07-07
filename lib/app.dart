@@ -13,6 +13,7 @@ import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/locator.dart';
@@ -85,6 +86,8 @@ class App extends StatelessWidget {
         BlocProvider<CouponBloc>(
           create: (context) => locator<CouponBloc>(),
         ),
+        BlocProvider<TrackOrderBloc>(
+            create: (context) => locator<TrackOrderBloc>()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

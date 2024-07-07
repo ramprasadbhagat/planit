@@ -6,6 +6,14 @@ class TrackOrderState with _$TrackOrderState {
   const factory TrackOrderState({
     required TrackOrderDetails trackOrderItem,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required bool isFetching,
+    required Order? order,
   }) = _TrackOrderState;
-  const factory TrackOrderState.initial() = _Initial;
+
+  factory TrackOrderState.initial() => TrackOrderState(
+        trackOrderItem: TrackOrderDetails.empty(),
+        apiFailureOrSuccessOption: none(),
+        order: null,
+        isFetching: false,
+      );
 }

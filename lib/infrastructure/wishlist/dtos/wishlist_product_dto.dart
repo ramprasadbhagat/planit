@@ -9,9 +9,6 @@ class WishlistProductDto with _$WishlistProductDto {
   const WishlistProductDto._();
   factory WishlistProductDto({
     @JsonKey(name: '_id', defaultValue: '') required String id,
-    @JsonKey(name: 'categoryId', defaultValue: '') required String categoryId,
-    @JsonKey(name: 'subcategoryId', defaultValue: '')
-    required String subcategoryId,
     @JsonKey(name: 'productName', defaultValue: '') required String productName,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
@@ -53,8 +50,6 @@ class WishlistProductDto with _$WishlistProductDto {
         quantity: 0,
         id: id,
         price: 0,
-        categoryId: categoryId,
-        subcategoryId: subcategoryId,
         productName: productName,
         productDescription: productDescription,
         productMRP: productMRP,

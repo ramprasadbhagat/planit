@@ -7,9 +7,7 @@ class WishlistProduct with _$WishlistProduct {
   const WishlistProduct._();
   factory WishlistProduct({
     required String id,
-    required String categoryId,
     required String attributeItemId,
-    required String subcategoryId,
     required int price,
     required String productName,
     required String productDescription,
@@ -38,8 +36,6 @@ class WishlistProduct with _$WishlistProduct {
   factory WishlistProduct.empty() => WishlistProduct(
         id: '',
         price: 0,
-        categoryId: '',
-        subcategoryId: '',
         attributeItemId: '',
         uid: '',
         productName: '',

@@ -10,8 +10,6 @@ _$WishlistProductDtoImpl _$$WishlistProductDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$WishlistProductDtoImpl(
       id: json['_id'] as String? ?? '',
-      categoryId: json['categoryId'] as String? ?? '',
-      subcategoryId: json['subcategoryId'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
       productMRP: json['productMRP'] as String? ?? '',
@@ -41,8 +39,6 @@ Map<String, dynamic> _$$WishlistProductDtoImplToJson(
         _$WishlistProductDtoImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
-      'categoryId': instance.categoryId,
-      'subcategoryId': instance.subcategoryId,
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'productMRP': instance.productMRP,

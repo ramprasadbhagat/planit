@@ -22,9 +22,9 @@ TrackOrderDetailsDto _$TrackOrderDetailsDtoFromJson(Map<String, dynamic> json) {
 mixin _$TrackOrderDetailsDto {
   @JsonKey(name: 'id', defaultValue: '')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'orderId', defaultValue: '')
+  @JsonKey(name: 'order_id', defaultValue: '')
   String get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'orderStatus', defaultValue: '')
+  @JsonKey(name: 'order_status', defaultValue: '')
   String get orderStatus => throw _privateConstructorUsedError;
   @JsonKey(name: 'date', defaultValue: '')
   String get date => throw _privateConstructorUsedError;
@@ -43,8 +43,8 @@ abstract class $TrackOrderDetailsDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'orderId', defaultValue: '') String orderId,
-      @JsonKey(name: 'orderStatus', defaultValue: '') String orderStatus,
+      @JsonKey(name: 'order_id', defaultValue: '') String orderId,
+      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus,
       @JsonKey(name: 'date', defaultValue: '') String date});
 }
 
@@ -98,8 +98,8 @@ abstract class _$$TrackOrderDetailsDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'orderId', defaultValue: '') String orderId,
-      @JsonKey(name: 'orderStatus', defaultValue: '') String orderStatus,
+      @JsonKey(name: 'order_id', defaultValue: '') String orderId,
+      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus,
       @JsonKey(name: 'date', defaultValue: '') String date});
 }
 
@@ -145,8 +145,9 @@ class __$$TrackOrderDetailsDtoImplCopyWithImpl<$Res>
 class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
   _$TrackOrderDetailsDtoImpl(
       {@JsonKey(name: 'id', defaultValue: '') required this.id,
-      @JsonKey(name: 'orderId', defaultValue: '') required this.orderId,
-      @JsonKey(name: 'orderStatus', defaultValue: '') required this.orderStatus,
+      @JsonKey(name: 'order_id', defaultValue: '') required this.orderId,
+      @JsonKey(name: 'order_status', defaultValue: '')
+      required this.orderStatus,
       @JsonKey(name: 'date', defaultValue: '') required this.date})
       : super._();
 
@@ -157,10 +158,10 @@ class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
   @JsonKey(name: 'id', defaultValue: '')
   final String id;
   @override
-  @JsonKey(name: 'orderId', defaultValue: '')
+  @JsonKey(name: 'order_id', defaultValue: '')
   final String orderId;
   @override
-  @JsonKey(name: 'orderStatus', defaultValue: '')
+  @JsonKey(name: 'order_status', defaultValue: '')
   final String orderStatus;
   @override
   @JsonKey(name: 'date', defaultValue: '')
@@ -206,8 +207,9 @@ class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
 abstract class _TrackOrderDetailsDto extends TrackOrderDetailsDto {
   factory _TrackOrderDetailsDto(
       {@JsonKey(name: 'id', defaultValue: '') required final String id,
-      @JsonKey(name: 'orderId', defaultValue: '') required final String orderId,
-      @JsonKey(name: 'orderStatus', defaultValue: '')
+      @JsonKey(name: 'order_id', defaultValue: '')
+      required final String orderId,
+      @JsonKey(name: 'order_status', defaultValue: '')
       required final String orderStatus,
       @JsonKey(name: 'date', defaultValue: '')
       required final String date}) = _$TrackOrderDetailsDtoImpl;
@@ -220,10 +222,10 @@ abstract class _TrackOrderDetailsDto extends TrackOrderDetailsDto {
   @JsonKey(name: 'id', defaultValue: '')
   String get id;
   @override
-  @JsonKey(name: 'orderId', defaultValue: '')
+  @JsonKey(name: 'order_id', defaultValue: '')
   String get orderId;
   @override
-  @JsonKey(name: 'orderStatus', defaultValue: '')
+  @JsonKey(name: 'order_status', defaultValue: '')
   String get orderStatus;
   @override
   @JsonKey(name: 'date', defaultValue: '')

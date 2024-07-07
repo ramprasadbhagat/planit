@@ -8,14 +8,25 @@ class TrackOrderDetails with _$TrackOrderDetails {
   factory TrackOrderDetails({
     required String id,
     required String orderId,
-    required String orderStatus,
+    required OrderStatus orderStatus,
     required String date,
   }) = _TrackOrderDetails;
 
   factory TrackOrderDetails.empty() => TrackOrderDetails(
         id: '',
         orderId: '',
-        orderStatus: '',
+        orderStatus: OrderStatus.cancel,
         date: '',
       );
+
+  int get trackID => OrderStatus.values.indexOf(orderStatus);
+}
+
+enum OrderStatus {
+  pending,
+  received,
+  inProcess,
+  dispatched,
+  successfull,
+  cancel,
 }

@@ -3,7 +3,7 @@ import 'package:planit/domain/track_order/entity/track_order.dart';
 import 'package:planit/infrastructure/track_order/dtos/track_order_details_dto.dart';
 
 part 'track_order_dto.freezed.dart';
-// part 'tracK_order_dto.g.dart';
+part 'track_order_dto.g.dart';
 
 @freezed
 class TrackOrderDto with _$TrackOrderDto {

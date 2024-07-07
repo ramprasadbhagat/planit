@@ -15,6 +15,7 @@ import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
@@ -58,6 +59,9 @@ import 'package:planit/infrastructure/similar_product/repository/similar_product
 import 'package:planit/infrastructure/sub_categories/datasource/sub_category_local.dart';
 import 'package:planit/infrastructure/sub_categories/datasource/sub_cetegory_remote.dart';
 import 'package:planit/infrastructure/sub_categories/repository/sub_category_repository.dart';
+import 'package:planit/infrastructure/track_order/datasource/track_order_local.dart';
+import 'package:planit/infrastructure/track_order/datasource/track_order_remote.dart';
+import 'package:planit/infrastructure/track_order/repository/track_order_repository.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_local.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_remote.dart';
 import 'package:planit/infrastructure/wishlist/repository/wishlist_repository.dart';
@@ -473,6 +477,33 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => CouponBloc(
       repository: locator<CouponRepository>(),
+    ),
+  );
+
+  /////============================================================
+  //  Track Order
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const TrackOrderLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => TrackOrderRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => TrackOrderRepository(
+      config: locator<Config>(),
+      remoteDataSource: locator<TrackOrderRemoteDataSource>(),
+      localDataSource: locator<TrackOrderLocalDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => TrackOrderBloc(
+      repository: locator<TrackOrderRepository>(),
     ),
   );
 }
