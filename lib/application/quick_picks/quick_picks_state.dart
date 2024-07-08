@@ -18,6 +18,12 @@ class QuickPicksState with _$QuickPicksState {
 // calculate height based on product quantity
   double get quickPickProductsHeight {
     final rows = (quicksPickProducts.length + 2) ~/ 3;
-    return ((rows > 0 ? rows : 1) * 180) + 35;
+    return ((rows > 0
+                ? rows > 1
+                    ? 2
+                    : 1
+                : 1) *
+            180) +
+        25;
   }
 }

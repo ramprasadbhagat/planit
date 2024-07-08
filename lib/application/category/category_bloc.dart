@@ -25,17 +25,25 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     await event.map(
       initialized: (_) async => emit(CategoryState.initial()),
       fetch: (e) async {
+        emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.getCategories();
         failureOrSuccess.fold(
-          (failure) => emit(
+            (failure) => emit(
+                  state.copyWith(
+                    isFetching: false,
+                    apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                  ),
+                ), (categoriesList) =>
+          emit(
             state.copyWith(
-              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
-            ),
-          ),
-          (categoriesList) => emit(
-            state.copyWith(
+              isFetching: false,
               selectedCategory: categoriesList.firstOrNull ?? Category.empty(),
-              categories: categoriesList,
+              categories: categoriesList
+                  .where((element) => element.type == 'shopByCategory')
+                  .toList(),
+              occasionCategory: categoriesList
+                  .where((element) => element.type == 'shopByOccasion')
+                  .toList(),
             ),
           ),
         );
@@ -45,6 +53,11 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           selectedCategory: e.category,
         ),
       ),
+      selectOccasion: (e) {
+        emit(
+          state.copyWith(isOcassionSelected: e.isSelected),
+        );
+      },
     );
   }
 }

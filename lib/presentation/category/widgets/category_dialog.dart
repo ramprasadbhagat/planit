@@ -13,7 +13,9 @@ import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/utils/png_image.dart';
 
 class CategoryAlertDialog extends StatelessWidget {
-  const CategoryAlertDialog({super.key});
+  const CategoryAlertDialog({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,31 +50,33 @@ class CategoryAlertDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Shop by category',
-                        style: textTheme.titleLarge?.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      BlocBuilder<CategoryBloc, CategoryState>(
-                        buildWhen: (previous, current) =>
-                            previous.validCategories != current.validCategories,
-                        builder: (context, state) {
-                          return Text(
+                  BlocBuilder<CategoryBloc, CategoryState>(
+                    buildWhen: (previous, current) =>
+                        previous.validCategories != current.validCategories,
+                    builder: (context, state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.isOcassionSelected
+                                ? 'Shop by Occasion'
+                                : 'Shop by category',
+                            style: textTheme.titleLarge?.copyWith(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
                             '${state.validCategories.length} categories',
                             style: textTheme.labelSmall?.copyWith(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
                               color: AppColors.lightOrange,
                             ),
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   InkWell(
                     onTap: () {

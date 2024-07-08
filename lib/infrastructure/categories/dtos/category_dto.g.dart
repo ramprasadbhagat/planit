@@ -17,6 +17,7 @@ _$CategoryDtoImpl _$$CategoryDtoImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => SubCategoryDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      type: json['type'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$CategoryDtoImplToJson(_$CategoryDtoImpl instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$CategoryDtoImplToJson(_$CategoryDtoImpl instance) =>
       'categoryName': instance.categoryName,
       'categoryImages': instance.categoryImages,
       'subcategories': instance.subcategories,
+      'type': instance.type,
     };
