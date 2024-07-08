@@ -18,9 +18,9 @@ class HtmlText extends StatelessWidget {
 
   String _parseHtmlString(String htmlString) {
     final document = parse(htmlString);
-    final parsedString = parse(document.body!.text).documentElement!.text;
+    final parsedString = parse(document.body?.text).documentElement?.text;
 
-    return parsedString;
+    return parsedString ?? '';
   }
 
   @override
