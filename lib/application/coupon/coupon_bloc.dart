@@ -26,6 +26,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
           (failure) => emit(
             state.copyWith(
               isFetching: false,
+              appliedCoupon: Coupon.empty(),
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
@@ -33,15 +34,32 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
             state.copyWith(
               isFetching: false,
               couponList: list,
+              searchCouponList: [],
               apiFailureOrSuccessOption: none(),
             ),
           ),
         );
       },
+      couponSearch: (e) {
+        if (e.couponCode.isNotEmpty) {
+          final coupons = <Coupon>[];
+          for (final element in state.couponList) {
+            if (element.couponCode.contains(e.couponCode)) {
+              coupons.add(element);
+            }
+          }
+          emit(state.copyWith(searchCouponList: coupons));
+        } else {
+          emit(state.copyWith(searchCouponList: []));
+        }
+      },
       removeCoupon: (_) async {
         emit(state.copyWith(isFetching: true));
         await Future.delayed(const Duration(milliseconds: 600));
         emit(state.copyWith(isFetching: false, appliedCoupon: Coupon.empty()));
+      },
+      clearCoupons: (_) {
+        emit(state.copyWith(searchCouponList: []));
       },
       applyCoupon: (_Apply e) async {
         emit(state.copyWith(isApplying: true, appliedCoupon: e.coupon));
@@ -63,6 +81,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
                 isFetching: false,
                 isApplying: false,
                 appliedCoupon: e.coupon,
+                searchCouponList: [],
                 apiFailureOrSuccessOption: optionOf(failureOrSuccess),
               ),
             );

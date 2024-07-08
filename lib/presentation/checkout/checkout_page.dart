@@ -7,6 +7,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
+import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
@@ -161,6 +162,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   builder: (context, state) {
                     return GestureDetector(
                       onTap: () {
+                        if (state.appliedCoupon == Coupon.empty()) {
+                          context.read<CouponBloc>().add(
+                                const CouponEvent.clearCoupons(),
+                              );
+                        } else {}
                         context.router.navigate(const CouponListRoute());
                       },
                       child: Skeletonizer(
@@ -181,7 +187,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 : Row(
                                     children: [
                                       Text(
-                                        '₹${state.appliedCoupon.amount} saved on this order!',
+                                        '₹${state.appliedCoupon.amount(context.read<CartBloc>().state.cartItem.totalPrice.getValue())} saved on this order!',
                                         style: textTheme.bodyMedium?.copyWith(
                                           color: AppColors.green,
                                           fontSize: 14,
@@ -228,27 +234,39 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: ElevatedButton(
                     onPressed: paymentMethod == 'Cash on delivery'
                         ? () {
-                            final cartState = context.read<CartBloc>().state;
                             final addressState =
                                 context.read<AddressBookBloc>().state;
-                            context.read<OrderBloc>().add(
-                                  OrderEvent.submitOrder(
-                                    cartItem: cartState.cartItem,
-                                    addressBook: addressState.selectedAddress,
-                                    date: date,
-                                    coupon: context
-                                        .read<CouponBloc>()
-                                        .state
-                                        .appliedCoupon,
-                                  ),
-                                );
-                            const snackBar = SnackBar(
-                              content: Text('Order placed successfully'),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                            context.router.navigate(const HomeRoute());
-                            context.router.navigate(const OrderListRoute());
+                            if (addressState.selectedAddress ==
+                                AddressBook.empty()) {
+                              const snackBar = SnackBar(
+                                backgroundColor: AppColors.grey3,
+                                content:
+                                    Text('No Address added or selected yet'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            } else {
+                              final cartState = context.read<CartBloc>().state;
+
+                              context.read<OrderBloc>().add(
+                                    OrderEvent.submitOrder(
+                                      cartItem: cartState.cartItem,
+                                      addressBook: addressState.selectedAddress,
+                                      date: date,
+                                      coupon: context
+                                          .read<CouponBloc>()
+                                          .state
+                                          .appliedCoupon,
+                                    ),
+                                  );
+                              const snackBar = SnackBar(
+                                content: Text('Order placed successfully'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              context.router.navigate(const HomeRoute());
+                              context.router.navigate(const OrderListRoute());
+                            }
                           }
                         : () {},
                     style: ElevatedButton.styleFrom(

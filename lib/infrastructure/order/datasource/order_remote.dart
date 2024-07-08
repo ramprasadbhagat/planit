@@ -40,8 +40,7 @@ class OrderRemoteDataSource {
       'orderStatus': 'pending',
       'totalPrice': cartItem.totalPrice.getValue().toString(),
       'deliveryCharge': '40.00',
-      'totalDiscount':
-          (cartItem.totalDiscount.getValue() + coupon.amount).toString(),
+      'totalDiscount': coupon.amount(cartItem.totalPrice.getValue()).toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),
     });
     final res = await httpService.request(

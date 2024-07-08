@@ -5,6 +5,7 @@ class CouponState with _$CouponState {
   const CouponState._();
   const factory CouponState({
     required List<Coupon> couponList,
+    required List<Coupon> searchCouponList,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
     required bool isApplying,
@@ -13,6 +14,7 @@ class CouponState with _$CouponState {
 
   factory CouponState.initial() => CouponState(
         apiFailureOrSuccessOption: none(),
+        searchCouponList: [],
         isFetching: false,
         appliedCoupon: Coupon.empty(),
         couponList: [],
