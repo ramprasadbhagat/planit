@@ -247,6 +247,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             );
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackBar);
+                            context.router.navigate(const HomeRoute());
                             context.router.navigate(const OrderListRoute());
                           }
                         : () {},
