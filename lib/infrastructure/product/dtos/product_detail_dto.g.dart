@@ -11,10 +11,11 @@ _$ProductDetailDtoImpl _$$ProductDetailDtoImplFromJson(
     _$ProductDetailDtoImpl(
       productId: json['id'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
-      productImages: (json['productImages'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      productImages:
+          (parseProductImages(json, 'productImages') as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              [],
     );
 
 Map<String, dynamic> _$$ProductDetailDtoImplToJson(

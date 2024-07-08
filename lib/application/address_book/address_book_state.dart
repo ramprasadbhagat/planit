@@ -8,6 +8,7 @@ class AddressBookState with _$AddressBookState {
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
     required AddressBook selectedAddress,
+    required bool isSubmitting,
   }) = _AddressBookState;
 
   factory AddressBookState.initial() => AddressBookState(
@@ -15,6 +16,7 @@ class AddressBookState with _$AddressBookState {
         apiFailureOrSuccessOption: none(),
         isFetching: false,
         selectedAddress: AddressBook.empty(),
+        isSubmitting: false,
       );
 
   bool get isAdressEmpty => addressList.isEmpty;

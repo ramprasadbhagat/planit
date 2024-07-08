@@ -10,14 +10,10 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$SimilarProductDtoImpl(
       id: json['id'] as String? ?? '',
-      categoryId: json['categoryId'] as String? ?? '',
-      subcategoryId: json['subcategoryId'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
       productDescription: json['productDescription'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
       skuPrice: json['sku_price'] as String? ?? '',
-      skuPacksize: json['sku_packsize'] as String? ?? '',
-      skuContent: json['sku_content'] as String? ?? '',
       startingPrice: stringReadValue(json, 'startingPrice') as String? ?? '',
       productMRP: json['productMRP'] as String? ?? '',
       productReview: json['productReview'] as String? ?? '',
@@ -35,24 +31,20 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
       attributeName: json['attributeName'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
-      price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
-      productImages: (json['productImages'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      productImages: (json['productImages'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$SimilarProductDtoImplToJson(
         _$SimilarProductDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'categoryId': instance.categoryId,
-      'subcategoryId': instance.subcategoryId,
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'sku': instance.sku,
       'sku_price': instance.skuPrice,
-      'sku_packsize': instance.skuPacksize,
-      'sku_content': instance.skuContent,
       'startingPrice': instance.startingPrice,
       'productMRP': instance.productMRP,
       'productReview': instance.productReview,
@@ -67,6 +59,5 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'attributeName': instance.attributeName,
       'attributeItem': instance.attributeItem,
       'attributeItemProductId': instance.attributeItemProductId,
-      'price': instance.price,
       'productImages': instance.productImages,
     };

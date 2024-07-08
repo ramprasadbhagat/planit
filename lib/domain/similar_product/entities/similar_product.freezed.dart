@@ -17,14 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SimilarProduct {
   String get id => throw _privateConstructorUsedError;
-  String get categoryId => throw _privateConstructorUsedError;
-  String get subcategoryId => throw _privateConstructorUsedError;
   String get productName => throw _privateConstructorUsedError;
   String get productDescription => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   String get skuPrice => throw _privateConstructorUsedError;
-  String get skuPacksize => throw _privateConstructorUsedError;
-  String get skuContent => throw _privateConstructorUsedError;
   int get startingPrice => throw _privateConstructorUsedError;
   List<String> get ingredientsList => throw _privateConstructorUsedError;
   String get nutritionalInformation => throw _privateConstructorUsedError;
@@ -55,14 +51,10 @@ abstract class $SimilarProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String categoryId,
-      String subcategoryId,
       String productName,
       String productDescription,
       String sku,
       String skuPrice,
-      String skuPacksize,
-      String skuContent,
       int startingPrice,
       List<String> ingredientsList,
       String nutritionalInformation,
@@ -97,14 +89,10 @@ class _$SimilarProductCopyWithImpl<$Res, $Val extends SimilarProduct>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
     Object? skuPrice = null,
-    Object? skuPacksize = null,
-    Object? skuContent = null,
     Object? startingPrice = null,
     Object? ingredientsList = null,
     Object? nutritionalInformation = null,
@@ -127,14 +115,6 @@ class _$SimilarProductCopyWithImpl<$Res, $Val extends SimilarProduct>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
-              as String,
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -150,14 +130,6 @@ class _$SimilarProductCopyWithImpl<$Res, $Val extends SimilarProduct>
       skuPrice: null == skuPrice
           ? _value.skuPrice
           : skuPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      skuPacksize: null == skuPacksize
-          ? _value.skuPacksize
-          : skuPacksize // ignore: cast_nullable_to_non_nullable
-              as String,
-      skuContent: null == skuContent
-          ? _value.skuContent
-          : skuContent // ignore: cast_nullable_to_non_nullable
               as String,
       startingPrice: null == startingPrice
           ? _value.startingPrice
@@ -245,14 +217,10 @@ abstract class _$$SimilarProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String categoryId,
-      String subcategoryId,
       String productName,
       String productDescription,
       String sku,
       String skuPrice,
-      String skuPacksize,
-      String skuContent,
       int startingPrice,
       List<String> ingredientsList,
       String nutritionalInformation,
@@ -286,14 +254,10 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? sku = null,
     Object? skuPrice = null,
-    Object? skuPacksize = null,
-    Object? skuContent = null,
     Object? startingPrice = null,
     Object? ingredientsList = null,
     Object? nutritionalInformation = null,
@@ -316,14 +280,6 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
-              as String,
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -339,14 +295,6 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
       skuPrice: null == skuPrice
           ? _value.skuPrice
           : skuPrice // ignore: cast_nullable_to_non_nullable
-              as String,
-      skuPacksize: null == skuPacksize
-          ? _value.skuPacksize
-          : skuPacksize // ignore: cast_nullable_to_non_nullable
-              as String,
-      skuContent: null == skuContent
-          ? _value.skuContent
-          : skuContent // ignore: cast_nullable_to_non_nullable
               as String,
       startingPrice: null == startingPrice
           ? _value.startingPrice
@@ -421,14 +369,10 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
 class _$SimilarProductImpl extends _SimilarProduct {
   const _$SimilarProductImpl(
       {required this.id,
-      required this.categoryId,
-      required this.subcategoryId,
       required this.productName,
       required this.productDescription,
       required this.sku,
       required this.skuPrice,
-      required this.skuPacksize,
-      required this.skuContent,
       required this.startingPrice,
       required final List<String> ingredientsList,
       required this.nutritionalInformation,
@@ -452,10 +396,6 @@ class _$SimilarProductImpl extends _SimilarProduct {
   @override
   final String id;
   @override
-  final String categoryId;
-  @override
-  final String subcategoryId;
-  @override
   final String productName;
   @override
   final String productDescription;
@@ -463,10 +403,6 @@ class _$SimilarProductImpl extends _SimilarProduct {
   final String sku;
   @override
   final String skuPrice;
-  @override
-  final String skuPacksize;
-  @override
-  final String skuContent;
   @override
   final int startingPrice;
   final List<String> _ingredientsList;
@@ -513,7 +449,7 @@ class _$SimilarProductImpl extends _SimilarProduct {
 
   @override
   String toString() {
-    return 'SimilarProduct(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
+    return 'SimilarProduct(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -522,10 +458,6 @@ class _$SimilarProductImpl extends _SimilarProduct {
         (other.runtimeType == runtimeType &&
             other is _$SimilarProductImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -533,10 +465,6 @@ class _$SimilarProductImpl extends _SimilarProduct {
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.skuPrice, skuPrice) ||
                 other.skuPrice == skuPrice) &&
-            (identical(other.skuPacksize, skuPacksize) ||
-                other.skuPacksize == skuPacksize) &&
-            (identical(other.skuContent, skuContent) ||
-                other.skuContent == skuContent) &&
             (identical(other.startingPrice, startingPrice) ||
                 other.startingPrice == startingPrice) &&
             const DeepCollectionEquality()
@@ -574,14 +502,10 @@ class _$SimilarProductImpl extends _SimilarProduct {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        categoryId,
-        subcategoryId,
         productName,
         productDescription,
         sku,
         skuPrice,
-        skuPacksize,
-        skuContent,
         startingPrice,
         const DeepCollectionEquality().hash(_ingredientsList),
         nutritionalInformation,
@@ -611,14 +535,10 @@ class _$SimilarProductImpl extends _SimilarProduct {
 abstract class _SimilarProduct extends SimilarProduct {
   const factory _SimilarProduct(
       {required final String id,
-      required final String categoryId,
-      required final String subcategoryId,
       required final String productName,
       required final String productDescription,
       required final String sku,
       required final String skuPrice,
-      required final String skuPacksize,
-      required final String skuContent,
       required final int startingPrice,
       required final List<String> ingredientsList,
       required final String nutritionalInformation,
@@ -640,10 +560,6 @@ abstract class _SimilarProduct extends SimilarProduct {
   @override
   String get id;
   @override
-  String get categoryId;
-  @override
-  String get subcategoryId;
-  @override
   String get productName;
   @override
   String get productDescription;
@@ -651,10 +567,6 @@ abstract class _SimilarProduct extends SimilarProduct {
   String get sku;
   @override
   String get skuPrice;
-  @override
-  String get skuPacksize;
-  @override
-  String get skuContent;
   @override
   int get startingPrice;
   @override

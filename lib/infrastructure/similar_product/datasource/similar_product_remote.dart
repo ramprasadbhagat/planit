@@ -23,9 +23,17 @@ class SimilarProductRemoteDataSource {
       data: data,
     );
     _exceptionChecker(res: res);
-    final categories = res.data['items'];
-    return List.from(categories)
-        .map((e) => SimilarProductDto.fromJson(e).toDomain)
+    final products = res.data['result'];
+    return List.from(products)
+        .map(
+          (e) => SimilarProductDto.fromJson(e['product'])
+              .copyWith(
+                productImages: (e['productImage'] as List)
+                    .map((e) => e['image'] as String)
+                    .toList(),
+              )
+              .toDomain,
+        )
         .toList();
   }
 
