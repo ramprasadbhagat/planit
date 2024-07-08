@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/presentation/track_order/widgets/rating.dart';
 import 'package:planit/utils/png_image.dart';
 
 class TrackerHeader extends StatelessWidget {
-  const TrackerHeader({super.key});
+  final String orderId;
+  final String productName;
+  final String productDescription;
+  final String price;
+
+  const TrackerHeader({
+    super.key,
+    required this.orderId,
+    required this.productName,
+    required this.productDescription,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,40 +67,43 @@ class TrackerHeader extends StatelessWidget {
                 ),
               ),
         const SizedBox(width: 8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Order ID : ORD 10786420007',
-              style: textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Order ID : $orderId',
+                overflow: TextOverflow.ellipsis,
+                style: textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
               ),
-            ),
-            Text(
-              'Johnson Almonds',
-              style: textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
+              Text(
+                productName,
+                style: textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
               ),
-            ),
-            Text(
-              'Johnson Fresh almonds 1 kg pack',
-              style: textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w400,
-                fontSize: 13,
-                color: AppColors.grey2,
+              Text(
+                productDescription,
+                style: textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                  color: AppColors.grey2,
+                ),
               ),
-            ),
-            const StarRating(),
-            Text(
-              'Price : ₹ 699.00 ',
-              style: textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
+              const StarRating(),
+              Text(
+                'Price : ₹ $price',
+                style: textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

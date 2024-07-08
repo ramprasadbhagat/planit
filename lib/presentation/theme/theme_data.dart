@@ -406,20 +406,20 @@ RadioThemeData _radioTheme() {
   return RadioThemeData(
     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     fillColor: MaterialStateProperty.all(
-      AppColors.primary,
+      AppColors.black,
     ),
   );
 }
 
 ProgressIndicatorThemeData _progressIndicatorTheme() {
   return const ProgressIndicatorThemeData(
-    color: AppColors.primary,
+    color: AppColors.black,
   );
 }
 
 SnackBarThemeData _snackBarTheme() {
   return const SnackBarThemeData(
-    backgroundColor: AppColors.primary,
+    backgroundColor: AppColors.black,
     contentTextStyle: TextStyle(
       fontWeight: FontWeight.w600,
     ),

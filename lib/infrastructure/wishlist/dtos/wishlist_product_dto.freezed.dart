@@ -22,10 +22,6 @@ WishlistProductDto _$WishlistProductDtoFromJson(Map<String, dynamic> json) {
 mixin _$WishlistProductDto {
   @JsonKey(name: '_id', defaultValue: '')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  String get subcategoryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productName', defaultValue: '')
   String get productName => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
@@ -81,8 +77,6 @@ abstract class $WishlistProductDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
-      @JsonKey(name: 'categoryId', defaultValue: '') String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '') String subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
@@ -123,8 +117,6 @@ class _$WishlistProductDtoCopyWithImpl<$Res, $Val extends WishlistProductDto>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? productMRP = null,
@@ -150,14 +142,6 @@ class _$WishlistProductDtoCopyWithImpl<$Res, $Val extends WishlistProductDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -253,8 +237,6 @@ abstract class _$$WishlistProductDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
-      @JsonKey(name: 'categoryId', defaultValue: '') String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '') String subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
@@ -293,8 +275,6 @@ class __$$WishlistProductDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? productMRP = null,
@@ -320,14 +300,6 @@ class __$$WishlistProductDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -418,9 +390,6 @@ class __$$WishlistProductDtoImplCopyWithImpl<$Res>
 class _$WishlistProductDtoImpl extends _WishlistProductDto {
   _$WishlistProductDtoImpl(
       {@JsonKey(name: '_id', defaultValue: '') required this.id,
-      @JsonKey(name: 'categoryId', defaultValue: '') required this.categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '')
-      required this.subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') required this.productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
@@ -463,12 +432,6 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
   @override
   @JsonKey(name: '_id', defaultValue: '')
   final String id;
-  @override
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  final String categoryId;
-  @override
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  final String subcategoryId;
   @override
   @JsonKey(name: 'productName', defaultValue: '')
   final String productName;
@@ -538,7 +501,7 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
 
   @override
   String toString() {
-    return 'WishlistProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, startingPrice: $startingPrice, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive)';
+    return 'WishlistProductDto(id: $id, productName: $productName, productDescription: $productDescription, productMRP: $productMRP, productReview: $productReview, startingPrice: $startingPrice, productRating: $productRating, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, skuInventory: $skuInventory, skuVendorId: $skuVendorId, skuVendorInfo: $skuVendorInfo, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, isDeleted: $isDeleted, isActive: $isActive)';
   }
 
   @override
@@ -547,10 +510,6 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
         (other.runtimeType == runtimeType &&
             other is _$WishlistProductDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -597,8 +556,6 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        categoryId,
-        subcategoryId,
         productName,
         productDescription,
         productMRP,
@@ -639,10 +596,6 @@ class _$WishlistProductDtoImpl extends _WishlistProductDto {
 abstract class _WishlistProductDto extends WishlistProductDto {
   factory _WishlistProductDto(
       {@JsonKey(name: '_id', defaultValue: '') required final String id,
-      @JsonKey(name: 'categoryId', defaultValue: '')
-      required final String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '')
-      required final String subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '')
       required final String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
@@ -690,12 +643,6 @@ abstract class _WishlistProductDto extends WishlistProductDto {
   @override
   @JsonKey(name: '_id', defaultValue: '')
   String get id;
-  @override
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  String get categoryId;
-  @override
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  String get subcategoryId;
   @override
   @JsonKey(name: 'productName', defaultValue: '')
   String get productName;

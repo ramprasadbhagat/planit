@@ -21,8 +21,6 @@ class OrderItem with _$OrderItem {
 class OrderItemProduct with _$OrderItemProduct {
   const factory OrderItemProduct({
     required StringValue id,
-    required StringValue categoryId,
-    required StringValue subcategoryId,
     required StringValue productName,
     required StringValue productDescription,
     required DateTime expiryDate,

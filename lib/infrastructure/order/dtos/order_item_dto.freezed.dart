@@ -389,10 +389,6 @@ OrderItemProductDto _$OrderItemProductDtoFromJson(Map<String, dynamic> json) {
 mixin _$OrderItemProductDto {
   @JsonKey(name: '_id', defaultValue: '')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  String get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  String get subcategoryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productName', defaultValue: '')
   String get productName => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
@@ -422,8 +418,6 @@ abstract class $OrderItemProductDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
-      @JsonKey(name: 'categoryId', defaultValue: '') String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '') String subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
@@ -452,8 +446,6 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? expiryDate = null,
@@ -466,14 +458,6 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -517,8 +501,6 @@ abstract class _$$OrderItemProductDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: '_id', defaultValue: '') String id,
-      @JsonKey(name: 'categoryId', defaultValue: '') String categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '') String subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') String productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
@@ -545,8 +527,6 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? categoryId = null,
-    Object? subcategoryId = null,
     Object? productName = null,
     Object? productDescription = null,
     Object? expiryDate = null,
@@ -559,14 +539,6 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as String,
-      subcategoryId: null == subcategoryId
-          ? _value.subcategoryId
-          : subcategoryId // ignore: cast_nullable_to_non_nullable
               as String,
       productName: null == productName
           ? _value.productName
@@ -605,9 +577,6 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
 class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   const _$OrderItemProductDtoImpl(
       {@JsonKey(name: '_id', defaultValue: '') required this.id,
-      @JsonKey(name: 'categoryId', defaultValue: '') required this.categoryId,
-      @JsonKey(name: 'subcategoryId', defaultValue: '')
-      required this.subcategoryId,
       @JsonKey(name: 'productName', defaultValue: '') required this.productName,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
@@ -628,12 +597,6 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   @override
   @JsonKey(name: '_id', defaultValue: '')
   final String id;
-  @override
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  final String categoryId;
-  @override
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  final String subcategoryId;
   @override
   @JsonKey(name: 'productName', defaultValue: '')
   final String productName;
@@ -658,7 +621,7 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
 
   @override
   String toString() {
-    return 'OrderItemProductDto(id: $id, categoryId: $categoryId, subcategoryId: $subcategoryId, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
+    return 'OrderItemProductDto(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
   }
 
   @override
@@ -667,10 +630,6 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
         (other.runtimeType == runtimeType &&
             other is _$OrderItemProductDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.subcategoryId, subcategoryId) ||
-                other.subcategoryId == subcategoryId) &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.productDescription, productDescription) ||
@@ -691,8 +650,6 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      categoryId,
-      subcategoryId,
       productName,
       productDescription,
       expiryDate,
@@ -719,10 +676,6 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
 abstract class _OrderItemProductDto extends OrderItemProductDto {
   const factory _OrderItemProductDto(
           {@JsonKey(name: '_id', defaultValue: '') required final String id,
-          @JsonKey(name: 'categoryId', defaultValue: '')
-          required final String categoryId,
-          @JsonKey(name: 'subcategoryId', defaultValue: '')
-          required final String subcategoryId,
           @JsonKey(name: 'productName', defaultValue: '')
           required final String productName,
           @JsonKey(name: 'productDescription', defaultValue: '')
@@ -746,12 +699,6 @@ abstract class _OrderItemProductDto extends OrderItemProductDto {
   @override
   @JsonKey(name: '_id', defaultValue: '')
   String get id;
-  @override
-  @JsonKey(name: 'categoryId', defaultValue: '')
-  String get categoryId;
-  @override
-  @JsonKey(name: 'subcategoryId', defaultValue: '')
-  String get subcategoryId;
   @override
   @JsonKey(name: 'productName', defaultValue: '')
   String get productName;
