@@ -14,9 +14,6 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: '') required String productDescription,
     @JsonKey(defaultValue: '') required String sku,
     @JsonKey(name: 'sku_price', defaultValue: '') required String skuPrice,
-    @JsonKey(name: 'sku_packsize', defaultValue: '')
-    required String skuPacksize,
-    @JsonKey(name: 'sku_content', defaultValue: '') required String skuContent,
     @JsonKey(defaultValue: '', readValue: stringReadValue)
     required String startingPrice,
     @JsonKey(defaultValue: '') required String productMRP,
@@ -32,8 +29,8 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItem,
     @JsonKey(defaultValue: '') required String attributeItemProductId,
-    required PriceDto price,
-    required List<String> productImages,
+    //   required PriceDto price,
+    @JsonKey(defaultValue: []) required List<String> productImages,
   }) = _SimilarProductDto;
 
   factory SimilarProductDto.fromJson(Map<String, dynamic> json) =>
@@ -45,8 +42,6 @@ class SimilarProductDto with _$SimilarProductDto {
         productDescription: productDescription,
         sku: sku,
         skuPrice: skuPrice,
-        skuPacksize: skuPacksize,
-        skuContent: skuContent,
         startingPrice: int.tryParse(startingPrice) ?? 0,
         productMRP: int.tryParse(productMRP) ?? 0,
         productRating: double.tryParse(productRating) ?? 0.0,
@@ -61,7 +56,7 @@ class SimilarProductDto with _$SimilarProductDto {
         discount: discount,
         attributeName: attributeName,
         attributeItem: attributeItem,
-        price: price.toDomain,
+        price: Price.empty(),
         productImages: productImages,
       );
 }

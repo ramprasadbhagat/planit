@@ -9,11 +9,20 @@ part 'product_image_dto.g.dart';
 class ProductImageDto with _$ProductImageDto {
   const ProductImageDto._();
   factory ProductImageDto({
-    @JsonKey(name: 'imageUrl', defaultValue: '') required String imageUrl,
+    @JsonKey(name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
+    required String imageUrl,
   }) = _ProductImageDto;
 
   factory ProductImageDto.fromJson(Map<String, dynamic> json) =>
       _$ProductImageDtoFromJson(json);
 
   ProductImage get toDomain => ProductImage(image: StringValue(imageUrl));
+}
+
+String parseProductImage(dynamic json, String key) {
+  if (json['image'] != null) {
+    return json['image'];
+  }
+
+  return json[key];
 }

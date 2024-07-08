@@ -20,7 +20,7 @@ ProductImageDto _$ProductImageDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductImageDto {
-  @JsonKey(name: 'imageUrl', defaultValue: '')
+  @JsonKey(name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
   String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,10 @@ abstract class $ProductImageDtoCopyWith<$Res> {
           ProductImageDto value, $Res Function(ProductImageDto) then) =
       _$ProductImageDtoCopyWithImpl<$Res, ProductImageDto>;
   @useResult
-  $Res call({@JsonKey(name: 'imageUrl', defaultValue: '') String imageUrl});
+  $Res call(
+      {@JsonKey(
+          name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
+      String imageUrl});
 }
 
 /// @nodoc
@@ -70,7 +73,10 @@ abstract class _$$ProductImageDtoImplCopyWith<$Res>
       __$$ProductImageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'imageUrl', defaultValue: '') String imageUrl});
+  $Res call(
+      {@JsonKey(
+          name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
+      String imageUrl});
 }
 
 /// @nodoc
@@ -99,14 +105,16 @@ class __$$ProductImageDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductImageDtoImpl extends _ProductImageDto {
   _$ProductImageDtoImpl(
-      {@JsonKey(name: 'imageUrl', defaultValue: '') required this.imageUrl})
+      {@JsonKey(
+          name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
+      required this.imageUrl})
       : super._();
 
   factory _$ProductImageDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImageDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: 'imageUrl', defaultValue: '')
+  @JsonKey(name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
   final String imageUrl;
 
   @override
@@ -144,7 +152,8 @@ class _$ProductImageDtoImpl extends _ProductImageDto {
 
 abstract class _ProductImageDto extends ProductImageDto {
   factory _ProductImageDto(
-      {@JsonKey(name: 'imageUrl', defaultValue: '')
+      {@JsonKey(
+          name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
       required final String imageUrl}) = _$ProductImageDtoImpl;
   _ProductImageDto._() : super._();
 
@@ -152,7 +161,7 @@ abstract class _ProductImageDto extends ProductImageDto {
       _$ProductImageDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'imageUrl', defaultValue: '')
+  @JsonKey(name: 'imageUrl', defaultValue: '', readValue: parseProductImage)
   String get imageUrl;
   @override
   @JsonKey(ignore: true)

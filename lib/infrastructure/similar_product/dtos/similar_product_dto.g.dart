@@ -14,8 +14,6 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
       productDescription: json['productDescription'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
       skuPrice: json['sku_price'] as String? ?? '',
-      skuPacksize: json['sku_packsize'] as String? ?? '',
-      skuContent: json['sku_content'] as String? ?? '',
       startingPrice: stringReadValue(json, 'startingPrice') as String? ?? '',
       productMRP: json['productMRP'] as String? ?? '',
       productReview: json['productReview'] as String? ?? '',
@@ -33,10 +31,10 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
       attributeName: json['attributeName'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
-      price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
-      productImages: (json['productImages'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      productImages: (json['productImages'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$SimilarProductDtoImplToJson(
@@ -47,8 +45,6 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'productDescription': instance.productDescription,
       'sku': instance.sku,
       'sku_price': instance.skuPrice,
-      'sku_packsize': instance.skuPacksize,
-      'sku_content': instance.skuContent,
       'startingPrice': instance.startingPrice,
       'productMRP': instance.productMRP,
       'productReview': instance.productReview,
@@ -63,6 +59,5 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'attributeName': instance.attributeName,
       'attributeItem': instance.attributeItem,
       'attributeItemProductId': instance.attributeItemProductId,
-      'price': instance.price,
       'productImages': instance.productImages,
     };

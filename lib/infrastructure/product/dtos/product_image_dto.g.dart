@@ -9,7 +9,7 @@ part of 'product_image_dto.dart';
 _$ProductImageDtoImpl _$$ProductImageDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductImageDtoImpl(
-      imageUrl: json['imageUrl'] as String? ?? '',
+      imageUrl: parseProductImage(json, 'imageUrl') as String? ?? '',
     );
 
 Map<String, dynamic> _$$ProductImageDtoImplToJson(
