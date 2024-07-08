@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
-import 'package:planit/infrastructure/similar_product/dtos/price_dto.dart';
 
 part 'similar_product_dto.freezed.dart';
 part 'similar_product_dto.g.dart';

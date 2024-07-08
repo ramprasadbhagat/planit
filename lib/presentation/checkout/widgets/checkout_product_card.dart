@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
+import 'package:planit/presentation/core/html_text.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -59,7 +60,7 @@ class ChecoutItemCard extends StatelessWidget {
                           ?.copyWith(fontSize: 14, fontWeight: FontWeight.w400),
                       textAlign: TextAlign.start,
                     ),
-                    Text(
+                    HtmlText(
                       cartProduct.productDescription,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

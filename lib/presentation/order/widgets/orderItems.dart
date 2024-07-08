@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/html_text.dart';
 import 'package:planit/presentation/order/widgets/rating.dart';
 import 'package:planit/presentation/order/widgets/review_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -86,12 +87,14 @@ class OrderItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
+              HtmlText(
                 orderItem.product.productDescription.displayLabel,
                 style: textTheme.bodySmall?.copyWith(
                   fontSize: 14,
                   color: AppColors.grey2,
                 ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
               ),
               Row(
                 children: [
