@@ -25,6 +25,7 @@ mixin _$Banner {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
+  String get productId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BannerCopyWith<Banner> get copyWith => throw _privateConstructorUsedError;
@@ -44,7 +45,8 @@ abstract class $BannerCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       bool isActive,
-      bool isDeleted});
+      bool isDeleted,
+      String productId});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$BannerCopyWithImpl<$Res, $Val extends Banner>
     Object? updatedAt = null,
     Object? isActive = null,
     Object? isDeleted = null,
+    Object? productId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -107,6 +110,10 @@ class _$BannerCopyWithImpl<$Res, $Val extends Banner>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$BannerImplCopyWith<$Res> implements $BannerCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       bool isActive,
-      bool isDeleted});
+      bool isDeleted,
+      String productId});
 }
 
 /// @nodoc
@@ -150,6 +158,7 @@ class __$$BannerImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? isActive = null,
     Object? isDeleted = null,
+    Object? productId = null,
   }) {
     return _then(_$BannerImpl(
       id: null == id
@@ -188,6 +197,10 @@ class __$$BannerImplCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -204,7 +217,8 @@ class _$BannerImpl implements _Banner {
       required this.createdAt,
       required this.updatedAt,
       required this.isActive,
-      required this.isDeleted})
+      required this.isDeleted,
+      required this.productId})
       : _bannerImages = bannerImages;
 
   @override
@@ -231,10 +245,12 @@ class _$BannerImpl implements _Banner {
   final bool isActive;
   @override
   final bool isDeleted;
+  @override
+  final String productId;
 
   @override
   String toString() {
-    return 'Banner(id: $id, option: $option, startingDate: $startingDate, endingDate: $endingDate, bannerImages: $bannerImages, createdAt: $createdAt, updatedAt: $updatedAt, isActive: $isActive, isDeleted: $isDeleted)';
+    return 'Banner(id: $id, option: $option, startingDate: $startingDate, endingDate: $endingDate, bannerImages: $bannerImages, createdAt: $createdAt, updatedAt: $updatedAt, isActive: $isActive, isDeleted: $isDeleted, productId: $productId)';
   }
 
   @override
@@ -257,7 +273,9 @@ class _$BannerImpl implements _Banner {
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
   }
 
   @override
@@ -271,7 +289,8 @@ class _$BannerImpl implements _Banner {
       createdAt,
       updatedAt,
       isActive,
-      isDeleted);
+      isDeleted,
+      productId);
 
   @JsonKey(ignore: true)
   @override
@@ -290,7 +309,8 @@ abstract class _Banner implements Banner {
       required final DateTime createdAt,
       required final DateTime updatedAt,
       required final bool isActive,
-      required final bool isDeleted}) = _$BannerImpl;
+      required final bool isDeleted,
+      required final String productId}) = _$BannerImpl;
 
   @override
   String get id;
@@ -310,6 +330,8 @@ abstract class _Banner implements Banner {
   bool get isActive;
   @override
   bool get isDeleted;
+  @override
+  String get productId;
   @override
   @JsonKey(ignore: true)
   _$$BannerImplCopyWith<_$BannerImpl> get copyWith =>

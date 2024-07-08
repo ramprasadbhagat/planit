@@ -47,5 +47,6 @@ class CartProductLocal with _$CartProductLocal {
         attributeItem: attributeItem,
         attributeItemProductId: attributeItemProductId,
         price: Price.empty().copyWith(price: price, quantity: 1),
+        productDescription: StringValue(''),
       );
 }

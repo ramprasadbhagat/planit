@@ -48,7 +48,7 @@ class ProductCard extends StatelessWidget {
             isScrollControlled: true,
             builder: (BuildContext context) => CommonBottomSheet(
               child: AddToCartBottomSheet(
-                product: product,
+                productId: product.productId.getValue(),
               ),
             ),
           ),

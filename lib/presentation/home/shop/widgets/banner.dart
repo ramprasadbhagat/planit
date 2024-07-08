@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_loader.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -48,36 +50,51 @@ class ShoppingBanner extends StatelessWidget {
                   indicatorMargin: 15,
                 ),
                 items: state.banner.map((i) {
-                  return Column(
-                    children: [
-                      DealCountDown(
-                        startDate: i.startingDate,
-                        endDate: i.endingDate,
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          width: double.maxFinite,
-                          child: Image.network(
-                            i.bannerImages.firstOrNull ?? '',
-                            fit: BoxFit.fill,
-                            errorBuilder: (context, error, stack) {
-                              if (error is NetworkImageLoadException &&
-                                  error.statusCode == 404) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (i.option == 'Deal') {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) => CommonBottomSheet(
+                            child: AddToCartBottomSheet(
+                              productId: i.productId,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        DealCountDown(
+                          startDate: i.startingDate,
+                          endDate: i.endingDate,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            width: double.maxFinite,
+                            child: Image.network(
+                              i.bannerImages.firstOrNull ?? '',
+                              fit: BoxFit.fill,
+                              errorBuilder: (context, error, stack) {
+                                if (error is NetworkImageLoadException &&
+                                    error.statusCode == 404) {
+                                  return Image.asset(
+                                    PngImage.placeholder,
+                                    fit: BoxFit.fitHeight,
+                                  );
+                                }
+
                                 return Image.asset(
                                   PngImage.placeholder,
                                   fit: BoxFit.fitHeight,
                                 );
-                              }
-
-                              return Image.asset(
-                                PngImage.placeholder,
-                                fit: BoxFit.fitHeight,
-                              );
-                            },
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 }).toList(),
               ),

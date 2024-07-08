@@ -85,7 +85,7 @@ class HighlightItem extends StatelessWidget {
               isScrollControlled: true,
               builder: (BuildContext context) => CommonBottomSheet(
                 child: AddToCartBottomSheet(
-                  product: item.toProduct,
+                  productId: item.toProduct.productId.getValue(),
                 ),
               ),
             ),

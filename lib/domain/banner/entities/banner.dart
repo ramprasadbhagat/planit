@@ -13,6 +13,7 @@ class Banner with _$Banner {
     required DateTime updatedAt,
     required bool isActive,
     required bool isDeleted,
+    required String productId,
   }) = _Banner;
 
   factory Banner.empty() => _Banner(
@@ -25,5 +26,6 @@ class Banner with _$Banner {
         updatedAt: DateTime.now(),
         isActive: false,
         isDeleted: false,
+        productId: '',
       );
 }

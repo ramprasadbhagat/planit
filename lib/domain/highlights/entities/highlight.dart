@@ -89,6 +89,7 @@ class Highlight with _$Highlight {
         attributeItem: attributeItem,
         attributeItemProductId: attributeItemProductId,
         price: pp.Price(price: price.price, quantity: price.quantity),
+        productDescription: StringValue(productDescription),
       );
 }
 

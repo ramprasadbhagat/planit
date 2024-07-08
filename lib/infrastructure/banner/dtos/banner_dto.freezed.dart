@@ -38,6 +38,8 @@ mixin _$BannerDto {
   bool get isActive => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_deleted', defaultValue: false)
   bool get isDeleted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'productId', defaultValue: '')
+  String get productId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +62,8 @@ abstract class $BannerDtoCopyWith<$Res> {
       @JsonKey(name: 'created_at', defaultValue: '') String createdAt,
       @JsonKey(name: 'updated_at', defaultValue: '') String updatedAt,
       @JsonKey(name: 'is_active', defaultValue: false) bool isActive,
-      @JsonKey(name: 'is_deleted', defaultValue: false) bool isDeleted});
+      @JsonKey(name: 'is_deleted', defaultValue: false) bool isDeleted,
+      @JsonKey(name: 'productId', defaultValue: '') String productId});
 }
 
 /// @nodoc
@@ -85,6 +88,7 @@ class _$BannerDtoCopyWithImpl<$Res, $Val extends BannerDto>
     Object? updatedAt = null,
     Object? isActive = null,
     Object? isDeleted = null,
+    Object? productId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -123,6 +127,10 @@ class _$BannerDtoCopyWithImpl<$Res, $Val extends BannerDto>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -145,7 +153,8 @@ abstract class _$$BannerDtoImplCopyWith<$Res>
       @JsonKey(name: 'created_at', defaultValue: '') String createdAt,
       @JsonKey(name: 'updated_at', defaultValue: '') String updatedAt,
       @JsonKey(name: 'is_active', defaultValue: false) bool isActive,
-      @JsonKey(name: 'is_deleted', defaultValue: false) bool isDeleted});
+      @JsonKey(name: 'is_deleted', defaultValue: false) bool isDeleted,
+      @JsonKey(name: 'productId', defaultValue: '') String productId});
 }
 
 /// @nodoc
@@ -168,6 +177,7 @@ class __$$BannerDtoImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? isActive = null,
     Object? isDeleted = null,
+    Object? productId = null,
   }) {
     return _then(_$BannerDtoImpl(
       id: null == id
@@ -206,6 +216,10 @@ class __$$BannerDtoImplCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -224,8 +238,8 @@ class _$BannerDtoImpl extends _BannerDto {
       @JsonKey(name: 'created_at', defaultValue: '') required this.createdAt,
       @JsonKey(name: 'updated_at', defaultValue: '') required this.updatedAt,
       @JsonKey(name: 'is_active', defaultValue: false) required this.isActive,
-      @JsonKey(name: 'is_deleted', defaultValue: false)
-      required this.isDeleted})
+      @JsonKey(name: 'is_deleted', defaultValue: false) required this.isDeleted,
+      @JsonKey(name: 'productId', defaultValue: '') required this.productId})
       : _bannerImages = bannerImages,
         super._();
 
@@ -265,10 +279,13 @@ class _$BannerDtoImpl extends _BannerDto {
   @override
   @JsonKey(name: 'is_deleted', defaultValue: false)
   final bool isDeleted;
+  @override
+  @JsonKey(name: 'productId', defaultValue: '')
+  final String productId;
 
   @override
   String toString() {
-    return 'BannerDto(id: $id, option: $option, startingDate: $startingDate, endingDate: $endingDate, bannerImages: $bannerImages, createdAt: $createdAt, updatedAt: $updatedAt, isActive: $isActive, isDeleted: $isDeleted)';
+    return 'BannerDto(id: $id, option: $option, startingDate: $startingDate, endingDate: $endingDate, bannerImages: $bannerImages, createdAt: $createdAt, updatedAt: $updatedAt, isActive: $isActive, isDeleted: $isDeleted, productId: $productId)';
   }
 
   @override
@@ -291,7 +308,9 @@ class _$BannerDtoImpl extends _BannerDto {
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
   }
 
   @JsonKey(ignore: true)
@@ -306,7 +325,8 @@ class _$BannerDtoImpl extends _BannerDto {
       createdAt,
       updatedAt,
       isActive,
-      isDeleted);
+      isDeleted,
+      productId);
 
   @JsonKey(ignore: true)
   @override
@@ -339,7 +359,9 @@ abstract class _BannerDto extends BannerDto {
       @JsonKey(name: 'is_active', defaultValue: false)
       required final bool isActive,
       @JsonKey(name: 'is_deleted', defaultValue: false)
-      required final bool isDeleted}) = _$BannerDtoImpl;
+      required final bool isDeleted,
+      @JsonKey(name: 'productId', defaultValue: '')
+      required final String productId}) = _$BannerDtoImpl;
   const _BannerDto._() : super._();
 
   factory _BannerDto.fromJson(Map<String, dynamic> json) =
@@ -372,6 +394,9 @@ abstract class _BannerDto extends BannerDto {
   @override
   @JsonKey(name: 'is_deleted', defaultValue: false)
   bool get isDeleted;
+  @override
+  @JsonKey(name: 'productId', defaultValue: '')
+  String get productId;
   @override
   @JsonKey(ignore: true)
   _$$BannerDtoImplCopyWith<_$BannerDtoImpl> get copyWith =>
