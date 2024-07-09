@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
+import 'package:planit/presentation/core/html_text.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/shopping_list/widget/rating_list_item.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -104,7 +105,7 @@ class ShoppingListItemCard extends StatelessWidget {
                     const SizedBox(
                       height: 2,
                     ),
-                    Text(
+                    HtmlText(
                       item.productDescription,
                       style: textTheme.bodyMedium?.copyWith(
                         color: AppColors.grey1,
