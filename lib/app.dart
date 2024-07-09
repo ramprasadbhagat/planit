@@ -87,7 +87,8 @@ class App extends StatelessWidget {
           create: (context) => locator<CouponBloc>(),
         ),
         BlocProvider<TrackOrderBloc>(
-            create: (context) => locator<TrackOrderBloc>()),
+          create: (context) => locator<TrackOrderBloc>(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

@@ -30,7 +30,10 @@ class CouponRemoteDataSource {
   }) async {
     final res = await httpService.request(
       method: 'POST',
-      url: 'coupon/${coupon.couponCode}',
+      url: 'coupon/couponRedeem',
+      data: {
+        'couponCode': coupon.couponCode,
+      },
     );
     _exceptionChecker(res: res);
     return unit;

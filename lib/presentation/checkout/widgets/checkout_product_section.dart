@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_card.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -138,13 +139,17 @@ class CheckoutProductSection extends StatelessWidget {
                         ),
                         textAlign: TextAlign.start,
                       ),
-                      Text(
-                        '₹${state.cartItem.totalPrice.getValue() + 40}',
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        textAlign: TextAlign.start,
+                      BlocBuilder<CouponBloc, CouponState>(
+                        builder: (context, couponState) {
+                          return Text(
+                            '₹${couponState.appliedCoupon.priceAfterCoupon(state.cartItem.totalPrice.getValue()) + 40}',
+                            style: textTheme.bodySmall?.copyWith(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.start,
+                          );
+                        },
                       ),
                     ],
                   ),

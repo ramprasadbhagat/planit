@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
+import 'package:planit/domain/core/debouncer.dart';
+import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
@@ -13,6 +15,12 @@ class CouponListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final bouncer = Debouncer(milliseconds: 700);
+    final controller = TextEditingController(text: '');
+    const borderDecoration = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      borderSide: BorderSide.none,
+    );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Coupons'),
@@ -22,19 +30,67 @@ class CouponListPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Select a coupon to get discount'),
+            const Text('Search a coupon and apply to get discount'),
+            const SizedBox(
+              height: 6,
+            ),
+            Material(
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: TextFormField(
+                controller: controller,
+                onChanged: (e) {
+                  bouncer.run(() {
+                    context.read<CouponBloc>().add(
+                          CouponEvent.couponSearch(
+                            couponCode: e.trim(),
+                          ),
+                        );
+                  });
+                },
+                decoration: const InputDecoration(
+                  focusedBorder: borderDecoration,
+                  enabledBorder: borderDecoration,
+                  errorBorder: borderDecoration,
+                  disabledBorder: borderDecoration,
+                  border: borderDecoration,
+                  hintText: 'Enter Coupon Code',
+                  prefixIcon: Icon(
+                    Icons.search_rounded,
+                    size: 24,
+                    color: Colors.grey,
+                  ),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             BlocConsumer<CouponBloc, CouponState>(
               listener: (context, state) => context.router.maybePop(),
               listenWhen: (previous, current) =>
                   previous.isApplying != current.isApplying &&
                   !current.isApplying,
               builder: (context, state) {
-                if (state.couponList.isEmpty) {
-                  return const Text('No coupons available');
+                if (controller.text.isEmpty && state.searchCouponList.isEmpty) {
+                  return const SizedBox();
+                } else if (state.searchCouponList.isEmpty) {
+                  return Expanded(
+                    child: Center(
+                      child: Text(
+                        'No coupons available with this coupon code',
+                        style: textTheme.labelMedium
+                            ?.copyWith(color: AppColors.grey2),
+                      ),
+                    ),
+                  );
                 }
                 return Expanded(
                   child: ListView.builder(
-                    itemCount: state.couponList.length,
+                    itemCount: state.searchCouponList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         width: double.infinity,
@@ -76,17 +132,20 @@ class CouponListPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Coupon Code:\n${state.couponList[index].couponCode}',
+                                  'Coupon Code: ${state.couponList[index].couponCode}',
                                   style: textTheme.bodyMedium?.copyWith(
                                     color: AppColors.grey2,
                                     fontSize: 12,
                                   ),
                                 ),
                                 Text(
-                                  'Save ₹${state.couponList[index].amount} on this order!',
+                                  state.couponList[index].type ==
+                                          CouponType.fixedAmount
+                                      ? 'Save ₹${state.couponList[index].rate} on this order!'
+                                      : 'Get ${state.couponList[index].rate}% off on this order!',
                                   style: textTheme.bodyMedium?.copyWith(
                                     color: AppColors.green,
-                                    fontSize: 13,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),

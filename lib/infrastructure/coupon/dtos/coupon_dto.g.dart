@@ -10,14 +10,16 @@ _$CouponDtoImpl _$$CouponDtoImplFromJson(Map<String, dynamic> json) =>
     _$CouponDtoImpl(
       id: json['id'] as String? ?? '',
       couponCode: json['couponCode'] as String? ?? '',
-      amount: json['amount'] as String? ?? '',
+      rate: (intReadValue(json, 'rate') as num?)?.toInt() ?? 0,
       shortDescription: json['shortDescription'] as String? ?? '',
+      type: json['type'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$CouponDtoImplToJson(_$CouponDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'couponCode': instance.couponCode,
-      'amount': instance.amount,
+      'rate': instance.rate,
       'shortDescription': instance.shortDescription,
+      'type': instance.type,
     };

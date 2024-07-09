@@ -20,24 +20,30 @@ mixin _$CouponEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
     required TResult Function(Coupon coupon) applyCoupon,
     required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
     TResult? Function(Coupon coupon)? applyCoupon,
     TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
     TResult Function(Coupon coupon)? applyCoupon,
     TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +51,30 @@ mixin _$CouponEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
     required TResult Function(_Apply value) applyCoupon,
     required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
     TResult? Function(_Apply value)? applyCoupon,
     TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
     TResult Function(_Apply value)? applyCoupon,
     TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +138,10 @@ class _$InitializedImpl implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
     required TResult Function(Coupon coupon) applyCoupon,
     required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
   }) {
     return initialized();
   }
@@ -137,8 +151,10 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
     TResult? Function(Coupon coupon)? applyCoupon,
     TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
   }) {
     return initialized?.call();
   }
@@ -148,8 +164,10 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
     TResult Function(Coupon coupon)? applyCoupon,
     TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -163,8 +181,10 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
     required TResult Function(_Apply value) applyCoupon,
     required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
   }) {
     return initialized(this);
   }
@@ -174,8 +194,10 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
     TResult? Function(_Apply value)? applyCoupon,
     TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
   }) {
     return initialized?.call(this);
   }
@@ -185,8 +207,10 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
     TResult Function(_Apply value)? applyCoupon,
     TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -240,8 +264,10 @@ class _$FetchImpl implements _Fetch {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
     required TResult Function(Coupon coupon) applyCoupon,
     required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
   }) {
     return fetch();
   }
@@ -251,8 +277,10 @@ class _$FetchImpl implements _Fetch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
     TResult? Function(Coupon coupon)? applyCoupon,
     TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
   }) {
     return fetch?.call();
   }
@@ -262,8 +290,10 @@ class _$FetchImpl implements _Fetch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
     TResult Function(Coupon coupon)? applyCoupon,
     TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -277,8 +307,10 @@ class _$FetchImpl implements _Fetch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
     required TResult Function(_Apply value) applyCoupon,
     required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
   }) {
     return fetch(this);
   }
@@ -288,8 +320,10 @@ class _$FetchImpl implements _Fetch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
     TResult? Function(_Apply value)? applyCoupon,
     TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
   }) {
     return fetch?.call(this);
   }
@@ -299,8 +333,10 @@ class _$FetchImpl implements _Fetch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
     TResult Function(_Apply value)? applyCoupon,
     TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -312,6 +348,165 @@ class _$FetchImpl implements _Fetch {
 
 abstract class _Fetch implements CouponEvent {
   const factory _Fetch() = _$FetchImpl;
+}
+
+/// @nodoc
+abstract class _$$GetCouponImplCopyWith<$Res> {
+  factory _$$GetCouponImplCopyWith(
+          _$GetCouponImpl value, $Res Function(_$GetCouponImpl) then) =
+      __$$GetCouponImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String couponCode});
+}
+
+/// @nodoc
+class __$$GetCouponImplCopyWithImpl<$Res>
+    extends _$CouponEventCopyWithImpl<$Res, _$GetCouponImpl>
+    implements _$$GetCouponImplCopyWith<$Res> {
+  __$$GetCouponImplCopyWithImpl(
+      _$GetCouponImpl _value, $Res Function(_$GetCouponImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? couponCode = null,
+  }) {
+    return _then(_$GetCouponImpl(
+      couponCode: null == couponCode
+          ? _value.couponCode
+          : couponCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetCouponImpl implements _GetCoupon {
+  const _$GetCouponImpl({required this.couponCode});
+
+  @override
+  final String couponCode;
+
+  @override
+  String toString() {
+    return 'CouponEvent.couponSearch(couponCode: $couponCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCouponImpl &&
+            (identical(other.couponCode, couponCode) ||
+                other.couponCode == couponCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, couponCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCouponImplCopyWith<_$GetCouponImpl> get copyWith =>
+      __$$GetCouponImplCopyWithImpl<_$GetCouponImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
+    required TResult Function(Coupon coupon) applyCoupon,
+    required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
+  }) {
+    return couponSearch(couponCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
+    TResult? Function(Coupon coupon)? applyCoupon,
+    TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
+  }) {
+    return couponSearch?.call(couponCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
+    TResult Function(Coupon coupon)? applyCoupon,
+    TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
+    required TResult orElse(),
+  }) {
+    if (couponSearch != null) {
+      return couponSearch(couponCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
+    required TResult Function(_Apply value) applyCoupon,
+    required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
+  }) {
+    return couponSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
+    TResult? Function(_Apply value)? applyCoupon,
+    TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
+  }) {
+    return couponSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
+    TResult Function(_Apply value)? applyCoupon,
+    TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
+    required TResult orElse(),
+  }) {
+    if (couponSearch != null) {
+      return couponSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCoupon implements CouponEvent {
+  const factory _GetCoupon({required final String couponCode}) =
+      _$GetCouponImpl;
+
+  String get couponCode;
+  @JsonKey(ignore: true)
+  _$$GetCouponImplCopyWith<_$GetCouponImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -390,8 +585,10 @@ class _$ApplyImpl implements _Apply {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
     required TResult Function(Coupon coupon) applyCoupon,
     required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
   }) {
     return applyCoupon(coupon);
   }
@@ -401,8 +598,10 @@ class _$ApplyImpl implements _Apply {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
     TResult? Function(Coupon coupon)? applyCoupon,
     TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
   }) {
     return applyCoupon?.call(coupon);
   }
@@ -412,8 +611,10 @@ class _$ApplyImpl implements _Apply {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
     TResult Function(Coupon coupon)? applyCoupon,
     TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
     required TResult orElse(),
   }) {
     if (applyCoupon != null) {
@@ -427,8 +628,10 @@ class _$ApplyImpl implements _Apply {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
     required TResult Function(_Apply value) applyCoupon,
     required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
   }) {
     return applyCoupon(this);
   }
@@ -438,8 +641,10 @@ class _$ApplyImpl implements _Apply {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
     TResult? Function(_Apply value)? applyCoupon,
     TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
   }) {
     return applyCoupon?.call(this);
   }
@@ -449,8 +654,10 @@ class _$ApplyImpl implements _Apply {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
     TResult Function(_Apply value)? applyCoupon,
     TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
     required TResult orElse(),
   }) {
     if (applyCoupon != null) {
@@ -509,8 +716,10 @@ class _$RemoveImpl implements _Remove {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
     required TResult Function(Coupon coupon) applyCoupon,
     required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
   }) {
     return removeCoupon();
   }
@@ -520,8 +729,10 @@ class _$RemoveImpl implements _Remove {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
     TResult? Function(Coupon coupon)? applyCoupon,
     TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
   }) {
     return removeCoupon?.call();
   }
@@ -531,8 +742,10 @@ class _$RemoveImpl implements _Remove {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
     TResult Function(Coupon coupon)? applyCoupon,
     TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
     required TResult orElse(),
   }) {
     if (removeCoupon != null) {
@@ -546,8 +759,10 @@ class _$RemoveImpl implements _Remove {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
     required TResult Function(_Apply value) applyCoupon,
     required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
   }) {
     return removeCoupon(this);
   }
@@ -557,8 +772,10 @@ class _$RemoveImpl implements _Remove {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
     TResult? Function(_Apply value)? applyCoupon,
     TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
   }) {
     return removeCoupon?.call(this);
   }
@@ -568,8 +785,10 @@ class _$RemoveImpl implements _Remove {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
     TResult Function(_Apply value)? applyCoupon,
     TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
     required TResult orElse(),
   }) {
     if (removeCoupon != null) {
@@ -584,8 +803,135 @@ abstract class _Remove implements CouponEvent {
 }
 
 /// @nodoc
+abstract class _$$ClearImplCopyWith<$Res> {
+  factory _$$ClearImplCopyWith(
+          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
+      __$$ClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearImplCopyWithImpl<$Res>
+    extends _$CouponEventCopyWithImpl<$Res, _$ClearImpl>
+    implements _$$ClearImplCopyWith<$Res> {
+  __$$ClearImplCopyWithImpl(
+      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearImpl implements _Clear {
+  const _$ClearImpl();
+
+  @override
+  String toString() {
+    return 'CouponEvent.clearCoupons()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(String couponCode) couponSearch,
+    required TResult Function(Coupon coupon) applyCoupon,
+    required TResult Function() removeCoupon,
+    required TResult Function() clearCoupons,
+  }) {
+    return clearCoupons();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(String couponCode)? couponSearch,
+    TResult? Function(Coupon coupon)? applyCoupon,
+    TResult? Function()? removeCoupon,
+    TResult? Function()? clearCoupons,
+  }) {
+    return clearCoupons?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(String couponCode)? couponSearch,
+    TResult Function(Coupon coupon)? applyCoupon,
+    TResult Function()? removeCoupon,
+    TResult Function()? clearCoupons,
+    required TResult orElse(),
+  }) {
+    if (clearCoupons != null) {
+      return clearCoupons();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_GetCoupon value) couponSearch,
+    required TResult Function(_Apply value) applyCoupon,
+    required TResult Function(_Remove value) removeCoupon,
+    required TResult Function(_Clear value) clearCoupons,
+  }) {
+    return clearCoupons(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_GetCoupon value)? couponSearch,
+    TResult? Function(_Apply value)? applyCoupon,
+    TResult? Function(_Remove value)? removeCoupon,
+    TResult? Function(_Clear value)? clearCoupons,
+  }) {
+    return clearCoupons?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_GetCoupon value)? couponSearch,
+    TResult Function(_Apply value)? applyCoupon,
+    TResult Function(_Remove value)? removeCoupon,
+    TResult Function(_Clear value)? clearCoupons,
+    required TResult orElse(),
+  }) {
+    if (clearCoupons != null) {
+      return clearCoupons(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Clear implements CouponEvent {
+  const factory _Clear() = _$ClearImpl;
+}
+
+/// @nodoc
 mixin _$CouponState {
   List<Coupon> get couponList => throw _privateConstructorUsedError;
+  List<Coupon> get searchCouponList => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -605,6 +951,7 @@ abstract class $CouponStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Coupon> couponList,
+      List<Coupon> searchCouponList,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool isApplying,
@@ -627,6 +974,7 @@ class _$CouponStateCopyWithImpl<$Res, $Val extends CouponState>
   @override
   $Res call({
     Object? couponList = null,
+    Object? searchCouponList = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? isApplying = null,
@@ -636,6 +984,10 @@ class _$CouponStateCopyWithImpl<$Res, $Val extends CouponState>
       couponList: null == couponList
           ? _value.couponList
           : couponList // ignore: cast_nullable_to_non_nullable
+              as List<Coupon>,
+      searchCouponList: null == searchCouponList
+          ? _value.searchCouponList
+          : searchCouponList // ignore: cast_nullable_to_non_nullable
               as List<Coupon>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
@@ -675,6 +1027,7 @@ abstract class _$$CouponStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<Coupon> couponList,
+      List<Coupon> searchCouponList,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool isApplying,
@@ -696,6 +1049,7 @@ class __$$CouponStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? couponList = null,
+    Object? searchCouponList = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? isApplying = null,
@@ -705,6 +1059,10 @@ class __$$CouponStateImplCopyWithImpl<$Res>
       couponList: null == couponList
           ? _value._couponList
           : couponList // ignore: cast_nullable_to_non_nullable
+              as List<Coupon>,
+      searchCouponList: null == searchCouponList
+          ? _value._searchCouponList
+          : searchCouponList // ignore: cast_nullable_to_non_nullable
               as List<Coupon>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
@@ -731,11 +1089,13 @@ class __$$CouponStateImplCopyWithImpl<$Res>
 class _$CouponStateImpl extends _CouponState {
   const _$CouponStateImpl(
       {required final List<Coupon> couponList,
+      required final List<Coupon> searchCouponList,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
       required this.isApplying,
       required this.appliedCoupon})
       : _couponList = couponList,
+        _searchCouponList = searchCouponList,
         super._();
 
   final List<Coupon> _couponList;
@@ -744,6 +1104,15 @@ class _$CouponStateImpl extends _CouponState {
     if (_couponList is EqualUnmodifiableListView) return _couponList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_couponList);
+  }
+
+  final List<Coupon> _searchCouponList;
+  @override
+  List<Coupon> get searchCouponList {
+    if (_searchCouponList is EqualUnmodifiableListView)
+      return _searchCouponList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchCouponList);
   }
 
   @override
@@ -757,7 +1126,7 @@ class _$CouponStateImpl extends _CouponState {
 
   @override
   String toString() {
-    return 'CouponState(couponList: $couponList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isApplying: $isApplying, appliedCoupon: $appliedCoupon)';
+    return 'CouponState(couponList: $couponList, searchCouponList: $searchCouponList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isApplying: $isApplying, appliedCoupon: $appliedCoupon)';
   }
 
   @override
@@ -767,6 +1136,8 @@ class _$CouponStateImpl extends _CouponState {
             other is _$CouponStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._couponList, _couponList) &&
+            const DeepCollectionEquality()
+                .equals(other._searchCouponList, _searchCouponList) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
@@ -782,6 +1153,7 @@ class _$CouponStateImpl extends _CouponState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_couponList),
+      const DeepCollectionEquality().hash(_searchCouponList),
       apiFailureOrSuccessOption,
       isFetching,
       isApplying,
@@ -797,6 +1169,7 @@ class _$CouponStateImpl extends _CouponState {
 abstract class _CouponState extends CouponState {
   const factory _CouponState(
       {required final List<Coupon> couponList,
+      required final List<Coupon> searchCouponList,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
@@ -806,6 +1179,8 @@ abstract class _CouponState extends CouponState {
 
   @override
   List<Coupon> get couponList;
+  @override
+  List<Coupon> get searchCouponList;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

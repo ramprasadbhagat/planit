@@ -19,7 +19,8 @@ class TrackOrderLocalDataSource {
 
   Future<TrackOrderDetails> getTrackOrderDetails() async {
     final res = json.decode(
-        await rootBundle.loadString('assets/json/track_order_details.json'));
+      await rootBundle.loadString('assets/json/track_order_details.json'),
+    );
 
     return TrackOrderDetailsDto.fromJson(res.data).toDomain;
   }

@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Coupon {
   String get id => throw _privateConstructorUsedError;
   String get couponCode => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
+  CouponType get type => throw _privateConstructorUsedError;
+  int get rate => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,11 @@ abstract class $CouponCopyWith<$Res> {
       _$CouponCopyWithImpl<$Res, Coupon>;
   @useResult
   $Res call(
-      {String id, String couponCode, int amount, String shortDescription});
+      {String id,
+      String couponCode,
+      CouponType type,
+      int rate,
+      String shortDescription});
 }
 
 /// @nodoc
@@ -49,7 +54,8 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
   $Res call({
     Object? id = null,
     Object? couponCode = null,
-    Object? amount = null,
+    Object? type = null,
+    Object? rate = null,
     Object? shortDescription = null,
   }) {
     return _then(_value.copyWith(
@@ -61,9 +67,13 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CouponType,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
               as int,
       shortDescription: null == shortDescription
           ? _value.shortDescription
@@ -81,7 +91,11 @@ abstract class _$$CouponImplCopyWith<$Res> implements $CouponCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id, String couponCode, int amount, String shortDescription});
+      {String id,
+      String couponCode,
+      CouponType type,
+      int rate,
+      String shortDescription});
 }
 
 /// @nodoc
@@ -97,7 +111,8 @@ class __$$CouponImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? couponCode = null,
-    Object? amount = null,
+    Object? type = null,
+    Object? rate = null,
     Object? shortDescription = null,
   }) {
     return _then(_$CouponImpl(
@@ -109,9 +124,13 @@ class __$$CouponImplCopyWithImpl<$Res>
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as CouponType,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
               as int,
       shortDescription: null == shortDescription
           ? _value.shortDescription
@@ -127,7 +146,8 @@ class _$CouponImpl extends _Coupon {
   const _$CouponImpl(
       {required this.id,
       required this.couponCode,
-      required this.amount,
+      required this.type,
+      required this.rate,
       required this.shortDescription})
       : super._();
 
@@ -136,13 +156,15 @@ class _$CouponImpl extends _Coupon {
   @override
   final String couponCode;
   @override
-  final int amount;
+  final CouponType type;
+  @override
+  final int rate;
   @override
   final String shortDescription;
 
   @override
   String toString() {
-    return 'Coupon(id: $id, couponCode: $couponCode, amount: $amount, shortDescription: $shortDescription)';
+    return 'Coupon(id: $id, couponCode: $couponCode, type: $type, rate: $rate, shortDescription: $shortDescription)';
   }
 
   @override
@@ -153,14 +175,15 @@ class _$CouponImpl extends _Coupon {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.couponCode, couponCode) ||
                 other.couponCode == couponCode) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, couponCode, amount, shortDescription);
+      Object.hash(runtimeType, id, couponCode, type, rate, shortDescription);
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +196,8 @@ abstract class _Coupon extends Coupon {
   const factory _Coupon(
       {required final String id,
       required final String couponCode,
-      required final int amount,
+      required final CouponType type,
+      required final int rate,
       required final String shortDescription}) = _$CouponImpl;
   const _Coupon._() : super._();
 
@@ -182,7 +206,9 @@ abstract class _Coupon extends Coupon {
   @override
   String get couponCode;
   @override
-  int get amount;
+  CouponType get type;
+  @override
+  int get rate;
   @override
   String get shortDescription;
   @override
