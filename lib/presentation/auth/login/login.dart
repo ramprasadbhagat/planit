@@ -8,6 +8,8 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/infrastructure/user/datasource/user_remote.dart';
+import 'package:planit/locator.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
