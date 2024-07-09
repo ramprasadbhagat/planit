@@ -10,15 +10,16 @@ class Category with _$Category {
   factory Category({
     required StringValue name,
     required List<String> image,
+    required String type,
     required List<SubCategory> subCategory,
   }) = _Category;
 
   factory Category.empty() => Category(
         name: StringValue(''),
         image: [],
+        type: '',
         subCategory: <SubCategory>[],
       );
 
-  bool get isValid =>
-      name.isValid() && image.isNotEmpty && subCategory.isNotEmpty;
+  bool get isValid => name.isValid() && subCategory.isNotEmpty;
 }

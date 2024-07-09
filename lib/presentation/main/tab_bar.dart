@@ -111,11 +111,20 @@ class _MainTabbarState extends State<MainTabbar> {
       child: AutoTabsScaffold(
         routes: _getTabs(context).map((item) => item.route).toList(),
         bottomNavigationBuilder: (_, tabsRouter) {
+          final categoryBloc = context.read<CategoryBloc>();
           return BottomNavigationBar(
             key: WidgetKeys.homeTabBar,
             currentIndex: tabsRouter.activeIndex,
             selectedItemColor: AppColors.black,
             onTap: (index) {
+              if (index == 2) {
+                categoryBloc.add(const CategoryEvent.selectOccasion(false));
+                categoryBloc.add(
+                  CategoryEvent.select(
+                    categoryBloc.state.categories.first,
+                  ),
+                );
+              }
               tabsRouter.setActiveIndex(index);
             },
             items: _getTabs(context)
