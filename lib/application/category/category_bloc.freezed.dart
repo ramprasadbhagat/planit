@@ -21,6 +21,7 @@ mixin _$CategoryEvent {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Category category) select,
+    required TResult Function(bool isSelected) selectOccasion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CategoryEvent {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Category category)? select,
+    TResult? Function(bool isSelected)? selectOccasion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CategoryEvent {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Category category)? select,
+    TResult Function(bool isSelected)? selectOccasion,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$CategoryEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Select value) select,
+    required TResult Function(_SelectOccasion value) selectOccasion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$CategoryEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Select value)? select,
+    TResult? Function(_SelectOccasion value)? selectOccasion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$CategoryEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Select value)? select,
+    TResult Function(_SelectOccasion value)? selectOccasion,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Category category) select,
+    required TResult Function(bool isSelected) selectOccasion,
   }) {
     return initialized();
   }
@@ -131,6 +138,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Category category)? select,
+    TResult? Function(bool isSelected)? selectOccasion,
   }) {
     return initialized?.call();
   }
@@ -141,6 +149,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Category category)? select,
+    TResult Function(bool isSelected)? selectOccasion,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -155,6 +164,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Select value) select,
+    required TResult Function(_SelectOccasion value) selectOccasion,
   }) {
     return initialized(this);
   }
@@ -165,6 +175,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Select value)? select,
+    TResult? Function(_SelectOccasion value)? selectOccasion,
   }) {
     return initialized?.call(this);
   }
@@ -175,6 +186,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Select value)? select,
+    TResult Function(_SelectOccasion value)? selectOccasion,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -229,6 +241,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Category category) select,
+    required TResult Function(bool isSelected) selectOccasion,
   }) {
     return fetch();
   }
@@ -239,6 +252,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Category category)? select,
+    TResult? Function(bool isSelected)? selectOccasion,
   }) {
     return fetch?.call();
   }
@@ -249,6 +263,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Category category)? select,
+    TResult Function(bool isSelected)? selectOccasion,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -263,6 +278,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Select value) select,
+    required TResult Function(_SelectOccasion value) selectOccasion,
   }) {
     return fetch(this);
   }
@@ -273,6 +289,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Select value)? select,
+    TResult? Function(_SelectOccasion value)? selectOccasion,
   }) {
     return fetch?.call(this);
   }
@@ -283,6 +300,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Select value)? select,
+    TResult Function(_SelectOccasion value)? selectOccasion,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -374,6 +392,7 @@ class _$SelectImpl implements _Select {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(Category category) select,
+    required TResult Function(bool isSelected) selectOccasion,
   }) {
     return select(category);
   }
@@ -384,6 +403,7 @@ class _$SelectImpl implements _Select {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(Category category)? select,
+    TResult? Function(bool isSelected)? selectOccasion,
   }) {
     return select?.call(category);
   }
@@ -394,6 +414,7 @@ class _$SelectImpl implements _Select {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(Category category)? select,
+    TResult Function(bool isSelected)? selectOccasion,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -408,6 +429,7 @@ class _$SelectImpl implements _Select {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_Select value) select,
+    required TResult Function(_SelectOccasion value) selectOccasion,
   }) {
     return select(this);
   }
@@ -418,6 +440,7 @@ class _$SelectImpl implements _Select {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_Select value)? select,
+    TResult? Function(_SelectOccasion value)? selectOccasion,
   }) {
     return select?.call(this);
   }
@@ -428,6 +451,7 @@ class _$SelectImpl implements _Select {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Select value)? select,
+    TResult Function(_SelectOccasion value)? selectOccasion,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -447,12 +471,161 @@ abstract class _Select implements CategoryEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectOccasionImplCopyWith<$Res> {
+  factory _$$SelectOccasionImplCopyWith(_$SelectOccasionImpl value,
+          $Res Function(_$SelectOccasionImpl) then) =
+      __$$SelectOccasionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isSelected});
+}
+
+/// @nodoc
+class __$$SelectOccasionImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$SelectOccasionImpl>
+    implements _$$SelectOccasionImplCopyWith<$Res> {
+  __$$SelectOccasionImplCopyWithImpl(
+      _$SelectOccasionImpl _value, $Res Function(_$SelectOccasionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isSelected = null,
+  }) {
+    return _then(_$SelectOccasionImpl(
+      null == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectOccasionImpl implements _SelectOccasion {
+  const _$SelectOccasionImpl(this.isSelected);
+
+  @override
+  final bool isSelected;
+
+  @override
+  String toString() {
+    return 'CategoryEvent.selectOccasion(isSelected: $isSelected)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectOccasionImpl &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isSelected);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectOccasionImplCopyWith<_$SelectOccasionImpl> get copyWith =>
+      __$$SelectOccasionImplCopyWithImpl<_$SelectOccasionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Category category) select,
+    required TResult Function(bool isSelected) selectOccasion,
+  }) {
+    return selectOccasion(isSelected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Category category)? select,
+    TResult? Function(bool isSelected)? selectOccasion,
+  }) {
+    return selectOccasion?.call(isSelected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Category category)? select,
+    TResult Function(bool isSelected)? selectOccasion,
+    required TResult orElse(),
+  }) {
+    if (selectOccasion != null) {
+      return selectOccasion(isSelected);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Select value) select,
+    required TResult Function(_SelectOccasion value) selectOccasion,
+  }) {
+    return selectOccasion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Select value)? select,
+    TResult? Function(_SelectOccasion value)? selectOccasion,
+  }) {
+    return selectOccasion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_Select value)? select,
+    TResult Function(_SelectOccasion value)? selectOccasion,
+    required TResult orElse(),
+  }) {
+    if (selectOccasion != null) {
+      return selectOccasion(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectOccasion implements CategoryEvent {
+  const factory _SelectOccasion(final bool isSelected) = _$SelectOccasionImpl;
+
+  bool get isSelected;
+  @JsonKey(ignore: true)
+  _$$SelectOccasionImplCopyWith<_$SelectOccasionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CategoryState {
   Category get selectedCategory => throw _privateConstructorUsedError;
   List<Category> get categories => throw _privateConstructorUsedError;
+  List<Category> get occasionCategory => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get isOcassionSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryStateCopyWith<CategoryState> get copyWith =>
@@ -468,8 +641,10 @@ abstract class $CategoryStateCopyWith<$Res> {
   $Res call(
       {Category selectedCategory,
       List<Category> categories,
+      List<Category> occasionCategory,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isOcassionSelected});
 
   $CategoryCopyWith<$Res> get selectedCategory;
 }
@@ -489,8 +664,10 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
   $Res call({
     Object? selectedCategory = null,
     Object? categories = null,
+    Object? occasionCategory = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isOcassionSelected = null,
   }) {
     return _then(_value.copyWith(
       selectedCategory: null == selectedCategory
@@ -501,6 +678,10 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
+      occasionCategory: null == occasionCategory
+          ? _value.occasionCategory
+          : occasionCategory // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -508,6 +689,10 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOcassionSelected: null == isOcassionSelected
+          ? _value.isOcassionSelected
+          : isOcassionSelected // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -532,8 +717,10 @@ abstract class _$$CustomerCodeStateImplCopyWith<$Res>
   $Res call(
       {Category selectedCategory,
       List<Category> categories,
+      List<Category> occasionCategory,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool isFetching});
+      bool isFetching,
+      bool isOcassionSelected});
 
   @override
   $CategoryCopyWith<$Res> get selectedCategory;
@@ -552,8 +739,10 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedCategory = null,
     Object? categories = null,
+    Object? occasionCategory = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isOcassionSelected = null,
   }) {
     return _then(_$CustomerCodeStateImpl(
       selectedCategory: null == selectedCategory
@@ -564,6 +753,10 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
+      occasionCategory: null == occasionCategory
+          ? _value._occasionCategory
+          : occasionCategory // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -571,6 +764,10 @@ class __$$CustomerCodeStateImplCopyWithImpl<$Res>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isOcassionSelected: null == isOcassionSelected
+          ? _value.isOcassionSelected
+          : isOcassionSelected // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -582,9 +779,12 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
   const _$CustomerCodeStateImpl(
       {required this.selectedCategory,
       required final List<Category> categories,
+      required final List<Category> occasionCategory,
       required this.apiFailureOrSuccessOption,
-      required this.isFetching})
+      required this.isFetching,
+      required this.isOcassionSelected})
       : _categories = categories,
+        _occasionCategory = occasionCategory,
         super._();
 
   @override
@@ -597,14 +797,25 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
     return EqualUnmodifiableListView(_categories);
   }
 
+  final List<Category> _occasionCategory;
+  @override
+  List<Category> get occasionCategory {
+    if (_occasionCategory is EqualUnmodifiableListView)
+      return _occasionCategory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_occasionCategory);
+  }
+
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool isOcassionSelected;
 
   @override
   String toString() {
-    return 'CategoryState(selectedCategory: $selectedCategory, categories: $categories, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'CategoryState(selectedCategory: $selectedCategory, categories: $categories, occasionCategory: $occasionCategory, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isOcassionSelected: $isOcassionSelected)';
   }
 
   @override
@@ -616,11 +827,15 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
                 other.selectedCategory == selectedCategory) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
+            const DeepCollectionEquality()
+                .equals(other._occasionCategory, _occasionCategory) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
-                other.isFetching == isFetching));
+                other.isFetching == isFetching) &&
+            (identical(other.isOcassionSelected, isOcassionSelected) ||
+                other.isOcassionSelected == isOcassionSelected));
   }
 
   @override
@@ -628,8 +843,10 @@ class _$CustomerCodeStateImpl extends _CustomerCodeState {
       runtimeType,
       selectedCategory,
       const DeepCollectionEquality().hash(_categories),
+      const DeepCollectionEquality().hash(_occasionCategory),
       apiFailureOrSuccessOption,
-      isFetching);
+      isFetching,
+      isOcassionSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -643,9 +860,11 @@ abstract class _CustomerCodeState extends CategoryState {
   const factory _CustomerCodeState(
       {required final Category selectedCategory,
       required final List<Category> categories,
+      required final List<Category> occasionCategory,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool isFetching}) = _$CustomerCodeStateImpl;
+      required final bool isFetching,
+      required final bool isOcassionSelected}) = _$CustomerCodeStateImpl;
   const _CustomerCodeState._() : super._();
 
   @override
@@ -653,9 +872,13 @@ abstract class _CustomerCodeState extends CategoryState {
   @override
   List<Category> get categories;
   @override
+  List<Category> get occasionCategory;
+  @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get isOcassionSelected;
   @override
   @JsonKey(ignore: true)
   _$$CustomerCodeStateImplCopyWith<_$CustomerCodeStateImpl> get copyWith =>

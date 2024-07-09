@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/domain/category/entities/category.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
@@ -17,30 +18,39 @@ class ShopByOccasion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final categoryBloc = context.read<CategoryBloc>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionTitle(
           title: 'Shop by occasion',
           onTap: () {
-            context.router.push(CategoryRoute(openFromOccassion: true));
+           categoryBloc
+                .add(const CategoryEvent.selectOccasion(true));
+            categoryBloc.add(
+                  CategoryEvent.select(
+                    categoryBloc.state.occasionCategory.first,
+                  ),
+                );
+            context.router.navigate(CategoryRoute(openFromOccassion: true));
           },
         ),
-        BlocBuilder<SubCategoryBloc, SubCategoryState>(
+        BlocBuilder<CategoryBloc, CategoryState>(
           builder: (context, state) {
             if (state.isFetching) {
               return const ShimmerItem();
-            } else if (state.shopByOcassionList.isEmpty) {
+            } else if (state.occasionCategory.isEmpty) {
               return const NoData();
             }
             return SizedBox(
               height: 130,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: state.shopByOcassionList.length,
+                itemCount: state.occasionCategory.length,
                 itemBuilder: (BuildContext context, int index) =>
                     ShopByOccasionItem(
-                  item: state.shopByOcassionList.elementAt(index),
+                  item: state.occasionCategory[index],
                 ),
               ),
             );
@@ -52,7 +62,7 @@ class ShopByOccasion extends StatelessWidget {
 }
 
 class ShopByOccasionItem extends StatelessWidget {
-  final SubCategory item;
+  final Category item;
   const ShopByOccasionItem({
     super.key,
     required this.item,
@@ -63,19 +73,30 @@ class ShopByOccasionItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: () {
-        final categoryBloc = context.read<CategoryBloc>();
-        categoryBloc.add(
-          CategoryEvent.select(
-            categoryBloc.state.validCategories
-                .where(
-                  (element) => element.name.displayLabel == 'Shop By occasion',
-                )
-                .toList()
-                .first,
-          ),
-        );
-        context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
-        context.router.navigate(CategoryRoute(openFromOccassion: true));
+        // final categoryBloc = context.read<CategoryBloc>();
+        // categoryBloc.add(
+        //   CategoryEvent.select(
+        //     categoryBloc.state.validCategories
+        //         .where(
+        //           (element) => element.name.displayLabel == 'Shop By occasion',
+        //         )
+        //         .toList()
+        //         .first,
+        //   ),
+        // );
+        // context.read<SubCategoryBloc>().add(SubCategoryEvent.select(item));
+        // context.router.navigate(CategoryRoute(openFromOccassion: true));
+        context.read<CategoryBloc>().add(CategoryEvent.select(item));
+        context.read<CategoryBloc>().add(
+              const CategoryEvent.selectOccasion(true),
+            );
+
+        context.read<SubCategoryBloc>().add(
+              SubCategoryEvent.select(
+                item.subCategory.firstOrNull ?? SubCategory.empty(),
+              ),
+            );
+        context.router.navigate(CategoryRoute());
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

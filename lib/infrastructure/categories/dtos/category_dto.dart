@@ -16,6 +16,8 @@ class CategoryDto with _$CategoryDto {
     required List<String> categoryImages,
     @JsonKey(name: 'subcategories', defaultValue: [])
     required List<SubCategoryDto> subcategories,
+    @JsonKey(name: 'type', defaultValue: '')
+    required String type,
   }) = _CategoryDto;
 
   factory CategoryDto.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +25,7 @@ class CategoryDto with _$CategoryDto {
 
   Category get toDomain => Category(
         name: StringValue(categoryName),
+        type: type,
         image: categoryImages.map((e) => replaceLocalEndPoint(e)).toList(),
         subCategory: subcategories.map((e) => e.toDomain).toList(),
       );

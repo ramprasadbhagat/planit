@@ -215,7 +215,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 color: AppColors.grey2,
                               ),
                               Text(
-                                ' Recipient Name : ${order.deliveryAddress.first.fullName}',
+                                ' Recipient Name : ${order.deliveryAddress.firstOrNull?.fullName ?? 'NA'}',
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -281,7 +281,6 @@ class OrderDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(color: Color.fromRGBO(0, 0, b, opacity)),
                         color: Colors.white,
                         boxShadow: const [
                           BoxShadow(

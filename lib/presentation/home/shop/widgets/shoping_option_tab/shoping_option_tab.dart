@@ -17,7 +17,6 @@ class ShoppingOptionTab extends StatefulWidget {
 class _ShoppingOptionTabState extends State<ShoppingOptionTab>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  int _selectedTab = 0;
   static List<String> tabs = [
     'Your favorite picks',
     'Shop by category',
@@ -32,6 +31,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
       length: 3,
       vsync: this,
     );
+    _tabController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -53,7 +55,6 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
               unselectedLabelColor: AppColors.black,
               indicator: const BoxDecoration(),
               controller: _tabController,
-              onTap: (value) => setState(() => _selectedTab = value),
               tabs: tabs.mapIndexed(
                 (index, title) {
                   final isSelected = _tabController.index == index;
@@ -88,9 +89,9 @@ class _ShoppingOptionTabState extends State<ShoppingOptionTab>
             BlocBuilder<QuickPicksBloc, QuickPicksState>(
               builder: (context, state) {
                 return SizedBox(
-                  height: _selectedTab == 0
+                  height: _tabController.index == 0
                       ? state.quickPickProductsHeight
-                      : _selectedTab == 1
+                      : _tabController.index == 1
                           ? 250
                           : 155,
                   child: TabBarView(

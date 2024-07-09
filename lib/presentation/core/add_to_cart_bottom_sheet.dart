@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
@@ -95,9 +96,16 @@ class AddToCartBottomSheet extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Text(
+                          HtmlWidget(
                             state.product.productDescription.getValue(),
-                            style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                            customStylesBuilder: (element) {
+                              if (element.localName == 'p') {
+                                return {
+                                  'font-size': '12px',
+                                };
+                              }
+                              return null;
+                            },
                           ),
                           const SizedBox(
                             height: 10,

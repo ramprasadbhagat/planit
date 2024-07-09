@@ -45,7 +45,6 @@ class _AddressBooksState extends State<AddressBooks> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Address Book',
@@ -54,6 +53,18 @@ class _AddressBooksState extends State<AddressBooks> {
                                   fontWeight: FontWeight.bold,
                                 ),
                       ),
+                      Checkbox(
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return AppColors.green;
+                          }
+                          return AppColors.grey4;
+                        }),
+                        value: state.addressList.isNotEmpty,
+                        onChanged: null,
+                      ),
+                      const Spacer(),
                       InkWell(
                         onTap: () {
                           showModalBottomSheet<void>(
