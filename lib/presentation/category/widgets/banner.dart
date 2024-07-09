@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/presentation/category/widgets/shimmer_loader.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -82,32 +84,47 @@ class _SubcategoryBannerState extends State<SubcategoryBanner> {
                         ? state.occassionBanner
                         : state.categoryBanner)
                     .map((i) {
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          width: double.maxFinite,
-                          child: Image.network(
-                            i.bannerImages.firstOrNull ?? '',
-                            fit: BoxFit.fill,
-                            errorBuilder: (context, error, stack) {
-                              if (error is NetworkImageLoadException &&
-                                  error.statusCode == 404) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (i.option == 'Deal') {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) => CommonBottomSheet(
+                            child: AddToCartBottomSheet(
+                              productId: i.productId,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            width: double.maxFinite,
+                            child: Image.network(
+                              i.bannerImages.firstOrNull ?? '',
+                              fit: BoxFit.fill,
+                              errorBuilder: (context, error, stack) {
+                                if (error is NetworkImageLoadException &&
+                                    error.statusCode == 404) {
+                                  return Image.asset(
+                                    PngImage.placeholder,
+                                    fit: BoxFit.fitHeight,
+                                  );
+                                }
+
                                 return Image.asset(
                                   PngImage.placeholder,
                                   fit: BoxFit.fitHeight,
                                 );
-                              }
-
-                              return Image.asset(
-                                PngImage.placeholder,
-                                fit: BoxFit.fitHeight,
-                              );
-                            },
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 }).toList(),
               ),

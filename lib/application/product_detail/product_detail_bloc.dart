@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
-import 'package:planit/domain/product/entities/product_detail.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
@@ -27,6 +27,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     await event.map(
       initialized: (_) async => emit(ProductDetailState.initial()),
       fetch: (e) async {
+        emit(state.copyWith(isFetching: true));
         final failureOrSuccess = await repository.getProductDetail(
           e.productId,
         );
@@ -34,12 +35,14 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
           (failure) => emit(
             state.copyWith(
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              isFetching: false,
             ),
           ),
           (res) {
             emit(
               state.copyWith(
-                productDetail: res,
+                product: res,
+                isFetching: false,
               ),
             );
           },

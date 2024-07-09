@@ -312,7 +312,7 @@ abstract class _Fetch implements ProductDetailEvent {
 
 /// @nodoc
 mixin _$ProductDetailState {
-  ProductDetail get productDetail => throw _privateConstructorUsedError;
+  Product get product => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -329,11 +329,11 @@ abstract class $ProductDetailStateCopyWith<$Res> {
       _$ProductDetailStateCopyWithImpl<$Res, ProductDetailState>;
   @useResult
   $Res call(
-      {ProductDetail productDetail,
+      {Product product,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 
-  $ProductDetailCopyWith<$Res> get productDetail;
+  $ProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -349,15 +349,15 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productDetail = null,
+    Object? product = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_value.copyWith(
-      productDetail: null == productDetail
-          ? _value.productDetail
-          : productDetail // ignore: cast_nullable_to_non_nullable
-              as ProductDetail,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -371,9 +371,9 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductDetailCopyWith<$Res> get productDetail {
-    return $ProductDetailCopyWith<$Res>(_value.productDetail, (value) {
-      return _then(_value.copyWith(productDetail: value) as $Val);
+  $ProductCopyWith<$Res> get product {
+    return $ProductCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
     });
   }
 }
@@ -387,12 +387,12 @@ abstract class _$$ProductDetailStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ProductDetail productDetail,
+      {Product product,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching});
 
   @override
-  $ProductDetailCopyWith<$Res> get productDetail;
+  $ProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -406,15 +406,15 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productDetail = null,
+    Object? product = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
   }) {
     return _then(_$ProductDetailStateImpl(
-      productDetail: null == productDetail
-          ? _value.productDetail
-          : productDetail // ignore: cast_nullable_to_non_nullable
-              as ProductDetail,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -431,12 +431,12 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
 
 class _$ProductDetailStateImpl implements _ProductDetailState {
   const _$ProductDetailStateImpl(
-      {required this.productDetail,
+      {required this.product,
       required this.apiFailureOrSuccessOption,
       required this.isFetching});
 
   @override
-  final ProductDetail productDetail;
+  final Product product;
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
@@ -444,7 +444,7 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
 
   @override
   String toString() {
-    return 'ProductDetailState(productDetail: $productDetail, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
+    return 'ProductDetailState(product: $product, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching)';
   }
 
   @override
@@ -452,8 +452,7 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductDetailStateImpl &&
-            (identical(other.productDetail, productDetail) ||
-                other.productDetail == productDetail) &&
+            (identical(other.product, product) || other.product == product) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
@@ -462,8 +461,8 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, productDetail, apiFailureOrSuccessOption, isFetching);
+  int get hashCode =>
+      Object.hash(runtimeType, product, apiFailureOrSuccessOption, isFetching);
 
   @JsonKey(ignore: true)
   @override
@@ -475,13 +474,13 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
 
 abstract class _ProductDetailState implements ProductDetailState {
   const factory _ProductDetailState(
-      {required final ProductDetail productDetail,
+      {required final Product product,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching}) = _$ProductDetailStateImpl;
 
   @override
-  ProductDetail get productDetail;
+  Product get product;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

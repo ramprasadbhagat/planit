@@ -18,6 +18,7 @@ class Product with _$Product {
     required String attributeItem,
     required String attributeItemProductId,
     required Price price,
+    required StringValue productDescription,
   }) = _Product;
 
   String get getPriceValue {
@@ -53,5 +54,6 @@ class Product with _$Product {
         attributeItem: '',
         attributeItemProductId: '',
         price: Price.empty(),
+        productDescription: StringValue(''),
       );
 }

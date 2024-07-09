@@ -100,7 +100,7 @@ class ProductRepository extends IProductRepository {
   }
 
   @override
-  Future<Either<ApiFailure, ProductDetail>> getProductDetail(
+  Future<Either<ApiFailure, Product>> getProductDetail(
     ProductId productId,
   ) async {
     try {

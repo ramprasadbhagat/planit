@@ -10,16 +10,18 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
     _$ProductDtoImpl(
       productId: json['id'] as String? ?? '',
       productName: json['productName'] as String? ?? '',
-      productImages: (json['productImages'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      productImages:
+          (parseProductImages(json, 'productImages') as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              [],
       skuPrice: (intReadValue(json, 'sku_price') as num?)?.toInt() ?? 0,
       startingPrice:
           (intReadValue(json, 'startingPrice') as num?)?.toInt() ?? 0,
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemId'] as String? ?? '',
-      price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
+      price: json['price'] as Map<String, dynamic>? ?? {},
+      productDescription: json['productDescription'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
@@ -32,4 +34,5 @@ Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
       'attributeItem': instance.attributeItem,
       'attributeItemId': instance.attributeItemProductId,
       'price': instance.price,
+      'productDescription': instance.productDescription,
     };

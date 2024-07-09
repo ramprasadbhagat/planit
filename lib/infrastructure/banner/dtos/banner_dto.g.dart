@@ -20,6 +20,7 @@ _$BannerDtoImpl _$$BannerDtoImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String? ?? '',
       isActive: json['is_active'] as bool? ?? false,
       isDeleted: json['is_deleted'] as bool? ?? false,
+      productId: json['productId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$BannerDtoImplToJson(_$BannerDtoImpl instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$BannerDtoImplToJson(_$BannerDtoImpl instance) =>
       'updated_at': instance.updatedAt,
       'is_active': instance.isActive,
       'is_deleted': instance.isDeleted,
+      'productId': instance.productId,
     };

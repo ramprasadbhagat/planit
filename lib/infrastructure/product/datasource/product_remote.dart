@@ -81,14 +81,14 @@ class ProductRemoteDataSource {
         .toList();
   }
 
-  Future<ProductDetail> getProductDetail(ProductId productId) async {
+  Future<Product> getProductDetail(ProductId productId) async {
     final res = await httpService.request(
       method: 'GET',
       url: 'products/${productId.getValue()}',
     );
     _exceptionChecker(res: res);
     final productDetail = res.data['items'];
-    return ProductDetailDto.fromJson(productDetail).toDomain;
+    return ProductDto.fromJson(productDetail).toDomain;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {
