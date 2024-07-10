@@ -4,10 +4,11 @@ part 'user.freezed.dart';
 
 @freezed
 class CurrentUser with _$CurrentUser {
+  const CurrentUser._();
+
   const factory CurrentUser({
     required StringValue id,
-    required StringValue firstName,
-    required StringValue lastName,
+    required FullName fullName,
     required EmailAddress emailAddress,
     required MobileNumber mobileNumber,
     required StringValue profileImage,
@@ -16,11 +17,13 @@ class CurrentUser with _$CurrentUser {
 
   factory CurrentUser.empty() => CurrentUser(
         id: StringValue(''),
-        firstName: StringValue(''),
-        lastName: StringValue(''),
+        fullName: FullName(''),
         emailAddress: EmailAddress(''),
         profileImage: StringValue(''),
         isFirstLogin: false,
         mobileNumber: MobileNumber(''),
       );
+
+  bool get isValid =>
+      fullName.isValid() && emailAddress.isValid() && mobileNumber.isValid();
 }

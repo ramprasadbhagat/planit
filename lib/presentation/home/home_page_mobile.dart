@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
-import 'package:planit/infrastructure/user/datasource/user_local.dart';
-import 'package:planit/infrastructure/user/datasource/user_remote.dart';
-import 'package:planit/locator.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -27,7 +25,9 @@ class HomePageMobile extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               authenticated: (auth) {
-                locator<UserLocalDataSource>().fetchCurrentUser();
+                context
+                    .read<UserProfileBloc>()
+                    .add(const UserProfileEvent.fetch());
               },
             );
           },

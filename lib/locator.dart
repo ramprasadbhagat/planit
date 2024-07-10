@@ -16,6 +16,7 @@ import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/user/repository/i_user_repository.dart';
@@ -526,8 +527,14 @@ void setupLocator() {
     ),
   );
 
-  locator.registerLazySingleton<IUserRepository>(() => UserRepository(
+  locator.registerLazySingleton<IUserRepository>(
+    () => UserRepository(
       config: locator<Config>(),
       localDataSource: locator<UserLocalDataSource>(),
-      remoteDataSource: locator<UserRemoteDateSource>()));
+      remoteDataSource: locator<UserRemoteDateSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => UserProfileBloc(repository: locator<IUserRepository>()),
+  );
 }

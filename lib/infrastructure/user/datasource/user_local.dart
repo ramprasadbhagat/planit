@@ -12,4 +12,12 @@ class UserLocalDataSource {
 
     return CurrentUserDto.fromJson(res).toDomain;
   }
+
+  Future<void> updateCurrentUser(CurrentUser user) async {
+    json.decode(
+      await rootBundle.loadString('assets/json/current_user.json'),
+    );
+
+    return;
+  }
 }

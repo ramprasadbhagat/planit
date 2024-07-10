@@ -37,4 +37,26 @@ class UserRepository extends IUserRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, Unit>> updateCurrentUser({
+    required CurrentUser user,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        await localDataSource.updateCurrentUser(user);
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      await remoteDataSource.updateCurrentUser(user);
+
+      return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

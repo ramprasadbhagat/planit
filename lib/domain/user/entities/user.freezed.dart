@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CurrentUser {
   StringValue get id => throw _privateConstructorUsedError;
-  StringValue get firstName => throw _privateConstructorUsedError;
-  StringValue get lastName => throw _privateConstructorUsedError;
+  FullName get fullName => throw _privateConstructorUsedError;
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   MobileNumber get mobileNumber => throw _privateConstructorUsedError;
   StringValue get profileImage => throw _privateConstructorUsedError;
@@ -37,8 +36,7 @@ abstract class $CurrentUserCopyWith<$Res> {
   @useResult
   $Res call(
       {StringValue id,
-      StringValue firstName,
-      StringValue lastName,
+      FullName fullName,
       EmailAddress emailAddress,
       MobileNumber mobileNumber,
       StringValue profileImage,
@@ -59,8 +57,7 @@ class _$CurrentUserCopyWithImpl<$Res, $Val extends CurrentUser>
   @override
   $Res call({
     Object? id = null,
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? fullName = null,
     Object? emailAddress = null,
     Object? mobileNumber = null,
     Object? profileImage = null,
@@ -71,14 +68,10 @@ class _$CurrentUserCopyWithImpl<$Res, $Val extends CurrentUser>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as FullName,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -109,8 +102,7 @@ abstract class _$$CurrentUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {StringValue id,
-      StringValue firstName,
-      StringValue lastName,
+      FullName fullName,
       EmailAddress emailAddress,
       MobileNumber mobileNumber,
       StringValue profileImage,
@@ -129,8 +121,7 @@ class __$$CurrentUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? fullName = null,
     Object? emailAddress = null,
     Object? mobileNumber = null,
     Object? profileImage = null,
@@ -141,14 +132,10 @@ class __$$CurrentUserImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as StringValue,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as FullName,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -171,22 +158,20 @@ class __$$CurrentUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CurrentUserImpl implements _CurrentUser {
+class _$CurrentUserImpl extends _CurrentUser {
   const _$CurrentUserImpl(
       {required this.id,
-      required this.firstName,
-      required this.lastName,
+      required this.fullName,
       required this.emailAddress,
       required this.mobileNumber,
       required this.profileImage,
-      required this.isFirstLogin});
+      required this.isFirstLogin})
+      : super._();
 
   @override
   final StringValue id;
   @override
-  final StringValue firstName;
-  @override
-  final StringValue lastName;
+  final FullName fullName;
   @override
   final EmailAddress emailAddress;
   @override
@@ -198,7 +183,7 @@ class _$CurrentUserImpl implements _CurrentUser {
 
   @override
   String toString() {
-    return 'CurrentUser(id: $id, firstName: $firstName, lastName: $lastName, emailAddress: $emailAddress, mobileNumber: $mobileNumber, profileImage: $profileImage, isFirstLogin: $isFirstLogin)';
+    return 'CurrentUser(id: $id, fullName: $fullName, emailAddress: $emailAddress, mobileNumber: $mobileNumber, profileImage: $profileImage, isFirstLogin: $isFirstLogin)';
   }
 
   @override
@@ -207,10 +192,8 @@ class _$CurrentUserImpl implements _CurrentUser {
         (other.runtimeType == runtimeType &&
             other is _$CurrentUserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
             (identical(other.emailAddress, emailAddress) ||
                 other.emailAddress == emailAddress) &&
             (identical(other.mobileNumber, mobileNumber) ||
@@ -222,8 +205,8 @@ class _$CurrentUserImpl implements _CurrentUser {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName,
-      emailAddress, mobileNumber, profileImage, isFirstLogin);
+  int get hashCode => Object.hash(runtimeType, id, fullName, emailAddress,
+      mobileNumber, profileImage, isFirstLogin);
 
   @JsonKey(ignore: true)
   @override
@@ -232,22 +215,20 @@ class _$CurrentUserImpl implements _CurrentUser {
       __$$CurrentUserImplCopyWithImpl<_$CurrentUserImpl>(this, _$identity);
 }
 
-abstract class _CurrentUser implements CurrentUser {
+abstract class _CurrentUser extends CurrentUser {
   const factory _CurrentUser(
       {required final StringValue id,
-      required final StringValue firstName,
-      required final StringValue lastName,
+      required final FullName fullName,
       required final EmailAddress emailAddress,
       required final MobileNumber mobileNumber,
       required final StringValue profileImage,
       required final bool isFirstLogin}) = _$CurrentUserImpl;
+  const _CurrentUser._() : super._();
 
   @override
   StringValue get id;
   @override
-  StringValue get firstName;
-  @override
-  StringValue get lastName;
+  FullName get fullName;
   @override
   EmailAddress get emailAddress;
   @override

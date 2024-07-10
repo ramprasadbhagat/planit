@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/user/entities/user.dart';
@@ -23,10 +21,27 @@ class UserRemoteDateSource {
       method: 'GET',
       url: 'users/$userId',
     );
-    log(res.data.toString());
     _exceptionChecker(res: res);
-    final currentUser = CurrentUserDto.fromJson(res.data).toDomain;
-    return currentUser;
+
+    return CurrentUserDto.fromJson(res.data).toDomain;
+  }
+
+  Future<void> updateCurrentUser(CurrentUser user) async {
+    final userId = storageService.getUserId();
+
+    final res = await httpService.request(
+      method: 'PATCH',
+      url: 'users/$userId',
+      data: {
+        'firstName': user.fullName.firstName,
+        'lastName': user.fullName.lastName,
+        'email': user.emailAddress.getValue(),
+        'mobile_number': user.mobileNumber.getValue(),
+      },
+    );
+    _exceptionChecker(res: res);
+
+    return;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

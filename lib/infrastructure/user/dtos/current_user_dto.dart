@@ -46,8 +46,10 @@ class CurrentUserDto with _$CurrentUserDto {
 
   CurrentUser get toDomain => CurrentUser(
         id: StringValue(id),
-        firstName: StringValue(firstName),
-        lastName: StringValue(lastName),
+        fullName: FullName.fromFirstAndLastName(
+          firstName: StringValue(firstName),
+          lastName: StringValue(lastName),
+        ),
         emailAddress: EmailAddress(emailAddress),
         mobileNumber: MobileNumber(mobileNumber),
         profileImage: StringValue(profilePicture),
