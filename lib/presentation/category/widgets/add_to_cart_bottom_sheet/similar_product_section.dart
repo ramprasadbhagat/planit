@@ -3,17 +3,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/domain/home/entities/before_checkout.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_cart.dart';
 
-class SimilarProductSection extends StatelessWidget {
-  final Product product;
-  const SimilarProductSection({super.key, required this.product});
+class SimilarProductSection extends StatefulWidget {
+  final String productId;
+  const SimilarProductSection({super.key, required this.productId});
+
+  @override
+  State<SimilarProductSection> createState() => _SimilarProductSectionState();
+}
+
+class _SimilarProductSectionState extends State<SimilarProductSection> {
+@override
+  void initState() {
+    super.initState();
+
+    context
+        .read<SimilarProductBloc>()
+        .add(SimilarProductEvent.fetch(ProductId(widget.productId)));
+  }
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<SimilarProductBloc>()
-        .add(SimilarProductEvent.fetch(product.productId));
+    
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.3,
       child: BlocBuilder<SimilarProductBloc, SimilarProductState>(

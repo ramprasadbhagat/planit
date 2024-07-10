@@ -27,7 +27,7 @@ class ProductDto with _$ProductDto {
     required String attributeItem,
     @JsonKey(name: 'attributeItemId', defaultValue: '')
     required String attributeItemProductId,
-    @JsonKey(defaultValue: {})
+    @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
     required Map<String, dynamic> price,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
@@ -53,6 +53,13 @@ int intReadValue(Map json, String key) {
   if (json[key] is int) return json[key];
   if (json[key] is String) return int.tryParse(json[key]) ?? 0;
   return 0;
+}
+
+Map<String, dynamic> priceReadValue(Map json, String key) {
+  if (json[key] is int) return {'price': json[key]};
+  if (json[key] is String) return {'price': int.tryParse(json[key]) ?? 0};
+  if (json[key] is Map) return json[key];
+  return {};
 }
 
 List parseProductImages(dynamic json, String key) {

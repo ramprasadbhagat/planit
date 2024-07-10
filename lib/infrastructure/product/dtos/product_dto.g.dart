@@ -20,7 +20,7 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
           (intReadValue(json, 'startingPrice') as num?)?.toInt() ?? 0,
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemId'] as String? ?? '',
-      price: json['price'] as Map<String, dynamic>? ?? {},
+      price: priceReadValue(json, 'price') as Map<String, dynamic>? ?? {},
       productDescription: json['productDescription'] as String? ?? '',
     );
 
