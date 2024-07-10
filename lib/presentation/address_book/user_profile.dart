@@ -3,22 +3,25 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/address_book/widget/address_book.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({super.key});
+class UserProfilePage extends StatelessWidget {
+  final bool isFirstLogin;
+  final bool fromCheckoutPage;
+  const UserProfilePage({
+    super.key,
+    this.isFirstLogin = false,
+    this.fromCheckoutPage = false,
+  });
 
-  @override
-  State<UserProfilePage> createState() => _UserProfilePageState();
-}
-
-class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -27,19 +30,31 @@ class _UserProfilePageState extends State<UserProfilePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Profile',
+          isFirstLogin || fromCheckoutPage
+              ? 'Complete your profile'
+              : 'Profile',
           style: textTheme.labelLarge,
         ),
         leadingWidth: 20,
         centerTitle: false,
         automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: AppColors.lightGrey,
-          ),
-          onPressed: () => context.router.maybePop(),
-        ),
+        leading: isFirstLogin
+            ? null
+            : IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: AppColors.lightGrey,
+                ),
+                onPressed: () => context.router.maybePop(),
+              ),
+        actions: [
+          if (isFirstLogin)
+            TextButton(
+              onPressed: () => context.router.navigate(const HomeRoute()),
+              child: Text('Skip for now', style: textTheme.labelSmall),
+            ),
+          if (fromCheckoutPage) const CheckoutContinueButton(),
+        ],
       ),
       body: const Column(
         children: [
@@ -47,6 +62,48 @@ class _UserProfilePageState extends State<UserProfilePage> {
           Expanded(child: AddressBooks()),
         ],
       ),
+    );
+  }
+}
+
+class CheckoutContinueButton extends StatelessWidget {
+  const CheckoutContinueButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isProfileCompleted = context.select<UserProfileBloc, bool>(
+      (value) => value.state.user.isValid,
+    );
+    final hasValidAddress = context.select<AddressBookBloc, bool>(
+      (value) => value.state.selectedAddress.isNotEmpty,
+    );
+    return TextButton(
+      onPressed: () {
+        if (!isProfileCompleted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please complete your personal Information.'),
+              backgroundColor: AppColors.red,
+            ),
+          );
+          return;
+        }
+
+        if (!hasValidAddress) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please add a default address.'),
+              backgroundColor: AppColors.red,
+            ),
+          );
+          return;
+        }
+
+        context.router.navigate(const CheckoutRoute());
+      },
+      child: Text('Continue', style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }

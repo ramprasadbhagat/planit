@@ -7,6 +7,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
@@ -158,6 +159,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
             child: Column(
               children: [
+                const ErrorMessage(),
+                const SizedBox(
+                  height: 10,
+                ),
                 BlocBuilder<CouponBloc, CouponState>(
                   builder: (context, state) {
                     return GestureDetector(
@@ -229,64 +234,146 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: paymentMethod == 'Cash on delivery'
-                        ? () {
-                            final addressState =
-                                context.read<AddressBookBloc>().state;
-                            if (addressState.selectedAddress ==
-                                AddressBook.empty()) {
-                              const snackBar = SnackBar(
-                                backgroundColor: AppColors.grey3,
-                                content:
-                                    Text('No Address added or selected yet'),
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
-                            } else {
-                              final cartState = context.read<CartBloc>().state;
-
-                              context.read<OrderBloc>().add(
-                                    OrderEvent.submitOrder(
-                                      cartItem: cartState.cartItem,
-                                      addressBook: addressState.selectedAddress,
-                                      date: date,
-                                      coupon: context
-                                          .read<CouponBloc>()
-                                          .state
-                                          .appliedCoupon,
-                                    ),
-                                  );
-                              const snackBar = SnackBar(
-                                content: Text('Order placed successfully'),
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
-                              context.router.navigate(const HomeRoute());
-                              context.router.navigate(const OrderListRoute());
-                            }
-                          }
-                        : () {},
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      backgroundColor: paymentMethod == 'Cash on delivery'
-                          ? AppColors.black
-                          : AppColors.lightGray,
-                      maximumSize: const Size(330, 50),
-                    ),
-                    child: Text(
-                      paymentMethod == 'Cash on delivery'
-                          ? 'Place Order'
-                          : 'Proceed to payment',
-                    ),
-                  ),
-                ),
+                PlaceOrderButton(paymentMethod: paymentMethod, date: date),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class PlaceOrderButton extends StatelessWidget {
+  const PlaceOrderButton({
+    super.key,
+    required this.paymentMethod,
+    required this.date,
+  });
+
+  final String paymentMethod;
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    final isProfileCompleted = context.select<UserProfileBloc, bool>(
+      (value) => value.state.user.isValid,
+    );
+    final hasValidAddress = context.select<AddressBookBloc, bool>(
+      (value) => value.state.selectedAddress.isNotEmpty,
+    );
+    return BlocBuilder<OrderBloc, OrderState>(
+      buildWhen: (previous, current) =>
+          previous.isFetching != current.isFetching,
+      builder: (context, state) {
+        return SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: (paymentMethod == 'Cash on delivery' &&
+                    isProfileCompleted &&
+                    hasValidAddress &&
+                    !state.isFetching)
+                ? () {
+                    final addressState = context.read<AddressBookBloc>().state;
+                    if (addressState.selectedAddress == AddressBook.empty()) {
+                      const snackBar = SnackBar(
+                        backgroundColor: AppColors.grey3,
+                        content: Text('No Address added or selected yet'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      final cartState = context.read<CartBloc>().state;
+
+                      context.read<OrderBloc>().add(
+                            OrderEvent.submitOrder(
+                              cartItem: cartState.cartItem,
+                              addressBook: addressState.selectedAddress,
+                              date: date,
+                              coupon: context
+                                  .read<CouponBloc>()
+                                  .state
+                                  .appliedCoupon,
+                            ),
+                          );
+                    }
+                  }
+                : null,
+            style: ElevatedButton.styleFrom(
+              shape: const StadiumBorder(),
+              backgroundColor: paymentMethod == 'Cash on delivery'
+                  ? AppColors.black
+                  : AppColors.lightGray,
+              maximumSize: const Size(330, 50),
+            ),
+            child: Text(
+              state.isFetching
+                  ? 'loading...'
+                  : paymentMethod == 'Cash on delivery'
+                      ? 'Place Order'
+                      : 'Proceed to payment',
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class ErrorMessage extends StatelessWidget {
+  const ErrorMessage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isProfileCompleted = context.select<UserProfileBloc, bool>(
+      (value) => value.state.user.isValid,
+    );
+    final hasValidAddress = context.select<AddressBookBloc, bool>(
+      (value) => value.state.selectedAddress.isNotEmpty,
+    );
+
+    if (isProfileCompleted && hasValidAddress) {
+      return const SizedBox.shrink();
+    }
+
+    return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      color: AppColors.lightRed,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.error_outline_outlined,
+              color: AppColors.red,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            if (!isProfileCompleted)
+              const Text('Please complete your profile.')
+            else
+              const Text('Please add a default address.'),
+            const Spacer(),
+            InkWell(
+              onTap: () {
+                context.router.navigate(
+                  UserProfileRoute(fromCheckoutPage: true),
+                );
+              },
+              child: const Text(
+                'Click here',
+                style: TextStyle(
+                  color: AppColors.redButton,
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

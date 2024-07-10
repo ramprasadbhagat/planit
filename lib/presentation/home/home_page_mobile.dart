@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -28,8 +30,50 @@ class HomePageMobile extends StatelessWidget {
                 context
                     .read<UserProfileBloc>()
                     .add(const UserProfileEvent.fetch());
+                context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
               },
             );
+          },
+        ),
+        BlocListener<UserProfileBloc, UserProfileState>(
+          listenWhen: (previous, current) =>
+              previous.user != current.user &&
+              !current.isProfileCompleted &&
+              !current.user.isFirstLogin,
+          listener: (context, state) {
+            context.router.navigate(
+              UserProfileRoute(
+                isFirstLogin: true,
+              ),
+            );
+          },
+        ),
+        BlocListener<OrderBloc, OrderState>(
+          listenWhen: (previous, current) =>
+              previous.isFetching != current.isFetching && !current.isFetching,
+          listener: (context, state) {
+            state.apiFailureOrSuccessOption.fold(() => null, (a) {
+              a.fold(
+                (l) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(l.failureMessage),
+                      backgroundColor: AppColors.red,
+                    ),
+                  );
+                },
+                (r) {
+                  const snackBar = SnackBar(
+                    content: Text('Order placed successfully'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  context.router
+                      .replaceAll([const HomeRoute(), const OrderListRoute()]);
+                  // context.router.navigate(const HomeRoute());
+                  // context.router.navigate(const OrderListRoute());
+                },
+              );
+            });
           },
         ),
       ],

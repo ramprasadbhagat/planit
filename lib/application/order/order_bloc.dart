@@ -42,8 +42,12 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           ),
           (res) {
             emit(
-              state.copyWith(isFetching: false),
+              state.copyWith(
+                isFetching: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              ),
             );
+            add(const _FetchOrders());
           },
         );
       },
