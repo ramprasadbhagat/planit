@@ -117,7 +117,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                             height: 10,
                           ),
                           SimilarProductSection(
-                            product: state.product,
+                            productId: productId,
                           ),
                         ],
                       ),

@@ -35,7 +35,7 @@ mixin _$ProductDto {
   String get attributeItem => throw _privateConstructorUsedError;
   @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemProductId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: {})
+  @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
   Map<String, dynamic> get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
@@ -67,7 +67,8 @@ abstract class $ProductDtoCopyWith<$Res> {
       @JsonKey(name: 'attributeItem', defaultValue: '') String attributeItem,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       String attributeItemProductId,
-      @JsonKey(defaultValue: {}) Map<String, dynamic> price,
+      @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
+      Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription});
 }
@@ -159,7 +160,8 @@ abstract class _$$ProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'attributeItem', defaultValue: '') String attributeItem,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       String attributeItemProductId,
-      @JsonKey(defaultValue: {}) Map<String, dynamic> price,
+      @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
+      Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription});
 }
@@ -245,7 +247,8 @@ class _$ProductDtoImpl extends _ProductDto {
       required this.attributeItem,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       required this.attributeItemProductId,
-      @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
+      @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
+      required final Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription})
       : _productImages = productImages,
@@ -285,7 +288,7 @@ class _$ProductDtoImpl extends _ProductDto {
   final String attributeItemProductId;
   final Map<String, dynamic> _price;
   @override
-  @JsonKey(defaultValue: {})
+  @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
   Map<String, dynamic> get price {
     if (_price is EqualUnmodifiableMapView) return _price;
     // ignore: implicit_dynamic_type
@@ -371,7 +374,8 @@ abstract class _ProductDto extends ProductDto {
       required final String attributeItem,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       required final String attributeItemProductId,
-      @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
+      @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
+      required final Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required final String productDescription}) = _$ProductDtoImpl;
   _ProductDto._() : super._();
@@ -402,7 +406,7 @@ abstract class _ProductDto extends ProductDto {
   @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemProductId;
   @override
-  @JsonKey(defaultValue: {})
+  @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
   Map<String, dynamic> get price;
   @override
   @JsonKey(name: 'productDescription', defaultValue: '')
