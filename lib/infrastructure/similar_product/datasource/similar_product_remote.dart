@@ -23,16 +23,10 @@ class SimilarProductRemoteDataSource {
       data: data,
     );
     _exceptionChecker(res: res);
-    final products = res.data['result'];
+    final products = res.data['items'];
     return List.from(products)
         .map(
-          (e) => SimilarProductDto.fromJson(e['product'])
-              .copyWith(
-                productImages: (e['productImage'] as List)
-                    .map((e) => e['image'] as String)
-                    .toList(),
-              )
-              .toDomain,
+          (e) => SimilarProductDto.fromJson(e).toDomain,
         )
         .toList();
   }
