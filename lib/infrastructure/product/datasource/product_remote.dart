@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/product/entities/product.dart';
-import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
-import 'package:planit/infrastructure/product/dtos/product_detail_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_image_dto.dart';
 

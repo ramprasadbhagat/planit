@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/presentation/recipe_details/widgets/image_and_title.dart';
 import 'package:planit/presentation/recipe_details/widgets/meal_info.dart';
@@ -8,9 +7,7 @@ import 'package:planit/presentation/recipe_details/widgets/nutritional_facts_dia
 import 'package:planit/presentation/recipe_details/widgets/recipe_ingredients.dart';
 import 'package:planit/presentation/recipe_details/widgets/review.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
-import 'package:readmore/readmore.dart';
 
 @RoutePage()
 class RecipeDetailsPage extends StatelessWidget {
