@@ -83,6 +83,10 @@ class AppRouter extends $AppRouter {
           path: '/userProfile',
         ),
         AutoRoute(
+          page: RecipeDetailsRoute.page,
+          path: '/recipeDetails',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           initial: true,

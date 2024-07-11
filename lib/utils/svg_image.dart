@@ -32,4 +32,15 @@ abstract class SvgImage {
   static const String thumsupIcon = '${_basePath}thumsup.svg';
   static const String currencyIcon = '${_basePath}currency.svg';
   static const String calenderIcon = '${_basePath}calendar_icon.svg';
+  static const String spoonIcon = '${_basePath}spoon.svg';
+  static const String spoonCircularIcon = '${_basePath}spoon_circular.svg';
+  static const String mealIcon = '${_basePath}meal.svg';
+  static const String leafIcon = '${_basePath}leaf.svg';
+  static const String foodPrepareIcon = '${_basePath}food_prepare.svg';
+  static const String hotMealIcon = '${_basePath}hot_meal.svg';
+  static const String quantityIcon = '${_basePath}quantity.svg';
+  static const String equipmentIcon = '${_basePath}equipment.svg';
+  static const String reviewIcon = '${_basePath}review.svg';
+  static const String recipeIngredientsIcon =
+      '${_basePath}recipe_ingredients.svg';
 }

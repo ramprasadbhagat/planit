@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/domain/home/entities/before_checkout.dart';
-import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_cart.dart';
 
@@ -15,7 +14,7 @@ class SimilarProductSection extends StatefulWidget {
 }
 
 class _SimilarProductSectionState extends State<SimilarProductSection> {
-@override
+  @override
   void initState() {
     super.initState();
 
@@ -26,7 +25,6 @@ class _SimilarProductSectionState extends State<SimilarProductSection> {
 
   @override
   Widget build(BuildContext context) {
-    
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.3,
       child: BlocBuilder<SimilarProductBloc, SimilarProductState>(
