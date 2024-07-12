@@ -363,7 +363,8 @@ OutlinedButtonThemeData _outlinedButtonTheme() {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       backgroundColor: AppColors.white,
-      side: const BorderSide(color: AppColors.primary),
+      foregroundColor: AppColors.black,
+      side: const BorderSide(color: AppColors.black),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       textStyle: const TextStyle(
         fontSize: 15,

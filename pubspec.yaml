@@ -41,6 +41,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_widget_from_html: ^0.15.1
   html: ^0.15.4
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/domain/home/entities/hot_recipe.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -44,56 +46,61 @@ class HotRecipeCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Image.asset(
-              PngImage.placeholder,
-              width: 120,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    hotRecipe.title,
-                    style: textTheme.labelSmall,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      hotRecipe.subTitle,
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
-                        color: AppColors.grey2,
-                      ),
+      child: InkWell(
+        onTap: () {
+          context.router.navigate(const RecipeDetailsRoute());
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Image.asset(
+                PngImage.placeholder,
+                width: 120,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      hotRecipe.title,
+                      style: textTheme.labelSmall,
                     ),
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        size: 15,
-                      ),
-                      const SizedBox(
-                        width: 3,
-                      ),
-                      Text(
-                        hotRecipe.rating.toString(),
-                        style: textTheme.bodyMedium?.copyWith(
-                          fontSize: 12,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Text(
+                        hotRecipe.subTitle,
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 9,
+                          color: AppColors.grey2,
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 15,
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        Text(
+                          hotRecipe.rating.toString(),
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
