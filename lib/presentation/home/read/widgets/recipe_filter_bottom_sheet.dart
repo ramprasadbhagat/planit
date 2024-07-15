@@ -142,7 +142,10 @@ class FilterOptionList extends StatelessWidget {
                   checkboxShape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(3)),
                   ),
-                  title: Text(e),
+                  title: Text(
+                    e,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
                   value: false,
                   onChanged: (v) {},
                   visualDensity: VisualDensity.compact,
