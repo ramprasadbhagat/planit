@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/recipe_details/widgets/add_recipe_review_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:readmore/readmore.dart';
@@ -55,7 +57,15 @@ class Reviews extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(11)),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) => const CommonBottomSheet(
+                child: AddRecipeReviewBottomSheet(),
+              ),
+            );
+          },
           child: const Text('Add your review'),
         ),
       ],
