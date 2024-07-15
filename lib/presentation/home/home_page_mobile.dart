@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -67,13 +68,18 @@ class HomePageMobile extends StatelessWidget {
                     content: Text('Order placed successfully'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  context.router
-                      .replaceAll([const HomeRoute(), const OrderListRoute()]);
-                  // context.router.navigate(const HomeRoute());
-                  // context.router.navigate(const OrderListRoute());
+
+                  context.router.navigate(const HomeRoute());
+                  context.router.navigate(const OrderListRoute());
                 },
               );
             });
+          },
+        ),
+        BlocListener<OrderBloc, OrderState>(
+          listenWhen: (previous, current) => previous.orders != current.orders,
+          listener: (context, state) {
+            context.read<CartBloc>().add(const CartEvent.fetch());
           },
         ),
       ],

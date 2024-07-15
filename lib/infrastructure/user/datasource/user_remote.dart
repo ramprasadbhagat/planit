@@ -29,15 +29,17 @@ class UserRemoteDateSource {
   Future<void> updateCurrentUser(CurrentUser user) async {
     final userId = storageService.getUserId();
 
+    final data = FormData.fromMap({
+      'firstName': user.fullName.firstName,
+      'lastName': user.fullName.lastName,
+      'email': user.emailAddress.getValue(),
+      'mobile_number': user.mobileNumber.getValue(),
+    });
+
     final res = await httpService.request(
       method: 'PATCH',
       url: 'users/$userId',
-      data: {
-        'firstName': user.fullName.firstName,
-        'lastName': user.fullName.lastName,
-        'email': user.emailAddress.getValue(),
-        'mobile_number': user.mobileNumber.getValue(),
-      },
+      data: data,
     );
     _exceptionChecker(res: res);
 
