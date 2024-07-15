@@ -26,13 +26,14 @@ class CartAdapter extends TypeAdapter<_$CartProductLocalImpl> {
       attributeItemProductId: fields[6] as String,
       price: fields[7] as String,
       quantity: fields[8] as int,
+      attributeItemId: fields[9] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$CartProductLocalImpl obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.productId)
       ..writeByte(1)
@@ -49,6 +50,8 @@ class CartAdapter extends TypeAdapter<_$CartProductLocalImpl> {
       ..write(obj.price)
       ..writeByte(8)
       ..write(obj.quantity)
+      ..writeByte(9)
+      ..write(obj.attributeItemId)
       ..writeByte(2)
       ..write(obj.productImages);
   }

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
 import 'package:planit/infrastructure/quick_picks/dtos/price_dto.dart';
 
@@ -32,6 +33,7 @@ class QuickPicksDto with _$QuickPicksDto {
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: '') required String attributeItem,
+    @JsonKey(defaultValue: '') required String attributeItemId,
     required PriceDto price,
     required List<String> productImages,
   }) = _QuickPicksDto;
@@ -63,6 +65,7 @@ class QuickPicksDto with _$QuickPicksDto {
         price: price.toDomain,
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
+        attributeItemId: StringValue(attributeItemId),
       );
 }
 

@@ -39,6 +39,7 @@ mixin _$QuickPicks {
   double get productRating => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
+  StringValue get attributeItemId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuickPicksCopyWith<QuickPicks> get copyWith =>
@@ -74,7 +75,8 @@ abstract class $QuickPicksCopyWith<$Res> {
       String productReview,
       double productRating,
       Price price,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   $PriceCopyWith<$Res> get price;
 }
@@ -115,6 +117,7 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
     Object? productRating = null,
     Object? price = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -209,6 +212,10 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ) as $Val);
   }
 
@@ -252,7 +259,8 @@ abstract class _$$QuickPicksImplCopyWith<$Res>
       String productReview,
       double productRating,
       Price price,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   @override
   $PriceCopyWith<$Res> get price;
@@ -292,6 +300,7 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
     Object? productRating = null,
     Object? price = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_$QuickPicksImpl(
       id: null == id
@@ -386,6 +395,10 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ));
   }
 }
@@ -416,7 +429,8 @@ class _$QuickPicksImpl extends _QuickPicks {
       required this.productReview,
       required this.productRating,
       required this.price,
-      required final List<String> productImages})
+      required final List<String> productImages,
+      required this.attributeItemId})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
         super._();
@@ -480,8 +494,11 @@ class _$QuickPicksImpl extends _QuickPicks {
   }
 
   @override
+  final StringValue attributeItemId;
+
+  @override
   String toString() {
-    return 'QuickPicks(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
+    return 'QuickPicks(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages, attributeItemId: $attributeItemId)';
   }
 
   @override
@@ -531,7 +548,9 @@ class _$QuickPicksImpl extends _QuickPicks {
                 other.productRating == productRating) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
-                .equals(other._productImages, _productImages));
+                .equals(other._productImages, _productImages) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId));
   }
 
   @override
@@ -559,7 +578,8 @@ class _$QuickPicksImpl extends _QuickPicks {
         productReview,
         productRating,
         price,
-        const DeepCollectionEquality().hash(_productImages)
+        const DeepCollectionEquality().hash(_productImages),
+        attributeItemId
       ]);
 
   @JsonKey(ignore: true)
@@ -593,7 +613,8 @@ abstract class _QuickPicks extends QuickPicks {
       required final String productReview,
       required final double productRating,
       required final Price price,
-      required final List<String> productImages}) = _$QuickPicksImpl;
+      required final List<String> productImages,
+      required final StringValue attributeItemId}) = _$QuickPicksImpl;
   const _QuickPicks._() : super._();
 
   @override
@@ -642,6 +663,8 @@ abstract class _QuickPicks extends QuickPicks {
   Price get price;
   @override
   List<String> get productImages;
+  @override
+  StringValue get attributeItemId;
   @override
   @JsonKey(ignore: true)
   _$$QuickPicksImplCopyWith<_$QuickPicksImpl> get copyWith =>

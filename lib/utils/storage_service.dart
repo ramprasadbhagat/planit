@@ -1,4 +1,3 @@
-
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
@@ -66,8 +65,7 @@ class StorageService {
     final index = _cartProductLocalBox.values.toList().indexWhere(
           (element) =>
               element.productId == cartProductLocal.productId &&
-              element.attributeItemProductId ==
-                  cartProductLocal.attributeItemProductId,
+              element.attributeItemId == cartProductLocal.attributeItemId,
         );
     if (index != -1) {
       await _cartProductLocalBox.putAt(index, cartProductLocal);

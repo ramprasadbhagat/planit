@@ -34,6 +34,7 @@ class Highlight with _$Highlight {
     required Price price,
     required String attributeItemProductId,
     required List<String> productImages,
+    required StringValue attributeItemId,
   }) = _Highlight;
 
   String get discountValue {
@@ -78,6 +79,7 @@ class Highlight with _$Highlight {
         attributeItem: '',
         price: Price.empty(),
         productImages: <String>[],
+        attributeItemId: StringValue(''),
       );
 
   Product get toProduct => Product(
@@ -90,6 +92,7 @@ class Highlight with _$Highlight {
         attributeItemProductId: attributeItemProductId,
         price: pp.Price(price: price.price, quantity: price.quantity),
         productDescription: StringValue(productDescription),
+        attributeItemId: attributeItemId,
       );
 }
 

@@ -57,6 +57,8 @@ mixin _$SimilarProductDto {
   @JsonKey(defaultValue: '')
   String get attributeItem => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
+  String get attributeItemId => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
   String get attributeItemProductId => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: {})
   Map<String, dynamic> get price => throw _privateConstructorUsedError;
@@ -95,6 +97,7 @@ abstract class $SimilarProductDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String discount,
       @JsonKey(defaultValue: '') String attributeName,
       @JsonKey(defaultValue: '') String attributeItem,
+      @JsonKey(defaultValue: '') String attributeItemId,
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: {}) Map<String, dynamic> price,
       @JsonKey(defaultValue: []) List<String> productImages});
@@ -131,6 +134,7 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
     Object? discount = null,
     Object? attributeName = null,
     Object? attributeItem = null,
+    Object? attributeItemId = null,
     Object? attributeItemProductId = null,
     Object? price = null,
     Object? productImages = null,
@@ -208,6 +212,10 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
           ? _value.attributeItem
           : attributeItem // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
       attributeItemProductId: null == attributeItemProductId
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
@@ -252,6 +260,7 @@ abstract class _$$SimilarProductDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String discount,
       @JsonKey(defaultValue: '') String attributeName,
       @JsonKey(defaultValue: '') String attributeItem,
+      @JsonKey(defaultValue: '') String attributeItemId,
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: {}) Map<String, dynamic> price,
       @JsonKey(defaultValue: []) List<String> productImages});
@@ -286,6 +295,7 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
     Object? discount = null,
     Object? attributeName = null,
     Object? attributeItem = null,
+    Object? attributeItemId = null,
     Object? attributeItemProductId = null,
     Object? price = null,
     Object? productImages = null,
@@ -363,6 +373,10 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
           ? _value.attributeItem
           : attributeItem // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
       attributeItemProductId: null == attributeItemProductId
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
@@ -402,6 +416,7 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
       @JsonKey(defaultValue: '') required this.discount,
       @JsonKey(defaultValue: '') required this.attributeName,
       @JsonKey(defaultValue: '') required this.attributeItem,
+      @JsonKey(defaultValue: '') required this.attributeItemId,
       @JsonKey(defaultValue: '') required this.attributeItemProductId,
       @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
       @JsonKey(defaultValue: []) required final List<String> productImages})
@@ -475,6 +490,9 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
   final String attributeItem;
   @override
   @JsonKey(defaultValue: '')
+  final String attributeItemId;
+  @override
+  @JsonKey(defaultValue: '')
   final String attributeItemProductId;
   final Map<String, dynamic> _price;
   @override
@@ -496,7 +514,7 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
 
   @override
   String toString() {
-    return 'SimilarProductDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
+    return 'SimilarProductDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemId: $attributeItemId, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages)';
   }
 
   @override
@@ -538,6 +556,8 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
                 other.attributeName == attributeName) &&
             (identical(other.attributeItem, attributeItem) ||
                 other.attributeItem == attributeItem) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             (identical(other.attributeItemProductId, attributeItemProductId) ||
                 other.attributeItemProductId == attributeItemProductId) &&
             const DeepCollectionEquality().equals(other._price, _price) &&
@@ -567,6 +587,7 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
         discount,
         attributeName,
         attributeItem,
+        attributeItemId,
         attributeItemProductId,
         const DeepCollectionEquality().hash(_price),
         const DeepCollectionEquality().hash(_productImages)
@@ -609,6 +630,7 @@ abstract class _SimilarProductDto extends SimilarProductDto {
       @JsonKey(defaultValue: '') required final String discount,
       @JsonKey(defaultValue: '') required final String attributeName,
       @JsonKey(defaultValue: '') required final String attributeItem,
+      @JsonKey(defaultValue: '') required final String attributeItemId,
       @JsonKey(defaultValue: '') required final String attributeItemProductId,
       @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
       @JsonKey(defaultValue: [])
@@ -672,6 +694,9 @@ abstract class _SimilarProductDto extends SimilarProductDto {
   @override
   @JsonKey(defaultValue: '')
   String get attributeItem;
+  @override
+  @JsonKey(defaultValue: '')
+  String get attributeItemId;
   @override
   @JsonKey(defaultValue: '')
   String get attributeItemProductId;
