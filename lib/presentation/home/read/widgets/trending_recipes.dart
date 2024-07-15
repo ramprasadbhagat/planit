@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/domain/home/entities/trending_recipe.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/read/widgets/recipe_detials_bottom_sheet.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -18,7 +20,9 @@ class TrendingRecipes extends StatelessWidget {
         children: [
           SectionTitle(
             title: 'Trending Recipes',
-            onTap: () {},
+            onTap: () {
+              context.router.navigate(const FavouriteRecipesRoute());
+            },
           ),
           const SizedBox(
             height: 10,

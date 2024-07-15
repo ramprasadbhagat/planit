@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/rating_star.dart';
+import 'package:planit/presentation/recipe_details/widgets/add_recipe_review_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:readmore/readmore.dart';
@@ -55,7 +58,15 @@ class Reviews extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(11)),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) => const CommonBottomSheet(
+                child: AddRecipeReviewBottomSheet(),
+              ),
+            );
+          },
           child: const Text('Add your review'),
         ),
       ],
@@ -65,32 +76,6 @@ class Reviews extends StatelessWidget {
 
 class ReviewItemCard extends StatelessWidget {
   const ReviewItemCard({super.key});
-
-  Widget buildStars(double rating) {
-    const size = 18.0;
-    final stars = <Widget>[];
-    final fullStars = rating.floor();
-    final hasHalfStar = (rating - fullStars) >= 0.5;
-
-    for (var i = 0; i < fullStars; i++) {
-      stars.add(
-        const Icon(
-          Icons.star,
-          size: size,
-        ),
-      );
-    }
-    if (hasHalfStar) {
-      stars.add(
-        const Icon(
-          Icons.star_half,
-          size: size,
-        ),
-      );
-    }
-
-    return Row(children: stars);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,16 +109,10 @@ class ReviewItemCard extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 6),
-                              child: Row(
-                                children: [
-                                  buildStars(4.3),
-                                  Text(
-                                    '4.3',
-                                    style: texttheme.bodyMedium,
-                                  ),
-                                ],
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6),
+                              child: RatingStar(
+                                value: 4.3,
                               ),
                             ),
                           ],
