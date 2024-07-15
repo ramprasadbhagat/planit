@@ -89,7 +89,6 @@ class FavouriteRecipeCard extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             SvgImage.spoonIcon,
-                            // color: Colors.black,
                             colorFilter: const ColorFilter.mode(
                               AppColors.black,
                               BlendMode.srcIn,
@@ -97,7 +96,7 @@ class FavouriteRecipeCard extends StatelessWidget {
                           ),
                           Text.rich(
                             const TextSpan(
-                              text: 'Cuisine :',
+                              text: ' Cuisine :',
                               children: [
                                 TextSpan(
                                   text: 'American',
