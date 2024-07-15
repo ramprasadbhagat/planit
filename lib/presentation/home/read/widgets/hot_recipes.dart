@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/domain/home/entities/hot_recipe.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/home/read/widgets/recipe_filter_bottom_sheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/svg_image.dart';
 
 class HotRecipes extends StatelessWidget {
   const HotRecipes({super.key});
@@ -17,9 +21,59 @@ class HotRecipes extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Text(
-              'Hot Recipes',
-              style: textTheme.labelMedium,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Hot Recipes',
+                  style: textTheme.labelMedium,
+                ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => const CommonBottomSheet(
+                        child: RecipeFilterBottomSheet(),
+                      ),
+                      isScrollControlled: true,
+                    );
+                  },
+                  child: Material(
+                    color: AppColors.transparent,
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: AppColors.grey4,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 8,
+                      ),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(SvgImage.filterIcon),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            'Filter by',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.copyWith(
+                                  fontSize: 12,
+                                  color: AppColors.grey4,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

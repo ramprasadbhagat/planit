@@ -70,7 +70,8 @@ abstract class AppColors {
 
   static const Color error = Color.fromRGBO(227, 23, 16, 1);
   static const Color tender = Color.fromRGBO(246, 138, 37, 1);
-  static const Color primary = Color.fromRGBO(252, 195, 47, 1);
+  // static const Color primary = Color.fromRGBO(252, 195, 47, 1);
+  static const Color primary = AppColors.black;
   static const Color lightPrimary = Color.fromRGBO(167, 180, 187, 1);
   static const Color secondary = Color.fromRGBO(229, 235, 177, 1.0);
   static const Color lightSecondary = Color.fromRGBO(227, 236, 147, 1.0);
