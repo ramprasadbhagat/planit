@@ -281,6 +281,33 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           );
         }
       },
+      fetchShippingCharge: (_FetchShippingCharge value) async {
+        if (!state.cartItem.id.isValid()) return;
+        emit(
+          state.copyWith(
+            isFetchingDeliveryCharge: true,
+          ),
+        );
+        final failureOrSuccess = await repository.fetchDeliveryCharge(
+          cartId: state.cartItem.id.getValue(),
+          pincode: value.pincode,
+        );
+
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              isFetchingDeliveryCharge: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
+          (deliveryCharge) => emit(
+            state.copyWith(
+              isFetchingDeliveryCharge: false,
+              deliveryCharges: deliveryCharge,
+            ),
+          ),
+        );
+      },
     );
   }
 }

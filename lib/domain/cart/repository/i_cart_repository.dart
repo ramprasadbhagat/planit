@@ -29,4 +29,9 @@ abstract class ICartRepository {
     required int quantity,
     required String cartId,
   });
+
+  Future<Either<ApiFailure, double>> fetchDeliveryCharge({
+    required String cartId,
+    required String pincode,
+  });
 }

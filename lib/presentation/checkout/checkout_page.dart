@@ -293,6 +293,7 @@ class PlaceOrderButton extends StatelessWidget {
                                   .read<CouponBloc>()
                                   .state
                                   .appliedCoupon,
+                              deliveryCharge: cartState.deliveryCharges,
                             ),
                           );
                     }

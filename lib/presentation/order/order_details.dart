@@ -461,7 +461,9 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      order.deliveryCharge.getValue().toPrice(),
+                                      order.deliveryCharge
+                                          .getValue()
+                                          .toPrice(showFreeIfZero: true),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,

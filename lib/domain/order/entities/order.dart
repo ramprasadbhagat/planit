@@ -63,7 +63,11 @@ extension OrderX on Order {
 }
 
 extension IntX on int {
-  String toPrice() {
+  String toPrice({bool showFreeIfZero = false}) {
+    if (showFreeIfZero && this == 0) {
+      return 'Free';
+    }
+
     return NumberFormat.simpleCurrency(locale: 'en_IN', decimalDigits: 2)
         .format(this);
   }

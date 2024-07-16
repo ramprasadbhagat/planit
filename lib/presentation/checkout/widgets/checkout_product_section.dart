@@ -4,6 +4,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_card.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CheckoutProductSection extends StatelessWidget {
   const CheckoutProductSection({super.key});
@@ -18,7 +19,9 @@ class CheckoutProductSection extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: BlocBuilder<CartBloc, CartState>(
           buildWhen: (previous, current) =>
-              previous.cartItem != current.cartItem,
+              previous.cartItem != current.cartItem ||
+              previous.isFetchingDeliveryCharge !=
+                  current.isFetchingDeliveryCharge,
           builder: (context, state) {
             return Column(
               children: [
@@ -67,27 +70,30 @@ class CheckoutProductSection extends StatelessWidget {
                     top: 5,
                     bottom: 5,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Delivery',
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 14,
-                          color: AppColors.lightGray,
-                          fontWeight: FontWeight.w400,
+                  child: Skeletonizer(
+                    enabled: state.isFetchingDeliveryCharge,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Delivery',
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 14,
+                            color: AppColors.lightGray,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
-                      ),
-                      Text(
-                        '₹40',
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
+                        Text(
+                          state.getDeliveryChargeDisplayString,
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 // Padding(
@@ -142,7 +148,7 @@ class CheckoutProductSection extends StatelessWidget {
                       BlocBuilder<CouponBloc, CouponState>(
                         builder: (context, couponState) {
                           return Text(
-                            '₹${couponState.appliedCoupon.priceAfterCoupon(state.cartItem.totalPrice.getValue()) + 40}',
+                            '₹${couponState.appliedCoupon.priceAfterCoupon(state.cartItem.totalPrice.getValue()) + state.deliveryCharges}',
                             style: textTheme.bodySmall?.copyWith(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,

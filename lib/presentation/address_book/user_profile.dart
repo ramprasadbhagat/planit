@@ -49,9 +49,17 @@ class UserProfilePage extends StatelessWidget {
               ),
         actions: [
           if (isFirstLogin)
-            TextButton(
-              onPressed: () => context.router.navigate(const HomeRoute()),
-              child: Text('Skip for now', style: textTheme.labelSmall),
+            BlocBuilder<UserProfileBloc, UserProfileState>(
+              buildWhen: (previous, current) => previous.user != current.user,
+              builder: (context, state) {
+                return TextButton(
+                  onPressed: () => context.router.navigate(const HomeRoute()),
+                  child: Text(
+                    state.user.isValid ? 'Continue' : 'Skip for now',
+                    style: textTheme.labelSmall,
+                  ),
+                );
+              },
             ),
           if (fromCheckoutPage) const CheckoutContinueButton(),
         ],

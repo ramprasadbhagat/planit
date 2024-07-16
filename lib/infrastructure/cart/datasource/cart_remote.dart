@@ -91,6 +91,32 @@ class CartRemoteDataSource {
     return unit;
   }
 
+  Future<double> getDeliveryCharge({
+    required String cartId,
+    required String pincode,
+  }) async {
+    final postData = {
+      'cartId': cartId,
+      'pincode': pincode,
+    };
+
+    final res = await httpService.request(
+      method: 'POST',
+      url: '/shippingCharge/getShippingCharge',
+      data: postData,
+    );
+
+    _exceptionChecker(res: res);
+
+    final shippingCharge = res.data['Shipping_Charge'];
+
+    if (shippingCharge == 'Free') {
+      return 0.0;
+    } else {
+      return double.tryParse(shippingCharge) ?? 0;
+    }
+  }
+
   void _exceptionChecker({required Response<dynamic> res}) {
     if (res.statusCode != 200) {
       throw ServerException(
