@@ -202,43 +202,57 @@ class SimilarProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                AddToCartButton.fromProductCard(
-                  product: item.toProduct,
-                  onPressed: () {
-                    if (context.read<AuthBloc>().state ==
-                        const AuthState.unauthenticated()) {
-                      context.read<CartBloc>().add(
-                            CartEvent.addToCartLocal(
-                              product: item.toProduct,
-                              quantity: 1,
-                            ),
-                          );
-                      context.router.maybePop();
-                      const snackBar = SnackBar(
-                        content: Text('Item added to cart'),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    } else {
-                      if (context.read<PincodeBloc>().state.pincode.isEmpty) {
-                        showErrorAlert();
-                      } else {
-                        context.read<CartBloc>().add(
-                              CartEvent.addToCart(
-                                product: item.toProduct,
-                                quantity: 1,
-                              ),
+                item.toProduct.price.quantity > 0
+                    ? AddToCartButton.fromProductCard(
+                        product: item.toProduct,
+                        onPressed: () {
+                          if (context.read<AuthBloc>().state ==
+                              const AuthState.unauthenticated()) {
+                            context.read<CartBloc>().add(
+                                  CartEvent.addToCartLocal(
+                                    product: item.toProduct,
+                                    quantity: 1,
+                                  ),
+                                );
+                            context.router.maybePop();
+                            const snackBar = SnackBar(
+                              content: Text('Item added to cart'),
                             );
-                        context.router.maybePop();
-                        const snackBar = SnackBar(
-                          content: Text('Item added to cart'),
-                        );
 
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
-                    }
-                  },
-                ),
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          } else {
+                            if (context
+                                .read<PincodeBloc>()
+                                .state
+                                .pincode
+                                .isEmpty) {
+                              showErrorAlert();
+                            } else {
+                              context.read<CartBloc>().add(
+                                    CartEvent.addToCart(
+                                      product: item.toProduct,
+                                      quantity: 1,
+                                    ),
+                                  );
+                              context.router.maybePop();
+                              const snackBar = SnackBar(
+                                content: Text('Item added to cart'),
+                              );
+
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+                          }
+                        },
+                      )
+                    : Text(
+                        'Out of stock',
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              color: AppColors.red,
+                              fontSize: 12,
+                            ),
+                      ),
               ],
             ),
           ],

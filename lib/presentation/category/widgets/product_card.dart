@@ -139,61 +139,76 @@ class ProductCard extends StatelessWidget {
                           size: 9,
                         ),
                         Text(
-                          '4.3',
+                          '4.3 ${product.price.quantity}',
                           style: textTheme.bodySmall?.copyWith(
                             fontSize: 9,
                           ),
                         ),
                       ],
                     ),
-                    AddToCartButton.fromProductCard(
-                      product: product,
-                      onPressed: () async {
-                        if (context.read<AuthBloc>().state.isUnAuthenticated) {
-                          context.read<CartBloc>().add(
-                                CartEvent.addToCartLocal(
-                                  product: product,
-                                  quantity: 1,
-                                ),
-                              );
+                    product.price.quantity > 0
+                        ? AddToCartButton.fromProductCard(
+                            product: product,
+                            onPressed: () async {
+                              if (context
+                                  .read<AuthBloc>()
+                                  .state
+                                  .isUnAuthenticated) {
+                                context.read<CartBloc>().add(
+                                      CartEvent.addToCartLocal(
+                                        product: product,
+                                        quantity: 1,
+                                      ),
+                                    );
 
-                          const snackBar = SnackBar(
-                            content: Text('Item added to cart'),
-                          );
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        } else {
-                          if (context
-                              .read<PincodeBloc>()
-                              .state
-                              .pincode
-                              .isEmpty) {
-                            await showDialog<void>(
-                              context: context,
-                              barrierDismissible:
-                                  false, // user must tap button!
-                              builder: (BuildContext context) {
-                                return const NoPincodeErrorDialog();
-                              },
-                            );
-                          } else {
-                            context.read<CartBloc>().add(
-                                  CartEvent.addToCart(
-                                    product: product,
-                                    quantity: 1,
-                                  ),
+                                const snackBar = SnackBar(
+                                  content: Text('Item added to cart'),
                                 );
 
-                            const snackBar = SnackBar(
-                              content: Text('Item added to cart'),
-                            );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              } else {
+                                if (context
+                                    .read<PincodeBloc>()
+                                    .state
+                                    .pincode
+                                    .isEmpty) {
+                                  await showDialog<void>(
+                                    context: context,
+                                    barrierDismissible:
+                                        false, // user must tap button!
+                                    builder: (BuildContext context) {
+                                      return const NoPincodeErrorDialog();
+                                    },
+                                  );
+                                } else {
+                                  context.read<CartBloc>().add(
+                                        CartEvent.addToCart(
+                                          product: product,
+                                          quantity: 1,
+                                        ),
+                                      );
 
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                          }
-                        }
-                      },
-                    ),
+                                  const snackBar = SnackBar(
+                                    content: Text('Item added to cart'),
+                                  );
+
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
+                              }
+                            },
+                          )
+                        : Text(
+                            'Out of stock',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.copyWith(
+                                  color: AppColors.red,
+                                  fontSize: 12,
+                                ),
+                          ),
                   ],
                 ),
               ],
