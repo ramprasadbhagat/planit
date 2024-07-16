@@ -33,6 +33,7 @@ _$QuickPicksDtoImpl _$$QuickPicksDtoImplFromJson(Map<String, dynamic> json) =>
       attributeName: json['attributeName'] as String? ?? '',
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
+      attributeItemId: json['attributeItemId'] as String? ?? '',
       price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
@@ -62,6 +63,7 @@ Map<String, dynamic> _$$QuickPicksDtoImplToJson(_$QuickPicksDtoImpl instance) =>
       'attributeName': instance.attributeName,
       'attributeItemProductId': instance.attributeItemProductId,
       'attributeItem': instance.attributeItem,
+      'attributeItemId': instance.attributeItemId,
       'price': instance.price,
       'productImages': instance.productImages,
     };

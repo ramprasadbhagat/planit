@@ -31,6 +31,7 @@ class CartRemoteDataSource {
     required String attributeItemProductId,
     required int quantity,
     required int totalPrice,
+    required String attributeItemId,
   }) async {
     final userId = storageService.getUserId();
     final res = await httpService.request(
@@ -42,6 +43,7 @@ class CartRemoteDataSource {
         'quantity': quantity,
         'total_price': totalPrice,
         'attributeItemProductId': attributeItemProductId,
+        'attributeItemId': attributeItemId,
       },
     );
     _exceptionChecker(res: res);

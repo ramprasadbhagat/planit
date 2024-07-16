@@ -46,6 +46,7 @@ class ProductDto with _$ProductDto {
         attributeItemProductId: attributeItemProductId,
         price: PriceDto.fromJson(price).toDomain,
         productDescription: StringValue(productDescription),
+        attributeItemId: StringValue(attributeItemProductId),
       );
 }
 

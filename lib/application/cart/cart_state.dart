@@ -35,27 +35,22 @@ class CartState with _$CartState {
       );
 
   int getProductQuantity(Product product) {
-    return (cartItem.products.firstWhereOrNull(
-          (element) {
-            bool checkAttributeExistAndMatch() =>
-                element.attributeitemId.isValid()
-                    ? element.attributeitemId.getValue() ==
-                        product.attributeItemProductId
-                    : true;
+    final cartProduct = (cartItem.products.firstWhereOrNull(
+      (element) {
+        return (element.productId == product.productId) &&
+            (element.attributeitemId.getValue() ==
+                product.attributeItemId.getValue());
+      },
+    ));
 
-            return (element.productId == product.productId) &&
-                checkAttributeExistAndMatch();
-          },
-        )?.quantity) ??
-        0;
+    return cartProduct?.quantity ?? 0;
   }
 
   int getProductQuantityLocal(Product product) {
     return (cartData.firstWhereOrNull(
           (element) {
             return (element.productId == product.productId.getValue()) &&
-                element.attributeItemProductId ==
-                    product.attributeItemProductId;
+                element.attributeItemId == product.attributeItemId.getValue();
           },
         )?.quantity) ??
         0;

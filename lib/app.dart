@@ -14,6 +14,7 @@ import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/locator.dart';
@@ -88,6 +89,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<TrackOrderBloc>(
           create: (context) => locator<TrackOrderBloc>(),
+        ),
+        BlocProvider<UserProfileBloc>(
+          create: (context) => locator<UserProfileBloc>(),
         ),
       ],
       child: MaterialApp.router(

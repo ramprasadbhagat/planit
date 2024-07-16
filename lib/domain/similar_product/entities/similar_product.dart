@@ -31,6 +31,7 @@ class SimilarProduct with _$SimilarProduct {
     required double productRating,
     required Price price,
     required List<String> productImages,
+    required StringValue attributeItemId,
   }) = _SimilarProduct;
 
   factory SimilarProduct.empty() => SimilarProduct(
@@ -55,6 +56,7 @@ class SimilarProduct with _$SimilarProduct {
         attributeItem: '',
         price: Price.empty(),
         productImages: <String>[],
+        attributeItemId: StringValue(''),
       );
 
   String get getPriceValue {
@@ -79,6 +81,7 @@ class SimilarProduct with _$SimilarProduct {
         attributeItemProductId: attributeItemProductId,
         price: pp.Price(price: price.price, quantity: price.quantity),
         productDescription: StringValue(productDescription),
+        attributeItemId: attributeItemId,
       );
 }
 

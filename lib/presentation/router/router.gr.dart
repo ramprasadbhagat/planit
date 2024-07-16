@@ -230,9 +230,15 @@ abstract class $AppRouter extends _i32.RootStackRouter {
       );
     },
     UserProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<UserProfileRouteArgs>(
+          orElse: () => const UserProfileRouteArgs());
       return _i32.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i29.UserProfilePage(),
+        child: _i29.UserProfilePage(
+          key: args.key,
+          isFirstLogin: args.isFirstLogin,
+          fromCheckoutPage: args.fromCheckoutPage,
+        ),
       );
     },
     WishListRoute.name: (routeData) {
@@ -692,16 +698,45 @@ class TrackOrderRoute extends _i32.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i29.UserProfilePage]
-class UserProfileRoute extends _i32.PageRouteInfo<void> {
-  const UserProfileRoute({List<_i32.PageRouteInfo>? children})
-      : super(
+class UserProfileRoute extends _i32.PageRouteInfo<UserProfileRouteArgs> {
+  UserProfileRoute({
+    _i33.Key? key,
+    bool isFirstLogin = false,
+    bool fromCheckoutPage = false,
+    List<_i32.PageRouteInfo>? children,
+  }) : super(
           UserProfileRoute.name,
+          args: UserProfileRouteArgs(
+            key: key,
+            isFirstLogin: isFirstLogin,
+            fromCheckoutPage: fromCheckoutPage,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'UserProfileRoute';
 
-  static const _i32.PageInfo<void> page = _i32.PageInfo<void>(name);
+  static const _i32.PageInfo<UserProfileRouteArgs> page =
+      _i32.PageInfo<UserProfileRouteArgs>(name);
+}
+
+class UserProfileRouteArgs {
+  const UserProfileRouteArgs({
+    this.key,
+    this.isFirstLogin = false,
+    this.fromCheckoutPage = false,
+  });
+
+  final _i33.Key? key;
+
+  final bool isFirstLogin;
+
+  final bool fromCheckoutPage;
+
+  @override
+  String toString() {
+    return 'UserProfileRouteArgs{key: $key, isFirstLogin: $isFirstLogin, fromCheckoutPage: $fromCheckoutPage}';
+  }
 }
 
 /// generated route for

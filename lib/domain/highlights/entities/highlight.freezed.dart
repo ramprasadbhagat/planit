@@ -40,6 +40,7 @@ mixin _$Highlight {
   Price get price => throw _privateConstructorUsedError;
   String get attributeItemProductId => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
+  StringValue get attributeItemId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HighlightCopyWith<Highlight> get copyWith =>
@@ -75,7 +76,8 @@ abstract class $HighlightCopyWith<$Res> {
       double productRating,
       Price price,
       String attributeItemProductId,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   $PriceCopyWith<$Res> get price;
 }
@@ -117,6 +119,7 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
     Object? price = null,
     Object? attributeItemProductId = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -215,6 +218,10 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ) as $Val);
   }
 
@@ -259,7 +266,8 @@ abstract class _$$HighlightImplCopyWith<$Res>
       double productRating,
       Price price,
       String attributeItemProductId,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   @override
   $PriceCopyWith<$Res> get price;
@@ -300,6 +308,7 @@ class __$$HighlightImplCopyWithImpl<$Res>
     Object? price = null,
     Object? attributeItemProductId = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_$HighlightImpl(
       id: null == id
@@ -398,6 +407,10 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ));
   }
 }
@@ -429,7 +442,8 @@ class _$HighlightImpl extends _Highlight {
       required this.productRating,
       required this.price,
       required this.attributeItemProductId,
-      required final List<String> productImages})
+      required final List<String> productImages,
+      required this.attributeItemId})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
         super._();
@@ -495,8 +509,11 @@ class _$HighlightImpl extends _Highlight {
   }
 
   @override
+  final StringValue attributeItemId;
+
+  @override
   String toString() {
-    return 'Highlight(id: $id, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, attributeItemProductId: $attributeItemProductId, productImages: $productImages)';
+    return 'Highlight(id: $id, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, attributeItemProductId: $attributeItemProductId, productImages: $productImages, attributeItemId: $attributeItemId)';
   }
 
   @override
@@ -548,7 +565,9 @@ class _$HighlightImpl extends _Highlight {
             (identical(other.attributeItemProductId, attributeItemProductId) ||
                 other.attributeItemProductId == attributeItemProductId) &&
             const DeepCollectionEquality()
-                .equals(other._productImages, _productImages));
+                .equals(other._productImages, _productImages) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId));
   }
 
   @override
@@ -577,7 +596,8 @@ class _$HighlightImpl extends _Highlight {
         productRating,
         price,
         attributeItemProductId,
-        const DeepCollectionEquality().hash(_productImages)
+        const DeepCollectionEquality().hash(_productImages),
+        attributeItemId
       ]);
 
   @JsonKey(ignore: true)
@@ -612,7 +632,8 @@ abstract class _Highlight extends Highlight {
       required final double productRating,
       required final Price price,
       required final String attributeItemProductId,
-      required final List<String> productImages}) = _$HighlightImpl;
+      required final List<String> productImages,
+      required final StringValue attributeItemId}) = _$HighlightImpl;
   const _Highlight._() : super._();
 
   @override
@@ -663,6 +684,8 @@ abstract class _Highlight extends Highlight {
   String get attributeItemProductId;
   @override
   List<String> get productImages;
+  @override
+  StringValue get attributeItemId;
   @override
   @JsonKey(ignore: true)
   _$$HighlightImplCopyWith<_$HighlightImpl> get copyWith =>

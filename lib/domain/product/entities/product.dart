@@ -17,6 +17,7 @@ class Product with _$Product {
     required int startingPrice,
     required String attributeItem,
     required String attributeItemProductId,
+    required StringValue attributeItemId,
     required Price price,
     required StringValue productDescription,
   }) = _Product;
@@ -42,6 +43,7 @@ class Product with _$Product {
       attributeItemProductId: attributeItemProductId,
       price: getPriceValue,
       quantity: quantity,
+      attributeItemId: attributeItemId.getValue(),
     );
   }
 
@@ -55,5 +57,6 @@ class Product with _$Product {
         attributeItemProductId: '',
         price: Price.empty(),
         productDescription: StringValue(''),
+        attributeItemId: StringValue(''),
       );
 }

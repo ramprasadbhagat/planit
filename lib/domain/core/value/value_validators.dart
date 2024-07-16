@@ -12,3 +12,12 @@ Either<ValueFailure<int>, int> validateInteger(
   if (int.tryParse(input) != null) return Right(int.parse(input));
   return const Left(ValueFailure.invalidInteger(failedValue: 0));
 }
+
+Either<ValueFailure<String>, String> validateEmailAddress(String input) {
+  const emailRegex =
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+
+  return RegExp(emailRegex).hasMatch(input)
+      ? right(input)
+      : left(ValueFailure.invalidEmail(failedValue: input));
+}

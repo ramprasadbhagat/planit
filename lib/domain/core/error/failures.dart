@@ -10,4 +10,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidInteger({
     required T failedValue,
   }) = InvalidInteger<T>;
+
+  const factory ValueFailure.invalidEmail({
+    required T failedValue,
+  }) = InvalidEmail<T>;
 }

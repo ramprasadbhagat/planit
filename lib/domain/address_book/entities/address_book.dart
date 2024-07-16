@@ -23,4 +23,7 @@ class AddressBook with _$AddressBook {
         pincode: '',
         userId: '',
       );
+
+  bool get isEmpty => this == AddressBook.empty();
+  bool get isNotEmpty => !isEmpty;
 }

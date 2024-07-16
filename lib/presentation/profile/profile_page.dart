@@ -5,9 +5,7 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
-import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
-import 'package:planit/presentation/profile/widgets/edit_profile_bottom_sheet.dart';
 import 'package:planit/presentation/profile/widgets/user_details_section.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -41,26 +39,7 @@ class ProfilePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(15.0),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const UserDetailsSection(),
-              InkWell(
-                onTap: () => showModalBottomSheet<void>(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) => const CommonBottomSheet(
-                    child: EditProfileBottomSheet(),
-                  ),
-                ),
-                child: const Icon(
-                  Icons.edit_note,
-                  color: AppColors.grey2,
-                ),
-              ),
-            ],
-          ),
+          const UserDetailsSection(),
           const SizedBox(
             height: 20,
           ),
@@ -73,7 +52,7 @@ class ProfilePage extends StatelessWidget {
             height: 20,
           ),
           CustomTile(
-            onTap: () => context.router.navigate(const UserProfileRoute()),
+            onTap: () => context.router.navigate(UserProfileRoute()),
             leadingIcon: Icons.fact_check_outlined,
             title: 'Profile',
           ),

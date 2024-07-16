@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
 import 'package:planit/infrastructure/similar_product/dtos/price_dto.dart';
 
@@ -28,6 +29,7 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: '') required String discount,
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItem,
+    @JsonKey(defaultValue: '') required String attributeItemId,
     @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: {}) required Map<String, dynamic> price,
     @JsonKey(defaultValue: []) required List<String> productImages,
@@ -58,6 +60,7 @@ class SimilarProductDto with _$SimilarProductDto {
         attributeItem: attributeItem,
         price: PriceDto.fromJson(price).toDomain,
         productImages: productImages,
+        attributeItemId: StringValue(attributeItemId),
       );
 }
 

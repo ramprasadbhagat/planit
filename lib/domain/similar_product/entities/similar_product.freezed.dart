@@ -37,6 +37,7 @@ mixin _$SimilarProduct {
   double get productRating => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
+  StringValue get attributeItemId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SimilarProductCopyWith<SimilarProduct> get copyWith =>
@@ -70,7 +71,8 @@ abstract class $SimilarProductCopyWith<$Res> {
       String productReview,
       double productRating,
       Price price,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   $PriceCopyWith<$Res> get price;
 }
@@ -109,6 +111,7 @@ class _$SimilarProductCopyWithImpl<$Res, $Val extends SimilarProduct>
     Object? productRating = null,
     Object? price = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -195,6 +198,10 @@ class _$SimilarProductCopyWithImpl<$Res, $Val extends SimilarProduct>
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ) as $Val);
   }
 
@@ -236,7 +243,8 @@ abstract class _$$SimilarProductImplCopyWith<$Res>
       String productReview,
       double productRating,
       Price price,
-      List<String> productImages});
+      List<String> productImages,
+      StringValue attributeItemId});
 
   @override
   $PriceCopyWith<$Res> get price;
@@ -274,6 +282,7 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
     Object? productRating = null,
     Object? price = null,
     Object? productImages = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_$SimilarProductImpl(
       id: null == id
@@ -360,6 +369,10 @@ class __$$SimilarProductImplCopyWithImpl<$Res>
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ));
   }
 }
@@ -388,7 +401,8 @@ class _$SimilarProductImpl extends _SimilarProduct {
       required this.productReview,
       required this.productRating,
       required this.price,
-      required final List<String> productImages})
+      required final List<String> productImages,
+      required this.attributeItemId})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
         super._();
@@ -448,8 +462,11 @@ class _$SimilarProductImpl extends _SimilarProduct {
   }
 
   @override
+  final StringValue attributeItemId;
+
+  @override
   String toString() {
-    return 'SimilarProduct(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages)';
+    return 'SimilarProduct(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages, attributeItemId: $attributeItemId)';
   }
 
   @override
@@ -495,7 +512,9 @@ class _$SimilarProductImpl extends _SimilarProduct {
                 other.productRating == productRating) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
-                .equals(other._productImages, _productImages));
+                .equals(other._productImages, _productImages) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId));
   }
 
   @override
@@ -521,7 +540,8 @@ class _$SimilarProductImpl extends _SimilarProduct {
         productReview,
         productRating,
         price,
-        const DeepCollectionEquality().hash(_productImages)
+        const DeepCollectionEquality().hash(_productImages),
+        attributeItemId
       ]);
 
   @JsonKey(ignore: true)
@@ -554,7 +574,8 @@ abstract class _SimilarProduct extends SimilarProduct {
       required final String productReview,
       required final double productRating,
       required final Price price,
-      required final List<String> productImages}) = _$SimilarProductImpl;
+      required final List<String> productImages,
+      required final StringValue attributeItemId}) = _$SimilarProductImpl;
   const _SimilarProduct._() : super._();
 
   @override
@@ -599,6 +620,8 @@ abstract class _SimilarProduct extends SimilarProduct {
   Price get price;
   @override
   List<String> get productImages;
+  @override
+  StringValue get attributeItemId;
   @override
   @JsonKey(ignore: true)
   _$$SimilarProductImplCopyWith<_$SimilarProductImpl> get copyWith =>

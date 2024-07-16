@@ -1,25 +1,26 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/address_book/widget/address_book.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({super.key});
-
-  @override
-  State<UserProfilePage> createState() => _UserProfilePageState();
-}
-
-class _UserProfilePageState extends State<UserProfilePage> {
-  bool showEditButton = false;
-  final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController(text: 'Thomas Jones');
-  final mobileController = TextEditingController(text: '9898980');
-  final emailAddressController = TextEditingController(text: 'test@gmail.com');
+class UserProfilePage extends StatelessWidget {
+  final bool isFirstLogin;
+  final bool fromCheckoutPage;
+  const UserProfilePage({
+    super.key,
+    this.isFirstLogin = false,
+    this.fromCheckoutPage = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,59 +30,154 @@ class _UserProfilePageState extends State<UserProfilePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Profile',
+          isFirstLogin || fromCheckoutPage
+              ? 'Complete your profile'
+              : 'Profile',
           style: textTheme.labelLarge,
         ),
         leadingWidth: 20,
         centerTitle: false,
         automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: AppColors.lightGrey,
-          ),
-          onPressed: () => context.router.maybePop(),
-        ),
+        leading: isFirstLogin
+            ? null
+            : IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: AppColors.lightGrey,
+                ),
+                onPressed: () => context.router.maybePop(),
+              ),
+        actions: [
+          if (isFirstLogin)
+            TextButton(
+              onPressed: () => context.router.navigate(const HomeRoute()),
+              child: Text('Skip for now', style: textTheme.labelSmall),
+            ),
+          if (fromCheckoutPage) const CheckoutContinueButton(),
+        ],
       ),
-      body: Column(
+      body: const Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Personal Information',
-                        style: textTheme.titleMedium?.copyWith(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.left,
+          ProfileInformationSection(),
+          Expanded(child: AddressBooks()),
+        ],
+      ),
+    );
+  }
+}
+
+class CheckoutContinueButton extends StatelessWidget {
+  const CheckoutContinueButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isProfileCompleted = context.select<UserProfileBloc, bool>(
+      (value) => value.state.user.isValid,
+    );
+    final hasValidAddress = context.select<AddressBookBloc, bool>(
+      (value) => value.state.selectedAddress.isNotEmpty,
+    );
+    return TextButton(
+      onPressed: () {
+        if (!isProfileCompleted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please complete your personal Information.'),
+              backgroundColor: AppColors.red,
+            ),
+          );
+          return;
+        }
+
+        if (!hasValidAddress) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Please add a default address.'),
+              backgroundColor: AppColors.red,
+            ),
+          );
+          return;
+        }
+
+        context.router.navigate(const CheckoutRoute());
+      },
+      child: Text('Continue', style: Theme.of(context).textTheme.labelSmall),
+    );
+  }
+}
+
+class ProfileInformationSection extends StatelessWidget {
+  const ProfileInformationSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+      child: BlocConsumer<UserProfileBloc, UserProfileState>(
+        listenWhen: (previous, current) =>
+            previous.isSubmitting != current.isSubmitting &&
+            !current.isSubmitting,
+        listener: (context, state) {
+          state.apiFailureOrSuccessOption.fold(
+            () {
+              const snackBar = SnackBar(
+                content: Text('Profile updated successfully'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            (either) => either.fold(
+              (failure) {
+                final snackBar = SnackBar(
+                  backgroundColor: Colors.red,
+                  content: Text(failure.failureMessage),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              (_) {},
+            ),
+          );
+        },
+        builder: (context, state) {
+          return Form(
+            autovalidateMode: state.showErrorMessage
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Personal Information',
+                      style: textTheme.titleMedium?.copyWith(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Checkbox(
-                        fillColor: nameController.text.isEmpty ||
-                                mobileController.text.isEmpty ||
-                                emailAddressController.text.isEmpty
-                            ? const MaterialStatePropertyAll(
-                                Colors.grey,
-                              )
-                            : const MaterialStatePropertyAll(
-                                Colors.green,
-                              ),
-                        value: true,
-                        onChanged: (e) {},
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
+                      textAlign: TextAlign.left,
+                    ),
+                    Checkbox(
+                      fillColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return AppColors.green;
+                        }
+                        return AppColors.grey4;
+                      }),
+                      value: state.isProfileCompleted,
+                      onChanged: null,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Skeletonizer(
+                  enabled: state.isFetching || state.isSubmitting,
+                  child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -97,33 +193,37 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              alignment: Alignment.topRight,
-                              child: GestureDetector(
-                                onTap: () => {
-                                  setState(() {
-                                    showEditButton = !showEditButton;
-                                  }),
-                                },
-                                child: SvgPicture.asset(
-                                  SvgImage.edit,
-                                  height: 18,
-                                  fit: BoxFit.fitHeight,
+                        if (!state.isEditMode)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                alignment: Alignment.topRight,
+                                child: GestureDetector(
+                                  onTap: () => context
+                                      .read<UserProfileBloc>()
+                                      .add(
+                                        const UserProfileEvent.toggleEditMode(),
+                                      ),
+                                  child: SvgPicture.asset(
+                                    SvgImage.edit,
+                                    height: 18,
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
                         Center(
                           child: Stack(
                             alignment: Alignment.bottomRight,
                             children: [
                               Container(
+                                height: 80,
+                                width: 80,
                                 clipBehavior: Clip.antiAlias,
                                 decoration: const BoxDecoration(
+                                  color: AppColors.white,
                                   shape: BoxShape.circle,
                                   boxShadow: [
                                     BoxShadow(
@@ -133,13 +233,21 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                     ),
                                   ],
                                 ),
-                                child: Image.asset(
-                                  PngImage.generic('profile_pic.png'),
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      state.updatedUser.profileImage.getValue(),
+                                  errorWidget: (context, url, error) {
+                                    return const Icon(
+                                      Icons.person_outline,
+                                      size: 50,
+                                      color: AppColors.extraLightGrey2,
+                                    );
+                                  },
                                   height: 100,
                                   fit: BoxFit.fitHeight,
                                 ),
                               ),
-                              showEditButton
+                              state.isEditMode
                                   ? Container(
                                       padding: const EdgeInsets.all(6),
                                       decoration: const BoxDecoration(
@@ -160,87 +268,124 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           height: 20,
                         ),
                         TextFormField(
-                          readOnly: showEditButton ? false : true,
+                          readOnly: state.isEditMode ? false : true,
                           keyboardType: TextInputType.name,
-                          controller: nameController,
+                          initialValue: state.updatedUser.fullName.getValue(),
+                          validator: (_) => context
+                              .read<UserProfileBloc>()
+                              .state
+                              .updatedUser
+                              .fullName
+                              .value
+                              .fold(
+                            (l) {
+                              return l.whenOrNull(
+                                empty: (_) => 'Name is required.',
+                              );
+                            },
+                            (r) => null,
+                          ),
+                          onChanged: (value) =>
+                              context.read<UserProfileBloc>().add(
+                                    UserProfileEvent.nameFieldChange(
+                                      value: value,
+                                    ),
+                                  ),
                           decoration: InputDecoration(
-                            border: const UnderlineInputBorder(),
-                            fillColor: Colors.white,
+                            enabled: state.isEditMode,
                             hintText: 'Enter your name',
-                            hintStyle: textTheme.titleMedium?.copyWith(
-                              fontSize: 11,
-                              color: AppColors.lightGrey,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                                width: 0.3,
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
+                          ),
+                          style: const TextStyle(
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         TextFormField(
-                          readOnly: showEditButton ? false : true,
+                          readOnly: state.isEditMode ? false : true,
                           keyboardType: TextInputType.number,
-                          controller: mobileController,
+                          initialValue:
+                              state.updatedUser.mobileNumber.getValue(),
+                          onChanged: (value) =>
+                              context.read<UserProfileBloc>().add(
+                                    UserProfileEvent.phoneFieldChange(
+                                      value: value,
+                                    ),
+                                  ),
+                          validator: (_) => context
+                              .read<UserProfileBloc>()
+                              .state
+                              .updatedUser
+                              .mobileNumber
+                              .value
+                              .fold(
+                            (l) {
+                              return l.whenOrNull(
+                                empty: (_) => 'Mobile number is required.',
+                              );
+                            },
+                            (r) => null,
+                          ),
                           decoration: InputDecoration(
-                            border: const UnderlineInputBorder(),
-                            fillColor: Colors.white,
+                            enabled: state.isEditMode,
                             hintText: 'Enter your mobile number',
-                            hintStyle: textTheme.titleMedium?.copyWith(
-                              fontSize: 11,
-                              color: AppColors.lightGrey,
-                            ),
-                            errorStyle: const TextStyle(height: 0),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                                width: 0.3,
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
+                          ),
+                          style: const TextStyle(
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         TextFormField(
-                          readOnly: showEditButton ? false : true,
+                          readOnly: state.isEditMode ? false : true,
                           keyboardType: TextInputType.emailAddress,
-                          controller: emailAddressController,
+                          onChanged: (value) =>
+                              context.read<UserProfileBloc>().add(
+                                    UserProfileEvent.emailFieldChange(
+                                      value: value,
+                                    ),
+                                  ),
+                          initialValue:
+                              state.updatedUser.emailAddress.getValue(),
+                          validator: (_) => context
+                              .read<UserProfileBloc>()
+                              .state
+                              .updatedUser
+                              .emailAddress
+                              .value
+                              .fold(
+                            (l) {
+                              return l.whenOrNull(
+                                empty: (_) => 'Email is required.',
+                                invalidEmail: (_) => 'Invalid email.',
+                              );
+                            },
+                            (r) => null,
+                          ),
                           decoration: InputDecoration(
+                            enabled: state.isEditMode,
                             border: const UnderlineInputBorder(),
-                            fillColor: Colors.white,
                             hintText: 'Enter your email address',
-                            hintStyle: textTheme.titleMedium?.copyWith(
-                              fontSize: 11,
-                              color: AppColors.lightGrey,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                                width: 0.3,
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
+                          ),
+                          style: const TextStyle(
+                            color: Colors.black,
                           ),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
-                        showEditButton
+                        state.isEditMode
                             ? Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   ElevatedButton(
                                     onPressed: () {
-                                      setState(() {
-                                        showEditButton = false;
-                                      });
+                                      context.read<UserProfileBloc>().add(
+                                            const UserProfileEvent
+                                                .updateUserClicked(),
+                                          );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: AppColors.black,
@@ -253,9 +398,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
-                                      setState(() {
-                                        showEditButton = false;
-                                      });
+                                      context.read<UserProfileBloc>().add(
+                                            const UserProfileEvent
+                                                .toggleEditMode(),
+                                          );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: AppColors.black,
@@ -269,21 +415,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
-          const Expanded(child: AddressBooks()),
-        ],
+          );
+        },
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    nameController.clear();
-    emailAddressController.clear();
-    mobileController.clear();
-    super.dispose();
   }
 }

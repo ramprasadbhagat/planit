@@ -91,3 +91,48 @@ class OTP extends ValueObject<String> {
 
   const OTP._(this.value);
 }
+
+class EmailAddress extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory EmailAddress(String input) {
+    return EmailAddress._(
+      validateStringNotEmpty(input).flatMap(validateEmailAddress),
+    );
+  }
+
+  const EmailAddress._(this.value);
+}
+
+class FullName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory FullName(String input) {
+    return FullName._(
+      validateStringNotEmpty(input),
+    );
+  }
+
+  factory FullName.fromFirstAndLastName({
+    required StringValue firstName,
+    required StringValue lastName,
+  }) =>
+      FullName(
+        firstName.getValue() + lastName.value.fold((l) => '', (r) => ' $r'),
+      );
+
+  const FullName._(this.value);
+
+  String get firstName {
+    return value.fold((failure) => '', (fullName) => fullName.split(' ').first);
+  }
+
+  String get lastName {
+    return value.fold(
+      (failure) => '',
+      (fullName) => fullName.split(' ').sublist(1).join(' '),
+    );
+  }
+}

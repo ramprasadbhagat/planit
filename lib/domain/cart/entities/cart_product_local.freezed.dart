@@ -34,6 +34,8 @@ mixin _$CartProductLocal {
   String get price => throw _privateConstructorUsedError;
   @HiveField(8)
   int get quantity => throw _privateConstructorUsedError;
+  @HiveField(9)
+  String get attributeItemId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartProductLocalCopyWith<CartProductLocal> get copyWith =>
@@ -55,7 +57,8 @@ abstract class $CartProductLocalCopyWith<$Res> {
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
       @HiveField(7) String price,
-      @HiveField(8) int quantity});
+      @HiveField(8) int quantity,
+      @HiveField(9) String attributeItemId});
 }
 
 /// @nodoc
@@ -80,6 +83,7 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
     Object? attributeItemProductId = null,
     Object? price = null,
     Object? quantity = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -118,6 +122,10 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -139,7 +147,8 @@ abstract class _$$CartProductLocalImplCopyWith<$Res>
       @HiveField(5) String attributeItem,
       @HiveField(6) String attributeItemProductId,
       @HiveField(7) String price,
-      @HiveField(8) int quantity});
+      @HiveField(8) int quantity,
+      @HiveField(9) String attributeItemId});
 }
 
 /// @nodoc
@@ -162,6 +171,7 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
     Object? attributeItemProductId = null,
     Object? price = null,
     Object? quantity = null,
+    Object? attributeItemId = null,
   }) {
     return _then(_$CartProductLocalImpl(
       productId: null == productId
@@ -200,6 +210,10 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -218,7 +232,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       @HiveField(5) required this.attributeItem,
       @HiveField(6) required this.attributeItemProductId,
       @HiveField(7) required this.price,
-      @HiveField(8) required this.quantity})
+      @HiveField(8) required this.quantity,
+      @HiveField(9) required this.attributeItemId})
       : _productImages = productImages,
         super._();
 
@@ -255,10 +270,13 @@ class _$CartProductLocalImpl extends _CartProductLocal {
   @override
   @HiveField(8)
   final int quantity;
+  @override
+  @HiveField(9)
+  final String attributeItemId;
 
   @override
   String toString() {
-    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, quantity: $quantity)';
+    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, quantity: $quantity, attributeItemId: $attributeItemId)';
   }
 
   @override
@@ -281,7 +299,9 @@ class _$CartProductLocalImpl extends _CartProductLocal {
                 other.attributeItemProductId == attributeItemProductId) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
+                other.quantity == quantity) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId));
   }
 
   @override
@@ -295,7 +315,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       attributeItem,
       attributeItemProductId,
       price,
-      quantity);
+      quantity,
+      attributeItemId);
 
   @JsonKey(ignore: true)
   @override
@@ -307,15 +328,17 @@ class _$CartProductLocalImpl extends _CartProductLocal {
 
 abstract class _CartProductLocal extends CartProductLocal {
   factory _CartProductLocal(
-      {@HiveField(0) required final String productId,
-      @HiveField(1) required final String name,
-      @HiveField(2) required final List<String> productImages,
-      @HiveField(3) required final double skuPrice,
-      @HiveField(4) required final int startingPrice,
-      @HiveField(5) required final String attributeItem,
-      @HiveField(6) required final String attributeItemProductId,
-      @HiveField(7) required final String price,
-      @HiveField(8) required final int quantity}) = _$CartProductLocalImpl;
+          {@HiveField(0) required final String productId,
+          @HiveField(1) required final String name,
+          @HiveField(2) required final List<String> productImages,
+          @HiveField(3) required final double skuPrice,
+          @HiveField(4) required final int startingPrice,
+          @HiveField(5) required final String attributeItem,
+          @HiveField(6) required final String attributeItemProductId,
+          @HiveField(7) required final String price,
+          @HiveField(8) required final int quantity,
+          @HiveField(9) required final String attributeItemId}) =
+      _$CartProductLocalImpl;
   _CartProductLocal._() : super._();
 
   @override
@@ -345,6 +368,9 @@ abstract class _CartProductLocal extends CartProductLocal {
   @override
   @HiveField(8)
   int get quantity;
+  @override
+  @HiveField(9)
+  String get attributeItemId;
   @override
   @JsonKey(ignore: true)
   _$$CartProductLocalImplCopyWith<_$CartProductLocalImpl> get copyWith =>

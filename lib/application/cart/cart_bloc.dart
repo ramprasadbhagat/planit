@@ -193,7 +193,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           });
         } else {
           final updatedProductList = state.cartItem.products.map((p) {
-            if (e.product.productId == p.productId) {
+            if (e.product.productId == p.productId &&
+                e.product.attributeItemId == p.attributeitemId) {
               return p.copyWith(
                 quantity: e.quantity,
               );

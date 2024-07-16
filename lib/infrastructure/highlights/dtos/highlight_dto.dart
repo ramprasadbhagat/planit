@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
 import 'package:planit/infrastructure/highlights/dtos/price_dto.dart';
 
@@ -33,6 +34,7 @@ class HighlightDto with _$HighlightDto {
     @JsonKey(defaultValue: '') required String attributeName,
     @JsonKey(defaultValue: '') required String attributeItem,
     @JsonKey(defaultValue: '') required String attributeItemProductId,
+    @JsonKey(defaultValue: '') required String attributeItemId,
     required PriceDto price,
     required List<String> productImages,
   }) = _HighlightDto;
@@ -65,6 +67,7 @@ class HighlightDto with _$HighlightDto {
         price: price.toDomain,
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
+        attributeItemId: StringValue(attributeItemId),
       );
 }
 

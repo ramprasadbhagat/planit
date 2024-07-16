@@ -16,8 +16,10 @@ import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/user/repository/i_user_repository.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_remote.dart';
 import 'package:planit/infrastructure/address_book/repository/address_book_repository.dart';
@@ -62,6 +64,9 @@ import 'package:planit/infrastructure/sub_categories/repository/sub_category_rep
 import 'package:planit/infrastructure/track_order/datasource/track_order_local.dart';
 import 'package:planit/infrastructure/track_order/datasource/track_order_remote.dart';
 import 'package:planit/infrastructure/track_order/repository/track_order_repository.dart';
+import 'package:planit/infrastructure/user/datasource/user_local.dart';
+import 'package:planit/infrastructure/user/datasource/user_remote.dart';
+import 'package:planit/infrastructure/user/repository/user_repository.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_local.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_remote.dart';
 import 'package:planit/infrastructure/wishlist/repository/wishlist_repository.dart';
@@ -505,5 +510,31 @@ void setupLocator() {
     () => TrackOrderBloc(
       repository: locator<TrackOrderRepository>(),
     ),
+  );
+
+  /////============================================================
+  //  User
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => UserLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => UserRemoteDateSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IUserRepository>(
+    () => UserRepository(
+      config: locator<Config>(),
+      localDataSource: locator<UserLocalDataSource>(),
+      remoteDataSource: locator<UserRemoteDateSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => UserProfileBloc(repository: locator<IUserRepository>()),
   );
 }

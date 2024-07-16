@@ -41,10 +41,12 @@ class CartProduct with _$CartProduct {
         'quantity': quantity.toString(),
         'unitPrice': (double.tryParse(itemPrice) ?? 0.0).toInt(),
         'subTotal': totalPrice,
+        'attributeItemId': attributeitemId.getValue(),
       };
 
   Product get toProductWithAttributeIdAndProductId => Product.empty().copyWith(
         attributeItemProductId: attributeitemId.getValue(),
         productId: productId,
+        attributeItemId: attributeitemId,
       );
 }

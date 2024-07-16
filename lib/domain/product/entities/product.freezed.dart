@@ -23,6 +23,7 @@ mixin _$Product {
   int get startingPrice => throw _privateConstructorUsedError;
   String get attributeItem => throw _privateConstructorUsedError;
   String get attributeItemProductId => throw _privateConstructorUsedError;
+  StringValue get attributeItemId => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
   StringValue get productDescription => throw _privateConstructorUsedError;
 
@@ -43,6 +44,7 @@ abstract class $ProductCopyWith<$Res> {
       int startingPrice,
       String attributeItem,
       String attributeItemProductId,
+      StringValue attributeItemId,
       Price price,
       StringValue productDescription});
 
@@ -69,6 +71,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? startingPrice = null,
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
+    Object? attributeItemId = null,
     Object? price = null,
     Object? productDescription = null,
   }) {
@@ -101,6 +104,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -136,6 +143,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       int startingPrice,
       String attributeItem,
       String attributeItemProductId,
+      StringValue attributeItemId,
       Price price,
       StringValue productDescription});
 
@@ -161,6 +169,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? startingPrice = null,
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
+    Object? attributeItemId = null,
     Object? price = null,
     Object? productDescription = null,
   }) {
@@ -193,6 +202,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
               as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -216,6 +229,7 @@ class _$ProductImpl extends _Product {
       required this.startingPrice,
       required this.attributeItem,
       required this.attributeItemProductId,
+      required this.attributeItemId,
       required this.price,
       required this.productDescription})
       : _productImages = productImages,
@@ -242,13 +256,15 @@ class _$ProductImpl extends _Product {
   @override
   final String attributeItemProductId;
   @override
+  final StringValue attributeItemId;
+  @override
   final Price price;
   @override
   final StringValue productDescription;
 
   @override
   String toString() {
-    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productDescription: $productDescription)';
+    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productDescription: $productDescription)';
   }
 
   @override
@@ -269,6 +285,8 @@ class _$ProductImpl extends _Product {
                 other.attributeItem == attributeItem) &&
             (identical(other.attributeItemProductId, attributeItemProductId) ||
                 other.attributeItemProductId == attributeItemProductId) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.productDescription, productDescription) ||
                 other.productDescription == productDescription));
@@ -284,6 +302,7 @@ class _$ProductImpl extends _Product {
       startingPrice,
       attributeItem,
       attributeItemProductId,
+      attributeItemId,
       price,
       productDescription);
 
@@ -303,6 +322,7 @@ abstract class _Product extends Product {
       required final int startingPrice,
       required final String attributeItem,
       required final String attributeItemProductId,
+      required final StringValue attributeItemId,
       required final Price price,
       required final StringValue productDescription}) = _$ProductImpl;
   _Product._() : super._();
@@ -321,6 +341,8 @@ abstract class _Product extends Product {
   String get attributeItem;
   @override
   String get attributeItemProductId;
+  @override
+  StringValue get attributeItemId;
   @override
   Price get price;
   @override
