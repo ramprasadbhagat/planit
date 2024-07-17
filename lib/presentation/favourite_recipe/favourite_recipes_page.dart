@@ -24,6 +24,7 @@ class FavouriteRecipesPage extends StatelessWidget {
           leadingWidth: 35,
         ),
         body: !isEmpty
+            // ignore: dead_code
             ? const RecipeEmpty()
             : ListView.builder(
                 padding: const EdgeInsets.symmetric(vertical: 10),

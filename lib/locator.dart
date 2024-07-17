@@ -7,6 +7,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/my_complain/complain_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
@@ -43,6 +44,9 @@ import 'package:planit/infrastructure/coupon/repository/coupon_repository.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
 import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
+import 'package:planit/infrastructure/my_complain/datasource/complain_local.dart';
+import 'package:planit/infrastructure/my_complain/datasource/complain_remote.dart';
+import 'package:planit/infrastructure/my_complain/repository/complain_repository.dart';
 import 'package:planit/infrastructure/order/datasource/order_local.dart';
 import 'package:planit/infrastructure/order/datasource/order_remote.dart';
 import 'package:planit/infrastructure/order/repository/order_repository.dart';
@@ -536,5 +540,31 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => UserProfileBloc(repository: locator<IUserRepository>()),
+  );
+
+  /////============================================================
+  //  Complain
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const ComplainLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => ComplainRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => ComplainRepository(
+      config: locator<Config>(),
+      localDataSource: locator<ComplainLocalDataSource>(),
+      remoteDataSource: locator<ComplainRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => ComplainBloc(repository: locator<ComplainRepository>()),
   );
 }

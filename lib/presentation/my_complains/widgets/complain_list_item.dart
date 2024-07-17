@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+import 'package:planit/domain/my_complain/entities/complain.dart';
 import 'package:planit/presentation/my_complains/widgets/complain_status_chip.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class ComplainListItem extends StatelessWidget {
+  final Complain complain;
   const ComplainListItem({
     super.key,
+    required this.complain,
   });
 
   @override
@@ -22,16 +26,17 @@ class ComplainListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text.rich(
-                  const TextSpan(
+                  TextSpan(
                     text: 'Complain ID: ',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.grey4,
                     ),
                     children: [
                       TextSpan(
-                        text: '#56234',
-                        style: TextStyle(
+                        text: complain.complainId.getValue(),
+                        style: const TextStyle(
                           color: AppColors.black,
+                          fontSize: 12,
                         ),
                       ),
                     ],
@@ -54,7 +59,7 @@ class ComplainListItem extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    '19-03-2024',
+                    DateFormat('dd-MM-yyyy').format(complain.createdAt),
                     style: textTheme.titleSmall?.copyWith(
                       color: AppColors.textBlack,
                     ),
@@ -70,17 +75,16 @@ class ComplainListItem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(4)),
               ),
               child: Text.rich(
-                const TextSpan(
+                TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: 'Description: ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore toder moollo baper nam magna aliqua.',
+                      text: complain.complainContent,
                     ),
                   ],
                 ),

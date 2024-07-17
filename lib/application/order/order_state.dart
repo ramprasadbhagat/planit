@@ -16,4 +16,9 @@ class OrderState with _$OrderState {
         isFetchingOrders: false,
         orders: [],
       );
+  List<String> get getOrderIdList {
+    return orders.map((e) {
+      return e.id.getValue();
+    }).toList();
+  }
 }
