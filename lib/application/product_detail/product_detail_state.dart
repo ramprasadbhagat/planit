@@ -3,14 +3,16 @@ part of 'product_detail_bloc.dart';
 @freezed
 class ProductDetailState with _$ProductDetailState {
   const factory ProductDetailState({
-    required Product product,
+    required ProductDetail product,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required ProductAttribute selectedProductAttribute,
   }) = _ProductDetailState;
 
   factory ProductDetailState.initial() => ProductDetailState(
-        product: Product.empty(),
+        product: ProductDetail.empty(),
         apiFailureOrSuccessOption: none(),
         isFetching: true,
+        selectedProductAttribute: ProductAttribute.empty(),
       );
 }
