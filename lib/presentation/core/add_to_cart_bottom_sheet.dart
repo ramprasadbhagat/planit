@@ -154,23 +154,38 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 state
                                     .selectedProductAttribute.attributeItemValue
                                     .getValue(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
+                                  color:
+                                      state.selectedProductAttribute.quantity >
+                                              0
+                                          ? AppColors.textBlack
+                                          : AppColors.grey4,
                                 ),
                               ),
                               Text(
                                 'MRP ₹${state.selectedProductAttribute.price}',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
+                                  color:
+                                      state.selectedProductAttribute.quantity >
+                                              0
+                                          ? AppColors.textBlack
+                                          : AppColors.grey4,
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 '(Inclusicve of all taxes)',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
+                                  color:
+                                      state.selectedProductAttribute.quantity >
+                                              0
+                                          ? AppColors.textBlack
+                                          : AppColors.grey4,
                                 ),
                               ),
                             ],
@@ -178,57 +193,61 @@ class AddToCartBottomSheet extends StatelessWidget {
                           AddToCartButton.fromBottomSheet(
                             product: state.product
                                 .toProduct(state.selectedProductAttribute),
-                            onTap: () async {
-                              if (context.read<AuthBloc>().state ==
-                                  const AuthState.unauthenticated()) {
-                                context.read<CartBloc>().add(
-                                      CartEvent.addToCartLocal(
-                                        product: state.product.toProduct(
-                                          state.selectedProductAttribute,
-                                        ),
-                                        quantity: 1,
-                                      ),
-                                    );
+                            onTap: state.selectedProductAttribute.quantity > 0
+                                ? () async {
+                                    if (context.read<AuthBloc>().state ==
+                                        const AuthState.unauthenticated()) {
+                                      context.read<CartBloc>().add(
+                                            CartEvent.addToCartLocal(
+                                              product: state.product.toProduct(
+                                                state.selectedProductAttribute,
+                                              ),
+                                              quantity: 1,
+                                            ),
+                                          );
 
-                                const snackBar = SnackBar(
-                                  content: Text('Item added to cart'),
-                                );
-
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              } else {
-                                if (context
-                                    .read<PincodeBloc>()
-                                    .state
-                                    .pincode
-                                    .isEmpty) {
-                                  await showDialog<void>(
-                                    context: context,
-                                    barrierDismissible:
-                                        false, // user must tap button!
-                                    builder: (BuildContext context) {
-                                      return const NoPincodeErrorDialog();
-                                    },
-                                  );
-                                } else {
-                                  context.read<CartBloc>().add(
-                                        CartEvent.addToCart(
-                                          product: state.product.toProduct(
-                                            state.selectedProductAttribute,
-                                          ),
-                                          quantity: 1,
-                                        ),
+                                      const snackBar = SnackBar(
+                                        content: Text('Item added to cart'),
                                       );
 
-                                  const snackBar = SnackBar(
-                                    content: Text('Item added to cart'),
-                                  );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    } else {
+                                      if (context
+                                          .read<PincodeBloc>()
+                                          .state
+                                          .pincode
+                                          .isEmpty) {
+                                        await showDialog<void>(
+                                          context: context,
+                                          barrierDismissible:
+                                              false, // user must tap button!
+                                          builder: (BuildContext context) {
+                                            return const NoPincodeErrorDialog();
+                                          },
+                                        );
+                                      } else {
+                                        context.read<CartBloc>().add(
+                                              CartEvent.addToCart(
+                                                product:
+                                                    state.product.toProduct(
+                                                  state
+                                                      .selectedProductAttribute,
+                                                ),
+                                                quantity: 1,
+                                              ),
+                                            );
 
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
-                                }
-                              }
-                            },
+                                        const snackBar = SnackBar(
+                                          content: Text('Item added to cart'),
+                                        );
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                      }
+                                    }
+                                  }
+                                : null,
                           ),
                         ],
                       ),
