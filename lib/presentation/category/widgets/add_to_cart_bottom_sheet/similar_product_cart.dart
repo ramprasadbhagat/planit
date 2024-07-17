@@ -249,7 +249,6 @@ class SimilarProductCard extends StatelessWidget {
                     : Text(
                         'Out of stock',
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                              color: AppColors.red,
                               fontSize: 12,
                             ),
                       ),

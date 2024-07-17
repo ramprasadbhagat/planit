@@ -222,10 +222,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                               )
                             : Text(
                                 'Out of stock',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall
-                                    ?.copyWith(color: AppColors.red),
+                                style: Theme.of(context).textTheme.labelSmall,
                               ),
                       ],
                     ),

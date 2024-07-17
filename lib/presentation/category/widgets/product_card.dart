@@ -139,7 +139,7 @@ class ProductCard extends StatelessWidget {
                           size: 9,
                         ),
                         Text(
-                          '4.3 ${product.price.quantity}',
+                          '4.3',
                           style: textTheme.bodySmall?.copyWith(
                             fontSize: 9,
                           ),
@@ -205,7 +205,6 @@ class ProductCard extends StatelessWidget {
                                 .textTheme
                                 .labelSmall
                                 ?.copyWith(
-                                  color: AppColors.red,
                                   fontSize: 12,
                                 ),
                           ),
