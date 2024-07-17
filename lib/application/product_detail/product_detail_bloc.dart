@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
-import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
@@ -42,10 +42,19 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
             emit(
               state.copyWith(
                 product: res,
+                selectedProductAttribute:
+                    res.attribute.firstOrNull ?? ProductAttribute.empty(),
                 isFetching: false,
               ),
             );
           },
+        );
+      },
+      changeSelectedAttribute: (_ChangeSelectedAttribute value) {
+        emit(
+          state.copyWith(
+            selectedProductAttribute: value.productAttribute,
+          ),
         );
       },
     );

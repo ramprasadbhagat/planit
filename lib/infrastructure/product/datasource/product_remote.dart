@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
+import 'package:planit/infrastructure/product/dtos/product_detail_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_image_dto.dart';
 
@@ -79,14 +81,14 @@ class ProductRemoteDataSource {
         .toList();
   }
 
-  Future<Product> getProductDetail(ProductId productId) async {
+  Future<ProductDetail> getProductDetail(ProductId productId) async {
     final res = await httpService.request(
       method: 'GET',
       url: 'products/${productId.getValue()}',
     );
     _exceptionChecker(res: res);
     final productDetail = res.data['items'];
-    return ProductDto.fromJson(productDetail).toDomain;
+    return ProductDetailDto.fromJson(productDetail).toDomain;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

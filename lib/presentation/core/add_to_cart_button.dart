@@ -22,7 +22,7 @@ class AddToCartButton extends StatelessWidget {
 
   factory AddToCartButton.fromBottomSheet({
     required Product product,
-    required VoidCallback onTap,
+    required VoidCallback? onTap,
   }) {
     return AddToCartButton._(
       product: product,

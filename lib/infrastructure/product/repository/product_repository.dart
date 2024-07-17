@@ -3,6 +3,7 @@ import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
@@ -99,7 +100,7 @@ class ProductRepository extends IProductRepository {
   }
 
   @override
-  Future<Either<ApiFailure, Product>> getProductDetail(
+  Future<Either<ApiFailure, ProductDetail>> getProductDetail(
     ProductId productId,
   ) async {
     try {
