@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/my_complain/complain_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/presentation/profile/widgets/custom_tile.dart';
@@ -72,7 +73,10 @@ class ProfilePage extends StatelessWidget {
             title: 'My wallet',
           ),
           CustomTile(
-            onTap: () => context.router.navigate(const MyComplainsRoute()),
+            onTap: () {
+              context.read<ComplainBloc>().add(const ComplainEvent.fetch());
+              context.router.navigate(const MyComplainsRoute());
+            },
             leadingIcon: Icons.receipt,
             title: 'My complaints',
           ),

@@ -7,6 +7,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/my_complain/complain_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
@@ -92,6 +93,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<UserProfileBloc>(
           create: (context) => locator<UserProfileBloc>(),
+        ),
+        BlocProvider<ComplainBloc>(
+          create: (context) => locator<ComplainBloc>(),
         ),
       ],
       child: MaterialApp.router(
