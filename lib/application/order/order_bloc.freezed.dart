@@ -20,7 +20,7 @@ mixin _$OrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(CartItem cartItem, AddressBook addressBook,
-            String date, Coupon coupon)
+            String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
   }) =>
@@ -29,7 +29,7 @@ mixin _$OrderEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
   }) =>
@@ -38,7 +38,7 @@ mixin _$OrderEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
     required TResult orElse(),
@@ -126,7 +126,7 @@ class _$InitializedImpl implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(CartItem cartItem, AddressBook addressBook,
-            String date, Coupon coupon)
+            String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
   }) {
@@ -138,7 +138,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
   }) {
@@ -150,7 +150,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
     required TResult orElse(),
@@ -207,7 +207,11 @@ abstract class _$$SubmitOrderImplCopyWith<$Res> {
       __$$SubmitOrderImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {CartItem cartItem, AddressBook addressBook, String date, Coupon coupon});
+      {CartItem cartItem,
+      AddressBook addressBook,
+      String date,
+      Coupon coupon,
+      double deliveryCharge});
 
   $CartItemCopyWith<$Res> get cartItem;
   $AddressBookCopyWith<$Res> get addressBook;
@@ -229,6 +233,7 @@ class __$$SubmitOrderImplCopyWithImpl<$Res>
     Object? addressBook = null,
     Object? date = null,
     Object? coupon = null,
+    Object? deliveryCharge = null,
   }) {
     return _then(_$SubmitOrderImpl(
       cartItem: null == cartItem
@@ -247,6 +252,10 @@ class __$$SubmitOrderImplCopyWithImpl<$Res>
           ? _value.coupon
           : coupon // ignore: cast_nullable_to_non_nullable
               as Coupon,
+      deliveryCharge: null == deliveryCharge
+          ? _value.deliveryCharge
+          : deliveryCharge // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 
@@ -282,7 +291,8 @@ class _$SubmitOrderImpl implements _SubmitOrder {
       {required this.cartItem,
       required this.addressBook,
       required this.date,
-      required this.coupon});
+      required this.coupon,
+      required this.deliveryCharge});
 
   @override
   final CartItem cartItem;
@@ -292,10 +302,12 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   final String date;
   @override
   final Coupon coupon;
+  @override
+  final double deliveryCharge;
 
   @override
   String toString() {
-    return 'OrderEvent.submitOrder(cartItem: $cartItem, addressBook: $addressBook, date: $date, coupon: $coupon)';
+    return 'OrderEvent.submitOrder(cartItem: $cartItem, addressBook: $addressBook, date: $date, coupon: $coupon, deliveryCharge: $deliveryCharge)';
   }
 
   @override
@@ -308,12 +320,14 @@ class _$SubmitOrderImpl implements _SubmitOrder {
             (identical(other.addressBook, addressBook) ||
                 other.addressBook == addressBook) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.coupon, coupon) || other.coupon == coupon));
+            (identical(other.coupon, coupon) || other.coupon == coupon) &&
+            (identical(other.deliveryCharge, deliveryCharge) ||
+                other.deliveryCharge == deliveryCharge));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, cartItem, addressBook, date, coupon);
+  int get hashCode => Object.hash(
+      runtimeType, cartItem, addressBook, date, coupon, deliveryCharge);
 
   @JsonKey(ignore: true)
   @override
@@ -326,11 +340,11 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(CartItem cartItem, AddressBook addressBook,
-            String date, Coupon coupon)
+            String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
   }) {
-    return submitOrder(cartItem, addressBook, date, coupon);
+    return submitOrder(cartItem, addressBook, date, coupon, deliveryCharge);
   }
 
   @override
@@ -338,11 +352,12 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
   }) {
-    return submitOrder?.call(cartItem, addressBook, date, coupon);
+    return submitOrder?.call(
+        cartItem, addressBook, date, coupon, deliveryCharge);
   }
 
   @override
@@ -350,13 +365,13 @@ class _$SubmitOrderImpl implements _SubmitOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
-      return submitOrder(cartItem, addressBook, date, coupon);
+      return submitOrder(cartItem, addressBook, date, coupon, deliveryCharge);
     }
     return orElse();
   }
@@ -401,12 +416,14 @@ abstract class _SubmitOrder implements OrderEvent {
       {required final CartItem cartItem,
       required final AddressBook addressBook,
       required final String date,
-      required final Coupon coupon}) = _$SubmitOrderImpl;
+      required final Coupon coupon,
+      required final double deliveryCharge}) = _$SubmitOrderImpl;
 
   CartItem get cartItem;
   AddressBook get addressBook;
   String get date;
   Coupon get coupon;
+  double get deliveryCharge;
   @JsonKey(ignore: true)
   _$$SubmitOrderImplCopyWith<_$SubmitOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -452,7 +469,7 @@ class _$FetchOrdersImpl implements _FetchOrders {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function(CartItem cartItem, AddressBook addressBook,
-            String date, Coupon coupon)
+            String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
   }) {
@@ -464,7 +481,7 @@ class _$FetchOrdersImpl implements _FetchOrders {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
   }) {
@@ -476,7 +493,7 @@ class _$FetchOrdersImpl implements _FetchOrders {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(CartItem cartItem, AddressBook addressBook, String date,
-            Coupon coupon)?
+            Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
     required TResult orElse(),

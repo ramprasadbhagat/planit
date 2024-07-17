@@ -36,4 +36,6 @@ class CartEvent with _$CartEvent {
     required Product product,
     required bool isLocal,
   }) = _DecrementQuantity;
+  const factory CartEvent.fetchShippingCharge({required String pincode}) =
+      _FetchShippingCharge;
 }

@@ -31,6 +31,7 @@ mixin _$CartEvent {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +49,7 @@ mixin _$CartEvent {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +67,7 @@ mixin _$CartEvent {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +86,7 @@ mixin _$CartEvent {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +103,7 @@ mixin _$CartEvent {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -115,6 +120,7 @@ mixin _$CartEvent {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,6 +194,7 @@ class _$InitializedImpl implements _Initialized {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return initialized();
   }
@@ -208,6 +215,7 @@ class _$InitializedImpl implements _Initialized {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return initialized?.call();
   }
@@ -228,6 +236,7 @@ class _$InitializedImpl implements _Initialized {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -252,6 +261,7 @@ class _$InitializedImpl implements _Initialized {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return initialized(this);
   }
@@ -271,6 +281,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return initialized?.call(this);
   }
@@ -290,6 +301,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -354,6 +366,7 @@ class _$FetchImpl implements _Fetch {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return fetch();
   }
@@ -374,6 +387,7 @@ class _$FetchImpl implements _Fetch {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return fetch?.call();
   }
@@ -394,6 +408,7 @@ class _$FetchImpl implements _Fetch {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -418,6 +433,7 @@ class _$FetchImpl implements _Fetch {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return fetch(this);
   }
@@ -437,6 +453,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return fetch?.call(this);
   }
@@ -456,6 +473,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -565,6 +583,7 @@ class _$AddToCartImpl implements _AddToCart {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return addToCart(product, quantity);
   }
@@ -585,6 +604,7 @@ class _$AddToCartImpl implements _AddToCart {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return addToCart?.call(product, quantity);
   }
@@ -605,6 +625,7 @@ class _$AddToCartImpl implements _AddToCart {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -629,6 +650,7 @@ class _$AddToCartImpl implements _AddToCart {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return addToCart(this);
   }
@@ -648,6 +670,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return addToCart?.call(this);
   }
@@ -667,6 +690,7 @@ class _$AddToCartImpl implements _AddToCart {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -776,6 +800,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return removeFromCart(product);
   }
@@ -796,6 +821,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return removeFromCart?.call(product);
   }
@@ -816,6 +842,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -840,6 +867,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return removeFromCart(this);
   }
@@ -859,6 +887,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return removeFromCart?.call(this);
   }
@@ -878,6 +907,7 @@ class _$RemoveFromCartImpl implements _RemoveFromCart {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (removeFromCart != null) {
@@ -994,6 +1024,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return addToCartLocal(product, quantity);
   }
@@ -1014,6 +1045,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return addToCartLocal?.call(product, quantity);
   }
@@ -1034,6 +1066,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (addToCartLocal != null) {
@@ -1058,6 +1091,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return addToCartLocal(this);
   }
@@ -1077,6 +1111,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return addToCartLocal?.call(this);
   }
@@ -1096,6 +1131,7 @@ class _$AddToCartLocalImpl implements _AddToCartLocal {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (addToCartLocal != null) {
@@ -1168,6 +1204,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return getCartLocal();
   }
@@ -1188,6 +1225,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return getCartLocal?.call();
   }
@@ -1208,6 +1246,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (getCartLocal != null) {
@@ -1232,6 +1271,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return getCartLocal(this);
   }
@@ -1251,6 +1291,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return getCartLocal?.call(this);
   }
@@ -1270,6 +1311,7 @@ class _$GetCartLocalImpl implements _GetCartLocal {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (getCartLocal != null) {
@@ -1361,6 +1403,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return deletCartLocal(index);
   }
@@ -1381,6 +1424,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return deletCartLocal?.call(index);
   }
@@ -1401,6 +1445,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (deletCartLocal != null) {
@@ -1425,6 +1470,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return deletCartLocal(this);
   }
@@ -1444,6 +1490,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return deletCartLocal?.call(this);
   }
@@ -1463,6 +1510,7 @@ class _$DeleteCartLocalImpl implements _DeleteCartLocal {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (deletCartLocal != null) {
@@ -1533,6 +1581,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return clearAllCartLocal();
   }
@@ -1553,6 +1602,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return clearAllCartLocal?.call();
   }
@@ -1573,6 +1623,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (clearAllCartLocal != null) {
@@ -1597,6 +1648,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return clearAllCartLocal(this);
   }
@@ -1616,6 +1668,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return clearAllCartLocal?.call(this);
   }
@@ -1635,6 +1688,7 @@ class _$ClearAllCartLocalImpl implements _ClearAllCartLocal {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (clearAllCartLocal != null) {
@@ -1700,6 +1754,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return sendLocalServerCart();
   }
@@ -1720,6 +1775,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return sendLocalServerCart?.call();
   }
@@ -1740,6 +1796,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (sendLocalServerCart != null) {
@@ -1764,6 +1821,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return sendLocalServerCart(this);
   }
@@ -1783,6 +1841,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return sendLocalServerCart?.call(this);
   }
@@ -1802,6 +1861,7 @@ class _$SendLocalServerCartImpl implements _SendLocalServerCart {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (sendLocalServerCart != null) {
@@ -1922,6 +1982,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return updateProductQuantity(product, quantity, isLocal);
   }
@@ -1942,6 +2003,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return updateProductQuantity?.call(product, quantity, isLocal);
   }
@@ -1962,6 +2024,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (updateProductQuantity != null) {
@@ -1986,6 +2049,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return updateProductQuantity(this);
   }
@@ -2005,6 +2069,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return updateProductQuantity?.call(this);
   }
@@ -2024,6 +2089,7 @@ class _$UpdateProductQuantityImpl implements _UpdateProductQuantity {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (updateProductQuantity != null) {
@@ -2143,6 +2209,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return incrementQuantity(product, isLocal);
   }
@@ -2163,6 +2230,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return incrementQuantity?.call(product, isLocal);
   }
@@ -2183,6 +2251,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (incrementQuantity != null) {
@@ -2207,6 +2276,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return incrementQuantity(this);
   }
@@ -2226,6 +2296,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return incrementQuantity?.call(this);
   }
@@ -2245,6 +2316,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (incrementQuantity != null) {
@@ -2362,6 +2434,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
         updateProductQuantity,
     required TResult Function(Product product, bool isLocal) incrementQuantity,
     required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
   }) {
     return decrementQuantity(product, isLocal);
   }
@@ -2382,6 +2455,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
         updateProductQuantity,
     TResult? Function(Product product, bool isLocal)? incrementQuantity,
     TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
   }) {
     return decrementQuantity?.call(product, isLocal);
   }
@@ -2402,6 +2476,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
         updateProductQuantity,
     TResult Function(Product product, bool isLocal)? incrementQuantity,
     TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (decrementQuantity != null) {
@@ -2426,6 +2501,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
         updateProductQuantity,
     required TResult Function(_IncrementQuantity value) incrementQuantity,
     required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
   }) {
     return decrementQuantity(this);
   }
@@ -2445,6 +2521,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult? Function(_IncrementQuantity value)? incrementQuantity,
     TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
   }) {
     return decrementQuantity?.call(this);
   }
@@ -2464,6 +2541,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
     TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
     TResult Function(_IncrementQuantity value)? incrementQuantity,
     TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
     required TResult orElse(),
   }) {
     if (decrementQuantity != null) {
@@ -2486,11 +2564,218 @@ abstract class _DecrementQuantity implements CartEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchShippingChargeImplCopyWith<$Res> {
+  factory _$$FetchShippingChargeImplCopyWith(_$FetchShippingChargeImpl value,
+          $Res Function(_$FetchShippingChargeImpl) then) =
+      __$$FetchShippingChargeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String pincode});
+}
+
+/// @nodoc
+class __$$FetchShippingChargeImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$FetchShippingChargeImpl>
+    implements _$$FetchShippingChargeImplCopyWith<$Res> {
+  __$$FetchShippingChargeImplCopyWithImpl(_$FetchShippingChargeImpl _value,
+      $Res Function(_$FetchShippingChargeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pincode = null,
+  }) {
+    return _then(_$FetchShippingChargeImpl(
+      pincode: null == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchShippingChargeImpl implements _FetchShippingCharge {
+  const _$FetchShippingChargeImpl({required this.pincode});
+
+  @override
+  final String pincode;
+
+  @override
+  String toString() {
+    return 'CartEvent.fetchShippingCharge(pincode: $pincode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchShippingChargeImpl &&
+            (identical(other.pincode, pincode) || other.pincode == pincode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pincode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchShippingChargeImplCopyWith<_$FetchShippingChargeImpl> get copyWith =>
+      __$$FetchShippingChargeImplCopyWithImpl<_$FetchShippingChargeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(Product product, int quantity) addToCart,
+    required TResult Function(CartProduct product) removeFromCart,
+    required TResult Function(Product product, int quantity) addToCartLocal,
+    required TResult Function() getCartLocal,
+    required TResult Function(int index) deletCartLocal,
+    required TResult Function() clearAllCartLocal,
+    required TResult Function() sendLocalServerCart,
+    required TResult Function(Product product, int quantity, bool isLocal)
+        updateProductQuantity,
+    required TResult Function(Product product, bool isLocal) incrementQuantity,
+    required TResult Function(Product product, bool isLocal) decrementQuantity,
+    required TResult Function(String pincode) fetchShippingCharge,
+  }) {
+    return fetchShippingCharge(pincode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(Product product, int quantity)? addToCart,
+    TResult? Function(CartProduct product)? removeFromCart,
+    TResult? Function(Product product, int quantity)? addToCartLocal,
+    TResult? Function()? getCartLocal,
+    TResult? Function(int index)? deletCartLocal,
+    TResult? Function()? clearAllCartLocal,
+    TResult? Function()? sendLocalServerCart,
+    TResult? Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult? Function(Product product, bool isLocal)? incrementQuantity,
+    TResult? Function(Product product, bool isLocal)? decrementQuantity,
+    TResult? Function(String pincode)? fetchShippingCharge,
+  }) {
+    return fetchShippingCharge?.call(pincode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(Product product, int quantity)? addToCart,
+    TResult Function(CartProduct product)? removeFromCart,
+    TResult Function(Product product, int quantity)? addToCartLocal,
+    TResult Function()? getCartLocal,
+    TResult Function(int index)? deletCartLocal,
+    TResult Function()? clearAllCartLocal,
+    TResult Function()? sendLocalServerCart,
+    TResult Function(Product product, int quantity, bool isLocal)?
+        updateProductQuantity,
+    TResult Function(Product product, bool isLocal)? incrementQuantity,
+    TResult Function(Product product, bool isLocal)? decrementQuantity,
+    TResult Function(String pincode)? fetchShippingCharge,
+    required TResult orElse(),
+  }) {
+    if (fetchShippingCharge != null) {
+      return fetchShippingCharge(pincode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToCart value) addToCart,
+    required TResult Function(_RemoveFromCart value) removeFromCart,
+    required TResult Function(_AddToCartLocal value) addToCartLocal,
+    required TResult Function(_GetCartLocal value) getCartLocal,
+    required TResult Function(_DeleteCartLocal value) deletCartLocal,
+    required TResult Function(_ClearAllCartLocal value) clearAllCartLocal,
+    required TResult Function(_SendLocalServerCart value) sendLocalServerCart,
+    required TResult Function(_UpdateProductQuantity value)
+        updateProductQuantity,
+    required TResult Function(_IncrementQuantity value) incrementQuantity,
+    required TResult Function(_DecrementQuantity value) decrementQuantity,
+    required TResult Function(_FetchShippingCharge value) fetchShippingCharge,
+  }) {
+    return fetchShippingCharge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToCart value)? addToCart,
+    TResult? Function(_RemoveFromCart value)? removeFromCart,
+    TResult? Function(_AddToCartLocal value)? addToCartLocal,
+    TResult? Function(_GetCartLocal value)? getCartLocal,
+    TResult? Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult? Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult? Function(_SendLocalServerCart value)? sendLocalServerCart,
+    TResult? Function(_UpdateProductQuantity value)? updateProductQuantity,
+    TResult? Function(_IncrementQuantity value)? incrementQuantity,
+    TResult? Function(_DecrementQuantity value)? decrementQuantity,
+    TResult? Function(_FetchShippingCharge value)? fetchShippingCharge,
+  }) {
+    return fetchShippingCharge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToCart value)? addToCart,
+    TResult Function(_RemoveFromCart value)? removeFromCart,
+    TResult Function(_AddToCartLocal value)? addToCartLocal,
+    TResult Function(_GetCartLocal value)? getCartLocal,
+    TResult Function(_DeleteCartLocal value)? deletCartLocal,
+    TResult Function(_ClearAllCartLocal value)? clearAllCartLocal,
+    TResult Function(_SendLocalServerCart value)? sendLocalServerCart,
+    TResult Function(_UpdateProductQuantity value)? updateProductQuantity,
+    TResult Function(_IncrementQuantity value)? incrementQuantity,
+    TResult Function(_DecrementQuantity value)? decrementQuantity,
+    TResult Function(_FetchShippingCharge value)? fetchShippingCharge,
+    required TResult orElse(),
+  }) {
+    if (fetchShippingCharge != null) {
+      return fetchShippingCharge(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchShippingCharge implements CartEvent {
+  const factory _FetchShippingCharge({required final String pincode}) =
+      _$FetchShippingChargeImpl;
+
+  String get pincode;
+  @JsonKey(ignore: true)
+  _$$FetchShippingChargeImplCopyWith<_$FetchShippingChargeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CartState {
   CartItem get cartItem => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get isFetchingDeliveryCharge => throw _privateConstructorUsedError;
+  double get deliveryCharges => throw _privateConstructorUsedError;
   List<CartProductLocal> get cartData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2507,6 +2792,8 @@ abstract class $CartStateCopyWith<$Res> {
       {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
+      bool isFetchingDeliveryCharge,
+      double deliveryCharges,
       List<CartProductLocal> cartData});
 
   $CartItemCopyWith<$Res> get cartItem;
@@ -2528,6 +2815,8 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isFetchingDeliveryCharge = null,
+    Object? deliveryCharges = null,
     Object? cartData = null,
   }) {
     return _then(_value.copyWith(
@@ -2543,6 +2832,14 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingDeliveryCharge: null == isFetchingDeliveryCharge
+          ? _value.isFetchingDeliveryCharge
+          : isFetchingDeliveryCharge // ignore: cast_nullable_to_non_nullable
+              as bool,
+      deliveryCharges: null == deliveryCharges
+          ? _value.deliveryCharges
+          : deliveryCharges // ignore: cast_nullable_to_non_nullable
+              as double,
       cartData: null == cartData
           ? _value.cartData
           : cartData // ignore: cast_nullable_to_non_nullable
@@ -2571,6 +2868,8 @@ abstract class _$$CartStateImplCopyWith<$Res>
       {CartItem cartItem,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
+      bool isFetchingDeliveryCharge,
+      double deliveryCharges,
       List<CartProductLocal> cartData});
 
   @override
@@ -2591,6 +2890,8 @@ class __$$CartStateImplCopyWithImpl<$Res>
     Object? cartItem = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isFetchingDeliveryCharge = null,
+    Object? deliveryCharges = null,
     Object? cartData = null,
   }) {
     return _then(_$CartStateImpl(
@@ -2606,6 +2907,14 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFetchingDeliveryCharge: null == isFetchingDeliveryCharge
+          ? _value.isFetchingDeliveryCharge
+          : isFetchingDeliveryCharge // ignore: cast_nullable_to_non_nullable
+              as bool,
+      deliveryCharges: null == deliveryCharges
+          ? _value.deliveryCharges
+          : deliveryCharges // ignore: cast_nullable_to_non_nullable
+              as double,
       cartData: null == cartData
           ? _value._cartData
           : cartData // ignore: cast_nullable_to_non_nullable
@@ -2621,6 +2930,8 @@ class _$CartStateImpl extends _CartState {
       {required this.cartItem,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
+      required this.isFetchingDeliveryCharge,
+      required this.deliveryCharges,
       required final List<CartProductLocal> cartData})
       : _cartData = cartData,
         super._();
@@ -2631,6 +2942,10 @@ class _$CartStateImpl extends _CartState {
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
+  @override
+  final bool isFetchingDeliveryCharge;
+  @override
+  final double deliveryCharges;
   final List<CartProductLocal> _cartData;
   @override
   List<CartProductLocal> get cartData {
@@ -2641,7 +2956,7 @@ class _$CartStateImpl extends _CartState {
 
   @override
   String toString() {
-    return 'CartState(cartItem: $cartItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, cartData: $cartData)';
+    return 'CartState(cartItem: $cartItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isFetchingDeliveryCharge: $isFetchingDeliveryCharge, deliveryCharges: $deliveryCharges, cartData: $cartData)';
   }
 
   @override
@@ -2656,6 +2971,11 @@ class _$CartStateImpl extends _CartState {
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            (identical(
+                    other.isFetchingDeliveryCharge, isFetchingDeliveryCharge) ||
+                other.isFetchingDeliveryCharge == isFetchingDeliveryCharge) &&
+            (identical(other.deliveryCharges, deliveryCharges) ||
+                other.deliveryCharges == deliveryCharges) &&
             const DeepCollectionEquality().equals(other._cartData, _cartData));
   }
 
@@ -2665,6 +2985,8 @@ class _$CartStateImpl extends _CartState {
       cartItem,
       apiFailureOrSuccessOption,
       isFetching,
+      isFetchingDeliveryCharge,
+      deliveryCharges,
       const DeepCollectionEquality().hash(_cartData));
 
   @JsonKey(ignore: true)
@@ -2680,6 +3002,8 @@ abstract class _CartState extends CartState {
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
+      required final bool isFetchingDeliveryCharge,
+      required final double deliveryCharges,
       required final List<CartProductLocal> cartData}) = _$CartStateImpl;
   const _CartState._() : super._();
 
@@ -2689,6 +3013,10 @@ abstract class _CartState extends CartState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
+  @override
+  bool get isFetchingDeliveryCharge;
+  @override
+  double get deliveryCharges;
   @override
   List<CartProductLocal> get cartData;
   @override

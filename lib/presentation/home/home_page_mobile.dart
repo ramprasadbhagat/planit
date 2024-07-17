@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
@@ -80,6 +81,36 @@ class HomePageMobile extends StatelessWidget {
           listenWhen: (previous, current) => previous.orders != current.orders,
           listener: (context, state) {
             context.read<CartBloc>().add(const CartEvent.fetch());
+          },
+        ),
+        BlocListener<CartBloc, CartState>(
+          listenWhen: (previous, current) =>
+              previous.cartItem != current.cartItem &&
+              previous.isFetching != current.isFetching &&
+              !current.isFetching,
+          listener: (context, state) {
+            final addressBook =
+                context.read<AddressBookBloc>().state.selectedAddress;
+            if (addressBook.pincode.isNotEmpty) {
+              context.read<CartBloc>().add(
+                    CartEvent.fetchShippingCharge(
+                      pincode: addressBook.pincode,
+                    ),
+                  );
+            }
+          },
+        ),
+        BlocListener<AddressBookBloc, AddressBookState>(
+          listenWhen: (previous, current) =>
+              previous.selectedAddress != current.selectedAddress,
+          listener: (context, state) {
+            if (state.selectedAddress.pincode.isNotEmpty) {
+              context.read<CartBloc>().add(
+                    CartEvent.fetchShippingCharge(
+                      pincode: state.selectedAddress.pincode,
+                    ),
+                  );
+            }
           },
         ),
       ],

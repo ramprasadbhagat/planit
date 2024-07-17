@@ -32,6 +32,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           cartItem: e.cartItem,
           date: e.date,
           coupon: e.coupon,
+          deliveryCharge: e.deliveryCharge,
         );
         failureOrSuccess.fold(
           (failure) => emit(

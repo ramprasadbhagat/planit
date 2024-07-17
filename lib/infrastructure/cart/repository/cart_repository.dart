@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
@@ -142,6 +144,24 @@ class CartRepository extends ICartRepository {
 
       return const Right(unit);
     } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, double>> fetchDeliveryCharge({
+    required String cartId,
+    required String pincode,
+  }) async {
+    try {
+      final deliveryCharge = await remoteDataSource.getDeliveryCharge(
+        cartId: cartId,
+        pincode: pincode,
+      );
+
+      return Right(deliveryCharge);
+    } catch (e) {
+      log(e.toString());
       return Left(FailureHandler.handleFailure(e));
     }
   }

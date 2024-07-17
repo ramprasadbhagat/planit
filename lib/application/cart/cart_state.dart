@@ -7,6 +7,8 @@ class CartState with _$CartState {
     required CartItem cartItem,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required bool isFetchingDeliveryCharge,
+    required double deliveryCharges,
     required List<CartProductLocal> cartData,
   }) = _CartState;
 
@@ -15,6 +17,8 @@ class CartState with _$CartState {
         apiFailureOrSuccessOption: none(),
         isFetching: true,
         cartData: [],
+        isFetchingDeliveryCharge: false,
+        deliveryCharges: 0,
       );
 
   bool get isCartEmpty => cartItem.products.isEmpty && cartData.isEmpty;
@@ -55,4 +59,8 @@ class CartState with _$CartState {
         )?.quantity) ??
         0;
   }
+
+  String get getDeliveryChargeDisplayString => deliveryCharges == 0.0
+      ? 'Free'
+      : '₹${deliveryCharges.toStringAsFixed(1)}';
 }

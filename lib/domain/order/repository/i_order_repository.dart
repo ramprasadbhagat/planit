@@ -11,6 +11,7 @@ abstract class IOrderRepository {
     required AddressBook address,
     required String date,
     required Coupon coupon,
+    required double deliveryCharge,
   });
 
   Future<Either<ApiFailure, List<Order>>> getAllOrders();

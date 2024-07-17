@@ -8,6 +8,7 @@ class OrderEvent with _$OrderEvent {
     required AddressBook addressBook,
     required String date,
     required Coupon coupon,
+    required double deliveryCharge,
   }) = _SubmitOrder;
 
   const factory OrderEvent.fetchOrders() = _FetchOrders;
