@@ -86,6 +86,9 @@ class HighlightItem extends StatelessWidget {
               builder: (BuildContext context) => CommonBottomSheet(
                 child: AddToCartBottomSheet(
                   productId: item.toProduct.productId.getValue(),
+                  attributeItemId: item.attributeItemId.isValid()
+                      ? item.attributeItemId.getValue()
+                      : null,
                 ),
               ),
             ),

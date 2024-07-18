@@ -65,25 +65,10 @@ class AddReviewBloc extends Bloc<AddReviewEvent, AddReviewState> {
           message: state.message,
         );
 
-        failureOrSuccessOption.fold(
-          (l) => emit(
-            state.copyWith(
-              isFetching: false,
-              apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
-            ),
-          ),
-          (r) => emit(
-            state.copyWith(
-              isFetching: false,
-              apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
-            ),
-          ),
-        );
-
         emit(
           state.copyWith(
             isFetching: false,
-            apiFailureOrSuccessOption: some(right(unit)),
+            apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
           ),
         );
       },
@@ -93,11 +78,16 @@ class AddReviewBloc extends Bloc<AddReviewEvent, AddReviewState> {
             isFetching: true,
           ),
         );
-        await Future.delayed(const Duration(seconds: 3));
+        final failureOrSuccessOption = await reviewRepository.addOrderReview(
+          orderId: state.selectedOrder.id.getValue(),
+          rating: state.rating,
+          message: state.message,
+        );
+
         emit(
           state.copyWith(
             isFetching: false,
-            apiFailureOrSuccessOption: some(right(unit)),
+            apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
           ),
         );
       },

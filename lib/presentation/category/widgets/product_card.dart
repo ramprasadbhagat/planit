@@ -49,6 +49,9 @@ class ProductCard extends StatelessWidget {
             builder: (BuildContext context) => CommonBottomSheet(
               child: AddToCartBottomSheet(
                 productId: product.productId.getValue(),
+                attributeItemId: product.attributeItemId.isValid()
+                    ? product.attributeItemId.getValue()
+                    : null,
               ),
             ),
           ),

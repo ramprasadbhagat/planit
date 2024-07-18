@@ -19,7 +19,8 @@ mixin _$ProductDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(ProductId productId) fetch,
+    required TResult Function(ProductId productId, String? attributeItemId)
+        fetch,
     required TResult Function(ProductAttribute productAttribute)
         changeSelectedAttribute,
   }) =>
@@ -27,7 +28,7 @@ mixin _$ProductDetailEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(ProductId productId)? fetch,
+    TResult? Function(ProductId productId, String? attributeItemId)? fetch,
     TResult? Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
   }) =>
@@ -35,7 +36,7 @@ mixin _$ProductDetailEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(ProductId productId)? fetch,
+    TResult Function(ProductId productId, String? attributeItemId)? fetch,
     TResult Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
     required TResult orElse(),
@@ -123,7 +124,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(ProductId productId) fetch,
+    required TResult Function(ProductId productId, String? attributeItemId)
+        fetch,
     required TResult Function(ProductAttribute productAttribute)
         changeSelectedAttribute,
   }) {
@@ -134,7 +136,7 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(ProductId productId)? fetch,
+    TResult? Function(ProductId productId, String? attributeItemId)? fetch,
     TResult? Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
   }) {
@@ -145,7 +147,7 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(ProductId productId)? fetch,
+    TResult Function(ProductId productId, String? attributeItemId)? fetch,
     TResult Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
     required TResult orElse(),
@@ -202,7 +204,7 @@ abstract class _$$FetchImplCopyWith<$Res> {
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProductId productId});
+  $Res call({ProductId productId, String? attributeItemId});
 }
 
 /// @nodoc
@@ -217,12 +219,17 @@ class __$$FetchImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? productId = null,
+    Object? attributeItemId = freezed,
   }) {
     return _then(_$FetchImpl(
       null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
               as ProductId,
+      attributeItemId: freezed == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -230,14 +237,16 @@ class __$$FetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  const _$FetchImpl(this.productId);
+  const _$FetchImpl(this.productId, {this.attributeItemId});
 
   @override
   final ProductId productId;
+  @override
+  final String? attributeItemId;
 
   @override
   String toString() {
-    return 'ProductDetailEvent.fetch(productId: $productId)';
+    return 'ProductDetailEvent.fetch(productId: $productId, attributeItemId: $attributeItemId)';
   }
 
   @override
@@ -246,11 +255,13 @@ class _$FetchImpl implements _Fetch {
         (other.runtimeType == runtimeType &&
             other is _$FetchImpl &&
             (identical(other.productId, productId) ||
-                other.productId == productId));
+                other.productId == productId) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId);
+  int get hashCode => Object.hash(runtimeType, productId, attributeItemId);
 
   @JsonKey(ignore: true)
   @override
@@ -262,35 +273,36 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(ProductId productId) fetch,
+    required TResult Function(ProductId productId, String? attributeItemId)
+        fetch,
     required TResult Function(ProductAttribute productAttribute)
         changeSelectedAttribute,
   }) {
-    return fetch(productId);
+    return fetch(productId, attributeItemId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(ProductId productId)? fetch,
+    TResult? Function(ProductId productId, String? attributeItemId)? fetch,
     TResult? Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
   }) {
-    return fetch?.call(productId);
+    return fetch?.call(productId, attributeItemId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(ProductId productId)? fetch,
+    TResult Function(ProductId productId, String? attributeItemId)? fetch,
     TResult Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(productId);
+      return fetch(productId, attributeItemId);
     }
     return orElse();
   }
@@ -332,9 +344,11 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements ProductDetailEvent {
-  const factory _Fetch(final ProductId productId) = _$FetchImpl;
+  const factory _Fetch(final ProductId productId,
+      {final String? attributeItemId}) = _$FetchImpl;
 
   ProductId get productId;
+  String? get attributeItemId;
   @JsonKey(ignore: true)
   _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -420,7 +434,8 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(ProductId productId) fetch,
+    required TResult Function(ProductId productId, String? attributeItemId)
+        fetch,
     required TResult Function(ProductAttribute productAttribute)
         changeSelectedAttribute,
   }) {
@@ -431,7 +446,7 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(ProductId productId)? fetch,
+    TResult? Function(ProductId productId, String? attributeItemId)? fetch,
     TResult? Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
   }) {
@@ -442,7 +457,7 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(ProductId productId)? fetch,
+    TResult Function(ProductId productId, String? attributeItemId)? fetch,
     TResult Function(ProductAttribute productAttribute)?
         changeSelectedAttribute,
     required TResult orElse(),

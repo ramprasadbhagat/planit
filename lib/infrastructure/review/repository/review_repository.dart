@@ -22,9 +22,28 @@ class ReviewRepository implements IReviewRepository {
     required String orderId,
     required double rating,
     required String message,
-  }) {
-    // TODO: implement addOrderReview
-    throw UnimplementedError();
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final list = await localDataSource.addProductReview();
+
+        return Right(list);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+
+    try {
+      await remoteDataSource.addOrderReview(
+        message: message,
+        rating: rating,
+        orderId: orderId,
+      );
+
+      return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
   }
 
   @override

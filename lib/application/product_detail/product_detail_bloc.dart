@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -42,8 +43,15 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
             emit(
               state.copyWith(
                 product: res,
-                selectedProductAttribute:
-                    res.attribute.firstOrNull ?? ProductAttribute.empty(),
+                selectedProductAttribute: e.attributeItemId != null
+                    ? res.attribute.firstWhere(
+                        (element) =>
+                            element.attributeItemId.getValue() ==
+                            e.attributeItemId,
+                        orElse: () => (res.attribute.firstOrNull ??
+                            ProductAttribute.empty()),
+                      )
+                    : (res.attribute.firstOrNull ?? ProductAttribute.empty()),
                 isFetching: false,
               ),
             );
