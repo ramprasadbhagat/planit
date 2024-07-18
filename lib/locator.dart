@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
@@ -20,6 +21,7 @@ import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/review/repository/i_review_repository.dart';
 import 'package:planit/domain/user/repository/i_user_repository.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_remote.dart';
@@ -59,6 +61,9 @@ import 'package:planit/infrastructure/product/repository/product_repository.dart
 import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_local.dart';
 import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_remote.dart';
 import 'package:planit/infrastructure/quick_picks/repository/quick_picks_repository.dart';
+import 'package:planit/infrastructure/review/datasource/review_local.dart';
+import 'package:planit/infrastructure/review/datasource/review_remote.dart';
+import 'package:planit/infrastructure/review/repository/review_repository.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_local.dart';
 import 'package:planit/infrastructure/similar_product/datasource/similar_product_remote.dart';
 import 'package:planit/infrastructure/similar_product/repository/similar_product_repository.dart';
@@ -566,5 +571,31 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => ComplainBloc(repository: locator<ComplainRepository>()),
+  );
+
+  /////============================================================
+  //  Order Review
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const ReviewLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => ReviewRemoteDataSource(
+      storageService: locator<StorageService>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IReviewRepository>(
+    () => ReviewRepository(
+      config: locator<Config>(),
+      localDataSource: locator<ReviewLocalDataSource>(),
+      remoteDataSource: locator<ReviewRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => AddReviewBloc(reviewRepository: locator<IReviewRepository>()),
   );
 }

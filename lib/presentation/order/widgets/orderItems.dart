@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
@@ -164,14 +166,24 @@ class OrderItemWidget extends StatelessWidget {
                   const Spacer(),
                   ElevatedButton(
                     onPressed: () {
+                      context.read<AddReviewBloc>().add(
+                            AddReviewEvent.selectOrderItem(
+                              orderItem: orderItem,
+                            ),
+                          );
                       showModalBottomSheet<void>(
                         context: context,
                         isScrollControlled: true,
-                        builder: (BuildContext context) =>
-                            const CommonBottomSheet(
-                          child: ReviewDialogBox(),
+                        builder: (_) => CommonBottomSheet(
+                          child: ReviewDialogBox(
+                            orderItem: orderItem,
+                          ),
                         ),
-                      );
+                      ).then((value) {
+                        context.read<AddReviewBloc>().add(
+                              const AddReviewEvent.clearOnCancel(),
+                            );
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
