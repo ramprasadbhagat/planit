@@ -19,9 +19,11 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
   final String productId;
+  final String? attributeItemId;
   const AddToCartBottomSheet({
     super.key,
     required this.productId,
+    this.attributeItemId,
   });
 
   @override
@@ -30,7 +32,12 @@ class AddToCartBottomSheet extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => locator<ProductDetailBloc>()
-        ..add(ProductDetailEvent.fetch(ProductId(productId))),
+        ..add(
+          ProductDetailEvent.fetch(
+            ProductId(productId),
+            attributeItemId: attributeItemId,
+          ),
+        ),
       child: BlocBuilder<ProductDetailBloc, ProductDetailState>(
         builder: (context, state) {
           return Skeletonizer(

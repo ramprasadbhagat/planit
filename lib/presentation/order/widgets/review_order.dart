@@ -1,138 +1,196 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/order/widgets/rating.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class ReviewOrderDialogBox extends StatelessWidget {
-  const ReviewOrderDialogBox({super.key});
+  final Order order;
+  const ReviewOrderDialogBox({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.8,
-      child: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                const Icon(
-                  Icons.calendar_month,
-                  size: 18,
-                  color: AppColors.grey2,
-                ),
-                Text(
-                  ' Order ID : ORD10786420 ',
-                  style: textTheme.titleMedium?.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        ),
+        child: Scaffold(
+          body: BlocConsumer<AddReviewBloc, AddReviewState>(
+            listenWhen: (previous, current) =>
+                previous.isFetching != current.isFetching &&
+                !current.isFetching,
+            buildWhen: (previous, current) =>
+                previous.isFetching != current.isFetching,
+            listener: (context, state) {
+              state.apiFailureOrSuccessOption.fold(() {}, (a) {
+                a.fold(
+                  (l) {
+                    final snackBar = SnackBar(
+                      content: Text(l.failureMessage),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  (r) {
+                    context.router.maybePop();
+                    const snackBar = SnackBar(
+                      content: Text('Review added successfully'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                );
+              });
+            },
+            builder: (context, state) {
+              return Skeletonizer(
+                enabled: state.isFetching,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 40,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.calendar_month,
+                              size: 18,
+                              color: AppColors.grey2,
+                            ),
+                            Text(
+                              ' Order ID : ${order.id.getValue()} ',
+                              style: textTheme.titleMedium?.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.timer_outlined,
+                              size: 18,
+                              color: AppColors.grey2,
+                            ),
+                            Text(
+                              ' Delivered on : ${order.deliveryDate.getDisplayValue}',
+                              style: textTheme.titleMedium?.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              PngImage.dollar,
+                              height: 12,
+                              width: 15,
+                            ),
+                            Text(
+                              ' Price : ${order.getTotalPrice}   |   ${order.orderItem.length} Items ',
+                              style: textTheme.titleMedium?.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Divider(
+                          height: 60,
+                          color: AppColors.lightGray,
+                          indent: 0,
+                          endIndent: 0,
+                        ),
+                        const Text(
+                          'Rate your overall experience ?',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const StarRating(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Material(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          clipBehavior: Clip.hardEdge,
+                          elevation: 5,
+                          child: TextFormField(
+                            onChanged: (value) =>
+                                context.read<AddReviewBloc>().add(
+                                      AddReviewEvent.onMessageChange(
+                                        message: value,
+                                      ),
+                                    ),
+                            textAlignVertical: TextAlignVertical.center,
+                            maxLines: 4,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              fillColor: Colors.white,
+                              hintText: 'Type Something',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (context.read<AddReviewBloc>().state.rating ==
+                                0) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Please give atleast one Star 🙁',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+                            context
+                                .read<AddReviewBloc>()
+                                .add(const AddReviewEvent.submitOrderReview());
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.black,
+                            minimumSize: const Size(330, 50),
+                          ),
+                          child: const Text('Submit'),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.timer_outlined,
-                  size: 18,
-                  color: AppColors.grey2,
-                ),
-                Text(
-                  ' Delivered on : 2nd June 2024 , 4:30 pm',
-                  style: textTheme.titleMedium?.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  PngImage.dollar,
-                  height: 12,
-                  width: 15,
-                ),
-                Text(
-                  ' Price : ₹ 699.00   |   2 Items ',
-                  style: textTheme.titleMedium?.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Divider(
-              height: 2,
-              color: AppColors.lightGray,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              'Rate your overall experience ?',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const StarRating(),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                // border: Border.all(color: Color.fromRGBO(0, 0, b, opacity)),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 188, 186, 186),
-                    offset: Offset(0.0, 1.0),
-                    blurRadius: 0.8,
-                  ),
-                ],
-              ),
-              child: TextFormField(
-                textAlignVertical: TextAlignVertical.center,
-                maxLines: 2,
-                //or null
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  fillColor: Colors.white,
-                  // contentPadding:
-                  //     EdgeInsets.symmetric(vertical: 30.00, horizontal: 40),
-                  hintText: 'Type Something',
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.black,
-                minimumSize: const Size(330, 50),
-              ),
-              child: const Text('Submit'),
-            ),
-          ],
+              );
+            },
+          ),
         ),
       ),
     );

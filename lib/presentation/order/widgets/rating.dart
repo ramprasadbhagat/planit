@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
+import 'package:planit/presentation/theme/colors.dart';
 
 class StarRating extends StatefulWidget {
   const StarRating({super.key});
@@ -20,16 +23,14 @@ class _StarRatingState extends State<StarRating> {
         direction: Axis.horizontal,
         allowHalfRating: true,
         itemCount: 5,
-        // unratedColor: Colors.white,
-
         itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
         itemBuilder: (context, _) => const Icon(
           Icons.star,
-          color: Colors.yellow,
+          color: AppColors.primary,
         ),
-        onRatingUpdate: (rating) {
-          // print(rating);
-        },
+        onRatingUpdate: (rating) => context
+            .read<AddReviewBloc>()
+            .add(AddReviewEvent.onRatingChange(rating: rating)),
       ),
     );
   }

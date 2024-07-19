@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
@@ -96,6 +97,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<ComplainBloc>(
           create: (context) => locator<ComplainBloc>(),
+        ),
+        BlocProvider<AddReviewBloc>(
+          create: (context) => locator<AddReviewBloc>(),
         ),
       ],
       child: MaterialApp.router(

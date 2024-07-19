@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
@@ -16,7 +18,7 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
+    context.read<AddReviewBloc>().add(AddReviewEvent.selectOrder(order: order));
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -174,7 +176,6 @@ class OrderDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(color: Color.fromRGBO(0, 0, b, opacity)),
                         color: Colors.white,
                         boxShadow: const [
                           BoxShadow(
@@ -397,7 +398,9 @@ class OrderDetailsPage extends StatelessWidget {
                             height: 10,
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
                             child: Column(
                               children: [
                                 if (order.isCouponApplied)
@@ -597,11 +600,16 @@ class OrderDetailsPage extends StatelessWidget {
                     showModalBottomSheet<void>(
                       context: context,
                       isScrollControlled: true,
-                      builder: (BuildContext context) =>
-                          const CommonBottomSheet(
-                        child: ReviewOrderDialogBox(),
+                      builder: (_) => CommonBottomSheet(
+                        child: ReviewOrderDialogBox(
+                          order: order,
+                        ),
                       ),
-                    );
+                    ).then((value) {
+                      context
+                          .read<AddReviewBloc>()
+                          .add(const AddReviewEvent.clearOnCancel());
+                    });
                   },
                   child: Text(
                     'Rate Your Order',

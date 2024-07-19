@@ -29,6 +29,25 @@ class Order with _$Order {
     required List<AddressBook> deliveryAddress,
     required List<OrderItem> orderItem,
   }) = _Order;
+
+  factory Order.empty() => Order(
+        id: StringValue(''),
+        invoiceId: StringValue(''),
+        couponId: StringValue(''),
+        userId: StringValue(''),
+        deliveryAddressId: StringValue(''),
+        paymentStatus: StringValue(''),
+        orderStatus: StringValue(''),
+        totalPrice: IntegerValue(0),
+        subTotal: IntegerValue(0),
+        deliveryCharge: IntegerValue(0),
+        totalDiscount: IntegerValue(0),
+        orderDate: DateTime(2024),
+        deliveryDate: DeliveryDate(''),
+        isCouponApplied: false,
+        deliveryAddress: [],
+        orderItem: [],
+      );
 }
 
 extension OrderX on Order {
