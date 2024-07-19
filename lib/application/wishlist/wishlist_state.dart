@@ -39,7 +39,7 @@ class WishlistState with _$WishlistState {
     return getAllWishList.firstWhereOrNull(
       (element) {
         final checkAttributeExistAndMatch = element.attributeItemId.isNotEmpty
-            ? element.attributeItemId == product.attributeItemProductId
+            ? element.attributeItemId == product.attributeItemId.getValue()
             : true;
 
         return (element.id == product.productId.getValue()) &&

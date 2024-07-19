@@ -14,5 +14,7 @@ abstract class PngImage {
   static const String coupon = '${_basePath}coupon.png';
   static const String orderItemIcon = '${_basePath}orderItemIcon.png';
   static const String location = '${_basePath}location.png';
+  static const String oos = '${_basePath}oos.png';
+  static const String stock = '${_basePath}stock.png';
   static String generic(image) => '$_basePath$image';
 }

@@ -128,7 +128,8 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         );
         final failureOrSuccess = await repository.addToWishlist(
           productId: e.product.productId.getValue(),
-          attributeItemId: e.product.attributeItemProductId,
+          attributeItemId: e.product.attributeItemId
+              .getOrDefaultValue(e.product.attributeItemProductId),
           price: e.product.getPriceValue,
           quantity: '1',
         );

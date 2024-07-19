@@ -2,6 +2,7 @@ part of 'product_detail_bloc.dart';
 
 @freezed
 class ProductDetailState with _$ProductDetailState {
+  const ProductDetailState._();
   const factory ProductDetailState({
     required ProductDetail product,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
@@ -15,4 +16,6 @@ class ProductDetailState with _$ProductDetailState {
         isFetching: true,
         selectedProductAttribute: ProductAttribute.empty(),
       );
+
+  bool get isOOS => selectedProductAttribute.quantity <= 0;
 }

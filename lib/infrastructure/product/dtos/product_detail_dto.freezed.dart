@@ -24,7 +24,7 @@ mixin _$ProductDetailDto {
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', name: 'productName')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0, readValue: intReadValue)
   int get startingPrice => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $ProductDetailDtoCopyWith<$Res> {
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(defaultValue: '') String name,
+      @JsonKey(defaultValue: '', name: 'productName') String name,
       @JsonKey(defaultValue: 0, readValue: intReadValue) int startingPrice,
       @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
       Map<String, dynamic> price,
@@ -130,7 +130,7 @@ abstract class _$$ProductDetailDtoImplCopyWith<$Res>
       {@JsonKey(name: 'id', defaultValue: '') String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(defaultValue: '') String name,
+      @JsonKey(defaultValue: '', name: 'productName') String name,
       @JsonKey(defaultValue: 0, readValue: intReadValue) int startingPrice,
       @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
       Map<String, dynamic> price,
@@ -201,7 +201,7 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
       {@JsonKey(name: 'id', defaultValue: '') required this.productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
-      @JsonKey(defaultValue: '') required this.name,
+      @JsonKey(defaultValue: '', name: 'productName') required this.name,
       @JsonKey(defaultValue: 0, readValue: intReadValue)
       required this.startingPrice,
       @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
@@ -227,7 +227,7 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
   @JsonKey(name: 'productDescription', defaultValue: '')
   final String productDescription;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', name: 'productName')
   final String name;
   @override
   @JsonKey(defaultValue: 0, readValue: intReadValue)
@@ -315,7 +315,8 @@ abstract class _ProductDetailDto extends ProductDetailDto {
       {@JsonKey(name: 'id', defaultValue: '') required final String productId,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required final String productDescription,
-      @JsonKey(defaultValue: '') required final String name,
+      @JsonKey(defaultValue: '', name: 'productName')
+      required final String name,
       @JsonKey(defaultValue: 0, readValue: intReadValue)
       required final int startingPrice,
       @JsonKey(name: 'price', defaultValue: {}, readValue: priceReadValue)
@@ -339,7 +340,7 @@ abstract class _ProductDetailDto extends ProductDetailDto {
   @JsonKey(name: 'productDescription', defaultValue: '')
   String get productDescription;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', name: 'productName')
   String get name;
   @override
   @JsonKey(defaultValue: 0, readValue: intReadValue)

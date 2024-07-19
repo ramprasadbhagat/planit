@@ -644,12 +644,13 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductDetailStateImpl implements _ProductDetailState {
+class _$ProductDetailStateImpl extends _ProductDetailState {
   const _$ProductDetailStateImpl(
       {required this.product,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.selectedProductAttribute});
+      required this.selectedProductAttribute})
+      : super._();
 
   @override
   final ProductDetail product;
@@ -693,7 +694,7 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
           this, _$identity);
 }
 
-abstract class _ProductDetailState implements ProductDetailState {
+abstract class _ProductDetailState extends ProductDetailState {
   const factory _ProductDetailState(
           {required final ProductDetail product,
           required final Option<Either<ApiFailure, dynamic>>
@@ -701,6 +702,7 @@ abstract class _ProductDetailState implements ProductDetailState {
           required final bool isFetching,
           required final ProductAttribute selectedProductAttribute}) =
       _$ProductDetailStateImpl;
+  const _ProductDetailState._() : super._();
 
   @override
   ProductDetail get product;
