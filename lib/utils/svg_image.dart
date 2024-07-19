@@ -43,6 +43,8 @@ abstract class SvgImage {
   static const String reviewIcon = '${_basePath}review.svg';
   static const String filterIcon = '${_basePath}filter.svg';
   static const String recipeEmptyIcon = '${_basePath}recipe_empty.svg';
+  static const String stockIcon = '${_basePath}stock.svg';
+  static const String oosIcon = '${_basePath}oos.svg';
   static const String recipeIngredientsIcon =
       '${_basePath}recipe_ingredients.svg';
 }

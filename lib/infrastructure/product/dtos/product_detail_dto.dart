@@ -15,7 +15,11 @@ class ProductDetailDto with _$ProductDetailDto {
     @JsonKey(name: 'id', defaultValue: '') required String productId,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
-    @JsonKey(defaultValue: '') required String name,
+    @JsonKey(
+      defaultValue: '',
+      name: 'productName',
+    )
+    required String name,
     @JsonKey(
       defaultValue: 0,
       readValue: intReadValue,

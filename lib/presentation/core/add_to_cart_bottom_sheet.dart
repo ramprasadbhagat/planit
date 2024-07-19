@@ -7,12 +7,16 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/locator.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_section.dart';
+import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
+import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -96,13 +100,35 @@ class AddToCartBottomSheet extends StatelessWidget {
                                         .toList(),
                                   ),
                             const SizedBox(
-                              height: 5,
+                              height: 15,
                             ),
-                            Text(
-                              state.product.name,
-                              style: textTheme.labelLarge?.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  state.isOOS ? PngImage.oos : PngImage.stock,
+                                  height: 34,
+                                  width: 25,
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    state.product.name,
+                                    style: textTheme.titleLarge?.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 20,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                AddToWishlistButton(
+                                  product: state.product.toProduct(
+                                    state.selectedProductAttribute,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 5,
@@ -266,6 +292,29 @@ class AddToCartBottomSheet extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class AddToWishlistButton extends StatelessWidget {
+  final Product product;
+  const AddToWishlistButton({
+    super.key,
+    required this.product,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<WishlistBloc, WishlistState>(
+      builder: (context, state) {
+        final item = state.getwishlistProduct(product);
+        if (item == null) {
+          return AddToListButton(product: product);
+        }
+        return ItemCountWidget(
+          item: item,
+        );
+      },
     );
   }
 }
