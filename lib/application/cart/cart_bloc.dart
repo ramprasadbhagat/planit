@@ -36,6 +36,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           (failure) => emit(
             state.copyWith(
               isFetching: false,
+              cartItem: CartItem.empty(),
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),

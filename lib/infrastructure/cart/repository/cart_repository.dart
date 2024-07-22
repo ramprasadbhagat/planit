@@ -77,6 +77,7 @@ class CartRepository extends ICartRepository {
         productId: product.productId.getValue(),
         quantity: quantity,
         cartId: cartId,
+        attributeItemId: product.attributeItemId.getValue(),
       );
 
       return Right(cartItems);
