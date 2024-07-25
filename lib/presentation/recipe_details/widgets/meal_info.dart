@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class MealInfo extends StatelessWidget {
+  final Recipe recipe;
   const MealInfo({
     super.key,
+    required this.recipe,
   });
 
   @override
@@ -28,12 +31,12 @@ class MealInfo extends StatelessWidget {
                     width: 3,
                   ),
                   Text.rich(
-                    const TextSpan(
+                    TextSpan(
                       text: 'Time Required :',
                       children: [
                         TextSpan(
-                          text: '25 mins',
-                          style: TextStyle(
+                          text: recipe.timeRequired.getValue(),
+                          style: const TextStyle(
                             color: AppColors.grey6,
                             fontWeight: FontWeight.w700,
                           ),
@@ -53,12 +56,12 @@ class MealInfo extends StatelessWidget {
                     width: 3,
                   ),
                   Text.rich(
-                    const TextSpan(
+                    TextSpan(
                       text: 'Difficulty Level :',
                       children: [
                         TextSpan(
-                          text: 'Easy',
-                          style: TextStyle(
+                          text: recipe.difficultyLevel.getValue(),
+                          style: const TextStyle(
                             color: AppColors.grey6,
                             fontWeight: FontWeight.w700,
                           ),
@@ -89,12 +92,12 @@ class MealInfo extends StatelessWidget {
                     width: 3,
                   ),
                   Text.rich(
-                    const TextSpan(
+                    TextSpan(
                       text: 'Serving Size :',
                       children: [
                         TextSpan(
-                          text: '2 eggs, 200 grams',
-                          style: TextStyle(
+                          text: recipe.servingSize.getValue(),
+                          style: const TextStyle(
                             color: AppColors.grey6,
                             fontWeight: FontWeight.w700,
                           ),
@@ -115,12 +118,12 @@ class MealInfo extends StatelessWidget {
                     width: 3,
                   ),
                   Text.rich(
-                    const TextSpan(
-                      text: 'Number of Serving :',
+                    TextSpan(
+                      text: 'Number of Serving : ',
                       children: [
                         TextSpan(
-                          text: ' 2',
-                          style: TextStyle(
+                          text: recipe.numberServings.getValue(),
+                          style: const TextStyle(
                             color: AppColors.grey6,
                             fontWeight: FontWeight.w700,
                           ),

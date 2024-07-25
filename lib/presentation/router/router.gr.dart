@@ -11,6 +11,7 @@
 import 'package:auto_route/auto_route.dart' as _i32;
 import 'package:flutter/material.dart' as _i33;
 import 'package:planit/domain/order/entities/order.dart' as _i34;
+import 'package:planit/domain/recipe/entities/recipe.dart' as _i35;
 import 'package:planit/presentation/add_money/add_money.dart' as _i2;
 import 'package:planit/presentation/address_book/adress_book_page.dart' as _i3;
 import 'package:planit/presentation/address_book/user_profile.dart' as _i29;
@@ -188,9 +189,13 @@ abstract class $AppRouter extends _i32.RootStackRouter {
       );
     },
     RecipeDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<RecipeDetailsRouteArgs>();
       return _i32.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i22.RecipeDetailsPage(),
+        child: _i22.RecipeDetailsPage(
+          key: args.key,
+          recipe: args.recipe,
+        ),
       );
     },
     SearchProductRoute.name: (routeData) {
@@ -600,16 +605,40 @@ class ReadRoute extends _i32.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i22.RecipeDetailsPage]
-class RecipeDetailsRoute extends _i32.PageRouteInfo<void> {
-  const RecipeDetailsRoute({List<_i32.PageRouteInfo>? children})
-      : super(
+class RecipeDetailsRoute extends _i32.PageRouteInfo<RecipeDetailsRouteArgs> {
+  RecipeDetailsRoute({
+    _i33.Key? key,
+    required _i35.Recipe recipe,
+    List<_i32.PageRouteInfo>? children,
+  }) : super(
           RecipeDetailsRoute.name,
+          args: RecipeDetailsRouteArgs(
+            key: key,
+            recipe: recipe,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RecipeDetailsRoute';
 
-  static const _i32.PageInfo<void> page = _i32.PageInfo<void>(name);
+  static const _i32.PageInfo<RecipeDetailsRouteArgs> page =
+      _i32.PageInfo<RecipeDetailsRouteArgs>(name);
+}
+
+class RecipeDetailsRouteArgs {
+  const RecipeDetailsRouteArgs({
+    this.key,
+    required this.recipe,
+  });
+
+  final _i33.Key? key;
+
+  final _i35.Recipe recipe;
+
+  @override
+  String toString() {
+    return 'RecipeDetailsRouteArgs{key: $key, recipe: $recipe}';
+  }
 }
 
 /// generated route for

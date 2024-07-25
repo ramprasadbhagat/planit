@@ -14,6 +14,7 @@ import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/application/product_image/product_image_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
@@ -21,6 +22,7 @@ import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/recipe/repository/i_recipe_repository.dart';
 import 'package:planit/domain/review/repository/i_review_repository.dart';
 import 'package:planit/domain/user/repository/i_user_repository.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
@@ -61,6 +63,9 @@ import 'package:planit/infrastructure/product/repository/product_repository.dart
 import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_local.dart';
 import 'package:planit/infrastructure/quick_picks/datasource/quick_picks_remote.dart';
 import 'package:planit/infrastructure/quick_picks/repository/quick_picks_repository.dart';
+import 'package:planit/infrastructure/recipe/datasource/recipe_local.dart';
+import 'package:planit/infrastructure/recipe/datasource/recipe_remote.dart';
+import 'package:planit/infrastructure/recipe/repository/recipe_repository.dart';
 import 'package:planit/infrastructure/review/datasource/review_local.dart';
 import 'package:planit/infrastructure/review/datasource/review_remote.dart';
 import 'package:planit/infrastructure/review/repository/review_repository.dart';
@@ -597,5 +602,30 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => AddReviewBloc(reviewRepository: locator<IReviewRepository>()),
+  );
+
+  /////============================================================
+  //  Recipe
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const RecipeLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => RecipeRemoteDataSource(
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IRecipeRepository>(
+    () => RecipeRepository(
+      config: locator<Config>(),
+      localDataSource: locator<RecipeLocalDataSource>(),
+      remoteDataSource: locator<RecipeRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => RecipeBloc(locator<IRecipeRepository>()),
   );
 }

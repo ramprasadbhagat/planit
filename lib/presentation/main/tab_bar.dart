@@ -10,6 +10,7 @@ import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
+import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -55,6 +56,7 @@ class _MainTabbarState extends State<MainTabbar> {
         );
     context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
     context.read<CouponBloc>().add(const CouponEvent.fetch());
+    context.read<RecipeBloc>().add(const RecipeEvent.fetch());
   }
 
   @override

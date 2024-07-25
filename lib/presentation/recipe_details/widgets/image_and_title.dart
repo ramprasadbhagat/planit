@@ -1,11 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class ImageAndTitleSection extends StatelessWidget {
-  const ImageAndTitleSection({super.key});
+  final Recipe recipe;
+  const ImageAndTitleSection({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +18,43 @@ class ImageAndTitleSection extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: Image.asset(
-              PngImage.generic('recipe.png'),
+          // ClipRRect(
+          //   borderRadius: const BorderRadius.all(Radius.circular(10)),
+          //   child: Image.asset(
+          //     PngImage.generic('recipe.png'),
+          //   ),
+          // ),
+          FlutterCarousel(
+            options: CarouselOptions(
+              viewportFraction: 1,
+              height: 196,
+              autoPlay: true,
+              showIndicator: false,
             ),
+            items: recipe.recipeImages.isEmpty
+                ? [
+                    Image.asset(
+                      PngImage.placeholder,
+                    ),
+                  ]
+                : (recipe.recipeImages).map((i) {
+                    return ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      child: SizedBox(
+                        width: double.maxFinite,
+                        child: CachedNetworkImage(
+                          imageUrl: i.getValue(),
+                          fit: BoxFit.cover,
+                          errorWidget: (context, error, stack) {
+                            return Image.asset(
+                              PngImage.placeholder,
+                              fit: BoxFit.fitHeight,
+                            );
+                          },
+                        ),
+                      ),
+                    );
+                  }).toList(),
           ),
           const Positioned(
             top: -17,
@@ -65,16 +101,16 @@ class ImageAndTitleSection extends StatelessWidget {
                           strokeAlign: BorderSide.strokeAlignOutside,
                         ),
                       ),
-                      child: const Column(
+                      child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             size: 15,
                           ),
                           Text(
-                            '4.5',
-                            style: TextStyle(
+                            recipe.rating.toStringAsFixed(1),
+                            style: const TextStyle(
                               fontSize: 8.5,
                               color: AppColors.black,
                             ),
@@ -91,17 +127,17 @@ class ImageAndTitleSection extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Shakshouka',
-                          style: TextStyle(
+                        Text(
+                          recipe.name.getValue(),
+                          style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const Text(
-                          'A flavourful Middle Eastern breakfast, easy to prepare and with a delicious medley of flavours.',
-                          style: TextStyle(
-                            fontSize: 10,
+                        Text(
+                          recipe.writeup.getValue(),
+                          style: const TextStyle(
+                            fontSize: 11,
                           ),
                         ),
                         const Divider(
@@ -121,17 +157,17 @@ class ImageAndTitleSection extends StatelessWidget {
                                 const SizedBox(
                                   width: 3,
                                 ),
-                                const Text.rich(
+                                Text.rich(
                                   TextSpan(
                                     text: 'Cuisine :',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: 'Mediterraneanouka',
-                                        style: TextStyle(
+                                        text: recipe.cuisine.getValue(),
+                                        style: const TextStyle(
                                           fontSize: 10,
                                         ),
                                       ),
@@ -151,17 +187,17 @@ class ImageAndTitleSection extends StatelessWidget {
                                 const SizedBox(
                                   width: 3,
                                 ),
-                                const Text.rich(
+                                Text.rich(
                                   TextSpan(
                                     text: 'Course :',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: 'Breakfast',
-                                        style: TextStyle(
+                                        text: recipe.course.getValue(),
+                                        style: const TextStyle(
                                           fontSize: 10,
                                         ),
                                       ),

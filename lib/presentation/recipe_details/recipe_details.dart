@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/recipe_details/widgets/image_and_title.dart';
 import 'package:planit/presentation/recipe_details/widgets/meal_info.dart';
 import 'package:planit/presentation/recipe_details/widgets/nutritional_facts_dialog.dart';
@@ -11,7 +13,8 @@ import 'package:planit/utils/svg_image.dart';
 
 @RoutePage()
 class RecipeDetailsPage extends StatelessWidget {
-  const RecipeDetailsPage({super.key});
+  final Recipe recipe;
+  const RecipeDetailsPage({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +30,26 @@ class RecipeDetailsPage extends StatelessWidget {
         ),
         body: ListView(
           padding: const EdgeInsets.all(20),
-          children: const [
-            ImageAndTitleSection(),
-            MealInfo(),
-            NutritionalInfoButton(),
-            RecipeIngredients(),
-            RecipeEquipment(),
-            RecipeSteps(),
-            Reviews(),
+          children: [
+            ImageAndTitleSection(
+              recipe: recipe,
+            ),
+            MealInfo(
+              recipe: recipe,
+            ),
+            NutritionalInfoButton(
+              imageUrl: recipe.nutritionalTable.getValue(),
+            ),
+            RecipeIngredients(
+              recipe: recipe,
+            ),
+            RecipeEquipment(
+              recipe: recipe,
+            ),
+            RecipeSteps(
+              recipe: recipe,
+            ),
+            const Reviews(),
           ],
         ),
       ),
@@ -43,7 +58,8 @@ class RecipeDetailsPage extends StatelessWidget {
 }
 
 class RecipeSteps extends StatelessWidget {
-  const RecipeSteps({super.key});
+  final Recipe recipe;
+  const RecipeSteps({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -78,41 +94,42 @@ class RecipeSteps extends StatelessWidget {
               vertical: 18,
             ),
             child: Column(
-              children: List.generate(
-                6,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Column(
-                    children: [
-                      Row(
+              children: recipe.step
+                  .map(
+                    (e) => Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Column(
                         children: [
-                          SvgPicture.asset(
-                            SvgImage.foodPrepareIcon,
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                SvgImage.foodPrepareIcon,
+                              ),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                'Step ${e.stepNumber}',
+                                style: textTheme.titleSmall?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
                           ),
                           const SizedBox(
-                            width: 3,
+                            height: 5,
                           ),
                           Text(
-                            'Step ${index + 1}',
-                            style: textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.w500,
+                            e.stepDescription.getValue(),
+                            style: textTheme.bodySmall?.copyWith(
+                              color: AppColors.grey4,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Heat olive oil in a large, flat vegetables are fully softened and spottily charred, about another 2 minutes. Add garlic, chilli powder and cumin and cook, stirring, about 30 seconds. Add tomatoes and stir to combine.',
-                        style: textTheme.bodySmall?.copyWith(
-                          color: AppColors.grey4,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ),
@@ -122,7 +139,8 @@ class RecipeSteps extends StatelessWidget {
 }
 
 class RecipeEquipment extends StatelessWidget {
-  const RecipeEquipment({super.key});
+  final Recipe recipe;
+  const RecipeEquipment({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -177,23 +195,24 @@ class RecipeEquipment extends StatelessWidget {
                 SizedBox(
                   width: double.maxFinite,
                   child: Wrap(
-                    children: List.generate(
-                      5,
-                      (index) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.39,
-                          child: Text(
-                            '${index + 1}. Chipping board',
-                            style: textTheme.titleSmall?.copyWith(
-                              color: AppColors.grey4,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 11,
+                    children: recipe.equipment
+                        .mapIndexed(
+                          (i, e) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.39,
+                              child: Text(
+                                '${i + 1}. ${e.ingredientName.getValue()}',
+                                style: textTheme.titleSmall?.copyWith(
+                                  color: AppColors.grey4,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
+                        )
+                        .toList(),
                   ),
                 ),
               ],
@@ -206,8 +225,10 @@ class RecipeEquipment extends StatelessWidget {
 }
 
 class NutritionalInfoButton extends StatelessWidget {
+  final String imageUrl;
   const NutritionalInfoButton({
     super.key,
+    required this.imageUrl,
   });
 
   @override
@@ -245,7 +266,9 @@ class NutritionalInfoButton extends StatelessWidget {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => const NutritionalFactsDialog(),
+                  builder: (context) => NutritionalFactsDialog(
+                    imageUrl: imageUrl,
+                  ),
                 );
               },
               child: const Text('View'),

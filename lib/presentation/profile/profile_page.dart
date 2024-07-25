@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
             title: 'My complaints',
           ),
           CustomTile(
-            onTap: () {},
+            onTap: () => context.router.navigate(const FavouriteRecipesRoute()),
             leadingIcon: Icons.star_border_outlined,
             title: 'My favourite recipes',
           ),
