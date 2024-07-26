@@ -28,7 +28,7 @@ mixin _$Recipe {
   StringValue get difficultyLevel => throw _privateConstructorUsedError;
   StringValue get numberServings => throw _privateConstructorUsedError;
   List<Ingredient> get ingredient => throw _privateConstructorUsedError;
-  List<Ingredient> get equipment => throw _privateConstructorUsedError;
+  List<Equipment> get equipment => throw _privateConstructorUsedError;
   List<RecipeStep> get step => throw _privateConstructorUsedError;
   List<StringValue> get recipeImages => throw _privateConstructorUsedError;
   StringValue get timeRequired => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $RecipeCopyWith<$Res> {
       StringValue difficultyLevel,
       StringValue numberServings,
       List<Ingredient> ingredient,
-      List<Ingredient> equipment,
+      List<Equipment> equipment,
       List<RecipeStep> step,
       List<StringValue> recipeImages,
       StringValue timeRequired});
@@ -143,7 +143,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
       equipment: null == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as List<Ingredient>,
+              as List<Equipment>,
       step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       StringValue difficultyLevel,
       StringValue numberServings,
       List<Ingredient> ingredient,
-      List<Ingredient> equipment,
+      List<Equipment> equipment,
       List<RecipeStep> step,
       List<StringValue> recipeImages,
       StringValue timeRequired});
@@ -266,7 +266,7 @@ class __$$RecipeImplCopyWithImpl<$Res>
       equipment: null == equipment
           ? _value._equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as List<Ingredient>,
+              as List<Equipment>,
       step: null == step
           ? _value._step
           : step // ignore: cast_nullable_to_non_nullable
@@ -299,7 +299,7 @@ class _$RecipeImpl implements _Recipe {
       required this.difficultyLevel,
       required this.numberServings,
       required final List<Ingredient> ingredient,
-      required final List<Ingredient> equipment,
+      required final List<Equipment> equipment,
       required final List<RecipeStep> step,
       required final List<StringValue> recipeImages,
       required this.timeRequired})
@@ -338,9 +338,9 @@ class _$RecipeImpl implements _Recipe {
     return EqualUnmodifiableListView(_ingredient);
   }
 
-  final List<Ingredient> _equipment;
+  final List<Equipment> _equipment;
   @override
-  List<Ingredient> get equipment {
+  List<Equipment> get equipment {
     if (_equipment is EqualUnmodifiableListView) return _equipment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_equipment);
@@ -443,7 +443,7 @@ abstract class _Recipe implements Recipe {
       required final StringValue difficultyLevel,
       required final StringValue numberServings,
       required final List<Ingredient> ingredient,
-      required final List<Ingredient> equipment,
+      required final List<Equipment> equipment,
       required final List<RecipeStep> step,
       required final List<StringValue> recipeImages,
       required final StringValue timeRequired}) = _$RecipeImpl;
@@ -473,7 +473,7 @@ abstract class _Recipe implements Recipe {
   @override
   List<Ingredient> get ingredient;
   @override
-  List<Ingredient> get equipment;
+  List<Equipment> get equipment;
   @override
   List<RecipeStep> get step;
   @override
@@ -648,6 +648,143 @@ abstract class _Ingredient implements Ingredient {
   @override
   @JsonKey(ignore: true)
   _$$IngredientImplCopyWith<_$IngredientImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Equipment {
+  StringValue get equipmentNumber => throw _privateConstructorUsedError;
+  StringValue get euipmentName => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EquipmentCopyWith<Equipment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EquipmentCopyWith<$Res> {
+  factory $EquipmentCopyWith(Equipment value, $Res Function(Equipment) then) =
+      _$EquipmentCopyWithImpl<$Res, Equipment>;
+  @useResult
+  $Res call({StringValue equipmentNumber, StringValue euipmentName});
+}
+
+/// @nodoc
+class _$EquipmentCopyWithImpl<$Res, $Val extends Equipment>
+    implements $EquipmentCopyWith<$Res> {
+  _$EquipmentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentNumber = null,
+    Object? euipmentName = null,
+  }) {
+    return _then(_value.copyWith(
+      equipmentNumber: null == equipmentNumber
+          ? _value.equipmentNumber
+          : equipmentNumber // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+      euipmentName: null == euipmentName
+          ? _value.euipmentName
+          : euipmentName // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EquipmentImplCopyWith<$Res>
+    implements $EquipmentCopyWith<$Res> {
+  factory _$$EquipmentImplCopyWith(
+          _$EquipmentImpl value, $Res Function(_$EquipmentImpl) then) =
+      __$$EquipmentImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StringValue equipmentNumber, StringValue euipmentName});
+}
+
+/// @nodoc
+class __$$EquipmentImplCopyWithImpl<$Res>
+    extends _$EquipmentCopyWithImpl<$Res, _$EquipmentImpl>
+    implements _$$EquipmentImplCopyWith<$Res> {
+  __$$EquipmentImplCopyWithImpl(
+      _$EquipmentImpl _value, $Res Function(_$EquipmentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentNumber = null,
+    Object? euipmentName = null,
+  }) {
+    return _then(_$EquipmentImpl(
+      equipmentNumber: null == equipmentNumber
+          ? _value.equipmentNumber
+          : equipmentNumber // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+      euipmentName: null == euipmentName
+          ? _value.euipmentName
+          : euipmentName // ignore: cast_nullable_to_non_nullable
+              as StringValue,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EquipmentImpl implements _Equipment {
+  const _$EquipmentImpl(
+      {required this.equipmentNumber, required this.euipmentName});
+
+  @override
+  final StringValue equipmentNumber;
+  @override
+  final StringValue euipmentName;
+
+  @override
+  String toString() {
+    return 'Equipment(equipmentNumber: $equipmentNumber, euipmentName: $euipmentName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EquipmentImpl &&
+            (identical(other.equipmentNumber, equipmentNumber) ||
+                other.equipmentNumber == equipmentNumber) &&
+            (identical(other.euipmentName, euipmentName) ||
+                other.euipmentName == euipmentName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, equipmentNumber, euipmentName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EquipmentImplCopyWith<_$EquipmentImpl> get copyWith =>
+      __$$EquipmentImplCopyWithImpl<_$EquipmentImpl>(this, _$identity);
+}
+
+abstract class _Equipment implements Equipment {
+  const factory _Equipment(
+      {required final StringValue equipmentNumber,
+      required final StringValue euipmentName}) = _$EquipmentImpl;
+
+  @override
+  StringValue get equipmentNumber;
+  @override
+  StringValue get euipmentName;
+  @override
+  @JsonKey(ignore: true)
+  _$$EquipmentImplCopyWith<_$EquipmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

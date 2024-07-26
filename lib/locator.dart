@@ -15,6 +15,7 @@ import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/application/product_image/product_image_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/recipe/recipe_bloc.dart';
+import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
 import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
@@ -615,6 +616,7 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => RecipeRemoteDataSource(
       httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
     ),
   );
 
@@ -627,5 +629,8 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => RecipeBloc(locator<IRecipeRepository>()),
+  );
+  locator.registerLazySingleton(
+    () => RecipeDetailsBloc(locator<IRecipeRepository>()),
   );
 }

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/domain/recipe/entities/recipe_review.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/rating_star.dart';
 import 'package:planit/presentation/recipe_details/widgets/add_recipe_review_bottom_sheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:readmore/readmore.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class Reviews extends StatelessWidget {
   const Reviews({super.key});
@@ -35,11 +43,26 @@ class Reviews extends StatelessWidget {
             ],
           ),
         ),
-        ListView.builder(
-          primary: false,
-          itemCount: 3,
-          shrinkWrap: true,
-          itemBuilder: (context, index) => const ReviewItemCard(),
+        BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
+          builder: (context, state) {
+            if (!state.isFetching && state.recipeDetails.reviews.isEmpty) {
+              return const NoData(
+                message: 'No Review Found',
+              );
+            }
+
+            return Skeletonizer(
+              enabled: state.isFetching,
+              child: ListView.builder(
+                primary: false,
+                itemCount: state.recipeDetails.reviews.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => ReviewItemCard(
+                  review: state.recipeDetails.reviews[index],
+                ),
+              ),
+            );
+          },
         ),
         Text(
           'View More',
@@ -51,23 +74,35 @@ class Reviews extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size.fromHeight(43),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(11)),
-            ),
-          ),
-          onPressed: () {
-            showModalBottomSheet<void>(
-              context: context,
-              isScrollControlled: true,
-              builder: (BuildContext context) => const CommonBottomSheet(
-                child: AddRecipeReviewBottomSheet(),
+        BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
+          builder: (context, state) {
+            return ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size.fromHeight(43),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(11)),
+                ),
               ),
+              onPressed: (context.read<AuthBloc>().state.isUnAuthenticated ||
+                      state.recipeDetails.reviews.any(
+                        (element) =>
+                            element.userId ==
+                            context.read<UserProfileBloc>().state.user.id,
+                      ))
+                  ? null
+                  : () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) =>
+                            const CommonBottomSheet(
+                          child: AddRecipeReviewBottomSheet(),
+                        ),
+                      );
+                    },
+              child: const Text('Add your review'),
             );
           },
-          child: const Text('Add your review'),
         ),
       ],
     );
@@ -75,7 +110,8 @@ class Reviews extends StatelessWidget {
 }
 
 class ReviewItemCard extends StatelessWidget {
-  const ReviewItemCard({super.key});
+  final RecipeReview review;
+  const ReviewItemCard({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +131,7 @@ class ReviewItemCard extends StatelessWidget {
             ),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,15 +141,15 @@ class ReviewItemCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Jenny Hiddlestone',
+                              review.recipeReviewerName.getValue(),
                               style: texttheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 6),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 6),
                               child: RatingStar(
-                                value: 4.3,
+                                value: review.recipeRating,
                               ),
                             ),
                           ],
@@ -129,7 +166,7 @@ class ReviewItemCard extends StatelessWidget {
                             width: 3,
                           ),
                           Text(
-                            '2 weeks ago',
+                            timeago.format(review.createdAt),
                             style: texttheme.bodySmall?.copyWith(
                               color: AppColors.textBlack,
                             ),
@@ -139,7 +176,7 @@ class ReviewItemCard extends StatelessWidget {
                     ],
                   ),
                   ReadMoreText(
-                    'Love it. This is my go-to weekend breakfast . Absolutely delicious. Perfect for any occasion Love it. This is my go-to weekend breakfast . Absolutely delicious. Perfect for any occasion. ',
+                    review.recipeReviewComments.getValue(),
                     trimMode: TrimMode.Line,
                     trimLines: 2,
                     colorClickableText: AppColors.black,

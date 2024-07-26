@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/recipe_details/widgets/image_and_title.dart';
 import 'package:planit/presentation/recipe_details/widgets/meal_info.dart';
@@ -18,41 +20,48 @@ class RecipeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery(
-      data: MediaQuery.of(context).copyWith(
-        textScaler: TextScaler.noScaling,
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Recipes'),
-          centerTitle: false,
-          leadingWidth: 35,
-        ),
-        body: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            ImageAndTitleSection(
-              recipe: recipe,
+    return BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
+      bloc: context.read<RecipeDetailsBloc>()
+        ..add(RecipeDetailsEvent.fetch(recipe)),
+      builder: (context, state) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.noScaling,
+          ),
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Recipes'),
+              centerTitle: false,
+              leadingWidth: 35,
             ),
-            MealInfo(
-              recipe: recipe,
+            body: ListView(
+              padding: const EdgeInsets.all(20),
+              children: [
+                ImageAndTitleSection(
+                  recipe: state.recipeDetails.recipe,
+                ),
+                MealInfo(
+                  recipe: state.recipeDetails.recipe,
+                ),
+                NutritionalInfoButton(
+                  imageUrl:
+                      state.recipeDetails.recipe.nutritionalTable.getValue(),
+                ),
+                RecipeIngredients(
+                  recipe: state.recipeDetails.recipe,
+                ),
+                RecipeEquipment(
+                  recipe: state.recipeDetails.recipe,
+                ),
+                RecipeSteps(
+                  recipe: state.recipeDetails.recipe,
+                ),
+                const Reviews(),
+              ],
             ),
-            NutritionalInfoButton(
-              imageUrl: recipe.nutritionalTable.getValue(),
-            ),
-            RecipeIngredients(
-              recipe: recipe,
-            ),
-            RecipeEquipment(
-              recipe: recipe,
-            ),
-            RecipeSteps(
-              recipe: recipe,
-            ),
-            const Reviews(),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
@@ -202,7 +211,7 @@ class RecipeEquipment extends StatelessWidget {
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.39,
                               child: Text(
-                                '${i + 1}. ${e.ingredientName.getValue()}',
+                                '${i + 1}. ${e.euipmentName.getValue()}',
                                 style: textTheme.titleSmall?.copyWith(
                                   color: AppColors.grey4,
                                   fontWeight: FontWeight.w500,

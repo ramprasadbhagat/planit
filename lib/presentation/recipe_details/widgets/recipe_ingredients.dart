@@ -98,7 +98,7 @@ class RecipeIngredients extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: Text(
-                            e.ingredientName.getValue(),
+                            '${e.ingredientNumber.getValue()}. ${e.ingredientName.getValue()}',
                             style: textTheme.titleSmall?.copyWith(
                               color: AppColors.grey4,
                               fontWeight: FontWeight.w500,

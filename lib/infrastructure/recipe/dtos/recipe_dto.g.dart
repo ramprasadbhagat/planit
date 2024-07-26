@@ -8,7 +8,7 @@ part of 'recipe_dto.dart';
 
 _$RecipeDtoImpl _$$RecipeDtoImplFromJson(Map<String, dynamic> json) =>
     _$RecipeDtoImpl(
-      id: json['id'] as String? ?? '',
+      id: parseId(json, 'id') as String? ?? '',
       name: json['name'] as String? ?? '',
       cuisine: json['cuisine'] as String? ?? '',
       course: json['course'] as String? ?? '',
@@ -75,6 +75,18 @@ Map<String, dynamic> _$$IngredientDtoImplToJson(_$IngredientDtoImpl instance) =>
       'ingredient_number': instance.ingredientNumber,
       'ingredient_name': instance.ingredientName,
       'ingredient_quantity': instance.ingredientQuantity,
+    };
+
+_$EquipmentDtoImpl _$$EquipmentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$EquipmentDtoImpl(
+      equipmentName: json['equipment_name'] as String? ?? '',
+      equipmentNumber: json['equipment_number'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$EquipmentDtoImplToJson(_$EquipmentDtoImpl instance) =>
+    <String, dynamic>{
+      'equipment_name': instance.equipmentName,
+      'equipment_number': instance.equipmentNumber,
     };
 
 _$RecipeStepDtoImpl _$$RecipeStepDtoImplFromJson(Map<String, dynamic> json) =>

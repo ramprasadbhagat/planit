@@ -20,7 +20,7 @@ RecipeDto _$RecipeDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecipeDto {
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseId)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get name => throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ abstract class $RecipeDtoCopyWith<$Res> {
       _$RecipeDtoCopyWithImpl<$Res, RecipeDto>;
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: '') String id,
+      {@JsonKey(defaultValue: '', readValue: parseId) String id,
       @JsonKey(defaultValue: '') String name,
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
@@ -201,7 +201,7 @@ abstract class _$$RecipeDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: '') String id,
+      {@JsonKey(defaultValue: '', readValue: parseId) String id,
       @JsonKey(defaultValue: '') String name,
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
@@ -327,7 +327,7 @@ class __$$RecipeDtoImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$RecipeDtoImpl extends _RecipeDto {
   const _$RecipeDtoImpl(
-      {@JsonKey(defaultValue: '') required this.id,
+      {@JsonKey(defaultValue: '', readValue: parseId) required this.id,
       @JsonKey(defaultValue: '') required this.name,
       @JsonKey(defaultValue: '') required this.cuisine,
       @JsonKey(defaultValue: '') required this.course,
@@ -357,7 +357,7 @@ class _$RecipeDtoImpl extends _RecipeDto {
       _$$RecipeDtoImplFromJson(json);
 
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseId)
   final String id;
   @override
   @JsonKey(defaultValue: '')
@@ -516,7 +516,7 @@ class _$RecipeDtoImpl extends _RecipeDto {
 
 abstract class _RecipeDto extends RecipeDto {
   const factory _RecipeDto(
-      {@JsonKey(defaultValue: '') required final String id,
+      {@JsonKey(defaultValue: '', readValue: parseId) required final String id,
       @JsonKey(defaultValue: '') required final String name,
       @JsonKey(defaultValue: '') required final String cuisine,
       @JsonKey(defaultValue: '') required final String course,
@@ -542,7 +542,7 @@ abstract class _RecipeDto extends RecipeDto {
       _$RecipeDtoImpl.fromJson;
 
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseId)
   String get id;
   @override
   @JsonKey(defaultValue: '')
@@ -792,6 +792,178 @@ abstract class _IngredientDto extends IngredientDto {
   @override
   @JsonKey(ignore: true)
   _$$IngredientDtoImplCopyWith<_$IngredientDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EquipmentDto _$EquipmentDtoFromJson(Map<String, dynamic> json) {
+  return _EquipmentDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EquipmentDto {
+  @JsonKey(defaultValue: '')
+  String get equipmentName => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
+  String get equipmentNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EquipmentDtoCopyWith<EquipmentDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EquipmentDtoCopyWith<$Res> {
+  factory $EquipmentDtoCopyWith(
+          EquipmentDto value, $Res Function(EquipmentDto) then) =
+      _$EquipmentDtoCopyWithImpl<$Res, EquipmentDto>;
+  @useResult
+  $Res call(
+      {@JsonKey(defaultValue: '') String equipmentName,
+      @JsonKey(defaultValue: '') String equipmentNumber});
+}
+
+/// @nodoc
+class _$EquipmentDtoCopyWithImpl<$Res, $Val extends EquipmentDto>
+    implements $EquipmentDtoCopyWith<$Res> {
+  _$EquipmentDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentName = null,
+    Object? equipmentNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      equipmentName: null == equipmentName
+          ? _value.equipmentName
+          : equipmentName // ignore: cast_nullable_to_non_nullable
+              as String,
+      equipmentNumber: null == equipmentNumber
+          ? _value.equipmentNumber
+          : equipmentNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EquipmentDtoImplCopyWith<$Res>
+    implements $EquipmentDtoCopyWith<$Res> {
+  factory _$$EquipmentDtoImplCopyWith(
+          _$EquipmentDtoImpl value, $Res Function(_$EquipmentDtoImpl) then) =
+      __$$EquipmentDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(defaultValue: '') String equipmentName,
+      @JsonKey(defaultValue: '') String equipmentNumber});
+}
+
+/// @nodoc
+class __$$EquipmentDtoImplCopyWithImpl<$Res>
+    extends _$EquipmentDtoCopyWithImpl<$Res, _$EquipmentDtoImpl>
+    implements _$$EquipmentDtoImplCopyWith<$Res> {
+  __$$EquipmentDtoImplCopyWithImpl(
+      _$EquipmentDtoImpl _value, $Res Function(_$EquipmentDtoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipmentName = null,
+    Object? equipmentNumber = null,
+  }) {
+    return _then(_$EquipmentDtoImpl(
+      equipmentName: null == equipmentName
+          ? _value.equipmentName
+          : equipmentName // ignore: cast_nullable_to_non_nullable
+              as String,
+      equipmentNumber: null == equipmentNumber
+          ? _value.equipmentNumber
+          : equipmentNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$EquipmentDtoImpl extends _EquipmentDto {
+  const _$EquipmentDtoImpl(
+      {@JsonKey(defaultValue: '') required this.equipmentName,
+      @JsonKey(defaultValue: '') required this.equipmentNumber})
+      : super._();
+
+  factory _$EquipmentDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EquipmentDtoImplFromJson(json);
+
+  @override
+  @JsonKey(defaultValue: '')
+  final String equipmentName;
+  @override
+  @JsonKey(defaultValue: '')
+  final String equipmentNumber;
+
+  @override
+  String toString() {
+    return 'EquipmentDto(equipmentName: $equipmentName, equipmentNumber: $equipmentNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EquipmentDtoImpl &&
+            (identical(other.equipmentName, equipmentName) ||
+                other.equipmentName == equipmentName) &&
+            (identical(other.equipmentNumber, equipmentNumber) ||
+                other.equipmentNumber == equipmentNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, equipmentName, equipmentNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EquipmentDtoImplCopyWith<_$EquipmentDtoImpl> get copyWith =>
+      __$$EquipmentDtoImplCopyWithImpl<_$EquipmentDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EquipmentDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EquipmentDto extends EquipmentDto {
+  const factory _EquipmentDto(
+          {@JsonKey(defaultValue: '') required final String equipmentName,
+          @JsonKey(defaultValue: '') required final String equipmentNumber}) =
+      _$EquipmentDtoImpl;
+  const _EquipmentDto._() : super._();
+
+  factory _EquipmentDto.fromJson(Map<String, dynamic> json) =
+      _$EquipmentDtoImpl.fromJson;
+
+  @override
+  @JsonKey(defaultValue: '')
+  String get equipmentName;
+  @override
+  @JsonKey(defaultValue: '')
+  String get equipmentNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$EquipmentDtoImplCopyWith<_$EquipmentDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

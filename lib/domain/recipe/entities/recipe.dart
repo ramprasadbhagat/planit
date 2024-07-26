@@ -17,11 +17,30 @@ class Recipe with _$Recipe {
     required StringValue difficultyLevel,
     required StringValue numberServings,
     required List<Ingredient> ingredient,
-    required List<Ingredient> equipment,
+    required List<Equipment> equipment,
     required List<RecipeStep> step,
     required List<StringValue> recipeImages,
     required StringValue timeRequired,
   }) = _Recipe;
+
+  factory Recipe.empty() => Recipe(
+        id: StringValue(''),
+        name: StringValue(''),
+        cuisine: StringValue(''),
+        course: StringValue(''),
+        servingSize: StringValue(''),
+        nutritionalTable: StringValue(''),
+        numRatings: StringValue(''),
+        rating: 0,
+        writeup: StringValue(''),
+        difficultyLevel: StringValue(''),
+        numberServings: StringValue(''),
+        ingredient: [],
+        equipment: [],
+        step: [],
+        recipeImages: [],
+        timeRequired: StringValue(''),
+      );
 }
 
 @freezed
@@ -31,6 +50,14 @@ class Ingredient with _$Ingredient {
     required StringValue ingredientName,
     required StringValue ingredientQuantity,
   }) = _Ingredient;
+}
+
+@freezed
+class Equipment with _$Equipment {
+  const factory Equipment({
+    required StringValue equipmentNumber,
+    required StringValue euipmentName,
+  }) = _Equipment;
 }
 
 @freezed

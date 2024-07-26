@@ -13,6 +13,7 @@ class RecipeDto with _$RecipeDto {
   const factory RecipeDto({
     @JsonKey(
       defaultValue: '',
+      readValue: parseId,
     )
     required String id,
     @JsonKey(
@@ -96,7 +97,7 @@ class RecipeDto with _$RecipeDto {
         ingredient:
             ingredient.map((e) => IngredientDto.fromJson(e).toDomain).toList(),
         equipment:
-            equipment.map((e) => IngredientDto.fromJson(e).toDomain).toList(),
+            equipment.map((e) => EquipmentDto.fromJson(e).toDomain).toList(),
         step: step.map((e) => RecipeStepDto.fromJson(e).toDomain).toList(),
         recipeImages: recipeImages.map((e) => StringValue(e)).toList(),
         timeRequired: StringValue(timeRequired),
@@ -135,6 +136,33 @@ class IngredientDto with _$IngredientDto {
 }
 
 @freezed
+class EquipmentDto with _$EquipmentDto {
+  const EquipmentDto._();
+
+  @JsonSerializable(
+    fieldRename: FieldRename.snake,
+  )
+  const factory EquipmentDto({
+    @JsonKey(
+      defaultValue: '',
+    )
+    required String equipmentName,
+    @JsonKey(
+      defaultValue: '',
+    )
+    required String equipmentNumber,
+  }) = _EquipmentDto;
+
+  factory EquipmentDto.fromJson(Map<String, dynamic> json) =>
+      _$EquipmentDtoFromJson(json);
+
+  Equipment get toDomain => Equipment(
+        equipmentNumber: StringValue(equipmentNumber),
+        euipmentName: StringValue(equipmentName),
+      );
+}
+
+@freezed
 class RecipeStepDto with _$RecipeStepDto {
   const RecipeStepDto._();
   @JsonSerializable(
@@ -158,4 +186,10 @@ class RecipeStepDto with _$RecipeStepDto {
         stepNumber: stepNumber,
         stepDescription: StringValue(stepDescription),
       );
+}
+
+Object parseId(Map data, String key) {
+  if (data['_id'] != null) return data['_id'];
+  if (data['id'] != null) return data['id'];
+  return data[key];
 }
