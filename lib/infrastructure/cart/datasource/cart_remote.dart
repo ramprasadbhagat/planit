@@ -54,6 +54,7 @@ class CartRemoteDataSource {
     required String productId,
     required String cartId,
     required int quantity,
+    required String attributeItemId,
   }) async {
     final res = await httpService.request(
       method: 'PATCH',
@@ -62,6 +63,7 @@ class CartRemoteDataSource {
         'product_id': productId,
         'quantity': quantity,
         'cart_id': cartId,
+        'attributeItemId': attributeItemId,
       },
     );
     _exceptionChecker(res: res);
