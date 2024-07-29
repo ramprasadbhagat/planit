@@ -1,13 +1,19 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/domain/home/entities/hot_recipe.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/home/read/widgets/recipe_filter_bottom_sheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HotRecipes extends StatelessWidget {
   const HotRecipes({super.key});
@@ -36,52 +42,87 @@ class HotRecipes extends StatelessWidget {
                         child: RecipeFilterBottomSheet(),
                       ),
                       isScrollControlled: true,
-                    );
+                    ).then((value) {
+                      context
+                          .read<RecipeBloc>()
+                          .add(const RecipeEvent.resetTempSelection());
+                    });
                   },
-                  child: Material(
-                    color: AppColors.transparent,
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: AppColors.grey4,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 8,
-                      ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(SvgImage.filterIcon),
-                          const SizedBox(
-                            width: 4,
+                  child: BlocBuilder<RecipeBloc, RecipeState>(
+                    buildWhen: (previous, current) =>
+                        previous.filterCount != current.filterCount,
+                    builder: (context, state) {
+                      return Badge(
+                        isLabelVisible: state.filterCount != 0,
+                        label: Text(
+                          '${state.filterCount}',
+                        ),
+                        textStyle: const TextStyle(fontSize: 10),
+                        child: Material(
+                          color: AppColors.transparent,
+                          elevation: 0,
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: AppColors.grey4,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
-                          Text(
-                            'Filter by',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.copyWith(
-                                  fontSize: 12,
-                                  color: AppColors.grey4,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(SvgImage.filterIcon),
+                                const SizedBox(
+                                  width: 4,
                                 ),
+                                Text(
+                                  'Filter by',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(
+                                        fontSize: 12,
+                                        color: AppColors.grey4,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
           ),
         ),
-        SliverList.builder(
-          itemCount: hotRecipeList.length,
-          itemBuilder: (BuildContext context, int index) => HotRecipeCard(
-            hotRecipe: hotRecipeList.elementAt(index),
-          ),
+        BlocBuilder<RecipeBloc, RecipeState>(
+          buildWhen: (previous, current) =>
+              previous.filteredRecipes != current.filteredRecipes ||
+              previous.isFetching != current.isFetching,
+          builder: (context, state) {
+            if (state.filteredRecipes.isEmpty && !state.isFetching) {
+              return const SliverToBoxAdapter(
+                child: NoData(
+                  message: 'No Recipe Found!',
+                ),
+              );
+            }
+
+            return Skeletonizer(
+              enabled: state.isFetching,
+              child: SliverList.builder(
+                itemCount: state.filteredRecipes.length,
+                itemBuilder: (BuildContext context, int index) => HotRecipeCard(
+                  recipe: state.filteredRecipes[index],
+                ),
+              ),
+            );
+          },
         ),
       ],
     );
@@ -89,10 +130,10 @@ class HotRecipes extends StatelessWidget {
 }
 
 class HotRecipeCard extends StatelessWidget {
-  final HotRecipe hotRecipe;
+  final Recipe recipe;
   const HotRecipeCard({
     super.key,
-    required this.hotRecipe,
+    required this.recipe,
   });
 
   @override
@@ -102,16 +143,32 @@ class HotRecipeCard extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: () {
-          context.router.navigate(const RecipeDetailsRoute());
+          context.router.navigate(
+            RecipeDetailsRoute(
+              recipe: recipe,
+            ),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Image.asset(
-                PngImage.placeholder,
-                width: 120,
-              ),
+              if (recipe.recipeImages.isNotEmpty)
+                CachedNetworkImage(
+                  imageUrl: recipe.recipeImages.first.getValue(),
+                  width: 120,
+                  errorWidget: (context, url, error) {
+                    return Image.asset(
+                      PngImage.placeholder,
+                      width: 120,
+                    );
+                  },
+                )
+              else
+                Image.asset(
+                  PngImage.placeholder,
+                  width: 120,
+                ),
               const SizedBox(
                 width: 10,
               ),
@@ -120,13 +177,13 @@ class HotRecipeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      hotRecipe.title,
+                      recipe.name.getValue(),
                       style: textTheme.labelSmall,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Text(
-                        hotRecipe.subTitle,
+                        recipe.writeup.getValue(),
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 9,
                           color: AppColors.grey2,
@@ -143,7 +200,7 @@ class HotRecipeCard extends StatelessWidget {
                           width: 3,
                         ),
                         Text(
-                          hotRecipe.rating.toString(),
+                          recipe.rating.toString(),
                           style: textTheme.bodyMedium?.copyWith(
                             fontSize: 12,
                           ),

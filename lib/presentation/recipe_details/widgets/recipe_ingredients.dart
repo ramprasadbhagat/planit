@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class RecipeIngredients extends StatelessWidget {
+  final Recipe recipe;
   const RecipeIngredients({
     super.key,
+    required this.recipe,
   });
 
   @override
@@ -87,20 +90,19 @@ class RecipeIngredients extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ...List.generate(
-                  8,
-                  (index) => Padding(
+                ...recipe.ingredient.map(
+                  (e) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Row(
                       children: [
                         Expanded(
                           flex: 3,
                           child: Text(
-                            'Extra virgin olive oil',
+                            '${e.ingredientNumber.getValue()}. ${e.ingredientName.getValue()}',
                             style: textTheme.titleSmall?.copyWith(
                               color: AppColors.grey4,
                               fontWeight: FontWeight.w500,
-                              fontSize: 9,
+                              fontSize: 11,
                             ),
                           ),
                         ),
@@ -110,48 +112,16 @@ class RecipeIngredients extends StatelessWidget {
                         Flexible(
                           flex: 1,
                           child: Text(
-                            '3 tbsp',
+                            e.ingredientQuantity.getValue(),
                             style: textTheme.titleSmall?.copyWith(
                               color: AppColors.grey4,
                               fontWeight: FontWeight.w500,
-                              fontSize: 9,
+                              fontSize: 11,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Text(
-                          'Bread (of your choice, such as sourdough, sliced, lightly toasted and lightly buttered, for serving)',
-                          style: textTheme.titleSmall?.copyWith(
-                            color: AppColors.grey4,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 9,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 60,
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Text(
-                          '3 tbsp',
-                          style: textTheme.titleSmall?.copyWith(
-                            color: AppColors.grey4,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 9,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],

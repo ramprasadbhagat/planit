@@ -6,15 +6,27 @@ import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class DeliveryDateSection extends StatefulWidget {
-  const DeliveryDateSection({super.key, required this.onChanged});
+  const DeliveryDateSection({
+    super.key,
+    required this.onChanged,
+    required this.initialDate,
+  });
   final Function(DateTime?) onChanged;
+  final DateTime initialDate;
 
   @override
   State<DeliveryDateSection> createState() => _DeliveryDateSectionState();
 }
 
 class _DeliveryDateSectionState extends State<DeliveryDateSection> {
-  DateTime? selectedDate;
+  late DateTime selectedDate;
+
+  @override
+  void initState() {
+    selectedDate = widget.initialDate;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -48,9 +60,7 @@ class _DeliveryDateSectionState extends State<DeliveryDateSection> {
                 width: 10,
               ),
               Text(
-                selectedDate == null
-                    ? 'DD / MM / YY'
-                    : DateFormat('dd / MM / yyyy').format(selectedDate!),
+                DateFormat('dd / MM / yyyy').format(selectedDate),
                 style: textTheme.labelSmall?.copyWith(
                   color: AppColors.grey2,
                   fontSize: 12,
@@ -78,24 +88,17 @@ class _DeliveryDateSectionState extends State<DeliveryDateSection> {
                   });
                 }
               },
-              style: selectedDate == null
-                  ? ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      backgroundColor: AppColors.black,
-                      maximumSize: const Size(330, 50),
-                    )
-                  : ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
-                        side: BorderSide(width: 1, color: Colors.black),
-                      ),
-                      backgroundColor: Colors.white,
-                    ),
+              style: ElevatedButton.styleFrom(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  side: BorderSide(width: 1, color: Colors.black),
+                ),
+                backgroundColor: Colors.white,
+              ),
               child: Text(
                 'Select',
                 style: textTheme.labelSmall?.copyWith(
-                  color:
-                      selectedDate == null ? AppColors.white : AppColors.black,
+                  color: AppColors.black,
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                 ),

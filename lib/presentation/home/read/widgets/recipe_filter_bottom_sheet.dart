@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 class RecipeFilterBottomSheet extends StatelessWidget {
@@ -6,22 +9,6 @@ class RecipeFilterBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cuisines = [
-      'Mediterranean',
-      'Continental',
-      'Indian',
-      'Mexican',
-      'American',
-      'Italian',
-      'European',
-    ];
-    final course = [
-      'Breakfast',
-      'Desert',
-      'Appetizer',
-      'Dinner',
-    ];
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -38,17 +25,33 @@ class RecipeFilterBottomSheet extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              FilterOptionList(
-                options: cuisines,
-                title: 'Cuisine',
-                initiallyExpanded: true,
+              BlocBuilder<RecipeBloc, RecipeState>(
+                builder: (context, state) {
+                  return FilterOptionList(
+                    options: state.cuisines,
+                    title: 'Cuisine',
+                    initiallyExpanded: true,
+                    onChange: (value) => context
+                        .read<RecipeBloc>()
+                        .add(RecipeEvent.cuisineCheckboxChange(value)),
+                    selectedOptions: state.tempSelectedCuisineFilter,
+                  );
+                },
               ),
               const SizedBox(
                 height: 15,
               ),
-              FilterOptionList(
-                options: course,
-                title: 'Course',
+              BlocBuilder<RecipeBloc, RecipeState>(
+                builder: (context, state) {
+                  return FilterOptionList(
+                    options: state.courses,
+                    title: 'Course',
+                    selectedOptions: state.tempSelectedCourseFilter,
+                    onChange: (value) => context
+                        .read<RecipeBloc>()
+                        .add(RecipeEvent.courseCheckboxChange(value)),
+                  );
+                },
               ),
             ],
           ),
@@ -61,31 +64,49 @@ class RecipeFilterBottomSheet extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(112, 38),
-                    side: const BorderSide(
-                      color: AppColors.grey4,
-                    ),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(50),
-                      ),
-                    ),
-                    textStyle: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: AppColors.textBlack,
+                BlocBuilder<RecipeBloc, RecipeState>(
+                  buildWhen: (previous, current) =>
+                      previous.filterCount != current.filterCount,
+                  builder: (context, state) {
+                    return OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        minimumSize: const Size(112, 38),
+                        side: const BorderSide(
+                          color: AppColors.grey4,
                         ),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Clear All(1)'),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        textStyle:
+                            Theme.of(context).textTheme.titleSmall?.copyWith(
+                                  color: AppColors.textBlack,
+                                ),
+                      ),
+                      onPressed: state.filterCount == 0
+                          ? null
+                          : () => context
+                              .read<RecipeBloc>()
+                              .add(const RecipeEvent.clearAllFilterClicked()),
+                      child: Text(
+                        'Clear All${state.filterCount == 0 ? '' : ' (${state.filterCount})'}',
+                      ),
+                    );
+                  },
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(112, 38),
                     textStyle: Theme.of(context).textTheme.titleSmall,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context
+                        .read<RecipeBloc>()
+                        .add(const RecipeEvent.applyFilterClicked());
+                    context.router.maybePop();
+                  },
                   child: const Text('Apply Filter'),
                 ),
               ],
@@ -100,14 +121,18 @@ class RecipeFilterBottomSheet extends StatelessWidget {
 class FilterOptionList extends StatelessWidget {
   final String title;
   final bool initiallyExpanded;
+  final Function(String value) onChange;
   const FilterOptionList({
     super.key,
     required this.options,
     required this.title,
     this.initiallyExpanded = false,
+    required this.onChange,
+    required this.selectedOptions,
   });
 
   final List<String> options;
+  final List<String> selectedOptions;
 
   @override
   Widget build(BuildContext context) {
@@ -146,8 +171,8 @@ class FilterOptionList extends StatelessWidget {
                     e,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  value: false,
-                  onChanged: (v) {},
+                  value: selectedOptions.contains(e),
+                  onChanged: (v) => onChange(e),
                   visualDensity: VisualDensity.compact,
                 ),
               )

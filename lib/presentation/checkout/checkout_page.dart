@@ -28,7 +28,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  String date = '';
+  DateTime date = DateTime.now();
   String paymentMethod = '';
   @override
   Widget build(BuildContext context) {
@@ -89,9 +89,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     DeliveryDateSection(
                       onChanged: (e) {
                         setState(() {
-                          date = DateFormat('yyyy-MM-dd').format(e!);
+                          date = e!;
                         });
                       },
+                      initialDate: date,
                     ),
                     const SizedBox(
                       height: 6,
@@ -234,7 +235,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                PlaceOrderButton(paymentMethod: paymentMethod, date: date),
+                PlaceOrderButton(
+                  paymentMethod: paymentMethod,
+                  date: DateFormat('yyyy-MM-dd').format(date),
+                ),
               ],
             ),
           ),
