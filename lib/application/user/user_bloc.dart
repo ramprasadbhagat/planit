@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/user/entities/user.dart';
@@ -94,8 +95,10 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
             ),
           );
 
-          final failureOrSuccessOption =
-              await repository.updateCurrentUser(user: state.updatedUser);
+          final failureOrSuccessOption = await repository.updateCurrentUser(
+            user: state.updatedUser,
+            localImagePath: state.localImagePath,
+          );
 
           failureOrSuccessOption.fold(
             (l) => emit(
@@ -122,6 +125,27 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
             ),
           );
         }
+      },
+      pickImageClick: (_PickImageClick value) async {
+        final failureOrSuccess = await repository.pickProfileImage();
+
+        failureOrSuccess.fold(
+          (l) => emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
+          (r) => emit(
+            state.copyWith(
+              localImagePath: r,
+            ),
+          ),
+        );
+      },
+      reset: (value) {
+        emit(
+          UserProfileState.initial(),
+        );
       },
     );
   }

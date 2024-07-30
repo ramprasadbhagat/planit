@@ -12,6 +12,7 @@ class UserProfileState with _$UserProfileState {
     required bool isEditMode,
     required bool showErrorMessage,
     required bool isSubmitting,
+    XFile? localImagePath,
   }) = _UserProfileState;
 
   factory UserProfileState.initial() => UserProfileState(

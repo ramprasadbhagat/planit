@@ -36,12 +36,12 @@ class ComplainListItem extends StatelessWidget {
                         text: complain.complainId.getValue(),
                         style: const TextStyle(
                           color: AppColors.black,
-                          fontSize: 12,
+                          fontSize: 10,
                         ),
                       ),
                     ],
                   ),
-                  style: textTheme.titleSmall,
+                  style: textTheme.bodySmall,
                 ),
                 const ComplainStatusChip(isSuccess: true),
               ],
@@ -60,7 +60,7 @@ class ComplainListItem extends StatelessWidget {
                   ),
                   Text(
                     DateFormat('dd-MM-yyyy').format(complain.createdAt),
-                    style: textTheme.titleSmall?.copyWith(
+                    style: textTheme.bodySmall?.copyWith(
                       color: AppColors.textBlack,
                     ),
                   ),

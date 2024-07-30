@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -241,34 +243,54 @@ class ProfileInformationSection extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                child: CachedNetworkImage(
-                                  imageUrl:
-                                      state.updatedUser.profileImage.getValue(),
-                                  errorWidget: (context, url, error) {
-                                    return const Icon(
-                                      Icons.person_outline,
-                                      size: 50,
-                                      color: AppColors.extraLightGrey2,
-                                    );
-                                  },
-                                  height: 100,
-                                  fit: BoxFit.fitHeight,
-                                ),
+                                child: state.localImagePath != null
+                                    ? Image.file(
+                                        File(state.localImagePath!.path),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : state.updatedUser.profileImage.isValid()
+                                        ? CachedNetworkImage(
+                                            imageUrl: state
+                                                .updatedUser.profileImage
+                                                .getValue(),
+                                            errorWidget: (context, url, error) {
+                                              return const Icon(
+                                                Icons.person_outline,
+                                                size: 50,
+                                                color:
+                                                    AppColors.extraLightGrey2,
+                                              );
+                                            },
+                                            height: 100,
+                                            fit: BoxFit.cover,
+                                          )
+                                        : const Icon(
+                                            Icons.person_outline,
+                                            size: 50,
+                                            color: AppColors.extraLightGrey2,
+                                          ),
                               ),
-                              state.isEditMode
-                                  ? Container(
-                                      padding: const EdgeInsets.all(6),
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: AppColors.extraLightGrey3,
-                                      ),
-                                      child: SvgPicture.asset(
-                                        SvgImage.edit,
-                                        height: 18,
-                                        fit: BoxFit.fitHeight,
-                                      ),
-                                    )
-                                  : const Icon(null),
+                              if (state.isEditMode)
+                                InkWell(
+                                  onTap: () {
+                                    context.read<UserProfileBloc>().add(
+                                          const UserProfileEvent
+                                              .pickImageClick(),
+                                        );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(6),
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.extraLightGrey3,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      SvgImage.edit,
+                                      height: 18,
+                                      fit: BoxFit.fitHeight,
+                                    ),
+                                  ),
+                                ),
                             ],
                           ),
                         ),

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
@@ -41,6 +42,7 @@ class UserRepository extends IUserRepository {
   @override
   Future<Either<ApiFailure, Unit>> updateCurrentUser({
     required CurrentUser user,
+    XFile? localImagePath,
   }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
@@ -52,9 +54,28 @@ class UserRepository extends IUserRepository {
       }
     }
     try {
-      await remoteDataSource.updateCurrentUser(user);
+      await remoteDataSource.updateCurrentUser(
+        user,
+        localImagePath: localImagePath,
+      );
 
       return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, XFile>> pickProfileImage() async {
+    try {
+      final pickedImage =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (pickedImage != null) {
+        return right(pickedImage);
+      } else {
+        return left(const ApiFailure.imagePickCancelledByUser());
+      }
     } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }

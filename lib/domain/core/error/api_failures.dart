@@ -8,6 +8,8 @@ class ApiFailure with _$ApiFailure {
   const factory ApiFailure.serverError(String message) = _ServerError;
   const factory ApiFailure.poorConnection() = _PoorConnection;
   const factory ApiFailure.serverTimeout() = _ServerTimeout;
+  const factory ApiFailure.imagePickCancelledByUser() =
+      _ImagePickCancelledByUser;
 }
 
 extension ApiFailureExt on ApiFailure {
@@ -16,5 +18,6 @@ extension ApiFailureExt on ApiFailure {
         serverError: (serverError) => serverError.message,
         poorConnection: (_) => 'Poor Internet connection',
         serverTimeout: (_) => 'Server time out',
+        imagePickCancelledByUser: (_) => 'Cancelled By User',
       );
 }

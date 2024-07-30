@@ -32,7 +32,7 @@ mixin _$CurrentUserDto {
   String get mobileNumber => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '', name: 'email')
   String get emailAddress => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseProfileImage)
   String get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +54,8 @@ abstract class $CurrentUserDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String fullName,
       @JsonKey(defaultValue: '', name: 'mobile_number') String mobileNumber,
       @JsonKey(defaultValue: '', name: 'email') String emailAddress,
-      @JsonKey(defaultValue: '') String profilePicture});
+      @JsonKey(defaultValue: '', readValue: parseProfileImage)
+      String profilePicture});
 }
 
 /// @nodoc
@@ -126,7 +127,8 @@ abstract class _$$CurrentUserDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String fullName,
       @JsonKey(defaultValue: '', name: 'mobile_number') String mobileNumber,
       @JsonKey(defaultValue: '', name: 'email') String emailAddress,
-      @JsonKey(defaultValue: '') String profilePicture});
+      @JsonKey(defaultValue: '', readValue: parseProfileImage)
+      String profilePicture});
 }
 
 /// @nodoc
@@ -192,7 +194,8 @@ class _$CurrentUserDtoImpl extends _CurrentUserDto {
       @JsonKey(defaultValue: '', name: 'mobile_number')
       required this.mobileNumber,
       @JsonKey(defaultValue: '', name: 'email') required this.emailAddress,
-      @JsonKey(defaultValue: '') required this.profilePicture})
+      @JsonKey(defaultValue: '', readValue: parseProfileImage)
+      required this.profilePicture})
       : super._();
 
   factory _$CurrentUserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -217,7 +220,7 @@ class _$CurrentUserDtoImpl extends _CurrentUserDto {
   @JsonKey(defaultValue: '', name: 'email')
   final String emailAddress;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseProfileImage)
   final String profilePicture;
 
   @override
@@ -267,16 +270,16 @@ class _$CurrentUserDtoImpl extends _CurrentUserDto {
 
 abstract class _CurrentUserDto extends CurrentUserDto {
   const factory _CurrentUserDto(
-          {@JsonKey(defaultValue: '') required final String id,
-          @JsonKey(defaultValue: '') required final String firstName,
-          @JsonKey(defaultValue: '') required final String lastName,
-          @JsonKey(defaultValue: '') required final String fullName,
-          @JsonKey(defaultValue: '', name: 'mobile_number')
-          required final String mobileNumber,
-          @JsonKey(defaultValue: '', name: 'email')
-          required final String emailAddress,
-          @JsonKey(defaultValue: '') required final String profilePicture}) =
-      _$CurrentUserDtoImpl;
+      {@JsonKey(defaultValue: '') required final String id,
+      @JsonKey(defaultValue: '') required final String firstName,
+      @JsonKey(defaultValue: '') required final String lastName,
+      @JsonKey(defaultValue: '') required final String fullName,
+      @JsonKey(defaultValue: '', name: 'mobile_number')
+      required final String mobileNumber,
+      @JsonKey(defaultValue: '', name: 'email')
+      required final String emailAddress,
+      @JsonKey(defaultValue: '', readValue: parseProfileImage)
+      required final String profilePicture}) = _$CurrentUserDtoImpl;
   const _CurrentUserDto._() : super._();
 
   factory _CurrentUserDto.fromJson(Map<String, dynamic> json) =
@@ -301,7 +304,7 @@ abstract class _CurrentUserDto extends CurrentUserDto {
   @JsonKey(defaultValue: '', name: 'email')
   String get emailAddress;
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: parseProfileImage)
   String get profilePicture;
   @override
   @JsonKey(ignore: true)

@@ -34,12 +34,18 @@ class HomePageMobile extends StatelessWidget {
                     .add(const UserProfileEvent.fetch());
                 context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
               },
+              unauthenticated: () {
+                context
+                    .read<UserProfileBloc>()
+                    .add(const UserProfileEvent.reset());
+              },
             );
           },
         ),
         BlocListener<UserProfileBloc, UserProfileState>(
           listenWhen: (previous, current) =>
               previous.user != current.user &&
+              !current.user.isEmpty &&
               !current.isProfileCompleted &&
               !current.user.isFirstLogin,
           listener: (context, state) {

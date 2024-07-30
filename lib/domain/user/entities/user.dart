@@ -26,4 +26,6 @@ class CurrentUser with _$CurrentUser {
 
   bool get isValid =>
       fullName.isValid() && emailAddress.isValid() && mobileNumber.isValid();
+
+  bool get isEmpty => this == CurrentUser.empty();
 }

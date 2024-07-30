@@ -11,4 +11,6 @@ class UserProfileEvent with _$UserProfileEvent {
       _EmailFieldChange;
   const factory UserProfileEvent.phoneFieldChange({required String value}) =
       _PhoneFieldChange;
+  const factory UserProfileEvent.pickImageClick() = _PickImageClick;
+  const factory UserProfileEvent.reset() = _Reset;
 }

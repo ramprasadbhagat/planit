@@ -32,7 +32,7 @@ class UserProfilePic extends StatelessWidget {
           );
         },
         height: 60,
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
       ),
     );
   }
