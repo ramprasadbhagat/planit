@@ -37,6 +37,7 @@ class CurrentUserDto with _$CurrentUserDto {
     required String emailAddress,
     @JsonKey(
       defaultValue: '',
+      readValue: parseProfileImage,
     )
     required String profilePicture,
   }) = _CurrentUserDto;
@@ -55,4 +56,10 @@ class CurrentUserDto with _$CurrentUserDto {
         profileImage: StringValue(profilePicture),
         isFirstLogin: false,
       );
+}
+
+dynamic parseProfileImage(Map json, String key) {
+  if (json['userImages'] != null && json['userImages'] is List) {
+    return (json['userImages'] as List).firstOrNull;
+  }
 }

@@ -24,6 +24,8 @@ mixin _$UserProfileEvent {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +36,8 @@ mixin _$UserProfileEvent {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +48,8 @@ mixin _$UserProfileEvent {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$UserProfileEvent {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$UserProfileEvent {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +85,8 @@ mixin _$UserProfileEvent {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +154,8 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return fetch();
   }
@@ -155,6 +169,8 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return fetch?.call();
   }
@@ -168,6 +184,8 @@ class _$FetchImpl implements _Fetch {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -185,6 +203,8 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return fetch(this);
   }
@@ -198,6 +218,8 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return fetch?.call(this);
   }
@@ -211,6 +233,8 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -268,6 +292,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return toggleEditMode();
   }
@@ -281,6 +307,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return toggleEditMode?.call();
   }
@@ -294,6 +322,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (toggleEditMode != null) {
@@ -311,6 +341,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return toggleEditMode(this);
   }
@@ -324,6 +356,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return toggleEditMode?.call(this);
   }
@@ -337,6 +371,8 @@ class _$ToggleEditModeImpl implements _ToggleEditMode {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (toggleEditMode != null) {
@@ -394,6 +430,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return updateUserClicked();
   }
@@ -407,6 +445,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return updateUserClicked?.call();
   }
@@ -420,6 +460,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (updateUserClicked != null) {
@@ -437,6 +479,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return updateUserClicked(this);
   }
@@ -450,6 +494,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return updateUserClicked?.call(this);
   }
@@ -463,6 +509,8 @@ class _$UpdateUserClickedImpl implements _UpdateUserClicked {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (updateUserClicked != null) {
@@ -547,6 +595,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return nameFieldChange(value);
   }
@@ -560,6 +610,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return nameFieldChange?.call(value);
   }
@@ -573,6 +625,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (nameFieldChange != null) {
@@ -590,6 +644,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return nameFieldChange(this);
   }
@@ -603,6 +659,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return nameFieldChange?.call(this);
   }
@@ -616,6 +674,8 @@ class _$NameFieldChangeImpl implements _NameFieldChange {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (nameFieldChange != null) {
@@ -706,6 +766,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return emailFieldChange(value);
   }
@@ -719,6 +781,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return emailFieldChange?.call(value);
   }
@@ -732,6 +796,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (emailFieldChange != null) {
@@ -749,6 +815,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return emailFieldChange(this);
   }
@@ -762,6 +830,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return emailFieldChange?.call(this);
   }
@@ -775,6 +845,8 @@ class _$EmailFieldChangeImpl implements _EmailFieldChange {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (emailFieldChange != null) {
@@ -865,6 +937,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     required TResult Function(String value) nameFieldChange,
     required TResult Function(String value) emailFieldChange,
     required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
   }) {
     return phoneFieldChange(value);
   }
@@ -878,6 +952,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     TResult? Function(String value)? nameFieldChange,
     TResult? Function(String value)? emailFieldChange,
     TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
   }) {
     return phoneFieldChange?.call(value);
   }
@@ -891,6 +967,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     TResult Function(String value)? nameFieldChange,
     TResult Function(String value)? emailFieldChange,
     TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (phoneFieldChange != null) {
@@ -908,6 +986,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     required TResult Function(_NameFieldChange value) nameFieldChange,
     required TResult Function(_EmailFieldChange value) emailFieldChange,
     required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
   }) {
     return phoneFieldChange(this);
   }
@@ -921,6 +1001,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     TResult? Function(_NameFieldChange value)? nameFieldChange,
     TResult? Function(_EmailFieldChange value)? emailFieldChange,
     TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
   }) {
     return phoneFieldChange?.call(this);
   }
@@ -934,6 +1016,8 @@ class _$PhoneFieldChangeImpl implements _PhoneFieldChange {
     TResult Function(_NameFieldChange value)? nameFieldChange,
     TResult Function(_EmailFieldChange value)? emailFieldChange,
     TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (phoneFieldChange != null) {
@@ -954,6 +1038,282 @@ abstract class _PhoneFieldChange implements UserProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$PickImageClickImplCopyWith<$Res> {
+  factory _$$PickImageClickImplCopyWith(_$PickImageClickImpl value,
+          $Res Function(_$PickImageClickImpl) then) =
+      __$$PickImageClickImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PickImageClickImplCopyWithImpl<$Res>
+    extends _$UserProfileEventCopyWithImpl<$Res, _$PickImageClickImpl>
+    implements _$$PickImageClickImplCopyWith<$Res> {
+  __$$PickImageClickImplCopyWithImpl(
+      _$PickImageClickImpl _value, $Res Function(_$PickImageClickImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PickImageClickImpl implements _PickImageClick {
+  const _$PickImageClickImpl();
+
+  @override
+  String toString() {
+    return 'UserProfileEvent.pickImageClick()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PickImageClickImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function() toggleEditMode,
+    required TResult Function() updateUserClicked,
+    required TResult Function(String value) nameFieldChange,
+    required TResult Function(String value) emailFieldChange,
+    required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
+  }) {
+    return pickImageClick();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function()? toggleEditMode,
+    TResult? Function()? updateUserClicked,
+    TResult? Function(String value)? nameFieldChange,
+    TResult? Function(String value)? emailFieldChange,
+    TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
+  }) {
+    return pickImageClick?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function()? toggleEditMode,
+    TResult Function()? updateUserClicked,
+    TResult Function(String value)? nameFieldChange,
+    TResult Function(String value)? emailFieldChange,
+    TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImageClick != null) {
+      return pickImageClick();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_ToggleEditMode value) toggleEditMode,
+    required TResult Function(_UpdateUserClicked value) updateUserClicked,
+    required TResult Function(_NameFieldChange value) nameFieldChange,
+    required TResult Function(_EmailFieldChange value) emailFieldChange,
+    required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return pickImageClick(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_ToggleEditMode value)? toggleEditMode,
+    TResult? Function(_UpdateUserClicked value)? updateUserClicked,
+    TResult? Function(_NameFieldChange value)? nameFieldChange,
+    TResult? Function(_EmailFieldChange value)? emailFieldChange,
+    TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return pickImageClick?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_ToggleEditMode value)? toggleEditMode,
+    TResult Function(_UpdateUserClicked value)? updateUserClicked,
+    TResult Function(_NameFieldChange value)? nameFieldChange,
+    TResult Function(_EmailFieldChange value)? emailFieldChange,
+    TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (pickImageClick != null) {
+      return pickImageClick(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickImageClick implements UserProfileEvent {
+  const factory _PickImageClick() = _$PickImageClickImpl;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$UserProfileEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'UserProfileEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function() toggleEditMode,
+    required TResult Function() updateUserClicked,
+    required TResult Function(String value) nameFieldChange,
+    required TResult Function(String value) emailFieldChange,
+    required TResult Function(String value) phoneFieldChange,
+    required TResult Function() pickImageClick,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function()? toggleEditMode,
+    TResult? Function()? updateUserClicked,
+    TResult? Function(String value)? nameFieldChange,
+    TResult? Function(String value)? emailFieldChange,
+    TResult? Function(String value)? phoneFieldChange,
+    TResult? Function()? pickImageClick,
+    TResult? Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function()? toggleEditMode,
+    TResult Function()? updateUserClicked,
+    TResult Function(String value)? nameFieldChange,
+    TResult Function(String value)? emailFieldChange,
+    TResult Function(String value)? phoneFieldChange,
+    TResult Function()? pickImageClick,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_ToggleEditMode value) toggleEditMode,
+    required TResult Function(_UpdateUserClicked value) updateUserClicked,
+    required TResult Function(_NameFieldChange value) nameFieldChange,
+    required TResult Function(_EmailFieldChange value) emailFieldChange,
+    required TResult Function(_PhoneFieldChange value) phoneFieldChange,
+    required TResult Function(_PickImageClick value) pickImageClick,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_ToggleEditMode value)? toggleEditMode,
+    TResult? Function(_UpdateUserClicked value)? updateUserClicked,
+    TResult? Function(_NameFieldChange value)? nameFieldChange,
+    TResult? Function(_EmailFieldChange value)? emailFieldChange,
+    TResult? Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult? Function(_PickImageClick value)? pickImageClick,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_ToggleEditMode value)? toggleEditMode,
+    TResult Function(_UpdateUserClicked value)? updateUserClicked,
+    TResult Function(_NameFieldChange value)? nameFieldChange,
+    TResult Function(_EmailFieldChange value)? emailFieldChange,
+    TResult Function(_PhoneFieldChange value)? phoneFieldChange,
+    TResult Function(_PickImageClick value)? pickImageClick,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements UserProfileEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
 mixin _$UserProfileState {
   bool get isFetching => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
@@ -963,6 +1323,7 @@ mixin _$UserProfileState {
   bool get isEditMode => throw _privateConstructorUsedError;
   bool get showErrorMessage => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  XFile? get localImagePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserProfileStateCopyWith<UserProfileState> get copyWith =>
@@ -982,7 +1343,8 @@ abstract class $UserProfileStateCopyWith<$Res> {
       CurrentUser updatedUser,
       bool isEditMode,
       bool showErrorMessage,
-      bool isSubmitting});
+      bool isSubmitting,
+      XFile? localImagePath});
 
   $CurrentUserCopyWith<$Res> get user;
   $CurrentUserCopyWith<$Res> get updatedUser;
@@ -1008,6 +1370,7 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
     Object? isEditMode = null,
     Object? showErrorMessage = null,
     Object? isSubmitting = null,
+    Object? localImagePath = freezed,
   }) {
     return _then(_value.copyWith(
       isFetching: null == isFetching
@@ -1038,6 +1401,10 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      localImagePath: freezed == localImagePath
+          ? _value.localImagePath
+          : localImagePath // ignore: cast_nullable_to_non_nullable
+              as XFile?,
     ) as $Val);
   }
 
@@ -1073,7 +1440,8 @@ abstract class _$$UserProfileStateImplCopyWith<$Res>
       CurrentUser updatedUser,
       bool isEditMode,
       bool showErrorMessage,
-      bool isSubmitting});
+      bool isSubmitting,
+      XFile? localImagePath});
 
   @override
   $CurrentUserCopyWith<$Res> get user;
@@ -1099,6 +1467,7 @@ class __$$UserProfileStateImplCopyWithImpl<$Res>
     Object? isEditMode = null,
     Object? showErrorMessage = null,
     Object? isSubmitting = null,
+    Object? localImagePath = freezed,
   }) {
     return _then(_$UserProfileStateImpl(
       isFetching: null == isFetching
@@ -1129,6 +1498,10 @@ class __$$UserProfileStateImplCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      localImagePath: freezed == localImagePath
+          ? _value.localImagePath
+          : localImagePath // ignore: cast_nullable_to_non_nullable
+              as XFile?,
     ));
   }
 }
@@ -1143,7 +1516,8 @@ class _$UserProfileStateImpl extends _UserProfileState {
       required this.updatedUser,
       required this.isEditMode,
       required this.showErrorMessage,
-      required this.isSubmitting})
+      required this.isSubmitting,
+      this.localImagePath})
       : super._();
 
   @override
@@ -1160,10 +1534,12 @@ class _$UserProfileStateImpl extends _UserProfileState {
   final bool showErrorMessage;
   @override
   final bool isSubmitting;
+  @override
+  final XFile? localImagePath;
 
   @override
   String toString() {
-    return 'UserProfileState(isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, user: $user, updatedUser: $updatedUser, isEditMode: $isEditMode, showErrorMessage: $showErrorMessage, isSubmitting: $isSubmitting)';
+    return 'UserProfileState(isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, user: $user, updatedUser: $updatedUser, isEditMode: $isEditMode, showErrorMessage: $showErrorMessage, isSubmitting: $isSubmitting, localImagePath: $localImagePath)';
   }
 
   @override
@@ -1184,7 +1560,9 @@ class _$UserProfileStateImpl extends _UserProfileState {
             (identical(other.showErrorMessage, showErrorMessage) ||
                 other.showErrorMessage == showErrorMessage) &&
             (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting));
+                other.isSubmitting == isSubmitting) &&
+            (identical(other.localImagePath, localImagePath) ||
+                other.localImagePath == localImagePath));
   }
 
   @override
@@ -1196,7 +1574,8 @@ class _$UserProfileStateImpl extends _UserProfileState {
       updatedUser,
       isEditMode,
       showErrorMessage,
-      isSubmitting);
+      isSubmitting,
+      localImagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -1215,7 +1594,8 @@ abstract class _UserProfileState extends UserProfileState {
       required final CurrentUser updatedUser,
       required final bool isEditMode,
       required final bool showErrorMessage,
-      required final bool isSubmitting}) = _$UserProfileStateImpl;
+      required final bool isSubmitting,
+      final XFile? localImagePath}) = _$UserProfileStateImpl;
   const _UserProfileState._() : super._();
 
   @override
@@ -1232,6 +1612,8 @@ abstract class _UserProfileState extends UserProfileState {
   bool get showErrorMessage;
   @override
   bool get isSubmitting;
+  @override
+  XFile? get localImagePath;
   @override
   @JsonKey(ignore: true)
   _$$UserProfileStateImplCopyWith<_$UserProfileStateImpl> get copyWith =>

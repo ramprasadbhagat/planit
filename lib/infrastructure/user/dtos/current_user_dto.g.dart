@@ -14,7 +14,8 @@ _$CurrentUserDtoImpl _$$CurrentUserDtoImplFromJson(Map<String, dynamic> json) =>
       fullName: json['fullName'] as String? ?? '',
       mobileNumber: json['mobile_number'] as String? ?? '',
       emailAddress: json['email'] as String? ?? '',
-      profilePicture: json['profilePicture'] as String? ?? '',
+      profilePicture:
+          parseProfileImage(json, 'profilePicture') as String? ?? '',
     );
 
 Map<String, dynamic> _$$CurrentUserDtoImplToJson(

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -109,13 +111,32 @@ class _LocationPinState extends State<LocationPin> {
                 context.router.navigate(const ProfileRoute());
               }
             },
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.lightGray2,
-              ),
-              child: const Icon(Icons.person),
+            child: BlocBuilder<UserProfileBloc, UserProfileState>(
+              buildWhen: (previous, current) => previous.user != current.user,
+              builder: (context, state) {
+                if (state.user.profileImage.isValid()) {
+                  return Container(
+                    clipBehavior: Clip.hardEdge,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.lightGray2,
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: state.user.profileImage.getValue(),
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                }
+
+                return Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.lightGray2,
+                  ),
+                  child: const Icon(Icons.person),
+                );
+              },
             ),
           ),
         ),
