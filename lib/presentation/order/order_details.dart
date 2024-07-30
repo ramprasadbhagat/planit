@@ -488,7 +488,7 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      0.toPrice(),
+                                      order.packingCharges.getValue().toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,

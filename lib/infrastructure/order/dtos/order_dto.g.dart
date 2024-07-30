@@ -17,6 +17,8 @@ _$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
       orderStatus: json['orderStatus'] as String? ?? '',
       totalPrice: (intReadValue(json, 'totalPrice') as num?)?.toInt() ?? 0,
       subTotal: (intReadValue(json, 'subTotal') as num?)?.toInt() ?? 0,
+      packingCharges:
+          (intReadValue(json, 'packingCharges') as num?)?.toInt() ?? 0,
       deliveryCharge:
           (intReadValue(json, 'deliveryCharge') as num?)?.toInt() ?? 0,
       totalDiscount:
@@ -45,6 +47,7 @@ Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
       'orderStatus': instance.orderStatus,
       'totalPrice': instance.totalPrice,
       'subTotal': instance.subTotal,
+      'packingCharges': instance.packingCharges,
       'deliveryCharge': instance.deliveryCharge,
       'totalDiscount': instance.totalDiscount,
       'orderDate': instance.orderDate,
