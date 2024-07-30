@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:collection/collection.dart';
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' hide Order;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
@@ -11,6 +11,7 @@ import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/product/entities/product.dart';
 
 part 'cart_event.dart';
@@ -308,6 +309,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             ),
           ),
         );
+      },
+      reOrder: (_ReOrder value) {
+        for (final orderItem in value.order.orderItem) {
+          add(
+            CartEvent.addToCart(
+              product: Product.empty().copyWith(
+                attributeItemId: orderItem.attributeItemId,
+                productId: orderItem.productId,
+              ),
+              quantity: orderItem.quantity.getValue(),
+            ),
+          );
+        }
       },
     );
   }

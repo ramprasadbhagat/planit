@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
+import 'package:planit/domain/product/value/value_objects.dart';
 part 'order_item_dto.freezed.dart';
 part 'order_item_dto.g.dart';
 
@@ -12,6 +13,8 @@ class OrderItemDto with _$OrderItemDto {
     @JsonKey(name: '_id', defaultValue: '') required String id,
     @JsonKey(name: 'orderId', defaultValue: '') required String orderId,
     @JsonKey(name: 'productId', defaultValue: '') required String productId,
+    @JsonKey(name: 'attributeItemId', defaultValue: '')
+    required String attributeItemId,
     @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
     required int quantity,
     @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -34,7 +37,7 @@ class OrderItemDto with _$OrderItemDto {
   OrderItem get toDomain => OrderItem(
         id: StringValue(id),
         orderId: StringValue(orderId),
-        productId: StringValue(productId),
+        productId: ProductId(productId),
         quantity: IntegerValue(quantity),
         unitPrice: IntegerValue(unitPrice),
         subTotal: IntegerValue(subTotal),
@@ -42,6 +45,7 @@ class OrderItemDto with _$OrderItemDto {
         productImage: productImage
             .map((e) => ProductImage(image: StringValue(e)))
             .toList(),
+        attributeItemId: StringValue(attributeItemId),
       );
 }
 

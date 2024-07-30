@@ -26,6 +26,8 @@ mixin _$OrderItemDto {
   String get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: 'productId', defaultValue: '')
   String get productId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
   int get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -54,6 +56,8 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'orderId', defaultValue: '') String orderId,
       @JsonKey(name: 'productId', defaultValue: '') String productId,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       int quantity,
       @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -84,6 +88,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? id = null,
     Object? orderId = null,
     Object? productId = null,
+    Object? attributeItemId = null,
     Object? quantity = null,
     Object? unitPrice = null,
     Object? subTotal = null,
@@ -102,6 +107,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
@@ -139,6 +148,8 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       {@JsonKey(name: '_id', defaultValue: '') String id,
       @JsonKey(name: 'orderId', defaultValue: '') String orderId,
       @JsonKey(name: 'productId', defaultValue: '') String productId,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      String attributeItemId,
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       int quantity,
       @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -167,6 +178,7 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? orderId = null,
     Object? productId = null,
+    Object? attributeItemId = null,
     Object? quantity = null,
     Object? unitPrice = null,
     Object? subTotal = null,
@@ -185,6 +197,10 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
@@ -217,6 +233,8 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       {@JsonKey(name: '_id', defaultValue: '') required this.id,
       @JsonKey(name: 'orderId', defaultValue: '') required this.orderId,
       @JsonKey(name: 'productId', defaultValue: '') required this.productId,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required this.attributeItemId,
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       required this.quantity,
       @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -247,6 +265,9 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
   @JsonKey(name: 'productId', defaultValue: '')
   final String productId;
   @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  final String attributeItemId;
+  @override
   @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
   final int quantity;
   @override
@@ -276,7 +297,7 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
 
   @override
   String toString() {
-    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
+    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, attributeItemId: $attributeItemId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
   }
 
   @override
@@ -288,6 +309,8 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.unitPrice, unitPrice) ||
@@ -306,6 +329,7 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       id,
       orderId,
       productId,
+      attributeItemId,
       quantity,
       unitPrice,
       subTotal,
@@ -332,6 +356,8 @@ abstract class _OrderItemDto extends OrderItemDto {
       @JsonKey(name: 'orderId', defaultValue: '') required final String orderId,
       @JsonKey(name: 'productId', defaultValue: '')
       required final String productId,
+      @JsonKey(name: 'attributeItemId', defaultValue: '')
+      required final String attributeItemId,
       @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
       required final int quantity,
       @JsonKey(name: 'unitPrice', defaultValue: 0, readValue: intReadValue)
@@ -359,6 +385,9 @@ abstract class _OrderItemDto extends OrderItemDto {
   @override
   @JsonKey(name: 'productId', defaultValue: '')
   String get productId;
+  @override
+  @JsonKey(name: 'attributeItemId', defaultValue: '')
+  String get attributeItemId;
   @override
   @JsonKey(name: 'quantity', defaultValue: 0, readValue: intReadValue)
   int get quantity;

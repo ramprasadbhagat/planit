@@ -38,4 +38,6 @@ class CartEvent with _$CartEvent {
   }) = _DecrementQuantity;
   const factory CartEvent.fetchShippingCharge({required String pincode}) =
       _FetchShippingCharge;
+
+  const factory CartEvent.reOrder({required Order order}) = _ReOrder;
 }

@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderItem {
   StringValue get id => throw _privateConstructorUsedError;
   StringValue get orderId => throw _privateConstructorUsedError;
-  StringValue get productId => throw _privateConstructorUsedError;
+  StringValue get attributeItemId => throw _privateConstructorUsedError;
+  ProductId get productId => throw _privateConstructorUsedError;
   IntegerValue get quantity => throw _privateConstructorUsedError;
   IntegerValue get unitPrice => throw _privateConstructorUsedError;
   IntegerValue get subTotal => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $OrderItemCopyWith<$Res> {
   $Res call(
       {StringValue id,
       StringValue orderId,
-      StringValue productId,
+      StringValue attributeItemId,
+      ProductId productId,
       IntegerValue quantity,
       IntegerValue unitPrice,
       IntegerValue subTotal,
@@ -63,6 +65,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
   $Res call({
     Object? id = null,
     Object? orderId = null,
+    Object? attributeItemId = null,
     Object? productId = null,
     Object? quantity = null,
     Object? unitPrice = null,
@@ -79,10 +82,14 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+              as ProductId,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -126,7 +133,8 @@ abstract class _$$OrderItemImplCopyWith<$Res>
   $Res call(
       {StringValue id,
       StringValue orderId,
-      StringValue productId,
+      StringValue attributeItemId,
+      ProductId productId,
       IntegerValue quantity,
       IntegerValue unitPrice,
       IntegerValue subTotal,
@@ -150,6 +158,7 @@ class __$$OrderItemImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? orderId = null,
+    Object? attributeItemId = null,
     Object? productId = null,
     Object? quantity = null,
     Object? unitPrice = null,
@@ -166,10 +175,14 @@ class __$$OrderItemImplCopyWithImpl<$Res>
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      attributeItemId: null == attributeItemId
+          ? _value.attributeItemId
+          : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+              as ProductId,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -200,6 +213,7 @@ class _$OrderItemImpl implements _OrderItem {
   const _$OrderItemImpl(
       {required this.id,
       required this.orderId,
+      required this.attributeItemId,
       required this.productId,
       required this.quantity,
       required this.unitPrice,
@@ -213,7 +227,9 @@ class _$OrderItemImpl implements _OrderItem {
   @override
   final StringValue orderId;
   @override
-  final StringValue productId;
+  final StringValue attributeItemId;
+  @override
+  final ProductId productId;
   @override
   final IntegerValue quantity;
   @override
@@ -232,7 +248,7 @@ class _$OrderItemImpl implements _OrderItem {
 
   @override
   String toString() {
-    return 'OrderItem(id: $id, orderId: $orderId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
+    return 'OrderItem(id: $id, orderId: $orderId, attributeItemId: $attributeItemId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
   }
 
   @override
@@ -242,6 +258,8 @@ class _$OrderItemImpl implements _OrderItem {
             other is _$OrderItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.attributeItemId, attributeItemId) ||
+                other.attributeItemId == attributeItemId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.quantity, quantity) ||
@@ -260,6 +278,7 @@ class _$OrderItemImpl implements _OrderItem {
       runtimeType,
       id,
       orderId,
+      attributeItemId,
       productId,
       quantity,
       unitPrice,
@@ -278,7 +297,8 @@ abstract class _OrderItem implements OrderItem {
   const factory _OrderItem(
       {required final StringValue id,
       required final StringValue orderId,
-      required final StringValue productId,
+      required final StringValue attributeItemId,
+      required final ProductId productId,
       required final IntegerValue quantity,
       required final IntegerValue unitPrice,
       required final IntegerValue subTotal,
@@ -290,7 +310,9 @@ abstract class _OrderItem implements OrderItem {
   @override
   StringValue get orderId;
   @override
-  StringValue get productId;
+  StringValue get attributeItemId;
+  @override
+  ProductId get productId;
   @override
   IntegerValue get quantity;
   @override
