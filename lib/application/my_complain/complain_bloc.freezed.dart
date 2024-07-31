@@ -21,7 +21,7 @@ mixin _$ComplainEvent {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -34,7 +34,7 @@ mixin _$ComplainEvent {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -47,7 +47,7 @@ mixin _$ComplainEvent {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -151,7 +151,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -167,7 +167,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -183,7 +183,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -289,7 +289,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -305,7 +305,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -321,7 +321,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -397,7 +397,7 @@ abstract class _$$AddComplainImplCopyWith<$Res> {
       String email,
       String orderId,
       String complainContent,
-      File? file});
+      XFile? file});
 }
 
 /// @nodoc
@@ -437,7 +437,7 @@ class __$$AddComplainImplCopyWithImpl<$Res>
       file: freezed == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as XFile?,
     ));
   }
 }
@@ -461,7 +461,7 @@ class _$AddComplainImpl implements _AddComplain {
   @override
   final String complainContent;
   @override
-  final File? file;
+  final XFile? file;
 
   @override
   String toString() {
@@ -497,7 +497,7 @@ class _$AddComplainImpl implements _AddComplain {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -513,7 +513,7 @@ class _$AddComplainImpl implements _AddComplain {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -529,7 +529,7 @@ class _$AddComplainImpl implements _AddComplain {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -596,13 +596,13 @@ abstract class _AddComplain implements ComplainEvent {
       required final String email,
       required final String orderId,
       required final String complainContent,
-      required final File? file}) = _$AddComplainImpl;
+      required final XFile? file}) = _$AddComplainImpl;
 
   String get name;
   String get email;
   String get orderId;
   String get complainContent;
-  File? get file;
+  XFile? get file;
   @JsonKey(ignore: true)
   _$$AddComplainImplCopyWith<_$AddComplainImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -649,7 +649,7 @@ class _$SelectImpl implements _Select {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -665,7 +665,7 @@ class _$SelectImpl implements _Select {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -681,7 +681,7 @@ class _$SelectImpl implements _Select {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -787,7 +787,7 @@ class _$RemoveImpl implements _Remove {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -803,7 +803,7 @@ class _$RemoveImpl implements _Remove {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -819,7 +819,7 @@ class _$RemoveImpl implements _Remove {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -952,7 +952,7 @@ class _$SelectDropdownImpl implements _SelectDropdown {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -968,7 +968,7 @@ class _$SelectDropdownImpl implements _SelectDropdown {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -984,7 +984,7 @@ class _$SelectDropdownImpl implements _SelectDropdown {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -1096,7 +1096,7 @@ class _$RemoveDropdownImpl implements _RemoveDropdown {
     required TResult Function() initialized,
     required TResult Function() fetch,
     required TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)
+            String complainContent, XFile? file)
         addComplain,
     required TResult Function() selectImage,
     required TResult Function() removeImage,
@@ -1112,7 +1112,7 @@ class _$RemoveDropdownImpl implements _RemoveDropdown {
     TResult? Function()? initialized,
     TResult? Function()? fetch,
     TResult? Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult? Function()? selectImage,
     TResult? Function()? removeImage,
@@ -1128,7 +1128,7 @@ class _$RemoveDropdownImpl implements _RemoveDropdown {
     TResult Function()? initialized,
     TResult Function()? fetch,
     TResult Function(String name, String email, String orderId,
-            String complainContent, File? file)?
+            String complainContent, XFile? file)?
         addComplain,
     TResult Function()? selectImage,
     TResult Function()? removeImage,
@@ -1199,7 +1199,7 @@ mixin _$ComplainState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
-  File? get image => throw _privateConstructorUsedError;
+  XFile? get image => throw _privateConstructorUsedError;
   String? get orderId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1217,7 +1217,7 @@ abstract class $ComplainStateCopyWith<$Res> {
       {List<Complain> complains,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      File? image,
+      XFile? image,
       String? orderId});
 }
 
@@ -1256,7 +1256,7 @@ class _$ComplainStateCopyWithImpl<$Res, $Val extends ComplainState>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as XFile?,
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -1277,7 +1277,7 @@ abstract class _$$ComplainStateImplCopyWith<$Res>
       {List<Complain> complains,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      File? image,
+      XFile? image,
       String? orderId});
 }
 
@@ -1314,7 +1314,7 @@ class __$$ComplainStateImplCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as XFile?,
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -1348,7 +1348,7 @@ class _$ComplainStateImpl extends _ComplainState {
   @override
   final bool isFetching;
   @override
-  final File? image;
+  final XFile? image;
   @override
   final String? orderId;
 
@@ -1395,7 +1395,7 @@ abstract class _ComplainState extends ComplainState {
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
-      required final File? image,
+      required final XFile? image,
       required final String? orderId}) = _$ComplainStateImpl;
   const _ComplainState._() : super._();
 
@@ -1406,7 +1406,7 @@ abstract class _ComplainState extends ComplainState {
   @override
   bool get isFetching;
   @override
-  File? get image;
+  XFile? get image;
   @override
   String? get orderId;
   @override

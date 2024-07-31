@@ -55,8 +55,8 @@ class ComplainBloc extends Bloc<ComplainEvent, ComplainState> {
         final picker = ImagePicker();
         final image = await picker.pickImage(source: ImageSource.gallery);
         if (image != null) {
-          final file = File(image.path);
-          emit(state.copyWith(image: file));
+          // final file = File(image.path);
+          emit(state.copyWith(image: image));
         }
       },
       removeImage: (_) {

@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
@@ -24,7 +23,7 @@ class ComplainRepository extends IComplainRepository {
     required String email,
     required String orderId,
     required String complainContent,
-    required File? file,
+    required XFile? file,
   }) async {
     try {
       final unit = await remoteDataSource.addComplain(
@@ -32,7 +31,7 @@ class ComplainRepository extends IComplainRepository {
         email: email,
         orderId: orderId,
         complainContent: complainContent,
-        imagePath: file?.path,
+        image: file,
       );
       return Right(unit);
     } catch (e) {

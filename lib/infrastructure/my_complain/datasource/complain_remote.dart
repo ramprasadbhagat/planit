@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/my_complain/entities/complain.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
@@ -33,10 +35,10 @@ class ComplainRemoteDataSource {
     required String email,
     required String orderId,
     required String complainContent,
-    required String? imagePath,
+    required XFile? image,
   }) async {
     final userId = storageService.getUserId();
-    final data = imagePath == null
+    final data = image == null
         ? FormData.fromMap({
             'user_id': userId,
             'order_id': orderId,
@@ -52,8 +54,8 @@ class ComplainRemoteDataSource {
             'complainContent': complainContent,
             'complainImages': [
               await MultipartFile.fromFile(
-                imagePath,
-                filename: '',
+                image.path,
+                contentType: MediaType.parse(image.mimeType ?? 'image/png'),
               ),
             ],
           });
