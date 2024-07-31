@@ -23,6 +23,7 @@ class BeforeCheckOutCard extends StatelessWidget {
       width: 150,
       height: 170,
       child: Card(
+        margin: EdgeInsets.zero,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
@@ -38,6 +39,9 @@ class BeforeCheckOutCard extends StatelessWidget {
                     item: item,
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,9 +70,9 @@ class BeforeCheckOutCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '₹${item.productMRP} ',
+                    '₹${item.price} ',
                     style: textTheme.bodySmall?.copyWith(
-                      fontSize: 9,
+                      fontSize: 10,
                     ),
                   ),
                   Text(
@@ -76,7 +80,7 @@ class BeforeCheckOutCard extends StatelessWidget {
                     style: textTheme.bodySmall!.copyWith(
                       decoration: TextDecoration.lineThrough,
                       color: AppColors.lightGray,
-                      fontSize: 9,
+                      fontSize: 10,
                     ),
                   ),
                 ],

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/cart/widgets/cart_checkout.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_section.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_section.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -39,13 +41,6 @@ class _CartPageState extends State<CartPage> {
         leadingWidth: 20,
         centerTitle: false,
         automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //   icon: const Icon(
-        //     Icons.arrow_back_ios_new_outlined,
-        //     color: AppColors.lightGrey,
-        //   ),
-        //   onPressed: () => context.router.maybePop(),
-        // ),
       ),
       body: SmartRefresher(
         controller: _refreshController,
@@ -70,21 +65,53 @@ class _CartPageState extends State<CartPage> {
             if (state.isCartEmpty) return const EmptyCart();
             return Skeletonizer(
               enabled: state.isFetching,
-              child: ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Column(
-                      children: <Widget>[
-                        CartItemSection(),
-                        SizedBox(
-                          height: 10,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Card(
+                          color: AppColors.extraLightGray,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 12,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'Your total savings',
+                                ),
+                                Text(
+                                  state.cartItem.totalDiscount
+                                      .getValue()
+                                      .toPrice(),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                        BeforeCheckoutSection(),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          child: Column(
+                            children: <Widget>[
+                              CartItemSection(),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              BeforeCheckoutSection(),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  CheckoutCard(),
+                  const SizedBox(
+                    width: double.maxFinite,
+                    child: CheckoutCard(),
+                  ),
                 ],
               ),
             );
