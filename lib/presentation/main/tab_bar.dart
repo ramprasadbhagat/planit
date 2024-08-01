@@ -8,6 +8,7 @@ import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/recipe/recipe_bloc.dart';
@@ -57,6 +58,7 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
     context.read<CouponBloc>().add(const CouponEvent.fetch());
     context.read<RecipeBloc>().add(const RecipeEvent.fetch());
+    context.read<FavouriteRecipeBloc>().add(const FavouriteRecipeEvent.fetch());
   }
 
   @override

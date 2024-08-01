@@ -34,6 +34,7 @@ class RecipeDto with _$RecipeDto {
     required String servingSize,
     @JsonKey(
       defaultValue: [],
+      readValue: parseNutritionalTable,
     )
     required List<String> nutritionalTable,
     @JsonKey(
@@ -104,6 +105,13 @@ class RecipeDto with _$RecipeDto {
       );
 }
 
+List<String> parseNutritionalTable(Map json, String key) {
+  if (json[key] is List<String>) {
+    return json[key];
+  }
+  return [];
+}
+
 @freezed
 class IngredientDto with _$IngredientDto {
   const IngredientDto._();
@@ -170,9 +178,10 @@ class RecipeStepDto with _$RecipeStepDto {
   )
   const factory RecipeStepDto({
     @JsonKey(
-      defaultValue: 0,
+      defaultValue: '',
+      readValue: stringReadValue,
     )
-    required int stepNumber,
+    required String stepNumber,
     @JsonKey(
       defaultValue: '',
     )
@@ -193,3 +202,5 @@ Object parseId(Map data, String key) {
   if (data['id'] != null) return data['id'];
   return data[key];
 }
+
+String stringReadValue(Map data, String key) => data[key].toString();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
+import 'package:planit/presentation/recipe_details/widgets/recipe_favourite_button.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -56,22 +57,10 @@ class ImageAndTitleSection extends StatelessWidget {
                     );
                   }).toList(),
           ),
-          const Positioned(
+          Positioned(
             top: -17,
             right: 16,
-            child: Material(
-              color: AppColors.extraLightGrey5,
-              elevation: 5,
-              borderRadius: BorderRadius.all(Radius.circular(50)),
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.favorite,
-                  color: AppColors.deepRed,
-                  size: 22,
-                ),
-              ),
-            ),
+            child: RecipeFavouriteButton(recipe: recipe),
           ),
           Positioned(
             bottom: -55,
