@@ -46,6 +46,8 @@ _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
           (intReadValue(json, 'productDiscount') as num?)?.toInt() ?? 0,
       productDiscountDate: json['productDiscountDate'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
+      productRating:
+          (ratingReadValue(json, 'productRating') as num?)?.toDouble() ?? 1,
     );
 
 Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
@@ -59,4 +61,5 @@ Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
       'productDiscount': instance.productDiscount,
       'productDiscountDate': instance.productDiscountDate,
       'sku': instance.sku,
+      'productRating': instance.productRating,
     };

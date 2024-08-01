@@ -73,6 +73,8 @@ class OrderItemProductDto with _$OrderItemProductDto {
     @JsonKey(name: 'productDiscountDate', defaultValue: '')
     required String productDiscountDate,
     @JsonKey(name: 'sku', defaultValue: '') required String sku,
+    @JsonKey(name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+    required double productRating,
   }) = _OrderItemProductDto;
 
   factory OrderItemProductDto.fromJson(Map<String, dynamic> json) =>
@@ -88,5 +90,13 @@ class OrderItemProductDto with _$OrderItemProductDto {
         productDiscountDate:
             DateTime.tryParse(productDiscountDate) ?? DateTime.now(),
         sku: StringValue(sku),
+        rating: productRating,
       );
+}
+
+double ratingReadValue(Map json, String key) {
+  if (json[key] is int) return (json[key] as int).toDouble();
+  if (json[key] is String) return double.tryParse(json[key]) ?? 1;
+  if (json[key] is double) return json[key];
+  return 1;
 }

@@ -46,6 +46,8 @@ mixin _$OrderDto {
   String get orderDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'deliveryDate', defaultValue: '')
   String get deliveryDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deliveryTime', defaultValue: '')
+  String get deliveryTime => throw _privateConstructorUsedError;
   @JsonKey(name: 'isCouponApplied', defaultValue: false)
   bool get isCouponApplied => throw _privateConstructorUsedError;
   @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -85,6 +87,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       int totalDiscount,
       @JsonKey(name: 'orderDate', defaultValue: '') String orderDate,
       @JsonKey(name: 'deliveryDate', defaultValue: '') String deliveryDate,
+      @JsonKey(name: 'deliveryTime', defaultValue: '') String deliveryTime,
       @JsonKey(name: 'isCouponApplied', defaultValue: false)
       bool isCouponApplied,
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -119,6 +122,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? totalDiscount = null,
     Object? orderDate = null,
     Object? deliveryDate = null,
+    Object? deliveryTime = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
     Object? orderItem = null,
@@ -176,6 +180,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
           ? _value.deliveryDate
           : deliveryDate // ignore: cast_nullable_to_non_nullable
               as String,
+      deliveryTime: null == deliveryTime
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String,
       isCouponApplied: null == isCouponApplied
           ? _value.isCouponApplied
           : isCouponApplied // ignore: cast_nullable_to_non_nullable
@@ -219,6 +227,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       int totalDiscount,
       @JsonKey(name: 'orderDate', defaultValue: '') String orderDate,
       @JsonKey(name: 'deliveryDate', defaultValue: '') String deliveryDate,
+      @JsonKey(name: 'deliveryTime', defaultValue: '') String deliveryTime,
       @JsonKey(name: 'isCouponApplied', defaultValue: false)
       bool isCouponApplied,
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -251,6 +260,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? totalDiscount = null,
     Object? orderDate = null,
     Object? deliveryDate = null,
+    Object? deliveryTime = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
     Object? orderItem = null,
@@ -308,6 +318,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
           ? _value.deliveryDate
           : deliveryDate // ignore: cast_nullable_to_non_nullable
               as String,
+      deliveryTime: null == deliveryTime
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as String,
       isCouponApplied: null == isCouponApplied
           ? _value.isCouponApplied
           : isCouponApplied // ignore: cast_nullable_to_non_nullable
@@ -348,6 +362,8 @@ class _$OrderDtoImpl extends _OrderDto {
       @JsonKey(name: 'orderDate', defaultValue: '') required this.orderDate,
       @JsonKey(name: 'deliveryDate', defaultValue: '')
       required this.deliveryDate,
+      @JsonKey(name: 'deliveryTime', defaultValue: '')
+      required this.deliveryTime,
       @JsonKey(name: 'isCouponApplied', defaultValue: false)
       required this.isCouponApplied,
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -401,6 +417,9 @@ class _$OrderDtoImpl extends _OrderDto {
   @JsonKey(name: 'deliveryDate', defaultValue: '')
   final String deliveryDate;
   @override
+  @JsonKey(name: 'deliveryTime', defaultValue: '')
+  final String deliveryTime;
+  @override
   @JsonKey(name: 'isCouponApplied', defaultValue: false)
   final bool isCouponApplied;
   final List<Map<String, dynamic>> _deliveryAddress;
@@ -423,7 +442,7 @@ class _$OrderDtoImpl extends _OrderDto {
 
   @override
   String toString() {
-    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
+    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -455,6 +474,8 @@ class _$OrderDtoImpl extends _OrderDto {
                 other.orderDate == orderDate) &&
             (identical(other.deliveryDate, deliveryDate) ||
                 other.deliveryDate == deliveryDate) &&
+            (identical(other.deliveryTime, deliveryTime) ||
+                other.deliveryTime == deliveryTime) &&
             (identical(other.isCouponApplied, isCouponApplied) ||
                 other.isCouponApplied == isCouponApplied) &&
             const DeepCollectionEquality()
@@ -480,6 +501,7 @@ class _$OrderDtoImpl extends _OrderDto {
       totalDiscount,
       orderDate,
       deliveryDate,
+      deliveryTime,
       isCouponApplied,
       const DeepCollectionEquality().hash(_deliveryAddress),
       const DeepCollectionEquality().hash(_orderItem));
@@ -524,6 +546,8 @@ abstract class _OrderDto extends OrderDto {
       required final String orderDate,
       @JsonKey(name: 'deliveryDate', defaultValue: '')
       required final String deliveryDate,
+      @JsonKey(name: 'deliveryTime', defaultValue: '')
+      required final String deliveryTime,
       @JsonKey(name: 'isCouponApplied', defaultValue: false)
       required final bool isCouponApplied,
       @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -574,6 +598,9 @@ abstract class _OrderDto extends OrderDto {
   @override
   @JsonKey(name: 'deliveryDate', defaultValue: '')
   String get deliveryDate;
+  @override
+  @JsonKey(name: 'deliveryTime', defaultValue: '')
+  String get deliveryTime;
   @override
   @JsonKey(name: 'isCouponApplied', defaultValue: false)
   bool get isCouponApplied;

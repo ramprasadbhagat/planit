@@ -32,6 +32,8 @@ class OrderDto with _$OrderDto {
     @JsonKey(name: 'orderDate', defaultValue: '') required String orderDate,
     @JsonKey(name: 'deliveryDate', defaultValue: '')
     required String deliveryDate,
+    @JsonKey(name: 'deliveryTime', defaultValue: '')
+    required String deliveryTime,
     @JsonKey(name: 'isCouponApplied', defaultValue: false)
     required bool isCouponApplied,
     @JsonKey(name: 'deliveryAddress', defaultValue: [])
@@ -61,6 +63,7 @@ class OrderDto with _$OrderDto {
             .map((e) => AddressBookDto.fromJson(e).toDomain)
             .toList(),
         deliveryDate: DeliveryDate(deliveryDate),
+        deliveryTime: StringValue(deliveryTime),
         orderItem:
             orderItem.map((e) => OrderItemDto.fromJson(e).toDomain).toList(),
       );
