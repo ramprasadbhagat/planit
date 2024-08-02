@@ -25,6 +25,7 @@ mixin _$OrderItem {
   IntegerValue get subTotal => throw _privateConstructorUsedError;
   OrderItemProduct get product => throw _privateConstructorUsedError;
   List<ProductImage> get productImage => throw _privateConstructorUsedError;
+  IntegerValue get reOrderQuantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderItemCopyWith<OrderItem> get copyWith =>
@@ -45,7 +46,8 @@ abstract class $OrderItemCopyWith<$Res> {
       IntegerValue unitPrice,
       IntegerValue subTotal,
       OrderItemProduct product,
-      List<ProductImage> productImage});
+      List<ProductImage> productImage,
+      IntegerValue reOrderQuantity});
 
   $OrderItemProductCopyWith<$Res> get product;
 }
@@ -72,6 +74,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
     Object? subTotal = null,
     Object? product = null,
     Object? productImage = null,
+    Object? reOrderQuantity = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -110,6 +113,10 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
           ? _value.productImage
           : productImage // ignore: cast_nullable_to_non_nullable
               as List<ProductImage>,
+      reOrderQuantity: null == reOrderQuantity
+          ? _value.reOrderQuantity
+          : reOrderQuantity // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
     ) as $Val);
   }
 
@@ -139,7 +146,8 @@ abstract class _$$OrderItemImplCopyWith<$Res>
       IntegerValue unitPrice,
       IntegerValue subTotal,
       OrderItemProduct product,
-      List<ProductImage> productImage});
+      List<ProductImage> productImage,
+      IntegerValue reOrderQuantity});
 
   @override
   $OrderItemProductCopyWith<$Res> get product;
@@ -165,6 +173,7 @@ class __$$OrderItemImplCopyWithImpl<$Res>
     Object? subTotal = null,
     Object? product = null,
     Object? productImage = null,
+    Object? reOrderQuantity = null,
   }) {
     return _then(_$OrderItemImpl(
       id: null == id
@@ -203,6 +212,10 @@ class __$$OrderItemImplCopyWithImpl<$Res>
           ? _value._productImage
           : productImage // ignore: cast_nullable_to_non_nullable
               as List<ProductImage>,
+      reOrderQuantity: null == reOrderQuantity
+          ? _value.reOrderQuantity
+          : reOrderQuantity // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
     ));
   }
 }
@@ -219,7 +232,8 @@ class _$OrderItemImpl implements _OrderItem {
       required this.unitPrice,
       required this.subTotal,
       required this.product,
-      required final List<ProductImage> productImage})
+      required final List<ProductImage> productImage,
+      required this.reOrderQuantity})
       : _productImage = productImage;
 
   @override
@@ -247,8 +261,11 @@ class _$OrderItemImpl implements _OrderItem {
   }
 
   @override
+  final IntegerValue reOrderQuantity;
+
+  @override
   String toString() {
-    return 'OrderItem(id: $id, orderId: $orderId, attributeItemId: $attributeItemId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
+    return 'OrderItem(id: $id, orderId: $orderId, attributeItemId: $attributeItemId, productId: $productId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage, reOrderQuantity: $reOrderQuantity)';
   }
 
   @override
@@ -270,7 +287,9 @@ class _$OrderItemImpl implements _OrderItem {
                 other.subTotal == subTotal) &&
             (identical(other.product, product) || other.product == product) &&
             const DeepCollectionEquality()
-                .equals(other._productImage, _productImage));
+                .equals(other._productImage, _productImage) &&
+            (identical(other.reOrderQuantity, reOrderQuantity) ||
+                other.reOrderQuantity == reOrderQuantity));
   }
 
   @override
@@ -284,7 +303,8 @@ class _$OrderItemImpl implements _OrderItem {
       unitPrice,
       subTotal,
       product,
-      const DeepCollectionEquality().hash(_productImage));
+      const DeepCollectionEquality().hash(_productImage),
+      reOrderQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +323,8 @@ abstract class _OrderItem implements OrderItem {
       required final IntegerValue unitPrice,
       required final IntegerValue subTotal,
       required final OrderItemProduct product,
-      required final List<ProductImage> productImage}) = _$OrderItemImpl;
+      required final List<ProductImage> productImage,
+      required final IntegerValue reOrderQuantity}) = _$OrderItemImpl;
 
   @override
   StringValue get id;
@@ -324,6 +345,8 @@ abstract class _OrderItem implements OrderItem {
   @override
   List<ProductImage> get productImage;
   @override
+  IntegerValue get reOrderQuantity;
+  @override
   @JsonKey(ignore: true)
   _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -336,6 +359,7 @@ mixin _$OrderItemProduct {
   StringValue get productDescription => throw _privateConstructorUsedError;
   DateTime get expiryDate => throw _privateConstructorUsedError;
   IntegerValue get productMRP => throw _privateConstructorUsedError;
+  IntegerValue get price => throw _privateConstructorUsedError;
   IntegerValue get productDiscount => throw _privateConstructorUsedError;
   DateTime get productDiscountDate => throw _privateConstructorUsedError;
   StringValue get sku => throw _privateConstructorUsedError;
@@ -357,6 +381,7 @@ abstract class $OrderItemProductCopyWith<$Res> {
       StringValue productDescription,
       DateTime expiryDate,
       IntegerValue productMRP,
+      IntegerValue price,
       IntegerValue productDiscount,
       DateTime productDiscountDate,
       StringValue sku});
@@ -380,6 +405,7 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
     Object? productDescription = null,
     Object? expiryDate = null,
     Object? productMRP = null,
+    Object? price = null,
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
@@ -404,6 +430,10 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
       productDiscount: null == productDiscount
           ? _value.productDiscount
@@ -435,6 +465,7 @@ abstract class _$$OrderItemProductImplCopyWith<$Res>
       StringValue productDescription,
       DateTime expiryDate,
       IntegerValue productMRP,
+      IntegerValue price,
       IntegerValue productDiscount,
       DateTime productDiscountDate,
       StringValue sku});
@@ -456,6 +487,7 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
     Object? productDescription = null,
     Object? expiryDate = null,
     Object? productMRP = null,
+    Object? price = null,
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
@@ -480,6 +512,10 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
       productMRP: null == productMRP
           ? _value.productMRP
           : productMRP // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
       productDiscount: null == productDiscount
           ? _value.productDiscount
@@ -506,6 +542,7 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
       required this.productDescription,
       required this.expiryDate,
       required this.productMRP,
+      required this.price,
       required this.productDiscount,
       required this.productDiscountDate,
       required this.sku});
@@ -521,6 +558,8 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
   @override
   final IntegerValue productMRP;
   @override
+  final IntegerValue price;
+  @override
   final IntegerValue productDiscount;
   @override
   final DateTime productDiscountDate;
@@ -529,7 +568,7 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
 
   @override
   String toString() {
-    return 'OrderItemProduct(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
+    return 'OrderItemProduct(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, price: $price, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
   }
 
   @override
@@ -546,6 +585,7 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
                 other.expiryDate == expiryDate) &&
             (identical(other.productMRP, productMRP) ||
                 other.productMRP == productMRP) &&
+            (identical(other.price, price) || other.price == price) &&
             (identical(other.productDiscount, productDiscount) ||
                 other.productDiscount == productDiscount) &&
             (identical(other.productDiscountDate, productDiscountDate) ||
@@ -561,6 +601,7 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
       productDescription,
       expiryDate,
       productMRP,
+      price,
       productDiscount,
       productDiscountDate,
       sku);
@@ -580,6 +621,7 @@ abstract class _OrderItemProduct implements OrderItemProduct {
       required final StringValue productDescription,
       required final DateTime expiryDate,
       required final IntegerValue productMRP,
+      required final IntegerValue price,
       required final IntegerValue productDiscount,
       required final DateTime productDiscountDate,
       required final StringValue sku}) = _$OrderItemProductImpl;
@@ -594,6 +636,8 @@ abstract class _OrderItemProduct implements OrderItemProduct {
   DateTime get expiryDate;
   @override
   IntegerValue get productMRP;
+  @override
+  IntegerValue get price;
   @override
   IntegerValue get productDiscount;
   @override

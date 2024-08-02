@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/order/widgets/orderItems.dart';
 import 'package:planit/presentation/order/widgets/review_order.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:planit/utils/png_image.dart';
@@ -18,6 +20,8 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final isOOS = order.orderItem
+        .any((element) => element.reOrderQuantity.getValue() <= 0);
     context.read<AddReviewBloc>().add(AddReviewEvent.selectOrder(order: order));
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -577,7 +581,14 @@ class OrderDetailsPage extends StatelessWidget {
                   height: 45,
                   color: AppColors.black,
                   elevation: 4,
-                  onPressed: () {},
+                  onPressed: isOOS
+                      ? null
+                      : () {
+                          context
+                              .read<CartBloc>()
+                              .add(CartEvent.reOrder(order: order));
+                          context.router.navigate(const CartRoute());
+                        },
                   child: Text(
                     'Reorder',
                     style: textTheme.titleLarge?.copyWith(

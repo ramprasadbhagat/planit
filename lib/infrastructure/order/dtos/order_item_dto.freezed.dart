@@ -34,11 +34,13 @@ mixin _$OrderItemDto {
   int get unitPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
   int get subTotal => throw _privateConstructorUsedError;
-  @JsonKey(name: 'product', defaultValue: {})
+  @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
   Map<String, dynamic> get product => throw _privateConstructorUsedError;
   @JsonKey(
       name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
   List<String> get productImage => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
+  int get reorderQuantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,12 +66,14 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       int unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
-      @JsonKey(name: 'product', defaultValue: {}) Map<String, dynamic> product,
+      @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
+      Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
           defaultValue: [],
           readValue: productImageUrlFromMap)
-      List<String> productImage});
+      List<String> productImage,
+      @JsonKey(defaultValue: 0, readValue: intReadValue) int reorderQuantity});
 }
 
 /// @nodoc
@@ -94,6 +98,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? subTotal = null,
     Object? product = null,
     Object? productImage = null,
+    Object? reorderQuantity = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -132,6 +137,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
           ? _value.productImage
           : productImage // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      reorderQuantity: null == reorderQuantity
+          ? _value.reorderQuantity
+          : reorderQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -156,12 +165,14 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       int unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
-      @JsonKey(name: 'product', defaultValue: {}) Map<String, dynamic> product,
+      @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
+      Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
           defaultValue: [],
           readValue: productImageUrlFromMap)
-      List<String> productImage});
+      List<String> productImage,
+      @JsonKey(defaultValue: 0, readValue: intReadValue) int reorderQuantity});
 }
 
 /// @nodoc
@@ -184,6 +195,7 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
     Object? subTotal = null,
     Object? product = null,
     Object? productImage = null,
+    Object? reorderQuantity = null,
   }) {
     return _then(_$OrderItemDtoImpl(
       id: null == id
@@ -222,6 +234,10 @@ class __$$OrderItemDtoImplCopyWithImpl<$Res>
           ? _value._productImage
           : productImage // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      reorderQuantity: null == reorderQuantity
+          ? _value.reorderQuantity
+          : reorderQuantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -241,13 +257,15 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       required this.unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required this.subTotal,
-      @JsonKey(name: 'product', defaultValue: {})
+      @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
       required final Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
           defaultValue: [],
           readValue: productImageUrlFromMap)
-      required final List<String> productImage})
+      required final List<String> productImage,
+      @JsonKey(defaultValue: 0, readValue: intReadValue)
+      required this.reorderQuantity})
       : _product = product,
         _productImage = productImage,
         super._();
@@ -278,7 +296,7 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
   final int subTotal;
   final Map<String, dynamic> _product;
   @override
-  @JsonKey(name: 'product', defaultValue: {})
+  @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
   Map<String, dynamic> get product {
     if (_product is EqualUnmodifiableMapView) return _product;
     // ignore: implicit_dynamic_type
@@ -296,8 +314,12 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
   }
 
   @override
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
+  final int reorderQuantity;
+
+  @override
   String toString() {
-    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, attributeItemId: $attributeItemId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage)';
+    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, attributeItemId: $attributeItemId, quantity: $quantity, unitPrice: $unitPrice, subTotal: $subTotal, product: $product, productImage: $productImage, reorderQuantity: $reorderQuantity)';
   }
 
   @override
@@ -319,7 +341,9 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
                 other.subTotal == subTotal) &&
             const DeepCollectionEquality().equals(other._product, _product) &&
             const DeepCollectionEquality()
-                .equals(other._productImage, _productImage));
+                .equals(other._productImage, _productImage) &&
+            (identical(other.reorderQuantity, reorderQuantity) ||
+                other.reorderQuantity == reorderQuantity));
   }
 
   @JsonKey(ignore: true)
@@ -334,7 +358,8 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       unitPrice,
       subTotal,
       const DeepCollectionEquality().hash(_product),
-      const DeepCollectionEquality().hash(_productImage));
+      const DeepCollectionEquality().hash(_productImage),
+      reorderQuantity);
 
   @JsonKey(ignore: true)
   @override
@@ -364,13 +389,15 @@ abstract class _OrderItemDto extends OrderItemDto {
       required final int unitPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required final int subTotal,
-      @JsonKey(name: 'product', defaultValue: {})
+      @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
       required final Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
           defaultValue: [],
           readValue: productImageUrlFromMap)
-      required final List<String> productImage}) = _$OrderItemDtoImpl;
+      required final List<String> productImage,
+      @JsonKey(defaultValue: 0, readValue: intReadValue)
+      required final int reorderQuantity}) = _$OrderItemDtoImpl;
   const _OrderItemDto._() : super._();
 
   factory _OrderItemDto.fromJson(Map<String, dynamic> json) =
@@ -398,12 +425,15 @@ abstract class _OrderItemDto extends OrderItemDto {
   @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
   int get subTotal;
   @override
-  @JsonKey(name: 'product', defaultValue: {})
+  @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
   Map<String, dynamic> get product;
   @override
   @JsonKey(
       name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
   List<String> get productImage;
+  @override
+  @JsonKey(defaultValue: 0, readValue: intReadValue)
+  int get reorderQuantity;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
@@ -432,6 +462,8 @@ mixin _$OrderItemProductDto {
   String get productDiscountDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku', defaultValue: '')
   String get sku => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price', defaultValue: '0')
+  String get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -458,7 +490,8 @@ abstract class $OrderItemProductDtoCopyWith<$Res> {
       int productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       String productDiscountDate,
-      @JsonKey(name: 'sku', defaultValue: '') String sku});
+      @JsonKey(name: 'sku', defaultValue: '') String sku,
+      @JsonKey(name: 'price', defaultValue: '0') String price});
 }
 
 /// @nodoc
@@ -482,6 +515,7 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? price = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -516,6 +550,10 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -541,7 +579,8 @@ abstract class _$$OrderItemProductDtoImplCopyWith<$Res>
       int productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       String productDiscountDate,
-      @JsonKey(name: 'sku', defaultValue: '') String sku});
+      @JsonKey(name: 'sku', defaultValue: '') String sku,
+      @JsonKey(name: 'price', defaultValue: '0') String price});
 }
 
 /// @nodoc
@@ -563,6 +602,7 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? price = null,
   }) {
     return _then(_$OrderItemProductDtoImpl(
       id: null == id
@@ -597,6 +637,10 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -617,7 +661,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
       required this.productDiscount,
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       required this.productDiscountDate,
-      @JsonKey(name: 'sku', defaultValue: '') required this.sku})
+      @JsonKey(name: 'sku', defaultValue: '') required this.sku,
+      @JsonKey(name: 'price', defaultValue: '0') required this.price})
       : super._();
 
   factory _$OrderItemProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -647,10 +692,13 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   @override
   @JsonKey(name: 'sku', defaultValue: '')
   final String sku;
+  @override
+  @JsonKey(name: 'price', defaultValue: '0')
+  final String price;
 
   @override
   String toString() {
-    return 'OrderItemProductDto(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
+    return 'OrderItemProductDto(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku, price: $price)';
   }
 
   @override
@@ -671,7 +719,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
                 other.productDiscount == productDiscount) &&
             (identical(other.productDiscountDate, productDiscountDate) ||
                 other.productDiscountDate == productDiscountDate) &&
-            (identical(other.sku, sku) || other.sku == sku));
+            (identical(other.sku, sku) || other.sku == sku) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @JsonKey(ignore: true)
@@ -685,7 +734,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
       productMRP,
       productDiscount,
       productDiscountDate,
-      sku);
+      sku,
+      price);
 
   @JsonKey(ignore: true)
   @override
@@ -704,22 +754,23 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
 
 abstract class _OrderItemProductDto extends OrderItemProductDto {
   const factory _OrderItemProductDto(
-          {@JsonKey(name: '_id', defaultValue: '') required final String id,
-          @JsonKey(name: 'productName', defaultValue: '')
-          required final String productName,
-          @JsonKey(name: 'productDescription', defaultValue: '')
-          required final String productDescription,
-          @JsonKey(name: 'expiryDate', defaultValue: '')
-          required final String expiryDate,
-          @JsonKey(name: 'productMRP', defaultValue: 0, readValue: intReadValue)
-          required final int productMRP,
-          @JsonKey(
-              name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
-          required final int productDiscount,
-          @JsonKey(name: 'productDiscountDate', defaultValue: '')
-          required final String productDiscountDate,
-          @JsonKey(name: 'sku', defaultValue: '') required final String sku}) =
-      _$OrderItemProductDtoImpl;
+      {@JsonKey(name: '_id', defaultValue: '') required final String id,
+      @JsonKey(name: 'productName', defaultValue: '')
+      required final String productName,
+      @JsonKey(name: 'productDescription', defaultValue: '')
+      required final String productDescription,
+      @JsonKey(name: 'expiryDate', defaultValue: '')
+      required final String expiryDate,
+      @JsonKey(name: 'productMRP', defaultValue: 0, readValue: intReadValue)
+      required final int productMRP,
+      @JsonKey(
+          name: 'productDiscount', defaultValue: 0, readValue: intReadValue)
+      required final int productDiscount,
+      @JsonKey(name: 'productDiscountDate', defaultValue: '')
+      required final String productDiscountDate,
+      @JsonKey(name: 'sku', defaultValue: '') required final String sku,
+      @JsonKey(name: 'price', defaultValue: '0')
+      required final String price}) = _$OrderItemProductDtoImpl;
   const _OrderItemProductDto._() : super._();
 
   factory _OrderItemProductDto.fromJson(Map<String, dynamic> json) =
@@ -749,6 +800,9 @@ abstract class _OrderItemProductDto extends OrderItemProductDto {
   @override
   @JsonKey(name: 'sku', defaultValue: '')
   String get sku;
+  @override
+  @JsonKey(name: 'price', defaultValue: '0')
+  String get price;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemProductDtoImplCopyWith<_$OrderItemProductDtoImpl> get copyWith =>

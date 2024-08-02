@@ -15,12 +15,14 @@ _$OrderItemDtoImpl _$$OrderItemDtoImplFromJson(Map<String, dynamic> json) =>
       quantity: (intReadValue(json, 'quantity') as num?)?.toInt() ?? 0,
       unitPrice: (intReadValue(json, 'unitPrice') as num?)?.toInt() ?? 0,
       subTotal: (intReadValue(json, 'subTotal') as num?)?.toInt() ?? 0,
-      product: json['product'] as Map<String, dynamic>? ?? {},
+      product: productReadValue(json, 'product') as Map<String, dynamic>? ?? {},
       productImage:
           (productImageUrlFromMap(json, 'productImage') as List<dynamic>?)
                   ?.map((e) => e as String)
                   .toList() ??
               [],
+      reorderQuantity:
+          (intReadValue(json, 'reorderQuantity') as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
@@ -34,6 +36,7 @@ Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
       'subTotal': instance.subTotal,
       'product': instance.product,
       'productImage': instance.productImage,
+      'reorderQuantity': instance.reorderQuantity,
     };
 
 _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
@@ -48,6 +51,7 @@ _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
           (intReadValue(json, 'productDiscount') as num?)?.toInt() ?? 0,
       productDiscountDate: json['productDiscountDate'] as String? ?? '',
       sku: json['sku'] as String? ?? '',
+      price: json['price'] as String? ?? '0',
     );
 
 Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
@@ -61,4 +65,5 @@ Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
       'productDiscount': instance.productDiscount,
       'productDiscountDate': instance.productDiscountDate,
       'sku': instance.sku,
+      'price': instance.price,
     };

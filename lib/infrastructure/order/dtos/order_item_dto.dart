@@ -21,7 +21,7 @@ class OrderItemDto with _$OrderItemDto {
     required int unitPrice,
     @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
     required int subTotal,
-    @JsonKey(name: 'product', defaultValue: {})
+    @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
     required Map<String, dynamic> product,
     @JsonKey(
       name: 'productImage',
@@ -29,6 +29,11 @@ class OrderItemDto with _$OrderItemDto {
       readValue: productImageUrlFromMap,
     )
     required List<String> productImage,
+    @JsonKey(
+      defaultValue: 0,
+      readValue: intReadValue,
+    )
+    required int reorderQuantity,
   }) = _OrderItemDto;
 
   factory OrderItemDto.fromJson(Map<String, dynamic> json) =>
@@ -46,7 +51,14 @@ class OrderItemDto with _$OrderItemDto {
             .map((e) => ProductImage(image: StringValue(e)))
             .toList(),
         attributeItemId: StringValue(attributeItemId),
+        reOrderQuantity: IntegerValue(reorderQuantity),
       );
+}
+
+dynamic productReadValue(Map json, String key) {
+  if (json[key]['items'] is Map) {
+    return json[key]['items'];
+  }
 }
 
 int intReadValue(Map json, String key) {
@@ -77,6 +89,7 @@ class OrderItemProductDto with _$OrderItemProductDto {
     @JsonKey(name: 'productDiscountDate', defaultValue: '')
     required String productDiscountDate,
     @JsonKey(name: 'sku', defaultValue: '') required String sku,
+    @JsonKey(name: 'price', defaultValue: '0') required String price,
   }) = _OrderItemProductDto;
 
   factory OrderItemProductDto.fromJson(Map<String, dynamic> json) =>
@@ -92,5 +105,6 @@ class OrderItemProductDto with _$OrderItemProductDto {
         productDiscountDate:
             DateTime.tryParse(productDiscountDate) ?? DateTime.now(),
         sku: StringValue(sku),
+        price: IntegerValue.fromString(price),
       );
 }

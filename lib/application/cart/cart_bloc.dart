@@ -12,6 +12,7 @@ import 'package:planit/domain/cart/repository/i_cart_repository.dart';
 import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/order/entities/order.dart';
+import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/entities/product.dart';
 
 part 'cart_event.dart';
@@ -310,16 +311,24 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           ),
         );
       },
-      reOrder: (_ReOrder value) {
+      reOrder: (_ReOrder value) async {
         for (final orderItem in value.order.orderItem) {
           add(
             CartEvent.addToCart(
               product: Product.empty().copyWith(
                 attributeItemId: orderItem.attributeItemId,
                 productId: orderItem.productId,
+                price: Price(
+                  price: orderItem.product.price.getValue().toString(),
+                  quantity: orderItem.reOrderQuantity.getValue(),
+                ),
               ),
               quantity: orderItem.quantity.getValue(),
             ),
+          );
+          //wait for previous call to complete
+          await stream.firstWhere(
+            (element) => !element.isFetching,
           );
         }
       },

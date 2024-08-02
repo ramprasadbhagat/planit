@@ -16,6 +16,7 @@ class OrderItem with _$OrderItem {
     required IntegerValue subTotal,
     required OrderItemProduct product,
     required List<ProductImage> productImage,
+    required IntegerValue reOrderQuantity,
   }) = _OrderItem;
 
   factory OrderItem.empty() => OrderItem(
@@ -28,6 +29,7 @@ class OrderItem with _$OrderItem {
         product: OrderItemProduct.empty(),
         productImage: [],
         attributeItemId: StringValue(''),
+        reOrderQuantity: IntegerValue(0),
       );
 }
 
@@ -39,6 +41,7 @@ class OrderItemProduct with _$OrderItemProduct {
     required StringValue productDescription,
     required DateTime expiryDate,
     required IntegerValue productMRP,
+    required IntegerValue price,
     required IntegerValue productDiscount,
     required DateTime productDiscountDate,
     required StringValue sku,
@@ -53,5 +56,6 @@ class OrderItemProduct with _$OrderItemProduct {
         productDiscount: IntegerValue(0),
         productDiscountDate: DateTime(2024),
         sku: StringValue(''),
+        price: IntegerValue(0),
       );
 }
