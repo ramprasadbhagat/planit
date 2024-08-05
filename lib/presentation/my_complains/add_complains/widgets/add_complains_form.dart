@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/my_complain/complain_bloc.dart';
@@ -120,7 +122,7 @@ class AddComplainsForm extends StatelessWidget {
                           alignment: Alignment.topRight,
                           children: [
                             Image.file(
-                              state.image!,
+                              File(state.image!.path),
                               height: 150,
                               fit: BoxFit.fitHeight,
                             ),

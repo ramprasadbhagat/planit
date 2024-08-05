@@ -9,7 +9,7 @@ class ComplainEvent with _$ComplainEvent {
     required String email,
     required String orderId,
     required String complainContent,
-    required File? file,
+    required XFile? file,
   }) = _AddComplain;
   const factory ComplainEvent.selectImage() = _Select;
   const factory ComplainEvent.removeImage() = _Remove;
