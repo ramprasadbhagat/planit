@@ -83,13 +83,12 @@ flutter_native_splash:
   android: true
   ios: true
   web: true
-  color: "#F7F4DE"
-  image: assets/png/splash.png
+  image: assets/png/logo.png
+  color: "#013D2C"
   ios_content_mode: center
   web_image_mode: center
   fullscreen: true
 
   android_12:
-    image: assets/png/splash.png
-    color: "#F7F4DE"
+    color: "#013D2C"
     fullscreen: true
