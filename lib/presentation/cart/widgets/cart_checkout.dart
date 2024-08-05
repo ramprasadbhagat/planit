@@ -12,17 +12,28 @@ class CheckoutCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.shadowColor,
+            offset: Offset(0, -4),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             const SizedBox(
               height: 10,
             ),
             SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              height: MediaQuery.sizeOf(context).height * 0.05,
+              width: double.maxFinite,
+              height: 45,
               child: ElevatedButton(
                 onPressed: () {
                   if (context.read<AuthBloc>().state ==

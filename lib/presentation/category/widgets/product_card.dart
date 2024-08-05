@@ -26,139 +26,166 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return SizedBox(
-      child: Container(
-        width: 130,
-        height: 170,
-        padding: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: const [
-            BoxShadow(
-              color: AppColors.extraLightGrey2,
-              spreadRadius: 1,
-              blurRadius: 2,
-            ),
-          ],
-        ),
-        child: InkWell(
-          onTap: () => showModalBottomSheet<void>(
-            context: context,
-            isScrollControlled: true,
-            builder: (BuildContext context) => CommonBottomSheet(
-              child: AddToCartBottomSheet(
-                productId: product.productId.getValue(),
-                attributeItemId: product.attributeItemId.isValid()
-                    ? product.attributeItemId.getValue()
-                    : null,
-              ),
+    return Container(
+      width: 130,
+      height: 170,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.extraLightGrey2,
+            spreadRadius: 1,
+            blurRadius: 2,
+          ),
+        ],
+      ),
+      child: InkWell(
+        onTap: () => showModalBottomSheet<void>(
+          context: context,
+          isScrollControlled: true,
+          builder: (BuildContext context) => CommonBottomSheet(
+            child: AddToCartBottomSheet(
+              productId: product.productId.getValue(),
+              attributeItemId: product.attributeItemId.isValid()
+                  ? product.attributeItemId.getValue()
+                  : null,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: CachedNetworkImage(
-                        errorWidget: (context, url, error) =>
-                            Image.asset(PngImage.placeholder),
-                        imageUrl: product.productImages.firstOrNull ?? '',
-                        height: 80,
-                        width: double.infinity,
-                        fit: BoxFit.contain,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: CachedNetworkImage(
+                      errorWidget: (context, url, error) =>
+                          Image.asset(PngImage.placeholder),
+                      imageUrl: product.productImages.firstOrNull ?? '',
+                      height: 80,
+                      width: double.infinity,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  BlocBuilder<WishlistBloc, WishlistState>(
+                    builder: (context, state) {
+                      final item = state.getwishlistProduct(product);
+                      if (item == null) {
+                        return AddToListButton(product: product);
+                      }
+                      return ItemCountWidget(
+                        item: item,
+                      );
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      product.name,
+                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                      textAlign: TextAlign.left,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Text(
+                    product.attributeItem,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: AppColors.grey1,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '₹${product.getPriceValue} ',
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 9,
+                    ),
+                  ),
+                  Text(
+                    '${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
+                    style: textTheme.bodySmall!.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      color: AppColors.lightGray,
+                      fontSize: 9,
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        size: 9,
                       ),
-                    ),
-                    BlocBuilder<WishlistBloc, WishlistState>(
-                      builder: (context, state) {
-                        final item = state.getwishlistProduct(product);
-                        if (item == null) {
-                          return AddToListButton(product: product);
-                        }
-                        return ItemCountWidget(
-                          item: item,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        product.name,
-                        style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                        textAlign: TextAlign.left,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    Text(
-                      product.attributeItem,
-                      style: textTheme.bodySmall?.copyWith(
-                        color: AppColors.grey1,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '₹${product.getPriceValue} ',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 9,
-                      ),
-                    ),
-                    Text(
-                      '${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
-                      style: textTheme.bodySmall!.copyWith(
-                        decoration: TextDecoration.lineThrough,
-                        color: AppColors.lightGray,
-                        fontSize: 9,
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          size: 9,
+                      Text(
+                        '4.3',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 9,
                         ),
-                        Text(
-                          '4.3',
-                          style: textTheme.bodySmall?.copyWith(
-                            fontSize: 9,
-                          ),
-                        ),
-                      ],
-                    ),
-                    product.price.quantity > 0
-                        ? AddToCartButton.fromProductCard(
-                            product: product,
-                            onPressed: () async {
+                      ),
+                    ],
+                  ),
+                  product.price.quantity > 0
+                      ? AddToCartButton.fromProductCard(
+                          product: product,
+                          onPressed: () async {
+                            if (context
+                                .read<AuthBloc>()
+                                .state
+                                .isUnAuthenticated) {
+                              context.read<CartBloc>().add(
+                                    CartEvent.addToCartLocal(
+                                      product: product,
+                                      quantity: 1,
+                                    ),
+                                  );
+
+                              const snackBar = SnackBar(
+                                content: Text('Item added to cart'),
+                              );
+
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            } else {
                               if (context
-                                  .read<AuthBloc>()
+                                  .read<PincodeBloc>()
                                   .state
-                                  .isUnAuthenticated) {
+                                  .pincode
+                                  .isEmpty) {
+                                await showDialog<void>(
+                                  context: context,
+                                  barrierDismissible:
+                                      false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return const NoPincodeErrorDialog();
+                                  },
+                                );
+                              } else {
                                 context.read<CartBloc>().add(
-                                      CartEvent.addToCartLocal(
+                                      CartEvent.addToCart(
                                         product: product,
                                         quantity: 1,
                                       ),
@@ -170,98 +197,26 @@ class ProductCard extends StatelessWidget {
 
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
-                              } else {
-                                if (context
-                                    .read<PincodeBloc>()
-                                    .state
-                                    .pincode
-                                    .isEmpty) {
-                                  await showDialog<void>(
-                                    context: context,
-                                    barrierDismissible:
-                                        false, // user must tap button!
-                                    builder: (BuildContext context) {
-                                      return const NoPincodeErrorDialog();
-                                    },
-                                  );
-                                } else {
-                                  context.read<CartBloc>().add(
-                                        CartEvent.addToCart(
-                                          product: product,
-                                          quantity: 1,
-                                        ),
-                                      );
-
-                                  const snackBar = SnackBar(
-                                    content: Text('Item added to cart'),
-                                  );
-
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
-                                }
                               }
-                            },
-                          )
-                        : Text(
-                            'Out of stock',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.copyWith(
-                                  fontSize: 12,
-                                ),
-                          ),
-                  ],
-                ),
-              ],
-            ),
+                            }
+                          },
+                        )
+                      : Text(
+                          'Out of stock',
+                          style:
+                              Theme.of(context).textTheme.labelSmall?.copyWith(
+                                    fontSize: 12,
+                                  ),
+                        ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-// class AddToCartButton extends StatelessWidget {
-//   final Product product;
-//   const AddToCartButton({
-//     super.key,
-//     required this.product,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final textTheme = Theme.of(context).textTheme;
-
-//     return SizedBox(
-//       height: MediaQuery.sizeOf(context).height * 0.03,
-//       width: MediaQuery.sizeOf(context).width * 0.18,
-//       child: OutlinedButton(
-//         onPressed: () => showModalBottomSheet<void>(
-//           context: context,
-//           isScrollControlled: true,
-//           builder: (BuildContext context) => CommonBottomSheet(
-//             child: AddToCartBottomSheet(
-//               product: product,
-//             ),
-//           ),
-//         ),
-//         style: OutlinedButton.styleFrom(
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(30.0),
-//           ),
-//           side: const BorderSide(color: Colors.black),
-//           foregroundColor: AppColors.grey3,
-//           padding: const EdgeInsets.symmetric(horizontal: 2),
-//         ),
-//         child: Text(
-//           'Add to cart',
-//           style: textTheme.bodySmall?.copyWith(fontSize: 9),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class AddToListButton extends StatelessWidget {
   final Product product;

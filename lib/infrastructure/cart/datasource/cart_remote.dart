@@ -115,7 +115,15 @@ class CartRemoteDataSource {
     if (shippingCharge == 'Free') {
       return 0.0;
     } else {
-      return double.tryParse(shippingCharge) ?? 0;
+      if (shippingCharge is int) {
+        return shippingCharge.toDouble();
+      }
+
+      if (shippingCharge is double) {
+        return shippingCharge;
+      }
+
+      return 0;
     }
   }
 
