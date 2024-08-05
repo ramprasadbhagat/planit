@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/order_list/widgets/order_actions_button.dart';
@@ -17,6 +18,8 @@ class OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final isOOS = order.orderItem
+        .any((element) => element.reOrderQuantity.getValue() <= 0);
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaler: TextScaler.noScaling,
@@ -209,7 +212,17 @@ class OrderListItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    OrderActionButton(label: 'Reorder', onTap: () {}),
+                    OrderActionButton(
+                      label: 'Reorder',
+                      onTap: isOOS
+                          ? null
+                          : () {
+                              context
+                                  .read<CartBloc>()
+                                  .add(CartEvent.reOrder(order: order));
+                              context.router.navigate(const CartRoute());
+                            },
+                    ),
                   ],
                 ),
               ],

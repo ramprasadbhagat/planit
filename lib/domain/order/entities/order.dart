@@ -19,6 +19,7 @@ class Order with _$Order {
     required StringValue deliveryAddressId,
     required StringValue paymentStatus,
     required StringValue orderStatus,
+    required IntegerValue packingCharges,
     required IntegerValue totalPrice,
     required IntegerValue subTotal,
     required IntegerValue deliveryCharge,
@@ -47,6 +48,7 @@ class Order with _$Order {
         isCouponApplied: false,
         deliveryAddress: [],
         orderItem: [],
+        packingCharges: IntegerValue(0),
       );
 }
 
