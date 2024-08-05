@@ -33,4 +33,6 @@ class RecipeState with _$RecipeState {
 
   int get filterCount =>
       selectedCourseFilter.length + selectedCuisineFilter.length;
+  int get tempFilterCount =>
+      tempSelectedCourseFilter.length + tempSelectedCuisineFilter.length;
 }

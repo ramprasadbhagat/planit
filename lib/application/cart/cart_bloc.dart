@@ -129,7 +129,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           (cartItems) => add(const _GetCartLocal()),
         );
       },
-      sendLocalServerCart: (value) {
+      sendLocalServerCart: (value) async {
         emit(state.copyWith(isFetching: true));
         for (final element in state.cartData) {
           add(
@@ -137,6 +137,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               product: element.toProduct,
               quantity: element.quantity,
             ),
+          );
+          //wait for previous call to complete
+          await stream.firstWhere(
+            (element) => !element.isFetching,
           );
         }
       },
