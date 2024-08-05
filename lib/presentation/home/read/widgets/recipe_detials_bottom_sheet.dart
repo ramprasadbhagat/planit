@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:planit/domain/home/entities/trending_recipe.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class RecipeDetailsBottomSheet extends StatelessWidget {
-  final TrendingRecipe trendingRecipe;
-  const RecipeDetailsBottomSheet({super.key, required this.trendingRecipe});
+  final Recipe recipe;
+  const RecipeDetailsBottomSheet({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         RecipeDetail(
-          trendingRecipe: trendingRecipe,
+          trendingRecipe: recipe,
         ),
         const HowToCook(),
       ],
@@ -39,7 +39,7 @@ class HowToCook extends StatelessWidget {
 }
 
 class RecipeDetail extends StatelessWidget {
-  final TrendingRecipe trendingRecipe;
+  final Recipe trendingRecipe;
   const RecipeDetail({super.key, required this.trendingRecipe});
 
   @override
@@ -66,13 +66,13 @@ class RecipeDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    trendingRecipe.title,
+                    trendingRecipe.name.getValue(),
                     style: textTheme.labelSmall?.copyWith(
                       fontSize: 15,
                     ),
                   ),
                   Text(
-                    trendingRecipe.subTitle,
+                    trendingRecipe.writeup.getValue(),
                     style: textTheme.bodySmall?.copyWith(
                       fontSize: 12,
                       color: AppColors.grey1,
@@ -115,7 +115,7 @@ class RecipeDetail extends StatelessWidget {
                             width: 3,
                           ),
                           Text(
-                            '${trendingRecipe.preparationTime.toString()} min',
+                            '${trendingRecipe.timeRequired.displayLabel} min',
                             style: textTheme.bodyMedium?.copyWith(
                               fontSize: 12,
                             ),
@@ -133,7 +133,7 @@ class RecipeDetail extends StatelessWidget {
                             width: 3,
                           ),
                           Text(
-                            trendingRecipe.level,
+                            trendingRecipe.difficultyLevel.displayLabel,
                             style: textTheme.bodyMedium?.copyWith(
                               fontSize: 12,
                             ),

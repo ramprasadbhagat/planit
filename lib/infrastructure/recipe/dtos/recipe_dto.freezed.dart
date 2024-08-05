@@ -30,7 +30,7 @@ mixin _$RecipeDto {
   String get course => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get servingSize => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
   List<String> get nutritionalTable => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get numRatings => throw _privateConstructorUsedError;
@@ -74,7 +74,8 @@ abstract class $RecipeDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
       @JsonKey(defaultValue: '') String servingSize,
-      @JsonKey(defaultValue: []) List<String> nutritionalTable,
+      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      List<String> nutritionalTable,
       @JsonKey(defaultValue: '') String numRatings,
       @JsonKey(defaultValue: 0.0) double rating,
       @JsonKey(defaultValue: '') String writeup,
@@ -206,7 +207,8 @@ abstract class _$$RecipeDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
       @JsonKey(defaultValue: '') String servingSize,
-      @JsonKey(defaultValue: []) List<String> nutritionalTable,
+      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      List<String> nutritionalTable,
       @JsonKey(defaultValue: '') String numRatings,
       @JsonKey(defaultValue: 0.0) double rating,
       @JsonKey(defaultValue: '') String writeup,
@@ -332,7 +334,8 @@ class _$RecipeDtoImpl extends _RecipeDto {
       @JsonKey(defaultValue: '') required this.cuisine,
       @JsonKey(defaultValue: '') required this.course,
       @JsonKey(defaultValue: '') required this.servingSize,
-      @JsonKey(defaultValue: []) required final List<String> nutritionalTable,
+      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      required final List<String> nutritionalTable,
       @JsonKey(defaultValue: '') required this.numRatings,
       @JsonKey(defaultValue: 0.0) required this.rating,
       @JsonKey(defaultValue: '') required this.writeup,
@@ -373,7 +376,7 @@ class _$RecipeDtoImpl extends _RecipeDto {
   final String servingSize;
   final List<String> _nutritionalTable;
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
   List<String> get nutritionalTable {
     if (_nutritionalTable is EqualUnmodifiableListView)
       return _nutritionalTable;
@@ -521,7 +524,8 @@ abstract class _RecipeDto extends RecipeDto {
       @JsonKey(defaultValue: '') required final String cuisine,
       @JsonKey(defaultValue: '') required final String course,
       @JsonKey(defaultValue: '') required final String servingSize,
-      @JsonKey(defaultValue: []) required final List<String> nutritionalTable,
+      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      required final List<String> nutritionalTable,
       @JsonKey(defaultValue: '') required final String numRatings,
       @JsonKey(defaultValue: 0.0) required final double rating,
       @JsonKey(defaultValue: '') required final String writeup,
@@ -557,7 +561,7 @@ abstract class _RecipeDto extends RecipeDto {
   @JsonKey(defaultValue: '')
   String get servingSize;
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
   List<String> get nutritionalTable;
   @override
   @JsonKey(defaultValue: '')
@@ -973,8 +977,8 @@ RecipeStepDto _$RecipeStepDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RecipeStepDto {
-  @JsonKey(defaultValue: 0)
-  int get stepNumber => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
+  String get stepNumber => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get stepDescription => throw _privateConstructorUsedError;
 
@@ -991,7 +995,7 @@ abstract class $RecipeStepDtoCopyWith<$Res> {
       _$RecipeStepDtoCopyWithImpl<$Res, RecipeStepDto>;
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: 0) int stepNumber,
+      {@JsonKey(defaultValue: '', readValue: stringReadValue) String stepNumber,
       @JsonKey(defaultValue: '') String stepDescription});
 }
 
@@ -1015,7 +1019,7 @@ class _$RecipeStepDtoCopyWithImpl<$Res, $Val extends RecipeStepDto>
       stepNumber: null == stepNumber
           ? _value.stepNumber
           : stepNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       stepDescription: null == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -1033,7 +1037,7 @@ abstract class _$$RecipeStepDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: 0) int stepNumber,
+      {@JsonKey(defaultValue: '', readValue: stringReadValue) String stepNumber,
       @JsonKey(defaultValue: '') String stepDescription});
 }
 
@@ -1055,7 +1059,7 @@ class __$$RecipeStepDtoImplCopyWithImpl<$Res>
       stepNumber: null == stepNumber
           ? _value.stepNumber
           : stepNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       stepDescription: null == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -1069,7 +1073,8 @@ class __$$RecipeStepDtoImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$RecipeStepDtoImpl extends _RecipeStepDto {
   const _$RecipeStepDtoImpl(
-      {@JsonKey(defaultValue: 0) required this.stepNumber,
+      {@JsonKey(defaultValue: '', readValue: stringReadValue)
+      required this.stepNumber,
       @JsonKey(defaultValue: '') required this.stepDescription})
       : super._();
 
@@ -1077,8 +1082,8 @@ class _$RecipeStepDtoImpl extends _RecipeStepDto {
       _$$RecipeStepDtoImplFromJson(json);
 
   @override
-  @JsonKey(defaultValue: 0)
-  final int stepNumber;
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
+  final String stepNumber;
   @override
   @JsonKey(defaultValue: '')
   final String stepDescription;
@@ -1119,7 +1124,8 @@ class _$RecipeStepDtoImpl extends _RecipeStepDto {
 
 abstract class _RecipeStepDto extends RecipeStepDto {
   const factory _RecipeStepDto(
-          {@JsonKey(defaultValue: 0) required final int stepNumber,
+          {@JsonKey(defaultValue: '', readValue: stringReadValue)
+          required final String stepNumber,
           @JsonKey(defaultValue: '') required final String stepDescription}) =
       _$RecipeStepDtoImpl;
   const _RecipeStepDto._() : super._();
@@ -1128,8 +1134,8 @@ abstract class _RecipeStepDto extends RecipeStepDto {
       _$RecipeStepDtoImpl.fromJson;
 
   @override
-  @JsonKey(defaultValue: 0)
-  int get stepNumber;
+  @JsonKey(defaultValue: '', readValue: stringReadValue)
+  String get stepNumber;
   @override
   @JsonKey(defaultValue: '')
   String get stepDescription;

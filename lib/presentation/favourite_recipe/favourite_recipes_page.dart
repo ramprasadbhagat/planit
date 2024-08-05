@@ -1,10 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/core/rating_star.dart';
+import 'package:planit/presentation/recipe_details/widgets/recipe_favourite_button.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class FavouriteRecipesPage extends StatelessWidget {
@@ -12,7 +19,6 @@ class FavouriteRecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const isEmpty = true;
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaler: TextScaler.noScaling,
@@ -23,21 +29,32 @@ class FavouriteRecipesPage extends StatelessWidget {
           centerTitle: false,
           leadingWidth: 35,
         ),
-        body: !isEmpty
-            // ignore: dead_code
-            ? const RecipeEmpty()
-            : ListView.builder(
+        body: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
+          builder: (context, state) {
+            if (!state.isFetching && state.favouriteRecipes.isEmpty) {
+              return const RecipeEmpty();
+            }
+
+            return Skeletonizer(
+              enabled: state.isFetching,
+              child: ListView.builder(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                itemCount: 10,
-                itemBuilder: (context, index) => const FavouriteRecipeCard(),
+                itemCount: state.favouriteRecipes.length,
+                itemBuilder: (context, index) => FavouriteRecipeCard(
+                  recipe: state.favouriteRecipes[index],
+                ),
               ),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
 class FavouriteRecipeCard extends StatelessWidget {
-  const FavouriteRecipeCard({super.key});
+  final Recipe recipe;
+  const FavouriteRecipeCard({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -46,96 +63,99 @@ class FavouriteRecipeCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(11)),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 16,
-              horizontal: 20,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(7)),
-                  child: Image.asset(
-                    PngImage.generic('recipe.png'),
-                    height: 92,
-                    width: 80,
-                    fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () {
+          context.router.navigate(RecipeDetailsRoute(recipe: recipe));
+        },
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 20,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(7)),
+                    child: recipe.recipeImages.isNotEmpty &&
+                            recipe.recipeImages.first.isValid()
+                        ? CachedNetworkImage(
+                            imageUrl: recipe.recipeImages.first.getValue(),
+                            height: 92,
+                            width: 80,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            PngImage.placeholder,
+                            height: 92,
+                            width: 80,
+                            fit: BoxFit.cover,
+                          ),
                   ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'California Grilled Veggie Sandwich',
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Text(
-                          'A flavourful Middle Eastern breakfast, easy to prepare and with a delicious medley of flavours.',
-                          style:
-                              Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: AppColors.grey2,
-                                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          recipe.name.getValue(),
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
-                      ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            SvgImage.spoonIcon,
-                            colorFilter: const ColorFilter.mode(
-                              AppColors.black,
-                              BlendMode.srcIn,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
+                            recipe.writeup.getValue(),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: AppColors.grey2,
+                                    ),
                           ),
-                          Text.rich(
-                            const TextSpan(
-                              text: ' Cuisine :',
-                              children: [
-                                TextSpan(
-                                  text: 'American',
-                                  style: TextStyle(
-                                    color: AppColors.grey2,
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              SvgImage.spoonIcon,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.black,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                            Text.rich(
+                              TextSpan(
+                                text: ' Cuisine :',
+                                children: [
+                                  TextSpan(
+                                    text: recipe.cuisine.getValue(),
+                                    style: const TextStyle(
+                                      color: AppColors.grey2,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                      const RatingStar(
-                        value: 4.3,
-                      ),
-                    ],
+                          ],
+                        ),
+                        RatingStar(
+                          value: recipe.rating,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const Positioned(
-            right: 20,
-            bottom: 16,
-            child: Material(
-              elevation: 5,
-              borderRadius: BorderRadius.all(Radius.circular(50)),
-              child: Padding(
-                padding: EdgeInsets.all(6.6),
-                child: Icon(
-                  Icons.favorite,
-                  color: AppColors.deepRed,
-                ),
+                ],
               ),
             ),
-          ),
-        ],
+            Positioned(
+              right: 20,
+              bottom: 16,
+              child: RecipeFavouriteButton(recipe: recipe),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -193,7 +213,12 @@ class RecipeEmpty extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Explore')),
+          ElevatedButton(
+            onPressed: () {
+              context.router.navigate(const ReadRoute());
+            },
+            child: const Text('Explore'),
+          ),
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -117,6 +118,19 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   );
             }
+          },
+        ),
+        BlocListener<FavouriteRecipeBloc, FavouriteRecipeState>(
+          listenWhen: (previous, current) =>
+              previous.favouriteRecipes != current.favouriteRecipes,
+          listener: (context, state) {
+            // if (state.selectedAddress.pincode.isNotEmpty) {
+            //   context.read<CartBloc>().add(
+            //         CartEvent.fetchShippingCharge(
+            //           pincode: state.selectedAddress.pincode,
+            //         ),
+            //       );
+            // }
           },
         ),
       ],
