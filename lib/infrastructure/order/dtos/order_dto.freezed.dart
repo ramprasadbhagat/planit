@@ -38,6 +38,8 @@ mixin _$OrderDto {
   int get totalPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
   int get subTotal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+  int get packingCharges => throw _privateConstructorUsedError;
   @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
   int get deliveryCharge => throw _privateConstructorUsedError;
   @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -81,6 +83,8 @@ abstract class $OrderDtoCopyWith<$Res> {
       int totalPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
+      @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+      int packingCharges,
       @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
       int deliveryCharge,
       @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -118,6 +122,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? orderStatus = null,
     Object? totalPrice = null,
     Object? subTotal = null,
+    Object? packingCharges = null,
     Object? deliveryCharge = null,
     Object? totalDiscount = null,
     Object? orderDate = null,
@@ -163,6 +168,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       subTotal: null == subTotal
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
+              as int,
+      packingCharges: null == packingCharges
+          ? _value.packingCharges
+          : packingCharges // ignore: cast_nullable_to_non_nullable
               as int,
       deliveryCharge: null == deliveryCharge
           ? _value.deliveryCharge
@@ -221,6 +230,8 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       int totalPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       int subTotal,
+      @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+      int packingCharges,
       @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
       int deliveryCharge,
       @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -256,6 +267,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? orderStatus = null,
     Object? totalPrice = null,
     Object? subTotal = null,
+    Object? packingCharges = null,
     Object? deliveryCharge = null,
     Object? totalDiscount = null,
     Object? orderDate = null,
@@ -301,6 +313,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       subTotal: null == subTotal
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
+              as int,
+      packingCharges: null == packingCharges
+          ? _value.packingCharges
+          : packingCharges // ignore: cast_nullable_to_non_nullable
               as int,
       deliveryCharge: null == deliveryCharge
           ? _value.deliveryCharge
@@ -355,6 +371,8 @@ class _$OrderDtoImpl extends _OrderDto {
       required this.totalPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required this.subTotal,
+      @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+      required this.packingCharges,
       @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
       required this.deliveryCharge,
       @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -405,6 +423,9 @@ class _$OrderDtoImpl extends _OrderDto {
   @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
   final int subTotal;
   @override
+  @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+  final int packingCharges;
+  @override
   @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
   final int deliveryCharge;
   @override
@@ -442,7 +463,7 @@ class _$OrderDtoImpl extends _OrderDto {
 
   @override
   String toString() {
-    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
+    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, packingCharges: $packingCharges, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -466,6 +487,8 @@ class _$OrderDtoImpl extends _OrderDto {
                 other.totalPrice == totalPrice) &&
             (identical(other.subTotal, subTotal) ||
                 other.subTotal == subTotal) &&
+            (identical(other.packingCharges, packingCharges) ||
+                other.packingCharges == packingCharges) &&
             (identical(other.deliveryCharge, deliveryCharge) ||
                 other.deliveryCharge == deliveryCharge) &&
             (identical(other.totalDiscount, totalDiscount) ||
@@ -497,6 +520,7 @@ class _$OrderDtoImpl extends _OrderDto {
       orderStatus,
       totalPrice,
       subTotal,
+      packingCharges,
       deliveryCharge,
       totalDiscount,
       orderDate,
@@ -538,6 +562,8 @@ abstract class _OrderDto extends OrderDto {
       required final int totalPrice,
       @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
       required final int subTotal,
+      @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+      required final int packingCharges,
       @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
       required final int deliveryCharge,
       @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -586,6 +612,9 @@ abstract class _OrderDto extends OrderDto {
   @override
   @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
   int get subTotal;
+  @override
+  @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+  int get packingCharges;
   @override
   @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
   int get deliveryCharge;

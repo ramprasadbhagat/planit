@@ -7,6 +7,7 @@ import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/my_complain/complain_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
@@ -23,6 +24,7 @@ import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/favourite_recipe/repository/i_favourite_recipe.dart';
 import 'package:planit/domain/recipe/repository/i_recipe_repository.dart';
 import 'package:planit/domain/review/repository/i_review_repository.dart';
 import 'package:planit/domain/user/repository/i_user_repository.dart';
@@ -46,6 +48,9 @@ import 'package:planit/infrastructure/core/http/interceptor/auth_interceptor.dar
 import 'package:planit/infrastructure/coupon/datasource/coupon_local.dart';
 import 'package:planit/infrastructure/coupon/datasource/coupon_remote.dart';
 import 'package:planit/infrastructure/coupon/repository/coupon_repository.dart';
+import 'package:planit/infrastructure/favourite_recipe/datasource/favourite_recipe_local.dart';
+import 'package:planit/infrastructure/favourite_recipe/datasource/favourite_recipe_remote.dart';
+import 'package:planit/infrastructure/favourite_recipe/repository/favourite_recipe_repository.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_local.dart';
 import 'package:planit/infrastructure/highlights/datasource/highlight_remote.dart';
 import 'package:planit/infrastructure/highlights/repository/highlight_repository.dart';
@@ -632,5 +637,31 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => RecipeDetailsBloc(locator<IRecipeRepository>()),
+  );
+
+  /////============================================================
+  //  Favourite Recipe
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const FavouriteRecipeLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => FavouriteRecipeRemoteDataSource(
+      httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IFavouriteRecipeRepository>(
+    () => FavouriteRecipeRepository(
+      config: locator<Config>(),
+      localDataSource: locator<FavouriteRecipeLocalDataSource>(),
+      remoteDataSource: locator<FavouriteRecipeRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => FavouriteRecipeBloc(locator<IFavouriteRecipeRepository>()),
   );
 }

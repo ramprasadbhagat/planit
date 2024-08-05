@@ -13,10 +13,11 @@ _$RecipeDtoImpl _$$RecipeDtoImplFromJson(Map<String, dynamic> json) =>
       cuisine: json['cuisine'] as String? ?? '',
       course: json['course'] as String? ?? '',
       servingSize: json['serving_size'] as String? ?? '',
-      nutritionalTable: (json['nutritional_table'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      nutritionalTable:
+          (parseNutritionalTable(json, 'nutritional_table') as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              [],
       numRatings: json['num_ratings'] as String? ?? '',
       rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
       writeup: json['writeup'] as String? ?? '',
@@ -91,7 +92,7 @@ Map<String, dynamic> _$$EquipmentDtoImplToJson(_$EquipmentDtoImpl instance) =>
 
 _$RecipeStepDtoImpl _$$RecipeStepDtoImplFromJson(Map<String, dynamic> json) =>
     _$RecipeStepDtoImpl(
-      stepNumber: (json['step_number'] as num?)?.toInt() ?? 0,
+      stepNumber: stringReadValue(json, 'step_number') as String? ?? '',
       stepDescription: json['step_description'] as String? ?? '',
     );
 

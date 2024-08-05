@@ -1,14 +1,19 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:planit/domain/home/entities/trending_recipe.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
+import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/read/widgets/recipe_detials_bottom_sheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class TrendingRecipes extends StatelessWidget {
   const TrendingRecipes({super.key});
@@ -19,7 +24,7 @@ class TrendingRecipes extends StatelessWidget {
       child: Column(
         children: [
           SectionTitle(
-            title: 'Trending Recipes',
+            title: 'Favourite Recipes',
             onTap: () {
               context.router.navigate(const FavouriteRecipesRoute());
             },
@@ -29,17 +34,29 @@ class TrendingRecipes extends StatelessWidget {
           ),
           SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.32,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: trendingRecipeList.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  TrendingRecipeCard(
-                trendingRecipe: trendingRecipeList.elementAt(index),
-              ),
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(
-                width: 20,
-              ),
+            child: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
+              builder: (context, state) {
+                if (!state.isFetching && state.favouriteRecipes.isEmpty) {
+                  return const NoData(
+                    message: 'No Recipe Added to Favourites',
+                  );
+                }
+                return Skeletonizer(
+                  enabled: state.isFetching,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.favouriteRecipes.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        TrendingRecipeCard(
+                      recipe: state.favouriteRecipes[index],
+                    ),
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const SizedBox(
+                      width: 20,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -49,10 +66,10 @@ class TrendingRecipes extends StatelessWidget {
 }
 
 class TrendingRecipeCard extends StatelessWidget {
-  final TrendingRecipe trendingRecipe;
+  final Recipe recipe;
   const TrendingRecipeCard({
     super.key,
-    required this.trendingRecipe,
+    required this.recipe,
   });
 
   @override
@@ -64,17 +81,32 @@ class TrendingRecipeCard extends StatelessWidget {
         context: context,
         builder: (BuildContext context) => CommonBottomSheet(
           child: RecipeDetailsBottomSheet(
-            trendingRecipe: trendingRecipe,
+            recipe: recipe,
           ),
         ),
       ),
       child: Stack(
         children: [
-          Image.asset(
-            PngImage.placeholder,
-            height: MediaQuery.sizeOf(context).height * 0.25,
-            width: MediaQuery.sizeOf(context).width * 0.7,
-          ),
+          if (recipe.recipeImages.isNotEmpty &&
+              recipe.recipeImages.first.isValid())
+            CachedNetworkImage(
+              imageUrl: recipe.recipeImages.first.getValue(),
+              height: MediaQuery.sizeOf(context).height * 0.25,
+              width: MediaQuery.sizeOf(context).width * 0.7,
+              errorWidget: (context, url, error) {
+                return Image.asset(
+                  PngImage.placeholder,
+                  height: MediaQuery.sizeOf(context).height * 0.25,
+                  width: MediaQuery.sizeOf(context).width * 0.7,
+                );
+              },
+            )
+          else
+            Image.asset(
+              PngImage.placeholder,
+              height: MediaQuery.sizeOf(context).height * 0.25,
+              width: MediaQuery.sizeOf(context).width * 0.7,
+            ),
           Positioned(
             bottom: 0.1,
             left: MediaQuery.sizeOf(context).width * 0.01,
@@ -88,13 +120,13 @@ class TrendingRecipeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      trendingRecipe.title,
+                      recipe.name.getValue(),
                       style: textTheme.labelSmall?.copyWith(
                         fontSize: 15,
                       ),
                     ),
                     Text(
-                      trendingRecipe.subTitle,
+                      recipe.writeup.getValue(),
                       style: textTheme.bodySmall?.copyWith(
                         fontSize: 12,
                         color: AppColors.grey1,
@@ -119,7 +151,7 @@ class TrendingRecipeCard extends StatelessWidget {
                               width: 3,
                             ),
                             Text(
-                              trendingRecipe.rating.toString(),
+                              recipe.rating.toString(),
                               style: textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                               ),
@@ -137,7 +169,7 @@ class TrendingRecipeCard extends StatelessWidget {
                               width: 3,
                             ),
                             Text(
-                              '${trendingRecipe.preparationTime.toString()} min',
+                              '${recipe.timeRequired.displayLabel} min',
                               style: textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                               ),
@@ -155,7 +187,7 @@ class TrendingRecipeCard extends StatelessWidget {
                               width: 3,
                             ),
                             Text(
-                              trendingRecipe.level,
+                              recipe.difficultyLevel.getValue(),
                               style: textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                               ),
@@ -174,22 +206,3 @@ class TrendingRecipeCard extends StatelessWidget {
     );
   }
 }
-
-final trendingRecipeList = <TrendingRecipe>[
-  TrendingRecipe(
-    image: 'trending_recipe.png',
-    title: 'Delicious Healthy Kebab',
-    subTitle: 'All spices available here',
-    rating: 4.3,
-    preparationTime: 35,
-    level: 'Easy',
-  ),
-  TrendingRecipe(
-    image: 'trending_recipe.png',
-    title: 'Delicious Healthy Kebab',
-    subTitle: 'All spices available here',
-    rating: 4.3,
-    preparationTime: 35,
-    level: 'Easy',
-  ),
-];

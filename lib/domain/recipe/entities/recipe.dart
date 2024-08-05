@@ -63,7 +63,7 @@ class Equipment with _$Equipment {
 @freezed
 class RecipeStep with _$RecipeStep {
   const factory RecipeStep({
-    required int stepNumber,
+    required String stepNumber,
     required StringValue stepDescription,
   }) = _RecipeStep;
 }

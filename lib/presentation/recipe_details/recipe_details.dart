@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/recipe_details/widgets/image_and_title.dart';
 import 'package:planit/presentation/recipe_details/widgets/meal_info.dart';
@@ -20,7 +21,22 @@ class RecipeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
+    return BlocConsumer<RecipeDetailsBloc, RecipeDetailsState>(
+      listener: (context, state) {
+        state.apiFailureOrSuccessOption.fold(() {}, (a) {
+          a.fold(
+            (l) {
+              final snackBar = SnackBar(
+                content: Text(l.failureMessage),
+                backgroundColor: AppColors.red,
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            (r) {},
+          );
+        });
+      },
       bloc: context.read<RecipeDetailsBloc>()
         ..add(RecipeDetailsEvent.fetch(recipe)),
       builder: (context, state) {

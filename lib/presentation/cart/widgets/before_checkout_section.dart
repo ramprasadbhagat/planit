@@ -49,7 +49,10 @@ class BeforeCheckoutSection extends StatelessWidget {
                 }
                 return SizedBox(
                   height: 190,
-                  child: ListView.builder(
+                  child: ListView.separated(
+                    separatorBuilder: (__, _) => const SizedBox(
+                      width: 8,
+                    ),
                     scrollDirection: Axis.horizontal,
                     physics: const ScrollPhysics(),
                     shrinkWrap: true,

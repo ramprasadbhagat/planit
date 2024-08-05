@@ -25,6 +25,8 @@ class OrderDto with _$OrderDto {
     required int totalPrice,
     @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
     required int subTotal,
+    @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
+    required int packingCharges,
     @JsonKey(name: 'deliveryCharge', defaultValue: 0, readValue: intReadValue)
     required int deliveryCharge,
     @JsonKey(name: 'totalDiscount', defaultValue: 0, readValue: intReadValue)
@@ -66,6 +68,7 @@ class OrderDto with _$OrderDto {
         deliveryTime: StringValue(deliveryTime),
         orderItem:
             orderItem.map((e) => OrderItemDto.fromJson(e).toDomain).toList(),
+        packingCharges: IntegerValue(packingCharges),
       );
 }
 

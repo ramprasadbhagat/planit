@@ -21,6 +21,8 @@ class SubCategoryProduct extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: Responsive.isWeb(context) ? 5 : 2,
               mainAxisExtent: 180,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
             itemCount: state.products.length,
             shrinkWrap: true,

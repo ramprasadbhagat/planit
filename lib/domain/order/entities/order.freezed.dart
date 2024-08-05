@@ -23,6 +23,7 @@ mixin _$Order {
   StringValue get deliveryAddressId => throw _privateConstructorUsedError;
   StringValue get paymentStatus => throw _privateConstructorUsedError;
   StringValue get orderStatus => throw _privateConstructorUsedError;
+  IntegerValue get packingCharges => throw _privateConstructorUsedError;
   IntegerValue get totalPrice => throw _privateConstructorUsedError;
   IntegerValue get subTotal => throw _privateConstructorUsedError;
   IntegerValue get deliveryCharge => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $OrderCopyWith<$Res> {
       StringValue deliveryAddressId,
       StringValue paymentStatus,
       StringValue orderStatus,
+      IntegerValue packingCharges,
       IntegerValue totalPrice,
       IntegerValue subTotal,
       IntegerValue deliveryCharge,
@@ -83,6 +85,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? deliveryAddressId = null,
     Object? paymentStatus = null,
     Object? orderStatus = null,
+    Object? packingCharges = null,
     Object? totalPrice = null,
     Object? subTotal = null,
     Object? deliveryCharge = null,
@@ -123,6 +126,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      packingCharges: null == packingCharges
+          ? _value.packingCharges
+          : packingCharges // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -182,6 +189,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       StringValue deliveryAddressId,
       StringValue paymentStatus,
       StringValue orderStatus,
+      IntegerValue packingCharges,
       IntegerValue totalPrice,
       IntegerValue subTotal,
       IntegerValue deliveryCharge,
@@ -212,6 +220,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? deliveryAddressId = null,
     Object? paymentStatus = null,
     Object? orderStatus = null,
+    Object? packingCharges = null,
     Object? totalPrice = null,
     Object? subTotal = null,
     Object? deliveryCharge = null,
@@ -252,6 +261,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      packingCharges: null == packingCharges
+          ? _value.packingCharges
+          : packingCharges // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
       totalPrice: null == totalPrice
           ? _value.totalPrice
           : totalPrice // ignore: cast_nullable_to_non_nullable
@@ -307,6 +320,7 @@ class _$OrderImpl implements _Order {
       required this.deliveryAddressId,
       required this.paymentStatus,
       required this.orderStatus,
+      required this.packingCharges,
       required this.totalPrice,
       required this.subTotal,
       required this.deliveryCharge,
@@ -334,6 +348,8 @@ class _$OrderImpl implements _Order {
   final StringValue paymentStatus;
   @override
   final StringValue orderStatus;
+  @override
+  final IntegerValue packingCharges;
   @override
   final IntegerValue totalPrice;
   @override
@@ -368,7 +384,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
+    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, packingCharges: $packingCharges, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -388,6 +404,8 @@ class _$OrderImpl implements _Order {
                 other.paymentStatus == paymentStatus) &&
             (identical(other.orderStatus, orderStatus) ||
                 other.orderStatus == orderStatus) &&
+            (identical(other.packingCharges, packingCharges) ||
+                other.packingCharges == packingCharges) &&
             (identical(other.totalPrice, totalPrice) ||
                 other.totalPrice == totalPrice) &&
             (identical(other.subTotal, subTotal) ||
@@ -420,6 +438,7 @@ class _$OrderImpl implements _Order {
       deliveryAddressId,
       paymentStatus,
       orderStatus,
+      packingCharges,
       totalPrice,
       subTotal,
       deliveryCharge,
@@ -447,6 +466,7 @@ abstract class _Order implements Order {
       required final StringValue deliveryAddressId,
       required final StringValue paymentStatus,
       required final StringValue orderStatus,
+      required final IntegerValue packingCharges,
       required final IntegerValue totalPrice,
       required final IntegerValue subTotal,
       required final IntegerValue deliveryCharge,
@@ -472,6 +492,8 @@ abstract class _Order implements Order {
   StringValue get paymentStatus;
   @override
   StringValue get orderStatus;
+  @override
+  IntegerValue get packingCharges;
   @override
   IntegerValue get totalPrice;
   @override

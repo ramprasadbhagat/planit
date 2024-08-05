@@ -7,7 +7,7 @@ class ComplainState with _$ComplainState {
     required List<Complain> complains,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
-    required File? image,
+    required XFile? image,
     required String? orderId,
   }) = _ComplainState;
 

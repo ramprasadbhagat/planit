@@ -11,15 +11,18 @@ _$OrderItemDtoImpl _$$OrderItemDtoImplFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String? ?? '',
       orderId: json['orderId'] as String? ?? '',
       productId: json['productId'] as String? ?? '',
+      attributeItemId: json['attributeItemId'] as String? ?? '',
       quantity: (intReadValue(json, 'quantity') as num?)?.toInt() ?? 0,
       unitPrice: (intReadValue(json, 'unitPrice') as num?)?.toInt() ?? 0,
       subTotal: (intReadValue(json, 'subTotal') as num?)?.toInt() ?? 0,
-      product: json['product'] as Map<String, dynamic>? ?? {},
+      product: productReadValue(json, 'product') as Map<String, dynamic>? ?? {},
       productImage:
           (productImageUrlFromMap(json, 'productImage') as List<dynamic>?)
                   ?.map((e) => e as String)
                   .toList() ??
               [],
+      reorderQuantity:
+          (intReadValue(json, 'reorderQuantity') as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
@@ -27,11 +30,13 @@ Map<String, dynamic> _$$OrderItemDtoImplToJson(_$OrderItemDtoImpl instance) =>
       '_id': instance.id,
       'orderId': instance.orderId,
       'productId': instance.productId,
+      'attributeItemId': instance.attributeItemId,
       'quantity': instance.quantity,
       'unitPrice': instance.unitPrice,
       'subTotal': instance.subTotal,
       'product': instance.product,
       'productImage': instance.productImage,
+      'reorderQuantity': instance.reorderQuantity,
     };
 
 _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
@@ -48,6 +53,7 @@ _$OrderItemProductDtoImpl _$$OrderItemProductDtoImplFromJson(
       sku: json['sku'] as String? ?? '',
       productRating:
           (ratingReadValue(json, 'productRating') as num?)?.toDouble() ?? 1,
+      price: json['price'] as String? ?? '0',
     );
 
 Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
@@ -62,4 +68,5 @@ Map<String, dynamic> _$$OrderItemProductDtoImplToJson(
       'productDiscountDate': instance.productDiscountDate,
       'sku': instance.sku,
       'productRating': instance.productRating,
+      'price': instance.price,
     };

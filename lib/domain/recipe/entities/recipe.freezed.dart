@@ -790,7 +790,7 @@ abstract class _Equipment implements Equipment {
 
 /// @nodoc
 mixin _$RecipeStep {
-  int get stepNumber => throw _privateConstructorUsedError;
+  String get stepNumber => throw _privateConstructorUsedError;
   StringValue get stepDescription => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -804,7 +804,7 @@ abstract class $RecipeStepCopyWith<$Res> {
           RecipeStep value, $Res Function(RecipeStep) then) =
       _$RecipeStepCopyWithImpl<$Res, RecipeStep>;
   @useResult
-  $Res call({int stepNumber, StringValue stepDescription});
+  $Res call({String stepNumber, StringValue stepDescription});
 }
 
 /// @nodoc
@@ -827,7 +827,7 @@ class _$RecipeStepCopyWithImpl<$Res, $Val extends RecipeStep>
       stepNumber: null == stepNumber
           ? _value.stepNumber
           : stepNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       stepDescription: null == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -844,7 +844,7 @@ abstract class _$$RecipeStepImplCopyWith<$Res>
       __$$RecipeStepImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int stepNumber, StringValue stepDescription});
+  $Res call({String stepNumber, StringValue stepDescription});
 }
 
 /// @nodoc
@@ -865,7 +865,7 @@ class __$$RecipeStepImplCopyWithImpl<$Res>
       stepNumber: null == stepNumber
           ? _value.stepNumber
           : stepNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       stepDescription: null == stepDescription
           ? _value.stepDescription
           : stepDescription // ignore: cast_nullable_to_non_nullable
@@ -881,7 +881,7 @@ class _$RecipeStepImpl implements _RecipeStep {
       {required this.stepNumber, required this.stepDescription});
 
   @override
-  final int stepNumber;
+  final String stepNumber;
   @override
   final StringValue stepDescription;
 
@@ -913,11 +913,11 @@ class _$RecipeStepImpl implements _RecipeStep {
 
 abstract class _RecipeStep implements RecipeStep {
   const factory _RecipeStep(
-      {required final int stepNumber,
+      {required final String stepNumber,
       required final StringValue stepDescription}) = _$RecipeStepImpl;
 
   @override
-  int get stepNumber;
+  String get stepNumber;
   @override
   StringValue get stepDescription;
   @override

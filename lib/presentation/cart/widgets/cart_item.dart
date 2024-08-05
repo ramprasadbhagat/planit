@@ -136,10 +136,15 @@ class AddToCart extends StatelessWidget {
               unauthenticated: () => state.getProductQuantityLocal(product),
             );
         return Container(
-          height: 25,
-          width: 70,
-          color: AppColors.black,
-          padding: const EdgeInsets.symmetric(horizontal: 6),
+          decoration: const BoxDecoration(
+            color: AppColors.black,
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+          ),
+          height: 28,
+          width: 85,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -154,7 +159,7 @@ class AddToCart extends StatelessWidget {
                       );
                 },
                 child: Container(
-                  width: 12,
+                  width: 15,
                   color: AppColors.white,
                   child: const Icon(
                     Icons.remove,
@@ -180,7 +185,7 @@ class AddToCart extends StatelessWidget {
                       );
                 },
                 child: Container(
-                  width: 12,
+                  width: 15,
                   color: AppColors.white,
                   child: const Icon(
                     Icons.add,
