@@ -66,7 +66,7 @@ class RecipeFilterBottomSheet extends StatelessWidget {
               children: [
                 BlocBuilder<RecipeBloc, RecipeState>(
                   buildWhen: (previous, current) =>
-                      previous.filterCount != current.filterCount,
+                      previous.tempFilterCount != current.tempFilterCount,
                   builder: (context, state) {
                     return OutlinedButton(
                       style: OutlinedButton.styleFrom(
@@ -85,13 +85,13 @@ class RecipeFilterBottomSheet extends StatelessWidget {
                                   color: AppColors.textBlack,
                                 ),
                       ),
-                      onPressed: state.filterCount == 0
+                      onPressed: state.tempFilterCount == 0
                           ? null
                           : () => context
                               .read<RecipeBloc>()
                               .add(const RecipeEvent.clearAllFilterClicked()),
                       child: Text(
-                        'Clear All${state.filterCount == 0 ? '' : ' (${state.filterCount})'}',
+                        'Clear All${state.tempFilterCount == 0 ? '' : ' (${state.tempFilterCount})'}',
                       ),
                     );
                   },
