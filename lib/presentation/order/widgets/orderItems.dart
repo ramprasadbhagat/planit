@@ -7,7 +7,7 @@ import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/html_text.dart';
-import 'package:planit/presentation/order/widgets/rating.dart';
+import 'package:planit/presentation/core/rating_star.dart';
 import 'package:planit/presentation/order/widgets/review_product.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -76,7 +76,8 @@ class OrderItemWidget extends StatelessWidget {
               Text(
                 orderItem.product.productName.displayLabel,
                 style: textTheme.bodyMedium?.copyWith(
-                  fontSize: 15,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               Padding(
@@ -84,51 +85,50 @@ class OrderItemWidget extends StatelessWidget {
                 child: Text(
                   orderItem.product.sku.displayLabel,
                   style: textTheme.bodySmall?.copyWith(
-                    fontSize: 14,
+                    fontSize: 13,
                     color: AppColors.grey2,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               HtmlText(
                 orderItem.product.productDescription.displayLabel,
                 style: textTheme.bodySmall?.copyWith(
-                  fontSize: 14,
+                  fontSize: 12,
                   color: AppColors.grey2,
+                  fontWeight: FontWeight.w400,
                 ),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
-              Row(
-                children: [
-                  const StarRatingShow(starValue: 4),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  Text(
-                    '4',
-                    style: textTheme.bodyMedium?.copyWith(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+              RatingStar(
+                value: orderItem.product.rating,
+                showAllStar: true,
               ),
               Row(
                 children: [
                   Text(
                     'Price : ',
-                    style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                    style: textTheme.labelSmall?.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Text(
                     orderItem.product.productMRP.getValue().toPrice(),
                     style: const TextStyle(
                       decoration: TextDecoration.lineThrough,
-                      fontSize: 14,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   const Spacer(),
                   Text(
                     '${orderItem.subTotal.getValue().toPrice()} Rs/-',
-                    style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                    style: textTheme.labelSmall?.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),
@@ -149,17 +149,24 @@ class OrderItemWidget extends StatelessWidget {
                         child: Text(
                           orderItem.quantity.getValue().toString(),
                           style: textTheme.labelSmall?.copyWith(
-                            fontSize: 14,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                       Text(
                         ' X ',
-                        style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                        style: textTheme.labelSmall?.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
                         orderItem.unitPrice.getValue().toPrice(),
-                        style: textTheme.labelSmall?.copyWith(fontSize: 14),
+                        style: textTheme.labelSmall?.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ],
                   ),
@@ -193,7 +200,11 @@ class OrderItemWidget extends StatelessWidget {
                     ),
                     child: const Text(
                       'Rate Now',
-                      style: TextStyle(color: AppColors.grey2),
+                      style: TextStyle(
+                        color: AppColors.grey2,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],

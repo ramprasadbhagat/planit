@@ -30,6 +30,7 @@ mixin _$Order {
   IntegerValue get totalDiscount => throw _privateConstructorUsedError;
   DateTime get orderDate => throw _privateConstructorUsedError;
   DeliveryDate get deliveryDate => throw _privateConstructorUsedError;
+  StringValue get deliveryTime => throw _privateConstructorUsedError;
   bool get isCouponApplied => throw _privateConstructorUsedError;
   List<AddressBook> get deliveryAddress => throw _privateConstructorUsedError;
   List<OrderItem> get orderItem => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $OrderCopyWith<$Res> {
       IntegerValue totalDiscount,
       DateTime orderDate,
       DeliveryDate deliveryDate,
+      StringValue deliveryTime,
       bool isCouponApplied,
       List<AddressBook> deliveryAddress,
       List<OrderItem> orderItem});
@@ -90,6 +92,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? totalDiscount = null,
     Object? orderDate = null,
     Object? deliveryDate = null,
+    Object? deliveryTime = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
     Object? orderItem = null,
@@ -151,6 +154,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.deliveryDate
           : deliveryDate // ignore: cast_nullable_to_non_nullable
               as DeliveryDate,
+      deliveryTime: null == deliveryTime
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       isCouponApplied: null == isCouponApplied
           ? _value.isCouponApplied
           : isCouponApplied // ignore: cast_nullable_to_non_nullable
@@ -189,6 +196,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       IntegerValue totalDiscount,
       DateTime orderDate,
       DeliveryDate deliveryDate,
+      StringValue deliveryTime,
       bool isCouponApplied,
       List<AddressBook> deliveryAddress,
       List<OrderItem> orderItem});
@@ -219,6 +227,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? totalDiscount = null,
     Object? orderDate = null,
     Object? deliveryDate = null,
+    Object? deliveryTime = null,
     Object? isCouponApplied = null,
     Object? deliveryAddress = null,
     Object? orderItem = null,
@@ -280,6 +289,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.deliveryDate
           : deliveryDate // ignore: cast_nullable_to_non_nullable
               as DeliveryDate,
+      deliveryTime: null == deliveryTime
+          ? _value.deliveryTime
+          : deliveryTime // ignore: cast_nullable_to_non_nullable
+              as StringValue,
       isCouponApplied: null == isCouponApplied
           ? _value.isCouponApplied
           : isCouponApplied // ignore: cast_nullable_to_non_nullable
@@ -314,6 +327,7 @@ class _$OrderImpl implements _Order {
       required this.totalDiscount,
       required this.orderDate,
       required this.deliveryDate,
+      required this.deliveryTime,
       required this.isCouponApplied,
       required final List<AddressBook> deliveryAddress,
       required final List<OrderItem> orderItem})
@@ -349,6 +363,8 @@ class _$OrderImpl implements _Order {
   @override
   final DeliveryDate deliveryDate;
   @override
+  final StringValue deliveryTime;
+  @override
   final bool isCouponApplied;
   final List<AddressBook> _deliveryAddress;
   @override
@@ -368,7 +384,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, packingCharges: $packingCharges, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
+    return 'Order(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, packingCharges: $packingCharges, totalPrice: $totalPrice, subTotal: $subTotal, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -402,6 +418,8 @@ class _$OrderImpl implements _Order {
                 other.orderDate == orderDate) &&
             (identical(other.deliveryDate, deliveryDate) ||
                 other.deliveryDate == deliveryDate) &&
+            (identical(other.deliveryTime, deliveryTime) ||
+                other.deliveryTime == deliveryTime) &&
             (identical(other.isCouponApplied, isCouponApplied) ||
                 other.isCouponApplied == isCouponApplied) &&
             const DeepCollectionEquality()
@@ -427,6 +445,7 @@ class _$OrderImpl implements _Order {
       totalDiscount,
       orderDate,
       deliveryDate,
+      deliveryTime,
       isCouponApplied,
       const DeepCollectionEquality().hash(_deliveryAddress),
       const DeepCollectionEquality().hash(_orderItem));
@@ -454,6 +473,7 @@ abstract class _Order implements Order {
       required final IntegerValue totalDiscount,
       required final DateTime orderDate,
       required final DeliveryDate deliveryDate,
+      required final StringValue deliveryTime,
       required final bool isCouponApplied,
       required final List<AddressBook> deliveryAddress,
       required final List<OrderItem> orderItem}) = _$OrderImpl;
@@ -486,6 +506,8 @@ abstract class _Order implements Order {
   DateTime get orderDate;
   @override
   DeliveryDate get deliveryDate;
+  @override
+  StringValue get deliveryTime;
   @override
   bool get isCouponApplied;
   @override

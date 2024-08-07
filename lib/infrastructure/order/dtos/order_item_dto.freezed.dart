@@ -462,6 +462,8 @@ mixin _$OrderItemProductDto {
   String get productDiscountDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku', defaultValue: '')
   String get sku => throw _privateConstructorUsedError;
+  @JsonKey(name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+  double get productRating => throw _privateConstructorUsedError;
   @JsonKey(name: 'price', defaultValue: '0')
   String get price => throw _privateConstructorUsedError;
 
@@ -491,6 +493,9 @@ abstract class $OrderItemProductDtoCopyWith<$Res> {
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       String productDiscountDate,
       @JsonKey(name: 'sku', defaultValue: '') String sku,
+      @JsonKey(
+          name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+      double productRating,
       @JsonKey(name: 'price', defaultValue: '0') String price});
 }
 
@@ -515,6 +520,7 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? productRating = null,
     Object? price = null,
   }) {
     return _then(_value.copyWith(
@@ -550,6 +556,10 @@ class _$OrderItemProductDtoCopyWithImpl<$Res, $Val extends OrderItemProductDto>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
+              as double,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -580,6 +590,9 @@ abstract class _$$OrderItemProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       String productDiscountDate,
       @JsonKey(name: 'sku', defaultValue: '') String sku,
+      @JsonKey(
+          name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+      double productRating,
       @JsonKey(name: 'price', defaultValue: '0') String price});
 }
 
@@ -602,6 +615,7 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? productRating = null,
     Object? price = null,
   }) {
     return _then(_$OrderItemProductDtoImpl(
@@ -637,6 +651,10 @@ class __$$OrderItemProductDtoImplCopyWithImpl<$Res>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
+              as double,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -662,6 +680,9 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       required this.productDiscountDate,
       @JsonKey(name: 'sku', defaultValue: '') required this.sku,
+      @JsonKey(
+          name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+      required this.productRating,
       @JsonKey(name: 'price', defaultValue: '0') required this.price})
       : super._();
 
@@ -693,12 +714,15 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
   @JsonKey(name: 'sku', defaultValue: '')
   final String sku;
   @override
+  @JsonKey(name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+  final double productRating;
+  @override
   @JsonKey(name: 'price', defaultValue: '0')
   final String price;
 
   @override
   String toString() {
-    return 'OrderItemProductDto(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku, price: $price)';
+    return 'OrderItemProductDto(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku, productRating: $productRating, price: $price)';
   }
 
   @override
@@ -720,6 +744,8 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
             (identical(other.productDiscountDate, productDiscountDate) ||
                 other.productDiscountDate == productDiscountDate) &&
             (identical(other.sku, sku) || other.sku == sku) &&
+            (identical(other.productRating, productRating) ||
+                other.productRating == productRating) &&
             (identical(other.price, price) || other.price == price));
   }
 
@@ -735,6 +761,7 @@ class _$OrderItemProductDtoImpl extends _OrderItemProductDto {
       productDiscount,
       productDiscountDate,
       sku,
+      productRating,
       price);
 
   @JsonKey(ignore: true)
@@ -769,6 +796,9 @@ abstract class _OrderItemProductDto extends OrderItemProductDto {
       @JsonKey(name: 'productDiscountDate', defaultValue: '')
       required final String productDiscountDate,
       @JsonKey(name: 'sku', defaultValue: '') required final String sku,
+      @JsonKey(
+          name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+      required final double productRating,
       @JsonKey(name: 'price', defaultValue: '0')
       required final String price}) = _$OrderItemProductDtoImpl;
   const _OrderItemProductDto._() : super._();
@@ -800,6 +830,9 @@ abstract class _OrderItemProductDto extends OrderItemProductDto {
   @override
   @JsonKey(name: 'sku', defaultValue: '')
   String get sku;
+  @override
+  @JsonKey(name: 'productRating', defaultValue: 1, readValue: ratingReadValue)
+  double get productRating;
   @override
   @JsonKey(name: 'price', defaultValue: '0')
   String get price;

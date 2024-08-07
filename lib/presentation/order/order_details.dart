@@ -70,8 +70,8 @@ class OrderDetailsPage extends StatelessWidget {
                           Text(
                             'Order Summary',
                             style: textTheme.titleMedium?.copyWith(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -82,14 +82,21 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.calendar_month,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Order ID : ${order.id.displayLabel}',
+                                ' Order ID : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.id.displayLabel,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -101,14 +108,21 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.date_range_outlined,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Order Date : ${order.getOrderDate}',
+                                ' Order Date : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.getOrderDate,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -120,14 +134,21 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.date_range_outlined,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Delivery Date : ${order.deliveryDate.getDisplayValue}',
+                                ' Delivery Date : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.deliveryDate.getDisplayValue,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -139,14 +160,21 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.timer_outlined,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Time : 7:20 - 7:30 am ',
+                                ' Time : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.deliveryTime.displayLabel,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -162,10 +190,17 @@ class OrderDetailsPage extends StatelessWidget {
                                 width: 20,
                               ),
                               Text(
-                                ' Order Status : ${order.getOrderStatus.getDisplayStatus}',
+                                ' Order Status : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.getOrderStatus.getDisplayStatus,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -196,14 +231,14 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.room_outlined,
-                                size: 20,
-                                color: AppColors.grey1,
+                                size: 14,
+                                color: AppColors.black,
                               ),
                               Text(
                                 'Delivery Address',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
                               ),
@@ -216,14 +251,24 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.person_2_outlined,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Recipient Name : ${order.deliveryAddress.firstOrNull?.fullName ?? 'NA'}',
+                                ' Recipient Name : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                  color: AppColors.textBlack,
+                                ),
+                              ),
+                              Text(
+                                order.deliveryAddress.firstOrNull?.fullName ??
+                                    'NA',
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textBlack,
                                 ),
                               ),
                             ],
@@ -235,14 +280,21 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.call,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
-                                ' Mobile Number : ${order.getDeliveryPhoneNumber}',
+                                ' Mobile Number : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.getDeliveryPhoneNumber,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -255,13 +307,13 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.home_outlined,
-                                size: 18,
-                                color: AppColors.grey2,
+                                size: 14,
+                                color: AppColors.textBlack,
                               ),
                               Text(
                                 ' Address : ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -269,8 +321,8 @@ class OrderDetailsPage extends StatelessWidget {
                                 child: Text(
                                   order.getDeliveryAddress,
                                   style: textTheme.titleMedium?.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
@@ -302,14 +354,14 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               Image.asset(
                                 PngImage.orderItemIcon,
-                                height: 18,
-                                width: 18,
+                                height: 15.14,
+                                width: 15,
                               ),
                               Text(
                                 ' Order Items',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
                               ),
@@ -353,8 +405,8 @@ class OrderDetailsPage extends StatelessWidget {
                               Text(
                                 ' Payment Details',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
                               ),
@@ -367,13 +419,14 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.date_range_outlined,
-                                size: 16,
-                                color: AppColors.grey2,
+                                size: 12,
+                                color: AppColors.iconGrey,
                               ),
                               Text(
                                 ' Order No : ${order.id.displayLabel}',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  color: AppColors.grey2,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -386,13 +439,14 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               Image.asset(
                                 PngImage.dollar,
-                                height: 10,
-                                width: 15,
+                                height: 8,
+                                width: 10,
                               ),
                               Text(
                                 ' Payment Option : Cash ',
                                 style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                  color: AppColors.grey2,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -413,12 +467,12 @@ class OrderDetailsPage extends StatelessWidget {
                                       Image.asset(
                                         PngImage.coupon,
                                         height: 14,
-                                        width: 15,
+                                        width: 11,
                                       ),
                                       Text(
                                         ' Coupon ',
                                         style: textTheme.titleMedium?.copyWith(
-                                          fontSize: 14,
+                                          fontSize: 12,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -426,7 +480,7 @@ class OrderDetailsPage extends StatelessWidget {
                                       Text(
                                         'You saved ${order.totalDiscount.getValue().toPrice()} ',
                                         style: textTheme.titleMedium?.copyWith(
-                                          fontSize: 14,
+                                          fontSize: 12,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -440,7 +494,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       'Taxes',
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -448,7 +503,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -462,8 +518,9 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       'Delivery Charge',
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     const Spacer(),
@@ -472,7 +529,8 @@ class OrderDetailsPage extends StatelessWidget {
                                           .getValue()
                                           .toPrice(showFreeIfZero: true),
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -486,7 +544,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       'Packaging Charges',
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -494,7 +553,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       order.packingCharges.getValue().toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -508,7 +568,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       ' Cash Round Off ',
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -516,7 +577,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     Text(
                                       0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -526,7 +588,10 @@ class OrderDetailsPage extends StatelessWidget {
                                   height: 20,
                                 ),
                                 const Divider(
+                                  indent: 0,
+                                  endIndent: 0,
                                   height: 2,
+                                  color: AppColors.iconGrey,
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -534,23 +599,23 @@ class OrderDetailsPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Image.asset(
-                                      PngImage.coupon,
+                                      PngImage.dollar,
                                       height: 14,
                                       width: 15,
                                     ),
                                     Text(
                                       ' Grand Total',
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     const Spacer(),
                                     Text(
                                       order.getTotalPrice,
                                       style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                   ],
@@ -593,6 +658,8 @@ class OrderDetailsPage extends StatelessWidget {
                     'Reorder',
                     style: textTheme.titleLarge?.copyWith(
                       color: AppColors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -624,7 +691,10 @@ class OrderDetailsPage extends StatelessWidget {
                   },
                   child: Text(
                     'Rate Your Order',
-                    style: textTheme.titleLarge,
+                    style: textTheme.titleLarge?.copyWith(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],

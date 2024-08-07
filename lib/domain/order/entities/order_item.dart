@@ -45,6 +45,7 @@ class OrderItemProduct with _$OrderItemProduct {
     required IntegerValue productDiscount,
     required DateTime productDiscountDate,
     required StringValue sku,
+    required double rating,
   }) = _OrderItemProduct;
 
   factory OrderItemProduct.empty() => OrderItemProduct(
@@ -56,6 +57,7 @@ class OrderItemProduct with _$OrderItemProduct {
         productDiscount: IntegerValue(0),
         productDiscountDate: DateTime(2024),
         sku: StringValue(''),
+        rating: 1,
         price: IntegerValue(0),
       );
 }

@@ -363,6 +363,7 @@ mixin _$OrderItemProduct {
   IntegerValue get productDiscount => throw _privateConstructorUsedError;
   DateTime get productDiscountDate => throw _privateConstructorUsedError;
   StringValue get sku => throw _privateConstructorUsedError;
+  double get rating => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderItemProductCopyWith<OrderItemProduct> get copyWith =>
@@ -384,7 +385,8 @@ abstract class $OrderItemProductCopyWith<$Res> {
       IntegerValue price,
       IntegerValue productDiscount,
       DateTime productDiscountDate,
-      StringValue sku});
+      StringValue sku,
+      double rating});
 }
 
 /// @nodoc
@@ -409,6 +411,7 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? rating = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -447,6 +450,10 @@ class _$OrderItemProductCopyWithImpl<$Res, $Val extends OrderItemProduct>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -468,7 +475,8 @@ abstract class _$$OrderItemProductImplCopyWith<$Res>
       IntegerValue price,
       IntegerValue productDiscount,
       DateTime productDiscountDate,
-      StringValue sku});
+      StringValue sku,
+      double rating});
 }
 
 /// @nodoc
@@ -491,6 +499,7 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
     Object? productDiscount = null,
     Object? productDiscountDate = null,
     Object? sku = null,
+    Object? rating = null,
   }) {
     return _then(_$OrderItemProductImpl(
       id: null == id
@@ -529,6 +538,10 @@ class __$$OrderItemProductImplCopyWithImpl<$Res>
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -545,7 +558,8 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
       required this.price,
       required this.productDiscount,
       required this.productDiscountDate,
-      required this.sku});
+      required this.sku,
+      required this.rating});
 
   @override
   final StringValue id;
@@ -565,10 +579,12 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
   final DateTime productDiscountDate;
   @override
   final StringValue sku;
+  @override
+  final double rating;
 
   @override
   String toString() {
-    return 'OrderItemProduct(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, price: $price, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku)';
+    return 'OrderItemProduct(id: $id, productName: $productName, productDescription: $productDescription, expiryDate: $expiryDate, productMRP: $productMRP, price: $price, productDiscount: $productDiscount, productDiscountDate: $productDiscountDate, sku: $sku, rating: $rating)';
   }
 
   @override
@@ -590,7 +606,8 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
                 other.productDiscount == productDiscount) &&
             (identical(other.productDiscountDate, productDiscountDate) ||
                 other.productDiscountDate == productDiscountDate) &&
-            (identical(other.sku, sku) || other.sku == sku));
+            (identical(other.sku, sku) || other.sku == sku) &&
+            (identical(other.rating, rating) || other.rating == rating));
   }
 
   @override
@@ -604,7 +621,8 @@ class _$OrderItemProductImpl implements _OrderItemProduct {
       price,
       productDiscount,
       productDiscountDate,
-      sku);
+      sku,
+      rating);
 
   @JsonKey(ignore: true)
   @override
@@ -624,7 +642,8 @@ abstract class _OrderItemProduct implements OrderItemProduct {
       required final IntegerValue price,
       required final IntegerValue productDiscount,
       required final DateTime productDiscountDate,
-      required final StringValue sku}) = _$OrderItemProductImpl;
+      required final StringValue sku,
+      required final double rating}) = _$OrderItemProductImpl;
 
   @override
   StringValue get id;
@@ -644,6 +663,8 @@ abstract class _OrderItemProduct implements OrderItemProduct {
   DateTime get productDiscountDate;
   @override
   StringValue get sku;
+  @override
+  double get rating;
   @override
   @JsonKey(ignore: true)
   _$$OrderItemProductImplCopyWith<_$OrderItemProductImpl> get copyWith =>
