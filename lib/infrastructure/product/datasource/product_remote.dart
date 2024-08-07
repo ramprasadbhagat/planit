@@ -43,10 +43,7 @@ class ProductRemoteDataSource {
   Future<List<Product>> getSubCategoryProduct(String subcategoryId) async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'products/getProductByCategory',
-      data: {
-        'categoryID': subcategoryId,
-      },
+      url: 'products/getProductByCategory?categoryID=$subcategoryId',
     );
     _exceptionChecker(res: res);
     final categories = res.data['items'];

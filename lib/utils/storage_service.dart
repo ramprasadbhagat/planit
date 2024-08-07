@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
@@ -10,9 +11,11 @@ class StorageService {
   late Box<CartProductLocal> _cartProductLocalBox;
 
   Future init() async {
-    final tempDir = await getTemporaryDirectory();
-    final path = tempDir.path;
-    Hive.init(path);
+    if (!kIsWeb) {
+      final tempDir = await getTemporaryDirectory();
+      final path = tempDir.path;
+      Hive.init(path);
+    }
     _registAdapters();
     await _openBox();
   }

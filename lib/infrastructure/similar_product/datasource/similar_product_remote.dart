@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
@@ -16,11 +14,9 @@ class SimilarProductRemoteDataSource {
   Future<List<SimilarProduct>> getSimilarProductsList({
     required String productId,
   }) async {
-    final data = json.encode({'productId': productId});
     final res = await httpService.request(
       method: 'GET',
-      url: 'products/getSimilarProduct',
-      data: data,
+      url: 'products/getSimilarProduct/?productId=$productId',
     );
     _exceptionChecker(res: res);
     final products = res.data['items'];
