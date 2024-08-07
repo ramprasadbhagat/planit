@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mime/mime.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/user/entities/user.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
@@ -42,9 +43,11 @@ class UserRemoteDateSource {
     };
 
     if (localImagePath != null) {
-      data['userImages'] = await MultipartFile.fromFile(
-        localImagePath.path,
-        contentType: MediaType.parse(localImagePath.mimeType ?? 'image/png'),
+      data['userImages'] = MultipartFile.fromBytes(
+        await localImagePath.readAsBytes(),
+        filename: localImagePath.name,
+        contentType:
+            MediaType.parse(lookupMimeType(localImagePath.name) ?? 'image/png'),
       );
     }
 

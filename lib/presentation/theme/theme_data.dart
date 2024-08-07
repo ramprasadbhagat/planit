@@ -304,7 +304,6 @@ InputDecorationTheme _inputDecorationTheme() {
     ),
     iconColor: AppColors.primary,
     focusColor: AppColors.primary,
-    hoverColor: AppColors.primary,
     prefixIconColor: AppColors.primary,
     suffixIconColor: AppColors.primary,
     filled: true,
@@ -423,6 +422,7 @@ SnackBarThemeData _snackBarTheme() {
     backgroundColor: AppColors.black,
     contentTextStyle: TextStyle(
       fontWeight: FontWeight.w600,
+      color: AppColors.white,
     ),
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -136,6 +137,7 @@ class ProfileInformationSection extends StatelessWidget {
             () {
               const snackBar = SnackBar(
                 content: Text('Profile updated successfully'),
+                backgroundColor: AppColors.green,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
@@ -244,10 +246,15 @@ class ProfileInformationSection extends StatelessWidget {
                                   ],
                                 ),
                                 child: state.localImagePath != null
-                                    ? Image.file(
-                                        File(state.localImagePath!.path),
-                                        fit: BoxFit.cover,
-                                      )
+                                    ? kIsWeb
+                                        ? Image.network(
+                                            state.localImagePath!.path,
+                                            fit: BoxFit.cover,
+                                          )
+                                        : Image.file(
+                                            File(state.localImagePath!.path),
+                                            fit: BoxFit.cover,
+                                          )
                                     : state.updatedUser.profileImage.isValid()
                                         ? CachedNetworkImage(
                                             imageUrl: state
