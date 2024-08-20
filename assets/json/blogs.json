@@ -1,0 +1,69 @@
+{
+    "items": [
+        {
+            "id": "667e69b8d410930012580be0",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_title": "BlogTitleTest",
+            "blog_content": "<p>BlogTitleContent</p>\r\n",
+            "keyword": [],
+            "blog_images": [
+                "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1722862406147.png"
+            ],
+            "created_at": "2024-06-28T07:43:52.982Z",
+            "updated_at": "2024-08-05T12:53:26.155Z",
+            "isActive": true,
+            "isDeleted": false,
+            "blog_tag": "TagTest1",
+            "hyperlink": [
+                "https://www.a.com/",
+                "https://www.google.com/",
+                "https://www.google.com/",
+                "https://www.google.com/",
+                "https://www.google.com/",
+                "https://www.google.com/",
+                "https://www.google.com/"
+            ]
+        },
+        {
+            "id": "667913c55342bf0012625746",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_title": "blog91",
+            "blog_content": "<p>blog91 Content</p>\r\n",
+            "keyword": [],
+            "blog_images": [
+                "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1719210949187.jpg"
+            ],
+            "created_at": "2024-06-24T06:35:49.193Z",
+            "updated_at": "2024-06-27T11:01:11.525Z",
+            "isActive": true,
+            "isDeleted": false,
+            "blog_tag": "tag 91",
+            "hyperlink": [
+                "https://www.amazons.com/",
+                "https://www.amazons.com/",
+                "https://www.amazons.com/"
+            ]
+        },
+        {
+            "id": "66672c27d440780013505dcd",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_title": "blog99",
+            "blog_content": "<p>blog 99..</p>\r\n",
+            "keyword": [],
+            "blog_images": [
+                "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1718095071929.jpg"
+            ],
+            "created_at": "2024-06-10T16:39:03.235Z",
+            "updated_at": "2024-06-11T08:37:51.934Z",
+            "isActive": true,
+            "isDeleted": false,
+            "blog_tag": "tag999",
+            "hyperlink": [
+                "https://www.google.com/",
+                "https://www.gmail.com/",
+                "https://www.gmail.com/"
+            ]
+        }
+    ],
+    "totalCount": 3
+}

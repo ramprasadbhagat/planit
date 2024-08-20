@@ -4,6 +4,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
+import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
@@ -112,6 +113,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => locator<FavouriteRecipeBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<BlogBloc>(),
         ),
       ],
       child: MaterialApp.router(

@@ -151,7 +151,7 @@ class HomePageMobile extends StatelessWidget {
                       children: [
                         TabBar(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 12,
+                            vertical: 8,
                             horizontal: 10,
                           ),
                           controller: tabController,
@@ -196,9 +196,6 @@ class HomePageMobile extends StatelessWidget {
                           ).toList(),
                         ),
                         const HomeSearchBar(),
-                        const SizedBox(
-                          height: 4,
-                        ),
                       ],
                     ),
                     Expanded(child: child),

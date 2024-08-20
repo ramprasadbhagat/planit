@@ -4,6 +4,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
+import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
@@ -24,6 +25,7 @@ import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/blog/repository/i_blog_repository.dart';
 import 'package:planit/domain/favourite_recipe/repository/i_favourite_recipe.dart';
 import 'package:planit/domain/recipe/repository/i_recipe_repository.dart';
 import 'package:planit/domain/review/repository/i_review_repository.dart';
@@ -37,6 +39,9 @@ import 'package:planit/infrastructure/auth/repository/auth_repository.dart';
 import 'package:planit/infrastructure/banner/datasource/banner_local.dart';
 import 'package:planit/infrastructure/banner/datasource/banner_remote.dart';
 import 'package:planit/infrastructure/banner/repository/banner_repository.dart';
+import 'package:planit/infrastructure/blog/datasource/blog_local.dart';
+import 'package:planit/infrastructure/blog/datasource/blog_remote.dart';
+import 'package:planit/infrastructure/blog/repository/blog_repository.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_local.dart';
 import 'package:planit/infrastructure/cart/datasource/cart_remote.dart';
 import 'package:planit/infrastructure/cart/repository/cart_repository.dart';
@@ -663,5 +668,30 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => FavouriteRecipeBloc(locator<IFavouriteRecipeRepository>()),
+  );
+
+  /////============================================================
+  //  Blogs
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const BlogLocalDataSource(),
+  );
+
+  locator.registerLazySingleton(
+    () => BlogRemoteDataSource(
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IBlogRepository>(
+    () => BlogRepository(
+      config: locator<Config>(),
+      localDataSource: locator<BlogLocalDataSource>(),
+      remoteDataSource: locator<BlogRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => BlogBloc(locator<IBlogRepository>()),
   );
 }
