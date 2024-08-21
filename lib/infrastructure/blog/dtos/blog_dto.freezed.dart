@@ -38,6 +38,10 @@ mixin _$BlogDto {
   List<String> get blogTag => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: [])
   List<String> get hyperlink => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0, name: 'likesCount')
+  int get likesCount => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: 0, name: 'dislikeCount')
+  int get dislikeCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +64,9 @@ abstract class $BlogDtoCopyWith<$Res> {
       DateTime updatedAt,
       @JsonKey(readValue: blogTagReadValue, defaultValue: [])
       List<String> blogTag,
-      @JsonKey(defaultValue: []) List<String> hyperlink});
+      @JsonKey(defaultValue: []) List<String> hyperlink,
+      @JsonKey(defaultValue: 0, name: 'likesCount') int likesCount,
+      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount});
 }
 
 /// @nodoc
@@ -86,6 +92,8 @@ class _$BlogDtoCopyWithImpl<$Res, $Val extends BlogDto>
     Object? updatedAt = null,
     Object? blogTag = null,
     Object? hyperlink = null,
+    Object? likesCount = null,
+    Object? dislikeCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -128,6 +136,14 @@ class _$BlogDtoCopyWithImpl<$Res, $Val extends BlogDto>
           ? _value.hyperlink
           : hyperlink // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      dislikeCount: null == dislikeCount
+          ? _value.dislikeCount
+          : dislikeCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -150,7 +166,9 @@ abstract class _$$BlogDtoImplCopyWith<$Res> implements $BlogDtoCopyWith<$Res> {
       DateTime updatedAt,
       @JsonKey(readValue: blogTagReadValue, defaultValue: [])
       List<String> blogTag,
-      @JsonKey(defaultValue: []) List<String> hyperlink});
+      @JsonKey(defaultValue: []) List<String> hyperlink,
+      @JsonKey(defaultValue: 0, name: 'likesCount') int likesCount,
+      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount});
 }
 
 /// @nodoc
@@ -174,6 +192,8 @@ class __$$BlogDtoImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? blogTag = null,
     Object? hyperlink = null,
+    Object? likesCount = null,
+    Object? dislikeCount = null,
   }) {
     return _then(_$BlogDtoImpl(
       id: null == id
@@ -216,6 +236,14 @@ class __$$BlogDtoImplCopyWithImpl<$Res>
           ? _value._hyperlink
           : hyperlink // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      dislikeCount: null == dislikeCount
+          ? _value.dislikeCount
+          : dislikeCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -235,7 +263,10 @@ class _$BlogDtoImpl extends _BlogDto {
       required this.updatedAt,
       @JsonKey(readValue: blogTagReadValue, defaultValue: [])
       required final List<String> blogTag,
-      @JsonKey(defaultValue: []) required final List<String> hyperlink})
+      @JsonKey(defaultValue: []) required final List<String> hyperlink,
+      @JsonKey(defaultValue: 0, name: 'likesCount') required this.likesCount,
+      @JsonKey(defaultValue: 0, name: 'dislikeCount')
+      required this.dislikeCount})
       : _blogImages = blogImages,
         _keyword = keyword,
         _blogTag = blogTag,
@@ -298,8 +329,15 @@ class _$BlogDtoImpl extends _BlogDto {
   }
 
   @override
+  @JsonKey(defaultValue: 0, name: 'likesCount')
+  final int likesCount;
+  @override
+  @JsonKey(defaultValue: 0, name: 'dislikeCount')
+  final int dislikeCount;
+
+  @override
   String toString() {
-    return 'BlogDto(id: $id, userId: $userId, blogTitle: $blogTitle, blogContent: $blogContent, blogImages: $blogImages, keyword: $keyword, createdAt: $createdAt, updatedAt: $updatedAt, blogTag: $blogTag, hyperlink: $hyperlink)';
+    return 'BlogDto(id: $id, userId: $userId, blogTitle: $blogTitle, blogContent: $blogContent, blogImages: $blogImages, keyword: $keyword, createdAt: $createdAt, updatedAt: $updatedAt, blogTag: $blogTag, hyperlink: $hyperlink, likesCount: $likesCount, dislikeCount: $dislikeCount)';
   }
 
   @override
@@ -322,7 +360,11 @@ class _$BlogDtoImpl extends _BlogDto {
                 other.updatedAt == updatedAt) &&
             const DeepCollectionEquality().equals(other._blogTag, _blogTag) &&
             const DeepCollectionEquality()
-                .equals(other._hyperlink, _hyperlink));
+                .equals(other._hyperlink, _hyperlink) &&
+            (identical(other.likesCount, likesCount) ||
+                other.likesCount == likesCount) &&
+            (identical(other.dislikeCount, dislikeCount) ||
+                other.dislikeCount == dislikeCount));
   }
 
   @JsonKey(ignore: true)
@@ -338,7 +380,9 @@ class _$BlogDtoImpl extends _BlogDto {
       createdAt,
       updatedAt,
       const DeepCollectionEquality().hash(_blogTag),
-      const DeepCollectionEquality().hash(_hyperlink));
+      const DeepCollectionEquality().hash(_hyperlink),
+      likesCount,
+      dislikeCount);
 
   @JsonKey(ignore: true)
   @override
@@ -356,18 +400,21 @@ class _$BlogDtoImpl extends _BlogDto {
 
 abstract class _BlogDto extends BlogDto {
   const factory _BlogDto(
-          {@JsonKey(defaultValue: '') required final String id,
-          @JsonKey(defaultValue: '') required final String userId,
-          @JsonKey(defaultValue: '') required final String blogTitle,
-          @JsonKey(defaultValue: '') required final String blogContent,
-          @JsonKey(defaultValue: []) required final List<String> blogImages,
-          @JsonKey(defaultValue: []) required final List<String> keyword,
-          required final DateTime createdAt,
-          required final DateTime updatedAt,
-          @JsonKey(readValue: blogTagReadValue, defaultValue: [])
-          required final List<String> blogTag,
-          @JsonKey(defaultValue: []) required final List<String> hyperlink}) =
-      _$BlogDtoImpl;
+      {@JsonKey(defaultValue: '') required final String id,
+      @JsonKey(defaultValue: '') required final String userId,
+      @JsonKey(defaultValue: '') required final String blogTitle,
+      @JsonKey(defaultValue: '') required final String blogContent,
+      @JsonKey(defaultValue: []) required final List<String> blogImages,
+      @JsonKey(defaultValue: []) required final List<String> keyword,
+      required final DateTime createdAt,
+      required final DateTime updatedAt,
+      @JsonKey(readValue: blogTagReadValue, defaultValue: [])
+      required final List<String> blogTag,
+      @JsonKey(defaultValue: []) required final List<String> hyperlink,
+      @JsonKey(defaultValue: 0, name: 'likesCount')
+      required final int likesCount,
+      @JsonKey(defaultValue: 0, name: 'dislikeCount')
+      required final int dislikeCount}) = _$BlogDtoImpl;
   const _BlogDto._() : super._();
 
   factory _BlogDto.fromJson(Map<String, dynamic> json) = _$BlogDtoImpl.fromJson;
@@ -400,6 +447,12 @@ abstract class _BlogDto extends BlogDto {
   @override
   @JsonKey(defaultValue: [])
   List<String> get hyperlink;
+  @override
+  @JsonKey(defaultValue: 0, name: 'likesCount')
+  int get likesCount;
+  @override
+  @JsonKey(defaultValue: 0, name: 'dislikeCount')
+  int get dislikeCount;
   @override
   @JsonKey(ignore: true)
   _$$BlogDtoImplCopyWith<_$BlogDtoImpl> get copyWith =>

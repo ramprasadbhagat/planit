@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -14,26 +12,16 @@ class BlogItemCard extends StatelessWidget {
   final Blog blog;
   const BlogItemCard({super.key, required this.blog});
 
-  Color getRandomColor() {
-    final colors = [
-      const Color(0xffAEFF99),
-      const Color(0xffF99D42),
-      const Color(0xff9DB7FB),
-      const Color(0xffFFB4B4),
-      const Color(0xffFFCE50),
-      const Color.fromRGBO(255, 206, 80, 0.62),
-    ];
-
-    final random = Random();
-    return colors[random.nextInt(colors.length)];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
         onTap: () {
-          context.router.navigate(const BlogDetailsRoute());
+          context.router.navigate(
+            BlogDetailsRoute(
+              blog: blog,
+            ),
+          );
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
@@ -79,7 +67,6 @@ class BlogItemCard extends StatelessWidget {
                                 .map(
                                   (e) => BlogTagItem(
                                     text: e,
-                                    backgroundColor: getRandomColor(),
                                   ),
                                 )
                                 .toList(),

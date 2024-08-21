@@ -24,6 +24,8 @@ mixin _$Blog {
   List<String> get blogTag => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  IntegerValue get likesCount => throw _privateConstructorUsedError;
+  IntegerValue get dislikeCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BlogCopyWith<Blog> get copyWith => throw _privateConstructorUsedError;
@@ -42,7 +44,9 @@ abstract class $BlogCopyWith<$Res> {
       List<StringValue> blogImage,
       List<String> blogTag,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      IntegerValue likesCount,
+      IntegerValue dislikeCount});
 }
 
 /// @nodoc
@@ -66,6 +70,8 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
     Object? blogTag = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? likesCount = null,
+    Object? dislikeCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +106,14 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      dislikeCount: null == dislikeCount
+          ? _value.dislikeCount
+          : dislikeCount // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
     ) as $Val);
   }
 }
@@ -119,7 +133,9 @@ abstract class _$$BlogImplCopyWith<$Res> implements $BlogCopyWith<$Res> {
       List<StringValue> blogImage,
       List<String> blogTag,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      IntegerValue likesCount,
+      IntegerValue dislikeCount});
 }
 
 /// @nodoc
@@ -140,6 +156,8 @@ class __$$BlogImplCopyWithImpl<$Res>
     Object? blogTag = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? likesCount = null,
+    Object? dislikeCount = null,
   }) {
     return _then(_$BlogImpl(
       id: null == id
@@ -174,6 +192,14 @@ class __$$BlogImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
+      dislikeCount: null == dislikeCount
+          ? _value.dislikeCount
+          : dislikeCount // ignore: cast_nullable_to_non_nullable
+              as IntegerValue,
     ));
   }
 }
@@ -189,7 +215,9 @@ class _$BlogImpl implements _Blog {
       required final List<StringValue> blogImage,
       required final List<String> blogTag,
       required this.createdAt,
-      required this.updatedAt})
+      required this.updatedAt,
+      required this.likesCount,
+      required this.dislikeCount})
       : _keywords = keywords,
         _blogImage = blogImage,
         _blogTag = blogTag;
@@ -228,10 +256,14 @@ class _$BlogImpl implements _Blog {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  final IntegerValue likesCount;
+  @override
+  final IntegerValue dislikeCount;
 
   @override
   String toString() {
-    return 'Blog(id: $id, title: $title, blogContent: $blogContent, keywords: $keywords, blogImage: $blogImage, blogTag: $blogTag, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Blog(id: $id, title: $title, blogContent: $blogContent, keywords: $keywords, blogImage: $blogImage, blogTag: $blogTag, createdAt: $createdAt, updatedAt: $updatedAt, likesCount: $likesCount, dislikeCount: $dislikeCount)';
   }
 
   @override
@@ -250,7 +282,11 @@ class _$BlogImpl implements _Blog {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.likesCount, likesCount) ||
+                other.likesCount == likesCount) &&
+            (identical(other.dislikeCount, dislikeCount) ||
+                other.dislikeCount == dislikeCount));
   }
 
   @override
@@ -263,7 +299,9 @@ class _$BlogImpl implements _Blog {
       const DeepCollectionEquality().hash(_blogImage),
       const DeepCollectionEquality().hash(_blogTag),
       createdAt,
-      updatedAt);
+      updatedAt,
+      likesCount,
+      dislikeCount);
 
   @JsonKey(ignore: true)
   @override
@@ -281,7 +319,9 @@ abstract class _Blog implements Blog {
       required final List<StringValue> blogImage,
       required final List<String> blogTag,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$BlogImpl;
+      required final DateTime updatedAt,
+      required final IntegerValue likesCount,
+      required final IntegerValue dislikeCount}) = _$BlogImpl;
 
   @override
   StringValue get id;
@@ -299,6 +339,10 @@ abstract class _Blog implements Blog {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  IntegerValue get likesCount;
+  @override
+  IntegerValue get dislikeCount;
   @override
   @JsonKey(ignore: true)
   _$$BlogImplCopyWith<_$BlogImpl> get copyWith =>

@@ -30,6 +30,8 @@ _$BlogDtoImpl _$$BlogDtoImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           [],
+      likesCount: (json['likesCount'] as num?)?.toInt() ?? 0,
+      dislikeCount: (json['dislikeCount'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$BlogDtoImplToJson(_$BlogDtoImpl instance) =>
@@ -44,4 +46,6 @@ Map<String, dynamic> _$$BlogDtoImplToJson(_$BlogDtoImpl instance) =>
       'updated_at': instance.updatedAt.toIso8601String(),
       'blog_tag': instance.blogTag,
       'hyperlink': instance.hyperlink,
+      'likesCount': instance.likesCount,
+      'dislikeCount': instance.dislikeCount,
     };

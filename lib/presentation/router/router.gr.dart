@@ -10,8 +10,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i35;
 import 'package:flutter/material.dart' as _i36;
-import 'package:planit/domain/order/entities/order.dart' as _i37;
-import 'package:planit/domain/recipe/entities/recipe.dart' as _i38;
+import 'package:planit/domain/blog/enitities/blog.dart' as _i37;
+import 'package:planit/domain/order/entities/order.dart' as _i38;
+import 'package:planit/domain/recipe/entities/recipe.dart' as _i39;
 import 'package:planit/presentation/add_money/add_money.dart' as _i2;
 import 'package:planit/presentation/address_book/adress_book_page.dart' as _i3;
 import 'package:planit/presentation/address_book/user_profile.dart' as _i32;
@@ -75,9 +76,13 @@ abstract class $AppRouter extends _i35.RootStackRouter {
       );
     },
     BlogDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<BlogDetailsRouteArgs>();
       return _i35.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.BlogDetailsPage(),
+        child: _i4.BlogDetailsPage(
+          key: args.key,
+          blog: args.blog,
+        ),
       );
     },
     BlogsRoute.name: (routeData) {
@@ -326,16 +331,40 @@ class AddressBookRoute extends _i35.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.BlogDetailsPage]
-class BlogDetailsRoute extends _i35.PageRouteInfo<void> {
-  const BlogDetailsRoute({List<_i35.PageRouteInfo>? children})
-      : super(
+class BlogDetailsRoute extends _i35.PageRouteInfo<BlogDetailsRouteArgs> {
+  BlogDetailsRoute({
+    _i36.Key? key,
+    required _i37.Blog blog,
+    List<_i35.PageRouteInfo>? children,
+  }) : super(
           BlogDetailsRoute.name,
+          args: BlogDetailsRouteArgs(
+            key: key,
+            blog: blog,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BlogDetailsRoute';
 
-  static const _i35.PageInfo<void> page = _i35.PageInfo<void>(name);
+  static const _i35.PageInfo<BlogDetailsRouteArgs> page =
+      _i35.PageInfo<BlogDetailsRouteArgs>(name);
+}
+
+class BlogDetailsRouteArgs {
+  const BlogDetailsRouteArgs({
+    this.key,
+    required this.blog,
+  });
+
+  final _i36.Key? key;
+
+  final _i37.Blog blog;
+
+  @override
+  String toString() {
+    return 'BlogDetailsRouteArgs{key: $key, blog: $blog}';
+  }
 }
 
 /// generated route for
@@ -549,7 +578,7 @@ class MyWalletRoute extends _i35.PageRouteInfo<void> {
 class OrderDetailsRoute extends _i35.PageRouteInfo<OrderDetailsRouteArgs> {
   OrderDetailsRoute({
     _i36.Key? key,
-    required _i37.Order order,
+    required _i38.Order order,
     List<_i35.PageRouteInfo>? children,
   }) : super(
           OrderDetailsRoute.name,
@@ -574,7 +603,7 @@ class OrderDetailsRouteArgs {
 
   final _i36.Key? key;
 
-  final _i37.Order order;
+  final _i38.Order order;
 
   @override
   String toString() {
@@ -657,7 +686,7 @@ class ReadRoute extends _i35.PageRouteInfo<void> {
 class RecipeDetailsRoute extends _i35.PageRouteInfo<RecipeDetailsRouteArgs> {
   RecipeDetailsRoute({
     _i36.Key? key,
-    required _i38.Recipe recipe,
+    required _i39.Recipe recipe,
     List<_i35.PageRouteInfo>? children,
   }) : super(
           RecipeDetailsRoute.name,
@@ -682,7 +711,7 @@ class RecipeDetailsRouteArgs {
 
   final _i36.Key? key;
 
-  final _i38.Recipe recipe;
+  final _i39.Recipe recipe;
 
   @override
   String toString() {

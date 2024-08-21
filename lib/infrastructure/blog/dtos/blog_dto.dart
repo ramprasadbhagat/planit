@@ -25,6 +25,8 @@ class BlogDto with _$BlogDto {
     )
     required List<String> blogTag,
     @JsonKey(defaultValue: []) required List<String> hyperlink,
+    @JsonKey(defaultValue: 0, name: 'likesCount') required int likesCount,
+    @JsonKey(defaultValue: 0, name: 'dislikeCount') required int dislikeCount,
   }) = _BlogDto;
 
   factory BlogDto.fromJson(Map<String, dynamic> json) =>
@@ -39,6 +41,8 @@ class BlogDto with _$BlogDto {
         blogTag: blogTag,
         createdAt: createdAt,
         updatedAt: updatedAt,
+        dislikeCount: IntegerValue(dislikeCount),
+        likesCount: IntegerValue(likesCount),
       );
 }
 

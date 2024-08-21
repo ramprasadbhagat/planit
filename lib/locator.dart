@@ -5,6 +5,7 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
+import 'package:planit/application/blog_details/blog_details_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
@@ -680,6 +681,7 @@ void setupLocator() {
 
   locator.registerLazySingleton(
     () => BlogRemoteDataSource(
+      storageService: locator<StorageService>(),
       httpService: locator<HttpService>(),
     ),
   );
@@ -693,5 +695,8 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => BlogBloc(locator<IBlogRepository>()),
+  );
+  locator.registerLazySingleton(
+    () => BlogDetailsBloc(locator<IBlogRepository>()),
   );
 }

@@ -1,0 +1,41 @@
+{
+    "items": [
+        {
+            "id": "66c2e33b7250fe4ca88c6f4c",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_id": "66790e975342bf0012625733",
+            "comment": "It's wonderfull",
+            "comment_date": "2024-08-19T06:16:27.159Z",
+            "updated_at": "2024-08-19T08:53:24.785Z",
+            "userName": "Admin Yadav",
+            "userEmail": "abc@gmail.com",
+            "isActive": true,
+            "isDeleted": false
+        },
+        {
+            "id": "66c2e32d7250fe4ca88c6f4b",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_id": "66790e975342bf0012625733",
+            "comment": "It's good",
+            "comment_date": "2024-08-19T06:16:13.739Z",
+            "updated_at": "2024-08-19T06:16:13.739Z",
+            "userName": "Admin Yadav",
+            "userEmail": "abc@gmail.com",
+            "isActive": true,
+            "isDeleted": false
+        },
+        {
+            "id": "66c2e3227250fe4ca88c6f4a",
+            "user_id": "662d14137af30e0013145c4c",
+            "blog_id": "66790e975342bf0012625733",
+            "comment": "It's outstanding",
+            "comment_date": "2024-08-19T06:16:02.213Z",
+            "updated_at": "2024-08-19T06:16:02.213Z",
+            "userName": "Admin Yadav",
+            "userEmail": "abc@gmail.com",
+            "isActive": true,
+            "isDeleted": false
+        }
+    ],
+    "totalCount": 3
+}
