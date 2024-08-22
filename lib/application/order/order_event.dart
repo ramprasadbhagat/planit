@@ -9,7 +9,15 @@ class OrderEvent with _$OrderEvent {
     required String date,
     required Coupon coupon,
     required double deliveryCharge,
+    required bool isCOD,
   }) = _SubmitOrder;
 
   const factory OrderEvent.fetchOrders() = _FetchOrders;
+  const factory OrderEvent.processPayment({
+    required double totalAmount,
+    required String phone,
+  }) = _ProcessPayment;
+  const factory OrderEvent.paymentSuccess() = _PaymentSuccess;
+  const factory OrderEvent.paymentFailed() = _PaymentFailed;
+  const factory OrderEvent.handleExternalApp() = _HandleExternalApp;
 }

@@ -59,7 +59,7 @@ class CurrentUserDto with _$CurrentUserDto {
 }
 
 dynamic parseProfileImage(Map json, String key) {
-  if (json['userImages'] != null && json['userImages'] is List) {
+  if (json['userImages'] != null && json['userImages'] is List<String>) {
     return (json['userImages'] as List).firstOrNull;
   }
 }

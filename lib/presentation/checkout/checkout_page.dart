@@ -273,7 +273,8 @@ class PlaceOrderButton extends StatelessWidget {
         return SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: (paymentMethod == 'Cash on delivery' &&
+            onPressed: ((paymentMethod == 'Cash on delivery' ||
+                        paymentMethod == 'Razorpay') &&
                     isProfileCompleted &&
                     hasValidAddress &&
                     !state.isFetching)
@@ -290,6 +291,7 @@ class PlaceOrderButton extends StatelessWidget {
 
                       context.read<OrderBloc>().add(
                             OrderEvent.submitOrder(
+                              isCOD: paymentMethod == 'Cash on delivery',
                               cartItem: cartState.cartItem,
                               addressBook: addressState.selectedAddress,
                               date: date,
@@ -305,9 +307,9 @@ class PlaceOrderButton extends StatelessWidget {
                 : null,
             style: ElevatedButton.styleFrom(
               shape: const StadiumBorder(),
-              backgroundColor: paymentMethod == 'Cash on delivery'
-                  ? AppColors.black
-                  : AppColors.lightGray,
+              // backgroundColor: paymentMethod == 'Cash on delivery'
+              //     ? AppColors.black
+              //     : AppColors.lightGray,
               maximumSize: const Size(330, 50),
             ),
             child: Text(

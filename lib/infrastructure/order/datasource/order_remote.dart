@@ -39,7 +39,8 @@ class OrderRemoteDataSource {
       'productRating': '3.5',
       'paymentStatus': 'not done',
       'orderStatus': 'pending',
-      'totalPrice': cartItem.totalPrice.getValue().toString(),
+      'totalPrice': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()) +
+          deliveryCharge,
       'deliveryCharge': deliveryCharge.toString(),
       'totalDiscount': coupon.amount(cartItem.totalPrice.getValue()).toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),

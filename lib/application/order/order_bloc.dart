@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart' hide Order;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,8 @@ import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
+import 'package:planit/domain/payment/entities/payment_options.dart';
+import 'package:planit/domain/payment/repository/i_payment_repository.dart';
 
 part 'order_event.dart';
 part 'order_state.dart';
@@ -16,7 +19,11 @@ part 'order_bloc.freezed.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final IOrderRepository repository;
-  OrderBloc({required this.repository}) : super(OrderState.initial()) {
+  final IPaymentRepository paymentRepository;
+  OrderBloc({
+    required this.repository,
+    required this.paymentRepository,
+  }) : super(OrderState.initial()) {
     on<OrderEvent>(_onEvent);
   }
   FutureOr<void> _onEvent(
@@ -42,13 +49,24 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             ),
           ),
           (res) {
-            emit(
-              state.copyWith(
-                isFetching: false,
-                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            if (e.isCOD) {
+              emit(
+                state.copyWith(
+                  isFetching: false,
+                  apiFailureOrSuccessOption: some(right(unit)),
+                ),
+              );
+              add(const _FetchOrders());
+              return;
+            }
+            add(
+              _ProcessPayment(
+                totalAmount: e.coupon
+                        .priceAfterCoupon(e.cartItem.totalPrice.getValue()) +
+                    e.deliveryCharge,
+                phone: e.addressBook.phoneNumber,
               ),
             );
-            add(const _FetchOrders());
           },
         );
       },
@@ -77,6 +95,53 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           );
         });
       },
+      processPayment: (_ProcessPayment value) {
+        paymentRepository.initiatePayment(
+          options: PaymentOptions(
+            name: 'checkout',
+            description: 'checkout order',
+            amount: value.totalAmount,
+            prefill: PrefillData(contact: value.phone),
+          ),
+          handlePaymentSuccess: (p0) {
+            log(
+              'handlePaymentSuccess $p0',
+            );
+            add(const _PaymentSuccess());
+          },
+          handlePaymentFailure: (p0) {
+            log(
+              'handlePaymentFailure $p0',
+            );
+            add(const _PaymentFailed());
+          },
+          handleExternalWallet: (p0) {
+            log(
+              'handleExternalWallet $p0',
+            );
+            add(const _HandleExternalApp());
+          },
+        );
+      },
+      paymentSuccess: (_PaymentSuccess value) {
+        emit(
+          state.copyWith(
+            isFetching: false,
+            apiFailureOrSuccessOption: some(right(unit)),
+          ),
+        );
+        add(const _FetchOrders());
+      },
+      paymentFailed: (_PaymentFailed value) {
+        emit(
+          state.copyWith(
+            isFetching: false,
+            apiFailureOrSuccessOption: some(right(unit)),
+          ),
+        );
+        add(const _FetchOrders());
+      },
+      handleExternalApp: (_HandleExternalApp value) {},
     );
   }
 }
