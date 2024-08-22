@@ -8,7 +8,7 @@ part of 'blog_dto.dart';
 
 _$BlogDtoImpl _$$BlogDtoImplFromJson(Map<String, dynamic> json) =>
     _$BlogDtoImpl(
-      id: json['id'] as String? ?? '',
+      id: idReadValue(json, 'id') as String? ?? '',
       userId: json['user_id'] as String? ?? '',
       blogTitle: json['blog_title'] as String? ?? '',
       blogContent: json['blog_content'] as String? ?? '',
@@ -32,6 +32,7 @@ _$BlogDtoImpl _$$BlogDtoImplFromJson(Map<String, dynamic> json) =>
           [],
       likesCount: (json['likesCount'] as num?)?.toInt() ?? 0,
       dislikeCount: (json['dislikeCount'] as num?)?.toInt() ?? 0,
+      like: likeReadValue(json, 'like') as bool?,
     );
 
 Map<String, dynamic> _$$BlogDtoImplToJson(_$BlogDtoImpl instance) =>
@@ -48,4 +49,5 @@ Map<String, dynamic> _$$BlogDtoImplToJson(_$BlogDtoImpl instance) =>
       'hyperlink': instance.hyperlink,
       'likesCount': instance.likesCount,
       'dislikeCount': instance.dislikeCount,
+      'like': instance.like,
     };

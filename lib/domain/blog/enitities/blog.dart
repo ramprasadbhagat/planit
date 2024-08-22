@@ -15,6 +15,7 @@ class Blog with _$Blog {
     required DateTime updatedAt,
     required IntegerValue likesCount,
     required IntegerValue dislikeCount,
+    required bool? like,
   }) = _Blog;
 
   factory Blog.empty() => Blog(
@@ -28,5 +29,6 @@ class Blog with _$Blog {
         updatedAt: DateTime(2024),
         likesCount: IntegerValue(0),
         dislikeCount: IntegerValue(0),
+        like: null,
       );
 }

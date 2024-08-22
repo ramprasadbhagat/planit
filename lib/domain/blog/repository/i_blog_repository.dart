@@ -15,4 +15,12 @@ abstract class IBlogRepository {
     required String blogId,
     required String comment,
   });
+
+  Future<Either<ApiFailure, Unit>> likeBlog({
+    required String blogId,
+  });
+
+  Future<Either<ApiFailure, Unit>> dislikeBlog({
+    required String blogId,
+  });
 }

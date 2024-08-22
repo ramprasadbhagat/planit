@@ -26,6 +26,7 @@ mixin _$Blog {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   IntegerValue get likesCount => throw _privateConstructorUsedError;
   IntegerValue get dislikeCount => throw _privateConstructorUsedError;
+  bool? get like => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BlogCopyWith<Blog> get copyWith => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $BlogCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       IntegerValue likesCount,
-      IntegerValue dislikeCount});
+      IntegerValue dislikeCount,
+      bool? like});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
     Object? updatedAt = null,
     Object? likesCount = null,
     Object? dislikeCount = null,
+    Object? like = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -114,6 +117,10 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
           ? _value.dislikeCount
           : dislikeCount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
+      like: freezed == like
+          ? _value.like
+          : like // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -135,7 +142,8 @@ abstract class _$$BlogImplCopyWith<$Res> implements $BlogCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       IntegerValue likesCount,
-      IntegerValue dislikeCount});
+      IntegerValue dislikeCount,
+      bool? like});
 }
 
 /// @nodoc
@@ -158,6 +166,7 @@ class __$$BlogImplCopyWithImpl<$Res>
     Object? updatedAt = null,
     Object? likesCount = null,
     Object? dislikeCount = null,
+    Object? like = freezed,
   }) {
     return _then(_$BlogImpl(
       id: null == id
@@ -200,6 +209,10 @@ class __$$BlogImplCopyWithImpl<$Res>
           ? _value.dislikeCount
           : dislikeCount // ignore: cast_nullable_to_non_nullable
               as IntegerValue,
+      like: freezed == like
+          ? _value.like
+          : like // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -217,7 +230,8 @@ class _$BlogImpl implements _Blog {
       required this.createdAt,
       required this.updatedAt,
       required this.likesCount,
-      required this.dislikeCount})
+      required this.dislikeCount,
+      required this.like})
       : _keywords = keywords,
         _blogImage = blogImage,
         _blogTag = blogTag;
@@ -260,10 +274,12 @@ class _$BlogImpl implements _Blog {
   final IntegerValue likesCount;
   @override
   final IntegerValue dislikeCount;
+  @override
+  final bool? like;
 
   @override
   String toString() {
-    return 'Blog(id: $id, title: $title, blogContent: $blogContent, keywords: $keywords, blogImage: $blogImage, blogTag: $blogTag, createdAt: $createdAt, updatedAt: $updatedAt, likesCount: $likesCount, dislikeCount: $dislikeCount)';
+    return 'Blog(id: $id, title: $title, blogContent: $blogContent, keywords: $keywords, blogImage: $blogImage, blogTag: $blogTag, createdAt: $createdAt, updatedAt: $updatedAt, likesCount: $likesCount, dislikeCount: $dislikeCount, like: $like)';
   }
 
   @override
@@ -286,7 +302,8 @@ class _$BlogImpl implements _Blog {
             (identical(other.likesCount, likesCount) ||
                 other.likesCount == likesCount) &&
             (identical(other.dislikeCount, dislikeCount) ||
-                other.dislikeCount == dislikeCount));
+                other.dislikeCount == dislikeCount) &&
+            (identical(other.like, like) || other.like == like));
   }
 
   @override
@@ -301,7 +318,8 @@ class _$BlogImpl implements _Blog {
       createdAt,
       updatedAt,
       likesCount,
-      dislikeCount);
+      dislikeCount,
+      like);
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +339,8 @@ abstract class _Blog implements Blog {
       required final DateTime createdAt,
       required final DateTime updatedAt,
       required final IntegerValue likesCount,
-      required final IntegerValue dislikeCount}) = _$BlogImpl;
+      required final IntegerValue dislikeCount,
+      required final bool? like}) = _$BlogImpl;
 
   @override
   StringValue get id;
@@ -343,6 +362,8 @@ abstract class _Blog implements Blog {
   IntegerValue get likesCount;
   @override
   IntegerValue get dislikeCount;
+  @override
+  bool? get like;
   @override
   @JsonKey(ignore: true)
   _$$BlogImplCopyWith<_$BlogImpl> get copyWith =>

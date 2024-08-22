@@ -110,4 +110,44 @@ class BlogRepository extends IBlogRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, Unit>> dislikeBlog({required String blogId}) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        await localDataSource.addComment();
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      await remoteDataSource.addLike(blogId: blogId, like: false);
+
+      return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> likeBlog({required String blogId}) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        await localDataSource.addComment();
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      await remoteDataSource.addLike(blogId: blogId, like: true);
+
+      return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

@@ -149,8 +149,50 @@ class BlogDetailsPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  const LikeButton(
-                                    isActive: true,
+                                  LikeButton(
+                                    onTap: () {
+                                      if (isUnAuth) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Please login to like this blog!',
+                                            ),
+                                          ),
+                                        );
+
+                                        return;
+                                      }
+
+                                      if (state.blog.like != null) {
+                                        SnackBar snackBar;
+                                        if (!state.blog.like!) {
+                                          snackBar = const SnackBar(
+                                            content: Text(
+                                              'You already disliked this blog!',
+                                            ),
+                                          );
+                                        } else {
+                                          snackBar = const SnackBar(
+                                            content: Text(
+                                              'You already liked this blog!',
+                                            ),
+                                          );
+                                        }
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          snackBar,
+                                        );
+                                        return;
+                                      }
+
+                                      bloc.add(
+                                        BlogDetailsEvent.likeClicked(
+                                          blog.id.getValue(),
+                                        ),
+                                      );
+                                    },
+                                    isActive: state.blog.like ?? false,
                                     isLike: true,
                                   ),
                                   Text(
@@ -166,8 +208,52 @@ class BlogDetailsPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  const LikeButton(
-                                    isActive: false,
+                                  LikeButton(
+                                    onTap: () {
+                                      if (isUnAuth) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Please login to dislike this blog!',
+                                            ),
+                                          ),
+                                        );
+
+                                        return;
+                                      }
+
+                                      if (state.blog.like != null) {
+                                        SnackBar snackBar;
+                                        if (!state.blog.like!) {
+                                          snackBar = const SnackBar(
+                                            content: Text(
+                                              'You already disliked this blog!',
+                                            ),
+                                          );
+                                        } else {
+                                          snackBar = const SnackBar(
+                                            content: Text(
+                                              'You already liked this blog!',
+                                            ),
+                                          );
+                                        }
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          snackBar,
+                                        );
+                                        return;
+                                      }
+                                      bloc.add(
+                                        BlogDetailsEvent.dislikeClicked(
+                                          blog.id.getValue(),
+                                        ),
+                                      );
+                                    },
+                                    isActive: state.blog.like == null
+                                        ? false
+                                        : !state.blog.like!,
                                     isLike: false,
                                   ),
                                   Text(
@@ -330,30 +416,35 @@ class BlogDetailsPage extends StatelessWidget {
 class LikeButton extends StatelessWidget {
   final bool isActive;
   final bool isLike;
+  final VoidCallback? onTap;
   const LikeButton({
     super.key,
     required this.isActive,
     required this.isLike,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 5,
-      color: AppColors.white,
-      borderRadius: const BorderRadius.all(Radius.circular(50)),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Icon(
-          isLike
-              ? isActive
-                  ? Icons.thumb_up_alt
-                  : Icons.thumb_up_alt_outlined
-              : isActive
-                  ? Icons.thumb_down_alt
-                  : Icons.thumb_down_alt_outlined,
-          color: AppColors.black,
-          size: 20,
+    return InkWell(
+      onTap: onTap,
+      child: Material(
+        elevation: 5,
+        color: AppColors.white,
+        borderRadius: const BorderRadius.all(Radius.circular(50)),
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Icon(
+            isLike
+                ? isActive
+                    ? Icons.thumb_up_alt
+                    : Icons.thumb_up_alt_outlined
+                : isActive
+                    ? Icons.thumb_down_alt
+                    : Icons.thumb_down_alt_outlined,
+            color: AppColors.black,
+            size: 20,
+          ),
         ),
       ),
     );

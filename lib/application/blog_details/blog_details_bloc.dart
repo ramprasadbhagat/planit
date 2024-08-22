@@ -23,7 +23,7 @@ class BlogDetailsBloc extends Bloc<BlogDetailsEvent, BlogDetailsState> {
   ) async {
     await event.map(
       fetch: (value) async {
-        if (value.isAuthenticated) {
+        if (value.isUnAuthenticated) {
           emit(state.copyWith(blog: value.blog));
           return;
         }
@@ -123,6 +123,54 @@ class BlogDetailsBloc extends Bloc<BlogDetailsEvent, BlogDetailsState> {
       viewAllCommentClicked: (_ViewAllCommentClicked value) {
         emit(
           state.copyWith(viewAllComments: !state.viewAllComments),
+        );
+      },
+      likeClicked: (_LikeClicked value) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+          ),
+        );
+
+        final failureOrSuccess =
+            await blogRepository.likeBlog(blogId: value.blogId);
+
+        failureOrSuccess.fold(
+          (l) {
+            emit(
+              state.copyWith(
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                isFetching: false,
+              ),
+            );
+          },
+          (r) {
+            add(_Fetch(state.blog, false));
+          },
+        );
+      },
+      dislikeClicked: (_DislikeClicked value) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+          ),
+        );
+
+        final failureOrSuccess =
+            await blogRepository.dislikeBlog(blogId: value.blogId);
+
+        failureOrSuccess.fold(
+          (l) {
+            emit(
+              state.copyWith(
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                isFetching: false,
+              ),
+            );
+          },
+          (r) {
+            add(_Fetch(state.blog, false));
+          },
         );
       },
     );

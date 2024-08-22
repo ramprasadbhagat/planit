@@ -11,7 +11,7 @@ class BlogDto with _$BlogDto {
     fieldRename: FieldRename.snake,
   )
   const factory BlogDto({
-    @JsonKey(defaultValue: '') required String id,
+    @JsonKey(defaultValue: '', readValue: idReadValue) required String id,
     @JsonKey(defaultValue: '') required String userId,
     @JsonKey(defaultValue: '') required String blogTitle,
     @JsonKey(defaultValue: '') required String blogContent,
@@ -27,6 +27,8 @@ class BlogDto with _$BlogDto {
     @JsonKey(defaultValue: []) required List<String> hyperlink,
     @JsonKey(defaultValue: 0, name: 'likesCount') required int likesCount,
     @JsonKey(defaultValue: 0, name: 'dislikeCount') required int dislikeCount,
+    @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+    required bool? like,
   }) = _BlogDto;
 
   factory BlogDto.fromJson(Map<String, dynamic> json) =>
@@ -43,6 +45,7 @@ class BlogDto with _$BlogDto {
         updatedAt: updatedAt,
         dislikeCount: IntegerValue(dislikeCount),
         likesCount: IntegerValue(likesCount),
+        like: like,
       );
 }
 
@@ -52,4 +55,24 @@ dynamic blogTagReadValue(Map json, String key) {
   } else {
     return [];
   }
+}
+
+bool? likeReadValue(Map json, String key) {
+  if (json[key] is String) {
+    return null;
+  }
+  if (json[key] is bool) {
+    return json[key];
+  }
+  return null;
+}
+
+String idReadValue(Map json, String key) {
+  if (json[key] is String) {
+    return json[key];
+  }
+  if (json['_id'] is String) {
+    return json['_id'];
+  }
+  return '';
 }

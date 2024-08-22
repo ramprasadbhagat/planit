@@ -77,6 +77,23 @@ class BlogRemoteDataSource {
     _exceptionChecker(res: res);
   }
 
+  Future<void> addLike({
+    required String blogId,
+    required bool like,
+  }) async {
+    final userId = storageService.getUserId();
+    final res = await httpService.request(
+      method: 'POST',
+      url: '/blogLikeDislike',
+      data: {
+        'blog_id': blogId,
+        'user_id': userId,
+        'like': like,
+      },
+    );
+    _exceptionChecker(res: res);
+  }
+
   void _exceptionChecker({required Response<dynamic> res}) {
     if (res.data['errors'] != null && res.data['errors'].isNotEmpty) {
       throw ServerException(message: res.data['errors']);

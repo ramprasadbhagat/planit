@@ -20,7 +20,7 @@ BlogDto _$BlogDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BlogDto {
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: idReadValue)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get userId => throw _privateConstructorUsedError;
@@ -42,6 +42,8 @@ mixin _$BlogDto {
   int get likesCount => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0, name: 'dislikeCount')
   int get dislikeCount => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+  bool? get like => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,7 @@ abstract class $BlogDtoCopyWith<$Res> {
       _$BlogDtoCopyWithImpl<$Res, BlogDto>;
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: '') String id,
+      {@JsonKey(defaultValue: '', readValue: idReadValue) String id,
       @JsonKey(defaultValue: '') String userId,
       @JsonKey(defaultValue: '') String blogTitle,
       @JsonKey(defaultValue: '') String blogContent,
@@ -66,7 +68,9 @@ abstract class $BlogDtoCopyWith<$Res> {
       List<String> blogTag,
       @JsonKey(defaultValue: []) List<String> hyperlink,
       @JsonKey(defaultValue: 0, name: 'likesCount') int likesCount,
-      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount});
+      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount,
+      @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+      bool? like});
 }
 
 /// @nodoc
@@ -94,6 +98,7 @@ class _$BlogDtoCopyWithImpl<$Res, $Val extends BlogDto>
     Object? hyperlink = null,
     Object? likesCount = null,
     Object? dislikeCount = null,
+    Object? like = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -144,6 +149,10 @@ class _$BlogDtoCopyWithImpl<$Res, $Val extends BlogDto>
           ? _value.dislikeCount
           : dislikeCount // ignore: cast_nullable_to_non_nullable
               as int,
+      like: freezed == like
+          ? _value.like
+          : like // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -156,7 +165,7 @@ abstract class _$$BlogDtoImplCopyWith<$Res> implements $BlogDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: '') String id,
+      {@JsonKey(defaultValue: '', readValue: idReadValue) String id,
       @JsonKey(defaultValue: '') String userId,
       @JsonKey(defaultValue: '') String blogTitle,
       @JsonKey(defaultValue: '') String blogContent,
@@ -168,7 +177,9 @@ abstract class _$$BlogDtoImplCopyWith<$Res> implements $BlogDtoCopyWith<$Res> {
       List<String> blogTag,
       @JsonKey(defaultValue: []) List<String> hyperlink,
       @JsonKey(defaultValue: 0, name: 'likesCount') int likesCount,
-      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount});
+      @JsonKey(defaultValue: 0, name: 'dislikeCount') int dislikeCount,
+      @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+      bool? like});
 }
 
 /// @nodoc
@@ -194,6 +205,7 @@ class __$$BlogDtoImplCopyWithImpl<$Res>
     Object? hyperlink = null,
     Object? likesCount = null,
     Object? dislikeCount = null,
+    Object? like = freezed,
   }) {
     return _then(_$BlogDtoImpl(
       id: null == id
@@ -244,6 +256,10 @@ class __$$BlogDtoImplCopyWithImpl<$Res>
           ? _value.dislikeCount
           : dislikeCount // ignore: cast_nullable_to_non_nullable
               as int,
+      like: freezed == like
+          ? _value.like
+          : like // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -253,7 +269,7 @@ class __$$BlogDtoImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$BlogDtoImpl extends _BlogDto {
   const _$BlogDtoImpl(
-      {@JsonKey(defaultValue: '') required this.id,
+      {@JsonKey(defaultValue: '', readValue: idReadValue) required this.id,
       @JsonKey(defaultValue: '') required this.userId,
       @JsonKey(defaultValue: '') required this.blogTitle,
       @JsonKey(defaultValue: '') required this.blogContent,
@@ -266,7 +282,9 @@ class _$BlogDtoImpl extends _BlogDto {
       @JsonKey(defaultValue: []) required final List<String> hyperlink,
       @JsonKey(defaultValue: 0, name: 'likesCount') required this.likesCount,
       @JsonKey(defaultValue: 0, name: 'dislikeCount')
-      required this.dislikeCount})
+      required this.dislikeCount,
+      @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+      required this.like})
       : _blogImages = blogImages,
         _keyword = keyword,
         _blogTag = blogTag,
@@ -277,7 +295,7 @@ class _$BlogDtoImpl extends _BlogDto {
       _$$BlogDtoImplFromJson(json);
 
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: idReadValue)
   final String id;
   @override
   @JsonKey(defaultValue: '')
@@ -334,10 +352,13 @@ class _$BlogDtoImpl extends _BlogDto {
   @override
   @JsonKey(defaultValue: 0, name: 'dislikeCount')
   final int dislikeCount;
+  @override
+  @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+  final bool? like;
 
   @override
   String toString() {
-    return 'BlogDto(id: $id, userId: $userId, blogTitle: $blogTitle, blogContent: $blogContent, blogImages: $blogImages, keyword: $keyword, createdAt: $createdAt, updatedAt: $updatedAt, blogTag: $blogTag, hyperlink: $hyperlink, likesCount: $likesCount, dislikeCount: $dislikeCount)';
+    return 'BlogDto(id: $id, userId: $userId, blogTitle: $blogTitle, blogContent: $blogContent, blogImages: $blogImages, keyword: $keyword, createdAt: $createdAt, updatedAt: $updatedAt, blogTag: $blogTag, hyperlink: $hyperlink, likesCount: $likesCount, dislikeCount: $dislikeCount, like: $like)';
   }
 
   @override
@@ -364,7 +385,8 @@ class _$BlogDtoImpl extends _BlogDto {
             (identical(other.likesCount, likesCount) ||
                 other.likesCount == likesCount) &&
             (identical(other.dislikeCount, dislikeCount) ||
-                other.dislikeCount == dislikeCount));
+                other.dislikeCount == dislikeCount) &&
+            (identical(other.like, like) || other.like == like));
   }
 
   @JsonKey(ignore: true)
@@ -382,7 +404,8 @@ class _$BlogDtoImpl extends _BlogDto {
       const DeepCollectionEquality().hash(_blogTag),
       const DeepCollectionEquality().hash(_hyperlink),
       likesCount,
-      dislikeCount);
+      dislikeCount,
+      like);
 
   @JsonKey(ignore: true)
   @override
@@ -400,7 +423,8 @@ class _$BlogDtoImpl extends _BlogDto {
 
 abstract class _BlogDto extends BlogDto {
   const factory _BlogDto(
-      {@JsonKey(defaultValue: '') required final String id,
+      {@JsonKey(defaultValue: '', readValue: idReadValue)
+      required final String id,
       @JsonKey(defaultValue: '') required final String userId,
       @JsonKey(defaultValue: '') required final String blogTitle,
       @JsonKey(defaultValue: '') required final String blogContent,
@@ -414,13 +438,15 @@ abstract class _BlogDto extends BlogDto {
       @JsonKey(defaultValue: 0, name: 'likesCount')
       required final int likesCount,
       @JsonKey(defaultValue: 0, name: 'dislikeCount')
-      required final int dislikeCount}) = _$BlogDtoImpl;
+      required final int dislikeCount,
+      @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+      required final bool? like}) = _$BlogDtoImpl;
   const _BlogDto._() : super._();
 
   factory _BlogDto.fromJson(Map<String, dynamic> json) = _$BlogDtoImpl.fromJson;
 
   @override
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', readValue: idReadValue)
   String get id;
   @override
   @JsonKey(defaultValue: '')
@@ -453,6 +479,9 @@ abstract class _BlogDto extends BlogDto {
   @override
   @JsonKey(defaultValue: 0, name: 'dislikeCount')
   int get dislikeCount;
+  @override
+  @JsonKey(defaultValue: null, name: 'like', readValue: likeReadValue)
+  bool? get like;
   @override
   @JsonKey(ignore: true)
   _$$BlogDtoImplCopyWith<_$BlogDtoImpl> get copyWith =>

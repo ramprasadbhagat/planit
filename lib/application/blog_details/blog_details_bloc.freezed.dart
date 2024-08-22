@@ -18,29 +18,35 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BlogDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +58,8 @@ mixin _$BlogDetailsEvent {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +69,8 @@ mixin _$BlogDetailsEvent {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +80,8 @@ mixin _$BlogDetailsEvent {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -99,7 +111,7 @@ abstract class _$$FetchImplCopyWith<$Res> {
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Blog blog, bool isAuthenticated});
+  $Res call({Blog blog, bool isUnAuthenticated});
 
   $BlogCopyWith<$Res> get blog;
 }
@@ -116,16 +128,16 @@ class __$$FetchImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? blog = null,
-    Object? isAuthenticated = null,
+    Object? isUnAuthenticated = null,
   }) {
     return _then(_$FetchImpl(
       null == blog
           ? _value.blog
           : blog // ignore: cast_nullable_to_non_nullable
               as Blog,
-      null == isAuthenticated
-          ? _value.isAuthenticated
-          : isAuthenticated // ignore: cast_nullable_to_non_nullable
+      null == isUnAuthenticated
+          ? _value.isUnAuthenticated
+          : isUnAuthenticated // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -142,16 +154,16 @@ class __$$FetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  const _$FetchImpl(this.blog, this.isAuthenticated);
+  const _$FetchImpl(this.blog, this.isUnAuthenticated);
 
   @override
   final Blog blog;
   @override
-  final bool isAuthenticated;
+  final bool isUnAuthenticated;
 
   @override
   String toString() {
-    return 'BlogDetailsEvent.fetch(blog: $blog, isAuthenticated: $isAuthenticated)';
+    return 'BlogDetailsEvent.fetch(blog: $blog, isUnAuthenticated: $isUnAuthenticated)';
   }
 
   @override
@@ -160,12 +172,12 @@ class _$FetchImpl implements _Fetch {
         (other.runtimeType == runtimeType &&
             other is _$FetchImpl &&
             (identical(other.blog, blog) || other.blog == blog) &&
-            (identical(other.isAuthenticated, isAuthenticated) ||
-                other.isAuthenticated == isAuthenticated));
+            (identical(other.isUnAuthenticated, isUnAuthenticated) ||
+                other.isUnAuthenticated == isUnAuthenticated));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, blog, isAuthenticated);
+  int get hashCode => Object.hash(runtimeType, blog, isUnAuthenticated);
 
   @JsonKey(ignore: true)
   @override
@@ -176,39 +188,45 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) {
-    return fetch(blog, isAuthenticated);
+    return fetch(blog, isUnAuthenticated);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) {
-    return fetch?.call(blog, isAuthenticated);
+    return fetch?.call(blog, isUnAuthenticated);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(blog, isAuthenticated);
+      return fetch(blog, isUnAuthenticated);
     }
     return orElse();
   }
@@ -222,6 +240,8 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) {
     return fetch(this);
   }
@@ -234,6 +254,8 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) {
     return fetch?.call(this);
   }
@@ -246,6 +268,8 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -256,11 +280,11 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements BlogDetailsEvent {
-  const factory _Fetch(final Blog blog, final bool isAuthenticated) =
+  const factory _Fetch(final Blog blog, final bool isUnAuthenticated) =
       _$FetchImpl;
 
   Blog get blog;
-  bool get isAuthenticated;
+  bool get isUnAuthenticated;
   @JsonKey(ignore: true)
   _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -330,11 +354,13 @@ class _$FetchCommentsImpl implements _FetchComments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) {
     return fetchComments(blogId);
   }
@@ -342,11 +368,13 @@ class _$FetchCommentsImpl implements _FetchComments {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) {
     return fetchComments?.call(blogId);
   }
@@ -354,11 +382,13 @@ class _$FetchCommentsImpl implements _FetchComments {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (fetchComments != null) {
@@ -376,6 +406,8 @@ class _$FetchCommentsImpl implements _FetchComments {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) {
     return fetchComments(this);
   }
@@ -388,6 +420,8 @@ class _$FetchCommentsImpl implements _FetchComments {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) {
     return fetchComments?.call(this);
   }
@@ -400,6 +434,8 @@ class _$FetchCommentsImpl implements _FetchComments {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (fetchComments != null) {
@@ -484,11 +520,13 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) {
     return onCommentInputChange(value);
   }
@@ -496,11 +534,13 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) {
     return onCommentInputChange?.call(value);
   }
@@ -508,11 +548,13 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (onCommentInputChange != null) {
@@ -530,6 +572,8 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) {
     return onCommentInputChange(this);
   }
@@ -542,6 +586,8 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) {
     return onCommentInputChange?.call(this);
   }
@@ -554,6 +600,8 @@ class _$OnCommentInputChangeImpl implements _OnCommentInputChange {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (onCommentInputChange != null) {
@@ -638,11 +686,13 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) {
     return addCommentClicked(blogId);
   }
@@ -650,11 +700,13 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) {
     return addCommentClicked?.call(blogId);
   }
@@ -662,11 +714,13 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (addCommentClicked != null) {
@@ -684,6 +738,8 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) {
     return addCommentClicked(this);
   }
@@ -696,6 +752,8 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) {
     return addCommentClicked?.call(this);
   }
@@ -708,6 +766,8 @@ class _$AddCommentClickedImpl implements _AddCommentClicked {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (addCommentClicked != null) {
@@ -767,11 +827,13 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Blog blog, bool isAuthenticated) fetch,
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
     required TResult Function(String blogId) fetchComments,
     required TResult Function(String value) onCommentInputChange,
     required TResult Function(String blogId) addCommentClicked,
     required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
   }) {
     return viewAllCommentClicked();
   }
@@ -779,11 +841,13 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult? Function(String blogId)? fetchComments,
     TResult? Function(String value)? onCommentInputChange,
     TResult? Function(String blogId)? addCommentClicked,
     TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
   }) {
     return viewAllCommentClicked?.call();
   }
@@ -791,11 +855,13 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Blog blog, bool isAuthenticated)? fetch,
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
     TResult Function(String blogId)? fetchComments,
     TResult Function(String value)? onCommentInputChange,
     TResult Function(String blogId)? addCommentClicked,
     TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (viewAllCommentClicked != null) {
@@ -813,6 +879,8 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
     required TResult Function(_AddCommentClicked value) addCommentClicked,
     required TResult Function(_ViewAllCommentClicked value)
         viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
   }) {
     return viewAllCommentClicked(this);
   }
@@ -825,6 +893,8 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
     TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult? Function(_AddCommentClicked value)? addCommentClicked,
     TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
   }) {
     return viewAllCommentClicked?.call(this);
   }
@@ -837,6 +907,8 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
     TResult Function(_OnCommentInputChange value)? onCommentInputChange,
     TResult Function(_AddCommentClicked value)? addCommentClicked,
     TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
     required TResult orElse(),
   }) {
     if (viewAllCommentClicked != null) {
@@ -848,6 +920,335 @@ class _$ViewAllCommentClickedImpl implements _ViewAllCommentClicked {
 
 abstract class _ViewAllCommentClicked implements BlogDetailsEvent {
   const factory _ViewAllCommentClicked() = _$ViewAllCommentClickedImpl;
+}
+
+/// @nodoc
+abstract class _$$LikeClickedImplCopyWith<$Res> {
+  factory _$$LikeClickedImplCopyWith(
+          _$LikeClickedImpl value, $Res Function(_$LikeClickedImpl) then) =
+      __$$LikeClickedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String blogId});
+}
+
+/// @nodoc
+class __$$LikeClickedImplCopyWithImpl<$Res>
+    extends _$BlogDetailsEventCopyWithImpl<$Res, _$LikeClickedImpl>
+    implements _$$LikeClickedImplCopyWith<$Res> {
+  __$$LikeClickedImplCopyWithImpl(
+      _$LikeClickedImpl _value, $Res Function(_$LikeClickedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blogId = null,
+  }) {
+    return _then(_$LikeClickedImpl(
+      null == blogId
+          ? _value.blogId
+          : blogId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikeClickedImpl implements _LikeClicked {
+  const _$LikeClickedImpl(this.blogId);
+
+  @override
+  final String blogId;
+
+  @override
+  String toString() {
+    return 'BlogDetailsEvent.likeClicked(blogId: $blogId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeClickedImpl &&
+            (identical(other.blogId, blogId) || other.blogId == blogId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, blogId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeClickedImplCopyWith<_$LikeClickedImpl> get copyWith =>
+      __$$LikeClickedImplCopyWithImpl<_$LikeClickedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
+    required TResult Function(String blogId) fetchComments,
+    required TResult Function(String value) onCommentInputChange,
+    required TResult Function(String blogId) addCommentClicked,
+    required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
+  }) {
+    return likeClicked(blogId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
+    TResult? Function(String blogId)? fetchComments,
+    TResult? Function(String value)? onCommentInputChange,
+    TResult? Function(String blogId)? addCommentClicked,
+    TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
+  }) {
+    return likeClicked?.call(blogId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
+    TResult Function(String blogId)? fetchComments,
+    TResult Function(String value)? onCommentInputChange,
+    TResult Function(String blogId)? addCommentClicked,
+    TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
+    required TResult orElse(),
+  }) {
+    if (likeClicked != null) {
+      return likeClicked(blogId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchComments value) fetchComments,
+    required TResult Function(_OnCommentInputChange value) onCommentInputChange,
+    required TResult Function(_AddCommentClicked value) addCommentClicked,
+    required TResult Function(_ViewAllCommentClicked value)
+        viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
+  }) {
+    return likeClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchComments value)? fetchComments,
+    TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
+    TResult? Function(_AddCommentClicked value)? addCommentClicked,
+    TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
+  }) {
+    return likeClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchComments value)? fetchComments,
+    TResult Function(_OnCommentInputChange value)? onCommentInputChange,
+    TResult Function(_AddCommentClicked value)? addCommentClicked,
+    TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
+    required TResult orElse(),
+  }) {
+    if (likeClicked != null) {
+      return likeClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LikeClicked implements BlogDetailsEvent {
+  const factory _LikeClicked(final String blogId) = _$LikeClickedImpl;
+
+  String get blogId;
+  @JsonKey(ignore: true)
+  _$$LikeClickedImplCopyWith<_$LikeClickedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DislikeClickedImplCopyWith<$Res> {
+  factory _$$DislikeClickedImplCopyWith(_$DislikeClickedImpl value,
+          $Res Function(_$DislikeClickedImpl) then) =
+      __$$DislikeClickedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String blogId});
+}
+
+/// @nodoc
+class __$$DislikeClickedImplCopyWithImpl<$Res>
+    extends _$BlogDetailsEventCopyWithImpl<$Res, _$DislikeClickedImpl>
+    implements _$$DislikeClickedImplCopyWith<$Res> {
+  __$$DislikeClickedImplCopyWithImpl(
+      _$DislikeClickedImpl _value, $Res Function(_$DislikeClickedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? blogId = null,
+  }) {
+    return _then(_$DislikeClickedImpl(
+      null == blogId
+          ? _value.blogId
+          : blogId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DislikeClickedImpl implements _DislikeClicked {
+  const _$DislikeClickedImpl(this.blogId);
+
+  @override
+  final String blogId;
+
+  @override
+  String toString() {
+    return 'BlogDetailsEvent.dislikeClicked(blogId: $blogId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DislikeClickedImpl &&
+            (identical(other.blogId, blogId) || other.blogId == blogId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, blogId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DislikeClickedImplCopyWith<_$DislikeClickedImpl> get copyWith =>
+      __$$DislikeClickedImplCopyWithImpl<_$DislikeClickedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Blog blog, bool isUnAuthenticated) fetch,
+    required TResult Function(String blogId) fetchComments,
+    required TResult Function(String value) onCommentInputChange,
+    required TResult Function(String blogId) addCommentClicked,
+    required TResult Function() viewAllCommentClicked,
+    required TResult Function(String blogId) likeClicked,
+    required TResult Function(String blogId) dislikeClicked,
+  }) {
+    return dislikeClicked(blogId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Blog blog, bool isUnAuthenticated)? fetch,
+    TResult? Function(String blogId)? fetchComments,
+    TResult? Function(String value)? onCommentInputChange,
+    TResult? Function(String blogId)? addCommentClicked,
+    TResult? Function()? viewAllCommentClicked,
+    TResult? Function(String blogId)? likeClicked,
+    TResult? Function(String blogId)? dislikeClicked,
+  }) {
+    return dislikeClicked?.call(blogId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Blog blog, bool isUnAuthenticated)? fetch,
+    TResult Function(String blogId)? fetchComments,
+    TResult Function(String value)? onCommentInputChange,
+    TResult Function(String blogId)? addCommentClicked,
+    TResult Function()? viewAllCommentClicked,
+    TResult Function(String blogId)? likeClicked,
+    TResult Function(String blogId)? dislikeClicked,
+    required TResult orElse(),
+  }) {
+    if (dislikeClicked != null) {
+      return dislikeClicked(blogId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchComments value) fetchComments,
+    required TResult Function(_OnCommentInputChange value) onCommentInputChange,
+    required TResult Function(_AddCommentClicked value) addCommentClicked,
+    required TResult Function(_ViewAllCommentClicked value)
+        viewAllCommentClicked,
+    required TResult Function(_LikeClicked value) likeClicked,
+    required TResult Function(_DislikeClicked value) dislikeClicked,
+  }) {
+    return dislikeClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchComments value)? fetchComments,
+    TResult? Function(_OnCommentInputChange value)? onCommentInputChange,
+    TResult? Function(_AddCommentClicked value)? addCommentClicked,
+    TResult? Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult? Function(_LikeClicked value)? likeClicked,
+    TResult? Function(_DislikeClicked value)? dislikeClicked,
+  }) {
+    return dislikeClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchComments value)? fetchComments,
+    TResult Function(_OnCommentInputChange value)? onCommentInputChange,
+    TResult Function(_AddCommentClicked value)? addCommentClicked,
+    TResult Function(_ViewAllCommentClicked value)? viewAllCommentClicked,
+    TResult Function(_LikeClicked value)? likeClicked,
+    TResult Function(_DislikeClicked value)? dislikeClicked,
+    required TResult orElse(),
+  }) {
+    if (dislikeClicked != null) {
+      return dislikeClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DislikeClicked implements BlogDetailsEvent {
+  const factory _DislikeClicked(final String blogId) = _$DislikeClickedImpl;
+
+  String get blogId;
+  @JsonKey(ignore: true)
+  _$$DislikeClickedImplCopyWith<_$DislikeClickedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
