@@ -39,6 +39,7 @@ _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      backOrder: json['backOrder'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
@@ -68,4 +69,5 @@ Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
       'attributeItemId': instance.attributeItemId,
       'price': instance.price,
       'productImages': instance.productImages,
+      'backOrder': instance.backOrder,
     };

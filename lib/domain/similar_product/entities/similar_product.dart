@@ -32,6 +32,7 @@ class SimilarProduct with _$SimilarProduct {
     required Price price,
     required List<String> productImages,
     required StringValue attributeItemId,
+    required bool backOrder,
   }) = _SimilarProduct;
 
   factory SimilarProduct.empty() => SimilarProduct(
@@ -57,6 +58,7 @@ class SimilarProduct with _$SimilarProduct {
         price: Price.empty(),
         productImages: <String>[],
         attributeItemId: StringValue(''),
+        backOrder: false,
       );
 
   String get getPriceValue {
@@ -82,6 +84,7 @@ class SimilarProduct with _$SimilarProduct {
         price: pp.Price(price: price.price, quantity: price.quantity),
         productDescription: StringValue(productDescription),
         attributeItemId: attributeItemId,
+        backOrder: backOrder,
       );
 }
 

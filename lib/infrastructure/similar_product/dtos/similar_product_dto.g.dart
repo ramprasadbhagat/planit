@@ -37,6 +37,7 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
               ?.map((e) => e as String)
               .toList() ??
           [],
+      backOrder: json['backOrder'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SimilarProductDtoImplToJson(
@@ -64,4 +65,5 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'attributeItemProductId': instance.attributeItemProductId,
       'price': instance.price,
       'productImages': instance.productImages,
+      'backOrder': instance.backOrder,
     };

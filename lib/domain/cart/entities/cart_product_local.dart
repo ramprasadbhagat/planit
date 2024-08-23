@@ -27,6 +27,7 @@ class CartProductLocal with _$CartProductLocal {
     @HiveField(7) required String price,
     @HiveField(8) required int quantity,
     @HiveField(9) required String attributeItemId,
+    @HiveField(10, defaultValue: false) required bool backOrder,
   }) = _CartProductLocal;
   factory CartProductLocal.empty() => CartProductLocal(
         name: '',
@@ -39,6 +40,7 @@ class CartProductLocal with _$CartProductLocal {
         price: '',
         quantity: 0,
         attributeItemId: '',
+        backOrder: false,
       );
   Product get toProduct => Product(
         productId: ProductId(productId),
@@ -51,5 +53,6 @@ class CartProductLocal with _$CartProductLocal {
         price: Price.empty().copyWith(price: price, quantity: 1),
         productDescription: StringValue(''),
         attributeItemId: StringValue(attributeItemId),
+        backOrder: backOrder,
       );
 }

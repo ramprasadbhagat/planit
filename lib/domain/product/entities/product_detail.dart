@@ -17,6 +17,7 @@ class ProductDetail with _$ProductDetail {
     required Price price,
     required StringValue productDescription,
     required List<ProductAttribute> attribute,
+    required bool backOrder,
   }) = _ProductDetail;
 
   factory ProductDetail.empty() => ProductDetail(
@@ -27,6 +28,7 @@ class ProductDetail with _$ProductDetail {
         productId: ProductId(''),
         startingPrice: 0,
         attribute: [],
+        backOrder: false,
       );
 
   Product toProduct(ProductAttribute selectAttribute) => Product(
@@ -44,6 +46,7 @@ class ProductDetail with _$ProductDetail {
           quantity: selectAttribute.quantity,
         ),
         productDescription: productDescription,
+        backOrder: backOrder,
       );
 }
 

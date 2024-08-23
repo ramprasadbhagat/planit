@@ -33,6 +33,7 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: {}) required Map<String, dynamic> price,
     @JsonKey(defaultValue: []) required List<String> productImages,
+    @JsonKey(defaultValue: false) required bool backOrder,
   }) = _SimilarProductDto;
 
   factory SimilarProductDto.fromJson(Map<String, dynamic> json) =>
@@ -61,6 +62,7 @@ class SimilarProductDto with _$SimilarProductDto {
         price: PriceDto.fromJson(price).toDomain,
         productImages: productImages,
         attributeItemId: StringValue(attributeItemId),
+        backOrder: backOrder,
       );
 }
 

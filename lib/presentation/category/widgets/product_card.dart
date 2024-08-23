@@ -148,7 +148,8 @@ class ProductCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  product.price.quantity > 0
+                  product.attributeItemId.isValid() &&
+                          (product.backOrder || product.price.quantity > 0)
                       ? AddToCartButton.fromProductCard(
                           product: product,
                           onPressed: () async {

@@ -34,6 +34,7 @@ class QuickPicks with _$QuickPicks {
     required Price price,
     required List<String> productImages,
     required StringValue attributeItemId,
+    required bool backOrder,
   }) = _QuickPicks;
 
   factory QuickPicks.empty() => QuickPicks(
@@ -61,6 +62,7 @@ class QuickPicks with _$QuickPicks {
         price: Price.empty(),
         productImages: <String>[],
         attributeItemId: StringValue(''),
+        backOrder: false,
       );
   Product get toProduct => Product(
         productId: ProductId(id),
@@ -73,6 +75,7 @@ class QuickPicks with _$QuickPicks {
         price: pp.Price(price: price.price, quantity: price.quantity),
         productDescription: StringValue(productDescription),
         attributeItemId: attributeItemId,
+        backOrder: backOrder,
       );
 }
 

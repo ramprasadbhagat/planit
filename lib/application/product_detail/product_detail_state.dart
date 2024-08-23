@@ -17,5 +17,8 @@ class ProductDetailState with _$ProductDetailState {
         selectedProductAttribute: ProductAttribute.empty(),
       );
 
-  bool get isOOS => selectedProductAttribute.quantity <= 0;
+  bool get isOOS =>
+      product.attribute.isEmpty ||
+      !selectedProductAttribute.attributeItemId.isValid() ||
+      (selectedProductAttribute.quantity <= 0 && !product.backOrder);
 }

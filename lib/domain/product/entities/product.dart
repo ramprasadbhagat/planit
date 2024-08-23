@@ -20,6 +20,7 @@ class Product with _$Product {
     required StringValue attributeItemId,
     required Price price,
     required StringValue productDescription,
+    required bool backOrder,
   }) = _Product;
 
   String get getPriceValue {
@@ -44,6 +45,7 @@ class Product with _$Product {
       price: getPriceValue,
       quantity: quantity,
       attributeItemId: attributeItemId.getValue(),
+      backOrder: backOrder,
     );
   }
 
@@ -58,5 +60,6 @@ class Product with _$Product {
         price: Price.empty(),
         productDescription: StringValue(''),
         attributeItemId: StringValue(''),
+        backOrder: false,
       );
 }

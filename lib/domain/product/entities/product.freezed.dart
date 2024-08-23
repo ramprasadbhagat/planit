@@ -26,6 +26,7 @@ mixin _$Product {
   StringValue get attributeItemId => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
   StringValue get productDescription => throw _privateConstructorUsedError;
+  bool get backOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $ProductCopyWith<$Res> {
       String attributeItemProductId,
       StringValue attributeItemId,
       Price price,
-      StringValue productDescription});
+      StringValue productDescription,
+      bool backOrder});
 
   $PriceCopyWith<$Res> get price;
 }
@@ -74,6 +76,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? attributeItemId = null,
     Object? price = null,
     Object? productDescription = null,
+    Object? backOrder = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -116,6 +119,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      backOrder: null == backOrder
+          ? _value.backOrder
+          : backOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -145,7 +152,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String attributeItemProductId,
       StringValue attributeItemId,
       Price price,
-      StringValue productDescription});
+      StringValue productDescription,
+      bool backOrder});
 
   @override
   $PriceCopyWith<$Res> get price;
@@ -172,6 +180,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? attributeItemId = null,
     Object? price = null,
     Object? productDescription = null,
+    Object? backOrder = null,
   }) {
     return _then(_$ProductImpl(
       productId: null == productId
@@ -214,6 +223,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as StringValue,
+      backOrder: null == backOrder
+          ? _value.backOrder
+          : backOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -231,7 +244,8 @@ class _$ProductImpl extends _Product {
       required this.attributeItemProductId,
       required this.attributeItemId,
       required this.price,
-      required this.productDescription})
+      required this.productDescription,
+      required this.backOrder})
       : _productImages = productImages,
         super._();
 
@@ -261,10 +275,12 @@ class _$ProductImpl extends _Product {
   final Price price;
   @override
   final StringValue productDescription;
+  @override
+  final bool backOrder;
 
   @override
   String toString() {
-    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productDescription: $productDescription)';
+    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productDescription: $productDescription, backOrder: $backOrder)';
   }
 
   @override
@@ -289,7 +305,9 @@ class _$ProductImpl extends _Product {
                 other.attributeItemId == attributeItemId) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.productDescription, productDescription) ||
-                other.productDescription == productDescription));
+                other.productDescription == productDescription) &&
+            (identical(other.backOrder, backOrder) ||
+                other.backOrder == backOrder));
   }
 
   @override
@@ -304,7 +322,8 @@ class _$ProductImpl extends _Product {
       attributeItemProductId,
       attributeItemId,
       price,
-      productDescription);
+      productDescription,
+      backOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -324,7 +343,8 @@ abstract class _Product extends Product {
       required final String attributeItemProductId,
       required final StringValue attributeItemId,
       required final Price price,
-      required final StringValue productDescription}) = _$ProductImpl;
+      required final StringValue productDescription,
+      required final bool backOrder}) = _$ProductImpl;
   _Product._() : super._();
 
   @override
@@ -347,6 +367,8 @@ abstract class _Product extends Product {
   Price get price;
   @override
   StringValue get productDescription;
+  @override
+  bool get backOrder;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
