@@ -32,6 +32,8 @@ mixin _$OrderDto {
   String get deliveryAddressId => throw _privateConstructorUsedError;
   @JsonKey(name: 'paymentStatus', defaultValue: '')
   String get paymentStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'paymentType', defaultValue: '')
+  String get paymentType => throw _privateConstructorUsedError;
   @JsonKey(name: 'orderStatus', defaultValue: '')
   String get orderStatus => throw _privateConstructorUsedError;
   @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
@@ -78,6 +80,7 @@ abstract class $OrderDtoCopyWith<$Res> {
       @JsonKey(name: 'deliveryAddressId', defaultValue: '')
       String deliveryAddressId,
       @JsonKey(name: 'paymentStatus', defaultValue: '') String paymentStatus,
+      @JsonKey(name: 'paymentType', defaultValue: '') String paymentType,
       @JsonKey(name: 'orderStatus', defaultValue: '') String orderStatus,
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
@@ -119,6 +122,7 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
     Object? userId = null,
     Object? deliveryAddressId = null,
     Object? paymentStatus = null,
+    Object? paymentType = null,
     Object? orderStatus = null,
     Object? totalPrice = null,
     Object? subTotal = null,
@@ -156,6 +160,10 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentType: null == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
               as String,
       orderStatus: null == orderStatus
           ? _value.orderStatus
@@ -225,6 +233,7 @@ abstract class _$$OrderDtoImplCopyWith<$Res>
       @JsonKey(name: 'deliveryAddressId', defaultValue: '')
       String deliveryAddressId,
       @JsonKey(name: 'paymentStatus', defaultValue: '') String paymentStatus,
+      @JsonKey(name: 'paymentType', defaultValue: '') String paymentType,
       @JsonKey(name: 'orderStatus', defaultValue: '') String orderStatus,
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
       int totalPrice,
@@ -264,6 +273,7 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? deliveryAddressId = null,
     Object? paymentStatus = null,
+    Object? paymentType = null,
     Object? orderStatus = null,
     Object? totalPrice = null,
     Object? subTotal = null,
@@ -301,6 +311,10 @@ class __$$OrderDtoImplCopyWithImpl<$Res>
       paymentStatus: null == paymentStatus
           ? _value.paymentStatus
           : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentType: null == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
               as String,
       orderStatus: null == orderStatus
           ? _value.orderStatus
@@ -366,6 +380,7 @@ class _$OrderDtoImpl extends _OrderDto {
       required this.deliveryAddressId,
       @JsonKey(name: 'paymentStatus', defaultValue: '')
       required this.paymentStatus,
+      @JsonKey(name: 'paymentType', defaultValue: '') required this.paymentType,
       @JsonKey(name: 'orderStatus', defaultValue: '') required this.orderStatus,
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
       required this.totalPrice,
@@ -413,6 +428,9 @@ class _$OrderDtoImpl extends _OrderDto {
   @override
   @JsonKey(name: 'paymentStatus', defaultValue: '')
   final String paymentStatus;
+  @override
+  @JsonKey(name: 'paymentType', defaultValue: '')
+  final String paymentType;
   @override
   @JsonKey(name: 'orderStatus', defaultValue: '')
   final String orderStatus;
@@ -463,7 +481,7 @@ class _$OrderDtoImpl extends _OrderDto {
 
   @override
   String toString() {
-    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, packingCharges: $packingCharges, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
+    return 'OrderDto(id: $id, invoiceId: $invoiceId, couponId: $couponId, userId: $userId, deliveryAddressId: $deliveryAddressId, paymentStatus: $paymentStatus, paymentType: $paymentType, orderStatus: $orderStatus, totalPrice: $totalPrice, subTotal: $subTotal, packingCharges: $packingCharges, deliveryCharge: $deliveryCharge, totalDiscount: $totalDiscount, orderDate: $orderDate, deliveryDate: $deliveryDate, deliveryTime: $deliveryTime, isCouponApplied: $isCouponApplied, deliveryAddress: $deliveryAddress, orderItem: $orderItem)';
   }
 
   @override
@@ -481,6 +499,8 @@ class _$OrderDtoImpl extends _OrderDto {
                 other.deliveryAddressId == deliveryAddressId) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
+            (identical(other.paymentType, paymentType) ||
+                other.paymentType == paymentType) &&
             (identical(other.orderStatus, orderStatus) ||
                 other.orderStatus == orderStatus) &&
             (identical(other.totalPrice, totalPrice) ||
@@ -509,26 +529,28 @@ class _$OrderDtoImpl extends _OrderDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      invoiceId,
-      couponId,
-      userId,
-      deliveryAddressId,
-      paymentStatus,
-      orderStatus,
-      totalPrice,
-      subTotal,
-      packingCharges,
-      deliveryCharge,
-      totalDiscount,
-      orderDate,
-      deliveryDate,
-      deliveryTime,
-      isCouponApplied,
-      const DeepCollectionEquality().hash(_deliveryAddress),
-      const DeepCollectionEquality().hash(_orderItem));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        invoiceId,
+        couponId,
+        userId,
+        deliveryAddressId,
+        paymentStatus,
+        paymentType,
+        orderStatus,
+        totalPrice,
+        subTotal,
+        packingCharges,
+        deliveryCharge,
+        totalDiscount,
+        orderDate,
+        deliveryDate,
+        deliveryTime,
+        isCouponApplied,
+        const DeepCollectionEquality().hash(_deliveryAddress),
+        const DeepCollectionEquality().hash(_orderItem)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -556,6 +578,8 @@ abstract class _OrderDto extends OrderDto {
       required final String deliveryAddressId,
       @JsonKey(name: 'paymentStatus', defaultValue: '')
       required final String paymentStatus,
+      @JsonKey(name: 'paymentType', defaultValue: '')
+      required final String paymentType,
       @JsonKey(name: 'orderStatus', defaultValue: '')
       required final String orderStatus,
       @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
@@ -603,6 +627,9 @@ abstract class _OrderDto extends OrderDto {
   @override
   @JsonKey(name: 'paymentStatus', defaultValue: '')
   String get paymentStatus;
+  @override
+  @JsonKey(name: 'paymentType', defaultValue: '')
+  String get paymentType;
   @override
   @JsonKey(name: 'orderStatus', defaultValue: '')
   String get orderStatus;

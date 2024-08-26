@@ -19,6 +19,7 @@ class Order with _$Order {
     required StringValue deliveryAddressId,
     required StringValue paymentStatus,
     required StringValue orderStatus,
+    required StringValue paymentType,
     required IntegerValue packingCharges,
     required IntegerValue totalPrice,
     required IntegerValue subTotal,
@@ -51,6 +52,7 @@ class Order with _$Order {
         deliveryAddress: [],
         orderItem: [],
         packingCharges: IntegerValue(0),
+        paymentType: StringValue(''),
       );
 }
 

@@ -16,8 +16,14 @@ class OrderEvent with _$OrderEvent {
   const factory OrderEvent.processPayment({
     required double totalAmount,
     required String phone,
+    required String orderId,
   }) = _ProcessPayment;
-  const factory OrderEvent.paymentSuccess() = _PaymentSuccess;
-  const factory OrderEvent.paymentFailed() = _PaymentFailed;
+  const factory OrderEvent.paymentSuccess({
+    required String orderId,
+    required String? paymentId,
+  }) = _PaymentSuccess;
+  const factory OrderEvent.paymentFailed({
+    required String orderId,
+  }) = _PaymentFailed;
   const factory OrderEvent.handleExternalApp() = _HandleExternalApp;
 }

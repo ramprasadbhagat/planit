@@ -20,6 +20,7 @@ class OrderDto with _$OrderDto {
     required String deliveryAddressId,
     @JsonKey(name: 'paymentStatus', defaultValue: '')
     required String paymentStatus,
+    @JsonKey(name: 'paymentType', defaultValue: '') required String paymentType,
     @JsonKey(name: 'orderStatus', defaultValue: '') required String orderStatus,
     @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
@@ -69,6 +70,7 @@ class OrderDto with _$OrderDto {
         orderItem:
             orderItem.map((e) => OrderItemDto.fromJson(e).toDomain).toList(),
         packingCharges: IntegerValue(packingCharges),
+        paymentType: StringValue(paymentType),
       );
 }
 

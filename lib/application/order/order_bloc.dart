@@ -48,7 +48,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               isFetching: false,
             ),
           ),
-          (res) {
+          (orderId) {
             if (e.isCOD) {
               emit(
                 state.copyWith(
@@ -65,6 +65,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
                         .priceAfterCoupon(e.cartItem.totalPrice.getValue()) +
                     e.deliveryCharge,
                 phone: e.addressBook.phoneNumber,
+                orderId: orderId,
               ),
             );
           },
@@ -98,45 +99,64 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       processPayment: (_ProcessPayment value) {
         paymentRepository.initiatePayment(
           options: PaymentOptions(
-            name: 'checkout',
+            name: 'PlanIt',
             description: 'checkout order',
             amount: value.totalAmount,
             prefill: PrefillData(contact: value.phone),
           ),
-          handlePaymentSuccess: (p0) {
+          handlePaymentSuccess: (p0) async {
             log(
               'handlePaymentSuccess $p0',
             );
-            add(const _PaymentSuccess());
+
+            add(
+              _PaymentSuccess(
+                orderId: value.orderId,
+                paymentId: p0.paymentId,
+              ),
+            );
           },
-          handlePaymentFailure: (p0) {
+          handlePaymentFailure: (p0) async {
             log(
               'handlePaymentFailure $p0',
             );
-            add(const _PaymentFailed());
+            add(_PaymentFailed(orderId: value.orderId));
           },
           handleExternalWallet: (p0) {
             log(
               'handleExternalWallet $p0',
             );
-            add(const _HandleExternalApp());
           },
         );
       },
-      paymentSuccess: (_PaymentSuccess value) {
+      paymentSuccess: (_PaymentSuccess value) async {
+        final failureOrSuccess = await repository.updateOrderPayment(
+          orderId: value.orderId,
+          success: true,
+          transactionId: value.paymentId ?? '',
+          paymentType: 'razorpay',
+        );
+
         emit(
           state.copyWith(
             isFetching: false,
-            apiFailureOrSuccessOption: some(right(unit)),
+            apiFailureOrSuccessOption: optionOf(failureOrSuccess),
           ),
         );
         add(const _FetchOrders());
       },
-      paymentFailed: (_PaymentFailed value) {
+      paymentFailed: (_PaymentFailed value) async {
+        final failureOrSuccess = await repository.updateOrderPayment(
+          orderId: value.orderId,
+          success: false,
+          transactionId: '',
+          paymentType: 'razorpay',
+        );
+
         emit(
           state.copyWith(
             isFetching: false,
-            apiFailureOrSuccessOption: some(right(unit)),
+            apiFailureOrSuccessOption: optionOf(failureOrSuccess),
           ),
         );
         add(const _FetchOrders());
