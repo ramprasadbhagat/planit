@@ -25,6 +25,7 @@ class OrderRemoteDataSource {
     required Coupon coupon,
     required String date,
     required double deliveryCharge,
+    required String paymentType,
   }) async {
     final userId = storageService.getUserId();
     final data = json.encode({
@@ -39,6 +40,7 @@ class OrderRemoteDataSource {
       'productRating': '3.5',
       'paymentStatus': 'not done',
       'orderStatus': 'pending',
+      'paymentType': paymentType,
       'totalPrice': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()) +
           deliveryCharge,
       'deliveryCharge': deliveryCharge.toString(),

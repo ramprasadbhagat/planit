@@ -26,6 +26,7 @@ class OrderRepository extends IOrderRepository {
     required String date,
     required Coupon coupon,
     required double deliveryCharge,
+    required String paymentType,
   }) async {
     try {
       final success = await remoteDataSource.submitOrder(
@@ -34,6 +35,7 @@ class OrderRepository extends IOrderRepository {
         date: date,
         coupon: coupon,
         deliveryCharge: deliveryCharge,
+        paymentType: paymentType,
       );
 
       return Right(success);

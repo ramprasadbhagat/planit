@@ -40,6 +40,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           date: e.date,
           coupon: e.coupon,
           deliveryCharge: e.deliveryCharge,
+          paymentType: e.isCOD ? 'Cash' : 'razorpay',
         );
         failureOrSuccess.fold(
           (failure) => emit(
