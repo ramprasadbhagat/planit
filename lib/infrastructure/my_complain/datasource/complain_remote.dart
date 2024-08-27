@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mime/mime.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/my_complain/entities/complain.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
@@ -53,9 +54,11 @@ class ComplainRemoteDataSource {
             'email': email,
             'complainContent': complainContent,
             'complainImages': [
-              await MultipartFile.fromFile(
-                image.path,
-                contentType: MediaType.parse(image.mimeType ?? 'image/png'),
+              MultipartFile.fromBytes(
+                await image.readAsBytes(),
+                filename: image.name,
+                contentType:
+                    MediaType.parse(lookupMimeType(image.name) ?? 'image/png'),
               ),
             ],
           });
