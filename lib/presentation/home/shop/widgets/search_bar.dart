@@ -14,7 +14,7 @@ class HomeSearchBar extends StatelessWidget {
       borderSide: BorderSide.none,
     );
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Material(
         elevation: 2,
         shape: RoundedRectangleBorder(

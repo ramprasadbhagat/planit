@@ -1,0 +1,42 @@
+{
+    "_id": "66c47d19cd268c00120116cd",
+    "user_id": "662d14137af30e0013145c4c",
+    "blog_title": "blog5",
+    "blog_content": "<p>dfghj,</p>\r\n",
+    "blog_images": [
+        "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724153113987.jpg"
+    ],
+    "keyword": [],
+    "created_at": "2024-08-20T11:25:13.989Z",
+    "updated_at": "2024-08-20T11:25:13.989Z",
+    "isActive": true,
+    "isDeleted": false,
+    "blog_tag": [
+        ""
+    ],
+    "hyperlink": [
+        "https://www.amazon.com"
+    ],
+    "users": [
+        {
+            "_id": "662d14137af30e0013145c4c",
+            "mobile_number": "9874207090",
+            "email": "abc@gmail.com",
+            "is_active": "true",
+            "role": "admin",
+            "fullName": "Admin Yadav",
+            "firstName": "Admin",
+            "lastName": "Yadav",
+            "gender": "Male",
+            "dob": "1990-01-01T00:00:00.000Z",
+            "salt": "fa2ae7e5b75a76d0",
+            "passwordHash": "4fefa0b225955dd568a2686801e26305c1c6960643b6bbab7afbc9b8c3ce0a2db1f61655685b761583f86605058c284252dec63fe3ece2aa0f94773782957be3",
+            "otp": "8907",
+            "isActive": true,
+            "isFirstLogin": false
+        }
+    ],
+    "like": true,
+    "likesCount": 0,
+    "dislikeCount": 0
+}

@@ -91,6 +91,10 @@ class AppRouter extends $AppRouter {
           path: '/favouriteRecipes',
         ),
         AutoRoute(
+          page: BlogDetailsRoute.page,
+          path: '/blogDetails',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           initial: true,
@@ -106,6 +110,16 @@ class AppRouter extends $AppRouter {
                 AutoRoute(
                   page: ReadRoute.page,
                   path: 'home/read',
+                  children: [
+                    AutoRoute(
+                      page: RecipesRoute.page,
+                      path: 'home/read/recipes',
+                    ),
+                    AutoRoute(
+                      page: BlogsRoute.page,
+                      path: 'home/read/blogs',
+                    ),
+                  ],
                 ),
                 AutoRoute(
                   page: PlanRoute.page,
