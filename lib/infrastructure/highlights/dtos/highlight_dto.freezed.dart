@@ -68,6 +68,8 @@ mixin _$HighlightDto {
   String get attributeItemId => throw _privateConstructorUsedError;
   PriceDto get price => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
+  bool get backOrder => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -106,7 +108,8 @@ abstract class $HighlightDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItemId,
       PriceDto price,
-      List<String> productImages});
+      List<String> productImages,
+      @JsonKey(defaultValue: false) bool backOrder});
 
   $PriceDtoCopyWith<$Res> get price;
 }
@@ -149,6 +152,7 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
     Object? attributeItemId = null,
     Object? price = null,
     Object? productImages = null,
+    Object? backOrder = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -251,6 +255,10 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      backOrder: null == backOrder
+          ? _value.backOrder
+          : backOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -296,7 +304,8 @@ abstract class _$$HighlightDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItemId,
       PriceDto price,
-      List<String> productImages});
+      List<String> productImages,
+      @JsonKey(defaultValue: false) bool backOrder});
 
   @override
   $PriceDtoCopyWith<$Res> get price;
@@ -338,6 +347,7 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
     Object? attributeItemId = null,
     Object? price = null,
     Object? productImages = null,
+    Object? backOrder = null,
   }) {
     return _then(_$HighlightDtoImpl(
       id: null == id
@@ -440,6 +450,10 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      backOrder: null == backOrder
+          ? _value.backOrder
+          : backOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -474,7 +488,8 @@ class _$HighlightDtoImpl extends _HighlightDto {
       @JsonKey(defaultValue: '') required this.attributeItemProductId,
       @JsonKey(defaultValue: '') required this.attributeItemId,
       required this.price,
-      required final List<String> productImages})
+      required final List<String> productImages,
+      @JsonKey(defaultValue: false) required this.backOrder})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
         super._();
@@ -568,8 +583,12 @@ class _$HighlightDtoImpl extends _HighlightDto {
   }
 
   @override
+  @JsonKey(defaultValue: false)
+  final bool backOrder;
+
+  @override
   String toString() {
-    return 'HighlightDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productImages: $productImages)';
+    return 'HighlightDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productImages: $productImages, backOrder: $backOrder)';
   }
 
   @override
@@ -623,7 +642,9 @@ class _$HighlightDtoImpl extends _HighlightDto {
                 other.attributeItemId == attributeItemId) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
-                .equals(other._productImages, _productImages));
+                .equals(other._productImages, _productImages) &&
+            (identical(other.backOrder, backOrder) ||
+                other.backOrder == backOrder));
   }
 
   @JsonKey(ignore: true)
@@ -654,7 +675,8 @@ class _$HighlightDtoImpl extends _HighlightDto {
         attributeItemProductId,
         attributeItemId,
         price,
-        const DeepCollectionEquality().hash(_productImages)
+        const DeepCollectionEquality().hash(_productImages),
+        backOrder
       ]);
 
   @JsonKey(ignore: true)
@@ -701,7 +723,9 @@ abstract class _HighlightDto extends HighlightDto {
       @JsonKey(defaultValue: '') required final String attributeItemProductId,
       @JsonKey(defaultValue: '') required final String attributeItemId,
       required final PriceDto price,
-      required final List<String> productImages}) = _$HighlightDtoImpl;
+      required final List<String> productImages,
+      @JsonKey(defaultValue: false)
+      required final bool backOrder}) = _$HighlightDtoImpl;
   const _HighlightDto._() : super._();
 
   factory _HighlightDto.fromJson(Map<String, dynamic> json) =
@@ -780,6 +804,9 @@ abstract class _HighlightDto extends HighlightDto {
   PriceDto get price;
   @override
   List<String> get productImages;
+  @override
+  @JsonKey(defaultValue: false)
+  bool get backOrder;
   @override
   @JsonKey(ignore: true)
   _$$HighlightDtoImplCopyWith<_$HighlightDtoImpl> get copyWith =>

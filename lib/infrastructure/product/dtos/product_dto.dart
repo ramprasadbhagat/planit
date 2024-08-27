@@ -31,6 +31,7 @@ class ProductDto with _$ProductDto {
     required Map<String, dynamic> price,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
+    @JsonKey(defaultValue: false) required bool backOrder,
   }) = _ProductDto;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) =>
@@ -47,6 +48,7 @@ class ProductDto with _$ProductDto {
         price: PriceDto.fromJson(price).toDomain,
         productDescription: StringValue(productDescription),
         attributeItemId: StringValue(attributeItemProductId),
+        backOrder: backOrder,
       );
 }
 

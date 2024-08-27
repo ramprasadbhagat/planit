@@ -23,6 +23,7 @@ _$ProductDetailDtoImpl _$$ProductDetailDtoImplFromJson(
       attribute: (json['attribute'] as List<dynamic>)
           .map((e) => e as Map<String, dynamic>)
           .toList(),
+      backOrder: json['backOrder'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ProductDetailDtoImplToJson(
@@ -35,4 +36,5 @@ Map<String, dynamic> _$$ProductDetailDtoImplToJson(
       'price': instance.price,
       'productImages': instance.productImages,
       'attribute': instance.attribute,
+      'backOrder': instance.backOrder,
     };

@@ -34,6 +34,7 @@ class ProductDetailDto with _$ProductDetailDto {
     )
     required List<String> productImages,
     required List<Map<String, dynamic>> attribute,
+    @JsonKey(defaultValue: false) required bool backOrder,
   }) = _ProductDetailDto;
 
   factory ProductDetailDto.fromJson(Map<String, dynamic> json) =>
@@ -49,6 +50,7 @@ class ProductDetailDto with _$ProductDetailDto {
         attribute: attribute
             .map((e) => ProductAttributeDto.fromJson(e).toDomain)
             .toList(),
+        backOrder: backOrder,
       );
 }
 

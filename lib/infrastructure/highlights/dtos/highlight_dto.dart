@@ -37,6 +37,7 @@ class HighlightDto with _$HighlightDto {
     @JsonKey(defaultValue: '') required String attributeItemId,
     required PriceDto price,
     required List<String> productImages,
+    @JsonKey(defaultValue: false) required bool backOrder,
   }) = _HighlightDto;
 
   factory HighlightDto.fromJson(Map<String, dynamic> json) =>
@@ -68,6 +69,7 @@ class HighlightDto with _$HighlightDto {
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
         attributeItemId: StringValue(attributeItemId),
+        backOrder: false,
       );
 }
 

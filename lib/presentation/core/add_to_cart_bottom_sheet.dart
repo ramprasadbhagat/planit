@@ -190,11 +190,9 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
-                                  color:
-                                      state.selectedProductAttribute.quantity >
-                                              0
-                                          ? AppColors.textBlack
-                                          : AppColors.grey4,
+                                  color: !state.isOOS
+                                      ? AppColors.textBlack
+                                      : AppColors.grey4,
                                 ),
                               ),
                               Text(
@@ -202,11 +200,9 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color:
-                                      state.selectedProductAttribute.quantity >
-                                              0
-                                          ? AppColors.textBlack
-                                          : AppColors.grey4,
+                                  color: !state.isOOS
+                                      ? AppColors.textBlack
+                                      : AppColors.grey4,
                                 ),
                               ),
                               Text(
@@ -226,7 +222,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                           AddToCartButton.fromBottomSheet(
                             product: state.product
                                 .toProduct(state.selectedProductAttribute),
-                            onTap: state.selectedProductAttribute.quantity > 0
+                            onTap: !state.isOOS
                                 ? () async {
                                     if (context.read<AuthBloc>().state ==
                                         const AuthState.unauthenticated()) {
@@ -410,7 +406,7 @@ class Unit extends StatelessWidget {
                   ),
                 ],
                 Text(
-                  productAttribute.quantity > 0
+                  productAttribute.quantity > 0 || state.product.backOrder
                       ? '₹ ${productAttribute.price}'
                       : 'Out of stock',
                   style: textTheme.bodySmall?.copyWith(fontSize: 10),
