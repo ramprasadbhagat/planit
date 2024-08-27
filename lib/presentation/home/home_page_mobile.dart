@@ -1,12 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/add_money/ui_state/payment_method.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
@@ -79,6 +81,17 @@ class HomePageMobile extends StatelessWidget {
 
                   context.router.navigate(const HomeRoute());
                   context.router.navigate(const OrderListRoute());
+                  if (state.selectedPaymentMethod ==
+                      const PaymentMethod.wallet()) {
+                    context
+                        .read<WalletBloc>()
+                        .add(const WalletEvent.fetchBalance());
+                    context.read<OrderBloc>().add(
+                          const OrderEvent.changePaymentMethod(
+                            PaymentMethod.razorpay(),
+                          ),
+                        );
+                  }
                 },
               );
             });

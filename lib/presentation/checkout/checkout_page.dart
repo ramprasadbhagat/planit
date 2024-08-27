@@ -8,7 +8,6 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
-import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
@@ -29,7 +28,7 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   DateTime date = DateTime.now();
-  String paymentMethod = '';
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -131,13 +130,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    PaymentSection(
-                      onPaymentChanged: (value) {
-                        setState(() {
-                          paymentMethod = value!;
-                        });
-                      },
-                    ),
+                    const PaymentSection(),
                   ],
                 ),
               ),
@@ -236,7 +229,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   height: 10,
                 ),
                 PlaceOrderButton(
-                  paymentMethod: paymentMethod,
                   date: DateFormat('yyyy-MM-dd').format(date),
                 ),
               ],
@@ -251,11 +243,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
 class PlaceOrderButton extends StatelessWidget {
   const PlaceOrderButton({
     super.key,
-    required this.paymentMethod,
     required this.date,
   });
 
-  final String paymentMethod;
   final String date;
 
   @override
@@ -268,56 +258,42 @@ class PlaceOrderButton extends StatelessWidget {
     );
     return BlocBuilder<OrderBloc, OrderState>(
       buildWhen: (previous, current) =>
-          previous.isFetching != current.isFetching,
+          previous.isFetching != current.isFetching ||
+          previous.selectedPaymentMethod != current.selectedPaymentMethod,
       builder: (context, state) {
         return SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: ((paymentMethod == 'Cash on delivery' ||
-                        paymentMethod == 'Razorpay') &&
-                    isProfileCompleted &&
+            onPressed: (isProfileCompleted &&
                     hasValidAddress &&
                     !state.isFetching)
                 ? () {
                     final addressState = context.read<AddressBookBloc>().state;
-                    if (addressState.selectedAddress == AddressBook.empty()) {
-                      const snackBar = SnackBar(
-                        backgroundColor: AppColors.grey3,
-                        content: Text('No Address added or selected yet'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    } else {
-                      final cartState = context.read<CartBloc>().state;
+                    final cartState = context.read<CartBloc>().state;
 
-                      context.read<OrderBloc>().add(
-                            OrderEvent.submitOrder(
-                              isCOD: paymentMethod == 'Cash on delivery',
-                              cartItem: cartState.cartItem,
-                              addressBook: addressState.selectedAddress,
-                              date: date,
-                              coupon: context
-                                  .read<CouponBloc>()
-                                  .state
-                                  .appliedCoupon,
-                              deliveryCharge: cartState.deliveryCharges,
-                            ),
-                          );
-                    }
+                    context.read<OrderBloc>().add(
+                          OrderEvent.submitOrder(
+                            cartItem: cartState.cartItem,
+                            addressBook: addressState.selectedAddress,
+                            date: date,
+                            coupon:
+                                context.read<CouponBloc>().state.appliedCoupon,
+                            deliveryCharge: cartState.deliveryCharges,
+                          ),
+                        );
                   }
                 : null,
             style: ElevatedButton.styleFrom(
               shape: const StadiumBorder(),
-              // backgroundColor: paymentMethod == 'Cash on delivery'
-              //     ? AppColors.black
-              //     : AppColors.lightGray,
               maximumSize: const Size(330, 50),
             ),
             child: Text(
               state.isFetching
                   ? 'loading...'
-                  : paymentMethod == 'Cash on delivery'
-                      ? 'Place Order'
-                      : 'Proceed to payment',
+                  : state.selectedPaymentMethod.maybeWhen(
+                      orElse: () => 'Place Order',
+                      razorpay: () => 'Proceed to payment',
+                    ),
             ),
           ),
         );

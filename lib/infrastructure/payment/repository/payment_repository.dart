@@ -8,12 +8,12 @@ import 'package:planit/infrastructure/payment/datasource/payment_local.dart';
 import 'package:planit/infrastructure/payment/datasource/payment_remote.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
-class RazorpayPaymentRepository implements IPaymentRepository {
+class PaymentRepository implements IPaymentRepository {
   final Config config;
-  final RazorpayPaymentRemoteDatasource remoteDatasource;
+  final PaymentRemoteDatasource remoteDatasource;
   final PaymentLocalDatasource localDatasource;
 
-  RazorpayPaymentRepository({
+  PaymentRepository({
     required this.config,
     required this.remoteDatasource,
     required this.localDatasource,
@@ -49,6 +49,28 @@ class RazorpayPaymentRepository implements IPaymentRepository {
       return right(unit);
     } catch (e) {
       return left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> processPaymentFromWallet({
+    required int amount,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        await localDatasource.deductAmount();
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final res = await remoteDatasource.deductPaymentFromWallet(amount);
+
+      return Right(res);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
     }
   }
 }

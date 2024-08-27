@@ -10,4 +10,7 @@ abstract class IPaymentRepository {
     required Function(PaymentFailureResponse) handlePaymentFailure,
     required Function(ExternalWalletResponse) handleExternalWallet,
   });
+  Future<Either<ApiFailure, Unit>> processPaymentFromWallet({
+    required int amount,
+  });
 }

@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:planit/domain/payment/entities/payment_options.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -16,6 +18,13 @@ class PaymentLocalDatasource {
           PaymentSuccessResponse('payemntId', 'orderId', 'signature', {}),
         );
       },
+    );
+  }
+
+  Future<Unit> deductAmount() {
+    return Future.delayed(
+      Durations.extralong1,
+      () => unit,
     );
   }
 }

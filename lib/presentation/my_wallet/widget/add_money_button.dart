@@ -16,7 +16,7 @@ class AddMoneyButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        context.router.navigate(const AddMoneyRoute());
+        context.router.navigate(AddMoneyRoute());
       },
       icon: const Icon(
         Icons.add_circle_outline,

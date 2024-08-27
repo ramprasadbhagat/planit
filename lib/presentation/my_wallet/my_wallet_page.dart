@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/presentation/my_wallet/widget/add_money_button.dart';
 import 'package:planit/presentation/my_wallet/widget/transaction_history.dart';
 import 'package:planit/utils/svg_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class MyWalletPage extends StatelessWidget {
@@ -49,12 +53,19 @@ class MyWalletPage extends StatelessWidget {
                           const SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            '2,750',
-                            style: textTheme.labelLarge?.copyWith(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                            ),
+                          BlocBuilder<WalletBloc, WalletState>(
+                            builder: (context, state) {
+                              return Skeletonizer(
+                                enabled: state.isLoading,
+                                child: Text(
+                                  NumberFormat.compact().format(state.balance),
+                                  style: textTheme.labelLarge?.copyWith(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
