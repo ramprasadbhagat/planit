@@ -8,6 +8,7 @@ class OrderState with _$OrderState {
     required bool isFetching,
     required bool isFetchingOrders,
     required List<Order> orders,
+    required PaymentMethod selectedPaymentMethod,
   }) = _OrderState;
 
   factory OrderState.initial() => OrderState(
@@ -15,6 +16,7 @@ class OrderState with _$OrderState {
         isFetching: false,
         isFetchingOrders: false,
         orders: [],
+        selectedPaymentMethod: const PaymentMethod.razorpay(),
       );
   List<String> get getOrderIdList {
     return orders.map((e) {

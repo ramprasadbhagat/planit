@@ -19,12 +19,13 @@ class OrderRemoteDataSource {
     required this.storageService,
   });
 
-  Future<Unit> submitOrder({
+  Future<String> submitOrder({
     required CartItem cartItem,
     required AddressBook address,
     required Coupon coupon,
     required String date,
     required double deliveryCharge,
+    required String paymentType,
   }) async {
     final userId = storageService.getUserId();
     final data = json.encode({
@@ -39,7 +40,9 @@ class OrderRemoteDataSource {
       'productRating': '3.5',
       'paymentStatus': 'not done',
       'orderStatus': 'pending',
-      'totalPrice': cartItem.totalPrice.getValue().toString(),
+      'paymentType': paymentType,
+      'totalPrice': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()) +
+          deliveryCharge,
       'deliveryCharge': deliveryCharge.toString(),
       'totalDiscount': coupon.amount(cartItem.totalPrice.getValue()).toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),
@@ -50,7 +53,7 @@ class OrderRemoteDataSource {
       data: data,
     );
     _exceptionChecker(res: res);
-    return unit;
+    return res.data['order_id'];
   }
 
   Future<List<Order>> getOrders() async {
@@ -63,6 +66,27 @@ class OrderRemoteDataSource {
     _exceptionChecker(res: res);
     final orders = res.data['items'];
     return List.from(orders).map((e) => OrderDto.fromJson(e).toDomain).toList();
+  }
+
+  Future<Unit> updateOrderPayment({
+    required String orderId,
+    required bool success,
+    required String transactionId,
+    required String paymentType,
+  }) async {
+    final res = await httpService.request(
+      method: 'PATCH',
+      url: '/orders/updateOrder',
+      data: {
+        'order_id': orderId,
+        'paymentStatus': success ? 'successfull' : 'failed',
+        'paymentType': paymentType,
+        'transaction_id': transactionId,
+      },
+    );
+    _exceptionChecker(res: res);
+
+    return unit;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

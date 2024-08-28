@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:planit/application/add_money/add_money_bloc.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
@@ -24,13 +25,16 @@ import 'package:planit/application/similar_product/similar_product_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/blog/repository/i_blog_repository.dart';
 import 'package:planit/domain/favourite_recipe/repository/i_favourite_recipe.dart';
+import 'package:planit/domain/payment/repository/i_payment_repository.dart';
 import 'package:planit/domain/recipe/repository/i_recipe_repository.dart';
 import 'package:planit/domain/review/repository/i_review_repository.dart';
 import 'package:planit/domain/user/repository/i_user_repository.dart';
+import 'package:planit/domain/wallet/repository/i_wallet_repository.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_local.dart';
 import 'package:planit/infrastructure/address_book/datasources/address_book_remote.dart';
 import 'package:planit/infrastructure/address_book/repository/address_book_repository.dart';
@@ -66,6 +70,9 @@ import 'package:planit/infrastructure/my_complain/repository/complain_repository
 import 'package:planit/infrastructure/order/datasource/order_local.dart';
 import 'package:planit/infrastructure/order/datasource/order_remote.dart';
 import 'package:planit/infrastructure/order/repository/order_repository.dart';
+import 'package:planit/infrastructure/payment/datasource/payment_local.dart';
+import 'package:planit/infrastructure/payment/datasource/payment_remote.dart';
+import 'package:planit/infrastructure/payment/repository/payment_repository.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_local.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_remote.dart';
 import 'package:planit/infrastructure/pincode/repository/pincode_repository.dart';
@@ -93,11 +100,15 @@ import 'package:planit/infrastructure/track_order/repository/track_order_reposit
 import 'package:planit/infrastructure/user/datasource/user_local.dart';
 import 'package:planit/infrastructure/user/datasource/user_remote.dart';
 import 'package:planit/infrastructure/user/repository/user_repository.dart';
+import 'package:planit/infrastructure/wallet/datasource/wallet_local.dart';
+import 'package:planit/infrastructure/wallet/datasource/wallet_remote.dart';
+import 'package:planit/infrastructure/wallet/repository/wallet_repository.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_local.dart';
 import 'package:planit/infrastructure/wishlist/datasource/wishlist_remote.dart';
 import 'package:planit/infrastructure/wishlist/repository/wishlist_repository.dart';
 import 'package:planit/presentation/router/router.dart';
 import 'package:planit/utils/storage_service.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -482,6 +493,7 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => OrderBloc(
       repository: locator<OrderRepository>(),
+      paymentRepository: locator<IPaymentRepository>(),
     ),
   );
   /////============================================================
@@ -698,5 +710,69 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => BlogDetailsBloc(locator<IBlogRepository>()),
+  );
+
+  /////============================================================
+  //  Payment Gateway Integration
+  //============================================================
+
+  locator.registerLazySingleton<Razorpay>(
+    () => Razorpay(),
+  );
+
+  locator.registerLazySingleton(
+    () => const PaymentLocalDatasource(),
+  );
+
+  locator.registerLazySingleton(
+    () => PaymentRemoteDatasource(
+      config: locator<Config>(),
+      razorpay: locator<Razorpay>(),
+      httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IPaymentRepository>(
+    () => PaymentRepository(
+      config: locator<Config>(),
+      localDatasource: locator<PaymentLocalDatasource>(),
+      remoteDatasource: locator<PaymentRemoteDatasource>(),
+    ),
+  );
+
+  /////============================================================
+  //  Favourite Recipe
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const WalletLocalDatasource(),
+  );
+
+  locator.registerLazySingleton(
+    () => WalletRemoteDatasource(
+      httpService: locator<HttpService>(),
+      storageService: locator<StorageService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IWalletRepository>(
+    () => WalletRepository(
+      config: locator<Config>(),
+      localDatasource: locator<WalletLocalDatasource>(),
+      remoteDatasource: locator<WalletRemoteDatasource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => AddMoneyBloc(
+      locator<IWalletRepository>(),
+      locator<IPaymentRepository>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => WalletBloc(
+      locator<IWalletRepository>(),
+    ),
   );
 }

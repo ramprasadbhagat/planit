@@ -5,10 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
-import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
-import 'package:planit/presentation/home/read/widgets/recipe_detials_bottom_sheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -77,14 +75,9 @@ class TrendingRecipeCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return InkWell(
-      onTap: () => showModalBottomSheet<void>(
-        context: context,
-        builder: (BuildContext context) => CommonBottomSheet(
-          child: RecipeDetailsBottomSheet(
-            recipe: recipe,
-          ),
-        ),
-      ),
+      onTap: () {
+        context.router.navigate(RecipeDetailsRoute(recipe: recipe));
+      },
       child: Stack(
         children: [
           if (recipe.recipeImages.isNotEmpty &&
@@ -124,6 +117,8 @@ class TrendingRecipeCard extends StatelessWidget {
                       style: textTheme.labelSmall?.copyWith(
                         fontSize: 15,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       recipe.writeup.getValue(),

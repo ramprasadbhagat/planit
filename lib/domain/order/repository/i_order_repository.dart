@@ -6,13 +6,20 @@ import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/order.dart';
 
 abstract class IOrderRepository {
-  Future<Either<ApiFailure, Unit>> submitOrder({
+  Future<Either<ApiFailure, String>> submitOrder({
     required CartItem cartItem,
     required AddressBook address,
     required String date,
     required Coupon coupon,
     required double deliveryCharge,
+    required String paymentType,
   });
 
   Future<Either<ApiFailure, List<Order>>> getAllOrders();
+  Future<Either<ApiFailure, Unit>> updateOrderPayment({
+    required String orderId,
+    required bool success,
+    required String transactionId,
+    required String paymentType,
+  });
 }

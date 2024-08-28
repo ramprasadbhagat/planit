@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i35;
+import 'package:flutter/foundation.dart' as _i40;
 import 'package:flutter/material.dart' as _i36;
 import 'package:planit/domain/blog/enitities/blog.dart' as _i37;
 import 'package:planit/domain/order/entities/order.dart' as _i38;
@@ -64,9 +65,11 @@ abstract class $AppRouter extends _i35.RootStackRouter {
       );
     },
     AddMoneyRoute.name: (routeData) {
+      final args = routeData.argsAs<AddMoneyRouteArgs>(
+          orElse: () => const AddMoneyRouteArgs());
       return _i35.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.AddMoneyPage(),
+        child: _i2.AddMoneyPage(key: args.key),
       );
     },
     AddressBookRoute.name: (routeData) {
@@ -303,16 +306,31 @@ class AddComplainsRoute extends _i35.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AddMoneyPage]
-class AddMoneyRoute extends _i35.PageRouteInfo<void> {
-  const AddMoneyRoute({List<_i35.PageRouteInfo>? children})
-      : super(
+class AddMoneyRoute extends _i35.PageRouteInfo<AddMoneyRouteArgs> {
+  AddMoneyRoute({
+    _i36.Key? key,
+    List<_i35.PageRouteInfo>? children,
+  }) : super(
           AddMoneyRoute.name,
+          args: AddMoneyRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'AddMoneyRoute';
 
-  static const _i35.PageInfo<void> page = _i35.PageInfo<void>(name);
+  static const _i35.PageInfo<AddMoneyRouteArgs> page =
+      _i35.PageInfo<AddMoneyRouteArgs>(name);
+}
+
+class AddMoneyRouteArgs {
+  const AddMoneyRouteArgs({this.key});
+
+  final _i36.Key? key;
+
+  @override
+  String toString() {
+    return 'AddMoneyRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -821,7 +839,7 @@ class TrackOrderRoute extends _i35.PageRouteInfo<void> {
 /// [_i32.UserProfilePage]
 class UserProfileRoute extends _i35.PageRouteInfo<UserProfileRouteArgs> {
   UserProfileRoute({
-    _i36.Key? key,
+    _i40.Key? key,
     bool isFirstLogin = false,
     bool fromCheckoutPage = false,
     List<_i35.PageRouteInfo>? children,
@@ -848,7 +866,7 @@ class UserProfileRouteArgs {
     this.fromCheckoutPage = false,
   });
 
-  final _i36.Key? key;
+  final _i40.Key? key;
 
   final bool isFirstLogin;
 

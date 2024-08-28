@@ -443,7 +443,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                ' Payment Option : Cash ',
+                                ' Payment Option : ${order.paymentType.getOrDefaultValue('Cash')}',
                                 style: textTheme.titleMedium?.copyWith(
                                   color: AppColors.grey2,
                                   fontSize: 12,

@@ -14,6 +14,7 @@ import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
@@ -61,6 +62,8 @@ class _MainTabbarState extends State<MainTabbar> {
     context.read<RecipeBloc>().add(const RecipeEvent.fetch());
     context.read<FavouriteRecipeBloc>().add(const FavouriteRecipeEvent.fetch());
     context.read<BlogBloc>().add(const BlogEvent.fetchBlogs());
+    context.read<WalletBloc>().add(const WalletEvent.fetchBalance());
+    context.read<WalletBloc>().add(const WalletEvent.fetchTransactionHistory());
   }
 
   @override

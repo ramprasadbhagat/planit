@@ -12,4 +12,21 @@ class OrderEvent with _$OrderEvent {
   }) = _SubmitOrder;
 
   const factory OrderEvent.fetchOrders() = _FetchOrders;
+  const factory OrderEvent.processPayment({
+    required double totalAmount,
+    required String phone,
+    required String orderId,
+  }) = _ProcessPayment;
+  const factory OrderEvent.paymentSuccess({
+    required String orderId,
+    required String? paymentId,
+    required String paymentType,
+  }) = _PaymentSuccess;
+  const factory OrderEvent.paymentFailed({
+    required String orderId,
+    required String paymentType,
+  }) = _PaymentFailed;
+  const factory OrderEvent.handleExternalApp() = _HandleExternalApp;
+  const factory OrderEvent.changePaymentMethod(PaymentMethod paymentMethod) =
+      _ChangePaymentMethod;
 }

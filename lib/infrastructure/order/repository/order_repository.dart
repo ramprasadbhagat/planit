@@ -20,12 +20,13 @@ class OrderRepository extends IOrderRepository {
     required this.localDataSource,
   });
   @override
-  Future<Either<ApiFailure, Unit>> submitOrder({
+  Future<Either<ApiFailure, String>> submitOrder({
     required CartItem cartItem,
     required AddressBook address,
     required String date,
     required Coupon coupon,
     required double deliveryCharge,
+    required String paymentType,
   }) async {
     try {
       final success = await remoteDataSource.submitOrder(
@@ -34,9 +35,40 @@ class OrderRepository extends IOrderRepository {
         date: date,
         coupon: coupon,
         deliveryCharge: deliveryCharge,
+        paymentType: paymentType,
       );
 
       return Right(success);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> updateOrderPayment({
+    required String orderId,
+    required bool success,
+    required String transactionId,
+    required String paymentType,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        await localDataSource.getOrders();
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final res = await remoteDataSource.updateOrderPayment(
+        orderId: orderId,
+        success: success,
+        paymentType: paymentType,
+        transactionId: transactionId,
+      );
+
+      return Right(res);
     } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }

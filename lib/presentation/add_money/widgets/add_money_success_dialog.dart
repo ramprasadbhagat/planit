@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 class AddMoneySuccessDialog extends StatelessWidget {
@@ -88,7 +89,7 @@ class AddMoneySuccessDialog extends StatelessWidget {
                   iconSize: 25,
                   color: AppColors.black,
                   onPressed: () {
-                    context.maybePop();
+                    context.router.navigate(const MyWalletRoute());
                   },
                   icon: const Icon(
                     Icons.close,

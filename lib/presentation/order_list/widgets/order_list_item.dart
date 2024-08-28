@@ -171,7 +171,8 @@ class OrderListItem extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: 'Cash',
+                                text:
+                                    order.paymentType.getOrDefaultValue('Cash'),
                                 style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w400,
                                 ),

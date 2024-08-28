@@ -23,6 +23,14 @@ mixin _$OrderEvent {
             String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +40,13 @@ mixin _$OrderEvent {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +56,13 @@ mixin _$OrderEvent {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +71,11 @@ mixin _$OrderEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
     required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +83,11 @@ mixin _$OrderEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
     TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +95,11 @@ mixin _$OrderEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
     TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +166,14 @@ class _$InitializedImpl implements _Initialized {
             String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
   }) {
     return initialized();
   }
@@ -141,6 +186,13 @@ class _$InitializedImpl implements _Initialized {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
   }) {
     return initialized?.call();
   }
@@ -153,6 +205,13 @@ class _$InitializedImpl implements _Initialized {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -167,6 +226,11 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
     required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
   }) {
     return initialized(this);
   }
@@ -177,6 +241,11 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
     TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
   }) {
     return initialized?.call(this);
   }
@@ -187,6 +256,11 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
     TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -343,6 +417,14 @@ class _$SubmitOrderImpl implements _SubmitOrder {
             String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
   }) {
     return submitOrder(cartItem, addressBook, date, coupon, deliveryCharge);
   }
@@ -355,6 +437,13 @@ class _$SubmitOrderImpl implements _SubmitOrder {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
   }) {
     return submitOrder?.call(
         cartItem, addressBook, date, coupon, deliveryCharge);
@@ -368,6 +457,13 @@ class _$SubmitOrderImpl implements _SubmitOrder {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
@@ -382,6 +478,11 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
     required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
   }) {
     return submitOrder(this);
   }
@@ -392,6 +493,11 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
     TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
   }) {
     return submitOrder?.call(this);
   }
@@ -402,6 +508,11 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
     TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
@@ -472,6 +583,14 @@ class _$FetchOrdersImpl implements _FetchOrders {
             String date, Coupon coupon, double deliveryCharge)
         submitOrder,
     required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
   }) {
     return fetchOrders();
   }
@@ -484,6 +603,13 @@ class _$FetchOrdersImpl implements _FetchOrders {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
   }) {
     return fetchOrders?.call();
   }
@@ -496,6 +622,13 @@ class _$FetchOrdersImpl implements _FetchOrders {
             Coupon coupon, double deliveryCharge)?
         submitOrder,
     TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (fetchOrders != null) {
@@ -510,6 +643,11 @@ class _$FetchOrdersImpl implements _FetchOrders {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_SubmitOrder value) submitOrder,
     required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
   }) {
     return fetchOrders(this);
   }
@@ -520,6 +658,11 @@ class _$FetchOrdersImpl implements _FetchOrders {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_SubmitOrder value)? submitOrder,
     TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
   }) {
     return fetchOrders?.call(this);
   }
@@ -530,6 +673,11 @@ class _$FetchOrdersImpl implements _FetchOrders {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_SubmitOrder value)? submitOrder,
     TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
     required TResult orElse(),
   }) {
     if (fetchOrders != null) {
@@ -544,12 +692,968 @@ abstract class _FetchOrders implements OrderEvent {
 }
 
 /// @nodoc
+abstract class _$$ProcessPaymentImplCopyWith<$Res> {
+  factory _$$ProcessPaymentImplCopyWith(_$ProcessPaymentImpl value,
+          $Res Function(_$ProcessPaymentImpl) then) =
+      __$$ProcessPaymentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double totalAmount, String phone, String orderId});
+}
+
+/// @nodoc
+class __$$ProcessPaymentImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$ProcessPaymentImpl>
+    implements _$$ProcessPaymentImplCopyWith<$Res> {
+  __$$ProcessPaymentImplCopyWithImpl(
+      _$ProcessPaymentImpl _value, $Res Function(_$ProcessPaymentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalAmount = null,
+    Object? phone = null,
+    Object? orderId = null,
+  }) {
+    return _then(_$ProcessPaymentImpl(
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProcessPaymentImpl implements _ProcessPayment {
+  const _$ProcessPaymentImpl(
+      {required this.totalAmount, required this.phone, required this.orderId});
+
+  @override
+  final double totalAmount;
+  @override
+  final String phone;
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'OrderEvent.processPayment(totalAmount: $totalAmount, phone: $phone, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProcessPaymentImpl &&
+            (identical(other.totalAmount, totalAmount) ||
+                other.totalAmount == totalAmount) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, totalAmount, phone, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProcessPaymentImplCopyWith<_$ProcessPaymentImpl> get copyWith =>
+      __$$ProcessPaymentImplCopyWithImpl<_$ProcessPaymentImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(CartItem cartItem, AddressBook addressBook,
+            String date, Coupon coupon, double deliveryCharge)
+        submitOrder,
+    required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
+  }) {
+    return processPayment(totalAmount, phone, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
+  }) {
+    return processPayment?.call(totalAmount, phone, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (processPayment != null) {
+      return processPayment(totalAmount, phone, orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
+  }) {
+    return processPayment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
+  }) {
+    return processPayment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (processPayment != null) {
+      return processPayment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ProcessPayment implements OrderEvent {
+  const factory _ProcessPayment(
+      {required final double totalAmount,
+      required final String phone,
+      required final String orderId}) = _$ProcessPaymentImpl;
+
+  double get totalAmount;
+  String get phone;
+  String get orderId;
+  @JsonKey(ignore: true)
+  _$$ProcessPaymentImplCopyWith<_$ProcessPaymentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentSuccessImplCopyWith<$Res> {
+  factory _$$PaymentSuccessImplCopyWith(_$PaymentSuccessImpl value,
+          $Res Function(_$PaymentSuccessImpl) then) =
+      __$$PaymentSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderId, String? paymentId, String paymentType});
+}
+
+/// @nodoc
+class __$$PaymentSuccessImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$PaymentSuccessImpl>
+    implements _$$PaymentSuccessImplCopyWith<$Res> {
+  __$$PaymentSuccessImplCopyWithImpl(
+      _$PaymentSuccessImpl _value, $Res Function(_$PaymentSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+    Object? paymentId = freezed,
+    Object? paymentType = null,
+  }) {
+    return _then(_$PaymentSuccessImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentId: freezed == paymentId
+          ? _value.paymentId
+          : paymentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentType: null == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentSuccessImpl implements _PaymentSuccess {
+  const _$PaymentSuccessImpl(
+      {required this.orderId,
+      required this.paymentId,
+      required this.paymentType});
+
+  @override
+  final String orderId;
+  @override
+  final String? paymentId;
+  @override
+  final String paymentType;
+
+  @override
+  String toString() {
+    return 'OrderEvent.paymentSuccess(orderId: $orderId, paymentId: $paymentId, paymentType: $paymentType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentSuccessImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.paymentId, paymentId) ||
+                other.paymentId == paymentId) &&
+            (identical(other.paymentType, paymentType) ||
+                other.paymentType == paymentType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId, paymentId, paymentType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentSuccessImplCopyWith<_$PaymentSuccessImpl> get copyWith =>
+      __$$PaymentSuccessImplCopyWithImpl<_$PaymentSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(CartItem cartItem, AddressBook addressBook,
+            String date, Coupon coupon, double deliveryCharge)
+        submitOrder,
+    required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
+  }) {
+    return paymentSuccess(orderId, paymentId, paymentType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
+  }) {
+    return paymentSuccess?.call(orderId, paymentId, paymentType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (paymentSuccess != null) {
+      return paymentSuccess(orderId, paymentId, paymentType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
+  }) {
+    return paymentSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
+  }) {
+    return paymentSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (paymentSuccess != null) {
+      return paymentSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaymentSuccess implements OrderEvent {
+  const factory _PaymentSuccess(
+      {required final String orderId,
+      required final String? paymentId,
+      required final String paymentType}) = _$PaymentSuccessImpl;
+
+  String get orderId;
+  String? get paymentId;
+  String get paymentType;
+  @JsonKey(ignore: true)
+  _$$PaymentSuccessImplCopyWith<_$PaymentSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentFailedImplCopyWith<$Res> {
+  factory _$$PaymentFailedImplCopyWith(
+          _$PaymentFailedImpl value, $Res Function(_$PaymentFailedImpl) then) =
+      __$$PaymentFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderId, String paymentType});
+}
+
+/// @nodoc
+class __$$PaymentFailedImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$PaymentFailedImpl>
+    implements _$$PaymentFailedImplCopyWith<$Res> {
+  __$$PaymentFailedImplCopyWithImpl(
+      _$PaymentFailedImpl _value, $Res Function(_$PaymentFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+    Object? paymentType = null,
+  }) {
+    return _then(_$PaymentFailedImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentType: null == paymentType
+          ? _value.paymentType
+          : paymentType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentFailedImpl implements _PaymentFailed {
+  const _$PaymentFailedImpl({required this.orderId, required this.paymentType});
+
+  @override
+  final String orderId;
+  @override
+  final String paymentType;
+
+  @override
+  String toString() {
+    return 'OrderEvent.paymentFailed(orderId: $orderId, paymentType: $paymentType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentFailedImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.paymentType, paymentType) ||
+                other.paymentType == paymentType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId, paymentType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentFailedImplCopyWith<_$PaymentFailedImpl> get copyWith =>
+      __$$PaymentFailedImplCopyWithImpl<_$PaymentFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(CartItem cartItem, AddressBook addressBook,
+            String date, Coupon coupon, double deliveryCharge)
+        submitOrder,
+    required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
+  }) {
+    return paymentFailed(orderId, paymentType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
+  }) {
+    return paymentFailed?.call(orderId, paymentType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (paymentFailed != null) {
+      return paymentFailed(orderId, paymentType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
+  }) {
+    return paymentFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
+  }) {
+    return paymentFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (paymentFailed != null) {
+      return paymentFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaymentFailed implements OrderEvent {
+  const factory _PaymentFailed(
+      {required final String orderId,
+      required final String paymentType}) = _$PaymentFailedImpl;
+
+  String get orderId;
+  String get paymentType;
+  @JsonKey(ignore: true)
+  _$$PaymentFailedImplCopyWith<_$PaymentFailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HandleExternalAppImplCopyWith<$Res> {
+  factory _$$HandleExternalAppImplCopyWith(_$HandleExternalAppImpl value,
+          $Res Function(_$HandleExternalAppImpl) then) =
+      __$$HandleExternalAppImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$HandleExternalAppImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$HandleExternalAppImpl>
+    implements _$$HandleExternalAppImplCopyWith<$Res> {
+  __$$HandleExternalAppImplCopyWithImpl(_$HandleExternalAppImpl _value,
+      $Res Function(_$HandleExternalAppImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$HandleExternalAppImpl implements _HandleExternalApp {
+  const _$HandleExternalAppImpl();
+
+  @override
+  String toString() {
+    return 'OrderEvent.handleExternalApp()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$HandleExternalAppImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(CartItem cartItem, AddressBook addressBook,
+            String date, Coupon coupon, double deliveryCharge)
+        submitOrder,
+    required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
+  }) {
+    return handleExternalApp();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
+  }) {
+    return handleExternalApp?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (handleExternalApp != null) {
+      return handleExternalApp();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
+  }) {
+    return handleExternalApp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
+  }) {
+    return handleExternalApp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (handleExternalApp != null) {
+      return handleExternalApp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HandleExternalApp implements OrderEvent {
+  const factory _HandleExternalApp() = _$HandleExternalAppImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangePaymentMethodImplCopyWith<$Res> {
+  factory _$$ChangePaymentMethodImplCopyWith(_$ChangePaymentMethodImpl value,
+          $Res Function(_$ChangePaymentMethodImpl) then) =
+      __$$ChangePaymentMethodImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PaymentMethod paymentMethod});
+
+  $PaymentMethodCopyWith<$Res> get paymentMethod;
+}
+
+/// @nodoc
+class __$$ChangePaymentMethodImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$ChangePaymentMethodImpl>
+    implements _$$ChangePaymentMethodImplCopyWith<$Res> {
+  __$$ChangePaymentMethodImplCopyWithImpl(_$ChangePaymentMethodImpl _value,
+      $Res Function(_$ChangePaymentMethodImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethod = null,
+  }) {
+    return _then(_$ChangePaymentMethodImpl(
+      null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodCopyWith<$Res> get paymentMethod {
+    return $PaymentMethodCopyWith<$Res>(_value.paymentMethod, (value) {
+      return _then(_value.copyWith(paymentMethod: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangePaymentMethodImpl implements _ChangePaymentMethod {
+  const _$ChangePaymentMethodImpl(this.paymentMethod);
+
+  @override
+  final PaymentMethod paymentMethod;
+
+  @override
+  String toString() {
+    return 'OrderEvent.changePaymentMethod(paymentMethod: $paymentMethod)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePaymentMethodImpl &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentMethod);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePaymentMethodImplCopyWith<_$ChangePaymentMethodImpl> get copyWith =>
+      __$$ChangePaymentMethodImplCopyWithImpl<_$ChangePaymentMethodImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(CartItem cartItem, AddressBook addressBook,
+            String date, Coupon coupon, double deliveryCharge)
+        submitOrder,
+    required TResult Function() fetchOrders,
+    required TResult Function(double totalAmount, String phone, String orderId)
+        processPayment,
+    required TResult Function(
+            String orderId, String? paymentId, String paymentType)
+        paymentSuccess,
+    required TResult Function(String orderId, String paymentType) paymentFailed,
+    required TResult Function() handleExternalApp,
+    required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
+  }) {
+    return changePaymentMethod(paymentMethod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult? Function()? fetchOrders,
+    TResult? Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult? Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult? Function(String orderId, String paymentType)? paymentFailed,
+    TResult? Function()? handleExternalApp,
+    TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
+  }) {
+    return changePaymentMethod?.call(paymentMethod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(CartItem cartItem, AddressBook addressBook, String date,
+            Coupon coupon, double deliveryCharge)?
+        submitOrder,
+    TResult Function()? fetchOrders,
+    TResult Function(double totalAmount, String phone, String orderId)?
+        processPayment,
+    TResult Function(String orderId, String? paymentId, String paymentType)?
+        paymentSuccess,
+    TResult Function(String orderId, String paymentType)? paymentFailed,
+    TResult Function()? handleExternalApp,
+    TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (changePaymentMethod != null) {
+      return changePaymentMethod(paymentMethod);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_SubmitOrder value) submitOrder,
+    required TResult Function(_FetchOrders value) fetchOrders,
+    required TResult Function(_ProcessPayment value) processPayment,
+    required TResult Function(_PaymentSuccess value) paymentSuccess,
+    required TResult Function(_PaymentFailed value) paymentFailed,
+    required TResult Function(_HandleExternalApp value) handleExternalApp,
+    required TResult Function(_ChangePaymentMethod value) changePaymentMethod,
+  }) {
+    return changePaymentMethod(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_SubmitOrder value)? submitOrder,
+    TResult? Function(_FetchOrders value)? fetchOrders,
+    TResult? Function(_ProcessPayment value)? processPayment,
+    TResult? Function(_PaymentSuccess value)? paymentSuccess,
+    TResult? Function(_PaymentFailed value)? paymentFailed,
+    TResult? Function(_HandleExternalApp value)? handleExternalApp,
+    TResult? Function(_ChangePaymentMethod value)? changePaymentMethod,
+  }) {
+    return changePaymentMethod?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_SubmitOrder value)? submitOrder,
+    TResult Function(_FetchOrders value)? fetchOrders,
+    TResult Function(_ProcessPayment value)? processPayment,
+    TResult Function(_PaymentSuccess value)? paymentSuccess,
+    TResult Function(_PaymentFailed value)? paymentFailed,
+    TResult Function(_HandleExternalApp value)? handleExternalApp,
+    TResult Function(_ChangePaymentMethod value)? changePaymentMethod,
+    required TResult orElse(),
+  }) {
+    if (changePaymentMethod != null) {
+      return changePaymentMethod(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePaymentMethod implements OrderEvent {
+  const factory _ChangePaymentMethod(final PaymentMethod paymentMethod) =
+      _$ChangePaymentMethodImpl;
+
+  PaymentMethod get paymentMethod;
+  @JsonKey(ignore: true)
+  _$$ChangePaymentMethodImplCopyWith<_$ChangePaymentMethodImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$OrderState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
   bool get isFetchingOrders => throw _privateConstructorUsedError;
   List<Order> get orders => throw _privateConstructorUsedError;
+  PaymentMethod get selectedPaymentMethod => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderStateCopyWith<OrderState> get copyWith =>
@@ -566,7 +1670,10 @@ abstract class $OrderStateCopyWith<$Res> {
       {Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool isFetchingOrders,
-      List<Order> orders});
+      List<Order> orders,
+      PaymentMethod selectedPaymentMethod});
+
+  $PaymentMethodCopyWith<$Res> get selectedPaymentMethod;
 }
 
 /// @nodoc
@@ -586,6 +1693,7 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
     Object? isFetching = null,
     Object? isFetchingOrders = null,
     Object? orders = null,
+    Object? selectedPaymentMethod = null,
   }) {
     return _then(_value.copyWith(
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
@@ -604,7 +1712,19 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      selectedPaymentMethod: null == selectedPaymentMethod
+          ? _value.selectedPaymentMethod
+          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodCopyWith<$Res> get selectedPaymentMethod {
+    return $PaymentMethodCopyWith<$Res>(_value.selectedPaymentMethod, (value) {
+      return _then(_value.copyWith(selectedPaymentMethod: value) as $Val);
+    });
   }
 }
 
@@ -620,7 +1740,11 @@ abstract class _$$OrderStateImplCopyWith<$Res>
       {Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool isFetchingOrders,
-      List<Order> orders});
+      List<Order> orders,
+      PaymentMethod selectedPaymentMethod});
+
+  @override
+  $PaymentMethodCopyWith<$Res> get selectedPaymentMethod;
 }
 
 /// @nodoc
@@ -638,6 +1762,7 @@ class __$$OrderStateImplCopyWithImpl<$Res>
     Object? isFetching = null,
     Object? isFetchingOrders = null,
     Object? orders = null,
+    Object? selectedPaymentMethod = null,
   }) {
     return _then(_$OrderStateImpl(
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
@@ -656,6 +1781,10 @@ class __$$OrderStateImplCopyWithImpl<$Res>
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<Order>,
+      selectedPaymentMethod: null == selectedPaymentMethod
+          ? _value.selectedPaymentMethod
+          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
     ));
   }
 }
@@ -667,7 +1796,8 @@ class _$OrderStateImpl extends _OrderState {
       {required this.apiFailureOrSuccessOption,
       required this.isFetching,
       required this.isFetchingOrders,
-      required final List<Order> orders})
+      required final List<Order> orders,
+      required this.selectedPaymentMethod})
       : _orders = orders,
         super._();
 
@@ -686,8 +1816,11 @@ class _$OrderStateImpl extends _OrderState {
   }
 
   @override
+  final PaymentMethod selectedPaymentMethod;
+
+  @override
   String toString() {
-    return 'OrderState(apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isFetchingOrders: $isFetchingOrders, orders: $orders)';
+    return 'OrderState(apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isFetchingOrders: $isFetchingOrders, orders: $orders, selectedPaymentMethod: $selectedPaymentMethod)';
   }
 
   @override
@@ -702,7 +1835,9 @@ class _$OrderStateImpl extends _OrderState {
                 other.isFetching == isFetching) &&
             (identical(other.isFetchingOrders, isFetchingOrders) ||
                 other.isFetchingOrders == isFetchingOrders) &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
+                other.selectedPaymentMethod == selectedPaymentMethod));
   }
 
   @override
@@ -711,7 +1846,8 @@ class _$OrderStateImpl extends _OrderState {
       apiFailureOrSuccessOption,
       isFetching,
       isFetchingOrders,
-      const DeepCollectionEquality().hash(_orders));
+      const DeepCollectionEquality().hash(_orders),
+      selectedPaymentMethod);
 
   @JsonKey(ignore: true)
   @override
@@ -726,7 +1862,8 @@ abstract class _OrderState extends OrderState {
           apiFailureOrSuccessOption,
       required final bool isFetching,
       required final bool isFetchingOrders,
-      required final List<Order> orders}) = _$OrderStateImpl;
+      required final List<Order> orders,
+      required final PaymentMethod selectedPaymentMethod}) = _$OrderStateImpl;
   const _OrderState._() : super._();
 
   @override
@@ -737,6 +1874,8 @@ abstract class _OrderState extends OrderState {
   bool get isFetchingOrders;
   @override
   List<Order> get orders;
+  @override
+  PaymentMethod get selectedPaymentMethod;
   @override
   @JsonKey(ignore: true)
   _$$OrderStateImplCopyWith<_$OrderStateImpl> get copyWith =>
