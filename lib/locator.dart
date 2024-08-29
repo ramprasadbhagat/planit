@@ -5,6 +5,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
+import 'package:planit/application/best_seller/best_seller_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/application/blog_details/blog_details_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
@@ -28,6 +29,7 @@ import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/config.dart';
+import 'package:planit/domain/best_seller/repository/best_seller_repository.dart';
 import 'package:planit/domain/blog/repository/i_blog_repository.dart';
 import 'package:planit/domain/favourite_recipe/repository/i_favourite_recipe.dart';
 import 'package:planit/domain/payment/repository/i_payment_repository.dart';
@@ -44,6 +46,9 @@ import 'package:planit/infrastructure/auth/repository/auth_repository.dart';
 import 'package:planit/infrastructure/banner/datasource/banner_local.dart';
 import 'package:planit/infrastructure/banner/datasource/banner_remote.dart';
 import 'package:planit/infrastructure/banner/repository/banner_repository.dart';
+import 'package:planit/infrastructure/best_seller/datasource/best_seller_local.dart';
+import 'package:planit/infrastructure/best_seller/datasource/best_seller_remote.dart';
+import 'package:planit/infrastructure/best_seller/repository/best_seller_repository.dart';
 import 'package:planit/infrastructure/blog/datasource/blog_local.dart';
 import 'package:planit/infrastructure/blog/datasource/blog_remote.dart';
 import 'package:planit/infrastructure/blog/repository/blog_repository.dart';
@@ -773,6 +778,33 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => WalletBloc(
       locator<IWalletRepository>(),
+    ),
+  );
+
+  /////============================================================
+  //  Best Seller
+  //============================================================
+
+  locator.registerLazySingleton(
+    () => const BestSellerLocalDatasource(),
+  );
+
+  locator.registerLazySingleton(
+    () => BestSellerRemoteDatasource(
+      httpService: locator<HttpService>(),
+    ),
+  );
+
+  locator.registerLazySingleton<IBestSellerRepository>(
+    () => BestSellerRepository(
+      config: locator<Config>(),
+      localDataSource: locator<BestSellerLocalDatasource>(),
+      remoteDataSource: locator<BestSellerRemoteDatasource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => BestSellerBloc(
+      locator<IBestSellerRepository>(),
     ),
   );
 }

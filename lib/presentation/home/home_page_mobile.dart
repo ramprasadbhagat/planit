@@ -36,6 +36,9 @@ class HomePageMobile extends StatelessWidget {
                     .read<UserProfileBloc>()
                     .add(const UserProfileEvent.fetch());
                 context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
+                context
+                    .read<FavouriteRecipeBloc>()
+                    .add(const FavouriteRecipeEvent.fetch());
               },
               unauthenticated: () {
                 context
@@ -131,19 +134,6 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   );
             }
-          },
-        ),
-        BlocListener<FavouriteRecipeBloc, FavouriteRecipeState>(
-          listenWhen: (previous, current) =>
-              previous.favouriteRecipes != current.favouriteRecipes,
-          listener: (context, state) {
-            // if (state.selectedAddress.pincode.isNotEmpty) {
-            //   context.read<CartBloc>().add(
-            //         CartEvent.fetchShippingCharge(
-            //           pincode: state.selectedAddress.pincode,
-            //         ),
-            //       );
-            // }
           },
         ),
       ],

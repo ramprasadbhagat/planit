@@ -85,6 +85,7 @@ class SimilarProduct with _$SimilarProduct {
         productDescription: StringValue(productDescription),
         attributeItemId: attributeItemId,
         backOrder: backOrder,
+        productRating: productRating,
       );
 }
 
