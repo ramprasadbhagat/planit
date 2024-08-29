@@ -86,6 +86,9 @@ class HomePageMobile extends StatelessWidget {
                     context
                         .read<WalletBloc>()
                         .add(const WalletEvent.fetchBalance());
+                    context
+                        .read<WalletBloc>()
+                        .add(const WalletEvent.fetchTransactionHistory());
                     context.read<OrderBloc>().add(
                           const OrderEvent.changePaymentMethod(
                             PaymentMethod.razorpay(),

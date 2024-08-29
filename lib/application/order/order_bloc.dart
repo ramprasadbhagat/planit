@@ -153,6 +153,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             final failureOrSuccess =
                 await paymentRepository.processPaymentFromWallet(
               amount: value.totalAmount.toInt(),
+              transactionId: value.orderId,
             );
 
             failureOrSuccess.fold((l) {
@@ -178,7 +179,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         final failureOrSuccess = await repository.updateOrderPayment(
           orderId: value.orderId,
           success: true,
-          transactionId: value.paymentId ?? '',
+          transactionId: value.paymentId ?? value.orderId,
           paymentType: value.paymentType,
         );
 
