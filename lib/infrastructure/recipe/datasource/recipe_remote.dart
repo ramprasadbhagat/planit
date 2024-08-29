@@ -30,6 +30,20 @@ class RecipeRemoteDataSource {
         .toList();
   }
 
+  Future<List<Recipe>> searchRecipes(String searchKey) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'recipes/?search=$searchKey',
+    );
+
+    _exceptionChecker(res: res);
+    final recipes = res.data['items'];
+
+    return List.from(recipes)
+        .map((e) => RecipeDto.fromJson(e).toDomain)
+        .toList();
+  }
+
   Future<RecipeDetails> fetchRecipeDetails(String id) async {
     final res = await httpService.request(
       method: 'GET',

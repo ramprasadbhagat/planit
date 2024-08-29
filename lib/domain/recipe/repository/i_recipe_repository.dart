@@ -5,6 +5,9 @@ import 'package:planit/domain/recipe/entities/recipe_details.dart';
 
 abstract class IRecipeRepository {
   Future<Either<ApiFailure, List<Recipe>>> fetchAllRecipes();
+  Future<Either<ApiFailure, List<Recipe>>> searchRecipes({
+    required String searchKey,
+  });
   Future<Either<ApiFailure, RecipeDetails>> fetchRecipeById(String id);
   Future<Either<ApiFailure, Unit>> addRecipeReview({
     required String recipeId,

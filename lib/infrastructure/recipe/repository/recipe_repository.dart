@@ -88,4 +88,27 @@ class RecipeRepository extends IRecipeRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, List<Recipe>>> searchRecipes({
+    required String searchKey,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final list = await localDataSource.fetchAllRecipes();
+
+        return Right(list);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+
+    try {
+      final recipes = await remoteDataSource.searchRecipes(searchKey);
+
+      return Right(recipes);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }
