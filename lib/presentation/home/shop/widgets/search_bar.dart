@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
+import 'package:planit/application/search_recipes/search_recipes_bloc.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 
 class HomeSearchBar extends StatelessWidget {
@@ -22,13 +23,20 @@ class HomeSearchBar extends StatelessWidget {
         ),
         child: TextField(
           onTap: () {
-            context.read<SearchProductBloc>().add(
-                  const SearchProductEvent.fetchProduct(
-                    searchKey: '',
-                    isScrolling: false,
-                  ),
-                );
-            context.router.navigate(const SearchProductRoute());
+            if (context.router.topRoute.name == ShopRoute.name) {
+              context.read<SearchProductBloc>().add(
+                    const SearchProductEvent.fetchProduct(
+                      searchKey: '',
+                      isScrolling: false,
+                    ),
+                  );
+              context.router.navigate(const SearchProductRoute());
+            } else if (context.router.topRoute.name == RecipesRoute.name) {
+              context
+                  .read<SearchRecipesBloc>()
+                  .add(const SearchRecipesEvent.initialized());
+              context.router.navigate(const SearchRecipesRoute());
+            } else if (context.router.topRoute.name == BlogsRoute.name) {}
           },
           readOnly: true,
           decoration: const InputDecoration(
