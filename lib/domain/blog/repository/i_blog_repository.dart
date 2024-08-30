@@ -8,6 +8,7 @@ abstract class IBlogRepository {
   Future<Either<ApiFailure, BlogResponse>> fetchBlogs({
     int pageSize = 10,
     int pageNumber = 1,
+    String search = '',
   });
   Future<Either<ApiFailure, Blog>> fetchBlogDetails(String blogId);
   Future<Either<ApiFailure, List<BlogComments>>> fetchComments(String blogId);

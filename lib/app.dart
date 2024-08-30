@@ -6,6 +6,7 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/best_seller/best_seller_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
+import 'package:planit/application/blog_search/blog_search_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
@@ -128,6 +129,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => locator<BestSellerBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<BlogSearchBloc>(),
         ),
       ],
       child: MaterialApp.router(

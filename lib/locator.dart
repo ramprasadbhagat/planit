@@ -8,6 +8,7 @@ import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/best_seller/best_seller_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/application/blog_details/blog_details_bloc.dart';
+import 'package:planit/application/blog_search/blog_search_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
@@ -721,6 +722,10 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => BlogDetailsBloc(locator<IBlogRepository>()),
+  );
+
+  locator.registerLazySingleton(
+    () => BlogSearchBloc(locator<IBlogRepository>()),
   );
 
   /////============================================================

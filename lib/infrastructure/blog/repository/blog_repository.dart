@@ -23,6 +23,7 @@ class BlogRepository extends IBlogRepository {
   Future<Either<ApiFailure, BlogResponse>> fetchBlogs({
     int pageSize = 10,
     int pageNumber = 1,
+    String search = '',
   }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
@@ -37,6 +38,7 @@ class BlogRepository extends IBlogRepository {
       final blogResponse = await remoteDataSource.fetchBlogs(
         pageNumber: pageNumber,
         pageSize: pageSize,
+        searchText: search,
       );
 
       return Right(blogResponse);

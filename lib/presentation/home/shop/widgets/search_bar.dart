@@ -36,7 +36,9 @@ class HomeSearchBar extends StatelessWidget {
                   .read<SearchRecipesBloc>()
                   .add(const SearchRecipesEvent.initialized());
               context.router.navigate(const SearchRecipesRoute());
-            } else if (context.router.topRoute.name == BlogsRoute.name) {}
+            } else if (context.router.topRoute.name == BlogsRoute.name) {
+              context.router.navigate(const BlogSearchRoute());
+            }
           },
           readOnly: true,
           decoration: const InputDecoration(

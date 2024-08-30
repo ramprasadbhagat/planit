@@ -19,10 +19,12 @@ class BlogRemoteDataSource {
   Future<BlogResponse> fetchBlogs({
     required int pageSize,
     required int pageNumber,
+    required String searchText,
   }) async {
     final res = await httpService.request(
       method: 'GET',
-      url: '/blogs?pageSize=$pageSize&pageNumber=$pageNumber',
+      url:
+          '/blogs?pageSize=$pageSize&pageNumber=$pageNumber&search=$searchText',
     );
     _exceptionChecker(res: res);
 
