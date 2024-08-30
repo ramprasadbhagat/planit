@@ -47,6 +47,7 @@ class ProductDetail with _$ProductDetail {
         ),
         productDescription: productDescription,
         backOrder: backOrder,
+        productRating: 0,
       );
 }
 

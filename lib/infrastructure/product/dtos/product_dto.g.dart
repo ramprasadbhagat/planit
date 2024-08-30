@@ -23,6 +23,7 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
       price: priceReadValue(json, 'price') as Map<String, dynamic>? ?? {},
       productDescription: json['productDescription'] as String? ?? '',
       backOrder: json['backOrder'] as bool? ?? false,
+      productRating: json['productRating'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
@@ -37,4 +38,5 @@ Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
       'price': instance.price,
       'productDescription': instance.productDescription,
       'backOrder': instance.backOrder,
+      'productRating': instance.productRating,
     };

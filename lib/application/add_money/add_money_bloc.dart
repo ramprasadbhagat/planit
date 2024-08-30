@@ -61,7 +61,7 @@ class AddMoneyBloc extends Bloc<AddMoneyEvent, AddMoneyState> {
             ),
           ),
           handlePaymentSuccess: (p0) {
-            add(_HandlePaymentSuccess(state.amount));
+            add(_HandlePaymentSuccess(state.amount, p0.paymentId ?? ''));
           },
           handlePaymentFailure: (f) {
             add(
@@ -75,7 +75,10 @@ class AddMoneyBloc extends Bloc<AddMoneyEvent, AddMoneyState> {
         );
       },
       handlePaymentSuccess: (_HandlePaymentSuccess value) async {
-        final failureOrSuccess = await _walletRepository.addMoney(state.amount);
+        final failureOrSuccess = await _walletRepository.addMoney(
+          amount: state.amount,
+          transactionId: value.transactionId,
+        );
         emit(
           state.copyWith(
             isLoading: false,

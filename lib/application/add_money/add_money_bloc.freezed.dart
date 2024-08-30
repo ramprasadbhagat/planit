@@ -22,7 +22,8 @@ mixin _$AddMoneyEvent {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +33,7 @@ mixin _$AddMoneyEvent {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +43,7 @@ mixin _$AddMoneyEvent {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) =>
@@ -139,7 +140,8 @@ class _$InitImpl implements _Init {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
     return init();
@@ -152,7 +154,7 @@ class _$InitImpl implements _Init {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
     return init?.call();
@@ -165,7 +167,7 @@ class _$InitImpl implements _Init {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {
@@ -302,7 +304,8 @@ class _$PaymentMethodImpl implements _PaymentMethod {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
     return changePaymentMethod(paymentMethod);
@@ -315,7 +318,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
     return changePaymentMethod?.call(paymentMethod);
@@ -328,7 +331,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {
@@ -460,7 +463,8 @@ class _$ChangeAmountImpl implements _ChangeAmount {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
     return changeAmount(amount);
@@ -473,7 +477,7 @@ class _$ChangeAmountImpl implements _ChangeAmount {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
     return changeAmount?.call(amount);
@@ -486,7 +490,7 @@ class _$ChangeAmountImpl implements _ChangeAmount {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {
@@ -591,7 +595,8 @@ class _$AddMoneyClickedImpl implements _AddMoneyClicked {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
     return addMoneyClicked();
@@ -604,7 +609,7 @@ class _$AddMoneyClickedImpl implements _AddMoneyClicked {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
     return addMoneyClicked?.call();
@@ -617,7 +622,7 @@ class _$AddMoneyClickedImpl implements _AddMoneyClicked {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {
@@ -681,7 +686,7 @@ abstract class _$$HandlePaymentSuccessImplCopyWith<$Res> {
           $Res Function(_$HandlePaymentSuccessImpl) then) =
       __$$HandlePaymentSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int amount});
+  $Res call({int amount, String transactionId});
 }
 
 /// @nodoc
@@ -696,12 +701,17 @@ class __$$HandlePaymentSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? amount = null,
+    Object? transactionId = null,
   }) {
     return _then(_$HandlePaymentSuccessImpl(
       null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
+      null == transactionId
+          ? _value.transactionId
+          : transactionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -709,14 +719,16 @@ class __$$HandlePaymentSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
-  const _$HandlePaymentSuccessImpl(this.amount);
+  const _$HandlePaymentSuccessImpl(this.amount, this.transactionId);
 
   @override
   final int amount;
+  @override
+  final String transactionId;
 
   @override
   String toString() {
-    return 'AddMoneyEvent.handlePaymentSuccess(amount: $amount)';
+    return 'AddMoneyEvent.handlePaymentSuccess(amount: $amount, transactionId: $transactionId)';
   }
 
   @override
@@ -724,11 +736,13 @@ class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HandlePaymentSuccessImpl &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.transactionId, transactionId) ||
+                other.transactionId == transactionId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, amount);
+  int get hashCode => Object.hash(runtimeType, amount, transactionId);
 
   @JsonKey(ignore: true)
   @override
@@ -745,10 +759,11 @@ class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
-    return handlePaymentSuccess(amount);
+    return handlePaymentSuccess(amount, transactionId);
   }
 
   @override
@@ -758,10 +773,10 @@ class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
-    return handlePaymentSuccess?.call(amount);
+    return handlePaymentSuccess?.call(amount, transactionId);
   }
 
   @override
@@ -771,12 +786,12 @@ class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {
     if (handlePaymentSuccess != null) {
-      return handlePaymentSuccess(amount);
+      return handlePaymentSuccess(amount, transactionId);
     }
     return orElse();
   }
@@ -826,10 +841,12 @@ class _$HandlePaymentSuccessImpl implements _HandlePaymentSuccess {
 }
 
 abstract class _HandlePaymentSuccess implements AddMoneyEvent {
-  const factory _HandlePaymentSuccess(final int amount) =
+  const factory _HandlePaymentSuccess(
+          final int amount, final String transactionId) =
       _$HandlePaymentSuccessImpl;
 
   int get amount;
+  String get transactionId;
   @JsonKey(ignore: true)
   _$$HandlePaymentSuccessImplCopyWith<_$HandlePaymentSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -913,7 +930,8 @@ class _$HandlePaymentFailedImpl implements _HandlePaymentFailed {
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
     required TResult Function(String amount) changeAmount,
     required TResult Function() addMoneyClicked,
-    required TResult Function(int amount) handlePaymentSuccess,
+    required TResult Function(int amount, String transactionId)
+        handlePaymentSuccess,
     required TResult Function(int amount, String message) handlePaymentFailed,
   }) {
     return handlePaymentFailed(amount, message);
@@ -926,7 +944,7 @@ class _$HandlePaymentFailedImpl implements _HandlePaymentFailed {
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult? Function(String amount)? changeAmount,
     TResult? Function()? addMoneyClicked,
-    TResult? Function(int amount)? handlePaymentSuccess,
+    TResult? Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult? Function(int amount, String message)? handlePaymentFailed,
   }) {
     return handlePaymentFailed?.call(amount, message);
@@ -939,7 +957,7 @@ class _$HandlePaymentFailedImpl implements _HandlePaymentFailed {
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
     TResult Function(String amount)? changeAmount,
     TResult Function()? addMoneyClicked,
-    TResult Function(int amount)? handlePaymentSuccess,
+    TResult Function(int amount, String transactionId)? handlePaymentSuccess,
     TResult Function(int amount, String message)? handlePaymentFailed,
     required TResult orElse(),
   }) {

@@ -36,6 +36,9 @@ class HomePageMobile extends StatelessWidget {
                     .read<UserProfileBloc>()
                     .add(const UserProfileEvent.fetch());
                 context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
+                context
+                    .read<FavouriteRecipeBloc>()
+                    .add(const FavouriteRecipeEvent.fetch());
               },
               unauthenticated: () {
                 context
@@ -86,6 +89,9 @@ class HomePageMobile extends StatelessWidget {
                     context
                         .read<WalletBloc>()
                         .add(const WalletEvent.fetchBalance());
+                    context
+                        .read<WalletBloc>()
+                        .add(const WalletEvent.fetchTransactionHistory());
                     context.read<OrderBloc>().add(
                           const OrderEvent.changePaymentMethod(
                             PaymentMethod.razorpay(),
@@ -131,19 +137,6 @@ class HomePageMobile extends StatelessWidget {
                     ),
                   );
             }
-          },
-        ),
-        BlocListener<FavouriteRecipeBloc, FavouriteRecipeState>(
-          listenWhen: (previous, current) =>
-              previous.favouriteRecipes != current.favouriteRecipes,
-          listener: (context, state) {
-            // if (state.selectedAddress.pincode.isNotEmpty) {
-            //   context.read<CartBloc>().add(
-            //         CartEvent.fetchShippingCharge(
-            //           pincode: state.selectedAddress.pincode,
-            //         ),
-            //       );
-            // }
           },
         ),
       ],

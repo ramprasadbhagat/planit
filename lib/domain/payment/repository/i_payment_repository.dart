@@ -12,5 +12,6 @@ abstract class IPaymentRepository {
   });
   Future<Either<ApiFailure, Unit>> processPaymentFromWallet({
     required int amount,
+    required String transactionId,
   });
 }

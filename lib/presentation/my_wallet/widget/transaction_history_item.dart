@@ -1,14 +1,18 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:planit/domain/wallet/entities/transaction_history.dart';
 import 'package:planit/presentation/my_wallet/widget/transaction_status_chip.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class TransactionHistoryItem extends StatelessWidget {
-  final int index;
-  const TransactionHistoryItem({super.key, required this.index});
+  final TransactionHistory transaction;
+
+  const TransactionHistoryItem({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +27,29 @@ class TransactionHistoryItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  const TextSpan(
-                    text: 'Transaction ID: ',
-                    style: TextStyle(
-                      color: AppColors.grey4,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: '#56234',
-                        style: TextStyle(
-                          color: AppColors.black,
-                        ),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'Transaction ID: ',
+                      style: const TextStyle(
+                        color: AppColors.grey4,
+                        fontSize: 12,
                       ),
-                    ],
+                      children: [
+                        TextSpan(
+                          text: transaction.transactionId.getValue(),
+                          style: const TextStyle(
+                            color: AppColors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
-                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 TransactionStatusChip(
-                  isSuccess: index.isEven,
+                  type: transaction.type,
                 ),
               ],
             ),
@@ -59,7 +67,7 @@ class TransactionHistoryItem extends StatelessWidget {
                   width: 8,
                 ),
                 Text(
-                  '19-03-2024',
+                  DateFormat('dd-MM-yyyy').format(transaction.date),
                   style: textTheme.titleSmall?.copyWith(
                     color: AppColors.textBlack,
                   ),
@@ -81,7 +89,7 @@ class TransactionHistoryItem extends StatelessWidget {
                   width: 8,
                 ),
                 Text(
-                  '719.00',
+                  transaction.amount.toStringAsFixed(2),
                   style: textTheme.titleSmall?.copyWith(
                     color: AppColors.textBlack,
                   ),
@@ -99,7 +107,7 @@ class TransactionHistoryItem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(4)),
               ),
               child: Text(
-                'Successfully credited from A/C No. 8654123',
+                transaction.description.getValue(),
                 style: textTheme.bodySmall?.copyWith(
                   color: AppColors.textBlack,
                 ),

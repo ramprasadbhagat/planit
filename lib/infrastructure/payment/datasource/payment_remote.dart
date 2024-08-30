@@ -43,7 +43,10 @@ class PaymentRemoteDatasource {
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handleExternalWallet);
   }
 
-  Future<Unit> deductPaymentFromWallet(int amount) async {
+  Future<Unit> deductPaymentFromWallet({
+    required int amount,
+    required String transactionId,
+  }) async {
     final userId = storageService.getUserId();
 
     final res = await httpService.request(
@@ -52,6 +55,7 @@ class PaymentRemoteDatasource {
       data: {
         'userId': userId,
         'amount': amount,
+        'transaction_id': transactionId,
       },
     );
 

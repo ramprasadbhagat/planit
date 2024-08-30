@@ -32,6 +32,10 @@ class ProductDto with _$ProductDto {
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
     @JsonKey(defaultValue: false) required bool backOrder,
+    @JsonKey(
+      defaultValue: '',
+    )
+    required String productRating,
   }) = _ProductDto;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) =>
@@ -49,6 +53,7 @@ class ProductDto with _$ProductDto {
         productDescription: StringValue(productDescription),
         attributeItemId: StringValue(attributeItemProductId),
         backOrder: backOrder,
+        productRating: double.tryParse(productRating) ?? 0.0,
       );
 }
 

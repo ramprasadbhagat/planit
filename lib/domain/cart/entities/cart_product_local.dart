@@ -54,5 +54,6 @@ class CartProductLocal with _$CartProductLocal {
         productDescription: StringValue(''),
         attributeItemId: StringValue(attributeItemId),
         backOrder: backOrder,
+        productRating: 0,
       );
 }

@@ -1,0 +1,96 @@
+{
+    "items": [
+        {
+            "productId": "66cc157e814d6a00132f54cd",
+            "attributeItemId": "66cb41ff814d6a00132f54ad",
+            "totalSales": "2",
+            "productName": "Blueberries",
+            "product": {
+                "_id": "66cc157e814d6a00132f54cd",
+                "categoryId": [
+                    "6659cbd69140ee0012ab2d7e"
+                ],
+                "subcategoryId": [
+                    "6659a96fb109ee67c895f955"
+                ],
+                "productName": "Blueberries",
+                "productDescription": "<p style=\"text-align:start;\"><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\"><strong>Appearance</strong></span></p>\r\n<ul>\r\n<li><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\">Blueberries are small, round, and typically range in size from about 5-16 millimeters in diameter.</span></li>\r\n<li><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\">They have a smooth, firm skin that is typically blue in color, although some varieties may have a reddish or purplish hue.</span></li>\r\n<li><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\">The inside of the blueberry is soft and juicy, with small seeds in the center.</span>&nbsp;</li>\r\n</ul>\r\n",
+                "expiryDate": "1970-01-01T00:00:00.000Z",
+                "productMRP": "300",
+                "misspelling": "good",
+                "customisation": "[]",
+                "po_quantity": "2000",
+                "sizingProduct": false,
+                "productDiscount": "5",
+                "productDiscountDate": "1970-01-01T00:00:00.000Z",
+                "sku": "MP_09",
+                "ingredientsList": [
+                    "salt",
+                    "herbs"
+                ],
+                "nutritionalInformation": "<p style=\"text-align:start;\"><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\"><strong>Taste</strong></span></p>\r\n<ul>\r\n<li><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\">Blueberries have a sweet and slightly tart flavor, with a refreshing taste that is similar to other berries.</span></li>\r\n<li><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded;\">They have a soft, juicy texture that is satisfying to eat.</span>&nbsp;</li>\r\n</ul>\r\n",
+                "isHighlighted": true,
+                "isQuickPick": true,
+                "isDeleted": false,
+                "isActive": false,
+                "backOrder": false,
+                "createdAt": "2024-08-26T05:41:18.819Z",
+                "updatedAt": "2024-08-26T06:49:20.035Z"
+            },
+            "productImage": "https://nzms-dev-plantit.nzmsecurity.com/products/1724654394607.png",
+            "attributeItemName": "500",
+            "productRating": 4,
+            "backOrder": false,
+            "price": "400",
+            "stock": 2999
+        },
+        {
+            "productId": "66cc24bde6dcc20013d6db93",
+            "attributeItemId": "66cb420f814d6a00132f54ae",
+            "totalSales": "1",
+            "productName": "Pahadi Haldi, Kilmora",
+            "product": {
+                "_id": "66cc24bde6dcc20013d6db93",
+                "categoryId": [
+                    "66cb4131814d6a00132f54a8"
+                ],
+                "subcategoryId": [
+                    "66cb4148814d6a00132f54a9"
+                ],
+                "productName": "Pahadi Haldi, Kilmora",
+                "productDescription": "<p><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded\", sans-serif;\">The Kilmora haldi is so fragrant that one smells it even before spotting where it might be stored. Its fragrance and high oil content is due to it being kept in the ground for a minimum of 3 years before it is harvested.</span></p>\r\n",
+                "expiryDate": "1970-01-01T00:00:00.000Z",
+                "productMRP": "267",
+                "misspelling": "saw",
+                "customisation": "[]",
+                "po_quantity": "100",
+                "sizingProduct": false,
+                "productDiscount": "0",
+                "productDiscountDate": "1970-01-01T00:00:00.000Z",
+                "sku": "0089",
+                "ingredientsList": [
+                    "ada",
+                    "d ad",
+                    "ada",
+                    "awdad",
+                    ""
+                ],
+                "nutritionalInformation": "<p><span style=\"color: rgba(0,79,57,0.75);background-color: rgb(255,255,255);font-size: 16px;font-family: Neuzeit Office Soft Rounded\", sans-serif;\">A natural antioxidant, anti-inflammatory spice that has a host of medicinal properties. Use it in your regular curries, make doodh haldi in winters, use it as a base for pickles and ferments, this beautiful ochre fragrant spice is versatile and lends itself to all preparations.</span></p>\r\n",
+                "isHighlighted": true,
+                "isQuickPick": true,
+                "isDeleted": false,
+                "isActive": true,
+                "backOrder": false,
+                "createdAt": "2024-08-26T06:46:21.377Z",
+                "updatedAt": "2024-08-26T06:46:21.377Z"
+            },
+            "productImage": "https://nzms-dev-plantit.nzmsecurity.com/products/1724654781374.png",
+            "attributeItemName": "250",
+            "productRating": 0,
+            "backOrder": false,
+            "price": "200",
+            "stock": 150
+        }
+    ],
+    "totalCount": 2
+}

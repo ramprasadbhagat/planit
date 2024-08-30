@@ -2,16 +2,24 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class BlogTagItem extends StatelessWidget {
+class BlogTagItem extends StatefulWidget {
   final String text;
-
+  final EdgeInsets? margin;
   final bool big;
 
   const BlogTagItem({
     super.key,
     required this.text,
     this.big = false,
+    this.margin,
   });
+
+  @override
+  State<BlogTagItem> createState() => _BlogTagItemState();
+}
+
+class _BlogTagItemState extends State<BlogTagItem> {
+  late final Color color;
 
   Color getRandomColor() {
     final colors = [
@@ -28,17 +36,25 @@ class BlogTagItem extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    color = getRandomColor();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: big ? 6 : 2),
+      margin: widget.margin,
+      padding:
+          EdgeInsets.symmetric(horizontal: 8, vertical: widget.big ? 6 : 2),
       decoration: BoxDecoration(
-        color: getRandomColor(),
+        color: color,
         borderRadius: const BorderRadius.all(Radius.circular(3)),
       ),
       child: Text(
-        text,
+        widget.text,
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              fontSize: big ? 13 : 10,
+              fontSize: widget.big ? 13 : 10,
             ),
       ),
     );
