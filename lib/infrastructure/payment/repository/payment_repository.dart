@@ -55,6 +55,7 @@ class PaymentRepository implements IPaymentRepository {
   @override
   Future<Either<ApiFailure, Unit>> processPaymentFromWallet({
     required int amount,
+    required String transactionId,
   }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
@@ -66,7 +67,10 @@ class PaymentRepository implements IPaymentRepository {
       }
     }
     try {
-      final res = await remoteDatasource.deductPaymentFromWallet(amount);
+      final res = await remoteDatasource.deductPaymentFromWallet(
+        amount: amount,
+        transactionId: transactionId,
+      );
 
       return Right(res);
     } catch (e) {

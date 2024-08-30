@@ -124,6 +124,14 @@ class _LocationPinState extends State<LocationPin> {
                     child: CachedNetworkImage(
                       imageUrl: state.user.profileImage.getValue(),
                       fit: BoxFit.cover,
+                      errorWidget: (context, url, error) => Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.lightGray2,
+                        ),
+                        child: const Icon(Icons.person),
+                      ),
                     ),
                   );
                 }

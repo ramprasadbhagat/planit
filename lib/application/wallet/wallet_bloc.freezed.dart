@@ -288,6 +288,9 @@ abstract class _FetchTransactionHistory implements WalletEvent {
 mixin _$WalletState {
   int get balance => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isTransactionLoading => throw _privateConstructorUsedError;
+  List<TransactionHistory> get transactions =>
+      throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -305,6 +308,8 @@ abstract class $WalletStateCopyWith<$Res> {
   $Res call(
       {int balance,
       bool isLoading,
+      bool isTransactionLoading,
+      List<TransactionHistory> transactions,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
 }
 
@@ -323,6 +328,8 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
   $Res call({
     Object? balance = null,
     Object? isLoading = null,
+    Object? isTransactionLoading = null,
+    Object? transactions = null,
     Object? apiFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -334,6 +341,14 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isTransactionLoading: null == isTransactionLoading
+          ? _value.isTransactionLoading
+          : isTransactionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactions: null == transactions
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TransactionHistory>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -353,6 +368,8 @@ abstract class _$$WalletStateImplCopyWith<$Res>
   $Res call(
       {int balance,
       bool isLoading,
+      bool isTransactionLoading,
+      List<TransactionHistory> transactions,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
 }
 
@@ -369,6 +386,8 @@ class __$$WalletStateImplCopyWithImpl<$Res>
   $Res call({
     Object? balance = null,
     Object? isLoading = null,
+    Object? isTransactionLoading = null,
+    Object? transactions = null,
     Object? apiFailureOrSuccessOption = null,
   }) {
     return _then(_$WalletStateImpl(
@@ -380,6 +399,14 @@ class __$$WalletStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isTransactionLoading: null == isTransactionLoading
+          ? _value.isTransactionLoading
+          : isTransactionLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactions: null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TransactionHistory>,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -394,18 +421,31 @@ class _$WalletStateImpl implements _WalletState {
   const _$WalletStateImpl(
       {required this.balance,
       required this.isLoading,
-      required this.apiFailureOrSuccessOption});
+      required this.isTransactionLoading,
+      required final List<TransactionHistory> transactions,
+      required this.apiFailureOrSuccessOption})
+      : _transactions = transactions;
 
   @override
   final int balance;
   @override
   final bool isLoading;
   @override
+  final bool isTransactionLoading;
+  final List<TransactionHistory> _transactions;
+  @override
+  List<TransactionHistory> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
+
+  @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'WalletState(balance: $balance, isLoading: $isLoading, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'WalletState(balance: $balance, isLoading: $isLoading, isTransactionLoading: $isTransactionLoading, transactions: $transactions, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
   }
 
   @override
@@ -416,14 +456,23 @@ class _$WalletStateImpl implements _WalletState {
             (identical(other.balance, balance) || other.balance == balance) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isTransactionLoading, isTransactionLoading) ||
+                other.isTransactionLoading == isTransactionLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, balance, isLoading, apiFailureOrSuccessOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      balance,
+      isLoading,
+      isTransactionLoading,
+      const DeepCollectionEquality().hash(_transactions),
+      apiFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -436,6 +485,8 @@ abstract class _WalletState implements WalletState {
   const factory _WalletState(
       {required final int balance,
       required final bool isLoading,
+      required final bool isTransactionLoading,
+      required final List<TransactionHistory> transactions,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption}) = _$WalletStateImpl;
 
@@ -443,6 +494,10 @@ abstract class _WalletState implements WalletState {
   int get balance;
   @override
   bool get isLoading;
+  @override
+  bool get isTransactionLoading;
+  @override
+  List<TransactionHistory> get transactions;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

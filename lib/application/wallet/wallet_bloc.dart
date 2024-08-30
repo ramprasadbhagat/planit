@@ -1,9 +1,9 @@
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/wallet/entities/transaction_history.dart';
 import 'package:planit/domain/wallet/repository/i_wallet_repository.dart';
 
 part 'wallet_event.dart';
@@ -46,7 +46,32 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
           },
         );
       },
-      fetchTransactionHistory: (_) {},
+      fetchTransactionHistory: (_) async {
+        emit(
+          state.copyWith(
+            isTransactionLoading: true,
+          ),
+        );
+
+        final failureOrSuccess =
+            await _walletRepository.fetchTransactionsHistory();
+
+        failureOrSuccess.fold((l) {
+          emit(
+            state.copyWith(
+              isTransactionLoading: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        }, (r) {
+          emit(
+            state.copyWith(
+              isTransactionLoading: false,
+              transactions: r,
+            ),
+          );
+        });
+      },
     );
   }
 }

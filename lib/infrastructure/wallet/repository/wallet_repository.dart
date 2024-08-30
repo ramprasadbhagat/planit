@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
+import 'package:planit/domain/wallet/entities/transaction_history.dart';
 import 'package:planit/domain/wallet/repository/i_wallet_repository.dart';
 import 'package:planit/infrastructure/wallet/datasource/wallet_local.dart';
 import 'package:planit/infrastructure/wallet/datasource/wallet_remote.dart';
@@ -17,7 +18,10 @@ class WalletRepository implements IWalletRepository {
     required this.localDatasource,
   });
   @override
-  Future<Either<ApiFailure, Unit>> addMoney(int amount) async {
+  Future<Either<ApiFailure, Unit>> addMoney({
+    required int amount,
+    required String transactionId,
+  }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
         final res = await localDatasource.addMoney();
@@ -29,7 +33,10 @@ class WalletRepository implements IWalletRepository {
     }
 
     try {
-      final res = await remoteDatasource.addMoney(amount);
+      final res = await remoteDatasource.addMoney(
+        amount: amount,
+        transactionId: transactionId,
+      );
 
       return Right(res);
     } catch (e) {
@@ -51,6 +58,28 @@ class WalletRepository implements IWalletRepository {
 
     try {
       final res = await remoteDatasource.fetchBalance();
+
+      return Right(res);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, List<TransactionHistory>>>
+      fetchTransactionsHistory() async {
+    // if (config.appFlavor == Flavor.mock) {
+    //   try {
+    //     final res = await localDatasource.fetchBalance();
+
+    //     return Right(res);
+    //   } catch (e) {
+    //     return Left(FailureHandler.handleFailure(e));
+    //   }
+    // }
+
+    try {
+      final res = await remoteDatasource.fetchTransactionsHistory();
 
       return Right(res);
     } catch (e) {

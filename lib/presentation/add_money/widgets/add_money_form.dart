@@ -68,6 +68,9 @@ class AddMoneyForm extends StatelessWidget {
                       context
                           .read<WalletBloc>()
                           .add(const WalletEvent.fetchBalance());
+                      context
+                          .read<WalletBloc>()
+                          .add(const WalletEvent.fetchTransactionHistory());
 
                       showDialog(
                         context: context,

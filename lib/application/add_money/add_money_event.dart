@@ -8,8 +8,10 @@ class AddMoneyEvent with _$AddMoneyEvent {
       _PaymentMethod;
   const factory AddMoneyEvent.changeAmount(String amount) = _ChangeAmount;
   const factory AddMoneyEvent.addMoneyClicked() = _AddMoneyClicked;
-  const factory AddMoneyEvent.handlePaymentSuccess(int amount) =
-      _HandlePaymentSuccess;
+  const factory AddMoneyEvent.handlePaymentSuccess(
+    int amount,
+    String transactionId,
+  ) = _HandlePaymentSuccess;
   const factory AddMoneyEvent.handlePaymentFailed({
     required int amount,
     required String message,
