@@ -76,6 +76,7 @@ class QuickPicks with _$QuickPicks {
         productDescription: StringValue(productDescription),
         attributeItemId: attributeItemId,
         backOrder: backOrder,
+        productRating: productRating,
       );
 }
 

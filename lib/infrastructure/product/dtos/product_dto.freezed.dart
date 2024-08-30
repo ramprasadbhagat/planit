@@ -41,6 +41,8 @@ mixin _$ProductDto {
   String get productDescription => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: '')
+  String get productRating => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +75,8 @@ abstract class $ProductDtoCopyWith<$Res> {
       Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(defaultValue: '') String productRating});
 }
 
 /// @nodoc
@@ -99,6 +102,7 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
     Object? price = null,
     Object? productDescription = null,
     Object? backOrder = null,
+    Object? productRating = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -141,6 +145,10 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -172,7 +180,8 @@ abstract class _$$ProductDtoImplCopyWith<$Res>
       Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(defaultValue: '') String productRating});
 }
 
 /// @nodoc
@@ -196,6 +205,7 @@ class __$$ProductDtoImplCopyWithImpl<$Res>
     Object? price = null,
     Object? productDescription = null,
     Object? backOrder = null,
+    Object? productRating = null,
   }) {
     return _then(_$ProductDtoImpl(
       productId: null == productId
@@ -238,6 +248,10 @@ class __$$ProductDtoImplCopyWithImpl<$Res>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -265,7 +279,8 @@ class _$ProductDtoImpl extends _ProductDto {
       required final Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
-      @JsonKey(defaultValue: false) required this.backOrder})
+      @JsonKey(defaultValue: false) required this.backOrder,
+      @JsonKey(defaultValue: '') required this.productRating})
       : _productImages = productImages,
         _price = price,
         super._();
@@ -316,10 +331,13 @@ class _$ProductDtoImpl extends _ProductDto {
   @override
   @JsonKey(defaultValue: false)
   final bool backOrder;
+  @override
+  @JsonKey(defaultValue: '')
+  final String productRating;
 
   @override
   String toString() {
-    return 'ProductDto(productId: $productId, productName: $productName, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productDescription: $productDescription, backOrder: $backOrder)';
+    return 'ProductDto(productId: $productId, productName: $productName, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productDescription: $productDescription, backOrder: $backOrder, productRating: $productRating)';
   }
 
   @override
@@ -345,7 +363,9 @@ class _$ProductDtoImpl extends _ProductDto {
             (identical(other.productDescription, productDescription) ||
                 other.productDescription == productDescription) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            (identical(other.productRating, productRating) ||
+                other.productRating == productRating));
   }
 
   @JsonKey(ignore: true)
@@ -361,7 +381,8 @@ class _$ProductDtoImpl extends _ProductDto {
       attributeItemProductId,
       const DeepCollectionEquality().hash(_price),
       productDescription,
-      backOrder);
+      backOrder,
+      productRating);
 
   @JsonKey(ignore: true)
   @override
@@ -399,8 +420,9 @@ abstract class _ProductDto extends ProductDto {
       required final Map<String, dynamic> price,
       @JsonKey(name: 'productDescription', defaultValue: '')
       required final String productDescription,
-      @JsonKey(defaultValue: false)
-      required final bool backOrder}) = _$ProductDtoImpl;
+      @JsonKey(defaultValue: false) required final bool backOrder,
+      @JsonKey(defaultValue: '')
+      required final String productRating}) = _$ProductDtoImpl;
   _ProductDto._() : super._();
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
@@ -437,6 +459,9 @@ abstract class _ProductDto extends ProductDto {
   @override
   @JsonKey(defaultValue: false)
   bool get backOrder;
+  @override
+  @JsonKey(defaultValue: '')
+  String get productRating;
   @override
   @JsonKey(ignore: true)
   _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>

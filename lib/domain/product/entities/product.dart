@@ -21,6 +21,7 @@ class Product with _$Product {
     required Price price,
     required StringValue productDescription,
     required bool backOrder,
+    required double productRating,
   }) = _Product;
 
   String get getPriceValue {
@@ -61,5 +62,6 @@ class Product with _$Product {
         productDescription: StringValue(''),
         attributeItemId: StringValue(''),
         backOrder: false,
+        productRating: 0,
       );
 }

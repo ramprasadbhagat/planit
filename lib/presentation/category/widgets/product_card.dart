@@ -141,7 +141,7 @@ class ProductCard extends StatelessWidget {
                         size: 9,
                       ),
                       Text(
-                        '4.3',
+                        product.productRating.toStringAsFixed(1),
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 9,
                         ),

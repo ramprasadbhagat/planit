@@ -14,88 +14,112 @@ class BlogItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        onTap: () {
-          context.router.navigate(
-            BlogDetailsRoute(
-              blog: blog,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minHeight: 100,
+      ),
+      child: Card(
+        child: InkWell(
+          onTap: () {
+            context.router.navigate(
+              BlogDetailsRoute(
+                blog: blog,
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8,
             ),
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
-                child: blog.blogImage.isEmpty || !blog.blogImage.first.isValid()
-                    ? Image.asset(
-                        PngImage.placeholder,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: blog.blogImage.first.getValue(),
-                        width: 80,
-                        height: 72,
-                        fit: BoxFit.fill,
-                        errorWidget: (context, url, error) => Image.asset(
-                          PngImage.placeholder,
-                        ),
-                      ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      blog.title.getValue(),
-                      style: Theme.of(context).textTheme.titleSmall,
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  child:
+                      blog.blogImage.isEmpty || !blog.blogImage.first.isValid()
+                          ? Image.asset(
+                              PngImage.placeholder,
+                            )
+                          : CachedNetworkImage(
+                              imageUrl: blog.blogImage.first.getValue(),
+                              width: 80,
+                              height: 72,
+                              fit: BoxFit.fill,
+                              errorWidget: (context, url, error) => Image.asset(
+                                PngImage.placeholder,
+                              ),
+                            ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minHeight: 65,
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        Expanded(
-                          child: Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: blog.blogTag
-                                .map(
-                                  (e) => BlogTagItem(
-                                    text: e,
+                        Text(
+                          blog.title.getValue(),
+                          style:
+                              Theme.of(context).textTheme.titleSmall?.copyWith(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                )
-                                .toList(),
-                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
                         ),
                         Row(
                           children: [
-                            const Icon(
-                              Icons.circle,
-                              size: 7,
-                              color: AppColors.extraLightGrey2,
-                            ),
-                            const SizedBox(
-                              width: 2,
-                            ),
-                            Text(
-                              timeAgo.format(
-                                blog.updatedAt,
+                            Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  // spacing: 8,
+                                  // runSpacing: 8,
+                                  children: blog.blogTag
+                                      .map(
+                                        (e) => BlogTagItem(
+                                          text: e,
+                                          margin:
+                                              const EdgeInsets.only(right: 10),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
                               ),
-                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.circle,
+                                  size: 7,
+                                  color: AppColors.extraLightGrey2,
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  timeAgo.format(
+                                    blog.updatedAt,
+                                  ),
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

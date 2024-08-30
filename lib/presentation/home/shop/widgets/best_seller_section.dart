@@ -1,7 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:planit/domain/home/entities/best_seller.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planit/application/best_seller/best_seller_bloc.dart';
+import 'package:planit/domain/best_seller/entities/best_seller_product.dart';
+import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class BestSellerSection extends StatelessWidget {
   const BestSellerSection({super.key});
@@ -26,14 +32,21 @@ class BestSellerSection extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          SizedBox(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: bestsellerList.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  BestSellerItem(item: bestsellerList.elementAt(index)),
-            ),
+          BlocBuilder<BestSellerBloc, BestSellerState>(
+            builder: (context, state) {
+              return Skeletonizer(
+                enabled: state.isFetching,
+                child: SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.products.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        BestSellerItem(item: state.products[index]),
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -42,7 +55,7 @@ class BestSellerSection extends StatelessWidget {
 }
 
 class BestSellerItem extends StatelessWidget {
-  final BestSeller item;
+  final BestSellerProduct item;
   const BestSellerItem({
     super.key,
     required this.item,
@@ -60,22 +73,44 @@ class BestSellerItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        PngImage.placeholder,
-                        width: 120,
-                        height: 130,
-                        fit: BoxFit.scaleDown,
+                child: InkWell(
+                  onTap: () => showModalBottomSheet<void>(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) => CommonBottomSheet(
+                      child: AddToCartBottomSheet(
+                        productId: item.id.getValue(),
+                        attributeItemId: item.attributeItemId.isValid()
+                            ? item.attributeItemId.getValue()
+                            : null,
                       ),
-                      Text(
-                        item.title,
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyMedium,
-                      ),
-                    ],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      children: [
+                        if (item.productImage.isValid())
+                          CachedNetworkImage(
+                            imageUrl: item.productImage.getValue(),
+                            width: 120,
+                            height: 130,
+                            fit: BoxFit.scaleDown,
+                          )
+                        else
+                          Image.asset(
+                            PngImage.placeholder,
+                            width: 120,
+                            height: 130,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        Text(
+                          item.productName.getValue(),
+                          textAlign: TextAlign.center,
+                          style: textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -87,10 +122,10 @@ class BestSellerItem extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: AppColors.availableTagColor,
+                color: item.isOOS ? AppColors.red : AppColors.availableTagColor,
               ),
               child: Text(
-                'Available',
+                item.isOOS ? 'Out of Stock' : 'Available',
                 style: textTheme.bodySmall!.copyWith(color: AppColors.white),
               ),
             ),
@@ -100,9 +135,3 @@ class BestSellerItem extends StatelessWidget {
     );
   }
 }
-
-List<BestSeller> bestsellerList = <BestSeller>[
-  BestSeller(image: 'bestseller_1.png', title: 'Roasted & Salted\nCashew'),
-  BestSeller(image: 'bestseller_2.png', title: 'Roasted & Salted\nCashew'),
-  BestSeller(image: 'bestseller_3.png', title: 'Roasted & Salted\nCashew'),
-];
