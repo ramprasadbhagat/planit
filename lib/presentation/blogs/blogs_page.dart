@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/presentation/blogs/widgets/blog_item_card.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class BlogsPage extends StatelessWidget {
@@ -38,10 +39,13 @@ class BlogsPage extends StatelessWidget {
                 },
                 child: BlocBuilder<BlogBloc, BlogState>(
                   builder: (context, state) {
-                    return ListView.builder(
-                      itemCount: state.blogs.length,
-                      itemBuilder: (context, index) => BlogItemCard(
-                        blog: state.blogs[index],
+                    return Skeletonizer(
+                      enabled: state.blogs.isEmpty && state.isFetching,
+                      child: ListView.builder(
+                        itemCount: state.blogs.length,
+                        itemBuilder: (context, index) => BlogItemCard(
+                          blog: state.blogs[index],
+                        ),
                       ),
                     );
                   },
