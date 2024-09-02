@@ -15,10 +15,6 @@ class AppRouter extends $AppRouter {
           path: '/otp',
         ),
         AutoRoute(
-          page: SignupRoute.page,
-          path: '/signup',
-        ),
-        AutoRoute(
           page: ProfileRoute.page,
           path: '/profile',
         ),

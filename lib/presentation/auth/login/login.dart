@@ -7,6 +7,7 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -23,34 +24,53 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _controller = TextEditingController();
+  bool _triggerValidator = false;
+
+  void _onSubmit(BuildContext context) {
+    setState(() {
+      _triggerValidator = true;
+    });
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _triggerValidator = false;
+      });
+      FocusScope.of(context).unfocus();
+      context.read<LoginFormBloc>().add(
+            const LoginFormEvent.initiateLogin(),
+          );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final loginFormBloc = context.read<LoginFormBloc>();
+
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state != const AuthState.unauthenticated()) {
           final cartBloc = context.read<CartBloc>();
+
           if (cartBloc.state.cartData.isNotEmpty) {
             cartBloc.add(const CartEvent.sendLocalServerCart());
-          } else {}
+          }
+
           _controller.clear();
           context.router.maybePop();
+
           Future.delayed(const Duration(milliseconds: 100), () {
             context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
-            context.read<WishlistBloc>().add(
-                  const WishlistEvent.fetch(),
-                );
+            context.read<WishlistBloc>().add(const WishlistEvent.fetch());
             context.read<CartBloc>().add(const CartEvent.fetch());
             context.router.maybePop();
           });
         }
       },
-      listenWhen: (previous, current) => previous != current,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: AppColors.transparent,
           title: Text(
-            'Login',
+            'Sign In',
             style: textTheme.labelLarge,
           ),
           leadingWidth: 20,
@@ -59,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new_outlined,
-              color: AppColors.lightGrey,
+              color: AppColors.darkGrey,
             ),
             onPressed: () => context.router.maybePop(),
           ),
@@ -69,12 +89,12 @@ class _LoginPageState extends State<LoginPage> {
             Image.asset(PngImage.loginBackGround),
             Form(
               key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
+              autovalidateMode: AutovalidateMode.disabled,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(4), // Border width
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
@@ -100,9 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 15.0,
-                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 15.0),
                             child: TextFormField(
                               controller: _controller,
                               keyboardType: TextInputType.number,
@@ -111,19 +129,25 @@ class _LoginPageState extends State<LoginPage> {
                                 LengthLimitingTextInputFormatter(10),
                               ],
                               validator: (value) {
-                                if (value == null || value.trim() == '') {
-                                  return "phone number can't be empty";
-                                } else if (value.length < 10) {
-                                  return 'enter valid phone number';
+                                return MobileNumber(value ?? '').value.fold(
+                                      (failure) => failure.mapOrNull(
+                                        empty: (_) =>
+                                            "Phone number can't be empty",
+                                        subceedLength: (_) =>
+                                            'Enter a valid phone number',
+                                      ),
+                                      (_) => null,
+                                    );
+                              },
+                              onChanged: (value) {
+                                if (_triggerValidator) {
+                                  _formKey.currentState?.validate();
                                 }
-                                return null;
+                                context.read<LoginFormBloc>().add(
+                                      LoginFormEvent.mobileNumberChanged(value),
+                                    );
                               },
-                              onChanged: (e) {
-                                loginFormBloc.add(
-                                  LoginFormEvent.mobileNumberChanged(e),
-                                );
-                              },
-                              // maxLength: 10,
+                              onFieldSubmitted: (_) => _onSubmit(context),
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,
@@ -160,42 +184,30 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'Forget Password?',
-                                style:
-                                    textTheme.bodySmall?.copyWith(fontSize: 11),
-                              ),
-                              GestureDetector(
-                                onTap: () => context.router
-                                    .navigate(const SignupRoute()),
-                                child: const Text('Sign up'),
-                              ),
-                            ],
-                          ),
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             width: MediaQuery.sizeOf(context).width * 0.8,
                             child: BlocConsumer<LoginFormBloc, LoginFormState>(
                               listener: (context, state) {
-                                if (state.otp != OTP('')) {
-                                  context.router.navigate(const LoginOtp());
-                                }
+                                state.authFailureOrSuccessOption.fold(() {},
+                                    (either) {
+                                  either.fold((l) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(l.failureMessage),
+                                      ),
+                                    );
+                                  }, (r) {
+                                    context.router.navigate(const LoginOtp());
+                                  });
+                                });
                               },
                               listenWhen: (previous, current) =>
-                                  previous.otp != current.otp,
+                                  previous.authFailureOrSuccessOption !=
+                                  current.authFailureOrSuccessOption,
                               builder: (context, state) {
                                 return ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      FocusScope.of(context).unfocus();
-                                      loginFormBloc.add(
-                                        const LoginFormEvent.initiateLogin(),
-                                      );
-                                    }
-                                  },
+                                  onPressed: () => _onSubmit(context),
                                   style: ElevatedButton.styleFrom(
                                     shape: const StadiumBorder(),
                                     backgroundColor: AppColors.black,

@@ -67,7 +67,10 @@ class MobileNumber extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory MobileNumber(String input) {
-    return MobileNumber._(validateStringNotEmpty(input));
+    return MobileNumber._(
+      validateStringNotEmpty(input)
+          .flatMap((input) => validateMinStringLength(input, 10)),
+    );
   }
 
   String get validPhoneNumber => getValidPhoneNumber(value.getOrElse(() => ''));
