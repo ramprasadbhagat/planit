@@ -8,6 +8,7 @@ import 'package:planit/presentation/home/read/widgets/hot_recipes.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/svg_image.dart';
 
 @RoutePage()
 class SearchRecipesPage extends StatefulWidget {
@@ -51,9 +52,11 @@ class _SearchRecipesPageState extends State<SearchRecipesPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Material(
-                    elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
+                      side: const BorderSide(
+                        color: AppColors.grey2,
+                      ),
                     ),
                     child: TextFormField(
                       autofocus: true,
@@ -85,7 +88,7 @@ class _SearchRecipesPageState extends State<SearchRecipesPage> {
                           size: 24,
                           color: Colors.grey,
                         ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                        contentPadding: EdgeInsets.zero,
                       ),
                     ),
                   ),
@@ -97,7 +100,14 @@ class _SearchRecipesPageState extends State<SearchRecipesPage> {
                       if (state.isFetching) {
                         return const ShimmerItem();
                       } else if (state.recipes.isEmpty) {
-                        return const Expanded(child: NoData());
+                        return Expanded(
+                          child: NoData(
+                            message: searchController.text.isEmpty
+                                ? '\nSearch for expertly crafted recipes and techniques'
+                                : 'No Recipes found',
+                            errorSvgImage: SvgImage.recipeEmptyIcon,
+                          ),
+                        );
                       }
                       return Expanded(
                         child: Column(

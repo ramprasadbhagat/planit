@@ -10,4 +10,5 @@ class FavouriteRecipeEvent with _$FavouriteRecipeEvent {
   const factory FavouriteRecipeEvent.removeFromFavourite({
     required Recipe recipe,
   }) = _RemoveFromFavourite;
+  const factory FavouriteRecipeEvent.reset() = _Reset;
 }

@@ -55,7 +55,9 @@ class Reviews extends StatelessWidget {
               enabled: state.isFetching,
               child: ListView.builder(
                 primary: false,
-                itemCount: state.recipeDetails.reviews.length,
+                itemCount: state.recipeDetails.reviews
+                    .take(state.viewAllReviews ? 999 : 2)
+                    .length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) => ReviewItemCard(
                   review: state.recipeDetails.reviews[index],
@@ -64,18 +66,38 @@ class Reviews extends StatelessWidget {
             );
           },
         ),
-        Text(
-          'View More',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                decoration: TextDecoration.underline,
-                decorationThickness: 1.5,
+        BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
+          builder: (context, state) {
+            if (state.recipeDetails.reviews.length < 3) {
+              return const SizedBox.shrink();
+            }
+            return InkWell(
+              onTap: () => context
+                  .read<RecipeDetailsBloc>()
+                  .add(const RecipeDetailsEvent.toggleViewAllReview()),
+              child: Text(
+                state.viewAllReviews ? 'View less' : 'View More',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 1.5,
+                    ),
               ),
+            );
+          },
         ),
         const SizedBox(
           height: 20,
         ),
         BlocBuilder<RecipeDetailsBloc, RecipeDetailsState>(
           builder: (context, state) {
+            if (context.read<AuthBloc>().state.isUnAuthenticated ||
+                state.recipeDetails.reviews.any(
+                  (element) =>
+                      element.userId ==
+                      context.read<UserProfileBloc>().state.user.id,
+                )) {
+              return const SizedBox.shrink();
+            }
             return ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(43),
@@ -83,23 +105,15 @@ class Reviews extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(11)),
                 ),
               ),
-              onPressed: (context.read<AuthBloc>().state.isUnAuthenticated ||
-                      state.recipeDetails.reviews.any(
-                        (element) =>
-                            element.userId ==
-                            context.read<UserProfileBloc>().state.user.id,
-                      ))
-                  ? null
-                  : () {
-                      showModalBottomSheet<void>(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (BuildContext context) =>
-                            const CommonBottomSheet(
-                          child: AddRecipeReviewBottomSheet(),
-                        ),
-                      );
-                    },
+              onPressed: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (BuildContext context) => const CommonBottomSheet(
+                    child: AddRecipeReviewBottomSheet(),
+                  ),
+                );
+              },
               child: const Text('Add your review'),
             );
           },
@@ -150,6 +164,7 @@ class ReviewItemCard extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 6),
                               child: RatingStar(
                                 value: review.recipeRating,
+                                showAllStar: true,
                               ),
                             ),
                           ],

@@ -44,6 +44,9 @@ class HomePageMobile extends StatelessWidget {
                 context
                     .read<UserProfileBloc>()
                     .add(const UserProfileEvent.reset());
+                context
+                    .read<FavouriteRecipeBloc>()
+                    .add(const FavouriteRecipeEvent.reset());
               },
             );
           },

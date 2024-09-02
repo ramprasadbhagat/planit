@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
@@ -19,29 +21,28 @@ class ImageAndTitleSection extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // ClipRRect(
-          //   borderRadius: const BorderRadius.all(Radius.circular(10)),
-          //   child: Image.asset(
-          //     PngImage.generic('recipe.png'),
-          //   ),
-          // ),
-          FlutterCarousel(
-            options: CarouselOptions(
-              viewportFraction: 1,
-              height: 196,
-              autoPlay: true,
-              showIndicator: false,
+          Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: const BoxDecoration(
+              color: AppColors.extraLightGrey3,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
-            items: recipe.recipeImages.isEmpty
-                ? [
-                    Image.asset(
-                      PngImage.placeholder,
-                    ),
-                  ]
-                : (recipe.recipeImages).map((i) {
-                    return ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      child: SizedBox(
+            child: FlutterCarousel(
+              options: CarouselOptions(
+                viewportFraction: 1,
+                height: 196,
+                autoPlay: true,
+                showIndicator: false,
+              ),
+              items: recipe.recipeImages.isEmpty
+                  ? [
+                      Image.asset(
+                        PngImage.placeholder,
+                        width: 150,
+                      ),
+                    ]
+                  : (recipe.recipeImages).map((i) {
+                      return SizedBox(
                         width: double.maxFinite,
                         child: CachedNetworkImage(
                           imageUrl: i.getValue(),
@@ -49,21 +50,21 @@ class ImageAndTitleSection extends StatelessWidget {
                           errorWidget: (context, error, stack) {
                             return Image.asset(
                               PngImage.placeholder,
-                              fit: BoxFit.fitHeight,
+                              width: 150,
                             );
                           },
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }).toList(),
+            ),
           ),
           Positioned(
-            top: -17,
+            top: -20,
             right: 16,
             child: RecipeFavouriteButton(recipe: recipe),
           ),
           Positioned(
-            bottom: -55,
+            bottom: -50,
             left: 14,
             right: 14,
             child: Material(

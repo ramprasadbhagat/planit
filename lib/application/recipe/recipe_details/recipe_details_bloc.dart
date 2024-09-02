@@ -90,6 +90,13 @@ class RecipeDetailsBloc extends Bloc<RecipeDetailsEvent, RecipeDetailsState> {
         );
         add(_Fetch(state.recipeDetails.recipe));
       },
+      toggleViewAllReview: (_ToggleViewAllReview value) {
+        emit(
+          state.copyWith(
+            viewAllReviews: !state.viewAllReviews,
+          ),
+        );
+      },
     );
   }
 }

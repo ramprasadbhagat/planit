@@ -30,7 +30,8 @@ mixin _$RecipeDto {
   String get course => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get servingSize => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+  @JsonKey(
+      defaultValue: [], readValue: parseImagesList, name: 'nutritional_table')
   List<String> get nutritionalTable => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get numRatings => throw _privateConstructorUsedError;
@@ -52,7 +53,7 @@ mixin _$RecipeDto {
   List<Map<String, dynamic>> get step => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
   List<String> get recipeImages => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get timeRequired => throw _privateConstructorUsedError;
@@ -74,7 +75,10 @@ abstract class $RecipeDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
       @JsonKey(defaultValue: '') String servingSize,
-      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      @JsonKey(
+          defaultValue: [],
+          readValue: parseImagesList,
+          name: 'nutritional_table')
       List<String> nutritionalTable,
       @JsonKey(defaultValue: '') String numRatings,
       @JsonKey(defaultValue: 0.0) double rating,
@@ -85,7 +89,9 @@ abstract class $RecipeDtoCopyWith<$Res> {
       @JsonKey(defaultValue: []) List<Map<String, dynamic>> equipment,
       @JsonKey(defaultValue: []) List<Map<String, dynamic>> step,
       @JsonKey(defaultValue: false) bool isActive,
-      @JsonKey(defaultValue: []) List<String> recipeImages,
+      @JsonKey(
+          defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
+      List<String> recipeImages,
       @JsonKey(defaultValue: '') String timeRequired});
 }
 
@@ -207,7 +213,10 @@ abstract class _$$RecipeDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String cuisine,
       @JsonKey(defaultValue: '') String course,
       @JsonKey(defaultValue: '') String servingSize,
-      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      @JsonKey(
+          defaultValue: [],
+          readValue: parseImagesList,
+          name: 'nutritional_table')
       List<String> nutritionalTable,
       @JsonKey(defaultValue: '') String numRatings,
       @JsonKey(defaultValue: 0.0) double rating,
@@ -218,7 +227,9 @@ abstract class _$$RecipeDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: []) List<Map<String, dynamic>> equipment,
       @JsonKey(defaultValue: []) List<Map<String, dynamic>> step,
       @JsonKey(defaultValue: false) bool isActive,
-      @JsonKey(defaultValue: []) List<String> recipeImages,
+      @JsonKey(
+          defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
+      List<String> recipeImages,
       @JsonKey(defaultValue: '') String timeRequired});
 }
 
@@ -334,7 +345,10 @@ class _$RecipeDtoImpl extends _RecipeDto {
       @JsonKey(defaultValue: '') required this.cuisine,
       @JsonKey(defaultValue: '') required this.course,
       @JsonKey(defaultValue: '') required this.servingSize,
-      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      @JsonKey(
+          defaultValue: [],
+          readValue: parseImagesList,
+          name: 'nutritional_table')
       required final List<String> nutritionalTable,
       @JsonKey(defaultValue: '') required this.numRatings,
       @JsonKey(defaultValue: 0.0) required this.rating,
@@ -347,7 +361,9 @@ class _$RecipeDtoImpl extends _RecipeDto {
       required final List<Map<String, dynamic>> equipment,
       @JsonKey(defaultValue: []) required final List<Map<String, dynamic>> step,
       @JsonKey(defaultValue: false) required this.isActive,
-      @JsonKey(defaultValue: []) required final List<String> recipeImages,
+      @JsonKey(
+          defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
+      required final List<String> recipeImages,
       @JsonKey(defaultValue: '') required this.timeRequired})
       : _nutritionalTable = nutritionalTable,
         _ingredient = ingredient,
@@ -376,7 +392,8 @@ class _$RecipeDtoImpl extends _RecipeDto {
   final String servingSize;
   final List<String> _nutritionalTable;
   @override
-  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+  @JsonKey(
+      defaultValue: [], readValue: parseImagesList, name: 'nutritional_table')
   List<String> get nutritionalTable {
     if (_nutritionalTable is EqualUnmodifiableListView)
       return _nutritionalTable;
@@ -431,7 +448,7 @@ class _$RecipeDtoImpl extends _RecipeDto {
   final bool isActive;
   final List<String> _recipeImages;
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
   List<String> get recipeImages {
     if (_recipeImages is EqualUnmodifiableListView) return _recipeImages;
     // ignore: implicit_dynamic_type
@@ -524,7 +541,10 @@ abstract class _RecipeDto extends RecipeDto {
       @JsonKey(defaultValue: '') required final String cuisine,
       @JsonKey(defaultValue: '') required final String course,
       @JsonKey(defaultValue: '') required final String servingSize,
-      @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+      @JsonKey(
+          defaultValue: [],
+          readValue: parseImagesList,
+          name: 'nutritional_table')
       required final List<String> nutritionalTable,
       @JsonKey(defaultValue: '') required final String numRatings,
       @JsonKey(defaultValue: 0.0) required final double rating,
@@ -537,7 +557,9 @@ abstract class _RecipeDto extends RecipeDto {
       required final List<Map<String, dynamic>> equipment,
       @JsonKey(defaultValue: []) required final List<Map<String, dynamic>> step,
       @JsonKey(defaultValue: false) required final bool isActive,
-      @JsonKey(defaultValue: []) required final List<String> recipeImages,
+      @JsonKey(
+          defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
+      required final List<String> recipeImages,
       @JsonKey(defaultValue: '')
       required final String timeRequired}) = _$RecipeDtoImpl;
   const _RecipeDto._() : super._();
@@ -561,7 +583,8 @@ abstract class _RecipeDto extends RecipeDto {
   @JsonKey(defaultValue: '')
   String get servingSize;
   @override
-  @JsonKey(defaultValue: [], readValue: parseNutritionalTable)
+  @JsonKey(
+      defaultValue: [], readValue: parseImagesList, name: 'nutritional_table')
   List<String> get nutritionalTable;
   @override
   @JsonKey(defaultValue: '')
@@ -591,7 +614,7 @@ abstract class _RecipeDto extends RecipeDto {
   @JsonKey(defaultValue: false)
   bool get isActive;
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: [], name: 'recipeImages', readValue: parseImagesList)
   List<String> get recipeImages;
   @override
   @JsonKey(defaultValue: '')

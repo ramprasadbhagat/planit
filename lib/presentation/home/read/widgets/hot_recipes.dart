@@ -152,17 +152,24 @@ class HotRecipeCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (recipe.recipeImages.isNotEmpty)
-                CachedNetworkImage(
-                  imageUrl: recipe.recipeImages.first.getValue(),
-                  width: 120,
-                  errorWidget: (context, url, error) {
-                    return Image.asset(
-                      PngImage.placeholder,
-                      width: 120,
-                    );
-                  },
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  child: CachedNetworkImage(
+                    imageUrl: recipe.recipeImages.first.getValue(),
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) {
+                      return Image.asset(
+                        PngImage.placeholder,
+                        width: 80,
+                        height: 80,
+                      );
+                    },
+                  ),
                 )
               else
                 Image.asset(
@@ -178,14 +185,16 @@ class HotRecipeCard extends StatelessWidget {
                   children: [
                     Text(
                       recipe.name.getValue(),
-                      style: textTheme.labelSmall,
+                      style: textTheme.labelSmall?.copyWith(
+                        fontSize: 15,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Text(
                         recipe.writeup.getValue(),
                         style: textTheme.bodySmall?.copyWith(
-                          fontSize: 9,
+                          fontSize: 12,
                           color: AppColors.grey2,
                         ),
                       ),

@@ -34,7 +34,8 @@ class RecipeDto with _$RecipeDto {
     required String servingSize,
     @JsonKey(
       defaultValue: [],
-      readValue: parseNutritionalTable,
+      readValue: parseImagesList,
+      name: 'nutritional_table',
     )
     required List<String> nutritionalTable,
     @JsonKey(
@@ -75,6 +76,8 @@ class RecipeDto with _$RecipeDto {
     required bool isActive,
     @JsonKey(
       defaultValue: [],
+      name: 'recipeImages',
+      readValue: parseImagesList,
     )
     required List<String> recipeImages,
     @JsonKey(defaultValue: '') required String timeRequired,
@@ -105,9 +108,10 @@ class RecipeDto with _$RecipeDto {
       );
 }
 
-List<String> parseNutritionalTable(Map json, String key) {
-  if (json[key] is List<String>) {
-    return json[key];
+List<String> parseImagesList(Map json, String key) {
+  if (json[key] is List) {
+    final images = (json[key] as List).whereType<String>().toList();
+    return images;
   }
   return [];
 }
