@@ -11,6 +11,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
@@ -18,6 +19,7 @@ import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
+import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -126,7 +128,7 @@ class _MainTabbarState extends State<MainTabbar> {
             key: WidgetKeys.homeTabBar,
             currentIndex: tabsRouter.activeIndex,
             selectedItemColor: AppColors.black,
-            onTap: (index) {
+            onTap: (index) async {
               if (index == 2) {
                 categoryBloc.add(const CategoryEvent.selectOccasion(false));
                 categoryBloc.add(
@@ -134,6 +136,19 @@ class _MainTabbarState extends State<MainTabbar> {
                     categoryBloc.state.categories.first,
                   ),
                 );
+              }
+              if (index == 4 &&
+                  context.read<AuthBloc>().state !=
+                      const AuthState.unauthenticated() &&
+                  context.read<PincodeBloc>().state.pincode.isEmpty) {
+                await showDialog<void>(
+                  context: context,
+                  barrierDismissible: false, // user must tap button!
+                  builder: (BuildContext context) {
+                    return const NoPincodeErrorDialog();
+                  },
+                );
+                return;
               }
               tabsRouter.setActiveIndex(index);
             },

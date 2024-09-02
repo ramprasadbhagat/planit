@@ -19,32 +19,38 @@ mixin _$BlogEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBlogs,
+    required TResult Function() loadMoreBlogs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBlogs,
+    TResult? Function()? loadMoreBlogs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBlogs,
+    TResult Function()? loadMoreBlogs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchBlogs value) fetchBlogs,
+    required TResult Function(_LoadMoreBlogs value) loadMoreBlogs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBlogs value)? fetchBlogs,
+    TResult? Function(_LoadMoreBlogs value)? loadMoreBlogs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBlogs value)? fetchBlogs,
+    TResult Function(_LoadMoreBlogs value)? loadMoreBlogs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +118,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBlogs,
+    required TResult Function() loadMoreBlogs,
   }) {
     return fetchBlogs();
   }
@@ -120,6 +127,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBlogs,
+    TResult? Function()? loadMoreBlogs,
   }) {
     return fetchBlogs?.call();
   }
@@ -128,6 +136,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBlogs,
+    TResult Function()? loadMoreBlogs,
     required TResult orElse(),
   }) {
     if (fetchBlogs != null) {
@@ -140,6 +149,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchBlogs value) fetchBlogs,
+    required TResult Function(_LoadMoreBlogs value) loadMoreBlogs,
   }) {
     return fetchBlogs(this);
   }
@@ -148,6 +158,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBlogs value)? fetchBlogs,
+    TResult? Function(_LoadMoreBlogs value)? loadMoreBlogs,
   }) {
     return fetchBlogs?.call(this);
   }
@@ -156,6 +167,7 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBlogs value)? fetchBlogs,
+    TResult Function(_LoadMoreBlogs value)? loadMoreBlogs,
     required TResult orElse(),
   }) {
     if (fetchBlogs != null) {
@@ -167,6 +179,116 @@ class _$FetchBlogsImpl with DiagnosticableTreeMixin implements _FetchBlogs {
 
 abstract class _FetchBlogs implements BlogEvent {
   const factory _FetchBlogs() = _$FetchBlogsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreBlogsImplCopyWith<$Res> {
+  factory _$$LoadMoreBlogsImplCopyWith(
+          _$LoadMoreBlogsImpl value, $Res Function(_$LoadMoreBlogsImpl) then) =
+      __$$LoadMoreBlogsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreBlogsImplCopyWithImpl<$Res>
+    extends _$BlogEventCopyWithImpl<$Res, _$LoadMoreBlogsImpl>
+    implements _$$LoadMoreBlogsImplCopyWith<$Res> {
+  __$$LoadMoreBlogsImplCopyWithImpl(
+      _$LoadMoreBlogsImpl _value, $Res Function(_$LoadMoreBlogsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreBlogsImpl
+    with DiagnosticableTreeMixin
+    implements _LoadMoreBlogs {
+  const _$LoadMoreBlogsImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BlogEvent.loadMoreBlogs()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'BlogEvent.loadMoreBlogs'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreBlogsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBlogs,
+    required TResult Function() loadMoreBlogs,
+  }) {
+    return loadMoreBlogs();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBlogs,
+    TResult? Function()? loadMoreBlogs,
+  }) {
+    return loadMoreBlogs?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBlogs,
+    TResult Function()? loadMoreBlogs,
+    required TResult orElse(),
+  }) {
+    if (loadMoreBlogs != null) {
+      return loadMoreBlogs();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBlogs value) fetchBlogs,
+    required TResult Function(_LoadMoreBlogs value) loadMoreBlogs,
+  }) {
+    return loadMoreBlogs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBlogs value)? fetchBlogs,
+    TResult? Function(_LoadMoreBlogs value)? loadMoreBlogs,
+  }) {
+    return loadMoreBlogs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBlogs value)? fetchBlogs,
+    TResult Function(_LoadMoreBlogs value)? loadMoreBlogs,
+    required TResult orElse(),
+  }) {
+    if (loadMoreBlogs != null) {
+      return loadMoreBlogs(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreBlogs implements BlogEvent {
+  const factory _LoadMoreBlogs() = _$LoadMoreBlogsImpl;
 }
 
 /// @nodoc

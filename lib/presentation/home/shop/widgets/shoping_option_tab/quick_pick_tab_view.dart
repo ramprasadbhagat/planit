@@ -16,7 +16,6 @@ class QuickPickTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionTitle(
           title: 'Your quick picks',
@@ -41,7 +40,9 @@ class QuickPickTabView extends StatelessWidget {
               return GridView.builder(
                 primary: false,
                 padding: const EdgeInsets.symmetric(horizontal: 2),
-                itemCount: state.quicksPickProducts.length<6? state.quicksPickProducts.length: 6,
+                itemCount: state.quicksPickProducts.length < 6
+                    ? state.quicksPickProducts.length
+                    : 6,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 140,
                   mainAxisExtent: 170,
