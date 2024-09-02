@@ -18,3 +18,6 @@ String capitalizeFirst(String text) {
   }
   return text[0].toUpperCase() + text.substring(1);
 }
+
+bool isMinCharacter({required String input, required int minLength}) =>
+    input.length >= minLength;

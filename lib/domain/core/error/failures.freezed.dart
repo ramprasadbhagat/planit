@@ -22,6 +22,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) invalidInteger,
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int min) subceedLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? invalidInteger,
     TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue, int min)? subceedLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? invalidInteger,
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int min)? subceedLength,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(InvalidInteger<T> value) invalidInteger,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(SubceedLength<T> value) subceedLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(InvalidInteger<T> value)? invalidInteger,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(SubceedLength<T> value)? subceedLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(InvalidInteger<T> value)? invalidInteger,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(SubceedLength<T> value)? subceedLength,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +177,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) invalidInteger,
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int min) subceedLength,
   }) {
     return empty(failedValue);
   }
@@ -181,6 +188,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? invalidInteger,
     TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue, int min)? subceedLength,
   }) {
     return empty?.call(failedValue);
   }
@@ -191,6 +199,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? invalidInteger,
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int min)? subceedLength,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -205,6 +214,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(InvalidInteger<T> value) invalidInteger,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(SubceedLength<T> value) subceedLength,
   }) {
     return empty(this);
   }
@@ -215,6 +225,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(InvalidInteger<T> value)? invalidInteger,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(SubceedLength<T> value)? subceedLength,
   }) {
     return empty?.call(this);
   }
@@ -225,6 +236,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(InvalidInteger<T> value)? invalidInteger,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(SubceedLength<T> value)? subceedLength,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -317,6 +329,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) invalidInteger,
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int min) subceedLength,
   }) {
     return invalidInteger(failedValue);
   }
@@ -327,6 +340,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? invalidInteger,
     TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue, int min)? subceedLength,
   }) {
     return invalidInteger?.call(failedValue);
   }
@@ -337,6 +351,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? invalidInteger,
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int min)? subceedLength,
     required TResult orElse(),
   }) {
     if (invalidInteger != null) {
@@ -351,6 +366,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(InvalidInteger<T> value) invalidInteger,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(SubceedLength<T> value) subceedLength,
   }) {
     return invalidInteger(this);
   }
@@ -361,6 +377,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(InvalidInteger<T> value)? invalidInteger,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(SubceedLength<T> value)? subceedLength,
   }) {
     return invalidInteger?.call(this);
   }
@@ -371,6 +388,7 @@ class _$InvalidIntegerImpl<T> implements InvalidInteger<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(InvalidInteger<T> value)? invalidInteger,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(SubceedLength<T> value)? subceedLength,
     required TResult orElse(),
   }) {
     if (invalidInteger != null) {
@@ -464,6 +482,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue) invalidInteger,
     required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int min) subceedLength,
   }) {
     return invalidEmail(failedValue);
   }
@@ -474,6 +493,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue)? invalidInteger,
     TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue, int min)? subceedLength,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -484,6 +504,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue)? invalidInteger,
     TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int min)? subceedLength,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -498,6 +519,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(InvalidInteger<T> value) invalidInteger,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(SubceedLength<T> value) subceedLength,
   }) {
     return invalidEmail(this);
   }
@@ -508,6 +530,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(InvalidInteger<T> value)? invalidInteger,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(SubceedLength<T> value)? subceedLength,
   }) {
     return invalidEmail?.call(this);
   }
@@ -518,6 +541,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(InvalidInteger<T> value)? invalidInteger,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(SubceedLength<T> value)? subceedLength,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -536,5 +560,168 @@ abstract class InvalidEmail<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   _$$InvalidEmailImplCopyWith<T, _$InvalidEmailImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubceedLengthImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$SubceedLengthImplCopyWith(_$SubceedLengthImpl<T> value,
+          $Res Function(_$SubceedLengthImpl<T>) then) =
+      __$$SubceedLengthImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({T failedValue, int min});
+}
+
+/// @nodoc
+class __$$SubceedLengthImplCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$SubceedLengthImpl<T>>
+    implements _$$SubceedLengthImplCopyWith<T, $Res> {
+  __$$SubceedLengthImplCopyWithImpl(_$SubceedLengthImpl<T> _value,
+      $Res Function(_$SubceedLengthImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? min = null,
+  }) {
+    return _then(_$SubceedLengthImpl<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+      min: null == min
+          ? _value.min
+          : min // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SubceedLengthImpl<T> implements SubceedLength<T> {
+  const _$SubceedLengthImpl({required this.failedValue, required this.min});
+
+  @override
+  final T failedValue;
+  @override
+  final int min;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.subceedLength(failedValue: $failedValue, min: $min)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubceedLengthImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            (identical(other.min, min) || other.min == min));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue), min);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubceedLengthImplCopyWith<T, _$SubceedLengthImpl<T>> get copyWith =>
+      __$$SubceedLengthImplCopyWithImpl<T, _$SubceedLengthImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) invalidInteger,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue, int min) subceedLength,
+  }) {
+    return subceedLength(failedValue, min);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue)? invalidInteger,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue, int min)? subceedLength,
+  }) {
+    return subceedLength?.call(failedValue, min);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? invalidInteger,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue, int min)? subceedLength,
+    required TResult orElse(),
+  }) {
+    if (subceedLength != null) {
+      return subceedLength(failedValue, min);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(InvalidInteger<T> value) invalidInteger,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(SubceedLength<T> value) subceedLength,
+  }) {
+    return subceedLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Empty<T> value)? empty,
+    TResult? Function(InvalidInteger<T> value)? invalidInteger,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(SubceedLength<T> value)? subceedLength,
+  }) {
+    return subceedLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(InvalidInteger<T> value)? invalidInteger,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(SubceedLength<T> value)? subceedLength,
+    required TResult orElse(),
+  }) {
+    if (subceedLength != null) {
+      return subceedLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SubceedLength<T> implements ValueFailure<T> {
+  const factory SubceedLength(
+      {required final T failedValue,
+      required final int min}) = _$SubceedLengthImpl<T>;
+
+  @override
+  T get failedValue;
+  int get min;
+  @override
+  @JsonKey(ignore: true)
+  _$$SubceedLengthImplCopyWith<T, _$SubceedLengthImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

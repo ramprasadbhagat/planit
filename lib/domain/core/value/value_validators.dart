@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:planit/domain/core/error/failures.dart';
+import 'package:planit/domain/core/value/value_transformer.dart';
 
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input) =>
     input.isNotEmpty
@@ -20,4 +21,13 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   return RegExp(emailRegex).hasMatch(input)
       ? right(input)
       : left(ValueFailure.invalidEmail(failedValue: input));
+}
+
+Either<ValueFailure<String>, String> validateMinStringLength(
+  String input,
+  int minLength,
+) {
+  return isMinCharacter(input: input, minLength: minLength)
+      ? right(input)
+      : left(ValueFailure.subceedLength(failedValue: input, min: minLength));
 }
