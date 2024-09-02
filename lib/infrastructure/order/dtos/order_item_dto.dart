@@ -56,8 +56,8 @@ class OrderItemDto with _$OrderItemDto {
 }
 
 dynamic productReadValue(Map json, String key) {
-  if (json[key]['items'] is Map) {
-    return json[key]['items'];
+  if (json[key] is Map) {
+    return json[key];
   }
 }
 
