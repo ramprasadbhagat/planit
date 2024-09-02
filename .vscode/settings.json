@@ -32,8 +32,8 @@
     "**/*.g.dart": true,
     "**/*.gr.dart": true
   },
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
-  "dart.sdkPath": ".fvm/flutter_sdk/bin/dart",
+  "dart.flutterSdkPath": ".fvm/versions/3.19.3",
+  "dart.sdkPath": ".fvm/versions/3.19.3/bin/dart",
     // Remove .fvm files from search
   "search.exclude": {
     "**/.fvm": true
