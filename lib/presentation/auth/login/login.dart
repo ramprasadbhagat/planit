@@ -26,6 +26,12 @@ class _LoginPageState extends State<LoginPage> {
   final _controller = TextEditingController();
   bool _triggerValidator = false;
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   void _onSubmit(BuildContext context) {
     setState(() {
       _triggerValidator = true;

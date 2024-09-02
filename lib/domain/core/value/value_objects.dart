@@ -73,12 +73,6 @@ class MobileNumber extends ValueObject<String> {
     );
   }
 
-  String get validPhoneNumber => getValidPhoneNumber(value.getOrElse(() => ''));
-
-  String get displayTelephoneNumber {
-    return naIfEmpty(validPhoneNumber);
-  }
-
   const MobileNumber._(this.value);
 }
 
@@ -87,10 +81,11 @@ class OTP extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory OTP(String input) {
-    return OTP._(validateStringNotEmpty(input));
+    return OTP._(
+      validateStringNotEmpty(input)
+          .flatMap((input) => validateMinStringLength(input, 10)),
+    );
   }
-
-  String get validOtp => getValidOTP(value.getOrElse(() => ''));
 
   const OTP._(this.value);
 }
