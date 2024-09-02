@@ -7,6 +7,7 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -23,19 +24,16 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _controller = TextEditingController();
-
-  String? _validatePhoneNumber(String value) {
-    return MobileNumber(value).value.fold(
-          (failure) => failure.mapOrNull(
-            empty: (_) => "Phone number can't be empty",
-            subceedLength: (_) => 'Enter a valid phone number',
-          ),
-          (_) => null,
-        );
-  }
+  bool _triggerValidator = false;
 
   void _onSubmit(BuildContext context) {
+    setState(() {
+      _triggerValidator = true;
+    });
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        _triggerValidator = false;
+      });
       FocusScope.of(context).unfocus();
       context.read<LoginFormBloc>().add(
             const LoginFormEvent.initiateLogin(),
@@ -68,7 +66,9 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: AppColors.transparent,
           title: Text(
             'Sign In',
             style: textTheme.labelLarge,
@@ -128,21 +128,25 @@ class _LoginPageState extends State<LoginPage> {
                                 FilteringTextInputFormatter.digitsOnly,
                                 LengthLimitingTextInputFormatter(10),
                               ],
-                              validator: (value) =>
-                                  MobileNumber(value ?? '').value.fold(
-                                        (failure) => failure.mapOrNull(
-                                          empty: (_) =>
-                                              "Phone number can't be empty",
-                                          subceedLength: (_) =>
-                                              'Enter a valid phone number',
-                                        ),
-                                        (_) => null,
+                              validator: (value) {
+                                return MobileNumber(value ?? '').value.fold(
+                                      (failure) => failure.mapOrNull(
+                                        empty: (_) =>
+                                            "Phone number can't be empty",
+                                        subceedLength: (_) =>
+                                            'Enter a valid phone number',
                                       ),
-                              onChanged: (value) => context
-                                  .read<LoginFormBloc>()
-                                  .add(
-                                    LoginFormEvent.mobileNumberChanged(value),
-                                  ),
+                                      (_) => null,
+                                    );
+                              },
+                              onChanged: (value) {
+                                if (_triggerValidator) {
+                                  _formKey.currentState?.validate();
+                                }
+                                context.read<LoginFormBloc>().add(
+                                      LoginFormEvent.mobileNumberChanged(value),
+                                    );
+                              },
                               onFieldSubmitted: (_) => _onSubmit(context),
                               decoration: InputDecoration(
                                 filled: true,
@@ -185,12 +189,22 @@ class _LoginPageState extends State<LoginPage> {
                             width: MediaQuery.sizeOf(context).width * 0.8,
                             child: BlocConsumer<LoginFormBloc, LoginFormState>(
                               listener: (context, state) {
-                                if (state.otp != OTP('')) {
-                                  context.router.navigate(const LoginOtp());
-                                }
+                                state.authFailureOrSuccessOption.fold(() {},
+                                    (either) {
+                                  either.fold((l) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(l.failureMessage),
+                                      ),
+                                    );
+                                  }, (r) {
+                                    context.router.navigate(const LoginOtp());
+                                  });
+                                });
                               },
                               listenWhen: (previous, current) =>
-                                  previous.otp != current.otp,
+                                  previous.authFailureOrSuccessOption !=
+                                  current.authFailureOrSuccessOption,
                               builder: (context, state) {
                                 return ElevatedButton(
                                   onPressed: () => _onSubmit(context),
