@@ -5,8 +5,10 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:planit/presentation/core/loading_shimmer/loading_shimmer.dart';
 
 @RoutePage()
 class LoginOtp extends StatefulWidget {
@@ -18,6 +20,7 @@ class LoginOtp extends StatefulWidget {
 
 class _LoginOtpState extends State<LoginOtp> {
   final _formKey = GlobalKey<FormState>();
+  bool _triggerValidator = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +35,12 @@ class _LoginOtpState extends State<LoginOtp> {
           'Otp Verification',
           style: textTheme.labelMedium,
         ),
-        leadingWidth: 20,
+        leadingWidth: 25,
         centerTitle: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new_outlined,
-            color: AppColors.lightGrey,
+            color: AppColors.darkGray,
           ),
           onPressed: () => context.router.maybePop(),
         ),
@@ -65,7 +68,6 @@ class _LoginOtpState extends State<LoginOtp> {
                 const SizedBox(
                   height: 15,
                 ),
-
                 PinCodeTextField(
                   appContext: context,
                   keyboardType: TextInputType.number,
@@ -86,16 +88,25 @@ class _LoginOtpState extends State<LoginOtp> {
                     width: 20,
                   ),
                   mainAxisAlignment: MainAxisAlignment.center,
-                  validator: (v) {
-                    if (v!.length < 4) {
-                      return 'Please enter valid otp';
-                    } else {
-                      return null;
+                  validator: (value) {
+                    if (_triggerValidator) {
+                      return OTP(value ?? '').value.fold(
+                            (failure) => failure.mapOrNull(
+                              empty: (_) => 'Please enter otp',
+                              subceedLength: (_) => 'Please enter valid otp',
+                            ),
+                            (_) => null,
+                          );
                     }
+                    return null;
                   },
                   onCompleted: (v) {
                     loginFormBloc.add(LoginFormEvent.otpChanged(v));
+                    setState(() {
+                      _triggerValidator = false;
+                    });
                   },
+
                   // onTap: () {
                   //   print("Pressed");
                   // },
@@ -106,34 +117,29 @@ class _LoginOtpState extends State<LoginOtp> {
                   errorTextMargin:
                       const EdgeInsets.symmetric(horizontal: 120.0),
                 ),
-
-                // OtpTextField(
-                //   numberOfFields: 4,
-                //   borderColor: const Color(0xFF512DA8),
-                //   showFieldAsBox: true,
-                //   onCodeChanged: (String code) {
-                //     print(code);
-                //   },
-
-                //   onSubmit: (String verificationCode) {
-                //     verificationCode.length != 4 ? print('error') : print('okay');
-                //     // loginFormBloc
-                //     //     .add(LoginFormEvent.otpChanged(verificationCode));
-                //   }, // end onSubmit
-                // ),
                 const SizedBox(
                   height: 15,
                 ),
-                TextButton(
-                  onPressed: () {
-                    loginFormBloc.add(const LoginFormEvent.initiateLogin());
-                    Navigator.pop(context);
+                BlocBuilder<LoginFormBloc, LoginFormState>(
+                  buildWhen: (pre, cur) => pre.isSubmitting != cur.isSubmitting,
+                  builder: (context, state) {
+                    return LoadingShimmer.withChild(
+                      enabled: state.isSubmitting,
+                      child: TextButton(
+                        onPressed: state.isSubmitting
+                            ? null
+                            : () {
+                                loginFormBloc
+                                    .add(const LoginFormEvent.initiateLogin());
+                              },
+                        child: Text(
+                          'Resend OTP',
+                          style: textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    );
                   },
-                  child: Text(
-                    'Resend OTP',
-                    style: textTheme.bodyMedium
-                        ?.copyWith(fontWeight: FontWeight.w500),
-                  ),
                 ),
                 const Spacer(),
                 Container(
@@ -161,7 +167,13 @@ class _LoginOtpState extends State<LoginOtp> {
                         current.authFailureOrSuccessOption,
                     child: ElevatedButton(
                       onPressed: () {
+                        setState(() {
+                          _triggerValidator = true;
+                        });
                         if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            _triggerValidator = false;
+                          });
                           loginFormBloc.add(const LoginFormEvent.verifyOTP());
                         }
                       },
@@ -173,9 +185,7 @@ class _LoginOtpState extends State<LoginOtp> {
                         ),
                       ),
                       child: state.isSubmitting
-                          ? const CircularProgressIndicator(
-                              color: Colors.white,
-                            )
+                          ? LoadingShimmer.circular()
                           : const Text('Submit'),
                     ),
                   ),
