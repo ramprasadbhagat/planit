@@ -97,8 +97,6 @@ class OtpBloc extends Bloc<OtpEvent, OtpState> {
             emit(
               state.copyWith(
                 isSubmitting: false,
-                mobileNumber: MobileNumber(''),
-                otp: OTP(''),
                 auth: authData,
                 authFailureOrSuccessOption: optionOf(failureOrSuccess),
               ),
