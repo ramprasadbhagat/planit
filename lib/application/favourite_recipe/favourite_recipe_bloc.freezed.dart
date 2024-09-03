@@ -21,6 +21,7 @@ mixin _$FavouriteRecipeEvent {
     required TResult Function() fetch,
     required TResult Function(Recipe recipe) addToFavourite,
     required TResult Function(Recipe recipe) removeFromFavourite,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$FavouriteRecipeEvent {
     TResult? Function()? fetch,
     TResult? Function(Recipe recipe)? addToFavourite,
     TResult? Function(Recipe recipe)? removeFromFavourite,
+    TResult? Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$FavouriteRecipeEvent {
     TResult Function()? fetch,
     TResult Function(Recipe recipe)? addToFavourite,
     TResult Function(Recipe recipe)? removeFromFavourite,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$FavouriteRecipeEvent {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToFavourite value) addToFavourite,
     required TResult Function(_RemoveFromFavourite value) removeFromFavourite,
+    required TResult Function(_Reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$FavouriteRecipeEvent {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToFavourite value)? addToFavourite,
     TResult? Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult? Function(_Reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$FavouriteRecipeEvent {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToFavourite value)? addToFavourite,
     TResult Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +128,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() fetch,
     required TResult Function(Recipe recipe) addToFavourite,
     required TResult Function(Recipe recipe) removeFromFavourite,
+    required TResult Function() reset,
   }) {
     return fetch();
   }
@@ -132,6 +139,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? fetch,
     TResult? Function(Recipe recipe)? addToFavourite,
     TResult? Function(Recipe recipe)? removeFromFavourite,
+    TResult? Function()? reset,
   }) {
     return fetch?.call();
   }
@@ -142,6 +150,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? fetch,
     TResult Function(Recipe recipe)? addToFavourite,
     TResult Function(Recipe recipe)? removeFromFavourite,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -156,6 +165,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToFavourite value) addToFavourite,
     required TResult Function(_RemoveFromFavourite value) removeFromFavourite,
+    required TResult Function(_Reset value) reset,
   }) {
     return fetch(this);
   }
@@ -166,6 +176,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToFavourite value)? addToFavourite,
     TResult? Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult? Function(_Reset value)? reset,
   }) {
     return fetch?.call(this);
   }
@@ -176,6 +187,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToFavourite value)? addToFavourite,
     TResult Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -267,6 +279,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     required TResult Function() fetch,
     required TResult Function(Recipe recipe) addToFavourite,
     required TResult Function(Recipe recipe) removeFromFavourite,
+    required TResult Function() reset,
   }) {
     return addToFavourite(recipe);
   }
@@ -277,6 +290,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     TResult? Function()? fetch,
     TResult? Function(Recipe recipe)? addToFavourite,
     TResult? Function(Recipe recipe)? removeFromFavourite,
+    TResult? Function()? reset,
   }) {
     return addToFavourite?.call(recipe);
   }
@@ -287,6 +301,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     TResult Function()? fetch,
     TResult Function(Recipe recipe)? addToFavourite,
     TResult Function(Recipe recipe)? removeFromFavourite,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (addToFavourite != null) {
@@ -301,6 +316,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToFavourite value) addToFavourite,
     required TResult Function(_RemoveFromFavourite value) removeFromFavourite,
+    required TResult Function(_Reset value) reset,
   }) {
     return addToFavourite(this);
   }
@@ -311,6 +327,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToFavourite value)? addToFavourite,
     TResult? Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult? Function(_Reset value)? reset,
   }) {
     return addToFavourite?.call(this);
   }
@@ -321,6 +338,7 @@ class _$AddToFavouriteImpl implements _AddToFavourite {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToFavourite value)? addToFavourite,
     TResult Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (addToFavourite != null) {
@@ -418,6 +436,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     required TResult Function() fetch,
     required TResult Function(Recipe recipe) addToFavourite,
     required TResult Function(Recipe recipe) removeFromFavourite,
+    required TResult Function() reset,
   }) {
     return removeFromFavourite(recipe);
   }
@@ -428,6 +447,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     TResult? Function()? fetch,
     TResult? Function(Recipe recipe)? addToFavourite,
     TResult? Function(Recipe recipe)? removeFromFavourite,
+    TResult? Function()? reset,
   }) {
     return removeFromFavourite?.call(recipe);
   }
@@ -438,6 +458,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     TResult Function()? fetch,
     TResult Function(Recipe recipe)? addToFavourite,
     TResult Function(Recipe recipe)? removeFromFavourite,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (removeFromFavourite != null) {
@@ -452,6 +473,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     required TResult Function(_Fetch value) fetch,
     required TResult Function(_AddToFavourite value) addToFavourite,
     required TResult Function(_RemoveFromFavourite value) removeFromFavourite,
+    required TResult Function(_Reset value) reset,
   }) {
     return removeFromFavourite(this);
   }
@@ -462,6 +484,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     TResult? Function(_Fetch value)? fetch,
     TResult? Function(_AddToFavourite value)? addToFavourite,
     TResult? Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult? Function(_Reset value)? reset,
   }) {
     return removeFromFavourite?.call(this);
   }
@@ -472,6 +495,7 @@ class _$RemoveFromFavouriteImpl implements _RemoveFromFavourite {
     TResult Function(_Fetch value)? fetch,
     TResult Function(_AddToFavourite value)? addToFavourite,
     TResult Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult Function(_Reset value)? reset,
     required TResult orElse(),
   }) {
     if (removeFromFavourite != null) {
@@ -489,6 +513,120 @@ abstract class _RemoveFromFavourite implements FavouriteRecipeEvent {
   @JsonKey(ignore: true)
   _$$RemoveFromFavouriteImplCopyWith<_$RemoveFromFavouriteImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$FavouriteRecipeEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'FavouriteRecipeEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(Recipe recipe) addToFavourite,
+    required TResult Function(Recipe recipe) removeFromFavourite,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(Recipe recipe)? addToFavourite,
+    TResult? Function(Recipe recipe)? removeFromFavourite,
+    TResult? Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(Recipe recipe)? addToFavourite,
+    TResult Function(Recipe recipe)? removeFromFavourite,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddToFavourite value) addToFavourite,
+    required TResult Function(_RemoveFromFavourite value) removeFromFavourite,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddToFavourite value)? addToFavourite,
+    TResult? Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult? Function(_Reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddToFavourite value)? addToFavourite,
+    TResult Function(_RemoveFromFavourite value)? removeFromFavourite,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements FavouriteRecipeEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc

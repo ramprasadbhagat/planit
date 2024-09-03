@@ -82,33 +82,36 @@ class TrendingRecipeCard extends StatelessWidget {
         children: [
           if (recipe.recipeImages.isNotEmpty &&
               recipe.recipeImages.first.isValid())
-            CachedNetworkImage(
-              imageUrl: recipe.recipeImages.first.getValue(),
-              height: MediaQuery.sizeOf(context).height * 0.25,
-              width: MediaQuery.sizeOf(context).width * 0.7,
-              errorWidget: (context, url, error) {
-                return Image.asset(
-                  PngImage.placeholder,
-                  height: MediaQuery.sizeOf(context).height * 0.25,
-                  width: MediaQuery.sizeOf(context).width * 0.7,
-                );
-              },
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: CachedNetworkImage(
+                imageUrl: recipe.recipeImages.first.getValue(),
+                height: 196,
+                width: 280,
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) {
+                  return Image.asset(
+                    PngImage.placeholder,
+                    height: 196,
+                    width: 280,
+                  );
+                },
+              ),
             )
           else
             Image.asset(
               PngImage.placeholder,
-              height: MediaQuery.sizeOf(context).height * 0.25,
-              width: MediaQuery.sizeOf(context).width * 0.7,
+              height: 196,
+              width: 280,
             ),
           Positioned(
-            bottom: 0.1,
-            left: MediaQuery.sizeOf(context).width * 0.01,
+            bottom: 0,
             child: Card(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                width: MediaQuery.sizeOf(context).width * 0.66,
-                height: MediaQuery.sizeOf(context).height * 0.13,
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                width: 260,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -23,6 +23,9 @@ class FavouriteRecipeBloc
     Emitter<FavouriteRecipeState> emit,
   ) async {
     await event.map(
+      reset: (_) {
+        emit(FavouriteRecipeState.initial());
+      },
       fetch: (_) async {
         emit(
           state.copyWith(

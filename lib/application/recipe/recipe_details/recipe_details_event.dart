@@ -9,4 +9,6 @@ class RecipeDetailsEvent with _$RecipeDetailsEvent {
   const factory RecipeDetailsEvent.addReviewClicked({
     required String reviewerName,
   }) = _AddReviewClicked;
+
+  const factory RecipeDetailsEvent.toggleViewAllReview() = _ToggleViewAllReview;
 }

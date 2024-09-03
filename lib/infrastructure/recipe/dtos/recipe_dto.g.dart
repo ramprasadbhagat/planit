@@ -14,7 +14,7 @@ _$RecipeDtoImpl _$$RecipeDtoImplFromJson(Map<String, dynamic> json) =>
       course: json['course'] as String? ?? '',
       servingSize: json['serving_size'] as String? ?? '',
       nutritionalTable:
-          (parseNutritionalTable(json, 'nutritional_table') as List<dynamic>?)
+          (parseImagesList(json, 'nutritional_table') as List<dynamic>?)
                   ?.map((e) => e as String)
                   .toList() ??
               [],
@@ -36,7 +36,7 @@ _$RecipeDtoImpl _$$RecipeDtoImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           [],
       isActive: json['is_active'] as bool? ?? false,
-      recipeImages: (json['recipe_images'] as List<dynamic>?)
+      recipeImages: (parseImagesList(json, 'recipeImages') as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           [],
@@ -60,7 +60,7 @@ Map<String, dynamic> _$$RecipeDtoImplToJson(_$RecipeDtoImpl instance) =>
       'equipment': instance.equipment,
       'step': instance.step,
       'is_active': instance.isActive,
-      'recipe_images': instance.recipeImages,
+      'recipeImages': instance.recipeImages,
       'time_required': instance.timeRequired,
     };
 

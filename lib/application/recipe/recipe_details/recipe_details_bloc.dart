@@ -28,7 +28,7 @@ class RecipeDetailsBloc extends Bloc<RecipeDetailsEvent, RecipeDetailsState> {
         emit(
           RecipeDetailsState.initial().copyWith(
             isFetching: true,
-            recipeDetails: state.recipeDetails.copyWith(recipe: e.recipe),
+            recipeDetails: RecipeDetails.empty().copyWith(recipe: e.recipe),
           ),
         );
 
@@ -89,6 +89,13 @@ class RecipeDetailsBloc extends Bloc<RecipeDetailsEvent, RecipeDetailsState> {
           ),
         );
         add(_Fetch(state.recipeDetails.recipe));
+      },
+      toggleViewAllReview: (_ToggleViewAllReview value) {
+        emit(
+          state.copyWith(
+            viewAllReviews: !state.viewAllReviews,
+          ),
+        );
       },
     );
   }

@@ -9,6 +9,7 @@ class RecipeDetailsState with _$RecipeDetailsState {
     required double rating,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool addingReview,
+    required bool viewAllReviews,
   }) = _RecipeDetailsState;
 
   factory RecipeDetailsState.initial() => RecipeDetailsState(
@@ -18,5 +19,6 @@ class RecipeDetailsState with _$RecipeDetailsState {
         commentMessage: '',
         rating: 0,
         addingReview: false,
+        viewAllReviews: false,
       );
 }

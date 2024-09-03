@@ -22,6 +22,7 @@ mixin _$RecipeDetailsEvent {
     required TResult Function(double rating) ratingChange,
     required TResult Function(String message) commentChange,
     required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$RecipeDetailsEvent {
     TResult? Function(double rating)? ratingChange,
     TResult? Function(String message)? commentChange,
     TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$RecipeDetailsEvent {
     TResult Function(double rating)? ratingChange,
     TResult Function(String message)? commentChange,
     TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$RecipeDetailsEvent {
     required TResult Function(_RatingChange value) ratingChange,
     required TResult Function(_CommentChange value) commentChange,
     required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$RecipeDetailsEvent {
     TResult? Function(_RatingChange value)? ratingChange,
     TResult? Function(_CommentChange value)? commentChange,
     TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$RecipeDetailsEvent {
     TResult Function(_RatingChange value)? ratingChange,
     TResult Function(_CommentChange value)? commentChange,
     TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +178,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     required TResult Function(double rating) ratingChange,
     required TResult Function(String message) commentChange,
     required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
   }) {
     return fetch(recipe);
   }
@@ -183,6 +190,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     TResult? Function(double rating)? ratingChange,
     TResult? Function(String message)? commentChange,
     TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
   }) {
     return fetch?.call(recipe);
   }
@@ -194,6 +202,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     TResult Function(double rating)? ratingChange,
     TResult Function(String message)? commentChange,
     TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -209,6 +218,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     required TResult Function(_RatingChange value) ratingChange,
     required TResult Function(_CommentChange value) commentChange,
     required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
   }) {
     return fetch(this);
   }
@@ -220,6 +230,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     TResult? Function(_RatingChange value)? ratingChange,
     TResult? Function(_CommentChange value)? commentChange,
     TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
   }) {
     return fetch?.call(this);
   }
@@ -231,6 +242,7 @@ class _$FetchImpl with DiagnosticableTreeMixin implements _Fetch {
     TResult Function(_RatingChange value)? ratingChange,
     TResult Function(_CommentChange value)? commentChange,
     TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -325,6 +337,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     required TResult Function(double rating) ratingChange,
     required TResult Function(String message) commentChange,
     required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
   }) {
     return ratingChange(rating);
   }
@@ -336,6 +349,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     TResult? Function(double rating)? ratingChange,
     TResult? Function(String message)? commentChange,
     TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
   }) {
     return ratingChange?.call(rating);
   }
@@ -347,6 +361,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     TResult Function(double rating)? ratingChange,
     TResult Function(String message)? commentChange,
     TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (ratingChange != null) {
@@ -362,6 +377,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     required TResult Function(_RatingChange value) ratingChange,
     required TResult Function(_CommentChange value) commentChange,
     required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
   }) {
     return ratingChange(this);
   }
@@ -373,6 +389,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     TResult? Function(_RatingChange value)? ratingChange,
     TResult? Function(_CommentChange value)? commentChange,
     TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
   }) {
     return ratingChange?.call(this);
   }
@@ -384,6 +401,7 @@ class _$RatingChangeImpl with DiagnosticableTreeMixin implements _RatingChange {
     TResult Function(_RatingChange value)? ratingChange,
     TResult Function(_CommentChange value)? commentChange,
     TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (ratingChange != null) {
@@ -480,6 +498,7 @@ class _$CommentChangeImpl
     required TResult Function(double rating) ratingChange,
     required TResult Function(String message) commentChange,
     required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
   }) {
     return commentChange(message);
   }
@@ -491,6 +510,7 @@ class _$CommentChangeImpl
     TResult? Function(double rating)? ratingChange,
     TResult? Function(String message)? commentChange,
     TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
   }) {
     return commentChange?.call(message);
   }
@@ -502,6 +522,7 @@ class _$CommentChangeImpl
     TResult Function(double rating)? ratingChange,
     TResult Function(String message)? commentChange,
     TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (commentChange != null) {
@@ -517,6 +538,7 @@ class _$CommentChangeImpl
     required TResult Function(_RatingChange value) ratingChange,
     required TResult Function(_CommentChange value) commentChange,
     required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
   }) {
     return commentChange(this);
   }
@@ -528,6 +550,7 @@ class _$CommentChangeImpl
     TResult? Function(_RatingChange value)? ratingChange,
     TResult? Function(_CommentChange value)? commentChange,
     TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
   }) {
     return commentChange?.call(this);
   }
@@ -539,6 +562,7 @@ class _$CommentChangeImpl
     TResult Function(_RatingChange value)? ratingChange,
     TResult Function(_CommentChange value)? commentChange,
     TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (commentChange != null) {
@@ -637,6 +661,7 @@ class _$AddReviewClickedImpl
     required TResult Function(double rating) ratingChange,
     required TResult Function(String message) commentChange,
     required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
   }) {
     return addReviewClicked(reviewerName);
   }
@@ -648,6 +673,7 @@ class _$AddReviewClickedImpl
     TResult? Function(double rating)? ratingChange,
     TResult? Function(String message)? commentChange,
     TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
   }) {
     return addReviewClicked?.call(reviewerName);
   }
@@ -659,6 +685,7 @@ class _$AddReviewClickedImpl
     TResult Function(double rating)? ratingChange,
     TResult Function(String message)? commentChange,
     TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (addReviewClicked != null) {
@@ -674,6 +701,7 @@ class _$AddReviewClickedImpl
     required TResult Function(_RatingChange value) ratingChange,
     required TResult Function(_CommentChange value) commentChange,
     required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
   }) {
     return addReviewClicked(this);
   }
@@ -685,6 +713,7 @@ class _$AddReviewClickedImpl
     TResult? Function(_RatingChange value)? ratingChange,
     TResult? Function(_CommentChange value)? commentChange,
     TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
   }) {
     return addReviewClicked?.call(this);
   }
@@ -696,6 +725,7 @@ class _$AddReviewClickedImpl
     TResult Function(_RatingChange value)? ratingChange,
     TResult Function(_CommentChange value)? commentChange,
     TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
     required TResult orElse(),
   }) {
     if (addReviewClicked != null) {
@@ -716,6 +746,136 @@ abstract class _AddReviewClicked implements RecipeDetailsEvent {
 }
 
 /// @nodoc
+abstract class _$$ToggleViewAllReviewImplCopyWith<$Res> {
+  factory _$$ToggleViewAllReviewImplCopyWith(_$ToggleViewAllReviewImpl value,
+          $Res Function(_$ToggleViewAllReviewImpl) then) =
+      __$$ToggleViewAllReviewImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ToggleViewAllReviewImplCopyWithImpl<$Res>
+    extends _$RecipeDetailsEventCopyWithImpl<$Res, _$ToggleViewAllReviewImpl>
+    implements _$$ToggleViewAllReviewImplCopyWith<$Res> {
+  __$$ToggleViewAllReviewImplCopyWithImpl(_$ToggleViewAllReviewImpl _value,
+      $Res Function(_$ToggleViewAllReviewImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ToggleViewAllReviewImpl
+    with DiagnosticableTreeMixin
+    implements _ToggleViewAllReview {
+  const _$ToggleViewAllReviewImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeDetailsEvent.toggleViewAllReview()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'RecipeDetailsEvent.toggleViewAllReview'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleViewAllReviewImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Recipe recipe) fetch,
+    required TResult Function(double rating) ratingChange,
+    required TResult Function(String message) commentChange,
+    required TResult Function(String reviewerName) addReviewClicked,
+    required TResult Function() toggleViewAllReview,
+  }) {
+    return toggleViewAllReview();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Recipe recipe)? fetch,
+    TResult? Function(double rating)? ratingChange,
+    TResult? Function(String message)? commentChange,
+    TResult? Function(String reviewerName)? addReviewClicked,
+    TResult? Function()? toggleViewAllReview,
+  }) {
+    return toggleViewAllReview?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Recipe recipe)? fetch,
+    TResult Function(double rating)? ratingChange,
+    TResult Function(String message)? commentChange,
+    TResult Function(String reviewerName)? addReviewClicked,
+    TResult Function()? toggleViewAllReview,
+    required TResult orElse(),
+  }) {
+    if (toggleViewAllReview != null) {
+      return toggleViewAllReview();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_RatingChange value) ratingChange,
+    required TResult Function(_CommentChange value) commentChange,
+    required TResult Function(_AddReviewClicked value) addReviewClicked,
+    required TResult Function(_ToggleViewAllReview value) toggleViewAllReview,
+  }) {
+    return toggleViewAllReview(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_RatingChange value)? ratingChange,
+    TResult? Function(_CommentChange value)? commentChange,
+    TResult? Function(_AddReviewClicked value)? addReviewClicked,
+    TResult? Function(_ToggleViewAllReview value)? toggleViewAllReview,
+  }) {
+    return toggleViewAllReview?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_RatingChange value)? ratingChange,
+    TResult Function(_CommentChange value)? commentChange,
+    TResult Function(_AddReviewClicked value)? addReviewClicked,
+    TResult Function(_ToggleViewAllReview value)? toggleViewAllReview,
+    required TResult orElse(),
+  }) {
+    if (toggleViewAllReview != null) {
+      return toggleViewAllReview(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleViewAllReview implements RecipeDetailsEvent {
+  const factory _ToggleViewAllReview() = _$ToggleViewAllReviewImpl;
+}
+
+/// @nodoc
 mixin _$RecipeDetailsState {
   RecipeDetails get recipeDetails => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -724,6 +884,7 @@ mixin _$RecipeDetailsState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get addingReview => throw _privateConstructorUsedError;
+  bool get viewAllReviews => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeDetailsStateCopyWith<RecipeDetailsState> get copyWith =>
@@ -742,7 +903,8 @@ abstract class $RecipeDetailsStateCopyWith<$Res> {
       String commentMessage,
       double rating,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool addingReview});
+      bool addingReview,
+      bool viewAllReviews});
 
   $RecipeDetailsCopyWith<$Res> get recipeDetails;
 }
@@ -766,6 +928,7 @@ class _$RecipeDetailsStateCopyWithImpl<$Res, $Val extends RecipeDetailsState>
     Object? rating = null,
     Object? apiFailureOrSuccessOption = null,
     Object? addingReview = null,
+    Object? viewAllReviews = null,
   }) {
     return _then(_value.copyWith(
       recipeDetails: null == recipeDetails
@@ -791,6 +954,10 @@ class _$RecipeDetailsStateCopyWithImpl<$Res, $Val extends RecipeDetailsState>
       addingReview: null == addingReview
           ? _value.addingReview
           : addingReview // ignore: cast_nullable_to_non_nullable
+              as bool,
+      viewAllReviews: null == viewAllReviews
+          ? _value.viewAllReviews
+          : viewAllReviews // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -818,7 +985,8 @@ abstract class _$$RecipeDetailsStateImplCopyWith<$Res>
       String commentMessage,
       double rating,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
-      bool addingReview});
+      bool addingReview,
+      bool viewAllReviews});
 
   @override
   $RecipeDetailsCopyWith<$Res> get recipeDetails;
@@ -841,6 +1009,7 @@ class __$$RecipeDetailsStateImplCopyWithImpl<$Res>
     Object? rating = null,
     Object? apiFailureOrSuccessOption = null,
     Object? addingReview = null,
+    Object? viewAllReviews = null,
   }) {
     return _then(_$RecipeDetailsStateImpl(
       recipeDetails: null == recipeDetails
@@ -867,6 +1036,10 @@ class __$$RecipeDetailsStateImplCopyWithImpl<$Res>
           ? _value.addingReview
           : addingReview // ignore: cast_nullable_to_non_nullable
               as bool,
+      viewAllReviews: null == viewAllReviews
+          ? _value.viewAllReviews
+          : viewAllReviews // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -882,7 +1055,8 @@ class _$RecipeDetailsStateImpl
       required this.commentMessage,
       required this.rating,
       required this.apiFailureOrSuccessOption,
-      required this.addingReview});
+      required this.addingReview,
+      required this.viewAllReviews});
 
   @override
   final RecipeDetails recipeDetails;
@@ -896,10 +1070,12 @@ class _$RecipeDetailsStateImpl
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool addingReview;
+  @override
+  final bool viewAllReviews;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecipeDetailsState(recipeDetails: $recipeDetails, isFetching: $isFetching, commentMessage: $commentMessage, rating: $rating, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, addingReview: $addingReview)';
+    return 'RecipeDetailsState(recipeDetails: $recipeDetails, isFetching: $isFetching, commentMessage: $commentMessage, rating: $rating, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, addingReview: $addingReview, viewAllReviews: $viewAllReviews)';
   }
 
   @override
@@ -913,7 +1089,8 @@ class _$RecipeDetailsStateImpl
       ..add(DiagnosticsProperty('rating', rating))
       ..add(DiagnosticsProperty(
           'apiFailureOrSuccessOption', apiFailureOrSuccessOption))
-      ..add(DiagnosticsProperty('addingReview', addingReview));
+      ..add(DiagnosticsProperty('addingReview', addingReview))
+      ..add(DiagnosticsProperty('viewAllReviews', viewAllReviews));
   }
 
   @override
@@ -932,12 +1109,21 @@ class _$RecipeDetailsStateImpl
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.addingReview, addingReview) ||
-                other.addingReview == addingReview));
+                other.addingReview == addingReview) &&
+            (identical(other.viewAllReviews, viewAllReviews) ||
+                other.viewAllReviews == viewAllReviews));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, recipeDetails, isFetching,
-      commentMessage, rating, apiFailureOrSuccessOption, addingReview);
+  int get hashCode => Object.hash(
+      runtimeType,
+      recipeDetails,
+      isFetching,
+      commentMessage,
+      rating,
+      apiFailureOrSuccessOption,
+      addingReview,
+      viewAllReviews);
 
   @JsonKey(ignore: true)
   @override
@@ -955,7 +1141,8 @@ abstract class _RecipeDetailsState implements RecipeDetailsState {
       required final double rating,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
-      required final bool addingReview}) = _$RecipeDetailsStateImpl;
+      required final bool addingReview,
+      required final bool viewAllReviews}) = _$RecipeDetailsStateImpl;
 
   @override
   RecipeDetails get recipeDetails;
@@ -969,6 +1156,8 @@ abstract class _RecipeDetailsState implements RecipeDetailsState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get addingReview;
+  @override
+  bool get viewAllReviews;
   @override
   @JsonKey(ignore: true)
   _$$RecipeDetailsStateImplCopyWith<_$RecipeDetailsStateImpl> get copyWith =>

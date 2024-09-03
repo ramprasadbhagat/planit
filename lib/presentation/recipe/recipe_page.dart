@@ -12,6 +12,7 @@ class RecipesPage extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
+        clipBehavior: Clip.none,
         slivers: [
           TrendingRecipes(),
           HotRecipes(),
