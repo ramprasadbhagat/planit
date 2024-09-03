@@ -315,6 +315,7 @@ abstract class _FetchRecipes implements SearchRecipesEvent {
 mixin _$SearchRecipesState {
   List<Recipe> get recipes => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  String get searchString => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -332,6 +333,7 @@ abstract class $SearchRecipesStateCopyWith<$Res> {
   $Res call(
       {List<Recipe> recipes,
       bool isFetching,
+      String searchString,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
 }
 
@@ -350,6 +352,7 @@ class _$SearchRecipesStateCopyWithImpl<$Res, $Val extends SearchRecipesState>
   $Res call({
     Object? recipes = null,
     Object? isFetching = null,
+    Object? searchString = null,
     Object? apiFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -361,6 +364,10 @@ class _$SearchRecipesStateCopyWithImpl<$Res, $Val extends SearchRecipesState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchString: null == searchString
+          ? _value.searchString
+          : searchString // ignore: cast_nullable_to_non_nullable
+              as String,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -380,6 +387,7 @@ abstract class _$$SearchRecipesStateImplCopyWith<$Res>
   $Res call(
       {List<Recipe> recipes,
       bool isFetching,
+      String searchString,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
 }
 
@@ -396,6 +404,7 @@ class __$$SearchRecipesStateImplCopyWithImpl<$Res>
   $Res call({
     Object? recipes = null,
     Object? isFetching = null,
+    Object? searchString = null,
     Object? apiFailureOrSuccessOption = null,
   }) {
     return _then(_$SearchRecipesStateImpl(
@@ -407,6 +416,10 @@ class __$$SearchRecipesStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchString: null == searchString
+          ? _value.searchString
+          : searchString // ignore: cast_nullable_to_non_nullable
+              as String,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -421,6 +434,7 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
   const _$SearchRecipesStateImpl(
       {required final List<Recipe> recipes,
       required this.isFetching,
+      required this.searchString,
       required this.apiFailureOrSuccessOption})
       : _recipes = recipes,
         super._();
@@ -436,11 +450,13 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
   @override
   final bool isFetching;
   @override
+  final String searchString;
+  @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'SearchRecipesState(recipes: $recipes, isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'SearchRecipesState(recipes: $recipes, isFetching: $isFetching, searchString: $searchString, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
   }
 
   @override
@@ -451,6 +467,8 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
             const DeepCollectionEquality().equals(other._recipes, _recipes) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            (identical(other.searchString, searchString) ||
+                other.searchString == searchString) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
@@ -461,6 +479,7 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
       runtimeType,
       const DeepCollectionEquality().hash(_recipes),
       isFetching,
+      searchString,
       apiFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -475,6 +494,7 @@ abstract class _SearchRecipesState extends SearchRecipesState {
   const factory _SearchRecipesState(
       {required final List<Recipe> recipes,
       required final bool isFetching,
+      required final String searchString,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption}) = _$SearchRecipesStateImpl;
   const _SearchRecipesState._() : super._();
@@ -483,6 +503,8 @@ abstract class _SearchRecipesState extends SearchRecipesState {
   List<Recipe> get recipes;
   @override
   bool get isFetching;
+  @override
+  String get searchString;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override

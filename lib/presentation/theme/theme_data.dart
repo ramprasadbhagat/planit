@@ -240,9 +240,9 @@ TextTheme _textTheme() {
 
 TextSelectionThemeData _textSelectionTheme() {
   return const TextSelectionThemeData(
-    cursorColor: AppColors.primary,
+    cursorColor: AppColors.black,
     selectionColor: AppColors.gradient,
-    selectionHandleColor: AppColors.primary,
+    selectionHandleColor: AppColors.black,
   );
 }
 
@@ -261,11 +261,11 @@ InputDecorationTheme _inputDecorationTheme() {
       fontFamily: 'UberMove',
     ),
     floatingLabelStyle: const TextStyle(
-      color: AppColors.primary,
+      color: AppColors.black,
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: const BorderSide(
-        color: AppColors.primary,
+        color: AppColors.black,
         width: 2,
       ),
       borderRadius: BorderRadius.circular(8.0),
@@ -302,10 +302,10 @@ InputDecorationTheme _inputDecorationTheme() {
       ),
       borderRadius: BorderRadius.circular(8.0),
     ),
-    iconColor: AppColors.primary,
-    focusColor: AppColors.primary,
-    prefixIconColor: AppColors.primary,
-    suffixIconColor: AppColors.primary,
+    iconColor: AppColors.black,
+    focusColor: AppColors.black,
+    prefixIconColor: AppColors.black,
+    suffixIconColor: AppColors.black,
     filled: true,
     fillColor: AppColors.white,
   );

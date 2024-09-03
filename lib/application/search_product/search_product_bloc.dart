@@ -26,9 +26,14 @@ class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
       fetchProduct: (e) async {
         if (state.isFetching == false) {
           if (e.isScrolling == false) {
+            if (e.searchKey.isNotEmpty && state.searchText == e.searchKey) {
+              return;
+            }
+
             emit(
               state.copyWith(
                 isFetching: true,
+                searchText: e.searchKey,
               ),
             );
             final failureOrSuccess = await repository.getSearchProduct(

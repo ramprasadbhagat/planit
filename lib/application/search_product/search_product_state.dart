@@ -10,6 +10,7 @@ class SearchProductState with _$SearchProductState {
     required bool isScrolling,
     required bool canLoadMore,
     required int pageNumber,
+    required String searchText,
   }) = _SearchProductState;
 
   factory SearchProductState.initial() => SearchProductState(
@@ -19,6 +20,7 @@ class SearchProductState with _$SearchProductState {
         products: <Product>[],
         isScrolling: false,
         pageNumber: 0,
+        searchText: '',
       );
 
   bool get isProductListEmpty => products.isEmpty;

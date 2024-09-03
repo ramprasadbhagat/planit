@@ -22,6 +22,7 @@ abstract class AppColors {
       Color.fromRGBO(113, 113, 113, 1);
   static const Color passwordValidationsColor = Color.fromRGBO(73, 73, 73, 1);
   static const Color inputBorderColor = Color.fromRGBO(207, 210, 210, 1.0);
+  static const Color searchInputBorderColor = Color.fromRGBO(229, 231, 237, 1);
   static const Color arrowButtonBackgroundColor =
       Color.fromRGBO(138, 177, 180, 1);
   static const Color orange = Color.fromRGBO(231, 165, 70, 1);

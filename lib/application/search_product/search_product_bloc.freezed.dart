@@ -332,6 +332,7 @@ mixin _$SearchProductState {
   bool get isScrolling => throw _privateConstructorUsedError;
   bool get canLoadMore => throw _privateConstructorUsedError;
   int get pageNumber => throw _privateConstructorUsedError;
+  String get searchText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchProductStateCopyWith<SearchProductState> get copyWith =>
@@ -350,7 +351,8 @@ abstract class $SearchProductStateCopyWith<$Res> {
       bool isFetching,
       bool isScrolling,
       bool canLoadMore,
-      int pageNumber});
+      int pageNumber,
+      String searchText});
 }
 
 /// @nodoc
@@ -372,6 +374,7 @@ class _$SearchProductStateCopyWithImpl<$Res, $Val extends SearchProductState>
     Object? isScrolling = null,
     Object? canLoadMore = null,
     Object? pageNumber = null,
+    Object? searchText = null,
   }) {
     return _then(_value.copyWith(
       products: null == products
@@ -398,6 +401,10 @@ class _$SearchProductStateCopyWithImpl<$Res, $Val extends SearchProductState>
           ? _value.pageNumber
           : pageNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -416,7 +423,8 @@ abstract class _$$SearchProductStateImplCopyWith<$Res>
       bool isFetching,
       bool isScrolling,
       bool canLoadMore,
-      int pageNumber});
+      int pageNumber,
+      String searchText});
 }
 
 /// @nodoc
@@ -436,6 +444,7 @@ class __$$SearchProductStateImplCopyWithImpl<$Res>
     Object? isScrolling = null,
     Object? canLoadMore = null,
     Object? pageNumber = null,
+    Object? searchText = null,
   }) {
     return _then(_$SearchProductStateImpl(
       products: null == products
@@ -462,6 +471,10 @@ class __$$SearchProductStateImplCopyWithImpl<$Res>
           ? _value.pageNumber
           : pageNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -475,7 +488,8 @@ class _$SearchProductStateImpl extends _SearchProductState {
       required this.isFetching,
       required this.isScrolling,
       required this.canLoadMore,
-      required this.pageNumber})
+      required this.pageNumber,
+      required this.searchText})
       : _products = products,
         super._();
 
@@ -497,10 +511,12 @@ class _$SearchProductStateImpl extends _SearchProductState {
   final bool canLoadMore;
   @override
   final int pageNumber;
+  @override
+  final String searchText;
 
   @override
   String toString() {
-    return 'SearchProductState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isScrolling: $isScrolling, canLoadMore: $canLoadMore, pageNumber: $pageNumber)';
+    return 'SearchProductState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isScrolling: $isScrolling, canLoadMore: $canLoadMore, pageNumber: $pageNumber, searchText: $searchText)';
   }
 
   @override
@@ -519,7 +535,9 @@ class _$SearchProductStateImpl extends _SearchProductState {
             (identical(other.canLoadMore, canLoadMore) ||
                 other.canLoadMore == canLoadMore) &&
             (identical(other.pageNumber, pageNumber) ||
-                other.pageNumber == pageNumber));
+                other.pageNumber == pageNumber) &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText));
   }
 
   @override
@@ -530,7 +548,8 @@ class _$SearchProductStateImpl extends _SearchProductState {
       isFetching,
       isScrolling,
       canLoadMore,
-      pageNumber);
+      pageNumber,
+      searchText);
 
   @JsonKey(ignore: true)
   @override
@@ -548,7 +567,8 @@ abstract class _SearchProductState extends SearchProductState {
       required final bool isFetching,
       required final bool isScrolling,
       required final bool canLoadMore,
-      required final int pageNumber}) = _$SearchProductStateImpl;
+      required final int pageNumber,
+      required final String searchText}) = _$SearchProductStateImpl;
   const _SearchProductState._() : super._();
 
   @override
@@ -563,6 +583,8 @@ abstract class _SearchProductState extends SearchProductState {
   bool get canLoadMore;
   @override
   int get pageNumber;
+  @override
+  String get searchText;
   @override
   @JsonKey(ignore: true)
   _$$SearchProductStateImplCopyWith<_$SearchProductStateImpl> get copyWith =>
