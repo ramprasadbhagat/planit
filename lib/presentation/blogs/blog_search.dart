@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/blog_search/blog_search_bloc.dart';
+import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/presentation/blogs/widgets/blog_item_card.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -40,7 +42,7 @@ class BlogSearchPage extends StatelessWidget {
                   prefixIcon: Icon(
                     Icons.search_rounded,
                     size: 24,
-                    color: Colors.grey,
+                    color: AppColors.grey,
                   ),
                   contentPadding: EdgeInsets.symmetric(horizontal: 0),
                 ),
@@ -63,36 +65,33 @@ class BlogSearchPage extends StatelessWidget {
                 child: BlocBuilder<BlogSearchBloc, BlogSearchState>(
                   builder: (context, state) {
                     return Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${state.totalItemCount} results found',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      child: ScrollList<Blog>(
+                        header: !state.isLoading && state.searchText.isNotEmpty
+                            ? Text(
+                                '${state.totalItemCount} results found',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBlack,
                                     ),
+                              )
+                            : const SizedBox.shrink(),
+                        noRecordFoundWidget: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: NoData(
+                            message: state.searchText.isEmpty
+                                ? 'Discover blog posts by searching here'
+                                : 'No Blogs found',
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          if (state.isLoading && state.blogs.isEmpty)
-                            const ShimmerItem(),
-                          if (state.blogs.isEmpty)
-                            const Expanded(child: NoData())
-                          else
-                            Expanded(
-                              child: ListView.builder(
-                                itemCount: state.blogs.length,
-                                itemBuilder: (context, index) =>
-                                    BlogItemCard(blog: state.blogs[index]),
-                              ),
-                            ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                        ],
+                        ),
+                        controller: ScrollController(),
+                        isLoading: state.isLoading,
+                        itemBuilder: (context, index, item) => BlogItemCard(
+                          blog: state.blogs[index],
+                        ),
+                        items: state.blogs,
                       ),
                     );
                   },

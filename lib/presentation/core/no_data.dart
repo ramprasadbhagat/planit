@@ -15,23 +15,25 @@ class NoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          errorSvgImage,
-          height: 100,
-          width: 100,
-        ),
-        Text(
-          message,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.neutralsGrey,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            errorSvgImage,
+            height: 100,
+            width: 100,
           ),
-        ),
-      ],
+          Text(
+            message,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: AppColors.neutralsGrey,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
