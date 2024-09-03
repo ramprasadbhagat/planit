@@ -103,7 +103,7 @@ class _SearchRecipesPageState extends State<SearchRecipesPage> {
                         return Expanded(
                           child: NoData(
                             message: searchController.text.isEmpty
-                                ? '\nSearch for expertly crafted recipes and techniques'
+                                ? 'Search for expertly crafted recipes and techniques'
                                 : 'No Recipes found',
                             errorSvgImage: SvgImage.recipeEmptyIcon,
                           ),

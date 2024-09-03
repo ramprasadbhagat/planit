@@ -33,7 +33,7 @@ class RecipeDto with _$RecipeDto {
     )
     required String servingSize,
     @JsonKey(
-      defaultValue: [],
+      defaultValue: <String>[],
       readValue: parseImagesList,
       name: 'nutritional_table',
     )
@@ -59,15 +59,15 @@ class RecipeDto with _$RecipeDto {
     )
     required String numberServings,
     @JsonKey(
-      defaultValue: [],
+      defaultValue: <Map<String, dynamic>>[],
     )
     required List<Map<String, dynamic>> ingredient,
     @JsonKey(
-      defaultValue: [],
+      defaultValue: <Map<String, dynamic>>[],
     )
     required List<Map<String, dynamic>> equipment,
     @JsonKey(
-      defaultValue: [],
+      defaultValue: <Map<String, dynamic>>[],
     )
     required List<Map<String, dynamic>> step,
     @JsonKey(
@@ -75,7 +75,7 @@ class RecipeDto with _$RecipeDto {
     )
     required bool isActive,
     @JsonKey(
-      defaultValue: [],
+      defaultValue: <String>[],
       name: 'recipeImages',
       readValue: parseImagesList,
     )

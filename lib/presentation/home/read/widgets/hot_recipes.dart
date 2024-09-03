@@ -158,7 +158,7 @@ class HotRecipeCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   child: CachedNetworkImage(
-                    imageUrl: recipe.recipeImages.first.getValue(),
+                    imageUrl: recipe.recipeImages.first.getOrDefaultValue(''),
                     width: 80,
                     height: 80,
                     fit: BoxFit.cover,
