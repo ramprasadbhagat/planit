@@ -4,6 +4,7 @@ import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/auth/otp/otp_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
 import 'package:planit/application/best_seller/best_seller_bloc.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
@@ -172,6 +173,12 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => AuthBloc(
+      authRepository: locator<AuthRepository>(),
+    ),
+  );
+
+  locator.registerLazySingleton(
+    () => OtpBloc(
       authRepository: locator<AuthRepository>(),
     ),
   );

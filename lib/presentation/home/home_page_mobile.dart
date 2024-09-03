@@ -9,6 +9,7 @@ import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wallet/wallet_bloc.dart';
+import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
@@ -39,6 +40,18 @@ class HomePageMobile extends StatelessWidget {
                 context
                     .read<FavouriteRecipeBloc>()
                     .add(const FavouriteRecipeEvent.fetch());
+
+                final cartBloc = context.read<CartBloc>();
+
+                if (cartBloc.state.cartData.isNotEmpty) {
+                  cartBloc.add(const CartEvent.sendLocalServerCart());
+                }
+
+                context
+                    .read<AddressBookBloc>()
+                    .add(const AddressBookEvent.fetch());
+                context.read<WishlistBloc>().add(const WishlistEvent.fetch());
+                context.read<CartBloc>().add(const CartEvent.fetch());
               },
               unauthenticated: () {
                 context
@@ -53,16 +66,17 @@ class HomePageMobile extends StatelessWidget {
         ),
         BlocListener<UserProfileBloc, UserProfileState>(
           listenWhen: (previous, current) =>
-              previous.user != current.user &&
-              !current.user.isEmpty &&
-              !current.isProfileCompleted &&
-              !current.user.isFirstLogin,
+              previous.user != current.user && !current.user.isEmpty,
           listener: (context, state) {
-            context.router.navigate(
-              UserProfileRoute(
-                isFirstLogin: true,
-              ),
-            );
+            if (state.isProfileCompleted) {
+              context.router.navigate(const HomeRoute());
+            } else {
+              context.router.navigate(
+                UserProfileRoute(
+                  isFirstLogin: true,
+                ),
+              );
+            }
           },
         ),
         BlocListener<OrderBloc, OrderState>(

@@ -18,51 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mobileStr) mobileNumberChanged,
-    required TResult Function(String otpStr) otpChanged,
-    required TResult Function() initiateLogin,
-    required TResult Function() verifyOTP,
+    required TResult Function(String mobileStr) updateMobileNumber,
+    required TResult Function() sendOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mobileStr)? mobileNumberChanged,
-    TResult? Function(String otpStr)? otpChanged,
-    TResult? Function()? initiateLogin,
-    TResult? Function()? verifyOTP,
+    TResult? Function(String mobileStr)? updateMobileNumber,
+    TResult? Function()? sendOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mobileStr)? mobileNumberChanged,
-    TResult Function(String otpStr)? otpChanged,
-    TResult Function()? initiateLogin,
-    TResult Function()? verifyOTP,
+    TResult Function(String mobileStr)? updateMobileNumber,
+    TResult Function()? sendOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MobileNumberChanged value) mobileNumberChanged,
-    required TResult Function(_OTPChanged value) otpChanged,
-    required TResult Function(_InitiateLogin value) initiateLogin,
-    required TResult Function(_VerifyOTP value) verifyOTP,
+    required TResult Function(_UpdateMobileNumber value) updateMobileNumber,
+    required TResult Function(_SendOtp value) sendOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult? Function(_OTPChanged value)? otpChanged,
-    TResult? Function(_InitiateLogin value)? initiateLogin,
-    TResult? Function(_VerifyOTP value)? verifyOTP,
+    TResult? Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult? Function(_SendOtp value)? sendOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult Function(_OTPChanged value)? otpChanged,
-    TResult Function(_InitiateLogin value)? initiateLogin,
-    TResult Function(_VerifyOTP value)? verifyOTP,
+    TResult Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult Function(_SendOtp value)? sendOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,20 +75,20 @@ class _$LoginFormEventCopyWithImpl<$Res, $Val extends LoginFormEvent>
 }
 
 /// @nodoc
-abstract class _$$MobileNumberChangedImplCopyWith<$Res> {
-  factory _$$MobileNumberChangedImplCopyWith(_$MobileNumberChangedImpl value,
-          $Res Function(_$MobileNumberChangedImpl) then) =
-      __$$MobileNumberChangedImplCopyWithImpl<$Res>;
+abstract class _$$UpdateMobileNumberImplCopyWith<$Res> {
+  factory _$$UpdateMobileNumberImplCopyWith(_$UpdateMobileNumberImpl value,
+          $Res Function(_$UpdateMobileNumberImpl) then) =
+      __$$UpdateMobileNumberImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String mobileStr});
 }
 
 /// @nodoc
-class __$$MobileNumberChangedImplCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$MobileNumberChangedImpl>
-    implements _$$MobileNumberChangedImplCopyWith<$Res> {
-  __$$MobileNumberChangedImplCopyWithImpl(_$MobileNumberChangedImpl _value,
-      $Res Function(_$MobileNumberChangedImpl) _then)
+class __$$UpdateMobileNumberImplCopyWithImpl<$Res>
+    extends _$LoginFormEventCopyWithImpl<$Res, _$UpdateMobileNumberImpl>
+    implements _$$UpdateMobileNumberImplCopyWith<$Res> {
+  __$$UpdateMobileNumberImplCopyWithImpl(_$UpdateMobileNumberImpl _value,
+      $Res Function(_$UpdateMobileNumberImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +96,7 @@ class __$$MobileNumberChangedImplCopyWithImpl<$Res>
   $Res call({
     Object? mobileStr = null,
   }) {
-    return _then(_$MobileNumberChangedImpl(
+    return _then(_$UpdateMobileNumberImpl(
       null == mobileStr
           ? _value.mobileStr
           : mobileStr // ignore: cast_nullable_to_non_nullable
@@ -119,22 +107,22 @@ class __$$MobileNumberChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MobileNumberChangedImpl implements _MobileNumberChanged {
-  const _$MobileNumberChangedImpl(this.mobileStr);
+class _$UpdateMobileNumberImpl implements _UpdateMobileNumber {
+  const _$UpdateMobileNumberImpl(this.mobileStr);
 
   @override
   final String mobileStr;
 
   @override
   String toString() {
-    return 'LoginFormEvent.mobileNumberChanged(mobileStr: $mobileStr)';
+    return 'LoginFormEvent.updateMobileNumber(mobileStr: $mobileStr)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MobileNumberChangedImpl &&
+            other is _$UpdateMobileNumberImpl &&
             (identical(other.mobileStr, mobileStr) ||
                 other.mobileStr == mobileStr));
   }
@@ -145,43 +133,37 @@ class _$MobileNumberChangedImpl implements _MobileNumberChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MobileNumberChangedImplCopyWith<_$MobileNumberChangedImpl> get copyWith =>
-      __$$MobileNumberChangedImplCopyWithImpl<_$MobileNumberChangedImpl>(
+  _$$UpdateMobileNumberImplCopyWith<_$UpdateMobileNumberImpl> get copyWith =>
+      __$$UpdateMobileNumberImplCopyWithImpl<_$UpdateMobileNumberImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mobileStr) mobileNumberChanged,
-    required TResult Function(String otpStr) otpChanged,
-    required TResult Function() initiateLogin,
-    required TResult Function() verifyOTP,
+    required TResult Function(String mobileStr) updateMobileNumber,
+    required TResult Function() sendOtp,
   }) {
-    return mobileNumberChanged(mobileStr);
+    return updateMobileNumber(mobileStr);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mobileStr)? mobileNumberChanged,
-    TResult? Function(String otpStr)? otpChanged,
-    TResult? Function()? initiateLogin,
-    TResult? Function()? verifyOTP,
+    TResult? Function(String mobileStr)? updateMobileNumber,
+    TResult? Function()? sendOtp,
   }) {
-    return mobileNumberChanged?.call(mobileStr);
+    return updateMobileNumber?.call(mobileStr);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mobileStr)? mobileNumberChanged,
-    TResult Function(String otpStr)? otpChanged,
-    TResult Function()? initiateLogin,
-    TResult Function()? verifyOTP,
+    TResult Function(String mobileStr)? updateMobileNumber,
+    TResult Function()? sendOtp,
     required TResult orElse(),
   }) {
-    if (mobileNumberChanged != null) {
-      return mobileNumberChanged(mobileStr);
+    if (updateMobileNumber != null) {
+      return updateMobileNumber(mobileStr);
     }
     return orElse();
   }
@@ -189,226 +171,75 @@ class _$MobileNumberChangedImpl implements _MobileNumberChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MobileNumberChanged value) mobileNumberChanged,
-    required TResult Function(_OTPChanged value) otpChanged,
-    required TResult Function(_InitiateLogin value) initiateLogin,
-    required TResult Function(_VerifyOTP value) verifyOTP,
+    required TResult Function(_UpdateMobileNumber value) updateMobileNumber,
+    required TResult Function(_SendOtp value) sendOtp,
   }) {
-    return mobileNumberChanged(this);
+    return updateMobileNumber(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult? Function(_OTPChanged value)? otpChanged,
-    TResult? Function(_InitiateLogin value)? initiateLogin,
-    TResult? Function(_VerifyOTP value)? verifyOTP,
+    TResult? Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult? Function(_SendOtp value)? sendOtp,
   }) {
-    return mobileNumberChanged?.call(this);
+    return updateMobileNumber?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult Function(_OTPChanged value)? otpChanged,
-    TResult Function(_InitiateLogin value)? initiateLogin,
-    TResult Function(_VerifyOTP value)? verifyOTP,
+    TResult Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult Function(_SendOtp value)? sendOtp,
     required TResult orElse(),
   }) {
-    if (mobileNumberChanged != null) {
-      return mobileNumberChanged(this);
+    if (updateMobileNumber != null) {
+      return updateMobileNumber(this);
     }
     return orElse();
   }
 }
 
-abstract class _MobileNumberChanged implements LoginFormEvent {
-  const factory _MobileNumberChanged(final String mobileStr) =
-      _$MobileNumberChangedImpl;
+abstract class _UpdateMobileNumber implements LoginFormEvent {
+  const factory _UpdateMobileNumber(final String mobileStr) =
+      _$UpdateMobileNumberImpl;
 
   String get mobileStr;
   @JsonKey(ignore: true)
-  _$$MobileNumberChangedImplCopyWith<_$MobileNumberChangedImpl> get copyWith =>
+  _$$UpdateMobileNumberImplCopyWith<_$UpdateMobileNumberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OTPChangedImplCopyWith<$Res> {
-  factory _$$OTPChangedImplCopyWith(
-          _$OTPChangedImpl value, $Res Function(_$OTPChangedImpl) then) =
-      __$$OTPChangedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String otpStr});
+abstract class _$$SendOtpImplCopyWith<$Res> {
+  factory _$$SendOtpImplCopyWith(
+          _$SendOtpImpl value, $Res Function(_$SendOtpImpl) then) =
+      __$$SendOtpImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OTPChangedImplCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$OTPChangedImpl>
-    implements _$$OTPChangedImplCopyWith<$Res> {
-  __$$OTPChangedImplCopyWithImpl(
-      _$OTPChangedImpl _value, $Res Function(_$OTPChangedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? otpStr = null,
-  }) {
-    return _then(_$OTPChangedImpl(
-      null == otpStr
-          ? _value.otpStr
-          : otpStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$OTPChangedImpl implements _OTPChanged {
-  const _$OTPChangedImpl(this.otpStr);
-
-  @override
-  final String otpStr;
-
-  @override
-  String toString() {
-    return 'LoginFormEvent.otpChanged(otpStr: $otpStr)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OTPChangedImpl &&
-            (identical(other.otpStr, otpStr) || other.otpStr == otpStr));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, otpStr);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OTPChangedImplCopyWith<_$OTPChangedImpl> get copyWith =>
-      __$$OTPChangedImplCopyWithImpl<_$OTPChangedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String mobileStr) mobileNumberChanged,
-    required TResult Function(String otpStr) otpChanged,
-    required TResult Function() initiateLogin,
-    required TResult Function() verifyOTP,
-  }) {
-    return otpChanged(otpStr);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mobileStr)? mobileNumberChanged,
-    TResult? Function(String otpStr)? otpChanged,
-    TResult? Function()? initiateLogin,
-    TResult? Function()? verifyOTP,
-  }) {
-    return otpChanged?.call(otpStr);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mobileStr)? mobileNumberChanged,
-    TResult Function(String otpStr)? otpChanged,
-    TResult Function()? initiateLogin,
-    TResult Function()? verifyOTP,
-    required TResult orElse(),
-  }) {
-    if (otpChanged != null) {
-      return otpChanged(otpStr);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_MobileNumberChanged value) mobileNumberChanged,
-    required TResult Function(_OTPChanged value) otpChanged,
-    required TResult Function(_InitiateLogin value) initiateLogin,
-    required TResult Function(_VerifyOTP value) verifyOTP,
-  }) {
-    return otpChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult? Function(_OTPChanged value)? otpChanged,
-    TResult? Function(_InitiateLogin value)? initiateLogin,
-    TResult? Function(_VerifyOTP value)? verifyOTP,
-  }) {
-    return otpChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult Function(_OTPChanged value)? otpChanged,
-    TResult Function(_InitiateLogin value)? initiateLogin,
-    TResult Function(_VerifyOTP value)? verifyOTP,
-    required TResult orElse(),
-  }) {
-    if (otpChanged != null) {
-      return otpChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OTPChanged implements LoginFormEvent {
-  const factory _OTPChanged(final String otpStr) = _$OTPChangedImpl;
-
-  String get otpStr;
-  @JsonKey(ignore: true)
-  _$$OTPChangedImplCopyWith<_$OTPChangedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$InitiateLoginImplCopyWith<$Res> {
-  factory _$$InitiateLoginImplCopyWith(
-          _$InitiateLoginImpl value, $Res Function(_$InitiateLoginImpl) then) =
-      __$$InitiateLoginImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitiateLoginImplCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$InitiateLoginImpl>
-    implements _$$InitiateLoginImplCopyWith<$Res> {
-  __$$InitiateLoginImplCopyWithImpl(
-      _$InitiateLoginImpl _value, $Res Function(_$InitiateLoginImpl) _then)
+class __$$SendOtpImplCopyWithImpl<$Res>
+    extends _$LoginFormEventCopyWithImpl<$Res, _$SendOtpImpl>
+    implements _$$SendOtpImplCopyWith<$Res> {
+  __$$SendOtpImplCopyWithImpl(
+      _$SendOtpImpl _value, $Res Function(_$SendOtpImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitiateLoginImpl implements _InitiateLogin {
-  const _$InitiateLoginImpl();
+class _$SendOtpImpl implements _SendOtp {
+  const _$SendOtpImpl();
 
   @override
   String toString() {
-    return 'LoginFormEvent.initiateLogin()';
+    return 'LoginFormEvent.sendOtp()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitiateLoginImpl);
+        (other.runtimeType == runtimeType && other is _$SendOtpImpl);
   }
 
   @override
@@ -417,36 +248,30 @@ class _$InitiateLoginImpl implements _InitiateLogin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mobileStr) mobileNumberChanged,
-    required TResult Function(String otpStr) otpChanged,
-    required TResult Function() initiateLogin,
-    required TResult Function() verifyOTP,
+    required TResult Function(String mobileStr) updateMobileNumber,
+    required TResult Function() sendOtp,
   }) {
-    return initiateLogin();
+    return sendOtp();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mobileStr)? mobileNumberChanged,
-    TResult? Function(String otpStr)? otpChanged,
-    TResult? Function()? initiateLogin,
-    TResult? Function()? verifyOTP,
+    TResult? Function(String mobileStr)? updateMobileNumber,
+    TResult? Function()? sendOtp,
   }) {
-    return initiateLogin?.call();
+    return sendOtp?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mobileStr)? mobileNumberChanged,
-    TResult Function(String otpStr)? otpChanged,
-    TResult Function()? initiateLogin,
-    TResult Function()? verifyOTP,
+    TResult Function(String mobileStr)? updateMobileNumber,
+    TResult Function()? sendOtp,
     required TResult orElse(),
   }) {
-    if (initiateLogin != null) {
-      return initiateLogin();
+    if (sendOtp != null) {
+      return sendOtp();
     }
     return orElse();
   }
@@ -454,165 +279,42 @@ class _$InitiateLoginImpl implements _InitiateLogin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_MobileNumberChanged value) mobileNumberChanged,
-    required TResult Function(_OTPChanged value) otpChanged,
-    required TResult Function(_InitiateLogin value) initiateLogin,
-    required TResult Function(_VerifyOTP value) verifyOTP,
+    required TResult Function(_UpdateMobileNumber value) updateMobileNumber,
+    required TResult Function(_SendOtp value) sendOtp,
   }) {
-    return initiateLogin(this);
+    return sendOtp(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult? Function(_OTPChanged value)? otpChanged,
-    TResult? Function(_InitiateLogin value)? initiateLogin,
-    TResult? Function(_VerifyOTP value)? verifyOTP,
+    TResult? Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult? Function(_SendOtp value)? sendOtp,
   }) {
-    return initiateLogin?.call(this);
+    return sendOtp?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult Function(_OTPChanged value)? otpChanged,
-    TResult Function(_InitiateLogin value)? initiateLogin,
-    TResult Function(_VerifyOTP value)? verifyOTP,
+    TResult Function(_UpdateMobileNumber value)? updateMobileNumber,
+    TResult Function(_SendOtp value)? sendOtp,
     required TResult orElse(),
   }) {
-    if (initiateLogin != null) {
-      return initiateLogin(this);
+    if (sendOtp != null) {
+      return sendOtp(this);
     }
     return orElse();
   }
 }
 
-abstract class _InitiateLogin implements LoginFormEvent {
-  const factory _InitiateLogin() = _$InitiateLoginImpl;
-}
-
-/// @nodoc
-abstract class _$$VerifyOTPImplCopyWith<$Res> {
-  factory _$$VerifyOTPImplCopyWith(
-          _$VerifyOTPImpl value, $Res Function(_$VerifyOTPImpl) then) =
-      __$$VerifyOTPImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$VerifyOTPImplCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$VerifyOTPImpl>
-    implements _$$VerifyOTPImplCopyWith<$Res> {
-  __$$VerifyOTPImplCopyWithImpl(
-      _$VerifyOTPImpl _value, $Res Function(_$VerifyOTPImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$VerifyOTPImpl implements _VerifyOTP {
-  const _$VerifyOTPImpl();
-
-  @override
-  String toString() {
-    return 'LoginFormEvent.verifyOTP()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$VerifyOTPImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String mobileStr) mobileNumberChanged,
-    required TResult Function(String otpStr) otpChanged,
-    required TResult Function() initiateLogin,
-    required TResult Function() verifyOTP,
-  }) {
-    return verifyOTP();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mobileStr)? mobileNumberChanged,
-    TResult? Function(String otpStr)? otpChanged,
-    TResult? Function()? initiateLogin,
-    TResult? Function()? verifyOTP,
-  }) {
-    return verifyOTP?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mobileStr)? mobileNumberChanged,
-    TResult Function(String otpStr)? otpChanged,
-    TResult Function()? initiateLogin,
-    TResult Function()? verifyOTP,
-    required TResult orElse(),
-  }) {
-    if (verifyOTP != null) {
-      return verifyOTP();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_MobileNumberChanged value) mobileNumberChanged,
-    required TResult Function(_OTPChanged value) otpChanged,
-    required TResult Function(_InitiateLogin value) initiateLogin,
-    required TResult Function(_VerifyOTP value) verifyOTP,
-  }) {
-    return verifyOTP(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult? Function(_OTPChanged value)? otpChanged,
-    TResult? Function(_InitiateLogin value)? initiateLogin,
-    TResult? Function(_VerifyOTP value)? verifyOTP,
-  }) {
-    return verifyOTP?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MobileNumberChanged value)? mobileNumberChanged,
-    TResult Function(_OTPChanged value)? otpChanged,
-    TResult Function(_InitiateLogin value)? initiateLogin,
-    TResult Function(_VerifyOTP value)? verifyOTP,
-    required TResult orElse(),
-  }) {
-    if (verifyOTP != null) {
-      return verifyOTP(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _VerifyOTP implements LoginFormEvent {
-  const factory _VerifyOTP() = _$VerifyOTPImpl;
+abstract class _SendOtp implements LoginFormEvent {
+  const factory _SendOtp() = _$SendOtpImpl;
 }
 
 /// @nodoc
 mixin _$LoginFormState {
   MobileNumber get mobileNumber => throw _privateConstructorUsedError;
-  OTP get otp => throw _privateConstructorUsedError;
-  Auth get auth => throw _privateConstructorUsedError;
-  bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -630,13 +332,8 @@ abstract class $LoginFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {MobileNumber mobileNumber,
-      OTP otp,
-      Auth auth,
-      bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ApiFailure, dynamic>> authFailureOrSuccessOption});
-
-  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -653,9 +350,6 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
   @override
   $Res call({
     Object? mobileNumber = null,
-    Object? otp = null,
-    Object? auth = null,
-    Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
@@ -664,18 +358,6 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as MobileNumber,
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as OTP,
-      auth: null == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as Auth,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -685,14 +367,6 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AuthCopyWith<$Res> get auth {
-    return $AuthCopyWith<$Res>(_value.auth, (value) {
-      return _then(_value.copyWith(auth: value) as $Val);
-    });
   }
 }
 
@@ -706,14 +380,8 @@ abstract class _$$LoginFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {MobileNumber mobileNumber,
-      OTP otp,
-      Auth auth,
-      bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ApiFailure, dynamic>> authFailureOrSuccessOption});
-
-  @override
-  $AuthCopyWith<$Res> get auth;
 }
 
 /// @nodoc
@@ -728,9 +396,6 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mobileNumber = null,
-    Object? otp = null,
-    Object? auth = null,
-    Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
@@ -739,18 +404,6 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as MobileNumber,
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as OTP,
-      auth: null == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as Auth,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -768,9 +421,6 @@ class __$$LoginFormStateImplCopyWithImpl<$Res>
 class _$LoginFormStateImpl extends _LoginFormState {
   const _$LoginFormStateImpl(
       {required this.mobileNumber,
-      required this.otp,
-      required this.auth,
-      required this.showErrorMessages,
       required this.isSubmitting,
       required this.authFailureOrSuccessOption})
       : super._();
@@ -778,19 +428,13 @@ class _$LoginFormStateImpl extends _LoginFormState {
   @override
   final MobileNumber mobileNumber;
   @override
-  final OTP otp;
-  @override
-  final Auth auth;
-  @override
-  final bool showErrorMessages;
-  @override
   final bool isSubmitting;
   @override
   final Option<Either<ApiFailure, dynamic>> authFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'LoginFormState(mobileNumber: $mobileNumber, otp: $otp, auth: $auth, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'LoginFormState(mobileNumber: $mobileNumber, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -800,10 +444,6 @@ class _$LoginFormStateImpl extends _LoginFormState {
             other is _$LoginFormStateImpl &&
             (identical(other.mobileNumber, mobileNumber) ||
                 other.mobileNumber == mobileNumber) &&
-            (identical(other.otp, otp) || other.otp == otp) &&
-            (identical(other.auth, auth) || other.auth == auth) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
-                other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.authFailureOrSuccessOption,
@@ -813,8 +453,8 @@ class _$LoginFormStateImpl extends _LoginFormState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mobileNumber, otp, auth,
-      showErrorMessages, isSubmitting, authFailureOrSuccessOption);
+  int get hashCode => Object.hash(
+      runtimeType, mobileNumber, isSubmitting, authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -827,9 +467,6 @@ class _$LoginFormStateImpl extends _LoginFormState {
 abstract class _LoginFormState extends LoginFormState {
   const factory _LoginFormState(
       {required final MobileNumber mobileNumber,
-      required final OTP otp,
-      required final Auth auth,
-      required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ApiFailure, dynamic>>
           authFailureOrSuccessOption}) = _$LoginFormStateImpl;
@@ -837,12 +474,6 @@ abstract class _LoginFormState extends LoginFormState {
 
   @override
   MobileNumber get mobileNumber;
-  @override
-  OTP get otp;
-  @override
-  Auth get auth;
-  @override
-  bool get showErrorMessages;
   @override
   bool get isSubmitting;
   @override
