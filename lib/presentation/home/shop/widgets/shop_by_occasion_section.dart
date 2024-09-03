@@ -18,23 +18,24 @@ class ShopByOccasion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final categoryBloc = context.read<CategoryBloc>();
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionTitle(
           title: 'Shop by occasion',
           onTap: () {
-           categoryBloc
-                .add(const CategoryEvent.selectOccasion(true));
+            categoryBloc.add(const CategoryEvent.selectOccasion(true));
             categoryBloc.add(
-                  CategoryEvent.select(
-                    categoryBloc.state.occasionCategory.first,
-                  ),
-                );
+              CategoryEvent.select(
+                categoryBloc.state.occasionCategory.first,
+              ),
+            );
             context.router.navigate(CategoryRoute(openFromOccassion: true));
           },
+        ),
+        const SizedBox(
+          height: 10,
         ),
         BlocBuilder<CategoryBloc, CategoryState>(
           builder: (context, state) {

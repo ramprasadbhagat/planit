@@ -143,6 +143,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             (element) => !element.isFetching,
           );
         }
+        add(const _ClearAllCartLocal());
       },
       removeFromCart: (_RemoveFromCart e) async {
         emit(state.copyWith(isFetching: true));

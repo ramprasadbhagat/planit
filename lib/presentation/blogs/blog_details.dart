@@ -82,6 +82,7 @@ class BlogDetailsPage extends StatelessWidget {
               Skeletonizer(
                 enabled: state.isFetching,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Card(
                       clipBehavior: Clip.hardEdge,
@@ -288,18 +289,20 @@ class BlogDetailsPage extends StatelessWidget {
                       indent: 0,
                       endIndent: 0,
                     ),
-                    Text(
-                      state.blog.title.getValue(),
-                      style: textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w500,
+                    Center(
+                      child: Text(
+                        state.blog.title.getOrDefaultValue(''),
+                        style: textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     HtmlWidget(
-                      state.blog.blogContent.getValue(),
+                      state.blog.blogContent.getOrDefaultValue(''),
                       textStyle: const TextStyle(
                         color: AppColors.grey1,
                       ),
@@ -357,22 +360,27 @@ class BlogDetailsPage extends StatelessWidget {
                         ),
                       ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    bloc.add(const BlogDetailsEvent.viewAllCommentClicked());
-                  },
-                  child: Text(
-                    state.viewAllComments ? 'View less' : 'View all',
-                    style: const TextStyle(
-                      color: AppColors.black,
-                      decoration: TextDecoration.underline,
-                      decorationThickness: 2,
+              if (state.blogComments.isEmpty)
+                const SizedBox(
+                  height: 20,
+                ),
+              if (state.blogComments.isNotEmpty)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      bloc.add(const BlogDetailsEvent.viewAllCommentClicked());
+                    },
+                    child: Text(
+                      state.viewAllComments ? 'View less' : 'View all',
+                      style: const TextStyle(
+                        color: AppColors.black,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2,
+                      ),
                     ),
                   ),
                 ),
-              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const RoundedRectangleBorder(

@@ -21,6 +21,37 @@ class BlogBloc extends Bloc<BlogEvent, BlogState> {
   FutureOr<void> _onEvent(BlogEvent event, Emitter<BlogState> emit) async {
     await event.map(
       fetchBlogs: (_) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+            blogs: <Blog>[],
+          ),
+        );
+        final failureOrSuccessOption = await repository.fetchBlogs(
+          pageNumber: 1,
+        );
+        failureOrSuccessOption.fold(
+          (l) {
+            emit(
+              state.copyWith(
+                isFetching: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
+              ),
+            );
+          },
+          (r) {
+            emit(
+              state.copyWith(
+                isFetching: false,
+                blogs: r.blogs,
+                pageNumber: 2,
+                hasMore: r.blogs.length < r.totalCount,
+              ),
+            );
+          },
+        );
+      },
+      loadMoreBlogs: (_) async {
         if (state.isFetching || !state.hasMore) return;
 
         emit(
