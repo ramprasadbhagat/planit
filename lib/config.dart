@@ -11,4 +11,5 @@ class Config {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmVhOTE0ODY1N2Y4YTBiMTUwOTY1YiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzExOTU2ODAxfQ.-OzHyMHOV4OxwdDSNNYZ9MoirRuQHUNpU0JBOyxk2_M';
   final String razorPayTestApiKey = 'rzp_test_BvXf7v4JLacLRW';
   final String razorPayApiKey = 'rzp_live_r8pgA2rzlJNepf';
+  int autoSearchTimeout = 1500;
 }

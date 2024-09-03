@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/blog_search/blog_search_bloc.dart';
 import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/presentation/blogs/widgets/blog_item_card.dart';
+import 'package:planit/presentation/core/common_search_bar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scroll_list.dart';
-import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()
@@ -32,20 +32,19 @@ class BlogSearchPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextFormField(
-                onChanged: (e) => context
+              CommonSearchBar(
+                hintText: 'Search blogs...',
+                onSearchChanged: (e) => context
                     .read<BlogSearchBloc>()
                     .add(BlogSearchEvent.searchStringChange(e)),
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Search',
-                  prefixIcon: Icon(
-                    Icons.search_rounded,
-                    size: 24,
-                    color: AppColors.grey,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                ),
+                onSearchSubmitted: (e) => context
+                    .read<BlogSearchBloc>()
+                    .add(BlogSearchEvent.searchStringChange(e)),
+                onClear: () {
+                  context
+                      .read<BlogSearchBloc>()
+                      .add(const BlogSearchEvent.reset());
+                },
               ),
               const SizedBox(
                 height: 10,

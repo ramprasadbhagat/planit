@@ -24,9 +24,17 @@ class SearchRecipesBloc extends Bloc<SearchRecipesEvent, SearchRecipesState> {
     await event.map(
       initialized: (_) async => emit(SearchRecipesState.initial()),
       fetchProduct: (e) async {
+        if (e.searchKey == state.searchString) {
+          return;
+        }
+        if (e.searchKey.isEmpty) {
+          emit(SearchRecipesState.initial());
+          return;
+        }
         emit(
           state.copyWith(
             isFetching: true,
+            searchString: e.searchKey,
           ),
         );
         final failureOrSuccess =

@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
-import 'package:planit/domain/core/debouncer.dart';
+
 import 'package:planit/presentation/category/widgets/product_card.dart';
+import 'package:planit/presentation/core/common_search_bar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
@@ -19,8 +20,7 @@ class SearchProductPage extends StatefulWidget {
 }
 
 class _SearchProductPageState extends State<SearchProductPage> {
-  final _bouncer = Debouncer(milliseconds: 700);
-  final searchController = TextEditingController();
+  // final searchController = TextEditingController();
   late ScrollController scrollController;
 
   @override
@@ -34,8 +34,8 @@ class _SearchProductPageState extends State<SearchProductPage> {
         scrollController.position.maxScrollExtent) {
       final bloc = BlocProvider.of<SearchProductBloc>(context);
       bloc.add(
-        SearchProductEvent.fetchProduct(
-          searchKey: searchController.text,
+        const SearchProductEvent.fetchProduct(
+          searchKey: '',
           isScrolling: true,
         ),
       );
@@ -45,10 +45,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    const borderDecoration = OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      borderSide: BorderSide.none,
-    );
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -66,39 +63,67 @@ class _SearchProductPageState extends State<SearchProductPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Material(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: TextFormField(
-                      onChanged: (e) {
-                        _bouncer.run(() {
-                          context.read<SearchProductBloc>().add(
-                                SearchProductEvent.fetchProduct(
-                                  searchKey: e,
-                                  isScrolling: false,
-                                ),
-                              );
-                        });
-                      },
-                      controller: searchController,
-                      decoration: const InputDecoration(
-                        focusedBorder: borderDecoration,
-                        enabledBorder: borderDecoration,
-                        errorBorder: borderDecoration,
-                        disabledBorder: borderDecoration,
-                        border: borderDecoration,
-                        hintText: 'Search',
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          size: 24,
-                          color: Colors.grey,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      ),
-                    ),
+                  CommonSearchBar(
+                    hintText: 'Search products...',
+                    onSearchChanged: (e) {
+                      context.read<SearchProductBloc>().add(
+                            SearchProductEvent.fetchProduct(
+                              searchKey: e,
+                              isScrolling: false,
+                            ),
+                          );
+                    },
+                    onSearchSubmitted: (e) {
+                      context.read<SearchProductBloc>().add(
+                            SearchProductEvent.fetchProduct(
+                              searchKey: e,
+                              isScrolling: false,
+                            ),
+                          );
+                    },
+                    onClear: () {
+                      context.read<SearchProductBloc>().add(
+                            const SearchProductEvent.fetchProduct(
+                              searchKey: '',
+                              isScrolling: false,
+                            ),
+                          );
+                    },
                   ),
+
+                  // Material(
+                  //   elevation: 2,
+                  //   shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(8.0),
+                  //   ),
+                  //   child: TextFormField(
+                  //     onChanged: (e) {
+                  //       _bouncer.run(() {
+                  //         context.read<SearchProductBloc>().add(
+                  //               SearchProductEvent.fetchProduct(
+                  //                 searchKey: e,
+                  //                 isScrolling: false,
+                  //               ),
+                  //             );
+                  //       });
+                  //     },
+                  //     controller: searchController,
+                  //     decoration: const InputDecoration(
+                  //       focusedBorder: borderDecoration,
+                  //       enabledBorder: borderDecoration,
+                  //       errorBorder: borderDecoration,
+                  //       disabledBorder: borderDecoration,
+                  //       border: borderDecoration,
+                  //       hintText: 'Search',
+                  //       prefixIcon: Icon(
+                  //         Icons.search_rounded,
+                  //         size: 24,
+                  //         color: Colors.grey,
+                  //       ),
+                  //       contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -180,7 +205,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
   @override
   void dispose() {
-    searchController.clear();
+    // searchController.clear();
     scrollController.removeListener(_scrollListener);
     super.dispose();
   }

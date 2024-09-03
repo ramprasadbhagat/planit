@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/domain/blog/repository/i_blog_repository.dart';
-import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 
 part 'blog_search_event.dart';
@@ -18,21 +17,20 @@ class BlogSearchBloc extends Bloc<BlogSearchEvent, BlogSearchState> {
     on<BlogSearchEvent>(_onEvent);
   }
 
-  final Debouncer debouncer = Debouncer(milliseconds: 600);
-
   FutureOr<void> _onEvent(
     BlogSearchEvent event,
     Emitter<BlogSearchState> emit,
   ) async {
     await event.map(
       searchStringChange: (value) async {
-        await debouncer.run(() {
-          if (value.text.isNotEmpty) {
-            add(_Search(value.text));
-          } else {
-            emit(BlogSearchState.initial());
-          }
-        });
+        if (value.text == state.searchText) {
+          return;
+        }
+        if (value.text.isEmpty) {
+          emit(BlogSearchState.initial());
+          return;
+        }
+        add(_Search(value.text));
       },
       search: (value) async {
         emit(
