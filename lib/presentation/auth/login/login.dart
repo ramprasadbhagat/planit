@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/auth/login/login_form_bloc.dart';
+import 'package:planit/application/auth/otp/otp_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       });
       FocusScope.of(context).unfocus();
       context.read<LoginFormBloc>().add(
-            const LoginFormEvent.initiateLogin(),
+            const LoginFormEvent.sendOtp(),
           );
     }
   }
@@ -150,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                   _formKey.currentState?.validate();
                                 }
                                 context.read<LoginFormBloc>().add(
-                                      LoginFormEvent.mobileNumberChanged(value),
+                                      LoginFormEvent.updateMobileNumber(value),
                                     );
                               },
                               onFieldSubmitted: (_) => _onSubmit(context),
@@ -204,6 +205,11 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                     );
                                   }, (r) {
+                                    context.read<OtpBloc>().add(
+                                          OtpEvent.initializeMobileNumber(
+                                            state.mobileNumber,
+                                          ),
+                                        );
                                     context.router.navigate(const LoginOtp());
                                   });
                                 });
@@ -211,6 +217,8 @@ class _LoginPageState extends State<LoginPage> {
                               listenWhen: (previous, current) =>
                                   previous.authFailureOrSuccessOption !=
                                   current.authFailureOrSuccessOption,
+                              buildWhen: (previous, current) =>
+                                  previous.isSubmitting != current.isSubmitting,
                               builder: (context, state) {
                                 return ElevatedButton(
                                   onPressed: () => _onSubmit(context),
