@@ -291,7 +291,7 @@ class BlogDetailsPage extends StatelessWidget {
                     ),
                     Center(
                       child: Text(
-                        state.blog.title.getValue(),
+                        state.blog.title.getOrDefaultValue(''),
                         style: textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
@@ -302,7 +302,7 @@ class BlogDetailsPage extends StatelessWidget {
                       height: 10,
                     ),
                     HtmlWidget(
-                      state.blog.blogContent.getValue(),
+                      state.blog.blogContent.getOrDefaultValue(''),
                       textStyle: const TextStyle(
                         color: AppColors.grey1,
                       ),
