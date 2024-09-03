@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/theme/colors.dart';
 
 class ScrollList<T> extends StatefulWidget {
   final VoidCallback? onRefresh;
@@ -58,7 +59,7 @@ class _ScrollListState<T> extends State<ScrollList<T>> {
     return widget.isLoading && widget.items.isEmpty
         ? const Center(
             child: CircularProgressIndicator(
-              // color: Colors.black,
+              color: AppColors.black,
               strokeWidth: 3,
             ),
           )

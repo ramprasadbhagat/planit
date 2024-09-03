@@ -39,7 +39,6 @@ class BlogSearchBloc extends Bloc<BlogSearchEvent, BlogSearchState> {
           state.copyWith(
             isLoading: true,
             searchText: value.text,
-            blogs: [],
             currentPage: 1,
             totalItemCount: 0,
           ),

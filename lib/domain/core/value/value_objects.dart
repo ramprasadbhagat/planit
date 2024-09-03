@@ -83,7 +83,7 @@ class OTP extends ValueObject<String> {
   factory OTP(String input) {
     return OTP._(
       validateStringNotEmpty(input)
-          .flatMap((input) => validateMinStringLength(input, 10)),
+          .flatMap((input) => validateMinStringLength(input, 4)),
     );
   }
 

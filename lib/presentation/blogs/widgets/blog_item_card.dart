@@ -19,6 +19,7 @@ class BlogItemCard extends StatelessWidget {
         minHeight: 100,
       ),
       child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 4),
         child: InkWell(
           onTap: () {
             context.router.navigate(
