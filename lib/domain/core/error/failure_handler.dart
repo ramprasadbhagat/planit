@@ -16,6 +16,12 @@ class FailureHandler {
         return ApiFailure.other((error as CacheException).message);
       case ServerException:
         final message = (error as ServerException).message;
+        if (message.toLowerCase() == 'unauthorized' ||
+            message.toLowerCase() ==
+                'status: 401, message: token has either expired or its not valid') {
+          return const ApiFailure.authenticationFailed();
+        }
+
         return ApiFailure.serverError(message);
       case SocketException:
         return const ApiFailure.poorConnection();

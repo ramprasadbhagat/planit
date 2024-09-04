@@ -163,9 +163,9 @@ class ProfileInformationSection extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                     Checkbox(
-                      fillColor: WidgetStateProperty.resolveWith<Color>(
-                          (Set<WidgetState> states) {
-                        if (states.contains(WidgetState.selected)) {
+                      fillColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
                           return AppColors.green;
                         }
                         return AppColors.grey4;

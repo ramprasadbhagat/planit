@@ -23,6 +23,7 @@ mixin _$ApiFailure {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$ApiFailure {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$ApiFailure {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ mixin _$ApiFailure {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +66,7 @@ mixin _$ApiFailure {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +76,7 @@ mixin _$ApiFailure {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,6 +169,7 @@ class _$OtherImpl implements _Other {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) {
     return other(message);
   }
@@ -175,6 +182,7 @@ class _$OtherImpl implements _Other {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) {
     return other?.call(message);
   }
@@ -187,6 +195,7 @@ class _$OtherImpl implements _Other {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) {
     if (other != null) {
@@ -204,6 +213,7 @@ class _$OtherImpl implements _Other {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) {
     return other(this);
   }
@@ -217,6 +227,7 @@ class _$OtherImpl implements _Other {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) {
     return other?.call(this);
   }
@@ -229,6 +240,7 @@ class _$OtherImpl implements _Other {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) {
     if (other != null) {
@@ -316,6 +328,7 @@ class _$ServerErrorImpl implements _ServerError {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) {
     return serverError(message);
   }
@@ -328,6 +341,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) {
     return serverError?.call(message);
   }
@@ -340,6 +354,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -357,6 +372,7 @@ class _$ServerErrorImpl implements _ServerError {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) {
     return serverError(this);
   }
@@ -370,6 +386,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) {
     return serverError?.call(this);
   }
@@ -382,6 +399,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -443,6 +461,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) {
     return poorConnection();
   }
@@ -455,6 +474,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) {
     return poorConnection?.call();
   }
@@ -467,6 +487,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) {
     if (poorConnection != null) {
@@ -484,6 +505,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) {
     return poorConnection(this);
   }
@@ -497,6 +519,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) {
     return poorConnection?.call(this);
   }
@@ -509,6 +532,7 @@ class _$PoorConnectionImpl implements _PoorConnection {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) {
     if (poorConnection != null) {
@@ -565,6 +589,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) {
     return serverTimeout();
   }
@@ -577,6 +602,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) {
     return serverTimeout?.call();
   }
@@ -589,6 +615,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) {
     if (serverTimeout != null) {
@@ -606,6 +633,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) {
     return serverTimeout(this);
   }
@@ -619,6 +647,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) {
     return serverTimeout?.call(this);
   }
@@ -631,6 +660,7 @@ class _$ServerTimeoutImpl implements _ServerTimeout {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) {
     if (serverTimeout != null) {
@@ -690,6 +720,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     required TResult Function() poorConnection,
     required TResult Function() serverTimeout,
     required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
   }) {
     return imagePickCancelledByUser();
   }
@@ -702,6 +733,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     TResult? Function()? poorConnection,
     TResult? Function()? serverTimeout,
     TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
   }) {
     return imagePickCancelledByUser?.call();
   }
@@ -714,6 +746,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     TResult Function()? poorConnection,
     TResult Function()? serverTimeout,
     TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
     required TResult orElse(),
   }) {
     if (imagePickCancelledByUser != null) {
@@ -731,6 +764,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     required TResult Function(_ServerTimeout value) serverTimeout,
     required TResult Function(_ImagePickCancelledByUser value)
         imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
   }) {
     return imagePickCancelledByUser(this);
   }
@@ -744,6 +778,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     TResult? Function(_ServerTimeout value)? serverTimeout,
     TResult? Function(_ImagePickCancelledByUser value)?
         imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
   }) {
     return imagePickCancelledByUser?.call(this);
   }
@@ -756,6 +791,7 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
     TResult Function(_PoorConnection value)? poorConnection,
     TResult Function(_ServerTimeout value)? serverTimeout,
     TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
     required TResult orElse(),
   }) {
     if (imagePickCancelledByUser != null) {
@@ -767,4 +803,133 @@ class _$ImagePickCancelledByUserImpl implements _ImagePickCancelledByUser {
 
 abstract class _ImagePickCancelledByUser implements ApiFailure {
   const factory _ImagePickCancelledByUser() = _$ImagePickCancelledByUserImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthenticationFailedImplCopyWith<$Res> {
+  factory _$$AuthenticationFailedImplCopyWith(_$AuthenticationFailedImpl value,
+          $Res Function(_$AuthenticationFailedImpl) then) =
+      __$$AuthenticationFailedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthenticationFailedImplCopyWithImpl<$Res>
+    extends _$ApiFailureCopyWithImpl<$Res, _$AuthenticationFailedImpl>
+    implements _$$AuthenticationFailedImplCopyWith<$Res> {
+  __$$AuthenticationFailedImplCopyWithImpl(_$AuthenticationFailedImpl _value,
+      $Res Function(_$AuthenticationFailedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthenticationFailedImpl implements _AuthenticationFailed {
+  const _$AuthenticationFailedImpl();
+
+  @override
+  String toString() {
+    return 'ApiFailure.authenticationFailed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthenticationFailedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) other,
+    required TResult Function(String message) serverError,
+    required TResult Function() poorConnection,
+    required TResult Function() serverTimeout,
+    required TResult Function() imagePickCancelledByUser,
+    required TResult Function() authenticationFailed,
+  }) {
+    return authenticationFailed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? other,
+    TResult? Function(String message)? serverError,
+    TResult? Function()? poorConnection,
+    TResult? Function()? serverTimeout,
+    TResult? Function()? imagePickCancelledByUser,
+    TResult? Function()? authenticationFailed,
+  }) {
+    return authenticationFailed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? other,
+    TResult Function(String message)? serverError,
+    TResult Function()? poorConnection,
+    TResult Function()? serverTimeout,
+    TResult Function()? imagePickCancelledByUser,
+    TResult Function()? authenticationFailed,
+    required TResult orElse(),
+  }) {
+    if (authenticationFailed != null) {
+      return authenticationFailed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Other value) other,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_PoorConnection value) poorConnection,
+    required TResult Function(_ServerTimeout value) serverTimeout,
+    required TResult Function(_ImagePickCancelledByUser value)
+        imagePickCancelledByUser,
+    required TResult Function(_AuthenticationFailed value) authenticationFailed,
+  }) {
+    return authenticationFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Other value)? other,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_PoorConnection value)? poorConnection,
+    TResult? Function(_ServerTimeout value)? serverTimeout,
+    TResult? Function(_ImagePickCancelledByUser value)?
+        imagePickCancelledByUser,
+    TResult? Function(_AuthenticationFailed value)? authenticationFailed,
+  }) {
+    return authenticationFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Other value)? other,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_PoorConnection value)? poorConnection,
+    TResult Function(_ServerTimeout value)? serverTimeout,
+    TResult Function(_ImagePickCancelledByUser value)? imagePickCancelledByUser,
+    TResult Function(_AuthenticationFailed value)? authenticationFailed,
+    required TResult orElse(),
+  }) {
+    if (authenticationFailed != null) {
+      return authenticationFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthenticationFailed implements ApiFailure {
+  const factory _AuthenticationFailed() = _$AuthenticationFailedImpl;
 }
