@@ -6,7 +6,6 @@ import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/presentation/blogs/widgets/blog_item_card.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scroll_list.dart';
-import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()

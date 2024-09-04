@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class BeforeCheckOutCard extends StatelessWidget {
   final WishlistProduct item;
@@ -120,12 +122,10 @@ class BeforeCheckOutCard extends StatelessWidget {
                                 ),
                               );
                         } else {
-                          const snackBar = SnackBar(
-                            content: Text(
-                              'Please Login to add items to shopping list.',
-                            ),
+                          CustomSnackbar.showErrorMessage(
+                            context,
+                            StringConstant.pleaseLoginToAddItemsToShoppingList,
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
                       style: OutlinedButton.styleFrom(

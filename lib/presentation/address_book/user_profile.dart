@@ -10,8 +10,10 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/address_book/widget/address_book.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -93,21 +95,17 @@ class CheckoutContinueButton extends StatelessWidget {
     return TextButton(
       onPressed: () {
         if (!isProfileCompleted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Please complete your personal Information.'),
-              backgroundColor: AppColors.red,
-            ),
+          CustomSnackbar.showErrorMessage(
+            context,
+            StringConstant.pleaseCompleteYourPersonalInformation,
           );
           return;
         }
 
         if (!hasValidAddress) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Please add a default address.'),
-              backgroundColor: AppColors.red,
-            ),
+          CustomSnackbar.showErrorMessage(
+            context,
+            StringConstant.pleaseAddDefaultAddress,
           );
           return;
         }
@@ -135,20 +133,13 @@ class ProfileInformationSection extends StatelessWidget {
         listener: (context, state) {
           state.apiFailureOrSuccessOption.fold(
             () {
-              const snackBar = SnackBar(
-                content: Text('Profile updated successfully'),
-                backgroundColor: AppColors.green,
+              CustomSnackbar.showSuccessMessage(
+                context,
+                StringConstant.profileUpdatedSuccessfully,
               );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             (either) => either.fold(
-              (failure) {
-                final snackBar = SnackBar(
-                  backgroundColor: Colors.red,
-                  content: Text(failure.failureMessage),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
+              (f) => CustomSnackbar.showErrorMessage(context, f.failureMessage),
               (_) {},
             ),
           );
@@ -172,9 +163,9 @@ class ProfileInformationSection extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                     Checkbox(
-                      fillColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.selected)) {
+                      fillColor: WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.selected)) {
                           return AppColors.green;
                         }
                         return AppColors.grey4;

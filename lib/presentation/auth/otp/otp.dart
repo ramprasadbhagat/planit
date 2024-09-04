@@ -7,6 +7,7 @@ import 'package:planit/application/auth/otp/otp_bloc.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:planit/presentation/core/loading_shimmer/loading_shimmer.dart';
@@ -62,11 +63,10 @@ class _LoginOtpState extends State<LoginOtp> {
             () {},
             (either) => either.fold(
               (failure) {
-                final snackBar = SnackBar(
-                  backgroundColor: Colors.black,
-                  content: Text(failure.failureMessage),
+                CustomSnackbar.showErrorMessage(
+                  context,
+                  failure.failureMessage,
                 );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               (_) {
                 if (state.auth != Auth.empty()) {

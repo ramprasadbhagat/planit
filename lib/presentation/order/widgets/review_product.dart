@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/html_text.dart';
 import 'package:planit/presentation/order/widgets/rating.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ReviewDialogBox extends StatelessWidget {
@@ -35,18 +37,14 @@ class ReviewDialogBox extends StatelessWidget {
               state.apiFailureOrSuccessOption.fold(() {}, (a) {
                 a.fold(
                   (l) {
-                    final snackBar = SnackBar(
-                      content: Text(l.failureMessage),
-                    );
-
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    CustomSnackbar.showErrorMessage(context, l.failureMessage);
                   },
                   (r) {
                     context.router.maybePop();
-                    const snackBar = SnackBar(
-                      content: Text('Review added successfully'),
+                    CustomSnackbar.showSuccessMessage(
+                      context,
+                      StringConstant.reviewAddedSuccessfully,
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                 );
               });
@@ -160,12 +158,9 @@ class ReviewDialogBox extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           if (context.read<AddReviewBloc>().state.rating == 0) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Please give atleast one Star 🙁',
-                                ),
-                              ),
+                            CustomSnackbar.showErrorMessage(
+                              context,
+                              StringConstant.pleaseGiveAtLeastOneStar,
                             );
                             return;
                           }

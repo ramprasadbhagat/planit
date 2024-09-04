@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/recipe_details/widgets/image_and_title.dart';
 import 'package:planit/presentation/recipe_details/widgets/meal_info.dart';
 import 'package:planit/presentation/recipe_details/widgets/nutritional_facts_dialog.dart';
@@ -26,12 +27,7 @@ class RecipeDetailsPage extends StatelessWidget {
         state.apiFailureOrSuccessOption.fold(() {}, (a) {
           a.fold(
             (l) {
-              final snackBar = SnackBar(
-                content: Text(l.failureMessage),
-                backgroundColor: AppColors.red,
-              );
-
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              CustomSnackbar.showErrorMessage(context, l.failureMessage);
             },
             (r) {},
           );

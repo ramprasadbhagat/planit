@@ -8,8 +8,10 @@ import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
 import 'package:planit/presentation/address_book/widget/edit_address_book.dart';
 import 'package:planit/presentation/address_book/widget/new_address_bottom_sheet.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -25,11 +27,10 @@ class _AddressBooksState extends State<AddressBooks> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddressBookBloc, AddressBookState>(
       listener: (context, state) {
-        const snackBar = SnackBar(
-          backgroundColor: Colors.red,
-          content: Text('Addressbook deleted successfully'),
+        CustomSnackbar.showSuccessMessage(
+          context,
+          StringConstant.addressBookDeletedSuccessfully,
         );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       listenWhen: (previous, current) =>
           current.addressList.length < previous.addressList.length,
@@ -54,9 +55,9 @@ class _AddressBooksState extends State<AddressBooks> {
                                 ),
                       ),
                       Checkbox(
-                        fillColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.selected)) {
+                        fillColor: WidgetStateProperty.resolveWith<Color>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.selected)) {
                             return AppColors.green;
                           }
                           return AppColors.grey4;

@@ -7,6 +7,7 @@ import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/add_money/widgets/add_money_success_dialog.dart';
 import 'package:planit/presentation/add_money/widgets/payment_method_tile.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -60,8 +61,9 @@ class AddMoneyForm extends StatelessWidget {
                 state.apiFailureOrSuccessOption.fold(() => null, (a) {
                   a.fold(
                     (l) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(l.failureMessage)),
+                      CustomSnackbar.showErrorMessage(
+                        context,
+                        l.failureMessage,
                       );
                     },
                     (r) {

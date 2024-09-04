@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class RecipeFavouriteButton extends StatelessWidget {
@@ -18,17 +20,14 @@ class RecipeFavouriteButton extends StatelessWidget {
     return BlocConsumer<FavouriteRecipeBloc, FavouriteRecipeState>(
       listener: (context, state) {
         if (state.containsInFavourite(recipe)) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Recipe Added to Favourites list'),
-              backgroundColor: AppColors.green,
-            ),
+          CustomSnackbar.showSuccessMessage(
+            context,
+            StringConstant.recipeAddedToFavouritesList,
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Recipe removed from Favourites list'),
-            ),
+          CustomSnackbar.showSuccessMessage(
+            context,
+            StringConstant.recipeRemovedFromFavouritesList,
           );
         }
       },

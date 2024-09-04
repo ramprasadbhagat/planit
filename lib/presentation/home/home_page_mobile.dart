@@ -11,11 +11,13 @@ import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:collection/collection.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class HomePageMobile extends StatelessWidget {
   const HomePageMobile({super.key});
@@ -33,6 +35,10 @@ class HomePageMobile extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               authenticated: (auth) {
+                CustomSnackbar.showSuccessMessage(
+                  context,
+                  StringConstant.successfullyLogIn,
+                );
                 context
                     .read<UserProfileBloc>()
                     .add(const UserProfileEvent.fetch());
@@ -86,18 +92,13 @@ class HomePageMobile extends StatelessWidget {
             state.apiFailureOrSuccessOption.fold(() => null, (a) {
               a.fold(
                 (l) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(l.failureMessage),
-                      backgroundColor: AppColors.red,
-                    ),
-                  );
+                  CustomSnackbar.showErrorMessage(context, l.failureMessage);
                 },
                 (r) {
-                  const snackBar = SnackBar(
-                    content: Text('Order placed successfully'),
+                  CustomSnackbar.showSuccessMessage(
+                    context,
+                    StringConstant.orderPlacedSuccessfully,
                   );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
                   context.router.navigate(const HomeRoute());
                   context.router.navigate(const OrderListRoute());

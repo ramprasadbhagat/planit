@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class EditProfileBottomSheet extends StatelessWidget {
   const EditProfileBottomSheet({super.key});
@@ -123,11 +125,10 @@ class EditProfileBottomSheet extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     context.router.maybePop();
-                    const snackBar = SnackBar(
-                      content: Text('Profile Updated Successfully'),
+                    CustomSnackbar.showSuccessMessage(
+                      context,
+                      StringConstant.profileUpdatedSuccessfully,
                     );
-
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.black,

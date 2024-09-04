@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/blog_details/blog_details_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
-import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class AddCommentBottomSheet extends StatelessWidget {
@@ -17,19 +18,10 @@ class AddCommentBottomSheet extends StatelessWidget {
       listener: (context, state) {
         state.apiFailureOrSuccessOption.fold(() => null, (a) {
           a.fold((l) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(l.failureMessage),
-                backgroundColor: AppColors.red,
-              ),
-            );
-          }, (r) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Comment Added!'),
-                backgroundColor: AppColors.green,
-              ),
-            );
+            CustomSnackbar.showErrorMessage(context, l.failureMessage);
+          }, (_) {
+            CustomSnackbar.showSuccessMessage(
+                context, StringConstant.commentedAdded);
           });
         });
         context.router.maybePop();
