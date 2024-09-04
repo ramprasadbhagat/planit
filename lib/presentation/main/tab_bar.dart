@@ -83,41 +83,36 @@ class MainTabbar extends StatelessWidget {
                 (success) {
                   if (state.isProfileCompleted) {
                     context.router.navigate(const HomeRoute());
-                    context
-                        .read<OrderBloc>()
-                        .add(const OrderEvent.fetchOrders());
-                    context
-                        .read<FavouriteRecipeBloc>()
-                        .add(const FavouriteRecipeEvent.fetch());
-
-                    final cartBloc = context.read<CartBloc>();
-
-                    if (cartBloc.state.cartData.isNotEmpty) {
-                      cartBloc.add(const CartEvent.sendLocalServerCart());
-                    }
-
-                    context
-                        .read<AddressBookBloc>()
-                        .add(const AddressBookEvent.fetch());
-                    context
-                        .read<WishlistBloc>()
-                        .add(const WishlistEvent.fetch());
-                    context.read<CartBloc>().add(const CartEvent.fetch());
-
-                    context.read<CouponBloc>().add(const CouponEvent.fetch());
-
-                    context
-                        .read<WalletBloc>()
-                        .add(const WalletEvent.fetchBalance());
-                    context
-                        .read<WalletBloc>()
-                        .add(const WalletEvent.fetchTransactionHistory());
                   } else {
                     context.router.navigate(
                       UserProfileRoute(
                         isFirstLogin: true,
                       ),
                     );
+                  }
+                  context
+                      .read<FavouriteRecipeBloc>()
+                      .add(const FavouriteRecipeEvent.fetch());
+
+                  context
+                      .read<AddressBookBloc>()
+                      .add(const AddressBookEvent.fetch());
+                  context.read<WishlistBloc>().add(const WishlistEvent.fetch());
+                  context.read<CartBloc>().add(const CartEvent.fetch());
+
+                  context.read<CouponBloc>().add(const CouponEvent.fetch());
+
+                  context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchBalance());
+                  context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchTransactionHistory());
+                  context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
+                  final cartBloc = context.read<CartBloc>();
+
+                  if (cartBloc.state.cartData.isNotEmpty) {
+                    cartBloc.add(const CartEvent.sendLocalServerCart());
                   }
                 },
               ),
