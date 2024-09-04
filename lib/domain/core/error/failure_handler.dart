@@ -20,6 +20,7 @@ class FailureHandler {
             message.toLowerCase() ==
                 'status: 401, message: token has either expired or its not valid') {
           return const ApiFailure.authenticationFailed();
+          //TODO: Need to modify once BE add the error code and message
         }
 
         return ApiFailure.serverError(message);
