@@ -8,7 +8,7 @@ class ScrollList<T> extends StatefulWidget {
   final List<T> items;
   final Widget noRecordFoundWidget;
   final Widget header;
-  final ScrollController controller;
+  final ScrollController? controller;
   final Widget Function(BuildContext context, int index, T item) itemBuilder;
   final bool dismissOnDrag;
   const ScrollList({
@@ -17,7 +17,7 @@ class ScrollList<T> extends StatefulWidget {
     required this.itemBuilder,
     required this.items,
     required this.noRecordFoundWidget,
-    required this.controller,
+    this.controller,
     this.header = const SizedBox.shrink(),
     this.onRefresh,
     this.onLoadingMore,
@@ -33,7 +33,7 @@ class _ScrollListState<T> extends State<ScrollList<T>> {
 
   @override
   void initState() {
-    _controller = widget.controller;
+    _controller = widget.controller ?? ScrollController();
     _controller.addListener(
       () {
         if ((_controller.position.pixels >=

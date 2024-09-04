@@ -39,7 +39,7 @@ class RecipeRemoteDataSource {
   }) async {
     final res = await httpService.request(
       method: 'GET',
-      url: 'recipes?pageSize=$pageSize&pageNumber=$pageNumber?search=$search',
+      url: 'recipes?pageSize=$pageSize&pageNumber=$pageNumber&search=$search',
     );
 
     _exceptionChecker(res: res);

@@ -26,6 +26,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         emit(
           state.copyWith(
             isFetching: true,
+            recipes: [],
+            filteredRecipes: [],
           ),
         );
         final failureOrSuccess = await repository.fetchRecipes(
