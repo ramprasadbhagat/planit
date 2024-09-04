@@ -54,7 +54,7 @@ class OrderDto with _$OrderDto {
         couponId: StringValue(couponId),
         userId: StringValue(userId),
         deliveryAddressId: StringValue(deliveryAddressId),
-        paymentStatus: StringValue(paymentStatus),
+        paymentStatus: PaymentStatus(paymentStatus),
         orderStatus: StringValue(orderStatus),
         totalPrice: IntegerValue(totalPrice),
         subTotal: IntegerValue(subTotal),

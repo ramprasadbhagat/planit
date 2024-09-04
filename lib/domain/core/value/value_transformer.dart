@@ -11,3 +11,6 @@ String capitalizeFirst(String text) {
 
 bool isMinCharacter({required String input, required int minLength}) =>
     input.length >= minLength;
+
+bool isEqualsIgnoreCase(String value, String matcher) =>
+    value.trim().toLowerCase() == matcher.trim().toLowerCase();

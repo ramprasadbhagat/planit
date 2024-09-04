@@ -5,6 +5,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/tag.dart';
 import 'package:planit/presentation/order/widgets/orderItems.dart';
 import 'package:planit/presentation/order/widgets/review_order.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -67,17 +68,27 @@ class OrderDetailsPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Order Summary',
-                            style: textTheme.titleMedium?.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            textAlign: TextAlign.start,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Order Summary',
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                              const Tag(
+                                label: 'Order Success',
+                                backgroundColor: AppColors.green,
+                                labelColor: AppColors.white,
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          // const SizedBox(
+                          //   height: 20,
+                          // ),
                           Row(
                             children: [
                               const Icon(
@@ -410,10 +421,15 @@ class OrderDetailsPage extends StatelessWidget {
                                 ),
                                 textAlign: TextAlign.start,
                               ),
+                              if (order.paymentStatus.isFailed) ...[
+                                const Spacer(),
+                                const Tag(
+                                  label: 'Payment Failed',
+                                  backgroundColor: AppColors.red,
+                                  labelColor: AppColors.white,
+                                ),
+                              ],
                             ],
-                          ),
-                          const SizedBox(
-                            height: 20,
                           ),
                           Row(
                             children: [
@@ -528,30 +544,6 @@ class OrderDetailsPage extends StatelessWidget {
                                       order.deliveryCharge
                                           .getValue()
                                           .toPrice(showFreeIfZero: true),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Packaging Charges',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      order.packingCharges.getValue().toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         color: AppColors.grey2,
                                         fontSize: 12,

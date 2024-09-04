@@ -51,6 +51,22 @@ class StringValue extends ValueObject<String> {
   const StringValue._(this.value);
 }
 
+class PaymentStatus extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PaymentStatus(String input) =>
+      PaymentStatus._(validateStringNotEmpty(input));
+
+  String get displayLabel => naIfEmpty(value.getOrElse(() => ''));
+
+  bool get isSuccess => isEqualsIgnoreCase(displayLabel, 'successfull');
+  bool get isFailed => isEqualsIgnoreCase(displayLabel, 'failed');
+  bool get isUnknown => !isSuccess || !isFailed;
+
+  const PaymentStatus._(this.value);
+}
+
 class IntegerValue extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;

@@ -34,7 +34,7 @@ class PaymentRemoteDatasource {
       'name': options.name,
       'description': options.description,
       'prefill': {
-        'contact': options.prefill.email,
+        'contact': options.prefill.contact,
         'email': options.prefill.email,
       },
     });
