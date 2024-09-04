@@ -19,9 +19,11 @@ import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:planit/utils/widget_keys.dart';
 
@@ -79,12 +81,11 @@ class _MainTabbarState extends State<MainTabbar> {
               state.apiFailureOrSuccessOption.fold(
                 () {},
                 (either) => either.fold(
-                  (failure) {
-                    final snackBar = SnackBar(
-                      backgroundColor: Colors.black,
-                      content: Text(failure.failureMessage),
+                  (l) {
+                    CustomSnackbar.showSuccessMessage(
+                      context,
+                      l.failureMessage,
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   (_) {},
                 ),
@@ -98,10 +99,10 @@ class _MainTabbarState extends State<MainTabbar> {
         BlocListener<WishlistBloc, WishlistState>(
           listener: (context, state) {
             if (state.showSnackBar) {
-              const snackBar = SnackBar(
-                content: Text('Item Added to WishList'),
+              CustomSnackbar.showSuccessMessage(
+                context,
+                StringConstant.itemAddedToWishList,
               );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
           },
           listenWhen: (previous, current) =>

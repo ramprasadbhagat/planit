@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/my_complain/complain_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/my_complains/add_complains/widgets/add_complains_form.dart';
-import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
@@ -45,10 +46,10 @@ class AddComplainsPage extends StatelessWidget {
       ),
       body: BlocConsumer<ComplainBloc, ComplainState>(
         listener: (context, state) {
-          const snackBar = SnackBar(
-            content: Text('Complain Added Successfully'),
+          CustomSnackbar.showSuccessMessage(
+            context,
+            StringConstant.complainAddedSuccessfully,
           );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
           context.router.maybePop();
         },
         listenWhen: (previous, current) =>
@@ -71,18 +72,16 @@ class AddComplainsPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     if (state.orderId == null) {
-                      const snackBar = SnackBar(
-                        backgroundColor: AppColors.grey3,
-                        content: Text('please select orderId'),
+                      CustomSnackbar.showErrorMessage(
+                        context,
+                        StringConstant.pleaseSelectOrderId,
                       );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else {
                       if (descriptionController.text.isEmpty) {
-                        const snackBar = SnackBar(
-                          backgroundColor: AppColors.grey3,
-                          content: Text('Add description of your complain'),
+                        CustomSnackbar.showErrorMessage(
+                          context,
+                          StringConstant.addDescriptionOfYourComplain,
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       } else {
                         context.read<ComplainBloc>().add(
                               ComplainEvent.addComplain(

@@ -6,7 +6,9 @@ import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
 import 'package:planit/presentation/address_book/widget/custom_text_field.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class NewAddressBookSheet extends StatefulWidget {
   const NewAddressBookSheet({super.key});
@@ -160,18 +162,17 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
                     state.apiFailureOrSuccessOption.fold(() {}, (a) {
                       a.fold(
                         (l) {
-                          final snackBar = SnackBar(
-                            content: Text(l.failureMessage),
+                          CustomSnackbar.showErrorMessage(
+                            context,
+                            l.failureMessage,
                           );
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                         (r) {
                           context.router.maybePop();
-                          const snackBar = SnackBar(
-                            content: Text('AddressBook added successfully'),
+                          CustomSnackbar.showSuccessMessage(
+                            context,
+                            StringConstant.addressBookAddedSuccessfully,
                           );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                       );
                     });

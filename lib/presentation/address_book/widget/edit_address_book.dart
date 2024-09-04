@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/presentation/address_book/widget/custom_text_field.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class EditAddressBookSheet extends StatefulWidget {
   final AddressBook addressBook;
@@ -154,11 +156,10 @@ class _EditAddressBookSheetState extends State<EditAddressBookSheet> {
                           );
                       FocusScope.of(context).unfocus();
                       context.router.maybePop();
-                      const snackBar = SnackBar(
-                        content: Text('AddressBook edited successfully'),
+                      CustomSnackbar.showSuccessMessage(
+                        context,
+                        StringConstant.addressBookEditedSuccessfully,
                       );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
                   style: ElevatedButton.styleFrom(

@@ -10,8 +10,10 @@ import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -39,22 +41,17 @@ class _LocationPinState extends State<LocationPin> {
               state.apiFailureOrSuccessOption.fold(
                 () {},
                 (either) => either.fold(
-                  (failure) {
-                    final snackBar = SnackBar(
-                      backgroundColor: Colors.black,
-                      content: Text(failure.failureMessage),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  (l) {
+                    CustomSnackbar.showErrorMessage(context, l.failureMessage);
                   },
                   (_) {},
                 ),
               );
               if (state.pincode.isNotEmpty) {
-                const snackBar = SnackBar(
-                  content: Text('Pincode saved successfully'),
+                CustomSnackbar.showSuccessMessage(
+                  context,
+                  StringConstant.pinCodeSavedSuccessfully,
                 );
-
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               }
             },
             builder: (context, state) {

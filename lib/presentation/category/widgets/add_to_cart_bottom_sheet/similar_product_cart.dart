@@ -8,8 +8,10 @@ import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class SimilarProductCard extends StatelessWidget {
   final SimilarProduct item;
@@ -215,12 +217,10 @@ class SimilarProductCard extends StatelessWidget {
                                   ),
                                 );
                             context.router.maybePop();
-                            const snackBar = SnackBar(
-                              content: Text('Item added to cart'),
+                            CustomSnackbar.showSuccessMessage(
+                              context,
+                              StringConstant.itemAddedToCart,
                             );
-
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
                           } else {
                             if (context
                                 .read<PincodeBloc>()
@@ -236,12 +236,11 @@ class SimilarProductCard extends StatelessWidget {
                                     ),
                                   );
                               context.router.maybePop();
-                              const snackBar = SnackBar(
-                                content: Text('Item added to cart'),
-                              );
 
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
+                              CustomSnackbar.showSuccessMessage(
+                                context,
+                                StringConstant.itemAddedToCart,
+                              );
                             }
                           }
                         },
@@ -277,10 +276,10 @@ class AddToListButton extends StatelessWidget {
           wishlistBloc
               .add(WishlistEvent.addToWishlist(product: item.toProduct));
           context.router.maybePop();
-          const snackBar = SnackBar(
-            content: Text('Item added to wishlist'),
+          CustomSnackbar.showSuccessMessage(
+            context,
+            StringConstant.itemAddedToWishList,
           );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(

@@ -5,7 +5,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:planit/application/recipe/recipe_details/recipe_details_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class AddRecipeReviewBottomSheet extends StatelessWidget {
@@ -23,19 +25,12 @@ class AddRecipeReviewBottomSheet extends StatelessWidget {
         state.apiFailureOrSuccessOption.fold(() => null, (a) {
           a.fold(
             (l) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(l.failureMessage),
-                  backgroundColor: AppColors.red,
-                ),
-              );
+              CustomSnackbar.showErrorMessage(context, l.failureMessage);
             },
             (r) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Review Added Successfully'),
-                  backgroundColor: AppColors.green,
-                ),
+              CustomSnackbar.showSuccessMessage(
+                context,
+                StringConstant.reviewAddedSuccessfully,
               );
               context.router.maybePop();
             },

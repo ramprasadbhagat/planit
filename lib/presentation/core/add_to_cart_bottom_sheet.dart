@@ -15,10 +15,12 @@ import 'package:planit/locator.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_section.dart';
 import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
@@ -235,12 +237,10 @@ class AddToCartBottomSheet extends StatelessWidget {
                                             ),
                                           );
 
-                                      const snackBar = SnackBar(
-                                        content: Text('Item added to cart'),
+                                      CustomSnackbar.showSuccessMessage(
+                                        context,
+                                        StringConstant.itemAddedToCart,
                                       );
-
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackBar);
                                     } else {
                                       if (context
                                           .read<PincodeBloc>()
@@ -267,12 +267,10 @@ class AddToCartBottomSheet extends StatelessWidget {
                                               ),
                                             );
 
-                                        const snackBar = SnackBar(
-                                          content: Text('Item added to cart'),
+                                        CustomSnackbar.showSuccessMessage(
+                                          context,
+                                          StringConstant.itemAddedToCart,
                                         );
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(snackBar);
                                       }
                                     }
                                   }

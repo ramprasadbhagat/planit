@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/order_list/widgets/order_list_item.dart';
 
@@ -41,12 +42,11 @@ class _OrderListPageState extends State<OrderListPage> {
           state.apiFailureOrSuccessOption.fold(
             () {},
             (either) => either.fold(
-              (failure) {
-                final snackBar = SnackBar(
-                  backgroundColor: Colors.black,
-                  content: Text(failure.failureMessage),
+              (l) {
+                CustomSnackbar.showErrorMessage(
+                  context,
+                  l.failureMessage,
                 );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               (_) {},
             ),

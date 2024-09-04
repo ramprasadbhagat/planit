@@ -9,10 +9,12 @@ import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -163,13 +165,10 @@ class ProductCard extends StatelessWidget {
                                       quantity: 1,
                                     ),
                                   );
-
-                              const snackBar = SnackBar(
-                                content: Text('Item added to cart'),
+                              CustomSnackbar.showSuccessMessage(
+                                context,
+                                StringConstant.itemAddedToCart,
                               );
-
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
                             } else {
                               if (context
                                   .read<PincodeBloc>()
@@ -191,13 +190,10 @@ class ProductCard extends StatelessWidget {
                                         quantity: 1,
                                       ),
                                     );
-
-                                const snackBar = SnackBar(
-                                  content: Text('Item added to cart'),
+                                CustomSnackbar.showSuccessMessage(
+                                  context,
+                                  StringConstant.itemAddedToCart,
                                 );
-
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
                               }
                             }
                           },
@@ -239,10 +235,10 @@ class AddToListButton extends StatelessWidget {
               ),
             );
           } else {
-            const snackBar = SnackBar(
-              content: Text('Please Login to add items to shopping list'),
+            CustomSnackbar.showSuccessMessage(
+              context,
+              StringConstant.pleaseLoginToAddItemsToShoppingList,
             );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
         style: OutlinedButton.styleFrom(

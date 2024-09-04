@@ -6,6 +6,7 @@ import 'package:planit/application/auth/login/login_form_bloc.dart';
 import 'package:planit/application/auth/otp/otp_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
@@ -175,10 +176,9 @@ class _LoginPageState extends State<LoginPage> {
                               state.authFailureOrSuccessOption.fold(() {},
                                   (either) {
                                 either.fold((l) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(l.failureMessage),
-                                    ),
+                                  CustomSnackbar.showErrorMessage(
+                                    context,
+                                    l.failureMessage,
                                   );
                                 }, (r) {
                                   context.read<OtpBloc>().add(

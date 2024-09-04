@@ -6,8 +6,10 @@ import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/cart/widgets/cart_checkout.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_section.dart';
 import 'package:planit/presentation/cart/widgets/before_checkout_section.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -52,11 +54,10 @@ class _CartPageState extends State<CartPage> {
         },
         child: BlocConsumer<CartBloc, CartState>(
           listener: (context, state) {
-            const snackBar = SnackBar(
-              backgroundColor: Colors.red,
-              content: Text('Item removed from cart'),
+            CustomSnackbar.showErrorMessage(
+              context,
+              StringConstant.itemRemovedFromCart,
             );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           },
           listenWhen: (previous, current) =>
               current.cartItem.products.length <

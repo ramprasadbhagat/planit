@@ -12,9 +12,11 @@ import 'package:planit/domain/blog/enitities/blog_comments.dart';
 import 'package:planit/locator.dart';
 import 'package:planit/presentation/blogs/widgets/add_comment_bottom_sheet.dart';
 import 'package:planit/presentation/blogs/widgets/blog_tag_item.dart';
+import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:readmore/readmore.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -153,36 +155,27 @@ class BlogDetailsPage extends StatelessWidget {
                                   LikeButton(
                                     onTap: () {
                                       if (isUnAuth) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Please login to like this blog!',
-                                            ),
-                                          ),
+                                        CustomSnackbar.showErrorMessage(
+                                          context,
+                                          StringConstant
+                                              .pleaseLoginToLikeThisBlog,
                                         );
 
                                         return;
                                       }
-
                                       if (state.blog.like != null) {
-                                        SnackBar snackBar;
+                                        String text;
+
                                         if (!state.blog.like!) {
-                                          snackBar = const SnackBar(
-                                            content: Text(
-                                              'You already disliked this blog!',
-                                            ),
-                                          );
+                                          text = StringConstant
+                                              .youAlreadyDislikedThisBlog;
                                         } else {
-                                          snackBar = const SnackBar(
-                                            content: Text(
-                                              'You already liked this blog!',
-                                            ),
-                                          );
+                                          text = StringConstant
+                                              .youAlreadyLikedThisBlog;
                                         }
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          snackBar,
+                                        CustomSnackbar.showErrorMessage(
+                                          context,
+                                          text,
                                         );
                                         return;
                                       }
@@ -212,37 +205,28 @@ class BlogDetailsPage extends StatelessWidget {
                                   LikeButton(
                                     onTap: () {
                                       if (isUnAuth) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Please login to dislike this blog!',
-                                            ),
-                                          ),
+                                        CustomSnackbar.showErrorMessage(
+                                          context,
+                                          StringConstant
+                                              .pleaseLoginToDislikeThisBlog,
                                         );
 
                                         return;
                                       }
 
                                       if (state.blog.like != null) {
-                                        SnackBar snackBar;
+                                        String text;
                                         if (!state.blog.like!) {
-                                          snackBar = const SnackBar(
-                                            content: Text(
-                                              'You already disliked this blog!',
-                                            ),
-                                          );
+                                          text = StringConstant
+                                              .youAlreadyDislikedThisBlog;
                                         } else {
-                                          snackBar = const SnackBar(
-                                            content: Text(
-                                              'You already liked this blog!',
-                                            ),
-                                          );
+                                          text = StringConstant
+                                              .youAlreadyLikedThisBlog;
                                         }
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          snackBar,
+                                        CustomSnackbar.showErrorMessage(
+                                          context,
+                                          text,
                                         );
                                         return;
                                       }
@@ -389,10 +373,9 @@ class BlogDetailsPage extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (context.read<AuthBloc>().state.isUnAuthenticated) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please login to add comments!'),
-                      ),
+                    CustomSnackbar.showErrorMessage(
+                      context,
+                      StringConstant.pleaseLoginToAddComments,
                     );
                     return;
                   }
