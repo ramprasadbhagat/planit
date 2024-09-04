@@ -56,8 +56,7 @@ class CartItemSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (context.read<AuthBloc>().state ==
-                    const AuthState.unauthenticated())
+                if (context.read<AuthBloc>().state.isUnAuthenticated)
                   ...getLocalCartData()
                 else
                   ...state.cartItem.products.map(

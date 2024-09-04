@@ -10,6 +10,7 @@ class ApiFailure with _$ApiFailure {
   const factory ApiFailure.serverTimeout() = _ServerTimeout;
   const factory ApiFailure.imagePickCancelledByUser() =
       _ImagePickCancelledByUser;
+  const factory ApiFailure.authenticationFailed() = _AuthenticationFailed;
 }
 
 extension ApiFailureExt on ApiFailure {
@@ -19,5 +20,6 @@ extension ApiFailureExt on ApiFailure {
         poorConnection: (_) => 'Poor Internet connection',
         serverTimeout: (_) => 'Server time out',
         imagePickCancelledByUser: (_) => 'Cancelled By User',
+        authenticationFailed: (_) => 'Your session has expired',
       );
 }

@@ -22,13 +22,35 @@ class AuthInterceptor extends Interceptor {
       final token = storageService.getBearerToken();
       if (token.isNotEmpty) {
         options.headers['Authorization'] = token;
-      } else if (token.isEmpty) {
+      } else {
         options.headers['Authorization'] = 'Bearer ${config.sampleToken}';
       }
     } on CacheException catch (e) {
       debugPrint('load token failure: ${e.message}');
     }
+    options.headers['Content-Type'] = 'application/json; charset=UTF-8';
+
     return super.onRequest(options, handler);
+  }
+
+  @override
+  Future onResponse(
+    Response response,
+    ResponseInterceptorHandler handler,
+  ) async {
+    try {
+      if (response.data['errors'] != null &&
+          response.data['errors'].isNotEmpty &&
+          (response.data['errors'][0]['message'] == 'authentication failed' ||
+              response.data['errors'][0]['message'] ==
+                  'status: 401, message: token has either expired or its not valid')) {
+        //TODO: Need to modify once BE add the error code and message
+      }
+
+      return super.onResponse(response, handler);
+    } catch (e) {
+      return super.onResponse(response, handler);
+    }
   }
 
   @override

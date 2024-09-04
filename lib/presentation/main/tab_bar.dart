@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/add_money/ui_state/payment_method.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/banner/banner_bloc.dart';
@@ -10,14 +11,18 @@ import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/category/category_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
+import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/application/highlight/highlight_product_bloc.dart';
+import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/quick_picks/quick_picks_bloc.dart';
 import 'package:planit/application/recipe/recipe_bloc.dart';
 import 'package:planit/application/sub_category/sub_category_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/application/wallet/wallet_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/core/error/error_utils.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
@@ -28,53 +33,164 @@ import 'package:planit/utils/svg_image.dart';
 import 'package:planit/utils/widget_keys.dart';
 
 @RoutePage()
-class MainTabbar extends StatefulWidget {
+class MainTabbar extends StatelessWidget {
   const MainTabbar({super.key});
-
-  @override
-  State<MainTabbar> createState() => _MainTabbarState();
-}
-
-class _MainTabbarState extends State<MainTabbar> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<CategoryBloc>().add(
-          const CategoryEvent.fetch(),
-        );
-    context.read<HighlightProductBloc>().add(
-          const HighlightProductEvent.fetch(),
-        );
-    context.read<QuickPicksBloc>().add(
-          const QuickPicksEvent.fetch(),
-        );
-    context.read<SubCategoryBloc>().add(
-          const SubCategoryEvent.getShopByCategory(),
-        );
-    context.read<SubCategoryBloc>().add(
-          const SubCategoryEvent.getShopByOcassion(),
-        );
-    context.read<WishlistBloc>().add(
-          const WishlistEvent.fetch(),
-        );
-    context.read<CartBloc>().add(const CartEvent.fetch());
-    context.read<BannerBloc>().add(
-          const BannerEvent.fetch(),
-        );
-    context.read<AddressBookBloc>().add(const AddressBookEvent.fetch());
-    context.read<CouponBloc>().add(const CouponEvent.fetch());
-    context.read<RecipeBloc>().add(const RecipeEvent.fetch());
-
-    context.read<BlogBloc>().add(const BlogEvent.fetchBlogs());
-    context.read<WalletBloc>().add(const WalletEvent.fetchBalance());
-    context.read<WalletBloc>().add(const WalletEvent.fetchTransactionHistory());
-    context.read<BestSellerBloc>().add(const BestSellerEvent.fetchProducts());
-  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
+        BlocListener<AuthBloc, AuthState>(
+          listenWhen: (previous, current) => previous != current,
+          listener: (context, state) {
+            state.mapOrNull(
+              authenticated: (auth) {
+                CustomSnackbar.showSuccessMessage(
+                  context,
+                  StringConstant.successfullyLogIn,
+                );
+                context
+                    .read<UserProfileBloc>()
+                    .add(const UserProfileEvent.fetch());
+
+                _apiCallWithoutAuthentication(context);
+              },
+              unauthenticated: (_) {
+                context
+                    .read<UserProfileBloc>()
+                    .add(const UserProfileEvent.reset());
+                context
+                    .read<FavouriteRecipeBloc>()
+                    .add(const FavouriteRecipeEvent.reset());
+
+                _apiCallWithoutAuthentication(context);
+              },
+            );
+          },
+        ),
+        BlocListener<UserProfileBloc, UserProfileState>(
+          listenWhen: (previous, current) =>
+              previous.apiFailureOrSuccessOption !=
+                  current.apiFailureOrSuccessOption ||
+              previous.user != current.user && !current.user.isEmpty,
+          listener: (context, state) {
+            state.apiFailureOrSuccessOption.fold(
+              () {},
+              (either) => either.fold(
+                (failure) {
+                  ErrorUtils.handleApiFailure(context, failure);
+                },
+                (success) {
+                  if (state.isProfileCompleted) {
+                    context.router.navigate(const HomeRoute());
+                  } else {
+                    context.router.navigate(
+                      UserProfileRoute(
+                        isFirstLogin: true,
+                      ),
+                    );
+                  }
+                  context
+                      .read<FavouriteRecipeBloc>()
+                      .add(const FavouriteRecipeEvent.fetch());
+
+                  context
+                      .read<AddressBookBloc>()
+                      .add(const AddressBookEvent.fetch());
+                  context.read<WishlistBloc>().add(const WishlistEvent.fetch());
+                  context.read<CartBloc>().add(const CartEvent.fetch());
+
+                  context.read<CouponBloc>().add(const CouponEvent.fetch());
+
+                  context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchBalance());
+                  context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchTransactionHistory());
+                  context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
+                  final cartBloc = context.read<CartBloc>();
+
+                  if (cartBloc.state.cartData.isNotEmpty) {
+                    cartBloc.add(const CartEvent.sendLocalServerCart());
+                  }
+                },
+              ),
+            );
+          },
+        ),
+        BlocListener<OrderBloc, OrderState>(
+          listenWhen: (previous, current) =>
+              previous.isFetching != current.isFetching && !current.isFetching,
+          listener: (context, state) {
+            state.apiFailureOrSuccessOption.fold(() => null, (a) {
+              a.fold(
+                (l) {
+                  CustomSnackbar.showErrorMessage(context, l.failureMessage);
+                },
+                (r) {
+                  CustomSnackbar.showSuccessMessage(
+                    context,
+                    StringConstant.orderPlacedSuccessfully,
+                  );
+
+                  context.router.navigate(const HomeRoute());
+                  context.router.navigate(const OrderListRoute());
+                  if (state.selectedPaymentMethod ==
+                      const PaymentMethod.wallet()) {
+                    context
+                        .read<WalletBloc>()
+                        .add(const WalletEvent.fetchBalance());
+                    context
+                        .read<WalletBloc>()
+                        .add(const WalletEvent.fetchTransactionHistory());
+                    context.read<OrderBloc>().add(
+                          const OrderEvent.changePaymentMethod(
+                            PaymentMethod.razorpay(),
+                          ),
+                        );
+                  }
+                },
+              );
+            });
+          },
+        ),
+        BlocListener<OrderBloc, OrderState>(
+          listenWhen: (previous, current) => previous.orders != current.orders,
+          listener: (context, state) {
+            context.read<CartBloc>().add(const CartEvent.fetch());
+          },
+        ),
+        BlocListener<CartBloc, CartState>(
+          listenWhen: (previous, current) =>
+              previous.cartItem != current.cartItem &&
+              previous.isFetching != current.isFetching &&
+              !current.isFetching,
+          listener: (context, state) {
+            final addressBook =
+                context.read<AddressBookBloc>().state.selectedAddress;
+            if (addressBook.pincode.isNotEmpty) {
+              context.read<CartBloc>().add(
+                    CartEvent.fetchShippingCharge(
+                      pincode: addressBook.pincode,
+                    ),
+                  );
+            }
+          },
+        ),
+        BlocListener<AddressBookBloc, AddressBookState>(
+          listenWhen: (previous, current) =>
+              previous.selectedAddress != current.selectedAddress,
+          listener: (context, state) {
+            if (state.selectedAddress.pincode.isNotEmpty) {
+              context.read<CartBloc>().add(
+                    CartEvent.fetchShippingCharge(
+                      pincode: state.selectedAddress.pincode,
+                    ),
+                  );
+            }
+          },
+        ),
         BlocListener<WishlistBloc, WishlistState>(
           listener: (context, state) {
             if (state.showSnackBar) {
@@ -215,6 +331,33 @@ class _MainTabbarState extends State<MainTabbar> {
         },
       ),
     );
+  }
+
+  void _apiCallWithoutAuthentication(BuildContext context) {
+    context.read<CategoryBloc>().add(
+          const CategoryEvent.fetch(),
+        );
+    context.read<HighlightProductBloc>().add(
+          const HighlightProductEvent.fetch(),
+        );
+    context.read<QuickPicksBloc>().add(
+          const QuickPicksEvent.fetch(),
+        );
+    context.read<SubCategoryBloc>().add(
+          const SubCategoryEvent.getShopByCategory(),
+        );
+    context.read<SubCategoryBloc>().add(
+          const SubCategoryEvent.getShopByOcassion(),
+        );
+
+    context.read<BannerBloc>().add(
+          const BannerEvent.fetch(),
+        );
+
+    context.read<RecipeBloc>().add(const RecipeEvent.fetch());
+
+    context.read<BlogBloc>().add(const BlogEvent.fetchBlogs());
+    context.read<BestSellerBloc>().add(const BestSellerEvent.fetchProducts());
   }
 }
 

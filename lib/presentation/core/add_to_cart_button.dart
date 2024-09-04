@@ -96,6 +96,7 @@ class AddToCartButton extends StatelessWidget {
           final itemCount = context.read<AuthBloc>().state.when(
                 authenticated: (_) => state.getProductQuantity(product),
                 unauthenticated: () => state.getProductQuantityLocal(product),
+                initial: () {},
               );
 
           if (itemCount == 0) {

@@ -52,7 +52,11 @@ class HttpService {
         data: data,
       );
     } on DioException catch (e) {
-      throw e.error ?? OtherException(message: 'Unknown exception');
+      if (e.type == DioExceptionType.badResponse && e.response != null) {
+        return e.response!;
+      }
+
+      rethrow;
     }
   }
 }
