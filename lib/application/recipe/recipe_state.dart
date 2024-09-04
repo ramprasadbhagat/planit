@@ -18,14 +18,14 @@ class RecipeState with _$RecipeState {
   }) = _RecipeState;
 
   factory RecipeState.initial() => const RecipeState(
-        recipes: [],
+        recipes: <Recipe>[],
         isFetching: false,
         apiFailureOrSuccessOption: None(),
-        filteredRecipes: [],
-        selectedCourseFilter: [],
-        selectedCuisineFilter: [],
-        tempSelectedCourseFilter: [],
-        tempSelectedCuisineFilter: [],
+        filteredRecipes: <Recipe>[],
+        selectedCourseFilter: <String>[],
+        selectedCuisineFilter: <String>[],
+        tempSelectedCourseFilter: <String>[],
+        tempSelectedCuisineFilter: <String>[],
         hasMore: false,
         pageNumber: 1,
       );

@@ -14,7 +14,7 @@ class SearchRecipesState with _$SearchRecipesState {
   }) = _SearchRecipesState;
 
   factory SearchRecipesState.initial() => const SearchRecipesState(
-        recipes: [],
+        recipes: <Recipe>[],
         isFetching: false,
         apiFailureOrSuccessOption: None(),
         currentPage: 1,

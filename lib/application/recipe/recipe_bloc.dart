@@ -26,8 +26,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         emit(
           state.copyWith(
             isFetching: true,
-            recipes: [],
-            filteredRecipes: [],
+            recipes: <Recipe>[],
+            filteredRecipes: <Recipe>[],
           ),
         );
         final failureOrSuccess = await repository.fetchRecipes(
@@ -151,8 +151,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       clearAllFilterClicked: (_ClearAllFilterClicked value) {
         emit(
           state.copyWith(
-            tempSelectedCourseFilter: [],
-            tempSelectedCuisineFilter: [],
+            tempSelectedCourseFilter: <String>[],
+            tempSelectedCuisineFilter: <String>[],
           ),
         );
       },

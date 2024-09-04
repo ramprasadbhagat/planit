@@ -35,7 +35,7 @@ class SearchRecipesBloc extends Bloc<SearchRecipesEvent, SearchRecipesState> {
           state.copyWith(
             isFetching: true,
             searchText: e.searchKey,
-            recipes: [],
+            recipes: <Recipe>[],
             currentPage: 1,
             totalItemCount: 0,
           ),
