@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/search_recipes/search_recipes_bloc.dart';
 import 'package:planit/presentation/core/common_search_bar.dart';
 import 'package:planit/presentation/core/no_data.dart';
-import 'package:planit/presentation/home/read/widgets/hot_recipes.dart';
+import 'package:planit/presentation/home/read/widgets/recipe_list_card.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
 import 'package:planit/presentation/theme/colors.dart';

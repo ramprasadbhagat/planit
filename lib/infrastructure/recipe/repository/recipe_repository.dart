@@ -4,6 +4,7 @@ import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/domain/recipe/entities/recipe_details.dart';
+import 'package:planit/domain/recipe/entities/recipe_response.dart';
 import 'package:planit/domain/recipe/repository/i_recipe_repository.dart';
 import 'package:planit/infrastructure/recipe/datasource/recipe_local.dart';
 import 'package:planit/infrastructure/recipe/datasource/recipe_remote.dart';
@@ -19,10 +20,14 @@ class RecipeRepository extends IRecipeRepository {
     required this.remoteDataSource,
   });
   @override
-  Future<Either<ApiFailure, List<Recipe>>> fetchAllRecipes() async {
+  Future<Either<ApiFailure, RecipeResponse>> fetchRecipes({
+    int pageSize = 10,
+    int pageNumber = 1,
+    String search = '',
+  }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
-        final list = await localDataSource.fetchAllRecipes();
+        final list = await localDataSource.fetchRecipes();
 
         return Right(list);
       } catch (e) {
@@ -31,7 +36,11 @@ class RecipeRepository extends IRecipeRepository {
     }
 
     try {
-      final recipes = await remoteDataSource.fetchAllRecipes();
+      final recipes = await remoteDataSource.fetchRecipes(
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+        search: search,
+      );
 
       return Right(recipes);
     } catch (e) {

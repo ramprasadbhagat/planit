@@ -13,6 +13,8 @@ class RecipeState with _$RecipeState {
     required List<String> tempSelectedCourseFilter,
     required bool isFetching,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required int pageNumber,
+    required bool hasMore,
   }) = _RecipeState;
 
   factory RecipeState.initial() => const RecipeState(
@@ -24,6 +26,8 @@ class RecipeState with _$RecipeState {
         selectedCuisineFilter: [],
         tempSelectedCourseFilter: [],
         tempSelectedCuisineFilter: [],
+        hasMore: false,
+        pageNumber: 1,
       );
 
   List<String> get courses =>

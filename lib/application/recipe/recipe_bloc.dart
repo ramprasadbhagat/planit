@@ -28,7 +28,9 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
             isFetching: true,
           ),
         );
-        final failureOrSuccess = await repository.fetchAllRecipes();
+        final failureOrSuccess = await repository.fetchRecipes(
+          pageNumber: 1,
+        );
 
         failureOrSuccess.fold((l) {
           emit(
@@ -40,12 +42,49 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         }, (r) {
           emit(
             state.copyWith(
-              recipes: r,
-              filteredRecipes: r,
+              recipes: r.recipes,
+              filteredRecipes: r.recipes,
               isFetching: false,
+              pageNumber: 2,
+              hasMore: r.recipes.length < r.itemCounts,
             ),
           );
         });
+      },
+      fetchMore: (_FetchMore value) async {
+        if (state.isFetching || !state.hasMore) return;
+
+        emit(
+          state.copyWith(
+            isFetching: true,
+          ),
+        );
+        final failureOrSuccessOption = await repository.fetchRecipes(
+          pageNumber: state.pageNumber,
+        );
+        failureOrSuccessOption.fold(
+          (l) {
+            emit(
+              state.copyWith(
+                isFetching: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
+              ),
+            );
+          },
+          (r) {
+            final totalRecipes = [...state.recipes, ...r.recipes];
+
+            emit(
+              state.copyWith(
+                isFetching: false,
+                recipes: totalRecipes,
+                filteredRecipes: totalRecipes,
+                pageNumber: state.pageNumber + 1,
+                hasMore: totalRecipes.length < r.itemCounts,
+              ),
+            );
+          },
+        );
       },
       cuisineCheckboxChange: (_CuisineCheckboxChange value) {
         if (state.tempSelectedCuisineFilter.contains(value.cuisine)) {

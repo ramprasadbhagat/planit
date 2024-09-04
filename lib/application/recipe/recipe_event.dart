@@ -10,4 +10,5 @@ class RecipeEvent with _$RecipeEvent {
   const factory RecipeEvent.applyFilterClicked() = _ApplyFilterClicked;
   const factory RecipeEvent.clearAllFilterClicked() = _ClearAllFilterClicked;
   const factory RecipeEvent.resetTempSelection() = _ResetTempSelection;
+  const factory RecipeEvent.fetchMore() = _FetchMore;
 }
