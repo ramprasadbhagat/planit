@@ -37,14 +37,12 @@ class AddressBookBloc extends Bloc<AddressBookEvent, AddressBookState> {
             state.copyWith(
               isFetching: false,
               addressList: list,
-              selectedAddress: list.isEmpty
-                  ? AddressBook.empty()
-                  : list.where((element) => element.isDefault).toList().isEmpty
-                      ? list.first
-                      : list
-                          .where((element) => element.isDefault)
-                          .toList()
-                          .first,
+              selectedAddress: list
+                      .where((element) => element.isDefault)
+                      .toList()
+                      .isEmpty
+                  ? list.first
+                  : list.where((element) => element.isDefault).toList().first,
               apiFailureOrSuccessOption: none(),
             ),
           ),
@@ -129,6 +127,9 @@ class AddressBookBloc extends Bloc<AddressBookEvent, AddressBookState> {
       },
       selectAddress: (value) {
         emit(state.copyWith(selectedAddress: value.addressBook));
+      },
+      updateCurrentPinCode: (value) {
+        emit(state.copyWith(currentSelectedPinCode: value.pinCode));
       },
       fetchFirstAndMarkDefault: (_) async {
         emit(

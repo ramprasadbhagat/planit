@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
@@ -15,20 +16,24 @@ class DeliveryAddressSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Card(
-      elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 6, right: 6, top: 8, bottom: 8),
-        child: BlocBuilder<AddressBookBloc, AddressBookState>(
-          builder: (context, state) {
-            return Column(
+    return BlocBuilder<AddressBookBloc, AddressBookState>(
+      buildWhen: (previous, current) =>
+          previous.selectedAddress != current.selectedAddress,
+      builder: (context, state) {
+        return Card(
+          elevation: 2,
+          color: !state.isPinCodeAddedToAddressBook ? AppColors.lightRed : null,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 6, right: 6, top: 8, bottom: 8),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    state.selectedAddress.isEmpty
+                    !state.isPinCodeAddedToAddressBook
                         ? Expanded(
                             child: Text(
                               StringConstant.noAddressAddedWithDeliveryPin(
@@ -52,7 +57,7 @@ class DeliveryAddressSection extends StatelessWidget {
                       width: 70,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (state.selectedAddress.isEmpty) {
+                          if (!state.isPinCodeAddedToAddressBook) {
                             showModalBottomSheet<void>(
                               context: context,
                               isScrollControlled: true,
@@ -68,15 +73,16 @@ class DeliveryAddressSection extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(16)),
-                            side: BorderSide(width: 1, color: Colors.black),
                           ),
-                          backgroundColor: Colors.white,
+                          backgroundColor: !state.isPinCodeAddedToAddressBook
+                              ? AppColors.greenTextColor
+                              : AppColors.darkYellow,
                         ),
                         child: Text(
-                          state.selectedAddress.isEmpty ? 'Add' : 'Change',
+                          !state.isPinCodeAddedToAddressBook ? 'Add' : 'Change',
                           style: const TextStyle(
-                            color: AppColors.black,
-                            fontSize: 10,
+                            color: AppColors.white,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -109,10 +115,10 @@ class DeliveryAddressSection extends StatelessWidget {
                 //   ],
                 // ),
               ],
-            );
-          },
-        ),
-      ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

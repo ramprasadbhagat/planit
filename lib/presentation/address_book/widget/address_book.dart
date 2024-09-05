@@ -97,7 +97,7 @@ class _AddressBooksState extends State<AddressBooks> {
                     builder: (context, state) {
                       final pinCode = context.read<PincodeBloc>().state.pincode;
 
-                      if (state.isPinCodeAddedToAddressBook(pinCode)) {
+                      if (state.isPinCodeAddedToAddressBook) {
                         return const SizedBox.shrink();
                       } else {
                         return LoadingShimmer.withChild(

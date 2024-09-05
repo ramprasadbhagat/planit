@@ -386,10 +386,8 @@ class ChangeAddressMessageWidget extends StatelessWidget {
         final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(
           (value) => value.state.selectedAddress.isNotEmpty,
         );
-        final hasValidAddress = selectedAddressNotEmpty &&
-            state.isPinCodeAddedToAddressBook(
-              context.read<PincodeBloc>().state.pincode,
-            );
+        final hasValidAddress =
+            selectedAddressNotEmpty && state.isPinCodeAddedToAddressBook;
 
         if (hasValidAddress) {
           return const SizedBox.shrink();
@@ -411,30 +409,11 @@ class ChangeAddressMessageWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}',
-                              style: const TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              context.router.navigate(const AddressBookRoute());
-                            },
-                            child: const Text(
-                              'Click here',
-                              style: TextStyle(
-                                color: AppColors.redButton,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
+                      Text(
+                        'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}\n',
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                       if (selectedAddressNotEmpty)
                         Column(
@@ -448,22 +427,34 @@ class ChangeAddressMessageWidget extends StatelessWidget {
                                     'Or else,\nChoose a different pin code to proceed',
                                   ),
                                 ),
-                                InkWell(
-                                  onTap: () {
-                                    showModalBottomSheet<void>(
-                                      context: context,
-                                      isScrollControlled: true,
-                                      builder: (BuildContext context) =>
-                                          const CommonBottomSheet(
-                                        child: PinCodeDialogBox(),
+                                SizedBox(
+                                  height: 25,
+                                  width: 70,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      showModalBottomSheet<void>(
+                                        context: context,
+                                        isScrollControlled: true,
+                                        builder: (BuildContext context) =>
+                                            const CommonBottomSheet(
+                                          child: PinCodeDialogBox(),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(16),
+                                        ),
                                       ),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Click here',
-                                    style: TextStyle(
-                                      color: AppColors.redButton,
-                                      decoration: TextDecoration.underline,
+                                      backgroundColor: AppColors.orange,
+                                    ),
+                                    child: const Text(
+                                      'Update',
+                                      style: TextStyle(
+                                        color: AppColors.black,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ),
                                 ),

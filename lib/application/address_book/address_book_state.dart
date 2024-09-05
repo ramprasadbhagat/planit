@@ -9,6 +9,7 @@ class AddressBookState with _$AddressBookState {
     required bool isFetching,
     required AddressBook selectedAddress,
     required bool isSubmitting,
+    required String currentSelectedPinCode,
   }) = _AddressBookState;
 
   factory AddressBookState.initial() => AddressBookState(
@@ -17,12 +18,13 @@ class AddressBookState with _$AddressBookState {
         isFetching: false,
         selectedAddress: AddressBook.empty(),
         isSubmitting: false,
+        currentSelectedPinCode: '',
       );
 
   bool get isAddressEmpty => addressList.isEmpty;
 
-  bool isPinCodeAddedToAddressBook(String pinCode) =>
-      pinCode.isNotEmpty &&
+  bool get isPinCodeAddedToAddressBook =>
+      currentSelectedPinCode.isNotEmpty &&
       !isAddressEmpty &&
-      addressList.any((e) => e.pincode.trim() == pinCode.trim());
+      addressList.any((e) => e.pincode.trim() == currentSelectedPinCode.trim());
 }

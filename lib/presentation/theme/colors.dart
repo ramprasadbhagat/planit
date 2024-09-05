@@ -79,6 +79,7 @@ abstract class AppColors {
   static const Color announcementColor = Color(0xffff7c65);
   static const Color secondaryBGColor = Color.fromRGBO(171, 191, 193, 1);
   static const Color greenIconColor = Color.fromRGBO(79, 105, 119, 1);
+  static const Color greenTextColor = Color.fromRGBO(10, 83, 59, 0.851);
   static const Color introBlueBGColor = Color.fromRGBO(184, 203, 244, 1);
   static const Color lightVioletBGColor = Color.fromRGBO(200, 197, 254, 1);
   static const Color blueBGColor = Color.fromRGBO(106, 141, 241, 1);

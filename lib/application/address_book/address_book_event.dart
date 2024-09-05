@@ -20,6 +20,9 @@ class AddressBookEvent with _$AddressBookEvent {
   const factory AddressBookEvent.selectAddress({
     required AddressBook addressBook,
   }) = _SelectAddressBook;
+  const factory AddressBookEvent.updateCurrentPinCode({
+    required String pinCode,
+  }) = _UpdateCurrentPinCode;
   const factory AddressBookEvent.fetchFirstAndMarkDefault() =
       _FetchFirstAndMarkDefault;
 }

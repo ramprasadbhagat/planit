@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
@@ -39,6 +40,11 @@ class DeliveringTo extends StatelessWidget {
                   (_) {},
                 ),
               );
+              context.read<AddressBookBloc>().add(
+                    AddressBookEvent.updateCurrentPinCode(
+                      pinCode: state.pincode,
+                    ),
+                  );
               CustomSnackbar.showSuccessMessage(
                 context,
                 StringConstant.pinCodeSavedSuccessfully,
