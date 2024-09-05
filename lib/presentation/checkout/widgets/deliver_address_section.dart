@@ -2,9 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
-import 'package:planit/domain/address_book/entities/address_book.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
+import 'package:planit/presentation/address_book/widget/new_address_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 
 class DeliveryAddressSection extends StatelessWidget {
   const DeliveryAddressSection({super.key});
@@ -25,10 +28,12 @@ class DeliveryAddressSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    state.selectedAddress == AddressBook.empty()
-                        ? const Expanded(
+                    state.selectedAddress.isEmpty
+                        ? Expanded(
                             child: Text(
-                              'No addresses added yet. please add and select address to place order',
+                              StringConstant.noAddressAddedWithDeliveryPin(
+                                context.read<PincodeBloc>().state.pincode,
+                              ),
                             ),
                           )
                         : Expanded(
@@ -46,8 +51,20 @@ class DeliveryAddressSection extends StatelessWidget {
                       height: 25,
                       width: 70,
                       child: ElevatedButton(
-                        onPressed: () =>
-                            context.router.navigate(const AddressBookRoute()),
+                        onPressed: () {
+                          if (state.selectedAddress.isEmpty) {
+                            showModalBottomSheet<void>(
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (BuildContext context) =>
+                                  const CommonBottomSheet(
+                                child: NewAddressBookSheet(),
+                              ),
+                            );
+                          } else {
+                            context.router.navigate(const AddressBookRoute());
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -56,9 +73,7 @@ class DeliveryAddressSection extends StatelessWidget {
                           backgroundColor: Colors.white,
                         ),
                         child: Text(
-                          state.selectedAddress == AddressBook.empty()
-                              ? 'add'
-                              : 'Change',
+                          state.selectedAddress.isEmpty ? 'Add' : 'Change',
                           style: const TextStyle(
                             color: AppColors.black,
                             fontSize: 10,

@@ -24,11 +24,36 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
   ) async {
     await event.map(
       initialized: (_) async => emit(PincodeState.initial()),
+      resetVerificationStatus: (e) async {
+        if (state.pincode.isNotEmpty) {
+          emit(
+            state.copyWith(
+              pinCodeVerified: true,
+              showErrorMessages: false,
+              isValidLength: true,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              pinCodeVerified: false,
+              showErrorMessages: false,
+              isValidLength: false,
+            ),
+          );
+        }
+      },
       checkPincode: (value) async {
+        if (value.pincode.length < 6) {
+          emit(state.copyWith(isValidLength: false));
+          return;
+        }
         emit(
           state.copyWith(
-            isFetching: true,
-            apiFailureOrSuccessOption: none(),
+            isChecking: true,
+            pinCodeVerified: false,
+            showErrorMessages: false,
+            isValidLength: true,
           ),
         );
         final failureOrSuccess = await repository.checkPincode(
@@ -37,30 +62,38 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
-              isFetching: false,
-              pincode: '',
+              isChecking: false,
+              pinCodeVerified: false,
+              showErrorMessages: true,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (pincode) => add(_PincodeSave(pincode: value.pincode)),
+          (pincodeCheck) => emit(
+            state.copyWith(
+              isChecking: false,
+              pinCodeVerified: true,
+              showErrorMessages: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          ),
         );
       },
       savePincode: (value) async {
-        emit(state.copyWith(isFetching: true));
+        emit(state.copyWith(isSaving: true));
         final failureOrSuccess = await repository.savePincode(
           pincode: value.pincode,
         );
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
-              isFetching: false,
+              isSaving: false,
               pincode: '',
               apiFailureOrSuccessOption: none(),
             ),
           ),
           (pincode) => emit(
             state.copyWith(
-              isFetching: false,
+              isSaving: false,
               pincode: pincode.pincode,
               apiFailureOrSuccessOption: none(),
             ),

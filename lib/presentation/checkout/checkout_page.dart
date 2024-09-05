@@ -7,6 +7,7 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
@@ -324,8 +325,9 @@ class ErrorMessage extends StatelessWidget {
       borderRadius: const BorderRadius.all(Radius.circular(8)),
       color: AppColors.lightRed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: const EdgeInsets.all(8),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Icon(
               Icons.error_outline_outlined,
@@ -337,8 +339,11 @@ class ErrorMessage extends StatelessWidget {
             if (!isProfileCompleted)
               const Text('Please complete your profile.')
             else
-              const Text('Please add a default address.'),
-            const Spacer(),
+              Flexible(
+                child: Text(
+                  'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}\n\nOr else,\nChoose different pin code to proceed',
+                ),
+              ),
             InkWell(
               onTap: () {
                 context.router.navigate(

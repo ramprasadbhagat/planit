@@ -58,11 +58,6 @@ class ProfilePage extends StatelessWidget {
             title: 'Profile',
           ),
           CustomTile(
-            onTap: () => context.router.navigate(const AddressBookRoute()),
-            leadingIcon: Icons.fact_check_outlined,
-            title: 'Address Book',
-          ),
-          CustomTile(
             onTap: () => context.router.navigate(const OrderListRoute()),
             leadingIcon: Icons.subtitles_outlined,
             title: 'My orders',

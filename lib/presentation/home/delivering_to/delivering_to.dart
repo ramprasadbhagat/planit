@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,20 +10,16 @@ import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
+import 'package:planit/presentation/core/pin_code_error/pin_code_error_message.dart';
+import 'package:planit/presentation/core/pin_code_error/pin_code_status.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-class LocationPin extends StatefulWidget {
-  const LocationPin({super.key});
+class DeliveringTo extends StatelessWidget {
+  const DeliveringTo({super.key});
 
-  @override
-  State<LocationPin> createState() => _LocationPinState();
-}
-
-class _LocationPinState extends State<LocationPin> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -32,69 +27,67 @@ class _LocationPinState extends State<LocationPin> {
       children: [
         Expanded(
           flex: 7,
-          child: BlocConsumer<PincodeBloc, PincodeState>(
+          child: BlocListener<PincodeBloc, PincodeState>(
             listenWhen: (previous, current) =>
-                previous.apiFailureOrSuccessOption !=
-                    current.apiFailureOrSuccessOption ||
-                previous.pincode != current.pincode,
+                previous.isSaving != current.isSaving && !current.isSaving,
             listener: (context, state) {
               state.apiFailureOrSuccessOption.fold(
                 () {},
                 (either) => either.fold(
                   (l) {
                     CustomSnackbar.showErrorMessage(context, l.failureMessage);
+                    context.router.maybePop();
                   },
                   (_) {},
                 ),
               );
-              if (state.pincode.isNotEmpty) {
-                CustomSnackbar.showSuccessMessage(
-                  context,
-                  StringConstant.pinCodeSavedSuccessfully,
-                );
-              }
-            },
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Skeletonizer(
-                    enabled: state.isFetching,
-                    child: Row(
-                      children: <Widget>[
-                        SvgPicture.asset(
-                          SvgImage.locationPin,
-                        ),
-                        const SizedBox(width: 4.0),
-                        GestureDetector(
-                          onTap: () {
-                            showModalBottomSheet<void>(
-                              context: context,
-                              isScrollControlled: true,
-                              builder: (BuildContext context) =>
-                                  const CommonBottomSheet(
-                                child: PinCodeDialogBox(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'Delivering to  ${state.pincode}',
-                            style: textTheme.bodyMedium
-                                ?.copyWith(color: AppColors.grey2),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text(
-                    'Order within 30 mins for delivery by 6 pm on 24-03',
-                    style: textTheme.labelSmall?.copyWith(fontSize: 13),
-                  ),
-                  const SizedBox(width: 4.0),
-                ],
+              CustomSnackbar.showSuccessMessage(
+                context,
+                StringConstant.pinCodeSavedSuccessfully,
               );
+              context.router.maybePop();
             },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    SvgPicture.asset(
+                      SvgImage.locationPin,
+                    ),
+                    const SizedBox(width: 4.0),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) =>
+                              const CommonBottomSheet(
+                            child: PinCodeDialogBox(),
+                          ),
+                        );
+                      },
+                      child: BlocBuilder<PincodeBloc, PincodeState>(
+                        buildWhen: (previous, current) =>
+                            previous.pincode != current.pincode,
+                        builder: (context, state) {
+                          return Text(
+                            'Delivering to  ${state.pincode}',
+                            style: textTheme.bodyMedium,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  'Order within 30 mins for delivery by 6 pm on 24-03',
+                  style: textTheme.labelSmall?.copyWith(fontSize: 13),
+                ),
+                const SizedBox(width: 4.0),
+              ],
+            ),
           ),
         ),
         Expanded(
@@ -159,7 +152,24 @@ class PinCodeDialogBox extends StatefulWidget {
 
 class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
   final _formKey = GlobalKey<FormState>();
-  final myController = TextEditingController();
+
+  late TextEditingController myController;
+
+  @override
+  void initState() {
+    super.initState();
+    context
+        .read<PincodeBloc>()
+        .add(const PincodeEvent.resetVerificationStatus());
+    myController =
+        TextEditingController(text: context.read<PincodeBloc>().state.pincode);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    myController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,8 +185,9 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
             children: [
               Expanded(
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.symmetric(horizontal: 24.0),
+                  padding: const EdgeInsetsDirectional.symmetric(
+                    horizontal: 24.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -196,19 +207,22 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                       TextFormField(
                         controller: myController,
                         keyboardType: TextInputType.number,
+                        onChanged: (val) {
+                          pincodeBloc.add(
+                            PincodeEvent.checkPincode(
+                              pincode: val,
+                            ),
+                          );
+                          if (val.length == 6) {
+                            FocusScope.of(context).unfocus();
+                          }
+                        },
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly,
                           LengthLimitingTextInputFormatter(6),
                         ],
-                        validator: (value) {
-                          if (value == null || value.trim() == '') {
-                            return "pincode can't be empty";
-                          } else if (value.length < 6) {
-                            return 'enter valid pincode';
-                          }
-                          return null;
-                        },
                         decoration: InputDecoration(
+                          suffix: const PinCodeStatus(),
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Pin Code',
@@ -235,6 +249,10 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const PinCodeErrorMessage(),
                     ],
                   ),
                 ),
@@ -256,44 +274,41 @@ class _PinCodeDialogBoxState extends State<PinCodeDialogBox> {
                     ),
                   ],
                 ),
-                child: BlocConsumer<PincodeBloc, PincodeState>(
-                  listener: (context, state) {
-                    context.router.maybePop();
-                  },
-                  listenWhen: (previous, current) =>
-                      (previous.apiFailureOrSuccessOption !=
-                              current.apiFailureOrSuccessOption &&
-                          previous.apiFailureOrSuccessOption == dartz.none()) ||
-                      current.pincode.isNotEmpty,
-                  builder: (context, state) {
-                    return SizedBox(
-                      width: 169,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          final pincodeValue = myController.text;
+                child: SizedBox(
+                  width: 169,
+                  child: BlocBuilder<PincodeBloc, PincodeState>(
+                    buildWhen: (previous, current) =>
+                        previous.isSaving != current.isSaving ||
+                        previous.pinCodeVerified != current.pinCodeVerified,
+                    builder: (context, state) {
+                      return ElevatedButton(
+                        onPressed: state.pinCodeVerified
+                            ? () {
+                                final pincodeValue = myController.text;
 
-                          if (_formKey.currentState!.validate()) {
-                            pincodeBloc.add(
-                              PincodeEvent.checkPincode(
-                                pincode: pincodeValue,
-                              ),
-                            );
-                          }
-                        },
+                                if (_formKey.currentState!.validate()) {
+                                  pincodeBloc.add(
+                                    PincodeEvent.savePincode(
+                                      pincode: pincodeValue,
+                                    ),
+                                  );
+                                }
+                              }
+                            : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.black,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(26.0),
                           ),
                         ),
-                        child: state.isFetching
+                        child: state.isSaving
                             ? const CircularProgressIndicator(
                                 color: Colors.white,
                               )
                             : const Text('Save Changes'),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

@@ -3,6 +3,10 @@ part of 'pincode_bloc.dart';
 @freezed
 class PincodeEvent with _$PincodeEvent {
   const factory PincodeEvent.initialized() = _Initialized;
+
+  const factory PincodeEvent.resetVerificationStatus() =
+      _ResetVerificationStatus;
+
   const factory PincodeEvent.checkPincode({
     required String pincode,
   }) = _PincodeCheck;

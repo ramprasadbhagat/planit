@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/presentation/address_book/widget/confirm_address_delete_alert.dart';
 import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
@@ -9,6 +10,7 @@ import 'package:planit/presentation/address_book/widget/edit_address_book.dart';
 import 'package:planit/presentation/address_book/widget/new_address_bottom_sheet.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
+import 'package:planit/presentation/core/loading_shimmer/loading_shimmer.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/string_constants.dart';
@@ -87,7 +89,48 @@ class _AddressBooksState extends State<AddressBooks> {
                   const SizedBox(
                     height: 20,
                   ),
-                  state.isAdressEmpty
+                  BlocBuilder<AddressBookBloc, AddressBookState>(
+                    buildWhen: (previous, current) =>
+                        previous.isFetching != current.isFetching ||
+                        previous.isSubmitting ||
+                        current.isSubmitting,
+                    builder: (context, state) {
+                      final pinCode = context.read<PincodeBloc>().state.pincode;
+
+                      if (state.isPinCodeNotAdded(pinCode)) {
+                        return LoadingShimmer.withChild(
+                          enabled: state.isFetching || state.isSubmitting,
+                          child: Material(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            color: AppColors.blueAccent,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 8,
+                              ),
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      StringConstant
+                                          .noAddressAddedWithDeliveryPin(
+                                        pinCode,
+                                      ),
+                                      style: const TextStyle(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      } else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
+                  state.isAddressEmpty
                       ? const Expanded(
                           child: NoData(
                             message: 'No Address added yet',

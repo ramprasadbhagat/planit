@@ -139,7 +139,7 @@ class ProfileInformationSection extends StatelessWidget {
               );
             },
             (either) => either.fold(
-              (f) => CustomSnackbar.showErrorMessage(context, f.failureMessage),
+              (l) => CustomSnackbar.showErrorMessage(context, l.failureMessage),
               (_) {},
             ),
           );
