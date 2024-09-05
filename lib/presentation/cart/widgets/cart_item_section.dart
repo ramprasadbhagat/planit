@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/presentation/cart/widgets/cart_item.dart';
 import 'package:planit/presentation/cart/widgets/cart_item_local.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -37,7 +38,7 @@ class CartItemSection extends StatelessWidget {
                             ),
                             const SizedBox(width: 4.0),
                             Text(
-                              'Delivering to 110017',
+                              'Delivering to ${context.read<PincodeBloc>().state.pincode}',
                               style: textTheme.bodyMedium,
                             ),
                           ],
@@ -49,7 +50,7 @@ class CartItemSection extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Shipment of ${state.cartItem.products.length} items',
+                      'Shipment of ${context.read<AuthBloc>().state == const AuthState.unauthenticated() ? state.cartData.length : state.cartItem.products.length} items',
                       style: textTheme.bodySmall?.copyWith(
                         color: AppColors.grey2,
                       ),

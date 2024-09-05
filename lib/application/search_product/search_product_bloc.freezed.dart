@@ -19,19 +19,22 @@ mixin _$SearchProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey, bool isScrolling) fetchProduct,
+    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function() onLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function()? onLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult Function(String searchKey)? fetchProduct,
+    TResult Function()? onLoadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SearchProductEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_OnLoadMore value) onLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_OnLoadMore value)? onLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_OnLoadMore value)? onLoadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +119,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey, bool isScrolling) fetchProduct,
+    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function() onLoadMore,
   }) {
     return initialized();
   }
@@ -122,7 +129,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function()? onLoadMore,
   }) {
     return initialized?.call();
   }
@@ -131,7 +139,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult Function(String searchKey)? fetchProduct,
+    TResult Function()? onLoadMore,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -145,6 +154,7 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_OnLoadMore value) onLoadMore,
   }) {
     return initialized(this);
   }
@@ -154,6 +164,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_OnLoadMore value)? onLoadMore,
   }) {
     return initialized?.call(this);
   }
@@ -163,6 +174,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_OnLoadMore value)? onLoadMore,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -182,7 +194,7 @@ abstract class _$$FetchProductImplCopyWith<$Res> {
           _$FetchProductImpl value, $Res Function(_$FetchProductImpl) then) =
       __$$FetchProductImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String searchKey, bool isScrolling});
+  $Res call({String searchKey});
 }
 
 /// @nodoc
@@ -197,17 +209,12 @@ class __$$FetchProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchKey = null,
-    Object? isScrolling = null,
   }) {
     return _then(_$FetchProductImpl(
       searchKey: null == searchKey
           ? _value.searchKey
           : searchKey // ignore: cast_nullable_to_non_nullable
               as String,
-      isScrolling: null == isScrolling
-          ? _value.isScrolling
-          : isScrolling // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -215,17 +222,14 @@ class __$$FetchProductImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchProductImpl implements _FetchProduct {
-  const _$FetchProductImpl(
-      {required this.searchKey, required this.isScrolling});
+  const _$FetchProductImpl({required this.searchKey});
 
   @override
   final String searchKey;
-  @override
-  final bool isScrolling;
 
   @override
   String toString() {
-    return 'SearchProductEvent.fetchProduct(searchKey: $searchKey, isScrolling: $isScrolling)';
+    return 'SearchProductEvent.fetchProduct(searchKey: $searchKey)';
   }
 
   @override
@@ -234,13 +238,11 @@ class _$FetchProductImpl implements _FetchProduct {
         (other.runtimeType == runtimeType &&
             other is _$FetchProductImpl &&
             (identical(other.searchKey, searchKey) ||
-                other.searchKey == searchKey) &&
-            (identical(other.isScrolling, isScrolling) ||
-                other.isScrolling == isScrolling));
+                other.searchKey == searchKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchKey, isScrolling);
+  int get hashCode => Object.hash(runtimeType, searchKey);
 
   @JsonKey(ignore: true)
   @override
@@ -252,29 +254,32 @@ class _$FetchProductImpl implements _FetchProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey, bool isScrolling) fetchProduct,
+    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function() onLoadMore,
   }) {
-    return fetchProduct(searchKey, isScrolling);
+    return fetchProduct(searchKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function()? onLoadMore,
   }) {
-    return fetchProduct?.call(searchKey, isScrolling);
+    return fetchProduct?.call(searchKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey, bool isScrolling)? fetchProduct,
+    TResult Function(String searchKey)? fetchProduct,
+    TResult Function()? onLoadMore,
     required TResult orElse(),
   }) {
     if (fetchProduct != null) {
-      return fetchProduct(searchKey, isScrolling);
+      return fetchProduct(searchKey);
     }
     return orElse();
   }
@@ -284,6 +289,7 @@ class _$FetchProductImpl implements _FetchProduct {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_OnLoadMore value) onLoadMore,
   }) {
     return fetchProduct(this);
   }
@@ -293,6 +299,7 @@ class _$FetchProductImpl implements _FetchProduct {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_OnLoadMore value)? onLoadMore,
   }) {
     return fetchProduct?.call(this);
   }
@@ -302,6 +309,7 @@ class _$FetchProductImpl implements _FetchProduct {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_OnLoadMore value)? onLoadMore,
     required TResult orElse(),
   }) {
     if (fetchProduct != null) {
@@ -312,15 +320,121 @@ class _$FetchProductImpl implements _FetchProduct {
 }
 
 abstract class _FetchProduct implements SearchProductEvent {
-  const factory _FetchProduct(
-      {required final String searchKey,
-      required final bool isScrolling}) = _$FetchProductImpl;
+  const factory _FetchProduct({required final String searchKey}) =
+      _$FetchProductImpl;
 
   String get searchKey;
-  bool get isScrolling;
   @JsonKey(ignore: true)
   _$$FetchProductImplCopyWith<_$FetchProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnLoadMoreImplCopyWith<$Res> {
+  factory _$$OnLoadMoreImplCopyWith(
+          _$OnLoadMoreImpl value, $Res Function(_$OnLoadMoreImpl) then) =
+      __$$OnLoadMoreImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnLoadMoreImplCopyWithImpl<$Res>
+    extends _$SearchProductEventCopyWithImpl<$Res, _$OnLoadMoreImpl>
+    implements _$$OnLoadMoreImplCopyWith<$Res> {
+  __$$OnLoadMoreImplCopyWithImpl(
+      _$OnLoadMoreImpl _value, $Res Function(_$OnLoadMoreImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OnLoadMoreImpl implements _OnLoadMore {
+  const _$OnLoadMoreImpl();
+
+  @override
+  String toString() {
+    return 'SearchProductEvent.onLoadMore()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnLoadMoreImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function() onLoadMore,
+  }) {
+    return onLoadMore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function()? onLoadMore,
+  }) {
+    return onLoadMore?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String searchKey)? fetchProduct,
+    TResult Function()? onLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onLoadMore != null) {
+      return onLoadMore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchProduct value) fetchProduct,
+    required TResult Function(_OnLoadMore value) onLoadMore,
+  }) {
+    return onLoadMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchProduct value)? fetchProduct,
+    TResult? Function(_OnLoadMore value)? onLoadMore,
+  }) {
+    return onLoadMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchProduct value)? fetchProduct,
+    TResult Function(_OnLoadMore value)? onLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onLoadMore != null) {
+      return onLoadMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnLoadMore implements SearchProductEvent {
+  const factory _OnLoadMore() = _$OnLoadMoreImpl;
 }
 
 /// @nodoc
@@ -329,7 +443,6 @@ mixin _$SearchProductState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
-  bool get isScrolling => throw _privateConstructorUsedError;
   bool get canLoadMore => throw _privateConstructorUsedError;
   int get pageNumber => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
@@ -349,7 +462,6 @@ abstract class $SearchProductStateCopyWith<$Res> {
       {List<Product> products,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      bool isScrolling,
       bool canLoadMore,
       int pageNumber,
       String searchText});
@@ -371,7 +483,6 @@ class _$SearchProductStateCopyWithImpl<$Res, $Val extends SearchProductState>
     Object? products = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? isScrolling = null,
     Object? canLoadMore = null,
     Object? pageNumber = null,
     Object? searchText = null,
@@ -388,10 +499,6 @@ class _$SearchProductStateCopyWithImpl<$Res, $Val extends SearchProductState>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isScrolling: null == isScrolling
-          ? _value.isScrolling
-          : isScrolling // ignore: cast_nullable_to_non_nullable
               as bool,
       canLoadMore: null == canLoadMore
           ? _value.canLoadMore
@@ -421,7 +528,6 @@ abstract class _$$SearchProductStateImplCopyWith<$Res>
       {List<Product> products,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      bool isScrolling,
       bool canLoadMore,
       int pageNumber,
       String searchText});
@@ -441,7 +547,6 @@ class __$$SearchProductStateImplCopyWithImpl<$Res>
     Object? products = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? isScrolling = null,
     Object? canLoadMore = null,
     Object? pageNumber = null,
     Object? searchText = null,
@@ -458,10 +563,6 @@ class __$$SearchProductStateImplCopyWithImpl<$Res>
       isFetching: null == isFetching
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isScrolling: null == isScrolling
-          ? _value.isScrolling
-          : isScrolling // ignore: cast_nullable_to_non_nullable
               as bool,
       canLoadMore: null == canLoadMore
           ? _value.canLoadMore
@@ -486,7 +587,6 @@ class _$SearchProductStateImpl extends _SearchProductState {
       {required final List<Product> products,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.isScrolling,
       required this.canLoadMore,
       required this.pageNumber,
       required this.searchText})
@@ -506,8 +606,6 @@ class _$SearchProductStateImpl extends _SearchProductState {
   @override
   final bool isFetching;
   @override
-  final bool isScrolling;
-  @override
   final bool canLoadMore;
   @override
   final int pageNumber;
@@ -516,7 +614,7 @@ class _$SearchProductStateImpl extends _SearchProductState {
 
   @override
   String toString() {
-    return 'SearchProductState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isScrolling: $isScrolling, canLoadMore: $canLoadMore, pageNumber: $pageNumber, searchText: $searchText)';
+    return 'SearchProductState(products: $products, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, canLoadMore: $canLoadMore, pageNumber: $pageNumber, searchText: $searchText)';
   }
 
   @override
@@ -530,8 +628,6 @@ class _$SearchProductStateImpl extends _SearchProductState {
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
-            (identical(other.isScrolling, isScrolling) ||
-                other.isScrolling == isScrolling) &&
             (identical(other.canLoadMore, canLoadMore) ||
                 other.canLoadMore == canLoadMore) &&
             (identical(other.pageNumber, pageNumber) ||
@@ -546,7 +642,6 @@ class _$SearchProductStateImpl extends _SearchProductState {
       const DeepCollectionEquality().hash(_products),
       apiFailureOrSuccessOption,
       isFetching,
-      isScrolling,
       canLoadMore,
       pageNumber,
       searchText);
@@ -565,7 +660,6 @@ abstract class _SearchProductState extends SearchProductState {
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
-      required final bool isScrolling,
       required final bool canLoadMore,
       required final int pageNumber,
       required final String searchText}) = _$SearchProductStateImpl;
@@ -577,8 +671,6 @@ abstract class _SearchProductState extends SearchProductState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
-  @override
-  bool get isScrolling;
   @override
   bool get canLoadMore;
   @override

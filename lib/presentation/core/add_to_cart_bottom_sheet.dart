@@ -330,7 +330,7 @@ class UnitList extends StatelessWidget {
       children: [
         Text(
           'Select Unit',
-          style: textTheme.bodyMedium?.copyWith(
+          style: textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -370,11 +370,15 @@ class Unit extends StatelessWidget {
           previous.selectedProductAttribute != current.selectedProductAttribute,
       builder: (context, state) {
         final isSelected = state.selectedProductAttribute == productAttribute;
+        final isOutOfStock =
+            !(productAttribute.quantity > 0 || state.product.backOrder);
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           padding: const EdgeInsets.symmetric(horizontal: 10),
+          clipBehavior: Clip.antiAlias,
+          width: 100,
           decoration: BoxDecoration(
-            color: AppColors.extraLightGray,
+            color: isOutOfStock ? AppColors.extraLightGray : AppColors.white,
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             border: isSelected
                 ? Border.all(
@@ -382,6 +386,15 @@ class Unit extends StatelessWidget {
                     width: 1,
                   )
                 : null,
+            boxShadow: isOutOfStock
+                ? null
+                : const [
+                    BoxShadow(
+                      blurRadius: 5,
+                      spreadRadius: 2,
+                      color: AppColors.extraLightGray,
+                    ),
+                  ],
           ),
           child: InkWell(
             onTap: () {

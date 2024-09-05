@@ -3,6 +3,7 @@ import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
+import 'package:planit/domain/product/entities/product_response.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
 
@@ -12,7 +13,7 @@ abstract class IProductRepository {
   Future<Either<ApiFailure, List<Product>>> getSubCategoryProduct(
     SubCategory subCategory,
   );
-  Future<Either<ApiFailure, List<Product>>> getSearchProduct({
+  Future<Either<ApiFailure, ProductResponse>> getSearchProduct({
     required String searchKey,
     required int pageNumber,
   });

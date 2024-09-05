@@ -25,47 +25,45 @@ class _SimilarProductSectionState extends State<SimilarProductSection> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.3,
-      child: BlocBuilder<SimilarProductBloc, SimilarProductState>(
-        builder: (context, state) {
-          if (state.isFetching) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state.similarProductList.isEmpty) {
-            return const SizedBox.shrink();
-          }
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Similar Products',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+    return BlocBuilder<SimilarProductBloc, SimilarProductState>(
+      builder: (context, state) {
+        if (state.isFetching) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state.similarProductList.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Similar Products',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+            if (!state.isFetching || state.similarProductList.isNotEmpty)
               const SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  physics: const ScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: state.similarProductList.length,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 0,
-                  ),
-                  itemBuilder: (context, index) => SimilarProductCard(
-                    item: state.similarProductList.elementAt(index),
-                  ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.3,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: const ScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: state.similarProductList.length,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 0,
+                ),
+                itemBuilder: (context, index) => SimilarProductCard(
+                  item: state.similarProductList.elementAt(index),
                 ),
               ),
-            ],
-          );
-        },
-      ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

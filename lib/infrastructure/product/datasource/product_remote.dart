@@ -3,11 +3,14 @@ import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
+import 'package:planit/domain/product/entities/product_response.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/product/dtos/product_detail_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_image_dto.dart';
+import 'package:planit/infrastructure/product/dtos/product_response_dto.dart';
+import 'package:planit/infrastructure/product/repository/product_repository.dart';
 
 class ProductRemoteDataSource {
   final HttpService httpService;
@@ -52,7 +55,7 @@ class ProductRemoteDataSource {
         .toList();
   }
 
-  Future<List<Product>> getSearchProduct({
+  Future<ProductResponse> getSearchProduct({
     required String searchKey,
     required int pageNumber,
   }) async {
@@ -61,10 +64,7 @@ class ProductRemoteDataSource {
       url: 'products?pageSize=10&pageNumber=$pageNumber&search=$searchKey',
     );
     _exceptionChecker(res: res);
-    final categories = res.data['items'];
-    return List.from(categories)
-        .map((e) => ProductDto.fromJson(e).toDomain)
-        .toList();
+    return ProductResponseDto.fromJson(res.data).toDomain;
   }
 
   Future<List<ProductImage>> getProductImage(ProductId productId) async {

@@ -5,6 +5,7 @@ import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/entities/product_image.dart';
+import 'package:planit/domain/product/entities/product_response.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/domain/sub_category/entities/sub_category.dart';
@@ -113,13 +114,13 @@ class ProductRepository extends IProductRepository {
   }
 
   @override
-  Future<Either<ApiFailure, List<Product>>> getSearchProduct({
+  Future<Either<ApiFailure, ProductResponse>> getSearchProduct({
     required String searchKey,
     required int pageNumber,
   }) async {
     if (config.appFlavor == Flavor.mock) {
       try {
-        final categories = await localDataSource.getSubCategoryProduct();
+        final categories = await localDataSource.getSearchProduct();
 
         return Right(categories);
       } catch (e) {

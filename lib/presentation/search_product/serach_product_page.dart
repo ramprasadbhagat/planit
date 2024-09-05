@@ -2,14 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/search_product/search_product_bloc.dart';
+import 'package:planit/domain/product/entities/product.dart';
 
 import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/common_search_bar.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scrollable_grid_view.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
-import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
-import 'package:planit/presentation/theme/colors.dart';
-import 'package:planit/utils/responsive.dart';
 
 @RoutePage()
 class SearchProductPage extends StatefulWidget {
@@ -25,21 +24,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
   @override
   void initState() {
-    scrollController = ScrollController()..addListener(_scrollListener);
     super.initState();
-  }
-
-  void _scrollListener() {
-    if (scrollController.position.pixels ==
-        scrollController.position.maxScrollExtent) {
-      final bloc = BlocProvider.of<SearchProductBloc>(context);
-      bloc.add(
-        const SearchProductEvent.fetchProduct(
-          searchKey: '',
-          isScrolling: true,
-        ),
-      );
-    }
   }
 
   @override
@@ -69,7 +54,6 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       context.read<SearchProductBloc>().add(
                             SearchProductEvent.fetchProduct(
                               searchKey: e,
-                              isScrolling: false,
                             ),
                           );
                     },
@@ -77,7 +61,6 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       context.read<SearchProductBloc>().add(
                             SearchProductEvent.fetchProduct(
                               searchKey: e,
-                              isScrolling: false,
                             ),
                           );
                     },
@@ -85,7 +68,6 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       context.read<SearchProductBloc>().add(
                             const SearchProductEvent.fetchProduct(
                               searchKey: '',
-                              isScrolling: false,
                             ),
                           );
                     },
@@ -127,71 +109,57 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  BlocBuilder<SearchProductBloc, SearchProductState>(
-                    builder: (context, state) {
-                      if (state.isFetching) {
-                        return const ShimmerItem();
-                      } else if (state.isProductListEmpty) {
-                        return const Expanded(child: NoData());
-                      }
-                      return Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${state.products.length} products found',
-                              style: textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textBlack,
-                              ),
+                  Expanded(
+                    child: BlocBuilder<SearchProductBloc, SearchProductState>(
+                      buildWhen: (previous, current) =>
+                          previous.isFetching != current.isFetching,
+                      builder: (context, state) {
+                        return ScrollableGridView<Product>(
+                          noRecordFoundWidget: const Padding(
+                            padding: EdgeInsets.only(
+                              top: 25,
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Expanded(
-                              child: GridView.builder(
-                                controller: scrollController,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount:
-                                      Responsive.isWeb(context) ? 5 : 2,
-                                  mainAxisExtent: 180,
-                                  crossAxisSpacing: 10.0,
-                                  mainAxisSpacing: 8.0,
+                            child: NoData(),
+                          ),
+                          scrollPhysics: const AlwaysScrollableScrollPhysics(),
+                          header: state.products.isEmpty
+                              ? const SizedBox.shrink()
+                              : Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: Text(
+                                    '${state.products.length} products found',
+                                    style: textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ),
-                                itemCount: state.products.length,
-                                shrinkWrap: true,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                ),
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 5,
-                                      bottom: 5,
+                          isLoading: state.isFetching,
+                          items: state.products,
+                          onRefresh: () =>
+                              context.read<SearchProductBloc>().add(
+                                    const SearchProductEvent.fetchProduct(
+                                      searchKey: '',
                                     ),
-                                    child: ProductCard(
-                                      product: state.products.elementAt(index),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            state.isScrolling
-                                ? const Padding(
-                                    padding: EdgeInsets.only(bottom: 20),
-                                    child: Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                  )
-                                : const SizedBox.shrink(),
-                          ],
-                        ),
-                      );
-                    },
+                                  ),
+                          onLoadingMore: () =>
+                              context.read<SearchProductBloc>().add(
+                                    const SearchProductEvent.onLoadMore(),
+                                  ),
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          itemBuilder: (
+                            BuildContext context,
+                            int index,
+                            Product item,
+                          ) =>
+                              ProductCard(
+                            product: state.products.elementAt(index),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -201,12 +169,5 @@ class _SearchProductPageState extends State<SearchProductPage> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    // searchController.clear();
-    scrollController.removeListener(_scrollListener);
-    super.dispose();
   }
 }

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/order_list/widgets/order_list_item.dart';
 
 @RoutePage()
@@ -55,30 +57,20 @@ class _OrderListPageState extends State<OrderListPage> {
         buildWhen: (previous, current) =>
             previous.isFetchingOrders != current.isFetchingOrders,
         builder: (context, state) {
-          if (state.isFetchingOrders) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          if (state.orders.isEmpty) {
-            return const NoData();
-          }
-
-          return ListView.separated(
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                height: 16,
-              );
-            },
-            padding: const EdgeInsets.all(
-              14,
+          return ScrollList<Order>(
+            noRecordFoundWidget: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: NoData.ordersHistory(),
             ),
-            itemCount: state.orders.length,
-            itemBuilder: (context, index) {
-              return OrderListItem(
-                order: state.orders[index],
-              );
-            },
+            controller: ScrollController(),
+            onRefresh: () =>
+                context.read<OrderBloc>().add(const OrderEvent.fetchOrders()),
+            onLoadingMore: () => {},
+            isLoading: state.isFetchingOrders,
+            itemBuilder: (context, index, item) => OrderListItem(
+              order: state.orders[index],
+            ),
+            items: state.orders,
           );
         },
       ),
