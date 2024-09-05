@@ -4,11 +4,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/entities/user.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
+import 'package:planit/domain/pincode/entities/pincode.dart';
 import 'package:planit/utils/hive_constants.dart';
 
 class StorageService {
   late Box<Auth> _authBox;
   late Box<CartProductLocal> _cartProductLocalBox;
+  late Box<PinCode> _pinCodeBox;
 
   Future init() async {
     if (!kIsWeb) {
@@ -24,12 +26,26 @@ class StorageService {
     Hive.registerAdapter(UserAdapter());
     Hive.registerAdapter(AuthAdapter());
     Hive.registerAdapter(CartAdapter());
+    Hive.registerAdapter(PinCodeAdapter());
   }
 
   Future<void> _openBox() async {
     _authBox = await Hive.openBox<Auth>(HiveConstants.authBox);
     _cartProductLocalBox =
         await Hive.openBox<CartProductLocal>(HiveConstants.cartBox);
+    _pinCodeBox = await Hive.openBox<PinCode>(HiveConstants.pinCodeBox);
+  }
+
+  Future<void> addPinCodeData(PinCode pinCode) async {
+    await _pinCodeBox.add(pinCode);
+  }
+
+  PinCode getPinCodeData() {
+    return _pinCodeBox.getAt(0) ?? PinCode.empty();
+  }
+
+  Future<void> clearAllPinCodeData() async {
+    await _pinCodeBox.clear();
   }
 
   Future<void> addAuthData(Auth auth) async {

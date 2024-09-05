@@ -4,6 +4,11 @@ part of 'pincode_bloc.dart';
 class PincodeEvent with _$PincodeEvent {
   const factory PincodeEvent.initialized() = _Initialized;
 
+  const factory PincodeEvent.getPinCodeFromStorage() = _GetPinCodeFromStorage;
+
+  const factory PincodeEvent.clearPinCodeFromStorage() =
+      _ClearPinCodeFromStorage;
+
   const factory PincodeEvent.resetVerificationStatus() =
       _ResetVerificationStatus;
 

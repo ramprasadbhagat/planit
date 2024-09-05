@@ -99,7 +99,9 @@ class ProfilePage extends StatelessWidget {
             onTap: () {
               context.read<AuthBloc>().add(const AuthEvent.logout());
               context.read<CartBloc>().add(const CartEvent.clearAllCartLocal());
-              context.read<PincodeBloc>().add(const PincodeEvent.initialized());
+              context
+                  .read<PincodeBloc>()
+                  .add(const PincodeEvent.clearPinCodeFromStorage());
               context
                   .read<WishlistBloc>()
                   .add(const WishlistEvent.initialized());
