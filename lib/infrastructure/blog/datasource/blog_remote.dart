@@ -85,7 +85,7 @@ class BlogRemoteDataSource {
   }) async {
     final userId = storageService.getUserId();
     final res = await httpService.request(
-      method: 'POST',
+      method: 'PATCH',
       url: '/blogLikeDislike',
       data: {
         'blog_id': blogId,

@@ -163,22 +163,6 @@ class BlogDetailsPage extends StatelessWidget {
 
                                         return;
                                       }
-                                      if (state.blog.like != null) {
-                                        String text;
-
-                                        if (!state.blog.like!) {
-                                          text = StringConstant
-                                              .youAlreadyDislikedThisBlog;
-                                        } else {
-                                          text = StringConstant
-                                              .youAlreadyLikedThisBlog;
-                                        }
-                                        CustomSnackbar.showErrorMessage(
-                                          context,
-                                          text,
-                                        );
-                                        return;
-                                      }
 
                                       bloc.add(
                                         BlogDetailsEvent.likeClicked(
@@ -211,23 +195,6 @@ class BlogDetailsPage extends StatelessWidget {
                                               .pleaseLoginToDislikeThisBlog,
                                         );
 
-                                        return;
-                                      }
-
-                                      if (state.blog.like != null) {
-                                        String text;
-                                        if (!state.blog.like!) {
-                                          text = StringConstant
-                                              .youAlreadyDislikedThisBlog;
-                                        } else {
-                                          text = StringConstant
-                                              .youAlreadyLikedThisBlog;
-                                        }
-
-                                        CustomSnackbar.showErrorMessage(
-                                          context,
-                                          text,
-                                        );
                                         return;
                                       }
                                       bloc.add(
