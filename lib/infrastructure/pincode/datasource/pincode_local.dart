@@ -7,7 +7,7 @@ import 'package:planit/infrastructure/pincode/dtos/pincode_dto.dart';
 class PincodeLocalDataSource {
   const PincodeLocalDataSource();
 
-  Future<Pincode> savePincode({required String pincode}) async {
+  Future<PinCode> savePincode({required String pincode}) async {
     final res = json.decode(
       await rootBundle.loadString('assets/json/pincode.json'),
     );

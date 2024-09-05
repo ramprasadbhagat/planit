@@ -15,25 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$Pincode {
-  String get pincode => throw _privateConstructorUsedError;
+mixin _$PinCode {
+  @HiveField(0)
+  String get pin => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PincodeCopyWith<Pincode> get copyWith => throw _privateConstructorUsedError;
+  $PinCodeCopyWith<PinCode> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PincodeCopyWith<$Res> {
-  factory $PincodeCopyWith(Pincode value, $Res Function(Pincode) then) =
-      _$PincodeCopyWithImpl<$Res, Pincode>;
+abstract class $PinCodeCopyWith<$Res> {
+  factory $PinCodeCopyWith(PinCode value, $Res Function(PinCode) then) =
+      _$PinCodeCopyWithImpl<$Res, PinCode>;
   @useResult
-  $Res call({String pincode});
+  $Res call({@HiveField(0) String pin});
 }
 
 /// @nodoc
-class _$PincodeCopyWithImpl<$Res, $Val extends Pincode>
-    implements $PincodeCopyWith<$Res> {
-  _$PincodeCopyWithImpl(this._value, this._then);
+class _$PinCodeCopyWithImpl<$Res, $Val extends PinCode>
+    implements $PinCodeCopyWith<$Res> {
+  _$PinCodeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -43,44 +44,44 @@ class _$PincodeCopyWithImpl<$Res, $Val extends Pincode>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pincode = null,
+    Object? pin = null,
   }) {
     return _then(_value.copyWith(
-      pincode: null == pincode
-          ? _value.pincode
-          : pincode // ignore: cast_nullable_to_non_nullable
+      pin: null == pin
+          ? _value.pin
+          : pin // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$PincodeImplCopyWith<$Res> implements $PincodeCopyWith<$Res> {
-  factory _$$PincodeImplCopyWith(
-          _$PincodeImpl value, $Res Function(_$PincodeImpl) then) =
-      __$$PincodeImplCopyWithImpl<$Res>;
+abstract class _$$PinCodeImplCopyWith<$Res> implements $PinCodeCopyWith<$Res> {
+  factory _$$PinCodeImplCopyWith(
+          _$PinCodeImpl value, $Res Function(_$PinCodeImpl) then) =
+      __$$PinCodeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String pincode});
+  $Res call({@HiveField(0) String pin});
 }
 
 /// @nodoc
-class __$$PincodeImplCopyWithImpl<$Res>
-    extends _$PincodeCopyWithImpl<$Res, _$PincodeImpl>
-    implements _$$PincodeImplCopyWith<$Res> {
-  __$$PincodeImplCopyWithImpl(
-      _$PincodeImpl _value, $Res Function(_$PincodeImpl) _then)
+class __$$PinCodeImplCopyWithImpl<$Res>
+    extends _$PinCodeCopyWithImpl<$Res, _$PinCodeImpl>
+    implements _$$PinCodeImplCopyWith<$Res> {
+  __$$PinCodeImplCopyWithImpl(
+      _$PinCodeImpl _value, $Res Function(_$PinCodeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pincode = null,
+    Object? pin = null,
   }) {
-    return _then(_$PincodeImpl(
-      pincode: null == pincode
-          ? _value.pincode
-          : pincode // ignore: cast_nullable_to_non_nullable
+    return _then(_$PinCodeImpl(
+      pin: null == pin
+          ? _value.pin
+          : pin // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -88,42 +89,46 @@ class __$$PincodeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PincodeImpl implements _Pincode {
-  const _$PincodeImpl({required this.pincode});
+@HiveType(
+    typeId: HiveConstants.pinCodeId, adapterName: HiveConstants.pinCodeAdapter)
+class _$PinCodeImpl implements _PinCode {
+  _$PinCodeImpl({@HiveField(0) required this.pin});
 
   @override
-  final String pincode;
+  @HiveField(0)
+  final String pin;
 
   @override
   String toString() {
-    return 'Pincode(pincode: $pincode)';
+    return 'PinCode(pin: $pin)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PincodeImpl &&
-            (identical(other.pincode, pincode) || other.pincode == pincode));
+            other is _$PinCodeImpl &&
+            (identical(other.pin, pin) || other.pin == pin));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pincode);
+  int get hashCode => Object.hash(runtimeType, pin);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PincodeImplCopyWith<_$PincodeImpl> get copyWith =>
-      __$$PincodeImplCopyWithImpl<_$PincodeImpl>(this, _$identity);
+  _$$PinCodeImplCopyWith<_$PinCodeImpl> get copyWith =>
+      __$$PinCodeImplCopyWithImpl<_$PinCodeImpl>(this, _$identity);
 }
 
-abstract class _Pincode implements Pincode {
-  const factory _Pincode({required final String pincode}) = _$PincodeImpl;
+abstract class _PinCode implements PinCode {
+  factory _PinCode({@HiveField(0) required final String pin}) = _$PinCodeImpl;
 
   @override
-  String get pincode;
+  @HiveField(0)
+  String get pin;
   @override
   @JsonKey(ignore: true)
-  _$$PincodeImplCopyWith<_$PincodeImpl> get copyWith =>
+  _$$PinCodeImplCopyWith<_$PinCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

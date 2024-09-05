@@ -36,7 +36,7 @@ class PincodeRemoteDataSource {
     }
   }
 
-  Future<Pincode> savePincode({required String pincode}) async {
+  Future<PinCode> savePincode({required String pincode}) async {
     final headers = {'Content-Type': 'application/json'};
     final data = json.encode({'pincode': pincode});
     final res = await httpService.request(
@@ -48,9 +48,9 @@ class PincodeRemoteDataSource {
     _exceptionChecker(res: res);
     // final pincodeData = res.data;
     if (res.statusCode == 200) {
-      return Pincode(pincode: pincode);
+      return PinCode(pin: pincode);
     } else {
-      return Pincode.empty();
+      return PinCode.empty();
     }
   }
 
