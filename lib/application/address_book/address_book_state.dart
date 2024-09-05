@@ -24,5 +24,5 @@ class AddressBookState with _$AddressBookState {
   bool isPinCodeNotAdded(String pinCode) =>
       pinCode.isNotEmpty &&
       !isAddressEmpty &&
-      addressList.any((e) => e.pincode.trim() != pinCode.trim());
+      !addressList.any((e) => e.pincode.trim() == pinCode.trim());
 }
