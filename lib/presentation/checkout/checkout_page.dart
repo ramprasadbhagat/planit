@@ -14,6 +14,8 @@ import 'package:planit/presentation/checkout/widgets/checkout_product_section.da
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
 import 'package:planit/presentation/checkout/widgets/delivery_date_section.dart';
 import 'package:planit/presentation/checkout/widgets/payment_section.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/pin_code_dialog_box/pin_code_dialog_box.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -313,21 +315,29 @@ class ErrorMessage extends StatelessWidget {
     final isProfileCompleted = context.select<UserProfileBloc, bool>(
       (value) => value.state.user.isValid,
     );
-    final hasValidAddress = context.select<AddressBookBloc, bool>(
-      (value) => value.state.selectedAddress.isNotEmpty,
-    );
 
-    if (isProfileCompleted && hasValidAddress) {
-      return const SizedBox.shrink();
+    if (isProfileCompleted) {
+      return const ChangeAddressMessageWidget();
     }
 
+    return const ProfileInCompletedMessageWidget();
+  }
+}
+
+class ProfileInCompletedMessageWidget extends StatelessWidget {
+  const ProfileInCompletedMessageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Material(
       borderRadius: const BorderRadius.all(Radius.circular(8)),
       color: AppColors.lightRed,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Icon(
               Icons.error_outline_outlined,
@@ -336,14 +346,7 @@ class ErrorMessage extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            if (!isProfileCompleted)
-              const Text('Please complete your profile.')
-            else
-              Flexible(
-                child: Text(
-                  'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}\n\nOr else,\nChoose different pin code to proceed',
-                ),
-              ),
+            const Text('Please complete your profile.'),
             InkWell(
               onTap: () {
                 context.router.navigate(
@@ -363,6 +366,119 @@ class ErrorMessage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ChangeAddressMessageWidget extends StatelessWidget {
+  const ChangeAddressMessageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AddressBookBloc, AddressBookState>(
+      buildWhen: (previous, current) =>
+          previous.isFetching != current.isFetching ||
+          previous.isSubmitting ||
+          current.isSubmitting,
+      builder: (context, state) {
+        final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(
+          (value) => value.state.selectedAddress.isNotEmpty,
+        );
+        final hasValidAddress = selectedAddressNotEmpty &&
+            state.isPinCodeAddedToAddressBook(
+              context.read<PincodeBloc>().state.pincode,
+            );
+
+        if (hasValidAddress) {
+          return const SizedBox.shrink();
+        }
+        return Material(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          color: AppColors.lightRed,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(
+                  Icons.error_outline_outlined,
+                  color: AppColors.red,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              context.router.navigate(const AddressBookRoute());
+                            },
+                            child: const Text(
+                              'Click here',
+                              style: TextStyle(
+                                color: AppColors.redButton,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      if (selectedAddressNotEmpty)
+                        Column(
+                          children: [
+                            const SizedBox(height: 4),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                const Expanded(
+                                  child: Text(
+                                    'Or else,\nChoose a different pin code to proceed',
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    showModalBottomSheet<void>(
+                                      context: context,
+                                      isScrollControlled: true,
+                                      builder: (BuildContext context) =>
+                                          const CommonBottomSheet(
+                                        child: PinCodeDialogBox(),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Click here',
+                                    style: TextStyle(
+                                      color: AppColors.redButton,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

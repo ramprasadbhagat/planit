@@ -57,9 +57,9 @@ class _AddressBooksState extends State<AddressBooks> {
                                 ),
                       ),
                       Checkbox(
-                        fillColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.selected)) {
+                        fillColor: WidgetStateProperty.resolveWith<Color>(
+                            (Set<WidgetState> states) {
+                          if (states.contains(WidgetState.selected)) {
                             return AppColors.green;
                           }
                           return AppColors.grey4;
@@ -97,7 +97,9 @@ class _AddressBooksState extends State<AddressBooks> {
                     builder: (context, state) {
                       final pinCode = context.read<PincodeBloc>().state.pincode;
 
-                      if (state.isPinCodeNotAdded(pinCode)) {
+                      if (state.isPinCodeAddedToAddressBook(pinCode)) {
+                        return const SizedBox.shrink();
+                      } else {
                         return LoadingShimmer.withChild(
                           enabled: state.isFetching || state.isSubmitting,
                           child: Material(
@@ -125,8 +127,6 @@ class _AddressBooksState extends State<AddressBooks> {
                             ),
                           ),
                         );
-                      } else {
-                        return const SizedBox.shrink();
                       }
                     },
                   ),

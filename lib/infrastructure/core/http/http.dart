@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:planit/config.dart';
-import 'package:planit/domain/core/error/exception.dart';
 
 class HttpService {
   late Dio _dio;
