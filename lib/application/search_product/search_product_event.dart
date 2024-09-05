@@ -5,6 +5,6 @@ class SearchProductEvent with _$SearchProductEvent {
   const factory SearchProductEvent.initialized() = _Initialized;
   const factory SearchProductEvent.fetchProduct({
     required String searchKey,
-    required bool isScrolling,
   }) = _FetchProduct;
+  const factory SearchProductEvent.onLoadMore() = _OnLoadMore;
 }

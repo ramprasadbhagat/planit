@@ -7,7 +7,6 @@ class SearchProductState with _$SearchProductState {
     required List<Product> products,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
-    required bool isScrolling,
     required bool canLoadMore,
     required int pageNumber,
     required String searchText,
@@ -18,7 +17,6 @@ class SearchProductState with _$SearchProductState {
         isFetching: false,
         canLoadMore: false,
         products: <Product>[],
-        isScrolling: false,
         pageNumber: 0,
         searchText: '',
       );

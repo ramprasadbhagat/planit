@@ -24,93 +24,62 @@ class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
     await event.map(
       initialized: (_) async => emit(SearchProductState.initial()),
       fetchProduct: (e) async {
-        if (state.isFetching == false) {
-          if (e.isScrolling == false) {
-            if (e.searchKey.isNotEmpty && state.searchText == e.searchKey) {
-              return;
-            }
-
-            emit(
-              state.copyWith(
-                isFetching: true,
-                searchText: e.searchKey,
-              ),
-            );
-            final failureOrSuccess = await repository.getSearchProduct(
-              pageNumber: 1,
-              searchKey: e.searchKey,
-            );
-            await failureOrSuccess.fold((failure) async {
-              emit(
-                state.copyWith(
-                  isFetching: false,
-                  apiFailureOrSuccessOption: optionOf(failureOrSuccess),
-                ),
-              );
-            }, (products) async {
-              final forS = await repository.getSearchProduct(
-                pageNumber: 2,
-                searchKey: e.searchKey,
-              );
-              var canLoad = false;
-              forS.fold(
-                (l) => null,
-                (r) => canLoad = r.isNotEmpty,
-              );
-              emit(
-                state.copyWith(
-                  isFetching: false,
-                  pageNumber: 1,
-                  products: products,
-                  isScrolling: false,
-                  canLoadMore: canLoad,
-                  apiFailureOrSuccessOption: none(),
-                ),
-              );
-            });
-          } else {
-            if (state.isScrolling == false) {
-              if (state.canLoadMore) {
-                emit(state.copyWith(isScrolling: true));
-                final failureOrSuccess = await repository.getSearchProduct(
-                  pageNumber: state.pageNumber + 1,
-                  searchKey: e.searchKey,
-                );
-                await failureOrSuccess.fold((failure) async {
-                  emit(
-                    state.copyWith(
-                      isScrolling: false,
-                      apiFailureOrSuccessOption: optionOf(failureOrSuccess),
-                    ),
-                  );
-                }, (result) async {
-                  final forS = await repository.getSearchProduct(
-                    pageNumber: state.pageNumber + 2,
-                    searchKey: e.searchKey,
-                  );
-                  var canLoad = false;
-                  forS.fold(
-                    (l) => null,
-                    (r) => canLoad = r.isNotEmpty,
-                  );
-                  emit(
-                    state.copyWith(
-                      isFetching: false,
-                      pageNumber: state.pageNumber + 1,
-                      products: [
-                        ...state.products,
-                        ...result,
-                      ],
-                      isScrolling: false,
-                      canLoadMore: canLoad,
-                      apiFailureOrSuccessOption: none(),
-                    ),
-                  );
-                });
-              }
-            }
-          }
-        }
+        emit(
+          state.copyWith(
+            isFetching: true,
+            products: [],
+          ),
+        );
+        final failureOrSuccess = await repository.getSearchProduct(
+          pageNumber: 1,
+          searchKey: e.searchKey,
+        );
+        await failureOrSuccess.fold((failure) async {
+          emit(
+            state.copyWith(
+              isFetching: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        }, (products) async {
+          emit(
+            state.copyWith(
+              isFetching: false,
+              pageNumber: 2,
+              products: products.productList,
+              canLoadMore: products.productList.length < products.totalCount,
+              apiFailureOrSuccessOption: none(),
+            ),
+          );
+        });
+      },
+      onLoadMore: (e) async {
+        if (state.isFetching || !state.canLoadMore) return;
+        emit(state.copyWith(isFetching: true));
+        final failureOrSuccess = await repository.getSearchProduct(
+          pageNumber: state.pageNumber,
+          searchKey: state.searchText,
+        );
+        await failureOrSuccess.fold((failure) async {
+          emit(
+            state.copyWith(
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        }, (products) async {
+          emit(
+            state.copyWith(
+              isFetching: false,
+              pageNumber: state.pageNumber + 1,
+              products: [
+                ...state.products,
+                ...products.productList,
+              ],
+              canLoadMore: products.productList.length < products.totalCount,
+              apiFailureOrSuccessOption: none(),
+            ),
+          );
+        });
       },
     );
   }

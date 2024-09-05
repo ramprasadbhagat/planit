@@ -2,7 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
+import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/shopping_list/widget/empty_shopping_list.dart';
 import 'package:planit/presentation/shopping_list/widget/shopping_list_item_card.dart';
@@ -36,101 +39,103 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         children: [
           BlocBuilder<WishlistBloc, WishlistState>(
             builder: (context, state) {
-              if (state.isFetching) {
-                return Skeletonizer(
-                  enabled: state.isFetching,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: List.generate(4, (index) {
-                      return ShoppingListItemCard(
-                        isSelected: false,
-                        item: WishlistProduct.empty(),
-                        onTap: () {},
-                      );
-                    }),
-                  ),
-                );
-              } else if (state.isWishlistEmpty) {
-                return const EmptyShoppingList();
-              }
+              // if (state.isFetching) {
+              //   return Skeletonizer(
+              //     enabled: state.isFetching,
+              //     child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.start,
+              //       children: List.generate(4, (index) {
+              //         return ShoppingListItemCard(
+              //           isSelected: false,
+              //           item: WishlistProduct.empty(),
+              //           onTap: () {},
+              //         );
+              //       }),
+              //     ),
+              //   );
+              // } else if (state.isWishlistEmpty) {
+              //   return const EmptyShoppingList();
+              // }
               return Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              'Select All',
-                              style: textTheme.labelMedium?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.grey4,
-                              ),
-                            ),
-                            Checkbox(
-                              value: state.isAllSelected,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(2.0),
-                              ),
-                              side: MaterialStateBorderSide.resolveWith(
-                                (states) => const BorderSide(
-                                  width: 1.0,
-                                  color: Colors.black,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Expanded(
+                    child: ScrollList<WishlistProduct>(
+                      header: state.getAllWishList.isEmpty
+                          ? const SizedBox.shrink()
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'Select All',
+                                  style: textTheme.labelMedium?.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.grey4,
+                                  ),
                                 ),
-                              ),
-                              fillColor:
-                                  MaterialStateProperty.all(Colors.white),
-                              checkColor: Colors.black,
-                              activeColor: Colors.black,
-                              autofocus: true,
-                              onChanged: (bool? value) {
-                                if (state.isAllSelected) {
-                                  context.read<WishlistBloc>().add(
-                                        const WishlistEvent.disselectAll(),
-                                      );
-                                } else {
-                                  context.read<WishlistBloc>().add(
-                                        const WishlistEvent.selectAll(),
-                                      );
-                                }
-                                // state.isAllSelected = value;
-                              },
+                                Checkbox(
+                                  value: state.isAllSelected,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(2.0),
+                                  ),
+                                  side: WidgetStateBorderSide.resolveWith(
+                                    (states) => const BorderSide(
+                                      width: 1.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  fillColor:
+                                      WidgetStateProperty.all(Colors.white),
+                                  checkColor: Colors.black,
+                                  activeColor: Colors.black,
+                                  autofocus: true,
+                                  onChanged: (bool? value) {
+                                    if (state.isAllSelected) {
+                                      context.read<WishlistBloc>().add(
+                                            const WishlistEvent.disselectAll(),
+                                          );
+                                    } else {
+                                      context.read<WishlistBloc>().add(
+                                            const WishlistEvent.selectAll(),
+                                          );
+                                    }
+                                    // state.isAllSelected = value;
+                                  },
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: List.generate(state.getAllWishList.length,
-                              (index) {
-                            return ShoppingListItemCard(
-                              isSelected: state.selectedItemList
-                                  .contains(state.getAllWishList[index]),
-                              item: state.getAllWishList[index],
-                              onTap: () {
-                                if (state.selectedItemList
-                                    .contains(state.getAllWishList[index])) {
-                                  context.read<WishlistBloc>().add(
-                                        WishlistEvent.disselectItem(
-                                          disselectedItem:
-                                              state.getAllWishList[index],
-                                        ),
-                                      );
-                                } else {
-                                  context.read<WishlistBloc>().add(
-                                        WishlistEvent.selectItem(
-                                          selectedItem:
-                                              state.getAllWishList[index],
-                                          allItem: state.getAllWishList,
-                                        ),
-                                      );
-                                }
-                              },
-                            );
-                          }),
-                        ),
-                      ],
+                      noRecordFoundWidget: const EmptyShoppingList(),
+                      controller: ScrollController(),
+                      onRefresh: () => context.read<WishlistBloc>().add(
+                            const WishlistEvent.fetch(),
+                          ),
+                      onLoadingMore: () => {},
+                      isLoading: state.isFetching,
+                      itemBuilder: (context, index, item) =>
+                          ShoppingListItemCard(
+                        isSelected: state.selectedItemList
+                            .contains(state.getAllWishList[index]),
+                        item: state.getAllWishList[index],
+                        onTap: () {
+                          if (state.selectedItemList
+                              .contains(state.getAllWishList[index])) {
+                            context.read<WishlistBloc>().add(
+                                  WishlistEvent.disselectItem(
+                                    disselectedItem:
+                                        state.getAllWishList[index],
+                                  ),
+                                );
+                          } else {
+                            context.read<WishlistBloc>().add(
+                                  WishlistEvent.selectItem(
+                                    selectedItem: state.getAllWishList[index],
+                                    allItem: state.getAllWishList,
+                                  ),
+                                );
+                          }
+                        },
+                      ),
+                      items: state.getAllWishList,
                     ),
                   ),
                 ),

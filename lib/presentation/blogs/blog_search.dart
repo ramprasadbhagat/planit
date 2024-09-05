@@ -49,52 +49,45 @@ class BlogSearchPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              NotificationListener<ScrollNotification>(
-                onNotification: (notification) {
-                  if (notification.metrics.axis == Axis.vertical) {
-                    if (notification.metrics.pixels ==
-                        notification.metrics.maxScrollExtent) {
-                      context
-                          .read<BlogSearchBloc>()
-                          .add(const BlogSearchEvent.fetchMore());
-                    }
-                  }
-                  return true;
-                },
-                child: BlocBuilder<BlogSearchBloc, BlogSearchState>(
-                  builder: (context, state) {
-                    return Expanded(
-                      child: ScrollList<Blog>(
-                        header: !state.isLoading && state.searchText.isNotEmpty
-                            ? Text(
-                                '${state.totalItemCount} results found',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.textBlack,
-                                    ),
-                              )
-                            : const SizedBox.shrink(),
-                        noRecordFoundWidget: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20.0),
-                          child: NoData(
-                            message: state.searchText.isEmpty
-                                ? 'Discover blog posts by searching here'
-                                : 'No Blogs found',
-                          ),
+              BlocBuilder<BlogSearchBloc, BlogSearchState>(
+                builder: (context, state) {
+                  return Expanded(
+                    child: ScrollList<Blog>(
+                      header: !state.isLoading && state.searchText.isNotEmpty
+                          ? Text(
+                              '${state.totalItemCount} results found',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.textBlack,
+                                  ),
+                            )
+                          : const SizedBox.shrink(),
+                      noRecordFoundWidget: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
+                        child: NoData(
+                          message: state.searchText.isEmpty
+                              ? 'Discover blog posts by searching here'
+                              : 'No Blogs found',
                         ),
-                        controller: ScrollController(),
-                        isLoading: state.isLoading,
-                        itemBuilder: (context, index, item) => BlogItemCard(
-                          blog: state.blogs[index],
-                        ),
-                        items: state.blogs,
                       ),
-                    );
-                  },
-                ),
+                      onRefresh: () => context
+                          .read<BlogSearchBloc>()
+                          .add(const BlogSearchEvent.reset()),
+                      onLoadingMore: () => context
+                          .read<BlogSearchBloc>()
+                          .add(const BlogSearchEvent.fetchMore()),
+                      controller: ScrollController(),
+                      isLoading: state.isLoading,
+                      itemBuilder: (context, index, item) => BlogItemCard(
+                        blog: state.blogs[index],
+                      ),
+                      items: state.blogs,
+                    ),
+                  );
+                },
               ),
             ],
           ),

@@ -28,7 +28,12 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     await event.map(
       initialized: (_) async => emit(WishlistState.initial()),
       fetch: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isFetching: true,
+            wishlist: [],
+          ),
+        );
         final failureOrSuccess = await repository.getWishlist();
         failureOrSuccess.fold(
           (failure) => emit(

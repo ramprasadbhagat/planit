@@ -25,10 +25,7 @@ class HomeSearchBar extends StatelessWidget {
           onTap: () {
             if (context.router.topRoute.name == ShopRoute.name) {
               context.read<SearchProductBloc>().add(
-                    const SearchProductEvent.fetchProduct(
-                      searchKey: '',
-                      isScrolling: false,
-                    ),
+                    const SearchProductEvent.fetchProduct(searchKey: ''),
                   );
               context.router.navigate(const SearchProductRoute());
             } else if (context.router.topRoute.name == RecipesRoute.name) {

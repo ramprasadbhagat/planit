@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/domain/product/entities/product_response.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
+import 'package:planit/infrastructure/product/dtos/product_response_dto.dart';
 
 class ProductLocalDataSource {
   const ProductLocalDataSource();
@@ -35,5 +37,12 @@ class ProductLocalDataSource {
     return List.from(categories)
         .map((e) => ProductDto.fromJson(e).toDomain)
         .toList();
+  }
+
+  Future<ProductResponse> getSearchProduct() async {
+    final res = json.decode(
+      await rootBundle.loadString('assets/json/products.json'),
+    );
+    return ProductResponseDto.fromJson(res).toDomain;
   }
 }
