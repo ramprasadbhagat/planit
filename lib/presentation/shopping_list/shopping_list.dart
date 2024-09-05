@@ -41,23 +41,6 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           Expanded(
             child: BlocBuilder<WishlistBloc, WishlistState>(
               builder: (context, state) {
-                // if (state.isFetching) {
-                //   return Skeletonizer(
-                //     enabled: state.isFetching,
-                //     child: Column(
-                //       mainAxisAlignment: MainAxisAlignment.start,
-                //       children: List.generate(4, (index) {
-                //         return ShoppingListItemCard(
-                //           isSelected: false,
-                //           item: WishlistProduct.empty(),
-                //           onTap: () {},
-                //         );
-                //       }),
-                //     ),
-                //   );
-                // } else if (state.isWishlistEmpty) {
-                //   return const EmptyShoppingList();
-                // }
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ScrollList<WishlistProduct>(
