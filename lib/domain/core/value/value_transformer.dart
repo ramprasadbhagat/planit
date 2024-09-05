@@ -21,7 +21,7 @@ bool isEqualsIgnoreCase(String value, String matcher) =>
     value.trim().toLowerCase() == matcher.trim().toLowerCase();
 
 String getOrderStatusText(String status) {
-  switch (status.toLowerCase()) {
+  switch (status) {
     case 'Order_Received':
       return 'Order Created';
     case 'In_Process':

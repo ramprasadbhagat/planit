@@ -515,6 +515,30 @@ class OrderDetailsPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
+                                      'Subtotal',
+                                      style: textTheme.titleMedium?.copyWith(
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    Text(
+                                      order.subTotal.getValue().toPrice(),
+                                      style: textTheme.titleMedium?.copyWith(
+                                        color: AppColors.grey2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
                                       'Delivery Charge',
                                       style: textTheme.titleMedium?.copyWith(
                                         color: AppColors.grey2,

@@ -36,10 +36,13 @@ class OrderRemoteDataSource {
       'deliveryDate': date,
       'deliveryTime': '7:20 am - 7:30 pm',
       'paymentType': paymentType,
+      'subTotal': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()),
       'totalPrice': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()) +
           deliveryCharge,
       'deliveryCharge': deliveryCharge.toString(),
-      'totalDiscount': coupon.amount(cartItem.totalPrice.getValue()).toString(),
+      'totalDiscount': (coupon.amount(cartItem.totalPrice.getValue()) +
+              cartItem.totalDiscount.getOrDefaultValue(0))
+          .toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),
     });
     final res = await httpService.request(
