@@ -69,7 +69,11 @@ int intReadValue(Map json, String key) {
 }
 
 List<String> productImageUrlFromMap(Map json, String key) {
-  return (json[key] as List).map<String>((e) => e['image']).toList();
+  if (json[key] is List) {
+    return (json[key] as List).map<String>((e) => e['image']).toList();
+  } else {
+    return [];
+  }
 }
 
 @freezed

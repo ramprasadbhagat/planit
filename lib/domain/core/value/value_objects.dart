@@ -83,6 +83,17 @@ class OrderStatus extends ValueObject<String> {
 
   Icon get orderListStatusIcon => getOrderStatusOrderListIcon(displayStatus);
 
+  bool get isOrderReceived =>
+      isEqualsIgnoreCase(displayStatus, 'Order Received');
+  bool get isInProcess => isEqualsIgnoreCase(displayStatus, 'Processing');
+
+  bool get isDispached => isEqualsIgnoreCase(displayStatus, 'Dispatched');
+  bool get isDelivered => isEqualsIgnoreCase(displayStatus, 'Delivered');
+  bool get isCancelled => isEqualsIgnoreCase(displayStatus, 'Cancelled');
+
+  int get getOrderStatusTrackPriority =>
+      getOrderStatusTrackIndex(displayStatus);
+
   const OrderStatus._(this.value);
 }
 

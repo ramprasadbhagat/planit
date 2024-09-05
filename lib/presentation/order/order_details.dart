@@ -114,6 +114,32 @@ class OrderDetailsPage extends StatelessWidget {
                           Row(
                             children: [
                               const Icon(
+                                Icons.calendar_month,
+                                size: 14,
+                                color: AppColors.textBlack,
+                              ),
+                              Text(
+                                ' Invoice ID: ',
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.invoiceId.displayLabel,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
                                 Icons.date_range_outlined,
                                 size: 14,
                                 color: AppColors.textBlack,
@@ -189,29 +215,6 @@ class OrderDetailsPage extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          // Row(
-                          //   children: [
-                          //     Image.asset(
-                          //       PngImage.orderStatusImage,
-                          //       height: 20,
-                          //       width: 20,
-                          //     ),
-                          //     Text(
-                          //       ' Order Status : ',
-                          //       style: textTheme.titleMedium?.copyWith(
-                          //         fontSize: 12,
-                          //         fontWeight: FontWeight.w500,
-                          //       ),
-                          //     ),
-                          //     Text(
-                          //       order.orderStatus.displayLabel,
-                          //       style: textTheme.titleMedium?.copyWith(
-                          //         fontSize: 12,
-                          //         fontWeight: FontWeight.w400,
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
                         ],
                       ),
                     ),

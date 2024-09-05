@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dartz/dartz.dart' hide Order;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -25,14 +26,13 @@ class TrackOrderBloc extends Bloc<TrackOrderEvent, TrackOrderState> {
       started: (_) async => emit(TrackOrderState.initial()),
       getTrackOrderDetails: (e) async {
         emit(
-          state.copyWith(
+          TrackOrderState.initial().copyWith(
             isFetching: true,
             order: e.order,
-            trackOrderItem: TrackOrderDetails.empty(),
           ),
         );
         final failureOrSuccess =
-            await repository.getTrackOrder(orderId: e.orderId);
+            await repository.getTrackOrder(orderId: e.order.id.getOrCrash());
         failureOrSuccess.fold(
             (failure) => emit(
                   state.copyWith(
@@ -41,13 +41,38 @@ class TrackOrderBloc extends Bloc<TrackOrderEvent, TrackOrderState> {
                     apiFailureOrSuccessOption: optionOf(failureOrSuccess),
                   ),
                 ), (success) {
-          Future.delayed(const Duration(milliseconds: 5000), () {});
           emit(
             state.copyWith(
               order: e.order,
               isFetching: false,
               trackOrderItem: success,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        });
+      },
+      cancelOrder: (_CancelOrder value) async {
+        emit(
+          state.copyWith(
+            isFetching: true,
+          ),
+        );
+        final failureOrSuccess =
+            await repository.cancelOrder(orderId: state.order.id.getOrCrash());
+
+        failureOrSuccess.fold((l) {
+          emit(
+            state.copyWith(
+              isFetching: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        }, (r) {
+          emit(
+            state.copyWith(
+              isFetching: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+              order: r,
             ),
           );
         });

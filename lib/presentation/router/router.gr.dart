@@ -266,9 +266,13 @@ abstract class $AppRouter extends _i36.RootStackRouter {
       );
     },
     TrackOrderRoute.name: (routeData) {
+      final args = routeData.argsAs<TrackOrderRouteArgs>();
       return _i36.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i32.TrackOrderPage(),
+        child: _i32.TrackOrderPage(
+          key: args.key,
+          order: args.order,
+        ),
       );
     },
     UserProfileRoute.name: (routeData) {
@@ -845,16 +849,40 @@ class TalkToUsRoute extends _i36.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i32.TrackOrderPage]
-class TrackOrderRoute extends _i36.PageRouteInfo<void> {
-  const TrackOrderRoute({List<_i36.PageRouteInfo>? children})
-      : super(
+class TrackOrderRoute extends _i36.PageRouteInfo<TrackOrderRouteArgs> {
+  TrackOrderRoute({
+    _i37.Key? key,
+    required _i39.Order order,
+    List<_i36.PageRouteInfo>? children,
+  }) : super(
           TrackOrderRoute.name,
+          args: TrackOrderRouteArgs(
+            key: key,
+            order: order,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'TrackOrderRoute';
 
-  static const _i36.PageInfo<void> page = _i36.PageInfo<void>(name);
+  static const _i36.PageInfo<TrackOrderRouteArgs> page =
+      _i36.PageInfo<TrackOrderRouteArgs>(name);
+}
+
+class TrackOrderRouteArgs {
+  const TrackOrderRouteArgs({
+    this.key,
+    required this.order,
+  });
+
+  final _i37.Key? key;
+
+  final _i39.Order order;
+
+  @override
+  String toString() {
+    return 'TrackOrderRouteArgs{key: $key, order: $order}';
+  }
 }
 
 /// generated route for

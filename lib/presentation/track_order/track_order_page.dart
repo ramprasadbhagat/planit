@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/presentation/track_order/widgets/cancel_order_alert.dart';
 import 'package:planit/presentation/track_order/widgets/tracker.dart';
 import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class TrackOrderPage extends StatelessWidget {
-  const TrackOrderPage({super.key});
+  final Order order;
+  const TrackOrderPage({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +38,16 @@ class TrackOrderPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(25),
         child: BlocBuilder<TrackOrderBloc, TrackOrderState>(
+          bloc: context.read<TrackOrderBloc>()
+            ..add(TrackOrderEvent.getTrackOrderDetails(order: order)),
           builder: (context, state) {
-            // if (state.isFetching) {
-            //   return const CircularProgressIndicator();
-            // }
             return Skeletonizer(
               enabled: state.isFetching,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Order ID : ${state.order!.id.displayLabel}',
+                    'Order ID : ${state.order.id.displayLabel}',
                     overflow: TextOverflow.ellipsis,
                     style: textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w700,
@@ -69,7 +71,7 @@ class TrackOrderPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        state.order!.deliveryDate.getDisplayValue,
+                        state.order.deliveryDate.getDisplayValue,
                         style: textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 12,
@@ -94,7 +96,7 @@ class TrackOrderPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '7:20 - 8:30 am',
+                        state.order.deliveryTime.getOrDefaultValue(''),
                         style: textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 12,
@@ -119,7 +121,7 @@ class TrackOrderPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Cash on delivery',
+                        state.order.paymentType.getOrDefaultValue(''),
                         style: textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 12,
@@ -150,7 +152,7 @@ class TrackOrderPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        state.order!.orderStatus.displayLabel,
+                        state.order.orderStatus.displayStatus,
                         style: textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 12,
@@ -162,105 +164,133 @@ class TrackOrderPage extends StatelessWidget {
                   TrackerTimeline(
                     timeLineModel: [
                       TimeLineModel(
-                        status: state.trackOrderItem.trackID > 0
-                            ? Status.completed
-                            : Status.pending,
+                        status: Status.completed,
                         statusIcon: SvgImage.box,
                         title: 'Order Received',
-                        subtitle: '28th April 2024 |  2 : 10 pm',
+                        subtitle: state.order.getOrderDate,
                       ),
                       TimeLineModel(
-                        status: state.trackOrderItem.trackID > 1
+                        status: state.order.orderStatus
+                                    .getOrderStatusTrackPriority >
+                                0
                             ? Status.completed
                             : Status.pending,
                         statusIcon: SvgImage.roundArrowIcon,
                         title: 'Order in Process',
-                        subtitle: '29th April 2024 |  12: 00 pm',
+                        subtitle: state.order.getOrderDate,
                       ),
-                      TimeLineModel(
-                        status: state.trackOrderItem.trackID > 2
-                            ? Status.completed
-                            : Status.pending,
-                        statusIcon: SvgImage.truck,
-                        title: 'Order Dispatched',
-                        subtitle: 'Reach at Kankurgachi , Main Road',
-                      ),
-                      TimeLineModel(
-                        status: state.trackOrderItem.trackID > 3
-                            ? Status.completed
-                            : Status.pending,
-                        statusIcon: SvgImage.thumsupIcon,
-                        title: 'Delivered Successfully',
-                        subtitle: 'Not yet Delivered',
-                        isLast: true,
-                      ),
+                      if (state.order.orderStatus.isCancelled)
+                        TimeLineModel(
+                          status: state.order.orderStatus
+                                      .getOrderStatusTrackPriority >
+                                  1
+                              ? Status.completed
+                              : Status.pending,
+                          statusIcon: SvgImage.truck,
+                          title: 'Order Cancelled',
+                          subtitle: '',
+                          isLast: true,
+                        ),
+                      if (!state.order.orderStatus.isCancelled)
+                        TimeLineModel(
+                          status: state.order.orderStatus
+                                      .getOrderStatusTrackPriority >
+                                  1
+                              ? Status.completed
+                              : Status.pending,
+                          statusIcon: SvgImage.truck,
+                          title: 'Order Dispatched',
+                          subtitle: state.order.orderStatus.isDispached
+                              ? 'Dispatched to ${state.order.getDeliveryAddress}'
+                              : '',
+                        ),
+                      if (!state.order.orderStatus.isCancelled)
+                        TimeLineModel(
+                          status: state.order.orderStatus
+                                      .getOrderStatusTrackPriority >
+                                  2
+                              ? Status.completed
+                              : Status.pending,
+                          statusIcon: SvgImage.thumsupIcon,
+                          title: 'Delivered Successfully',
+                          subtitle: state.order.orderStatus.isDelivered
+                              ? 'Delivered to ${state.order.getDeliveryAddress}'
+                              : '',
+                          isLast: true,
+                        ),
                     ],
                   ),
                   const SizedBox(height: 20),
-                  Card(
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              state.trackOrderItem.trackID < 4
-                                  ? Text(
-                                      'Cancel Order',
-                                      style: textTheme.bodyMedium?.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
+                  if (!(state.order.orderStatus.isDispached ||
+                      state.order.orderStatus.isDelivered))
+                    Card(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                state.order.orderStatus.isCancelled
+                                    ? Text(
+                                        'Order Cancelled',
+                                        style: textTheme.bodyMedium?.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    : Text(
+                                        'Cancel Order',
+                                        style: textTheme.bodyMedium?.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                        ),
                                       ),
-                                    )
-                                  : Text(
-                                      'Order Cancelled',
-                                      style: textTheme.bodyMedium?.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                              const SizedBox(height: 4),
-                              state.trackOrderItem.trackID < 4
-                                  ? Text(
-                                      'Cancel Order before its placed',
-                                      style: textTheme.bodyMedium?.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12,
-                                      ),
-                                    )
-                                  : const SizedBox(),
-                            ],
-                          ),
-                          state.trackOrderItem.trackID < 4
-                              ? SizedBox(
-                                  height: 33,
-                                  width: 89,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.redButton,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(26.0),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      'Cancel',
-                                      style: textTheme.labelSmall?.copyWith(
-                                        color: AppColors.white,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 10,
-                                      ),
+                                const SizedBox(height: 4),
+                                if (!state.order.orderStatus.isCancelled)
+                                  Text(
+                                    'Cancel Order before its placed',
+                                    style: textTheme.bodyMedium?.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
                                     ),
                                   ),
-                                )
-                              : const SizedBox(),
-                        ],
+                              ],
+                            ),
+                            if (!state.order.orderStatus.isCancelled)
+                              SizedBox(
+                                height: 33,
+                                width: 89,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    showDialog<void>(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const CancelOrderAlert();
+                                      },
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.redButton,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(26.0),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Cancel',
+                                    style: textTheme.labelSmall?.copyWith(
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             );
