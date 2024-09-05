@@ -24,7 +24,7 @@ class SearchRecipesBloc extends Bloc<SearchRecipesEvent, SearchRecipesState> {
     await event.map(
       initialized: (_) async => emit(SearchRecipesState.initial()),
       fetchProduct: (e) async {
-        if (e.searchKey == state.searchString) {
+        if (!e.forceRefresh && e.searchKey == state.searchText) {
           return;
         }
         if (e.searchKey.isEmpty) {
@@ -34,11 +34,15 @@ class SearchRecipesBloc extends Bloc<SearchRecipesEvent, SearchRecipesState> {
         emit(
           state.copyWith(
             isFetching: true,
-            searchString: e.searchKey,
+            searchText: e.searchKey,
+            recipes: <Recipe>[],
+            currentPage: 1,
+            totalItemCount: 0,
           ),
         );
-        final failureOrSuccess =
-            await repository.searchRecipes(searchKey: e.searchKey);
+        final failureOrSuccess = await repository.fetchRecipes(
+          search: e.searchKey,
+        );
 
         failureOrSuccess.fold((l) {
           emit(
@@ -50,11 +54,42 @@ class SearchRecipesBloc extends Bloc<SearchRecipesEvent, SearchRecipesState> {
         }, (r) {
           emit(
             state.copyWith(
-              recipes: r,
+              recipes: r.recipes,
               isFetching: false,
+              totalItemCount: r.itemCounts,
             ),
           );
         });
+      },
+      fetchMore: (_FetchMore value) async {
+        if (!state.isFetching && state.totalItemCount > state.recipes.length) {
+          emit(
+            state.copyWith(
+              isFetching: true,
+            ),
+          );
+          final failureOrSuccess = await repository.fetchRecipes(
+            pageNumber: state.currentPage + 1,
+            search: state.searchText,
+          );
+
+          failureOrSuccess.fold((l) {
+            emit(
+              state.copyWith(
+                apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+                isFetching: false,
+              ),
+            );
+          }, (r) {
+            emit(
+              state.copyWith(
+                isFetching: false,
+                recipes: [...state.recipes, ...r.recipes],
+                currentPage: state.currentPage + 1,
+              ),
+            );
+          });
+        }
       },
     );
   }

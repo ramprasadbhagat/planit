@@ -19,19 +19,22 @@ mixin _$SearchRecipesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function(String searchKey, bool forceRefresh) fetchProduct,
+    required TResult Function() fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult? Function()? fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey)? fetchProduct,
+    TResult Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SearchRecipesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchRecipes value) fetchProduct,
+    required TResult Function(_FetchMore value) fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchRecipes value)? fetchProduct,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchRecipes value)? fetchProduct,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +119,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function(String searchKey, bool forceRefresh) fetchProduct,
+    required TResult Function() fetchMore,
   }) {
     return initialized();
   }
@@ -122,7 +129,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult? Function()? fetchMore,
   }) {
     return initialized?.call();
   }
@@ -131,7 +139,8 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey)? fetchProduct,
+    TResult Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -145,6 +154,7 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchRecipes value) fetchProduct,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return initialized(this);
   }
@@ -154,6 +164,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchRecipes value)? fetchProduct,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return initialized?.call(this);
   }
@@ -163,6 +174,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchRecipes value)? fetchProduct,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -182,7 +194,7 @@ abstract class _$$FetchRecipesImplCopyWith<$Res> {
           _$FetchRecipesImpl value, $Res Function(_$FetchRecipesImpl) then) =
       __$$FetchRecipesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String searchKey});
+  $Res call({String searchKey, bool forceRefresh});
 }
 
 /// @nodoc
@@ -197,12 +209,17 @@ class __$$FetchRecipesImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchKey = null,
+    Object? forceRefresh = null,
   }) {
     return _then(_$FetchRecipesImpl(
       searchKey: null == searchKey
           ? _value.searchKey
           : searchKey // ignore: cast_nullable_to_non_nullable
               as String,
+      forceRefresh: null == forceRefresh
+          ? _value.forceRefresh
+          : forceRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -210,14 +227,18 @@ class __$$FetchRecipesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchRecipesImpl implements _FetchRecipes {
-  const _$FetchRecipesImpl({required this.searchKey});
+  const _$FetchRecipesImpl(
+      {required this.searchKey, this.forceRefresh = false});
 
   @override
   final String searchKey;
+  @override
+  @JsonKey()
+  final bool forceRefresh;
 
   @override
   String toString() {
-    return 'SearchRecipesEvent.fetchProduct(searchKey: $searchKey)';
+    return 'SearchRecipesEvent.fetchProduct(searchKey: $searchKey, forceRefresh: $forceRefresh)';
   }
 
   @override
@@ -226,11 +247,13 @@ class _$FetchRecipesImpl implements _FetchRecipes {
         (other.runtimeType == runtimeType &&
             other is _$FetchRecipesImpl &&
             (identical(other.searchKey, searchKey) ||
-                other.searchKey == searchKey));
+                other.searchKey == searchKey) &&
+            (identical(other.forceRefresh, forceRefresh) ||
+                other.forceRefresh == forceRefresh));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchKey);
+  int get hashCode => Object.hash(runtimeType, searchKey, forceRefresh);
 
   @JsonKey(ignore: true)
   @override
@@ -242,29 +265,32 @@ class _$FetchRecipesImpl implements _FetchRecipes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(String searchKey) fetchProduct,
+    required TResult Function(String searchKey, bool forceRefresh) fetchProduct,
+    required TResult Function() fetchMore,
   }) {
-    return fetchProduct(searchKey);
+    return fetchProduct(searchKey, forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(String searchKey)? fetchProduct,
+    TResult? Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult? Function()? fetchMore,
   }) {
-    return fetchProduct?.call(searchKey);
+    return fetchProduct?.call(searchKey, forceRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(String searchKey)? fetchProduct,
+    TResult Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (fetchProduct != null) {
-      return fetchProduct(searchKey);
+      return fetchProduct(searchKey, forceRefresh);
     }
     return orElse();
   }
@@ -274,6 +300,7 @@ class _$FetchRecipesImpl implements _FetchRecipes {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchRecipes value) fetchProduct,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return fetchProduct(this);
   }
@@ -283,6 +310,7 @@ class _$FetchRecipesImpl implements _FetchRecipes {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchRecipes value)? fetchProduct,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return fetchProduct?.call(this);
   }
@@ -292,6 +320,7 @@ class _$FetchRecipesImpl implements _FetchRecipes {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchRecipes value)? fetchProduct,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (fetchProduct != null) {
@@ -302,22 +331,134 @@ class _$FetchRecipesImpl implements _FetchRecipes {
 }
 
 abstract class _FetchRecipes implements SearchRecipesEvent {
-  const factory _FetchRecipes({required final String searchKey}) =
-      _$FetchRecipesImpl;
+  const factory _FetchRecipes(
+      {required final String searchKey,
+      final bool forceRefresh}) = _$FetchRecipesImpl;
 
   String get searchKey;
+  bool get forceRefresh;
   @JsonKey(ignore: true)
   _$$FetchRecipesImplCopyWith<_$FetchRecipesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$FetchMoreImplCopyWith<$Res> {
+  factory _$$FetchMoreImplCopyWith(
+          _$FetchMoreImpl value, $Res Function(_$FetchMoreImpl) then) =
+      __$$FetchMoreImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchMoreImplCopyWithImpl<$Res>
+    extends _$SearchRecipesEventCopyWithImpl<$Res, _$FetchMoreImpl>
+    implements _$$FetchMoreImplCopyWith<$Res> {
+  __$$FetchMoreImplCopyWithImpl(
+      _$FetchMoreImpl _value, $Res Function(_$FetchMoreImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchMoreImpl implements _FetchMore {
+  const _$FetchMoreImpl();
+
+  @override
+  String toString() {
+    return 'SearchRecipesEvent.fetchMore()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchMoreImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function(String searchKey, bool forceRefresh) fetchProduct,
+    required TResult Function() fetchMore,
+  }) {
+    return fetchMore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult? Function()? fetchMore,
+  }) {
+    return fetchMore?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function(String searchKey, bool forceRefresh)? fetchProduct,
+    TResult Function()? fetchMore,
+    required TResult orElse(),
+  }) {
+    if (fetchMore != null) {
+      return fetchMore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchRecipes value) fetchProduct,
+    required TResult Function(_FetchMore value) fetchMore,
+  }) {
+    return fetchMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchRecipes value)? fetchProduct,
+    TResult? Function(_FetchMore value)? fetchMore,
+  }) {
+    return fetchMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchRecipes value)? fetchProduct,
+    TResult Function(_FetchMore value)? fetchMore,
+    required TResult orElse(),
+  }) {
+    if (fetchMore != null) {
+      return fetchMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchMore implements SearchRecipesEvent {
+  const factory _FetchMore() = _$FetchMoreImpl;
+}
+
+/// @nodoc
 mixin _$SearchRecipesState {
   List<Recipe> get recipes => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
-  String get searchString => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
+  int get totalItemCount => throw _privateConstructorUsedError;
+  String get searchText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchRecipesStateCopyWith<SearchRecipesState> get copyWith =>
@@ -333,8 +474,10 @@ abstract class $SearchRecipesStateCopyWith<$Res> {
   $Res call(
       {List<Recipe> recipes,
       bool isFetching,
-      String searchString,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      int currentPage,
+      int totalItemCount,
+      String searchText});
 }
 
 /// @nodoc
@@ -352,8 +495,10 @@ class _$SearchRecipesStateCopyWithImpl<$Res, $Val extends SearchRecipesState>
   $Res call({
     Object? recipes = null,
     Object? isFetching = null,
-    Object? searchString = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? currentPage = null,
+    Object? totalItemCount = null,
+    Object? searchText = null,
   }) {
     return _then(_value.copyWith(
       recipes: null == recipes
@@ -364,14 +509,22 @@ class _$SearchRecipesStateCopyWithImpl<$Res, $Val extends SearchRecipesState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchString: null == searchString
-          ? _value.searchString
-          : searchString // ignore: cast_nullable_to_non_nullable
-              as String,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalItemCount: null == totalItemCount
+          ? _value.totalItemCount
+          : totalItemCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -387,8 +540,10 @@ abstract class _$$SearchRecipesStateImplCopyWith<$Res>
   $Res call(
       {List<Recipe> recipes,
       bool isFetching,
-      String searchString,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      int currentPage,
+      int totalItemCount,
+      String searchText});
 }
 
 /// @nodoc
@@ -404,8 +559,10 @@ class __$$SearchRecipesStateImplCopyWithImpl<$Res>
   $Res call({
     Object? recipes = null,
     Object? isFetching = null,
-    Object? searchString = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? currentPage = null,
+    Object? totalItemCount = null,
+    Object? searchText = null,
   }) {
     return _then(_$SearchRecipesStateImpl(
       recipes: null == recipes
@@ -416,14 +573,22 @@ class __$$SearchRecipesStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      searchString: null == searchString
-          ? _value.searchString
-          : searchString // ignore: cast_nullable_to_non_nullable
-              as String,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalItemCount: null == totalItemCount
+          ? _value.totalItemCount
+          : totalItemCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -434,8 +599,10 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
   const _$SearchRecipesStateImpl(
       {required final List<Recipe> recipes,
       required this.isFetching,
-      required this.searchString,
-      required this.apiFailureOrSuccessOption})
+      required this.apiFailureOrSuccessOption,
+      required this.currentPage,
+      required this.totalItemCount,
+      required this.searchText})
       : _recipes = recipes,
         super._();
 
@@ -450,13 +617,17 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
   @override
   final bool isFetching;
   @override
-  final String searchString;
-  @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
+  @override
+  final int currentPage;
+  @override
+  final int totalItemCount;
+  @override
+  final String searchText;
 
   @override
   String toString() {
-    return 'SearchRecipesState(recipes: $recipes, isFetching: $isFetching, searchString: $searchString, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'SearchRecipesState(recipes: $recipes, isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, currentPage: $currentPage, totalItemCount: $totalItemCount, searchText: $searchText)';
   }
 
   @override
@@ -467,11 +638,15 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
             const DeepCollectionEquality().equals(other._recipes, _recipes) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
-            (identical(other.searchString, searchString) ||
-                other.searchString == searchString) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
-                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
+                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.totalItemCount, totalItemCount) ||
+                other.totalItemCount == totalItemCount) &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText));
   }
 
   @override
@@ -479,8 +654,10 @@ class _$SearchRecipesStateImpl extends _SearchRecipesState {
       runtimeType,
       const DeepCollectionEquality().hash(_recipes),
       isFetching,
-      searchString,
-      apiFailureOrSuccessOption);
+      apiFailureOrSuccessOption,
+      currentPage,
+      totalItemCount,
+      searchText);
 
   @JsonKey(ignore: true)
   @override
@@ -494,9 +671,11 @@ abstract class _SearchRecipesState extends SearchRecipesState {
   const factory _SearchRecipesState(
       {required final List<Recipe> recipes,
       required final bool isFetching,
-      required final String searchString,
       required final Option<Either<ApiFailure, dynamic>>
-          apiFailureOrSuccessOption}) = _$SearchRecipesStateImpl;
+          apiFailureOrSuccessOption,
+      required final int currentPage,
+      required final int totalItemCount,
+      required final String searchText}) = _$SearchRecipesStateImpl;
   const _SearchRecipesState._() : super._();
 
   @override
@@ -504,9 +683,13 @@ abstract class _SearchRecipesState extends SearchRecipesState {
   @override
   bool get isFetching;
   @override
-  String get searchString;
-  @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
+  @override
+  int get currentPage;
+  @override
+  int get totalItemCount;
+  @override
+  String get searchText;
   @override
   @JsonKey(ignore: true)
   _$$SearchRecipesStateImplCopyWith<_$SearchRecipesStateImpl> get copyWith =>

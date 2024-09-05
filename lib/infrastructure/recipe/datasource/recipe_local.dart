@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/domain/recipe/entities/recipe_details.dart';
+import 'package:planit/domain/recipe/entities/recipe_response.dart';
 import 'package:planit/infrastructure/recipe/dtos/recipe_details_dto.dart';
 import 'package:planit/infrastructure/recipe/dtos/recipe_dto.dart';
+import 'package:planit/infrastructure/recipe/dtos/recipe_response_dto.dart';
 
 class RecipeLocalDataSource {
   const RecipeLocalDataSource();
@@ -18,6 +20,14 @@ class RecipeLocalDataSource {
     return List.from(recipes)
         .map((e) => RecipeDto.fromJson(e).toDomain)
         .toList();
+  }
+
+  Future<RecipeResponse> fetchRecipes() async {
+    final res = json.decode(
+      await rootBundle.loadString('assets/json/recipes.json'),
+    );
+
+    return RecipeResponseDto.fromJson(res).toDomain;
   }
 
   Future<RecipeDetails> fetchRecipeDetails() async {

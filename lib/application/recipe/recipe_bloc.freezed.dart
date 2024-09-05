@@ -24,6 +24,7 @@ mixin _$RecipeEvent {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$RecipeEvent {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$RecipeEvent {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ mixin _$RecipeEvent {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$RecipeEvent {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +82,7 @@ mixin _$RecipeEvent {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +150,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return fetch();
   }
@@ -157,6 +164,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return fetch?.call();
   }
@@ -170,6 +178,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -189,6 +198,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return fetch(this);
   }
@@ -202,6 +212,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return fetch?.call(this);
   }
@@ -215,6 +226,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -300,6 +312,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return cuisineCheckboxChange(cuisine);
   }
@@ -313,6 +326,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return cuisineCheckboxChange?.call(cuisine);
   }
@@ -326,6 +340,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (cuisineCheckboxChange != null) {
@@ -345,6 +360,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return cuisineCheckboxChange(this);
   }
@@ -358,6 +374,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return cuisineCheckboxChange?.call(this);
   }
@@ -371,6 +388,7 @@ class _$CuisineCheckboxChangeImpl implements _CuisineCheckboxChange {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (cuisineCheckboxChange != null) {
@@ -462,6 +480,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return courseCheckboxChange(course);
   }
@@ -475,6 +494,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return courseCheckboxChange?.call(course);
   }
@@ -488,6 +508,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (courseCheckboxChange != null) {
@@ -507,6 +528,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return courseCheckboxChange(this);
   }
@@ -520,6 +542,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return courseCheckboxChange?.call(this);
   }
@@ -533,6 +556,7 @@ class _$CourseCheckboxChangeImpl implements _CourseCheckboxChange {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (courseCheckboxChange != null) {
@@ -596,6 +620,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return applyFilterClicked();
   }
@@ -609,6 +634,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return applyFilterClicked?.call();
   }
@@ -622,6 +648,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (applyFilterClicked != null) {
@@ -641,6 +668,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return applyFilterClicked(this);
   }
@@ -654,6 +682,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return applyFilterClicked?.call(this);
   }
@@ -667,6 +696,7 @@ class _$ApplyFilterClickedImpl implements _ApplyFilterClicked {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (applyFilterClicked != null) {
@@ -726,6 +756,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return clearAllFilterClicked();
   }
@@ -739,6 +770,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return clearAllFilterClicked?.call();
   }
@@ -752,6 +784,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (clearAllFilterClicked != null) {
@@ -771,6 +804,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return clearAllFilterClicked(this);
   }
@@ -784,6 +818,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return clearAllFilterClicked?.call(this);
   }
@@ -797,6 +832,7 @@ class _$ClearAllFilterClickedImpl implements _ClearAllFilterClicked {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (clearAllFilterClicked != null) {
@@ -854,6 +890,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     required TResult Function() applyFilterClicked,
     required TResult Function() clearAllFilterClicked,
     required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
   }) {
     return resetTempSelection();
   }
@@ -867,6 +904,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     TResult? Function()? applyFilterClicked,
     TResult? Function()? clearAllFilterClicked,
     TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
   }) {
     return resetTempSelection?.call();
   }
@@ -880,6 +918,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     TResult Function()? applyFilterClicked,
     TResult Function()? clearAllFilterClicked,
     TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
     required TResult orElse(),
   }) {
     if (resetTempSelection != null) {
@@ -899,6 +938,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     required TResult Function(_ClearAllFilterClicked value)
         clearAllFilterClicked,
     required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
   }) {
     return resetTempSelection(this);
   }
@@ -912,6 +952,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
   }) {
     return resetTempSelection?.call(this);
   }
@@ -925,6 +966,7 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
     TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
     TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
     TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
     required TResult orElse(),
   }) {
     if (resetTempSelection != null) {
@@ -936,6 +978,140 @@ class _$ResetTempSelectionImpl implements _ResetTempSelection {
 
 abstract class _ResetTempSelection implements RecipeEvent {
   const factory _ResetTempSelection() = _$ResetTempSelectionImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchMoreImplCopyWith<$Res> {
+  factory _$$FetchMoreImplCopyWith(
+          _$FetchMoreImpl value, $Res Function(_$FetchMoreImpl) then) =
+      __$$FetchMoreImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchMoreImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$FetchMoreImpl>
+    implements _$$FetchMoreImplCopyWith<$Res> {
+  __$$FetchMoreImplCopyWithImpl(
+      _$FetchMoreImpl _value, $Res Function(_$FetchMoreImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchMoreImpl implements _FetchMore {
+  const _$FetchMoreImpl();
+
+  @override
+  String toString() {
+    return 'RecipeEvent.fetchMore()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchMoreImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(String cuisine) cuisineCheckboxChange,
+    required TResult Function(String course) courseCheckboxChange,
+    required TResult Function() applyFilterClicked,
+    required TResult Function() clearAllFilterClicked,
+    required TResult Function() resetTempSelection,
+    required TResult Function() fetchMore,
+  }) {
+    return fetchMore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function(String cuisine)? cuisineCheckboxChange,
+    TResult? Function(String course)? courseCheckboxChange,
+    TResult? Function()? applyFilterClicked,
+    TResult? Function()? clearAllFilterClicked,
+    TResult? Function()? resetTempSelection,
+    TResult? Function()? fetchMore,
+  }) {
+    return fetchMore?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(String cuisine)? cuisineCheckboxChange,
+    TResult Function(String course)? courseCheckboxChange,
+    TResult Function()? applyFilterClicked,
+    TResult Function()? clearAllFilterClicked,
+    TResult Function()? resetTempSelection,
+    TResult Function()? fetchMore,
+    required TResult orElse(),
+  }) {
+    if (fetchMore != null) {
+      return fetchMore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_CuisineCheckboxChange value)
+        cuisineCheckboxChange,
+    required TResult Function(_CourseCheckboxChange value) courseCheckboxChange,
+    required TResult Function(_ApplyFilterClicked value) applyFilterClicked,
+    required TResult Function(_ClearAllFilterClicked value)
+        clearAllFilterClicked,
+    required TResult Function(_ResetTempSelection value) resetTempSelection,
+    required TResult Function(_FetchMore value) fetchMore,
+  }) {
+    return fetchMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_CuisineCheckboxChange value)? cuisineCheckboxChange,
+    TResult? Function(_CourseCheckboxChange value)? courseCheckboxChange,
+    TResult? Function(_ApplyFilterClicked value)? applyFilterClicked,
+    TResult? Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
+    TResult? Function(_ResetTempSelection value)? resetTempSelection,
+    TResult? Function(_FetchMore value)? fetchMore,
+  }) {
+    return fetchMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_CuisineCheckboxChange value)? cuisineCheckboxChange,
+    TResult Function(_CourseCheckboxChange value)? courseCheckboxChange,
+    TResult Function(_ApplyFilterClicked value)? applyFilterClicked,
+    TResult Function(_ClearAllFilterClicked value)? clearAllFilterClicked,
+    TResult Function(_ResetTempSelection value)? resetTempSelection,
+    TResult Function(_FetchMore value)? fetchMore,
+    required TResult orElse(),
+  }) {
+    if (fetchMore != null) {
+      return fetchMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchMore implements RecipeEvent {
+  const factory _FetchMore() = _$FetchMoreImpl;
 }
 
 /// @nodoc
@@ -951,6 +1127,8 @@ mixin _$RecipeState {
   bool get isFetching => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  int get pageNumber => throw _privateConstructorUsedError;
+  bool get hasMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeStateCopyWith<RecipeState> get copyWith =>
@@ -971,7 +1149,9 @@ abstract class $RecipeStateCopyWith<$Res> {
       List<String> tempSelectedCuisineFilter,
       List<String> tempSelectedCourseFilter,
       bool isFetching,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      int pageNumber,
+      bool hasMore});
 }
 
 /// @nodoc
@@ -995,6 +1175,8 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
     Object? tempSelectedCourseFilter = null,
     Object? isFetching = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? pageNumber = null,
+    Object? hasMore = null,
   }) {
     return _then(_value.copyWith(
       recipes: null == recipes
@@ -1029,6 +1211,14 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      pageNumber: null == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1049,7 +1239,9 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
       List<String> tempSelectedCuisineFilter,
       List<String> tempSelectedCourseFilter,
       bool isFetching,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      int pageNumber,
+      bool hasMore});
 }
 
 /// @nodoc
@@ -1071,6 +1263,8 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
     Object? tempSelectedCourseFilter = null,
     Object? isFetching = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? pageNumber = null,
+    Object? hasMore = null,
   }) {
     return _then(_$RecipeStateImpl(
       recipes: null == recipes
@@ -1105,6 +1299,14 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      pageNumber: null == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1120,7 +1322,9 @@ class _$RecipeStateImpl extends _RecipeState {
       required final List<String> tempSelectedCuisineFilter,
       required final List<String> tempSelectedCourseFilter,
       required this.isFetching,
-      required this.apiFailureOrSuccessOption})
+      required this.apiFailureOrSuccessOption,
+      required this.pageNumber,
+      required this.hasMore})
       : _recipes = recipes,
         _filteredRecipes = filteredRecipes,
         _selectedCuisineFilter = selectedCuisineFilter,
@@ -1185,10 +1389,14 @@ class _$RecipeStateImpl extends _RecipeState {
   final bool isFetching;
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
+  @override
+  final int pageNumber;
+  @override
+  final bool hasMore;
 
   @override
   String toString() {
-    return 'RecipeState(recipes: $recipes, filteredRecipes: $filteredRecipes, selectedCuisineFilter: $selectedCuisineFilter, selectedCourseFilter: $selectedCourseFilter, tempSelectedCuisineFilter: $tempSelectedCuisineFilter, tempSelectedCourseFilter: $tempSelectedCourseFilter, isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'RecipeState(recipes: $recipes, filteredRecipes: $filteredRecipes, selectedCuisineFilter: $selectedCuisineFilter, selectedCourseFilter: $selectedCourseFilter, tempSelectedCuisineFilter: $tempSelectedCuisineFilter, tempSelectedCourseFilter: $tempSelectedCourseFilter, isFetching: $isFetching, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, pageNumber: $pageNumber, hasMore: $hasMore)';
   }
 
   @override
@@ -1211,7 +1419,10 @@ class _$RecipeStateImpl extends _RecipeState {
                 other.isFetching == isFetching) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
-                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
+                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
+            (identical(other.pageNumber, pageNumber) ||
+                other.pageNumber == pageNumber) &&
+            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
   }
 
   @override
@@ -1224,7 +1435,9 @@ class _$RecipeStateImpl extends _RecipeState {
       const DeepCollectionEquality().hash(_tempSelectedCuisineFilter),
       const DeepCollectionEquality().hash(_tempSelectedCourseFilter),
       isFetching,
-      apiFailureOrSuccessOption);
+      apiFailureOrSuccessOption,
+      pageNumber,
+      hasMore);
 
   @JsonKey(ignore: true)
   @override
@@ -1243,7 +1456,9 @@ abstract class _RecipeState extends RecipeState {
       required final List<String> tempSelectedCourseFilter,
       required final bool isFetching,
       required final Option<Either<ApiFailure, dynamic>>
-          apiFailureOrSuccessOption}) = _$RecipeStateImpl;
+          apiFailureOrSuccessOption,
+      required final int pageNumber,
+      required final bool hasMore}) = _$RecipeStateImpl;
   const _RecipeState._() : super._();
 
   @override
@@ -1262,6 +1477,10 @@ abstract class _RecipeState extends RecipeState {
   bool get isFetching;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
+  @override
+  int get pageNumber;
+  @override
+  bool get hasMore;
   @override
   @JsonKey(ignore: true)
   _$$RecipeStateImplCopyWith<_$RecipeStateImpl> get copyWith =>

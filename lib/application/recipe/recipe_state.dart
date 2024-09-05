@@ -13,17 +13,21 @@ class RecipeState with _$RecipeState {
     required List<String> tempSelectedCourseFilter,
     required bool isFetching,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required int pageNumber,
+    required bool hasMore,
   }) = _RecipeState;
 
   factory RecipeState.initial() => const RecipeState(
-        recipes: [],
+        recipes: <Recipe>[],
         isFetching: false,
         apiFailureOrSuccessOption: None(),
-        filteredRecipes: [],
-        selectedCourseFilter: [],
-        selectedCuisineFilter: [],
-        tempSelectedCourseFilter: [],
-        tempSelectedCuisineFilter: [],
+        filteredRecipes: <Recipe>[],
+        selectedCourseFilter: <String>[],
+        selectedCuisineFilter: <String>[],
+        tempSelectedCourseFilter: <String>[],
+        tempSelectedCuisineFilter: <String>[],
+        hasMore: false,
+        pageNumber: 1,
       );
 
   List<String> get courses =>

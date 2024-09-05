@@ -61,53 +61,56 @@ class CartItemCard extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  cartProduct.productName,
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textBlackDeep,
-                  ),
-                  textAlign: TextAlign.start,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  cartProduct.attributeitem,
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.lightGrey,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '₹${cartProduct.totalPrice} ',
-                      style: textTheme.bodySmall?.copyWith(
-                        fontSize: 11,
-                      ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    cartProduct.productName,
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textBlackDeep,
                     ),
-                    Text(
-                      ' ${cartProduct.totalPrice + cartProduct.discount} ',
-                      style: textTheme.bodySmall!.copyWith(
-                        decoration: TextDecoration.lineThrough,
-                        color: AppColors.lightGray,
-                        fontSize: 9,
-                      ),
+                    textAlign: TextAlign.start,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    cartProduct.attributeitem,
+                    style: textTheme.bodySmall?.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.lightGrey,
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        '₹${cartProduct.totalPrice} ',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 11,
+                        ),
+                      ),
+                      Text(
+                        ' ${cartProduct.totalPrice + cartProduct.discount} ',
+                        style: textTheme.bodySmall!.copyWith(
+                          decoration: TextDecoration.lineThrough,
+                          color: AppColors.lightGray,
+                          fontSize: 9,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const Spacer(),
             AddToCart(
               product: cartProduct.toProductWithAttributeIdAndProductId,
             ),

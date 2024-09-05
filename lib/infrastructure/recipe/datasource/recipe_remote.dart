@@ -3,9 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/domain/recipe/entities/recipe_details.dart';
+import 'package:planit/domain/recipe/entities/recipe_response.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/infrastructure/recipe/dtos/recipe_details_dto.dart';
 import 'package:planit/infrastructure/recipe/dtos/recipe_dto.dart';
+import 'package:planit/infrastructure/recipe/dtos/recipe_response_dto.dart';
 import 'package:planit/utils/storage_service.dart';
 
 class RecipeRemoteDataSource {
@@ -28,6 +30,27 @@ class RecipeRemoteDataSource {
     return List.from(recipes)
         .map((e) => RecipeDto.fromJson(e).toDomain)
         .toList();
+  }
+
+  Future<RecipeResponse> fetchRecipes({
+    int pageSize = 10,
+    int pageNumber = 1,
+    String search = '',
+  }) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'recipes?pageSize=$pageSize&pageNumber=$pageNumber&search=$search',
+    );
+
+    _exceptionChecker(res: res);
+    // final recipes = res.data['items'];
+    final recipeResponse = RecipeResponseDto.fromJson(res.data).toDomain;
+
+    return recipeResponse;
+
+    // return List.from(recipes)
+    //     .map((e) => RecipeDto.fromJson(e).toDomain)
+    //     .toList();
   }
 
   Future<List<Recipe>> searchRecipes(String searchKey) async {

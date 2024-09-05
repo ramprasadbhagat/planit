@@ -18,47 +18,45 @@ class TrendingRecipes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          SectionTitle(
-            title: 'Favourite Recipes',
-            onTap: () {
-              context.router.navigate(const FavouriteRecipesRoute());
+    return Column(
+      children: [
+        SectionTitle(
+          title: 'Favourite Recipes',
+          onTap: () {
+            context.router.navigate(const FavouriteRecipesRoute());
+          },
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.32,
+          child: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
+            builder: (context, state) {
+              if (!state.isFetching && state.favouriteRecipes.isEmpty) {
+                return const NoData(
+                  message: 'No Recipe Added to Favourites',
+                );
+              }
+              return Skeletonizer(
+                enabled: state.isFetching,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.favouriteRecipes.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      TrendingRecipeCard(
+                    recipe: state.favouriteRecipes[index],
+                  ),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(
+                    width: 20,
+                  ),
+                ),
+              );
             },
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.32,
-            child: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
-              builder: (context, state) {
-                if (!state.isFetching && state.favouriteRecipes.isEmpty) {
-                  return const NoData(
-                    message: 'No Recipe Added to Favourites',
-                  );
-                }
-                return Skeletonizer(
-                  enabled: state.isFetching,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: state.favouriteRecipes.length,
-                    itemBuilder: (BuildContext context, int index) =>
-                        TrendingRecipeCard(
-                      recipe: state.favouriteRecipes[index],
-                    ),
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const SizedBox(
-                      width: 20,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

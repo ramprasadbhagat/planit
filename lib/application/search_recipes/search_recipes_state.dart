@@ -7,14 +7,18 @@ class SearchRecipesState with _$SearchRecipesState {
   const factory SearchRecipesState({
     required List<Recipe> recipes,
     required bool isFetching,
-    required String searchString,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required int currentPage,
+    required int totalItemCount,
+    required String searchText,
   }) = _SearchRecipesState;
 
   factory SearchRecipesState.initial() => const SearchRecipesState(
-        recipes: [],
+        recipes: <Recipe>[],
         isFetching: false,
         apiFailureOrSuccessOption: None(),
-        searchString: '',
+        currentPage: 1,
+        totalItemCount: 0,
+        searchText: '',
       );
 }
