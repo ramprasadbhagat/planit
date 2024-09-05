@@ -235,26 +235,21 @@ class TrackOrderPage extends StatelessWidget {
                                 state.order.orderStatus.isCancelled
                                     ? Text(
                                         'Order Cancelled',
-                                        style: textTheme.bodyMedium?.copyWith(
+                                        style: textTheme.bodyLarge?.copyWith(
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 14,
                                         ),
                                       )
                                     : Text(
                                         'Cancel Order',
-                                        style: textTheme.bodyMedium?.copyWith(
+                                        style: textTheme.bodyLarge?.copyWith(
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 14,
                                         ),
                                       ),
                                 const SizedBox(height: 4),
                                 if (!state.order.orderStatus.isCancelled)
                                   Text(
                                     'Cancel Order before its placed',
-                                    style: textTheme.bodyMedium?.copyWith(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                    ),
+                                    style: textTheme.bodySmall,
                                   ),
                               ],
                             ),

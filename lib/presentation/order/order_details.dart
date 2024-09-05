@@ -528,9 +528,8 @@ class OrderDetailsPage extends StatelessWidget {
                                     const Spacer(),
                                     Text(
                                       order.subTotal.getValue().toPrice(),
-                                      style: textTheme.titleMedium?.copyWith(
+                                      style: textTheme.bodySmall?.copyWith(
                                         color: AppColors.grey2,
-                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -543,9 +542,8 @@ class OrderDetailsPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Delivery Charge',
-                                      style: textTheme.titleMedium?.copyWith(
+                                      style: textTheme.bodySmall?.copyWith(
                                         color: AppColors.grey2,
-                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),

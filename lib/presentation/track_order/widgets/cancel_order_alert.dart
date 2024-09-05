@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
+import 'package:planit/presentation/theme/colors.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CancelOrderAlert extends StatelessWidget {
@@ -32,22 +33,24 @@ class CancelOrderAlert extends StatelessWidget {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(
+              child: Text(
                 'No',
-                style: TextStyle(color: Colors.grey),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppColors.grey1,
+                    ),
               ),
               onPressed: () => context.router.maybePop(),
             ),
             TextButton(
-              child: const Text(
+              child: Text(
                 'Yes',
-                style: TextStyle(color: Colors.red),
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppColors.redButton,
+                    ),
               ),
-              onPressed: () {
-                context.read<TrackOrderBloc>().add(
-                      const TrackOrderEvent.cancelOrder(),
-                    );
-              },
+              onPressed: () => context.read<TrackOrderBloc>().add(
+                    const TrackOrderEvent.cancelOrder(),
+                  ),
             ),
           ],
         ),

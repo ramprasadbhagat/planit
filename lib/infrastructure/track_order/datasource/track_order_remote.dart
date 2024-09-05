@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/track_order/entity/track_order_details.dart';
@@ -50,8 +49,6 @@ class TrackOrderRemoteDataSource {
     _exceptionChecker(res: res);
 
     final order = res.data['items'] as List;
-    log(order.first.toString());
-
     return OrderDto.fromJson(order.first).toDomain;
   }
 
@@ -61,6 +58,12 @@ class TrackOrderRemoteDataSource {
         code: res.statusCode ?? 0,
         message: res.statusMessage ?? '',
       );
+    }
+
+    if ((res.data == null ||
+        res.data['items'] == null ||
+        (res.data['items'] as List).isEmpty)) {
+      throw const ApiFailure.other('Something wents wrong');
     }
   }
 }
