@@ -9,7 +9,6 @@ import 'package:planit/presentation/core/common_search_bar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scrollable_grid_view.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
-import 'package:planit/presentation/theme/colors.dart';
 
 @RoutePage()
 class SearchProductPage extends StatefulWidget {
@@ -116,17 +115,26 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           previous.isFetching != current.isFetching,
                       builder: (context, state) {
                         return ScrollableGridView<Product>(
-                          noRecordFoundWidget: const NoData(),
-                          scrollPhysics: const AlwaysScrollableScrollPhysics(),
-                          header: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: Text(
-                              '${state.products.length} products found',
-                              style: textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
+                          noRecordFoundWidget: Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.20,
                             ),
+                            child: const NoData(),
                           ),
+                          scrollPhysics: const AlwaysScrollableScrollPhysics(),
+                          header: state.products.isEmpty
+                              ? const SizedBox.shrink()
+                              : Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: Text(
+                                    '${state.products.length} products found',
+                                    style: textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
                           isLoading: state.isFetching,
                           items: state.products,
                           onRefresh: () =>

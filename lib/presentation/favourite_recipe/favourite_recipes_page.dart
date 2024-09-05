@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/favourite_recipe/favourite_recipe_bloc.dart';
 import 'package:planit/domain/recipe/entities/recipe.dart';
 import 'package:planit/presentation/core/rating_star.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/recipe_details/widgets/recipe_favourite_button.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -31,20 +32,34 @@ class FavouriteRecipesPage extends StatelessWidget {
         ),
         body: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
           builder: (context, state) {
-            if (!state.isFetching && state.favouriteRecipes.isEmpty) {
-              return const RecipeEmpty();
-            }
-
-            return Skeletonizer(
-              enabled: state.isFetching,
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                itemCount: state.favouriteRecipes.length,
-                itemBuilder: (context, index) => FavouriteRecipeCard(
-                  recipe: state.favouriteRecipes[index],
+            return ScrollList<Recipe>(
+              noRecordFoundWidget: Padding(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.15,
                 ),
+                child: const RecipeEmpty(),
               ),
+              controller: ScrollController(),
+              onRefresh: () => context
+                  .read<FavouriteRecipeBloc>()
+                  .add(const FavouriteRecipeEvent.fetch()),
+              onLoadingMore: () => {},
+              isLoading: state.isFetching,
+              itemBuilder: (context, index, item) => FavouriteRecipeCard(
+                recipe: state.favouriteRecipes[index],
+              ),
+              items: state.favouriteRecipes,
             );
+            // return Skeletonizer(
+            //   enabled: state.isFetching,
+            //   child: ListView.builder(
+            //     padding: const EdgeInsets.symmetric(vertical: 10),
+            //     itemCount: state.favouriteRecipes.length,
+            // itemBuilder: (context, index) => FavouriteRecipeCard(
+            //   recipe: state.favouriteRecipes[index],
+            // ),
+            //   ),
+            // );
           },
         ),
       ),
@@ -172,7 +187,10 @@ class RecipeEmpty extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(SvgImage.recipeEmptyIcon),
+          SvgPicture.asset(
+            SvgImage.recipeEmptyIcon,
+            height: 150,
+          ),
           const SizedBox(
             height: 40,
           ),

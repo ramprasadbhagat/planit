@@ -11,7 +11,6 @@ import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
@@ -29,8 +28,8 @@ class _CartPageState extends State<CartPage> {
     context.read<CartBloc>().add(const CartEvent.fetch());
   }
 
-  final RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+  // final RefreshController _refreshController =
+  //     RefreshController(initialRefresh: false);
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -44,14 +43,10 @@ class _CartPageState extends State<CartPage> {
         centerTitle: false,
         automaticallyImplyLeading: false,
       ),
-      body: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        enablePullUp: true,
-        onRefresh: () {
-          context.read<CartBloc>().add(const CartEvent.fetch());
-          _refreshController.refreshCompleted();
-        },
+      body: RefreshIndicator(
+        color: AppColors.black,
+        onRefresh: () async =>
+            context.read<CartBloc>().add(const CartEvent.fetch()),
         child: BlocConsumer<CartBloc, CartState>(
           listener: (context, state) {
             CustomSnackbar.showErrorMessage(
