@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -61,7 +63,16 @@ class NoPincodeErrorDialog extends StatelessWidget {
                 height: 28,
                 child: ElevatedButton(
                   onPressed: () {
-                    context.router.maybePop();
+                    context.router.maybePop().then((value) {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) =>
+                            const CommonBottomSheet(
+                          child: PinCodeDialogBox(),
+                        ),
+                      );
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                     shape: const StadiumBorder(),
