@@ -55,7 +55,7 @@ class OrderDto with _$OrderDto {
         userId: StringValue(userId),
         deliveryAddressId: StringValue(deliveryAddressId),
         paymentStatus: PaymentStatus(paymentStatus),
-        orderStatus: StringValue(orderStatus),
+        orderStatus: OrderStatus(orderStatus),
         totalPrice: IntegerValue(totalPrice),
         subTotal: IntegerValue(subTotal),
         deliveryCharge: IntegerValue(deliveryCharge),

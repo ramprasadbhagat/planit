@@ -22,7 +22,7 @@ mixin _$Order {
   StringValue get userId => throw _privateConstructorUsedError;
   StringValue get deliveryAddressId => throw _privateConstructorUsedError;
   PaymentStatus get paymentStatus => throw _privateConstructorUsedError;
-  StringValue get orderStatus => throw _privateConstructorUsedError;
+  OrderStatus get orderStatus => throw _privateConstructorUsedError;
   StringValue get paymentType => throw _privateConstructorUsedError;
   IntegerValue get packingCharges => throw _privateConstructorUsedError;
   IntegerValue get totalPrice => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $OrderCopyWith<$Res> {
       StringValue userId,
       StringValue deliveryAddressId,
       PaymentStatus paymentStatus,
-      StringValue orderStatus,
+      OrderStatus orderStatus,
       StringValue paymentType,
       IntegerValue packingCharges,
       IntegerValue totalPrice,
@@ -128,7 +128,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+              as OrderStatus,
       paymentType: null == paymentType
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       StringValue userId,
       StringValue deliveryAddressId,
       PaymentStatus paymentStatus,
-      StringValue orderStatus,
+      OrderStatus orderStatus,
       StringValue paymentType,
       IntegerValue packingCharges,
       IntegerValue totalPrice,
@@ -269,7 +269,7 @@ class __$$OrderImplCopyWithImpl<$Res>
       orderStatus: null == orderStatus
           ? _value.orderStatus
           : orderStatus // ignore: cast_nullable_to_non_nullable
-              as StringValue,
+              as OrderStatus,
       paymentType: null == paymentType
           ? _value.paymentType
           : paymentType // ignore: cast_nullable_to_non_nullable
@@ -361,7 +361,7 @@ class _$OrderImpl implements _Order {
   @override
   final PaymentStatus paymentStatus;
   @override
-  final StringValue orderStatus;
+  final OrderStatus orderStatus;
   @override
   final StringValue paymentType;
   @override
@@ -485,7 +485,7 @@ abstract class _Order implements Order {
       required final StringValue userId,
       required final StringValue deliveryAddressId,
       required final PaymentStatus paymentStatus,
-      required final StringValue orderStatus,
+      required final OrderStatus orderStatus,
       required final StringValue paymentType,
       required final IntegerValue packingCharges,
       required final IntegerValue totalPrice,
@@ -512,7 +512,7 @@ abstract class _Order implements Order {
   @override
   PaymentStatus get paymentStatus;
   @override
-  StringValue get orderStatus;
+  OrderStatus get orderStatus;
   @override
   StringValue get paymentType;
   @override

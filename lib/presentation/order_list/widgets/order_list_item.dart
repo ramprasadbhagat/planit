@@ -194,7 +194,7 @@ class OrderListItem extends StatelessWidget {
                     Row(
                       children: [
                         OrderStatusWidget(
-                          status: order.getOrderStatus,
+                          status: order.orderStatus,
                         ),
                         const SizedBox(
                           width: 24,

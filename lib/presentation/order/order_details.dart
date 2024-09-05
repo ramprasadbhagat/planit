@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
-import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/tag.dart';
 import 'package:planit/presentation/order/widgets/orderItems.dart';
@@ -79,16 +78,13 @@ class OrderDetailsPage extends StatelessWidget {
                                 ),
                                 textAlign: TextAlign.start,
                               ),
-                              const Tag(
-                                label: 'Order Success',
-                                backgroundColor: AppColors.green,
-                                labelColor: AppColors.white,
+                              Tag(
+                                label: order.orderStatus.displayStatus,
+                                backgroundColor: order.orderStatus.tagColor,
+                                labelColor: order.orderStatus.tagLabelColor,
                               ),
                             ],
                           ),
-                          // const SizedBox(
-                          //   height: 20,
-                          // ),
                           Row(
                             children: [
                               const Icon(
@@ -193,29 +189,29 @@ class OrderDetailsPage extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                PngImage.orderStatusImage,
-                                height: 20,
-                                width: 20,
-                              ),
-                              Text(
-                                ' Order Status : ',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                order.getOrderStatus.getDisplayStatus,
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   children: [
+                          //     Image.asset(
+                          //       PngImage.orderStatusImage,
+                          //       height: 20,
+                          //       width: 20,
+                          //     ),
+                          //     Text(
+                          //       ' Order Status : ',
+                          //       style: textTheme.titleMedium?.copyWith(
+                          //         fontSize: 12,
+                          //         fontWeight: FontWeight.w500,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       order.orderStatus.displayLabel,
+                          //       style: textTheme.titleMedium?.copyWith(
+                          //         fontSize: 12,
+                          //         fontWeight: FontWeight.w400,
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),
@@ -421,15 +417,25 @@ class OrderDetailsPage extends StatelessWidget {
                                 ),
                                 textAlign: TextAlign.start,
                               ),
-                              if (order.paymentStatus.isFailed) ...[
-                                const Spacer(),
+                              const Spacer(),
+                              if (order.paymentStatus.isFailed)
                                 const Tag(
                                   label: 'Payment Failed',
                                   backgroundColor: AppColors.red,
                                   labelColor: AppColors.white,
+                                )
+                              else
+                                Checkbox(
+                                  fillColor: MaterialStateProperty.all(
+                                    AppColors.green,
+                                  ),
+                                  value: true,
+                                  onChanged: null,
                                 ),
-                              ],
                             ],
+                          ),
+                          const SizedBox(
+                            height: 18,
                           ),
                           Row(
                             children: [
@@ -477,7 +483,7 @@ class OrderDetailsPage extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                if (order.isCouponApplied)
+                                if (order.isCouponApplied) ...[
                                   Row(
                                     children: [
                                       Image.asset(
@@ -502,33 +508,10 @@ class OrderDetailsPage extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Taxes',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      0.toPrice(),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
                                 Row(
                                   children: [
                                     Text(
@@ -544,30 +527,6 @@ class OrderDetailsPage extends StatelessWidget {
                                       order.deliveryCharge
                                           .getValue()
                                           .toPrice(showFreeIfZero: true),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      ' Cash Round Off ',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         color: AppColors.grey2,
                                         fontSize: 12,
