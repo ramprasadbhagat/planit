@@ -37,7 +37,9 @@ mixin _$OrderItemDto {
   @JsonKey(name: 'product', defaultValue: {}, readValue: productReadValue)
   Map<String, dynamic> get product => throw _privateConstructorUsedError;
   @JsonKey(
-      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+      name: 'productImage',
+      defaultValue: <String>[],
+      readValue: productImageUrlFromMap)
   List<String> get productImage => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0, readValue: intReadValue)
   int get reorderQuantity => throw _privateConstructorUsedError;
@@ -70,7 +72,7 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
-          defaultValue: [],
+          defaultValue: <String>[],
           readValue: productImageUrlFromMap)
       List<String> productImage,
       @JsonKey(defaultValue: 0, readValue: intReadValue) int reorderQuantity});
@@ -169,7 +171,7 @@ abstract class _$$OrderItemDtoImplCopyWith<$Res>
       Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
-          defaultValue: [],
+          defaultValue: <String>[],
           readValue: productImageUrlFromMap)
       List<String> productImage,
       @JsonKey(defaultValue: 0, readValue: intReadValue) int reorderQuantity});
@@ -261,7 +263,7 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
       required final Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
-          defaultValue: [],
+          defaultValue: <String>[],
           readValue: productImageUrlFromMap)
       required final List<String> productImage,
       @JsonKey(defaultValue: 0, readValue: intReadValue)
@@ -306,7 +308,9 @@ class _$OrderItemDtoImpl extends _OrderItemDto {
   final List<String> _productImage;
   @override
   @JsonKey(
-      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+      name: 'productImage',
+      defaultValue: <String>[],
+      readValue: productImageUrlFromMap)
   List<String> get productImage {
     if (_productImage is EqualUnmodifiableListView) return _productImage;
     // ignore: implicit_dynamic_type
@@ -393,7 +397,7 @@ abstract class _OrderItemDto extends OrderItemDto {
       required final Map<String, dynamic> product,
       @JsonKey(
           name: 'productImage',
-          defaultValue: [],
+          defaultValue: <String>[],
           readValue: productImageUrlFromMap)
       required final List<String> productImage,
       @JsonKey(defaultValue: 0, readValue: intReadValue)
@@ -429,7 +433,9 @@ abstract class _OrderItemDto extends OrderItemDto {
   Map<String, dynamic> get product;
   @override
   @JsonKey(
-      name: 'productImage', defaultValue: [], readValue: productImageUrlFromMap)
+      name: 'productImage',
+      defaultValue: <String>[],
+      readValue: productImageUrlFromMap)
   List<String> get productImage;
   @override
   @JsonKey(defaultValue: 0, readValue: intReadValue)

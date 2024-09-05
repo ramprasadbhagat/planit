@@ -25,7 +25,7 @@ class OrderItemDto with _$OrderItemDto {
     required Map<String, dynamic> product,
     @JsonKey(
       name: 'productImage',
-      defaultValue: [],
+      defaultValue: <String>[],
       readValue: productImageUrlFromMap,
     )
     required List<String> productImage,
@@ -72,7 +72,7 @@ List<String> productImageUrlFromMap(Map json, String key) {
   if (json[key] is List) {
     return (json[key] as List).map<String>((e) => e['image']).toList();
   } else {
-    return [];
+    return <String>[];
   }
 }
 
