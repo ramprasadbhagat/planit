@@ -115,11 +115,11 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           previous.isFetching != current.isFetching,
                       builder: (context, state) {
                         return ScrollableGridView<Product>(
-                          noRecordFoundWidget: Padding(
+                          noRecordFoundWidget: const Padding(
                             padding: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height * 0.20,
+                              top: 25,
                             ),
-                            child: const NoData(),
+                            child: NoData(),
                           ),
                           scrollPhysics: const AlwaysScrollableScrollPhysics(),
                           header: state.products.isEmpty

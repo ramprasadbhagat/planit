@@ -36,111 +36,108 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         automaticallyImplyLeading: false,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<WishlistBloc, WishlistState>(
-            builder: (context, state) {
-              // if (state.isFetching) {
-              //   return Skeletonizer(
-              //     enabled: state.isFetching,
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       children: List.generate(4, (index) {
-              //         return ShoppingListItemCard(
-              //           isSelected: false,
-              //           item: WishlistProduct.empty(),
-              //           onTap: () {},
-              //         );
-              //       }),
-              //     ),
-              //   );
-              // } else if (state.isWishlistEmpty) {
-              //   return const EmptyShoppingList();
-              // }
-              return Expanded(
-                child: Padding(
+          Expanded(
+            child: BlocBuilder<WishlistBloc, WishlistState>(
+              builder: (context, state) {
+                // if (state.isFetching) {
+                //   return Skeletonizer(
+                //     enabled: state.isFetching,
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: List.generate(4, (index) {
+                //         return ShoppingListItemCard(
+                //           isSelected: false,
+                //           item: WishlistProduct.empty(),
+                //           onTap: () {},
+                //         );
+                //       }),
+                //     ),
+                //   );
+                // } else if (state.isWishlistEmpty) {
+                //   return const EmptyShoppingList();
+                // }
+                return Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Expanded(
-                    child: ScrollList<WishlistProduct>(
-                      header: state.getAllWishList.isEmpty
-                          ? const SizedBox.shrink()
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'Select All',
-                                  style: textTheme.labelMedium?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.grey4,
+                  child: ScrollList<WishlistProduct>(
+                    header: state.getAllWishList.isEmpty
+                        ? const SizedBox.shrink()
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'Select All',
+                                style: textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.grey4,
+                                ),
+                              ),
+                              Checkbox(
+                                value: state.isAllSelected,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(2.0),
+                                ),
+                                side: WidgetStateBorderSide.resolveWith(
+                                  (states) => const BorderSide(
+                                    width: 1.0,
+                                    color: Colors.black,
                                   ),
                                 ),
-                                Checkbox(
-                                  value: state.isAllSelected,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(2.0),
-                                  ),
-                                  side: WidgetStateBorderSide.resolveWith(
-                                    (states) => const BorderSide(
-                                      width: 1.0,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  fillColor:
-                                      WidgetStateProperty.all(Colors.white),
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  autofocus: true,
-                                  onChanged: (bool? value) {
-                                    if (state.isAllSelected) {
-                                      context.read<WishlistBloc>().add(
-                                            const WishlistEvent.disselectAll(),
-                                          );
-                                    } else {
-                                      context.read<WishlistBloc>().add(
-                                            const WishlistEvent.selectAll(),
-                                          );
-                                    }
-                                    // state.isAllSelected = value;
-                                  },
-                                ),
-                              ],
-                            ),
-                      noRecordFoundWidget: const EmptyShoppingList(),
-                      controller: ScrollController(),
-                      onRefresh: () => context.read<WishlistBloc>().add(
-                            const WishlistEvent.fetch(),
+                                fillColor:
+                                    WidgetStateProperty.all(Colors.white),
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                autofocus: true,
+                                onChanged: (bool? value) {
+                                  if (state.isAllSelected) {
+                                    context.read<WishlistBloc>().add(
+                                          const WishlistEvent.disselectAll(),
+                                        );
+                                  } else {
+                                    context.read<WishlistBloc>().add(
+                                          const WishlistEvent.selectAll(),
+                                        );
+                                  }
+                                  // state.isAllSelected = value;
+                                },
+                              ),
+                            ],
                           ),
-                      onLoadingMore: () => {},
-                      isLoading: state.isFetching,
-                      itemBuilder: (context, index, item) =>
-                          ShoppingListItemCard(
-                        isSelected: state.selectedItemList
-                            .contains(state.getAllWishList[index]),
-                        item: state.getAllWishList[index],
-                        onTap: () {
-                          if (state.selectedItemList
-                              .contains(state.getAllWishList[index])) {
-                            context.read<WishlistBloc>().add(
-                                  WishlistEvent.disselectItem(
-                                    disselectedItem:
-                                        state.getAllWishList[index],
-                                  ),
-                                );
-                          } else {
-                            context.read<WishlistBloc>().add(
-                                  WishlistEvent.selectItem(
-                                    selectedItem: state.getAllWishList[index],
-                                    allItem: state.getAllWishList,
-                                  ),
-                                );
-                          }
-                        },
-                      ),
-                      items: state.getAllWishList,
+                    noRecordFoundWidget: const EmptyShoppingList(),
+                    controller: ScrollController(),
+                    onRefresh: () => context.read<WishlistBloc>().add(
+                          const WishlistEvent.fetch(),
+                        ),
+                    onLoadingMore: () => {},
+                    isLoading: state.isFetching,
+                    itemBuilder: (context, index, item) => ShoppingListItemCard(
+                      isSelected: state.selectedItemList
+                          .contains(state.getAllWishList[index]),
+                      item: state.getAllWishList[index],
+                      onTap: () {
+                        if (state.selectedItemList
+                            .contains(state.getAllWishList[index])) {
+                          context.read<WishlistBloc>().add(
+                                WishlistEvent.disselectItem(
+                                  disselectedItem: state.getAllWishList[index],
+                                ),
+                              );
+                        } else {
+                          context.read<WishlistBloc>().add(
+                                WishlistEvent.selectItem(
+                                  selectedItem: state.getAllWishList[index],
+                                  allItem: state.getAllWishList,
+                                ),
+                              );
+                        }
+                      },
                     ),
+                    items: state.getAllWishList,
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
           BlocBuilder<WishlistBloc, WishlistState>(
             builder: (context, state) {

@@ -5,8 +5,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
 import 'package:planit/presentation/core/html_text.dart';
+import 'package:planit/presentation/core/rating_list_item.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
-import 'package:planit/presentation/shopping_list/widget/rating_list_item.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
 
@@ -137,8 +137,8 @@ class ShoppingListItemCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const RatingItem(
-                          value: 4,
+                        StarRating(
+                          rating: double.tryParse(item.productRating) ?? 0,
                         ),
                         const SizedBox(
                           width: 2,

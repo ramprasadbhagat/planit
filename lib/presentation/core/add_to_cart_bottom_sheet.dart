@@ -376,7 +376,7 @@ class Unit extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 10),
           padding: const EdgeInsets.symmetric(horizontal: 10),
           clipBehavior: Clip.antiAlias,
-          width: MediaQuery.of(context).size.width * 0.25,
+          width: 100,
           decoration: BoxDecoration(
             color: isOutOfStock ? AppColors.extraLightGray : AppColors.white,
             borderRadius: const BorderRadius.all(Radius.circular(10)),

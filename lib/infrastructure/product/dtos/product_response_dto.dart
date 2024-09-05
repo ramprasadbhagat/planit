@@ -9,7 +9,7 @@ class ProductResponseDto with _$ProductResponseDto {
   const ProductResponseDto._();
 
   const factory ProductResponseDto({
-    @JsonKey(defaultValue: []) required List<ProductDto> items,
+    @JsonKey(defaultValue: <ProductDto>[]) required List<ProductDto> items,
     @JsonKey(defaultValue: 0) required int totalCount,
   }) = _ProductResponseDto;
 

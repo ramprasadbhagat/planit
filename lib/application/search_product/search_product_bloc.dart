@@ -27,7 +27,7 @@ class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
         emit(
           state.copyWith(
             isFetching: true,
-            products: [],
+            products: <Product>[],
           ),
         );
         final failureOrSuccess = await repository.getSearchProduct(

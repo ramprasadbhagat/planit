@@ -33,11 +33,11 @@ class FavouriteRecipesPage extends StatelessWidget {
         body: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
           builder: (context, state) {
             return ScrollList<Recipe>(
-              noRecordFoundWidget: Padding(
+              noRecordFoundWidget: const Padding(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.15,
+                  top: 25,
                 ),
-                child: const RecipeEmpty(),
+                child: RecipeEmpty(),
               ),
               controller: ScrollController(),
               onRefresh: () => context

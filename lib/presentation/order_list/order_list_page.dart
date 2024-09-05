@@ -59,9 +59,7 @@ class _OrderListPageState extends State<OrderListPage> {
         builder: (context, state) {
           return ScrollList<Order>(
             noRecordFoundWidget: Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.25,
-              ),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: NoData.ordersHistory(),
             ),
             controller: ScrollController(),
