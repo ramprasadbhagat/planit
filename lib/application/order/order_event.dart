@@ -9,6 +9,7 @@ class OrderEvent with _$OrderEvent {
     required String date,
     required Coupon coupon,
     required double deliveryCharge,
+    required CurrentUser currentUser,
   }) = _SubmitOrder;
 
   const factory OrderEvent.fetchOrders() = _FetchOrders;

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
-import 'package:planit/application/track_order/track_order_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/order_list/widgets/order_actions_button.dart';
 import 'package:planit/presentation/order_list/widgets/order_status_widget.dart';
@@ -194,22 +193,18 @@ class OrderListItem extends StatelessWidget {
                     Row(
                       children: [
                         OrderStatusWidget(
-                          status: order.getOrderStatus,
+                          status: order.orderStatus,
                         ),
                         const SizedBox(
                           width: 24,
                         ),
                         OrderActionButton(
                           label: 'Track your Order',
-                          onTap: () {
-                            context.read<TrackOrderBloc>().add(
-                                  TrackOrderEvent.getTrackOrderDetails(
-                                    orderId: order.id.displayLabel,
-                                    order: order,
-                                  ),
-                                );
-                            context.router.navigate(const TrackOrderRoute());
-                          },
+                          onTap: () => context.router.navigate(
+                            TrackOrderRoute(
+                              order: order,
+                            ),
+                          ),
                         ),
                       ],
                     ),

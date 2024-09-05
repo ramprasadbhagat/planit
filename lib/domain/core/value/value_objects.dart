@@ -51,6 +51,52 @@ class StringValue extends ValueObject<String> {
   const StringValue._(this.value);
 }
 
+class PaymentStatus extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PaymentStatus(String input) =>
+      PaymentStatus._(validateStringNotEmpty(input));
+
+  String get displayLabel => naIfEmpty(value.getOrElse(() => ''));
+
+  bool get isSuccess => isEqualsIgnoreCase(displayLabel, 'completed');
+  bool get isFailed => isEqualsIgnoreCase(displayLabel, 'pending');
+  bool get isUnknown => !isSuccess || !isFailed;
+
+  const PaymentStatus._(this.value);
+}
+
+class OrderStatus extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory OrderStatus(String input) =>
+      OrderStatus._(validateStringNotEmpty(input));
+
+  String get displayLabel => naIfEmpty(value.getOrElse(() => ''));
+
+  String get displayStatus => getOrderStatusText(value.getOrElse(() => ''));
+
+  Color get tagColor => getOrderStatusTagColor(displayStatus);
+  Color get tagLabelColor => getOrderStatusTagLabelColor(displayStatus);
+
+  Icon get orderListStatusIcon => getOrderStatusOrderListIcon(displayStatus);
+
+  bool get isOrderReceived =>
+      isEqualsIgnoreCase(displayStatus, 'Order Received');
+  bool get isInProcess => isEqualsIgnoreCase(displayStatus, 'Processing');
+
+  bool get isDispached => isEqualsIgnoreCase(displayStatus, 'Dispatched');
+  bool get isDelivered => isEqualsIgnoreCase(displayStatus, 'Delivered');
+  bool get isCancelled => isEqualsIgnoreCase(displayStatus, 'Cancelled');
+
+  int get getOrderStatusTrackPriority =>
+      getOrderStatusTrackIndex(displayStatus);
+
+  const OrderStatus._(this.value);
+}
+
 class IntegerValue extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;

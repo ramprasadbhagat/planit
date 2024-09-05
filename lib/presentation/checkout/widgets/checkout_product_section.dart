@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
+import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_card.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -33,6 +34,36 @@ class CheckoutProductSection extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
+                if (state.cartItem.totalDiscount.getValue() > 0)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Discount',
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 14,
+                            color: AppColors.lightGray,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                        Text(
+                          '-${state.cartItem.totalDiscount.getOrDefaultValue(0).toPrice()}',
+                          style: textTheme.bodySmall?.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.green,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 6,

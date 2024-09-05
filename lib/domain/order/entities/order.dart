@@ -4,7 +4,6 @@ import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/core/value/value_transformer.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
-import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/domain/order/value/value_objects.dart';
 import 'package:planit/domain/order/value/value_transformers.dart';
 part 'order.freezed.dart';
@@ -17,8 +16,8 @@ class Order with _$Order {
     required StringValue couponId,
     required StringValue userId,
     required StringValue deliveryAddressId,
-    required StringValue paymentStatus,
-    required StringValue orderStatus,
+    required PaymentStatus paymentStatus,
+    required OrderStatus orderStatus,
     required StringValue paymentType,
     required IntegerValue packingCharges,
     required IntegerValue totalPrice,
@@ -39,8 +38,8 @@ class Order with _$Order {
         couponId: StringValue(''),
         userId: StringValue(''),
         deliveryAddressId: StringValue(''),
-        paymentStatus: StringValue(''),
-        orderStatus: StringValue(''),
+        paymentStatus: PaymentStatus(''),
+        orderStatus: OrderStatus(''),
         totalPrice: IntegerValue(0),
         subTotal: IntegerValue(0),
         deliveryCharge: IntegerValue(0),
@@ -63,13 +62,13 @@ extension OrderX on Order {
 
   String get getTotalPrice => totalPrice.getValue().toPrice();
 
-  OrderStatus get getOrderStatus {
-    if (orderStatus.getValue() == 'done') {
-      return const OrderStatus.delivered();
-    }
+  // OrderStatus get getOrderStatus {
+  //   if (orderStatus.getValue() == 'done') {
+  //     return const OrderStatus.delivered();
+  //   }
 
-    return OrderStatus.processing(status: orderStatus.getValue());
-  }
+  //   return OrderStatus.processing(status: orderStatus.getValue());
+  // }
 
   String get getDeliveryUserName {
     if (deliveryAddress.isEmpty) return naIfEmpty('');

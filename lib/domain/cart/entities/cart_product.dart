@@ -40,7 +40,6 @@ class CartProduct with _$CartProduct {
         'productId': productId.getValue(),
         'quantity': quantity.toString(),
         'unitPrice': (double.tryParse(itemPrice) ?? 0.0).toInt(),
-        'subTotal': totalPrice,
         'attributeItemId': attributeitemId.getValue(),
       };
 

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
-import 'package:planit/domain/order/order_status.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/tag.dart';
 import 'package:planit/presentation/order/widgets/orderItems.dart';
 import 'package:planit/presentation/order/widgets/review_order.dart';
 import 'package:planit/presentation/router/router.gr.dart';
@@ -67,16 +67,23 @@ class OrderDetailsPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Order Summary',
-                            style: textTheme.titleMedium?.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          const SizedBox(
-                            height: 20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Order Summary',
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                              Tag(
+                                label: order.orderStatus.displayStatus,
+                                backgroundColor: order.orderStatus.tagColor,
+                                labelColor: order.orderStatus.tagLabelColor,
+                              ),
+                            ],
                           ),
                           Row(
                             children: [
@@ -94,6 +101,32 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 order.id.displayLabel,
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.calendar_month,
+                                size: 14,
+                                color: AppColors.textBlack,
+                              ),
+                              Text(
+                                ' Invoice ID: ',
+                                style: textTheme.titleMedium?.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                order.invoiceId.displayLabel,
                                 style: textTheme.titleMedium?.copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
@@ -181,29 +214,6 @@ class OrderDetailsPage extends StatelessWidget {
                           ),
                           const SizedBox(
                             height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                PngImage.orderStatusImage,
-                                height: 20,
-                                width: 20,
-                              ),
-                              Text(
-                                ' Order Status : ',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                order.getOrderStatus.getDisplayStatus,
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
@@ -410,10 +420,25 @@ class OrderDetailsPage extends StatelessWidget {
                                 ),
                                 textAlign: TextAlign.start,
                               ),
+                              const Spacer(),
+                              if (order.paymentStatus.isFailed)
+                                const Tag(
+                                  label: 'Payment Failed',
+                                  backgroundColor: AppColors.red,
+                                  labelColor: AppColors.white,
+                                )
+                              else
+                                Checkbox(
+                                  fillColor: MaterialStateProperty.all(
+                                    AppColors.green,
+                                  ),
+                                  value: true,
+                                  onChanged: null,
+                                ),
                             ],
                           ),
                           const SizedBox(
-                            height: 20,
+                            height: 18,
                           ),
                           Row(
                             children: [
@@ -461,7 +486,7 @@ class OrderDetailsPage extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                if (order.isCouponApplied)
+                                if (order.isCouponApplied) ...[
                                   Row(
                                     children: [
                                       Image.asset(
@@ -486,13 +511,14 @@ class OrderDetailsPage extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
                                 Row(
                                   children: [
                                     Text(
-                                      'Taxes',
+                                      'Subtotal',
                                       style: textTheme.titleMedium?.copyWith(
                                         color: AppColors.grey2,
                                         fontSize: 12,
@@ -501,25 +527,23 @@ class OrderDetailsPage extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Text(
-                                      0.toPrice(),
-                                      style: textTheme.titleMedium?.copyWith(
+                                      order.subTotal.getValue().toPrice(),
+                                      style: textTheme.bodySmall?.copyWith(
                                         color: AppColors.grey2,
-                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ],
                                 ),
                                 const SizedBox(
-                                  height: 20,
+                                  height: 10,
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       'Delivery Charge',
-                                      style: textTheme.titleMedium?.copyWith(
+                                      style: textTheme.bodySmall?.copyWith(
                                         color: AppColors.grey2,
-                                        fontSize: 12,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -528,54 +552,6 @@ class OrderDetailsPage extends StatelessWidget {
                                       order.deliveryCharge
                                           .getValue()
                                           .toPrice(showFreeIfZero: true),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Packaging Charges',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      order.packingCharges.getValue().toPrice(),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      ' Cash Round Off ',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      0.toPrice(),
                                       style: textTheme.titleMedium?.copyWith(
                                         color: AppColors.grey2,
                                         fontSize: 12,

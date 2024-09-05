@@ -34,12 +34,18 @@ class PaymentRemoteDatasource {
       'name': options.name,
       'description': options.description,
       'prefill': {
-        'contact': options.prefill.email,
+        'contact': options.prefill.contact,
         'email': options.prefill.email,
       },
     });
-    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlePaymentSuccess);
-    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlePaymentFailure);
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (e) {
+      handlePaymentSuccess(e);
+      razorpay.clear();
+    });
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (e) {
+      handlePaymentFailure(e);
+      razorpay.clear();
+    });
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handleExternalWallet);
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:planit/domain/order/order_status.dart';
-import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 
 class OrderStatusWidget extends StatelessWidget {
   final OrderStatus status;
@@ -10,23 +9,12 @@ class OrderStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        status.when(
-          processing: (_) => const Icon(
-            Icons.local_shipping_outlined,
-            color: AppColors.black,
-            size: 20,
-          ),
-          delivered: () => const Icon(
-            Icons.circle,
-            color: AppColors.green,
-            size: 10,
-          ),
-        ),
+        status.orderListStatusIcon,
         const SizedBox(
           width: 4,
         ),
         Text(
-          status.getDisplayStatus,
+          status.displayStatus,
           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,

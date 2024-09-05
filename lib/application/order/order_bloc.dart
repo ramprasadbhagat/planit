@@ -13,6 +13,7 @@ import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
 import 'package:planit/domain/payment/entities/payment_options.dart';
 import 'package:planit/domain/payment/repository/i_payment_repository.dart';
+import 'package:planit/domain/user/entities/user.dart';
 
 part 'order_event.dart';
 part 'order_state.dart';
@@ -43,7 +44,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           deliveryCharge: e.deliveryCharge,
           paymentType: state.selectedPaymentMethod.when(
             card: () => 'card',
-            razorpay: () => 'razorpay',
+            razorpay: () => 'online',
             wallet: () => 'wallet',
             cod: () => 'Cash',
           ),
@@ -64,7 +65,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
                           e.cartItem.totalPrice.getValue(),
                         ) +
                         e.deliveryCharge,
-                    phone: e.addressBook.phoneNumber,
+                    phone: e.currentUser.mobileNumber.getOrDefaultValue(''),
                     orderId: orderId,
                   ),
                 );
@@ -120,25 +121,25 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               ),
               handlePaymentSuccess: (p0) async {
                 log(
-                  'handlePaymentSuccess $p0',
+                  'handlePaymentSuccess ${p0.data}:${p0.orderId}:${p0.paymentId}:${p0.signature}',
                 );
 
                 add(
                   _PaymentSuccess(
                     orderId: value.orderId,
                     paymentId: p0.paymentId,
-                    paymentType: 'razorpay',
+                    paymentType: 'online',
                   ),
                 );
               },
               handlePaymentFailure: (p0) async {
                 log(
-                  'handlePaymentFailure $p0',
+                  'handlePaymentFailure ${p0.code}: ${p0.error}: ${p0.message}',
                 );
                 add(
                   _PaymentFailed(
                     orderId: value.orderId,
-                    paymentType: 'razorpay',
+                    paymentType: 'online',
                   ),
                 );
               },

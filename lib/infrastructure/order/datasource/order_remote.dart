@@ -34,17 +34,8 @@ class OrderRemoteDataSource {
       'deliveryAddressId': address.id,
       'couponId': coupon.id,
       'deliveryDate': date,
-      'deliveryTime': '7:20 - 7:30 am',
-      'taxes': '54',
-      'packingCharges': '50.00',
-      'productRating': '3.5',
-      'paymentStatus': 'not done',
-      'orderStatus': 'pending',
+      'deliveryTime': '7:20 am - 7:30 pm',
       'paymentType': paymentType,
-      'totalPrice': coupon.priceAfterCoupon(cartItem.totalPrice.getValue()) +
-          deliveryCharge,
-      'deliveryCharge': deliveryCharge.toString(),
-      'totalDiscount': coupon.amount(cartItem.totalPrice.getValue()).toString(),
       'products': cartItem.products.map((e) => e.toMap).toList(),
     });
     final res = await httpService.request(
@@ -79,7 +70,7 @@ class OrderRemoteDataSource {
       url: '/orders/updateOrder',
       data: {
         'order_id': orderId,
-        'paymentStatus': success ? 'successfull' : 'failed',
+        'paymentStatus': success ? 'completed' : 'pending',
         'paymentType': paymentType,
         'transaction_id': transactionId,
       },
