@@ -25,18 +25,18 @@ class PincodeBloc extends Bloc<PincodeEvent, PincodeState> {
     await event.map(
       initialized: (_) async => emit(PincodeState.initial()),
       getPinCodeFromStorage: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(state.copyWith(isSaving: true));
         final failureOrSuccess = await repository.getPinCodeFromStorage();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
-              isFetching: false,
+              isSaving: false,
               apiFailureOrSuccessOption: none(),
             ),
           ),
           (pincode) => emit(
             state.copyWith(
-              isFetching: false,
+              isSaving: false,
               pinCodeVerified: true,
               showErrorMessages: false,
               isValidLength: true,

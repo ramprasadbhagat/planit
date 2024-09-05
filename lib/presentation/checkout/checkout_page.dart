@@ -386,8 +386,9 @@ class ChangeAddressMessageWidget extends StatelessWidget {
         final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(
           (value) => value.state.selectedAddress.isNotEmpty,
         );
-        final hasValidAddress =
-            selectedAddressNotEmpty && state.isPinCodeAddedToAddressBook;
+        final hasValidAddress = selectedAddressNotEmpty &&
+            state.isPinCodeAddedToAddressBook &&
+            state.isSelectedAddressAssociatedWithPin;
 
         if (hasValidAddress) {
           return const SizedBox.shrink();

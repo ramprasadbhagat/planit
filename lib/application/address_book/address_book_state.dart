@@ -27,4 +27,7 @@ class AddressBookState with _$AddressBookState {
       currentSelectedPinCode.isNotEmpty &&
       !isAddressEmpty &&
       addressList.any((e) => e.pincode.trim() == currentSelectedPinCode.trim());
+
+  bool get isSelectedAddressAssociatedWithPin =>
+      selectedAddress.pincode == currentSelectedPinCode;
 }

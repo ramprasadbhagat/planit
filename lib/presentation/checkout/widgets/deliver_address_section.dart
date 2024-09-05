@@ -22,7 +22,9 @@ class DeliveryAddressSection extends StatelessWidget {
       builder: (context, state) {
         return Card(
           elevation: 2,
-          color: !state.isPinCodeAddedToAddressBook ? AppColors.lightRed : null,
+          color: !state.isSelectedAddressAssociatedWithPin
+              ? AppColors.lightRed
+              : null,
           child: Padding(
             padding:
                 const EdgeInsets.only(left: 6, right: 6, top: 8, bottom: 8),
@@ -41,17 +43,26 @@ class DeliveryAddressSection extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Expanded(
-                            child: Text(
-                              '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
-                              style: textTheme.bodySmall?.copyWith(
-                                fontSize: 13,
-                                color: AppColors.grey1,
-                                fontWeight: FontWeight.w400,
+                        : !state.isSelectedAddressAssociatedWithPin
+                            ? Expanded(
+                                child: Text(
+                                  StringConstant
+                                      .selectedAddressNotAlignedWithDeliveryPin(
+                                    context.read<PincodeBloc>().state.pincode,
+                                  ),
+                                ),
+                              )
+                            : Expanded(
+                                child: Text(
+                                  '${state.selectedAddress.fullName}\n${state.selectedAddress.address} ${state.selectedAddress.pincode}',
+                                  style: textTheme.bodySmall?.copyWith(
+                                    fontSize: 13,
+                                    color: AppColors.grey1,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                ),
                               ),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
                     SizedBox(
                       height: 25,
                       width: 70,

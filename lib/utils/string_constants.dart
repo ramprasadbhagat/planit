@@ -44,4 +44,7 @@ abstract class StringConstant {
       'Please Login to add items to shopping list.';
   static String noAddressAddedWithDeliveryPin(String pinCode) =>
       'No addresses added with delivery pin - $pinCode. please add and select address to place order';
+
+  static String selectedAddressNotAlignedWithDeliveryPin(String pinCode) =>
+      'Please choose addresses added with delivery pin - $pinCode. please change address to place order';
 }
