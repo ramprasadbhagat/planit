@@ -41,7 +41,10 @@ class StorageService {
   }
 
   PinCode getPinCodeData() {
-    return _pinCodeBox.getAt(0) ?? PinCode.empty();
+    if (_pinCodeBox.isNotEmpty) {
+      return _pinCodeBox.values.last;
+    }
+    return PinCode.empty();
   }
 
   Future<void> clearAllPinCodeData() async {
