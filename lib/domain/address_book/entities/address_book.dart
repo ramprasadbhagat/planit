@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/address_book/entities/address_book_group.dart';
 
 part 'address_book.freezed.dart';
 
@@ -26,4 +28,19 @@ class AddressBook with _$AddressBook {
 
   bool get isEmpty => this == AddressBook.empty();
   bool get isNotEmpty => !isEmpty;
+}
+
+extension AddressBookExtension on List<AddressBook> {
+  List<AddressBookGroup> get getAddressBookGroupList {
+    return List<AddressBook>.from(this)
+        .groupListsBy((item) => item.pincode)
+        .entries
+        .map(
+          (entry) => AddressBookGroup(
+            addressBookList: entry.value,
+            pinCode: entry.key,
+          ),
+        )
+        .toList();
+  }
 }

@@ -99,7 +99,7 @@ extension IntX on int {
   }
 }
 
-extension FAQItemExtension on List<Order> {
+extension OrderItemExtension on List<Order> {
   List<OrderGroup> get getOrderGroupList {
     return List<Order>.from(this)
         .groupListsBy((item) => formatDisplayDate(item.orderDate))
