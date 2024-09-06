@@ -22,6 +22,8 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  bool isItemRemoved = false;
+
   @override
   void initState() {
     super.initState();
@@ -49,14 +51,31 @@ class _CartPageState extends State<CartPage> {
             context.read<CartBloc>().add(const CartEvent.fetch()),
         child: BlocConsumer<CartBloc, CartState>(
           listener: (context, state) {
-            CustomSnackbar.showErrorMessage(
-              context,
-              StringConstant.itemRemovedFromCart,
-            );
+            if (isItemRemoved) {
+              CustomSnackbar.showErrorMessage(
+                context,
+                StringConstant.itemRemovedFromCart,
+              );
+            } else {
+              CustomSnackbar.showSuccessMessage(
+                context,
+                StringConstant.itemAddedToCart,
+              );
+            }
           },
-          listenWhen: (previous, current) =>
-              current.cartItem.products.length <
-              previous.cartItem.products.length,
+          listenWhen: (previous, current) {
+            final currentLength = current.cartItem.products.length;
+            final previousLength = previous.cartItem.products.length;
+
+            if (currentLength < previousLength) {
+              isItemRemoved = true;
+              return true;
+            } else if (currentLength > previousLength) {
+              isItemRemoved = false;
+              return true;
+            }
+            return false;
+          },
           builder: (context, state) {
             if (state.isCartEmpty) return const EmptyCart();
             return Skeletonizer(

@@ -165,10 +165,6 @@ class ProductCard extends StatelessWidget {
                                       quantity: 1,
                                     ),
                                   );
-                              CustomSnackbar.showSuccessMessage(
-                                context,
-                                StringConstant.itemAddedToCart,
-                              );
                             } else {
                               if (context
                                   .read<PincodeBloc>()
@@ -190,10 +186,6 @@ class ProductCard extends StatelessWidget {
                                         quantity: 1,
                                       ),
                                     );
-                                CustomSnackbar.showSuccessMessage(
-                                  context,
-                                  StringConstant.itemAddedToCart,
-                                );
                               }
                             }
                           },

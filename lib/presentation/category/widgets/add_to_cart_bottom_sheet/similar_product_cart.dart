@@ -217,10 +217,6 @@ class SimilarProductCard extends StatelessWidget {
                                   ),
                                 );
                             context.router.maybePop();
-                            CustomSnackbar.showSuccessMessage(
-                              context,
-                              StringConstant.itemAddedToCart,
-                            );
                           } else {
                             if (context
                                 .read<PincodeBloc>()
@@ -236,11 +232,6 @@ class SimilarProductCard extends StatelessWidget {
                                     ),
                                   );
                               context.router.maybePop();
-
-                              CustomSnackbar.showSuccessMessage(
-                                context,
-                                StringConstant.itemAddedToCart,
-                              );
                             }
                           }
                         },
