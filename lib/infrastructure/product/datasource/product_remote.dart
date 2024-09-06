@@ -10,7 +10,6 @@ import 'package:planit/infrastructure/product/dtos/product_detail_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_image_dto.dart';
 import 'package:planit/infrastructure/product/dtos/product_response_dto.dart';
-import 'package:planit/infrastructure/product/repository/product_repository.dart';
 
 class ProductRemoteDataSource {
   final HttpService httpService;

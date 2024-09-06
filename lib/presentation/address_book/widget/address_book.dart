@@ -62,7 +62,7 @@ class _AddressBooksState extends State<AddressBooks> {
                           if (states.contains(WidgetState.selected)) {
                             return AppColors.green;
                           }
-                          return AppColors.grey4;
+                          return AppColors.lightGray2;
                         }),
                         value: state.addressList.isNotEmpty,
                         onChanged: null,

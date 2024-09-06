@@ -256,9 +256,14 @@ class PlaceOrderButton extends StatelessWidget {
     final isProfileCompleted = context.select<UserProfileBloc, bool>(
       (value) => value.state.user.isValid,
     );
-    final hasValidAddress = context.select<AddressBookBloc, bool>(
-      (value) => value.state.selectedAddress.isNotEmpty,
-    );
+    final hasValidAddress = context.select<AddressBookBloc, bool>((value) {
+      final state = value.state;
+
+      return state.selectedAddress.isNotEmpty &&
+          state.isPinCodeAddedToAddressBook &&
+          state.isSelectedAddressAssociatedWithPin;
+    });
+
     return BlocBuilder<OrderBloc, OrderState>(
       buildWhen: (previous, current) =>
           previous.isFetching != current.isFetching ||
@@ -382,8 +387,7 @@ class ChangeAddressMessageWidget extends StatelessWidget {
     return BlocBuilder<AddressBookBloc, AddressBookState>(
       buildWhen: (previous, current) =>
           previous.isFetching != current.isFetching ||
-          previous.isSubmitting ||
-          current.isSubmitting ||
+          previous.isSubmitting != current.isSubmitting ||
           previous.currentSelectedPinCode != current.currentSelectedPinCode,
       builder: (context, state) {
         final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(

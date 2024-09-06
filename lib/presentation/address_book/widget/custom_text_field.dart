@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -6,12 +7,14 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final TextInputType keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
   const CustomTextField({
     super.key,
     this.validator,
     required this.controller,
     required this.hintText,
     required this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -21,6 +24,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       controller: controller,
       validator: validator,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,

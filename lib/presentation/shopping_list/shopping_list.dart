@@ -2,15 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
-import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/domain/wishlist/entities/wish_list_product.dart';
-import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/home/shop/widgets/cart_banner.dart';
 import 'package:planit/presentation/shopping_list/widget/empty_shopping_list.dart';
 import 'package:planit/presentation/shopping_list/widget/shopping_list_item_card.dart';
 import 'package:planit/presentation/theme/colors.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class ShoppingListPage extends StatefulWidget {
