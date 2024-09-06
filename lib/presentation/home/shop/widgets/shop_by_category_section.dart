@@ -42,6 +42,8 @@ class ShopByCategory extends StatelessWidget {
                       .add(const CategoryEvent.selectOccasion(false));
                   context.router.push(CategoryRoute());
                 },
+                hideViewAllButton:
+                    context.read<CategoryBloc>().state.categories.isEmpty,
               ),
               const SizedBox(
                 height: 10,

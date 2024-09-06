@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/wallet/wallet_bloc.dart';
+import 'package:planit/domain/wallet/entities/transaction_history.dart';
+import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/my_wallet/widget/transaction_history_item.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class TransactionHistoryList extends StatelessWidget {
   const TransactionHistoryList({super.key});
@@ -20,15 +22,25 @@ class TransactionHistoryList extends StatelessWidget {
           Expanded(
             child: BlocBuilder<WalletBloc, WalletState>(
               builder: (context, state) {
-                return Skeletonizer(
-                  enabled: state.isTransactionLoading,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    itemCount: state.transactions.length,
-                    itemBuilder: (_, index) => TransactionHistoryItem(
-                      transaction: state.transactions[index],
+                return ScrollList<TransactionHistory>(
+                  noRecordFoundWidget: const Padding(
+                    padding: EdgeInsets.only(
+                      top: 30,
+                    ),
+                    child: NoData(
+                      message: 'No Transaction found',
                     ),
                   ),
+                  controller: ScrollController(),
+                  onRefresh: () => context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchTransactionHistory()),
+                  onLoadingMore: () => {},
+                  isLoading: state.isTransactionLoading,
+                  itemBuilder: (_, index, item) => TransactionHistoryItem(
+                    transaction: state.transactions[index],
+                  ),
+                  items: state.transactions,
                 );
               },
             ),

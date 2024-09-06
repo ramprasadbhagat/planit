@@ -30,7 +30,7 @@ class OrderDetailsPage extends StatelessWidget {
           'Order Details',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -429,7 +429,7 @@ class OrderDetailsPage extends StatelessWidget {
                                 )
                               else
                                 Checkbox(
-                                  fillColor: MaterialStateProperty.all(
+                                  fillColor: WidgetStateProperty.all(
                                     AppColors.green,
                                   ),
                                   value: true,

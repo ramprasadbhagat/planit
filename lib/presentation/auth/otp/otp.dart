@@ -46,7 +46,7 @@ class _LoginOtpState extends State<LoginOtp> {
           'Otp Verification',
           style: textTheme.labelMedium,
         ),
-        leadingWidth: 25,
+        leadingWidth: 30,
         automaticallyImplyLeading: false,
         centerTitle: false,
         leading: IconButton(

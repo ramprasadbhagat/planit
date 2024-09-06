@@ -6,12 +6,10 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
-import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
-import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
 
 class CartBanner extends StatelessWidget {
@@ -229,11 +227,6 @@ class CartBanner extends StatelessWidget {
                                 context.read<WishlistBloc>().add(
                                       const WishlistEvent.addAllItemToCart(),
                                     );
-
-                                CustomSnackbar.showSuccessMessage(
-                                  context,
-                                  StringConstant.itemAddedToCart,
-                                );
                               }
                             }
                           },

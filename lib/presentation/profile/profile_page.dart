@@ -24,7 +24,7 @@ class ProfilePage extends StatelessWidget {
           'Profile',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: true,
         leading: IconButton(

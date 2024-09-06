@@ -12,7 +12,7 @@ class MyComplainsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         title: const Text('My complains'),
         centerTitle: false,
       ),

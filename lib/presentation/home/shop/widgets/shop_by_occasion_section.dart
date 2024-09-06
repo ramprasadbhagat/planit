@@ -33,6 +33,7 @@ class ShopByOccasion extends StatelessWidget {
             );
             context.router.navigate(CategoryRoute(openFromOccassion: true));
           },
+          hideViewAllButton: categoryBloc.state.occasionCategory.isEmpty,
         ),
         const SizedBox(
           height: 10,
