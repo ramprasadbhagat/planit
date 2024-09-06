@@ -14,4 +14,9 @@ class PaymentMethod with _$PaymentMethod {
         wallet: () => 'wallet',
         cod: () => 'cash',
       );
+  String get paymentTypeLabel => when(
+        razorpay: () => 'Online',
+        wallet: () => 'Wallet',
+        cod: () => 'Cash on delivery',
+      );
 }

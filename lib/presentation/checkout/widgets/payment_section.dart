@@ -74,7 +74,7 @@ class _PaymentSectionState extends State<PaymentSection> {
                           ),
                           value: const PaymentMethod.wallet(),
                           selectedValue: state.selectedPaymentMethod,
-                          label: 'Wallet',
+                          label: const PaymentMethod.wallet().paymentTypeLabel,
                           subTitle: insufficientBalance
                               ? Text(
                                   'Insufficient Balance',
@@ -100,7 +100,7 @@ class _PaymentSectionState extends State<PaymentSection> {
                     PaymentMethodTile<PaymentMethod>(
                       value: const PaymentMethod.razorpay(),
                       selectedValue: state.selectedPaymentMethod,
-                      label: 'Online',
+                      label: const PaymentMethod.razorpay().paymentTypeLabel,
                       onChanged: (p0) {
                         if (p0 == null) return;
                         context
@@ -111,7 +111,7 @@ class _PaymentSectionState extends State<PaymentSection> {
                     PaymentMethodTile<PaymentMethod>(
                       value: const PaymentMethod.cod(),
                       selectedValue: state.selectedPaymentMethod,
-                      label: 'Cash on delivery',
+                      label: const PaymentMethod.cod().paymentTypeLabel,
                       onChanged: (p0) {
                         if (p0 == null) return;
                         context

@@ -91,7 +91,7 @@ class AddMoneyForm extends StatelessWidget {
                       PaymentMethodTile<PaymentMethod>(
                         value: const PaymentMethod.razorpay(),
                         selectedValue: state.selectedPaymentMethod,
-                        label: 'Online',
+                        label: const PaymentMethod.razorpay().paymentTypeLabel,
                         onChanged: (p0) {
                           if (p0 == null) return;
                           context
