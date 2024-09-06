@@ -33,19 +33,21 @@ class AddressBookBloc extends Bloc<AddressBookEvent, AddressBookState> {
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
-          (list) => emit(
-            state.copyWith(
-              isFetching: false,
-              addressList: list,
-              selectedAddress: list
-                      .where((element) => element.isDefault)
-                      .toList()
-                      .isEmpty
-                  ? list.first
-                  : list.where((element) => element.isDefault).toList().first,
-              apiFailureOrSuccessOption: none(),
-            ),
-          ),
+          (list) {
+            final defaultAddress = list.firstWhere(
+              (element) => element.isDefault,
+              orElse: () => list.isNotEmpty ? list.first : AddressBook.empty(),
+            );
+
+            emit(
+              state.copyWith(
+                isFetching: false,
+                addressList: list,
+                selectedAddress: defaultAddress,
+                apiFailureOrSuccessOption: none(),
+              ),
+            );
+          },
         );
       },
       makeDefaultAddress: (e) async {

@@ -27,6 +27,7 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
   late TextEditingController pincodeController = TextEditingController();
   late TextEditingController addressController = TextEditingController();
   late TextEditingController mobileController = TextEditingController();
+  bool _triggerValidator = false;
 
   @override
   void initState() {
@@ -37,6 +38,7 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
     nameController = TextEditingController();
     addressController = TextEditingController();
     mobileController = TextEditingController();
+
     pincodeController =
         TextEditingController(text: context.read<PincodeBloc>().state.pincode);
   }
@@ -75,8 +77,10 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
                       hintText: 'Name',
                       keyboardType: TextInputType.name,
                       validator: (value) {
-                        if (value == null || value.trim() == '') {
-                          return "name can't be empty";
+                        if (_triggerValidator) {
+                          if (value == null || value.trim() == '') {
+                            return "name can't be empty";
+                          }
                         }
                         return null;
                       },
@@ -145,8 +149,10 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
                       hintText: 'Address',
                       keyboardType: TextInputType.text,
                       validator: (value) {
-                        if (value == null || value.trim() == '') {
-                          return "address can't be empty";
+                        if (_triggerValidator) {
+                          if (value == null || value.trim() == '') {
+                            return "Address can't be empty";
+                          }
                         }
                         return null;
                       },
@@ -158,11 +164,17 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
                       controller: mobileController,
                       hintText: 'Mobile Number',
                       keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(10),
+                      ],
                       validator: (value) {
-                        if (value == null || value.trim() == '') {
-                          return "mobile number can't be empty";
-                        } else if (value.trim().length < 10) {
-                          return 'enter valid mobile number';
+                        if (_triggerValidator) {
+                          if (value == null || value.trim() == '') {
+                            return "mobile number can't be empty";
+                          } else if (value.trim().length < 10) {
+                            return 'enter valid mobile number';
+                          }
                         }
                         return null;
                       },
@@ -245,7 +257,13 @@ class _NewAddressBookSheetState extends State<NewAddressBookSheet> {
                                   !state.pinCodeVerified
                               ? null
                               : () {
+                                  setState(() {
+                                    _triggerValidator = true;
+                                  });
                                   if (formKey.currentState!.validate()) {
+                                    setState(() {
+                                      _triggerValidator = false;
+                                    });
                                     context.read<AddressBookBloc>().add(
                                           AddressBookEvent.addAddressBook(
                                             addressBook:
