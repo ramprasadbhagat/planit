@@ -100,7 +100,7 @@ class _PaymentSectionState extends State<PaymentSection> {
                     PaymentMethodTile<PaymentMethod>(
                       value: const PaymentMethod.razorpay(),
                       selectedValue: state.selectedPaymentMethod,
-                      label: 'Razorpay',
+                      label: 'Online',
                       onChanged: (p0) {
                         if (p0 == null) return;
                         context
@@ -122,9 +122,6 @@ class _PaymentSectionState extends State<PaymentSection> {
                     const SizedBox(
                       height: 5,
                     ),
-                    if (state.selectedPaymentMethod ==
-                        const PaymentMethod.card())
-                      CardInputForm(textTheme: textTheme),
                   ],
                 );
               },

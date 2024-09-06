@@ -88,21 +88,10 @@ class AddMoneyForm extends StatelessWidget {
                   enabled: state.isLoading,
                   child: Column(
                     children: [
-                      // PaymentMethodTile<PaymentMethod>(
-                      //   value: const PaymentMethod.card(),
-                      //   selectedValue: state.selectedPaymentMethod,
-                      //   label: 'Debit / Credit card',
-                      //   onChanged: (p0) {
-                      //     if (p0 == null) return;
-                      //     context
-                      //         .read<AddMoneyBloc>()
-                      //         .add(AddMoneyEvent.changePaymentMethod(p0));
-                      //   },
-                      // ),
                       PaymentMethodTile<PaymentMethod>(
                         value: const PaymentMethod.razorpay(),
                         selectedValue: state.selectedPaymentMethod,
-                        label: 'Razorpay',
+                        label: 'Online',
                         onChanged: (p0) {
                           if (p0 == null) return;
                           context
@@ -110,9 +99,6 @@ class AddMoneyForm extends StatelessWidget {
                               .add(AddMoneyEvent.changePaymentMethod(p0));
                         },
                       ),
-                      if (state.selectedPaymentMethod ==
-                          const PaymentMethod.card())
-                        const CardInformationForm(),
                     ],
                   ),
                 );

@@ -42,12 +42,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           date: e.date,
           coupon: e.coupon,
           deliveryCharge: e.deliveryCharge,
-          paymentType: state.selectedPaymentMethod.when(
-            card: () => 'card',
-            razorpay: () => 'online',
-            wallet: () => 'wallet',
-            cod: () => 'Cash',
-          ),
+          paymentType: state.selectedPaymentMethod.paymentType,
         );
         failureOrSuccess.fold(
           (failure) => emit(
@@ -128,7 +123,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
                   _PaymentSuccess(
                     orderId: value.orderId,
                     paymentId: p0.paymentId,
-                    paymentType: 'online',
+                    paymentType: state.selectedPaymentMethod.paymentType,
                   ),
                 );
               },
@@ -139,7 +134,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
                 add(
                   _PaymentFailed(
                     orderId: value.orderId,
-                    paymentType: 'online',
+                    paymentType: state.selectedPaymentMethod.paymentType,
                   ),
                 );
               },
@@ -161,7 +156,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               add(
                 _PaymentFailed(
                   orderId: value.orderId,
-                  paymentType: 'wallet',
+                  paymentType: state.selectedPaymentMethod.paymentType,
                 ),
               );
             }, (r) {
@@ -169,7 +164,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
                 _PaymentSuccess(
                   orderId: value.orderId,
                   paymentId: null,
-                  paymentType: 'wallet',
+                  paymentType: state.selectedPaymentMethod.paymentType,
                 ),
               );
             });

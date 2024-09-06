@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PaymentMethod {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() card,
     required TResult Function() razorpay,
     required TResult Function() wallet,
     required TResult Function() cod,
@@ -26,7 +25,6 @@ mixin _$PaymentMethod {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? card,
     TResult? Function()? razorpay,
     TResult? Function()? wallet,
     TResult? Function()? cod,
@@ -34,7 +32,6 @@ mixin _$PaymentMethod {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? card,
     TResult Function()? razorpay,
     TResult Function()? wallet,
     TResult Function()? cod,
@@ -43,7 +40,6 @@ mixin _$PaymentMethod {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Card value) card,
     required TResult Function(_Razorpay value) razorpay,
     required TResult Function(_Wallet value) wallet,
     required TResult Function(_Cod value) cod,
@@ -51,7 +47,6 @@ mixin _$PaymentMethod {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Card value)? card,
     TResult? Function(_Razorpay value)? razorpay,
     TResult? Function(_Wallet value)? wallet,
     TResult? Function(_Cod value)? cod,
@@ -59,7 +54,6 @@ mixin _$PaymentMethod {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Card value)? card,
     TResult Function(_Razorpay value)? razorpay,
     TResult Function(_Wallet value)? wallet,
     TResult Function(_Cod value)? cod,
@@ -87,119 +81,6 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
 }
 
 /// @nodoc
-abstract class _$$CardImplCopyWith<$Res> {
-  factory _$$CardImplCopyWith(
-          _$CardImpl value, $Res Function(_$CardImpl) then) =
-      __$$CardImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CardImplCopyWithImpl<$Res>
-    extends _$PaymentMethodCopyWithImpl<$Res, _$CardImpl>
-    implements _$$CardImplCopyWith<$Res> {
-  __$$CardImplCopyWithImpl(_$CardImpl _value, $Res Function(_$CardImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$CardImpl implements _Card {
-  const _$CardImpl();
-
-  @override
-  String toString() {
-    return 'PaymentMethod.card()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CardImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() card,
-    required TResult Function() razorpay,
-    required TResult Function() wallet,
-    required TResult Function() cod,
-  }) {
-    return card();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? card,
-    TResult? Function()? razorpay,
-    TResult? Function()? wallet,
-    TResult? Function()? cod,
-  }) {
-    return card?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? card,
-    TResult Function()? razorpay,
-    TResult Function()? wallet,
-    TResult Function()? cod,
-    required TResult orElse(),
-  }) {
-    if (card != null) {
-      return card();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Card value) card,
-    required TResult Function(_Razorpay value) razorpay,
-    required TResult Function(_Wallet value) wallet,
-    required TResult Function(_Cod value) cod,
-  }) {
-    return card(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Card value)? card,
-    TResult? Function(_Razorpay value)? razorpay,
-    TResult? Function(_Wallet value)? wallet,
-    TResult? Function(_Cod value)? cod,
-  }) {
-    return card?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Card value)? card,
-    TResult Function(_Razorpay value)? razorpay,
-    TResult Function(_Wallet value)? wallet,
-    TResult Function(_Cod value)? cod,
-    required TResult orElse(),
-  }) {
-    if (card != null) {
-      return card(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Card implements PaymentMethod {
-  const factory _Card() = _$CardImpl;
-}
-
-/// @nodoc
 abstract class _$$RazorpayImplCopyWith<$Res> {
   factory _$$RazorpayImplCopyWith(
           _$RazorpayImpl value, $Res Function(_$RazorpayImpl) then) =
@@ -217,8 +98,8 @@ class __$$RazorpayImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RazorpayImpl implements _Razorpay {
-  const _$RazorpayImpl();
+class _$RazorpayImpl extends _Razorpay {
+  const _$RazorpayImpl() : super._();
 
   @override
   String toString() {
@@ -237,7 +118,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() card,
     required TResult Function() razorpay,
     required TResult Function() wallet,
     required TResult Function() cod,
@@ -248,7 +128,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? card,
     TResult? Function()? razorpay,
     TResult? Function()? wallet,
     TResult? Function()? cod,
@@ -259,7 +138,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? card,
     TResult Function()? razorpay,
     TResult Function()? wallet,
     TResult Function()? cod,
@@ -274,7 +152,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Card value) card,
     required TResult Function(_Razorpay value) razorpay,
     required TResult Function(_Wallet value) wallet,
     required TResult Function(_Cod value) cod,
@@ -285,7 +162,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Card value)? card,
     TResult? Function(_Razorpay value)? razorpay,
     TResult? Function(_Wallet value)? wallet,
     TResult? Function(_Cod value)? cod,
@@ -296,7 +172,6 @@ class _$RazorpayImpl implements _Razorpay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Card value)? card,
     TResult Function(_Razorpay value)? razorpay,
     TResult Function(_Wallet value)? wallet,
     TResult Function(_Cod value)? cod,
@@ -309,8 +184,9 @@ class _$RazorpayImpl implements _Razorpay {
   }
 }
 
-abstract class _Razorpay implements PaymentMethod {
+abstract class _Razorpay extends PaymentMethod {
   const factory _Razorpay() = _$RazorpayImpl;
+  const _Razorpay._() : super._();
 }
 
 /// @nodoc
@@ -331,8 +207,8 @@ class __$$WalletImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WalletImpl implements _Wallet {
-  const _$WalletImpl();
+class _$WalletImpl extends _Wallet {
+  const _$WalletImpl() : super._();
 
   @override
   String toString() {
@@ -351,7 +227,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() card,
     required TResult Function() razorpay,
     required TResult Function() wallet,
     required TResult Function() cod,
@@ -362,7 +237,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? card,
     TResult? Function()? razorpay,
     TResult? Function()? wallet,
     TResult? Function()? cod,
@@ -373,7 +247,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? card,
     TResult Function()? razorpay,
     TResult Function()? wallet,
     TResult Function()? cod,
@@ -388,7 +261,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Card value) card,
     required TResult Function(_Razorpay value) razorpay,
     required TResult Function(_Wallet value) wallet,
     required TResult Function(_Cod value) cod,
@@ -399,7 +271,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Card value)? card,
     TResult? Function(_Razorpay value)? razorpay,
     TResult? Function(_Wallet value)? wallet,
     TResult? Function(_Cod value)? cod,
@@ -410,7 +281,6 @@ class _$WalletImpl implements _Wallet {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Card value)? card,
     TResult Function(_Razorpay value)? razorpay,
     TResult Function(_Wallet value)? wallet,
     TResult Function(_Cod value)? cod,
@@ -423,8 +293,9 @@ class _$WalletImpl implements _Wallet {
   }
 }
 
-abstract class _Wallet implements PaymentMethod {
+abstract class _Wallet extends PaymentMethod {
   const factory _Wallet() = _$WalletImpl;
+  const _Wallet._() : super._();
 }
 
 /// @nodoc
@@ -443,8 +314,8 @@ class __$$CodImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CodImpl implements _Cod {
-  const _$CodImpl();
+class _$CodImpl extends _Cod {
+  const _$CodImpl() : super._();
 
   @override
   String toString() {
@@ -463,7 +334,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() card,
     required TResult Function() razorpay,
     required TResult Function() wallet,
     required TResult Function() cod,
@@ -474,7 +344,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? card,
     TResult? Function()? razorpay,
     TResult? Function()? wallet,
     TResult? Function()? cod,
@@ -485,7 +354,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? card,
     TResult Function()? razorpay,
     TResult Function()? wallet,
     TResult Function()? cod,
@@ -500,7 +368,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Card value) card,
     required TResult Function(_Razorpay value) razorpay,
     required TResult Function(_Wallet value) wallet,
     required TResult Function(_Cod value) cod,
@@ -511,7 +378,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Card value)? card,
     TResult? Function(_Razorpay value)? razorpay,
     TResult? Function(_Wallet value)? wallet,
     TResult? Function(_Cod value)? cod,
@@ -522,7 +388,6 @@ class _$CodImpl implements _Cod {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Card value)? card,
     TResult Function(_Razorpay value)? razorpay,
     TResult Function(_Wallet value)? wallet,
     TResult Function(_Cod value)? cod,
@@ -535,6 +400,7 @@ class _$CodImpl implements _Cod {
   }
 }
 
-abstract class _Cod implements PaymentMethod {
+abstract class _Cod extends PaymentMethod {
   const factory _Cod() = _$CodImpl;
+  const _Cod._() : super._();
 }

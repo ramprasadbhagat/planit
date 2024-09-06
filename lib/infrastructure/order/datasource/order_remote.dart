@@ -36,7 +36,7 @@ class OrderRemoteDataSource {
       'deliveryDate': date,
       'deliveryTime': '7:20 am - 7:30 pm',
       'paymentType': paymentType,
-      'products': cartItem.products.map((e) => e.toMap).toList(),
+      'deliveryCharge': deliveryCharge.toString(),
     });
     final res = await httpService.request(
       method: 'POST',

@@ -41,8 +41,6 @@ class CartRemoteDataSource {
         'user_id': userId,
         'product_id': productId,
         'quantity': quantity,
-        'total_price': totalPrice,
-        'attributeItemProductId': attributeItemProductId,
         'attributeItemId': attributeItemId,
       },
     );
@@ -56,10 +54,12 @@ class CartRemoteDataSource {
     required int quantity,
     required String attributeItemId,
   }) async {
+    final userId = storageService.getUserId();
     final res = await httpService.request(
       method: 'PATCH',
       url: 'carts',
       data: {
+        'user_id': userId,
         'product_id': productId,
         'quantity': quantity,
         'cart_id': cartId,
@@ -77,12 +77,8 @@ class CartRemoteDataSource {
     final postData = {
       'user_id': userId,
       'product_id': cartProduct.productId.getValue(),
-      'attributeItemProductId': null,
+      'attributeItemId': cartProduct.attributeitemId.getOrDefaultValue(''),
     };
-
-    if (cartProduct.attributeitemId.isValid()) {
-      postData['attributeItemId'] = cartProduct.attributeitemId.getValue();
-    }
 
     final res = await httpService.request(
       method: 'PATCH',
