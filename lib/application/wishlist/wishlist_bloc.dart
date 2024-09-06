@@ -38,7 +38,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           emit(
             state.copyWith(
               isFetching: true,
-              wishlist: [],
+              wishlist: <Wishlist>[],
               showSnackBar: false,
             ),
           );
@@ -74,7 +74,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
             ),
           );
         }
-        emit(state.copyWith(selectedItemList: []));
+        emit(state.copyWith(selectedItemList: <WishlistProduct>[]));
       },
       updateProductQuantity: (e) async {
         emit(
@@ -236,7 +236,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
       disselectAll: (e) {
         emit(
           state.copyWith(
-            selectedItemList: [],
+            selectedItemList: <WishlistProduct>[],
           ),
         );
       },
