@@ -18,7 +18,8 @@ class DeliveryAddressSection extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<AddressBookBloc, AddressBookState>(
       buildWhen: (previous, current) =>
-          previous.selectedAddress != current.selectedAddress,
+          previous.selectedAddress != current.selectedAddress ||
+          previous.currentSelectedPinCode != current.currentSelectedPinCode,
       builder: (context, state) {
         return Card(
           elevation: 2,

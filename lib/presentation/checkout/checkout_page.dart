@@ -381,7 +381,8 @@ class ChangeAddressMessageWidget extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.isFetching != current.isFetching ||
           previous.isSubmitting ||
-          current.isSubmitting,
+          current.isSubmitting ||
+          previous.currentSelectedPinCode != current.currentSelectedPinCode,
       builder: (context, state) {
         final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(
           (value) => value.state.selectedAddress.isNotEmpty,
