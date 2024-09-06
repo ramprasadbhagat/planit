@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
           'Sign In',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
         leading: IconButton(

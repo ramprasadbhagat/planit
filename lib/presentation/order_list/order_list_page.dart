@@ -33,7 +33,7 @@ class _OrderListPageState extends State<OrderListPage> {
           'Order List',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 25,
+        leadingWidth: 30,
         centerTitle: false,
       ),
       body: BlocConsumer<OrderBloc, OrderState>(

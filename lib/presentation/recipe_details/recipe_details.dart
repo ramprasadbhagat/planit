@@ -44,7 +44,7 @@ class RecipeDetailsPage extends StatelessWidget {
             appBar: AppBar(
               title: const Text('Recipes'),
               centerTitle: false,
-              leadingWidth: 35,
+              leadingWidth: 30,
             ),
             body: ListView(
               padding: const EdgeInsets.all(20),

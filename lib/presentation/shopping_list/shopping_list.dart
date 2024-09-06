@@ -28,7 +28,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           'Shopping List',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
       ),

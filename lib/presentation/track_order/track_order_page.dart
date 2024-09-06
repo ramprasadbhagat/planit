@@ -24,7 +24,7 @@ class TrackOrderPage extends StatelessWidget {
           'Track Order',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
         leading: IconButton(

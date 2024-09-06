@@ -40,7 +40,7 @@ class UserProfilePage extends StatelessWidget {
               : 'Profile',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
         leading: isFirstLogin
@@ -163,9 +163,9 @@ class ProfileInformationSection extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                     Checkbox(
-                      fillColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.selected)) {
+                      fillColor: WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.selected)) {
                           return AppColors.green;
                         }
                         return AppColors.grey4;

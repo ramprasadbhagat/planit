@@ -18,7 +18,7 @@ class MyWalletPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         centerTitle: false,
         title: const Text(
           'My wallet',

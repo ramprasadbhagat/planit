@@ -41,7 +41,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           'Checkout',
           style: textTheme.labelLarge,
         ),
-        leadingWidth: 20,
+        leadingWidth: 30,
         centerTitle: false,
         automaticallyImplyLeading: false,
         leading: IconButton(

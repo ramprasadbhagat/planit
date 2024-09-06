@@ -28,7 +28,7 @@ class FavouriteRecipesPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Favourite Recipes'),
           centerTitle: false,
-          leadingWidth: 35,
+          leadingWidth: 30,
         ),
         body: BlocBuilder<FavouriteRecipeBloc, FavouriteRecipeState>(
           builder: (context, state) {
