@@ -27,6 +27,8 @@ class HighLightSection extends StatelessWidget {
             onTap: () {
               context.router.navigate(const HighLightsRoute());
             },
+            hideViewAllButton:
+                context.read<HighlightProductBloc>().state.highlights.isEmpty,
           ),
           const SizedBox(
             height: 10,

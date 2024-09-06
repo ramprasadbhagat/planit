@@ -22,6 +22,8 @@ class QuickPickTabView extends StatelessWidget {
           onTap: () {
             context.router.navigate(const QuickPicksRoute());
           },
+          hideViewAllButton:
+              context.read<QuickPicksBloc>().state.quicksPickProducts.isEmpty,
         ),
         const SizedBox(
           height: 10,

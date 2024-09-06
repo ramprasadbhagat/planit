@@ -25,6 +25,11 @@ class TrendingRecipes extends StatelessWidget {
           onTap: () {
             context.router.navigate(const FavouriteRecipesRoute());
           },
+          hideViewAllButton: context
+              .read<FavouriteRecipeBloc>()
+              .state
+              .favouriteRecipes
+              .isEmpty,
         ),
         const SizedBox(
           height: 10,

@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class SectionTitle extends StatelessWidget {
   final String title;
   final Function() onTap;
-  const SectionTitle({super.key, required this.title, required this.onTap});
+  final bool hideViewAllButton;
+  const SectionTitle({
+    super.key,
+    required this.title,
+    required this.onTap,
+    required this.hideViewAllButton,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +22,14 @@ class SectionTitle extends StatelessWidget {
           title,
           style: textTheme.titleMedium,
         ),
-        GestureDetector(
-          onTap: onTap,
-          child: Text(
-            'View all',
-            style: textTheme.bodySmall,
+        if (!hideViewAllButton)
+          GestureDetector(
+            onTap: onTap,
+            child: Text(
+              'View all',
+              style: textTheme.bodySmall,
+            ),
           ),
-        ),
       ],
     );
   }
