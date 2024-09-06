@@ -28,17 +28,28 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     await event.map(
       initialized: (_) async => emit(WishlistState.initial()),
       fetch: (e) async {
-        emit(
-          state.copyWith(
-            isFetching: true,
-            wishlist: [],
-          ),
-        );
+        if (state.isUpdateQuantity) {
+          emit(
+            state.copyWith(
+              showSnackBar: false,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              isFetching: true,
+              wishlist: [],
+              showSnackBar: false,
+            ),
+          );
+        }
+
         final failureOrSuccess = await repository.getWishlist();
         failureOrSuccess.fold(
           (failure) => emit(
             state.copyWith(
               isFetching: false,
+              isUpdateQuantity: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           ),
@@ -46,6 +57,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
             state.copyWith(
               isFetching: false,
               wishlist: wishlist,
+              isUpdateQuantity: false,
               apiFailureOrSuccessOption: none(),
             ),
           ),
@@ -65,7 +77,12 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         emit(state.copyWith(selectedItemList: []));
       },
       updateProductQuantity: (e) async {
-        emit(state.copyWith(isFetching: true));
+        emit(
+          state.copyWith(
+            isUpdateQuantity: true,
+            showSnackBar: false,
+          ),
+        );
         if (int.tryParse(e.quantity)! > 0) {
           final failureOrSuccess = await repository.updateProductQuantity(
             productId: e.id,
@@ -74,7 +91,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           failureOrSuccess.fold(
             (failure) => emit(
               state.copyWith(
-                isFetching: false,
+                isUpdateQuantity: false,
                 apiFailureOrSuccessOption: optionOf(failureOrSuccess),
               ),
             ),

@@ -20,7 +20,7 @@ ProductResponseDto _$ProductResponseDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductResponseDto {
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: <ProductDto>[])
   List<ProductDto> get items => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0)
   int get totalCount => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $ProductResponseDtoCopyWith<$Res> {
       _$ProductResponseDtoCopyWithImpl<$Res, ProductResponseDto>;
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: []) List<ProductDto> items,
+      {@JsonKey(defaultValue: <ProductDto>[]) List<ProductDto> items,
       @JsonKey(defaultValue: 0) int totalCount});
 }
 
@@ -80,7 +80,7 @@ abstract class _$$ProductResponseDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(defaultValue: []) List<ProductDto> items,
+      {@JsonKey(defaultValue: <ProductDto>[]) List<ProductDto> items,
       @JsonKey(defaultValue: 0) int totalCount});
 }
 
@@ -115,7 +115,8 @@ class __$$ProductResponseDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductResponseDtoImpl extends _ProductResponseDto {
   const _$ProductResponseDtoImpl(
-      {@JsonKey(defaultValue: []) required final List<ProductDto> items,
+      {@JsonKey(defaultValue: <ProductDto>[])
+      required final List<ProductDto> items,
       @JsonKey(defaultValue: 0) required this.totalCount})
       : _items = items,
         super._();
@@ -125,7 +126,7 @@ class _$ProductResponseDtoImpl extends _ProductResponseDto {
 
   final List<ProductDto> _items;
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: <ProductDto>[])
   List<ProductDto> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
@@ -173,7 +174,8 @@ class _$ProductResponseDtoImpl extends _ProductResponseDto {
 
 abstract class _ProductResponseDto extends ProductResponseDto {
   const factory _ProductResponseDto(
-          {@JsonKey(defaultValue: []) required final List<ProductDto> items,
+          {@JsonKey(defaultValue: <ProductDto>[])
+          required final List<ProductDto> items,
           @JsonKey(defaultValue: 0) required final int totalCount}) =
       _$ProductResponseDtoImpl;
   const _ProductResponseDto._() : super._();
@@ -182,7 +184,7 @@ abstract class _ProductResponseDto extends ProductResponseDto {
       _$ProductResponseDtoImpl.fromJson;
 
   @override
-  @JsonKey(defaultValue: [])
+  @JsonKey(defaultValue: <ProductDto>[])
   List<ProductDto> get items;
   @override
   @JsonKey(defaultValue: 0)

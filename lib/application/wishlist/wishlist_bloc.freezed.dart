@@ -2295,6 +2295,7 @@ mixin _$WishlistState {
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
   bool get showSnackBar => throw _privateConstructorUsedError;
+  bool get isUpdateQuantity => throw _privateConstructorUsedError;
   List<WishlistProduct> get selectedItemList =>
       throw _privateConstructorUsedError;
 
@@ -2314,6 +2315,7 @@ abstract class $WishlistStateCopyWith<$Res> {
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool showSnackBar,
+      bool isUpdateQuantity,
       List<WishlistProduct> selectedItemList});
 }
 
@@ -2334,6 +2336,7 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? showSnackBar = null,
+    Object? isUpdateQuantity = null,
     Object? selectedItemList = null,
   }) {
     return _then(_value.copyWith(
@@ -2352,6 +2355,10 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
       showSnackBar: null == showSnackBar
           ? _value.showSnackBar
           : showSnackBar // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUpdateQuantity: null == isUpdateQuantity
+          ? _value.isUpdateQuantity
+          : isUpdateQuantity // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedItemList: null == selectedItemList
           ? _value.selectedItemList
@@ -2374,6 +2381,7 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       bool showSnackBar,
+      bool isUpdateQuantity,
       List<WishlistProduct> selectedItemList});
 }
 
@@ -2392,6 +2400,7 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
     Object? showSnackBar = null,
+    Object? isUpdateQuantity = null,
     Object? selectedItemList = null,
   }) {
     return _then(_$WishlistStateImpl(
@@ -2411,6 +2420,10 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
           ? _value.showSnackBar
           : showSnackBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUpdateQuantity: null == isUpdateQuantity
+          ? _value.isUpdateQuantity
+          : isUpdateQuantity // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedItemList: null == selectedItemList
           ? _value._selectedItemList
           : selectedItemList // ignore: cast_nullable_to_non_nullable
@@ -2427,6 +2440,7 @@ class _$WishlistStateImpl extends _WishlistState {
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
       required this.showSnackBar,
+      required this.isUpdateQuantity,
       required final List<WishlistProduct> selectedItemList})
       : _wishlist = wishlist,
         _selectedItemList = selectedItemList,
@@ -2446,6 +2460,8 @@ class _$WishlistStateImpl extends _WishlistState {
   final bool isFetching;
   @override
   final bool showSnackBar;
+  @override
+  final bool isUpdateQuantity;
   final List<WishlistProduct> _selectedItemList;
   @override
   List<WishlistProduct> get selectedItemList {
@@ -2457,7 +2473,7 @@ class _$WishlistStateImpl extends _WishlistState {
 
   @override
   String toString() {
-    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, showSnackBar: $showSnackBar, selectedItemList: $selectedItemList)';
+    return 'WishlistState(wishlist: $wishlist, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, showSnackBar: $showSnackBar, isUpdateQuantity: $isUpdateQuantity, selectedItemList: $selectedItemList)';
   }
 
   @override
@@ -2473,6 +2489,8 @@ class _$WishlistStateImpl extends _WishlistState {
                 other.isFetching == isFetching) &&
             (identical(other.showSnackBar, showSnackBar) ||
                 other.showSnackBar == showSnackBar) &&
+            (identical(other.isUpdateQuantity, isUpdateQuantity) ||
+                other.isUpdateQuantity == isUpdateQuantity) &&
             const DeepCollectionEquality()
                 .equals(other._selectedItemList, _selectedItemList));
   }
@@ -2484,6 +2502,7 @@ class _$WishlistStateImpl extends _WishlistState {
       apiFailureOrSuccessOption,
       isFetching,
       showSnackBar,
+      isUpdateQuantity,
       const DeepCollectionEquality().hash(_selectedItemList));
 
   @JsonKey(ignore: true)
@@ -2500,6 +2519,7 @@ abstract class _WishlistState extends WishlistState {
               apiFailureOrSuccessOption,
           required final bool isFetching,
           required final bool showSnackBar,
+          required final bool isUpdateQuantity,
           required final List<WishlistProduct> selectedItemList}) =
       _$WishlistStateImpl;
   const _WishlistState._() : super._();
@@ -2512,6 +2532,8 @@ abstract class _WishlistState extends WishlistState {
   bool get isFetching;
   @override
   bool get showSnackBar;
+  @override
+  bool get isUpdateQuantity;
   @override
   List<WishlistProduct> get selectedItemList;
   @override
