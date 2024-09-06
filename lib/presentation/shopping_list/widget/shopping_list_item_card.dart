@@ -152,6 +152,10 @@ class ShoppingListItemCard extends StatelessWidget {
                         const Spacer(),
                         ItemCountWidget(
                           item: item,
+                          isLoading: context
+                              .read<WishlistBloc>()
+                              .state
+                              .isUpdateQuantity,
                         ),
                       ],
                     ),
