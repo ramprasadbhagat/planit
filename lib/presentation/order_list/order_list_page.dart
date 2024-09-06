@@ -4,10 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/order/entities/order.dart';
+import 'package:planit/domain/order/entities/order_group.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/order_list/widgets/order_list_item.dart';
+import 'package:planit/presentation/theme/colors.dart';
+
+part 'widgets/order_list_group.dart';
 
 @RoutePage()
 class OrderListPage extends StatefulWidget {
@@ -57,7 +61,15 @@ class _OrderListPageState extends State<OrderListPage> {
         buildWhen: (previous, current) =>
             previous.isFetchingOrders != current.isFetchingOrders,
         builder: (context, state) {
-          return ScrollList<Order>(
+          if (state.isFetchingOrders) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.black,
+                strokeWidth: 3,
+              ),
+            );
+          }
+          return ScrollList<OrderGroup>(
             noRecordFoundWidget: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: NoData.ordersHistory(),
@@ -67,10 +79,10 @@ class _OrderListPageState extends State<OrderListPage> {
                 context.read<OrderBloc>().add(const OrderEvent.fetchOrders()),
             onLoadingMore: () => {},
             isLoading: state.isFetchingOrders,
-            itemBuilder: (context, index, item) => OrderListItem(
-              order: state.orders[index],
+            itemBuilder: (context, index, item) => _OrderListGroup(
+              orderGroup: state.orders.getOrderGroupList[index],
             ),
-            items: state.orders,
+            items: state.orders.getOrderGroupList,
           );
         },
       ),

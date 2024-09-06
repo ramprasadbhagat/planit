@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/core/value/value_transformer.dart';
+import 'package:planit/domain/order/entities/order_group.dart';
 import 'package:planit/domain/order/entities/order_item.dart';
 import 'package:planit/domain/order/value/value_objects.dart';
 import 'package:planit/domain/order/value/value_transformers.dart';
@@ -94,5 +96,20 @@ extension IntX on int {
 
     return NumberFormat.simpleCurrency(locale: 'en_IN', decimalDigits: 2)
         .format(this);
+  }
+}
+
+extension FAQItemExtension on List<Order> {
+  List<OrderGroup> get getOrderGroupList {
+    return List<Order>.from(this)
+        .groupListsBy((item) => formatDisplayDate(item.orderDate))
+        .entries
+        .map(
+          (entry) => OrderGroup(
+            order: entry.value,
+            displayName: entry.key,
+          ),
+        )
+        .toList();
   }
 }

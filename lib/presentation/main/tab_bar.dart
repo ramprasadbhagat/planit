@@ -108,7 +108,6 @@ class MainTabbar extends StatelessWidget {
                   context
                       .read<WalletBloc>()
                       .add(const WalletEvent.fetchTransactionHistory());
-                  context.read<OrderBloc>().add(const OrderEvent.fetchOrders());
                   final cartBloc = context.read<CartBloc>();
 
                   if (cartBloc.state.cartData.isNotEmpty) {
