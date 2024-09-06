@@ -450,6 +450,7 @@ void setupLocator() {
       config: locator<Config>(),
       localDataSource: locator<PincodeLocalDataSource>(),
       remoteDataSource: locator<PincodeRemoteDataSource>(),
+      storageService: locator<StorageService>(),
     ),
   );
   locator.registerLazySingleton(

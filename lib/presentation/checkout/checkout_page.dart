@@ -7,12 +7,15 @@ import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/coupon/coupon_bloc.dart';
 import 'package:planit/application/order/order_bloc.dart';
+import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/presentation/checkout/widgets/checkout_product_section.dart';
 import 'package:planit/presentation/checkout/widgets/deliver_address_section.dart';
 import 'package:planit/presentation/checkout/widgets/delivery_date_section.dart';
 import 'package:planit/presentation/checkout/widgets/payment_section.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/pin_code_dialog_box/pin_code_dialog_box.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -314,20 +317,29 @@ class ErrorMessage extends StatelessWidget {
     final isProfileCompleted = context.select<UserProfileBloc, bool>(
       (value) => value.state.user.isValid,
     );
-    final hasValidAddress = context.select<AddressBookBloc, bool>(
-      (value) => value.state.selectedAddress.isNotEmpty,
-    );
 
-    if (isProfileCompleted && hasValidAddress) {
-      return const SizedBox.shrink();
+    if (isProfileCompleted) {
+      return const ChangeAddressMessageWidget();
     }
 
+    return const ProfileInCompletedMessageWidget();
+  }
+}
+
+class ProfileInCompletedMessageWidget extends StatelessWidget {
+  const ProfileInCompletedMessageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Material(
       borderRadius: const BorderRadius.all(Radius.circular(8)),
       color: AppColors.lightRed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: const EdgeInsets.all(8),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Icon(
               Icons.error_outline_outlined,
@@ -336,11 +348,7 @@ class ErrorMessage extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            if (!isProfileCompleted)
-              const Text('Please complete your profile.')
-            else
-              const Text('Please add a default address.'),
-            const Spacer(),
+            const Text('Please complete your profile.'),
             InkWell(
               onTap: () {
                 context.router.navigate(
@@ -360,6 +368,112 @@ class ErrorMessage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ChangeAddressMessageWidget extends StatelessWidget {
+  const ChangeAddressMessageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AddressBookBloc, AddressBookState>(
+      buildWhen: (previous, current) =>
+          previous.isFetching != current.isFetching ||
+          previous.isSubmitting ||
+          current.isSubmitting ||
+          previous.currentSelectedPinCode != current.currentSelectedPinCode,
+      builder: (context, state) {
+        final selectedAddressNotEmpty = context.select<AddressBookBloc, bool>(
+          (value) => value.state.selectedAddress.isNotEmpty,
+        );
+        final hasValidAddress = selectedAddressNotEmpty &&
+            state.isPinCodeAddedToAddressBook &&
+            state.isSelectedAddressAssociatedWithPin;
+
+        if (hasValidAddress) {
+          return const SizedBox.shrink();
+        }
+        return Material(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          color: AppColors.lightRed,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(
+                  Icons.error_outline_outlined,
+                  color: AppColors.red,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Please add an address with delivery pin - ${context.read<PincodeBloc>().state.pincode}\n',
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      if (selectedAddressNotEmpty)
+                        Column(
+                          children: [
+                            const SizedBox(height: 4),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                const Expanded(
+                                  child: Text(
+                                    'Or else,\nChoose a different pin code to proceed',
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                  width: 70,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      showModalBottomSheet<void>(
+                                        context: context,
+                                        isScrollControlled: true,
+                                        builder: (BuildContext context) =>
+                                            const CommonBottomSheet(
+                                          child: PinCodeDialogBox(),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(16),
+                                        ),
+                                      ),
+                                      backgroundColor: AppColors.orange,
+                                    ),
+                                    child: const Text(
+                                      'Update',
+                                      style: TextStyle(
+                                        color: AppColors.black,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

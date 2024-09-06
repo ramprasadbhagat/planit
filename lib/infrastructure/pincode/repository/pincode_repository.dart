@@ -8,9 +8,11 @@ import 'package:planit/domain/pincode/entities/pincode_check.dart';
 import 'package:planit/domain/pincode/repository/i_pincode_repository.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_local.dart';
 import 'package:planit/infrastructure/pincode/datasource/pincode_remote.dart';
+import 'package:planit/utils/storage_service.dart';
 
 class PincodeRepository extends IPincodeRepository {
   final Config config;
+  final StorageService storageService;
   final PincodeLocalDataSource localDataSource;
   final PincodeRemoteDataSource remoteDataSource;
 
@@ -18,6 +20,7 @@ class PincodeRepository extends IPincodeRepository {
     required this.config,
     required this.localDataSource,
     required this.remoteDataSource,
+    required this.storageService,
   });
 
   @override
@@ -48,7 +51,7 @@ class PincodeRepository extends IPincodeRepository {
   }
 
   @override
-  Future<Either<ApiFailure, Pincode>> savePincode({
+  Future<Either<ApiFailure, PinCode>> savePincode({
     required String pincode,
   }) async {
     if (config.appFlavor == Flavor.mock) {
@@ -70,6 +73,41 @@ class PincodeRepository extends IPincodeRepository {
       if (e is OtherException) {
         return const Left(ApiFailure.other('Pincode is not saved'));
       }
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> addPinCodeToStorage({
+    required PinCode pincode,
+  }) async {
+    try {
+      await storageService.addPinCodeData(pincode);
+
+      return const Right(unit);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, PinCode>> getPinCodeFromStorage() async {
+    try {
+      final pinCodeData = storageService.getPinCodeData();
+
+      return Right(pinCodeData);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, Unit>> clearPinCodeOnStorage() async {
+    try {
+      await storageService.clearAllPinCodeData();
+
+      return const Right(unit);
+    } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }
   }

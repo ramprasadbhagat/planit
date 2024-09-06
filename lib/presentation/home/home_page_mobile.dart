@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:planit/presentation/home/shop/widgets/location_pin.dart';
+import 'package:planit/presentation/home/delivering_to/delivering_to.dart';
 import 'package:planit/presentation/home/shop/widgets/search_bar.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -16,7 +16,7 @@ class HomePageMobile extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const LocationPin(),
+        title: const DeliveringTo(),
         automaticallyImplyLeading: false,
         elevation: 0,
       ),

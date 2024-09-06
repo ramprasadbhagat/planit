@@ -19,6 +19,9 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
     required TResult Function(String pincode) checkPincode,
     required TResult Function(String pincode) savePincode,
   }) =>
@@ -26,6 +29,9 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
     TResult? Function(String pincode)? checkPincode,
     TResult? Function(String pincode)? savePincode,
   }) =>
@@ -33,6 +39,9 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
     TResult Function(String pincode)? checkPincode,
     TResult Function(String pincode)? savePincode,
     required TResult orElse(),
@@ -41,6 +50,12 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
     required TResult Function(_PincodeCheck value) checkPincode,
     required TResult Function(_PincodeSave value) savePincode,
   }) =>
@@ -48,6 +63,9 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult? Function(_PincodeCheck value)? checkPincode,
     TResult? Function(_PincodeSave value)? savePincode,
   }) =>
@@ -55,6 +73,9 @@ mixin _$PincodeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult Function(_PincodeCheck value)? checkPincode,
     TResult Function(_PincodeSave value)? savePincode,
     required TResult orElse(),
@@ -119,6 +140,9 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
     required TResult Function(String pincode) checkPincode,
     required TResult Function(String pincode) savePincode,
   }) {
@@ -129,6 +153,9 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
     TResult? Function(String pincode)? checkPincode,
     TResult? Function(String pincode)? savePincode,
   }) {
@@ -139,6 +166,9 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
     TResult Function(String pincode)? checkPincode,
     TResult Function(String pincode)? savePincode,
     required TResult orElse(),
@@ -153,6 +183,12 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
     required TResult Function(_PincodeCheck value) checkPincode,
     required TResult Function(_PincodeSave value) savePincode,
   }) {
@@ -163,6 +199,9 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult? Function(_PincodeCheck value)? checkPincode,
     TResult? Function(_PincodeSave value)? savePincode,
   }) {
@@ -173,6 +212,9 @@ class _$InitializedImpl implements _Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult Function(_PincodeCheck value)? checkPincode,
     TResult Function(_PincodeSave value)? savePincode,
     required TResult orElse(),
@@ -186,6 +228,401 @@ class _$InitializedImpl implements _Initialized {
 
 abstract class _Initialized implements PincodeEvent {
   const factory _Initialized() = _$InitializedImpl;
+}
+
+/// @nodoc
+abstract class _$$GetPinCodeFromStorageImplCopyWith<$Res> {
+  factory _$$GetPinCodeFromStorageImplCopyWith(
+          _$GetPinCodeFromStorageImpl value,
+          $Res Function(_$GetPinCodeFromStorageImpl) then) =
+      __$$GetPinCodeFromStorageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetPinCodeFromStorageImplCopyWithImpl<$Res>
+    extends _$PincodeEventCopyWithImpl<$Res, _$GetPinCodeFromStorageImpl>
+    implements _$$GetPinCodeFromStorageImplCopyWith<$Res> {
+  __$$GetPinCodeFromStorageImplCopyWithImpl(_$GetPinCodeFromStorageImpl _value,
+      $Res Function(_$GetPinCodeFromStorageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetPinCodeFromStorageImpl implements _GetPinCodeFromStorage {
+  const _$GetPinCodeFromStorageImpl();
+
+  @override
+  String toString() {
+    return 'PincodeEvent.getPinCodeFromStorage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPinCodeFromStorageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
+    required TResult Function(String pincode) checkPincode,
+    required TResult Function(String pincode) savePincode,
+  }) {
+    return getPinCodeFromStorage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
+    TResult? Function(String pincode)? checkPincode,
+    TResult? Function(String pincode)? savePincode,
+  }) {
+    return getPinCodeFromStorage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
+    TResult Function(String pincode)? checkPincode,
+    TResult Function(String pincode)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (getPinCodeFromStorage != null) {
+      return getPinCodeFromStorage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
+    required TResult Function(_PincodeCheck value) checkPincode,
+    required TResult Function(_PincodeSave value) savePincode,
+  }) {
+    return getPinCodeFromStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult? Function(_PincodeCheck value)? checkPincode,
+    TResult? Function(_PincodeSave value)? savePincode,
+  }) {
+    return getPinCodeFromStorage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult Function(_PincodeCheck value)? checkPincode,
+    TResult Function(_PincodeSave value)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (getPinCodeFromStorage != null) {
+      return getPinCodeFromStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPinCodeFromStorage implements PincodeEvent {
+  const factory _GetPinCodeFromStorage() = _$GetPinCodeFromStorageImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearPinCodeFromStorageImplCopyWith<$Res> {
+  factory _$$ClearPinCodeFromStorageImplCopyWith(
+          _$ClearPinCodeFromStorageImpl value,
+          $Res Function(_$ClearPinCodeFromStorageImpl) then) =
+      __$$ClearPinCodeFromStorageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearPinCodeFromStorageImplCopyWithImpl<$Res>
+    extends _$PincodeEventCopyWithImpl<$Res, _$ClearPinCodeFromStorageImpl>
+    implements _$$ClearPinCodeFromStorageImplCopyWith<$Res> {
+  __$$ClearPinCodeFromStorageImplCopyWithImpl(
+      _$ClearPinCodeFromStorageImpl _value,
+      $Res Function(_$ClearPinCodeFromStorageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearPinCodeFromStorageImpl implements _ClearPinCodeFromStorage {
+  const _$ClearPinCodeFromStorageImpl();
+
+  @override
+  String toString() {
+    return 'PincodeEvent.clearPinCodeFromStorage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearPinCodeFromStorageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
+    required TResult Function(String pincode) checkPincode,
+    required TResult Function(String pincode) savePincode,
+  }) {
+    return clearPinCodeFromStorage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
+    TResult? Function(String pincode)? checkPincode,
+    TResult? Function(String pincode)? savePincode,
+  }) {
+    return clearPinCodeFromStorage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
+    TResult Function(String pincode)? checkPincode,
+    TResult Function(String pincode)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (clearPinCodeFromStorage != null) {
+      return clearPinCodeFromStorage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
+    required TResult Function(_PincodeCheck value) checkPincode,
+    required TResult Function(_PincodeSave value) savePincode,
+  }) {
+    return clearPinCodeFromStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult? Function(_PincodeCheck value)? checkPincode,
+    TResult? Function(_PincodeSave value)? savePincode,
+  }) {
+    return clearPinCodeFromStorage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult Function(_PincodeCheck value)? checkPincode,
+    TResult Function(_PincodeSave value)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (clearPinCodeFromStorage != null) {
+      return clearPinCodeFromStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearPinCodeFromStorage implements PincodeEvent {
+  const factory _ClearPinCodeFromStorage() = _$ClearPinCodeFromStorageImpl;
+}
+
+/// @nodoc
+abstract class _$$ResetVerificationStatusImplCopyWith<$Res> {
+  factory _$$ResetVerificationStatusImplCopyWith(
+          _$ResetVerificationStatusImpl value,
+          $Res Function(_$ResetVerificationStatusImpl) then) =
+      __$$ResetVerificationStatusImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetVerificationStatusImplCopyWithImpl<$Res>
+    extends _$PincodeEventCopyWithImpl<$Res, _$ResetVerificationStatusImpl>
+    implements _$$ResetVerificationStatusImplCopyWith<$Res> {
+  __$$ResetVerificationStatusImplCopyWithImpl(
+      _$ResetVerificationStatusImpl _value,
+      $Res Function(_$ResetVerificationStatusImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetVerificationStatusImpl implements _ResetVerificationStatus {
+  const _$ResetVerificationStatusImpl();
+
+  @override
+  String toString() {
+    return 'PincodeEvent.resetVerificationStatus()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResetVerificationStatusImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
+    required TResult Function(String pincode) checkPincode,
+    required TResult Function(String pincode) savePincode,
+  }) {
+    return resetVerificationStatus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
+    TResult? Function(String pincode)? checkPincode,
+    TResult? Function(String pincode)? savePincode,
+  }) {
+    return resetVerificationStatus?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
+    TResult Function(String pincode)? checkPincode,
+    TResult Function(String pincode)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (resetVerificationStatus != null) {
+      return resetVerificationStatus();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
+    required TResult Function(_PincodeCheck value) checkPincode,
+    required TResult Function(_PincodeSave value) savePincode,
+  }) {
+    return resetVerificationStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult? Function(_PincodeCheck value)? checkPincode,
+    TResult? Function(_PincodeSave value)? savePincode,
+  }) {
+    return resetVerificationStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
+    TResult Function(_PincodeCheck value)? checkPincode,
+    TResult Function(_PincodeSave value)? savePincode,
+    required TResult orElse(),
+  }) {
+    if (resetVerificationStatus != null) {
+      return resetVerificationStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetVerificationStatus implements PincodeEvent {
+  const factory _ResetVerificationStatus() = _$ResetVerificationStatusImpl;
 }
 
 /// @nodoc
@@ -253,6 +690,9 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
     required TResult Function(String pincode) checkPincode,
     required TResult Function(String pincode) savePincode,
   }) {
@@ -263,6 +703,9 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
     TResult? Function(String pincode)? checkPincode,
     TResult? Function(String pincode)? savePincode,
   }) {
@@ -273,6 +716,9 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
     TResult Function(String pincode)? checkPincode,
     TResult Function(String pincode)? savePincode,
     required TResult orElse(),
@@ -287,6 +733,12 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
     required TResult Function(_PincodeCheck value) checkPincode,
     required TResult Function(_PincodeSave value) savePincode,
   }) {
@@ -297,6 +749,9 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult? Function(_PincodeCheck value)? checkPincode,
     TResult? Function(_PincodeSave value)? savePincode,
   }) {
@@ -307,6 +762,9 @@ class _$PincodeCheckImpl implements _PincodeCheck {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult Function(_PincodeCheck value)? checkPincode,
     TResult Function(_PincodeSave value)? savePincode,
     required TResult orElse(),
@@ -393,6 +851,9 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
+    required TResult Function() getPinCodeFromStorage,
+    required TResult Function() clearPinCodeFromStorage,
+    required TResult Function() resetVerificationStatus,
     required TResult Function(String pincode) checkPincode,
     required TResult Function(String pincode) savePincode,
   }) {
@@ -403,6 +864,9 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
+    TResult? Function()? getPinCodeFromStorage,
+    TResult? Function()? clearPinCodeFromStorage,
+    TResult? Function()? resetVerificationStatus,
     TResult? Function(String pincode)? checkPincode,
     TResult? Function(String pincode)? savePincode,
   }) {
@@ -413,6 +877,9 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
+    TResult Function()? getPinCodeFromStorage,
+    TResult Function()? clearPinCodeFromStorage,
+    TResult Function()? resetVerificationStatus,
     TResult Function(String pincode)? checkPincode,
     TResult Function(String pincode)? savePincode,
     required TResult orElse(),
@@ -427,6 +894,12 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
+    required TResult Function(_GetPinCodeFromStorage value)
+        getPinCodeFromStorage,
+    required TResult Function(_ClearPinCodeFromStorage value)
+        clearPinCodeFromStorage,
+    required TResult Function(_ResetVerificationStatus value)
+        resetVerificationStatus,
     required TResult Function(_PincodeCheck value) checkPincode,
     required TResult Function(_PincodeSave value) savePincode,
   }) {
@@ -437,6 +910,9 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult? Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult? Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult? Function(_PincodeCheck value)? checkPincode,
     TResult? Function(_PincodeSave value)? savePincode,
   }) {
@@ -447,6 +923,9 @@ class _$PincodeSaveImpl implements _PincodeSave {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
+    TResult Function(_GetPinCodeFromStorage value)? getPinCodeFromStorage,
+    TResult Function(_ClearPinCodeFromStorage value)? clearPinCodeFromStorage,
+    TResult Function(_ResetVerificationStatus value)? resetVerificationStatus,
     TResult Function(_PincodeCheck value)? checkPincode,
     TResult Function(_PincodeSave value)? savePincode,
     required TResult orElse(),
@@ -470,11 +949,16 @@ abstract class _PincodeSave implements PincodeEvent {
 
 /// @nodoc
 mixin _$PincodeState {
+  String get tempPin => throw _privateConstructorUsedError;
   String get pincode => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
+  bool get isChecking => throw _privateConstructorUsedError;
+  bool get pinCodeVerified => throw _privateConstructorUsedError;
+  bool get isSaving => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get isValidLength => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PincodeStateCopyWith<PincodeState> get copyWith =>
@@ -488,10 +972,15 @@ abstract class $PincodeStateCopyWith<$Res> {
       _$PincodeStateCopyWithImpl<$Res, PincodeState>;
   @useResult
   $Res call(
-      {String pincode,
+      {String tempPin,
+      String pincode,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      bool showErrorMessages});
+      bool isChecking,
+      bool pinCodeVerified,
+      bool isSaving,
+      bool showErrorMessages,
+      bool isValidLength});
 }
 
 /// @nodoc
@@ -507,12 +996,21 @@ class _$PincodeStateCopyWithImpl<$Res, $Val extends PincodeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tempPin = null,
     Object? pincode = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isChecking = null,
+    Object? pinCodeVerified = null,
+    Object? isSaving = null,
     Object? showErrorMessages = null,
+    Object? isValidLength = null,
   }) {
     return _then(_value.copyWith(
+      tempPin: null == tempPin
+          ? _value.tempPin
+          : tempPin // ignore: cast_nullable_to_non_nullable
+              as String,
       pincode: null == pincode
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
@@ -525,9 +1023,25 @@ class _$PincodeStateCopyWithImpl<$Res, $Val extends PincodeState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isChecking: null == isChecking
+          ? _value.isChecking
+          : isChecking // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pinCodeVerified: null == pinCodeVerified
+          ? _value.pinCodeVerified
+          : pinCodeVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: null == isSaving
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValidLength: null == isValidLength
+          ? _value.isValidLength
+          : isValidLength // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -542,10 +1056,15 @@ abstract class _$$PincodeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String pincode,
+      {String tempPin,
+      String pincode,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      bool showErrorMessages});
+      bool isChecking,
+      bool pinCodeVerified,
+      bool isSaving,
+      bool showErrorMessages,
+      bool isValidLength});
 }
 
 /// @nodoc
@@ -559,12 +1078,21 @@ class __$$PincodeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? tempPin = null,
     Object? pincode = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
+    Object? isChecking = null,
+    Object? pinCodeVerified = null,
+    Object? isSaving = null,
     Object? showErrorMessages = null,
+    Object? isValidLength = null,
   }) {
     return _then(_$PincodeStateImpl(
+      tempPin: null == tempPin
+          ? _value.tempPin
+          : tempPin // ignore: cast_nullable_to_non_nullable
+              as String,
       pincode: null == pincode
           ? _value.pincode
           : pincode // ignore: cast_nullable_to_non_nullable
@@ -577,9 +1105,25 @@ class __$$PincodeStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
+      isChecking: null == isChecking
+          ? _value.isChecking
+          : isChecking // ignore: cast_nullable_to_non_nullable
+              as bool,
+      pinCodeVerified: null == pinCodeVerified
+          ? _value.pinCodeVerified
+          : pinCodeVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaving: null == isSaving
+          ? _value.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValidLength: null == isValidLength
+          ? _value.isValidLength
+          : isValidLength // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -589,12 +1133,19 @@ class __$$PincodeStateImplCopyWithImpl<$Res>
 
 class _$PincodeStateImpl extends _PincodeState {
   const _$PincodeStateImpl(
-      {required this.pincode,
+      {required this.tempPin,
+      required this.pincode,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.showErrorMessages})
+      required this.isChecking,
+      required this.pinCodeVerified,
+      required this.isSaving,
+      required this.showErrorMessages,
+      required this.isValidLength})
       : super._();
 
+  @override
+  final String tempPin;
   @override
   final String pincode;
   @override
@@ -602,11 +1153,19 @@ class _$PincodeStateImpl extends _PincodeState {
   @override
   final bool isFetching;
   @override
+  final bool isChecking;
+  @override
+  final bool pinCodeVerified;
+  @override
+  final bool isSaving;
+  @override
   final bool showErrorMessages;
+  @override
+  final bool isValidLength;
 
   @override
   String toString() {
-    return 'PincodeState(pincode: $pincode, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, showErrorMessages: $showErrorMessages)';
+    return 'PincodeState(tempPin: $tempPin, pincode: $pincode, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isChecking: $isChecking, pinCodeVerified: $pinCodeVerified, isSaving: $isSaving, showErrorMessages: $showErrorMessages, isValidLength: $isValidLength)';
   }
 
   @override
@@ -614,19 +1173,37 @@ class _$PincodeStateImpl extends _PincodeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PincodeStateImpl &&
+            (identical(other.tempPin, tempPin) || other.tempPin == tempPin) &&
             (identical(other.pincode, pincode) || other.pincode == pincode) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
+            (identical(other.isChecking, isChecking) ||
+                other.isChecking == isChecking) &&
+            (identical(other.pinCodeVerified, pinCodeVerified) ||
+                other.pinCodeVerified == pinCodeVerified) &&
+            (identical(other.isSaving, isSaving) ||
+                other.isSaving == isSaving) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
-                other.showErrorMessages == showErrorMessages));
+                other.showErrorMessages == showErrorMessages) &&
+            (identical(other.isValidLength, isValidLength) ||
+                other.isValidLength == isValidLength));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pincode,
-      apiFailureOrSuccessOption, isFetching, showErrorMessages);
+  int get hashCode => Object.hash(
+      runtimeType,
+      tempPin,
+      pincode,
+      apiFailureOrSuccessOption,
+      isFetching,
+      isChecking,
+      pinCodeVerified,
+      isSaving,
+      showErrorMessages,
+      isValidLength);
 
   @JsonKey(ignore: true)
   @override
@@ -637,13 +1214,20 @@ class _$PincodeStateImpl extends _PincodeState {
 
 abstract class _PincodeState extends PincodeState {
   const factory _PincodeState(
-      {required final String pincode,
+      {required final String tempPin,
+      required final String pincode,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
-      required final bool showErrorMessages}) = _$PincodeStateImpl;
+      required final bool isChecking,
+      required final bool pinCodeVerified,
+      required final bool isSaving,
+      required final bool showErrorMessages,
+      required final bool isValidLength}) = _$PincodeStateImpl;
   const _PincodeState._() : super._();
 
+  @override
+  String get tempPin;
   @override
   String get pincode;
   @override
@@ -651,7 +1235,15 @@ abstract class _PincodeState extends PincodeState {
   @override
   bool get isFetching;
   @override
+  bool get isChecking;
+  @override
+  bool get pinCodeVerified;
+  @override
+  bool get isSaving;
+  @override
   bool get showErrorMessages;
+  @override
+  bool get isValidLength;
   @override
   @JsonKey(ignore: true)
   _$$PincodeStateImplCopyWith<_$PincodeStateImpl> get copyWith =>

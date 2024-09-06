@@ -4,16 +4,26 @@ part of 'pincode_bloc.dart';
 class PincodeState with _$PincodeState {
   const PincodeState._();
   const factory PincodeState({
+    required String tempPin,
     required String pincode,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
+    required bool isChecking,
+    required bool pinCodeVerified,
+    required bool isSaving,
     required bool showErrorMessages,
+    required bool isValidLength,
   }) = _PincodeState;
 
   factory PincodeState.initial() => PincodeState(
         pincode: '',
         apiFailureOrSuccessOption: none(),
         isFetching: false,
+        isChecking: false,
+        isSaving: false,
         showErrorMessages: true,
+        pinCodeVerified: false,
+        tempPin: '',
+        isValidLength: false,
       );
 }

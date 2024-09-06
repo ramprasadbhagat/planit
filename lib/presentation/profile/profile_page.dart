@@ -58,11 +58,6 @@ class ProfilePage extends StatelessWidget {
             title: 'Profile',
           ),
           CustomTile(
-            onTap: () => context.router.navigate(const AddressBookRoute()),
-            leadingIcon: Icons.fact_check_outlined,
-            title: 'Address Book',
-          ),
-          CustomTile(
             onTap: () => context.router.navigate(const OrderListRoute()),
             leadingIcon: Icons.subtitles_outlined,
             title: 'My orders',
@@ -104,7 +99,9 @@ class ProfilePage extends StatelessWidget {
             onTap: () {
               context.read<AuthBloc>().add(const AuthEvent.logout());
               context.read<CartBloc>().add(const CartEvent.clearAllCartLocal());
-              context.read<PincodeBloc>().add(const PincodeEvent.initialized());
+              context
+                  .read<PincodeBloc>()
+                  .add(const PincodeEvent.clearPinCodeFromStorage());
               context
                   .read<WishlistBloc>()
                   .add(const WishlistEvent.initialized());

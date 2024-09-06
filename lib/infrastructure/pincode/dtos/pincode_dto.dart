@@ -11,7 +11,7 @@ class PincodeDto with _$PincodeDto {
     @JsonKey(defaultValue: '') required String pincode,
   }) = _PincodeDto;
 
-  Pincode get toDomain => Pincode(pincode: pincode);
+  PinCode get toDomain => PinCode(pin: pincode);
 
   factory PincodeDto.fromJson(Map<String, dynamic> json) =>
       _$PincodeDtoFromJson(json);

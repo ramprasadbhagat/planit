@@ -198,7 +198,7 @@ class MainTabbar extends StatelessWidget {
                 () {},
                 (either) => either.fold(
                   (l) {
-                    CustomSnackbar.showSuccessMessage(
+                    CustomSnackbar.showErrorMessage(
                       context,
                       l.failureMessage,
                     );

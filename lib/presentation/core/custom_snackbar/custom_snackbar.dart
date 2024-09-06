@@ -139,7 +139,9 @@ class __SnackbarContentState extends State<_SnackbarContent>
                   child: Text(
                     widget.message,
                     style: TextStyle(
-                      color: widget.isError ? AppColors.error : AppColors.green,
+                      color: widget.isError
+                          ? AppColors.error
+                          : AppColors.greenTextColor,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

@@ -86,8 +86,8 @@ class App extends StatelessWidget {
           create: (context) => locator<WishlistBloc>(),
         ),
         BlocProvider<PincodeBloc>(
-          create: (context) =>
-              locator<PincodeBloc>()..add(const PincodeEvent.initialized()),
+          create: (context) => locator<PincodeBloc>()
+            ..add(const PincodeEvent.getPinCodeFromStorage()),
         ),
         BlocProvider<AddressBookBloc>(
           create: (context) => locator<AddressBookBloc>(),

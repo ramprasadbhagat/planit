@@ -26,6 +26,7 @@ mixin _$AddressBookEvent {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ mixin _$AddressBookEvent {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +54,7 @@ mixin _$AddressBookEvent {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) =>
@@ -65,6 +68,7 @@ mixin _$AddressBookEvent {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) =>
@@ -78,6 +82,7 @@ mixin _$AddressBookEvent {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) =>
@@ -91,6 +96,7 @@ mixin _$AddressBookEvent {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) =>
@@ -161,6 +167,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return initialized();
@@ -177,6 +184,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return initialized?.call();
@@ -193,6 +201,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -212,6 +221,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -228,6 +238,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -244,6 +255,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -304,6 +316,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return fetch();
@@ -320,6 +333,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return fetch?.call();
@@ -336,6 +350,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -355,6 +370,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -371,6 +387,7 @@ class _$FetchImpl implements _Fetch {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -387,6 +404,7 @@ class _$FetchImpl implements _Fetch {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -494,6 +512,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return addAddressBook(addressBook, isMakeDefault);
@@ -510,6 +529,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return addAddressBook?.call(addressBook, isMakeDefault);
@@ -526,6 +546,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -545,6 +566,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -561,6 +583,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -577,6 +600,7 @@ class _$AddAdressBookImpl implements _AddAdressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -672,6 +696,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress(id);
@@ -688,6 +713,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return makeDefaultAddress?.call(id);
@@ -704,6 +730,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -723,6 +750,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -739,6 +767,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -755,6 +784,7 @@ class _$MakeDefaultAddressImpl implements _MakeDefaultAddress {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -848,6 +878,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook(id);
@@ -864,6 +895,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return deleteAddressBook?.call(id);
@@ -880,6 +912,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -899,6 +932,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -915,6 +949,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -931,6 +966,7 @@ class _$DeleteAddressBookImpl implements _DeleteAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1035,6 +1071,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return editAddressBook(addressBook);
@@ -1051,6 +1088,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return editAddressBook?.call(addressBook);
@@ -1067,6 +1105,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1086,6 +1125,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -1102,6 +1142,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -1118,6 +1159,7 @@ class _$EditAddressBookImpl implements _EditAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1222,6 +1264,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return selectAddress(addressBook);
@@ -1238,6 +1281,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return selectAddress?.call(addressBook);
@@ -1254,6 +1298,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1273,6 +1318,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -1289,6 +1335,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -1305,6 +1352,7 @@ class _$SelectAddressBookImpl implements _SelectAddressBook {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1323,6 +1371,189 @@ abstract class _SelectAddressBook implements AddressBookEvent {
   @JsonKey(ignore: true)
   _$$SelectAddressBookImplCopyWith<_$SelectAddressBookImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCurrentPinCodeImplCopyWith<$Res> {
+  factory _$$UpdateCurrentPinCodeImplCopyWith(_$UpdateCurrentPinCodeImpl value,
+          $Res Function(_$UpdateCurrentPinCodeImpl) then) =
+      __$$UpdateCurrentPinCodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String pinCode});
+}
+
+/// @nodoc
+class __$$UpdateCurrentPinCodeImplCopyWithImpl<$Res>
+    extends _$AddressBookEventCopyWithImpl<$Res, _$UpdateCurrentPinCodeImpl>
+    implements _$$UpdateCurrentPinCodeImplCopyWith<$Res> {
+  __$$UpdateCurrentPinCodeImplCopyWithImpl(_$UpdateCurrentPinCodeImpl _value,
+      $Res Function(_$UpdateCurrentPinCodeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pinCode = null,
+  }) {
+    return _then(_$UpdateCurrentPinCodeImpl(
+      pinCode: null == pinCode
+          ? _value.pinCode
+          : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCurrentPinCodeImpl implements _UpdateCurrentPinCode {
+  const _$UpdateCurrentPinCodeImpl({required this.pinCode});
+
+  @override
+  final String pinCode;
+
+  @override
+  String toString() {
+    return 'AddressBookEvent.updateCurrentPinCode(pinCode: $pinCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCurrentPinCodeImpl &&
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pinCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCurrentPinCodeImplCopyWith<_$UpdateCurrentPinCodeImpl>
+      get copyWith =>
+          __$$UpdateCurrentPinCodeImplCopyWithImpl<_$UpdateCurrentPinCodeImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetch,
+    required TResult Function(AddressBook addressBook, bool isMakeDefault)
+        addAddressBook,
+    required TResult Function(String id) makeDefaultAddress,
+    required TResult Function(String id) deleteAddressBook,
+    required TResult Function(AddressBook addressBook) editAddressBook,
+    required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
+    required TResult Function() fetchFirstAndMarkDefault,
+  }) {
+    return updateCurrentPinCode(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetch,
+    TResult? Function(AddressBook addressBook, bool isMakeDefault)?
+        addAddressBook,
+    TResult? Function(String id)? makeDefaultAddress,
+    TResult? Function(String id)? deleteAddressBook,
+    TResult? Function(AddressBook addressBook)? editAddressBook,
+    TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
+    TResult? Function()? fetchFirstAndMarkDefault,
+  }) {
+    return updateCurrentPinCode?.call(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetch,
+    TResult Function(AddressBook addressBook, bool isMakeDefault)?
+        addAddressBook,
+    TResult Function(String id)? makeDefaultAddress,
+    TResult Function(String id)? deleteAddressBook,
+    TResult Function(AddressBook addressBook)? editAddressBook,
+    TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
+    TResult Function()? fetchFirstAndMarkDefault,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentPinCode != null) {
+      return updateCurrentPinCode(pinCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_AddAdressBook value) addAddressBook,
+    required TResult Function(_MakeDefaultAddress value) makeDefaultAddress,
+    required TResult Function(_DeleteAddressBook value) deleteAddressBook,
+    required TResult Function(_EditAddressBook value) editAddressBook,
+    required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
+    required TResult Function(_FetchFirstAndMarkDefault value)
+        fetchFirstAndMarkDefault,
+  }) {
+    return updateCurrentPinCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_AddAdressBook value)? addAddressBook,
+    TResult? Function(_MakeDefaultAddress value)? makeDefaultAddress,
+    TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
+    TResult? Function(_EditAddressBook value)? editAddressBook,
+    TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
+    TResult? Function(_FetchFirstAndMarkDefault value)?
+        fetchFirstAndMarkDefault,
+  }) {
+    return updateCurrentPinCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_AddAdressBook value)? addAddressBook,
+    TResult Function(_MakeDefaultAddress value)? makeDefaultAddress,
+    TResult Function(_DeleteAddressBook value)? deleteAddressBook,
+    TResult Function(_EditAddressBook value)? editAddressBook,
+    TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
+    TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentPinCode != null) {
+      return updateCurrentPinCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCurrentPinCode implements AddressBookEvent {
+  const factory _UpdateCurrentPinCode({required final String pinCode}) =
+      _$UpdateCurrentPinCodeImpl;
+
+  String get pinCode;
+  @JsonKey(ignore: true)
+  _$$UpdateCurrentPinCodeImplCopyWith<_$UpdateCurrentPinCodeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1374,6 +1605,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     required TResult Function(String id) deleteAddressBook,
     required TResult Function(AddressBook addressBook) editAddressBook,
     required TResult Function(AddressBook addressBook) selectAddress,
+    required TResult Function(String pinCode) updateCurrentPinCode,
     required TResult Function() fetchFirstAndMarkDefault,
   }) {
     return fetchFirstAndMarkDefault();
@@ -1390,6 +1622,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     TResult? Function(String id)? deleteAddressBook,
     TResult? Function(AddressBook addressBook)? editAddressBook,
     TResult? Function(AddressBook addressBook)? selectAddress,
+    TResult? Function(String pinCode)? updateCurrentPinCode,
     TResult? Function()? fetchFirstAndMarkDefault,
   }) {
     return fetchFirstAndMarkDefault?.call();
@@ -1406,6 +1639,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     TResult Function(String id)? deleteAddressBook,
     TResult Function(AddressBook addressBook)? editAddressBook,
     TResult Function(AddressBook addressBook)? selectAddress,
+    TResult Function(String pinCode)? updateCurrentPinCode,
     TResult Function()? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1425,6 +1659,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     required TResult Function(_DeleteAddressBook value) deleteAddressBook,
     required TResult Function(_EditAddressBook value) editAddressBook,
     required TResult Function(_SelectAddressBook value) selectAddress,
+    required TResult Function(_UpdateCurrentPinCode value) updateCurrentPinCode,
     required TResult Function(_FetchFirstAndMarkDefault value)
         fetchFirstAndMarkDefault,
   }) {
@@ -1441,6 +1676,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     TResult? Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult? Function(_EditAddressBook value)? editAddressBook,
     TResult? Function(_SelectAddressBook value)? selectAddress,
+    TResult? Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult? Function(_FetchFirstAndMarkDefault value)?
         fetchFirstAndMarkDefault,
   }) {
@@ -1457,6 +1693,7 @@ class _$FetchFirstAndMarkDefaultImpl implements _FetchFirstAndMarkDefault {
     TResult Function(_DeleteAddressBook value)? deleteAddressBook,
     TResult Function(_EditAddressBook value)? editAddressBook,
     TResult Function(_SelectAddressBook value)? selectAddress,
+    TResult Function(_UpdateCurrentPinCode value)? updateCurrentPinCode,
     TResult Function(_FetchFirstAndMarkDefault value)? fetchFirstAndMarkDefault,
     required TResult orElse(),
   }) {
@@ -1479,6 +1716,7 @@ mixin _$AddressBookState {
   bool get isFetching => throw _privateConstructorUsedError;
   AddressBook get selectedAddress => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  String get currentSelectedPinCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddressBookStateCopyWith<AddressBookState> get copyWith =>
@@ -1496,7 +1734,8 @@ abstract class $AddressBookStateCopyWith<$Res> {
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       AddressBook selectedAddress,
-      bool isSubmitting});
+      bool isSubmitting,
+      String currentSelectedPinCode});
 
   $AddressBookCopyWith<$Res> get selectedAddress;
 }
@@ -1519,6 +1758,7 @@ class _$AddressBookStateCopyWithImpl<$Res, $Val extends AddressBookState>
     Object? isFetching = null,
     Object? selectedAddress = null,
     Object? isSubmitting = null,
+    Object? currentSelectedPinCode = null,
   }) {
     return _then(_value.copyWith(
       addressList: null == addressList
@@ -1541,6 +1781,10 @@ class _$AddressBookStateCopyWithImpl<$Res, $Val extends AddressBookState>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentSelectedPinCode: null == currentSelectedPinCode
+          ? _value.currentSelectedPinCode
+          : currentSelectedPinCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -1566,7 +1810,8 @@ abstract class _$$AddressBookStateImplCopyWith<$Res>
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
       AddressBook selectedAddress,
-      bool isSubmitting});
+      bool isSubmitting,
+      String currentSelectedPinCode});
 
   @override
   $AddressBookCopyWith<$Res> get selectedAddress;
@@ -1588,6 +1833,7 @@ class __$$AddressBookStateImplCopyWithImpl<$Res>
     Object? isFetching = null,
     Object? selectedAddress = null,
     Object? isSubmitting = null,
+    Object? currentSelectedPinCode = null,
   }) {
     return _then(_$AddressBookStateImpl(
       addressList: null == addressList
@@ -1610,6 +1856,10 @@ class __$$AddressBookStateImplCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      currentSelectedPinCode: null == currentSelectedPinCode
+          ? _value.currentSelectedPinCode
+          : currentSelectedPinCode // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1622,7 +1872,8 @@ class _$AddressBookStateImpl extends _AddressBookState {
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
       required this.selectedAddress,
-      required this.isSubmitting})
+      required this.isSubmitting,
+      required this.currentSelectedPinCode})
       : _addressList = addressList,
         super._();
 
@@ -1642,10 +1893,12 @@ class _$AddressBookStateImpl extends _AddressBookState {
   final AddressBook selectedAddress;
   @override
   final bool isSubmitting;
+  @override
+  final String currentSelectedPinCode;
 
   @override
   String toString() {
-    return 'AddressBookState(addressList: $addressList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedAddress: $selectedAddress, isSubmitting: $isSubmitting)';
+    return 'AddressBookState(addressList: $addressList, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedAddress: $selectedAddress, isSubmitting: $isSubmitting, currentSelectedPinCode: $currentSelectedPinCode)';
   }
 
   @override
@@ -1663,7 +1916,9 @@ class _$AddressBookStateImpl extends _AddressBookState {
             (identical(other.selectedAddress, selectedAddress) ||
                 other.selectedAddress == selectedAddress) &&
             (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting));
+                other.isSubmitting == isSubmitting) &&
+            (identical(other.currentSelectedPinCode, currentSelectedPinCode) ||
+                other.currentSelectedPinCode == currentSelectedPinCode));
   }
 
   @override
@@ -1673,7 +1928,8 @@ class _$AddressBookStateImpl extends _AddressBookState {
       apiFailureOrSuccessOption,
       isFetching,
       selectedAddress,
-      isSubmitting);
+      isSubmitting,
+      currentSelectedPinCode);
 
   @JsonKey(ignore: true)
   @override
@@ -1690,7 +1946,8 @@ abstract class _AddressBookState extends AddressBookState {
           apiFailureOrSuccessOption,
       required final bool isFetching,
       required final AddressBook selectedAddress,
-      required final bool isSubmitting}) = _$AddressBookStateImpl;
+      required final bool isSubmitting,
+      required final String currentSelectedPinCode}) = _$AddressBookStateImpl;
   const _AddressBookState._() : super._();
 
   @override
@@ -1703,6 +1960,8 @@ abstract class _AddressBookState extends AddressBookState {
   AddressBook get selectedAddress;
   @override
   bool get isSubmitting;
+  @override
+  String get currentSelectedPinCode;
   @override
   @JsonKey(ignore: true)
   _$$AddressBookStateImplCopyWith<_$AddressBookStateImpl> get copyWith =>
