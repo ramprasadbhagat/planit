@@ -80,7 +80,7 @@ class _OrderListPageState extends State<OrderListPage> {
             onLoadingMore: () => {},
             isLoading: state.isFetchingOrders,
             itemBuilder: (context, index, item) => _OrderListGroup(
-              orderGroup: state.orders.getOrderGroupList[index],
+              orderGroup: item,
             ),
             items: state.orders.getOrderGroupList,
           );

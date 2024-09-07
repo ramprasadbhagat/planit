@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
+import 'package:planit/domain/address_book/entities/address_book_group.dart';
 import 'package:planit/presentation/address_book/widget/confirm_address_delete_alert.dart';
 import 'package:planit/presentation/address_book/widget/custom_checkbox.dart';
 import 'package:planit/presentation/address_book/widget/edit_address_book.dart';
@@ -12,6 +13,7 @@ import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
 import 'package:planit/presentation/core/loading_shimmer/loading_shimmer.dart';
 import 'package:planit/presentation/core/no_data.dart';
+import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/string_constants.dart';
 import 'package:planit/utils/svg_image.dart';
@@ -87,13 +89,12 @@ class _AddressBooksState extends State<AddressBooks> {
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
                   BlocBuilder<AddressBookBloc, AddressBookState>(
                     buildWhen: (previous, current) =>
                         previous.isFetching != current.isFetching ||
-                        previous.isSubmitting ||
-                        current.isSubmitting,
+                        previous.isSubmitting != current.isSubmitting,
                     builder: (context, state) {
                       final pinCode = context.read<PincodeBloc>().state.pincode;
 
@@ -130,37 +131,84 @@ class _AddressBooksState extends State<AddressBooks> {
                       }
                     },
                   ),
-                  state.isAddressEmpty
-                      ? const Expanded(
-                          child: NoData(
-                            message: 'No Address added yet',
-                          ),
-                        )
-                      : Expanded(
-                          child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: state.addressList.length,
-                            physics: const ClampingScrollPhysics(),
-                            // shrinkWrap: true,
-                            itemBuilder: (
-                              BuildContext context,
-                              int index,
-                            ) {
-                              return AddressItem(
-                                addressBook: state.addressList[index],
-                                isSelected: state.addressList[index] ==
-                                    state.selectedAddress,
-                                index: index,
-                              );
-                            },
-                          ),
+                  Expanded(
+                    child: ScrollList<AddressBookGroup>(
+                      noRecordFoundWidget: const Padding(
+                        padding: EdgeInsets.only(
+                          top: 25,
                         ),
+                        child: NoData(
+                          message: 'No Address added yet',
+                        ),
+                      ),
+                      controller: ScrollController(),
+                      onRefresh: () => context
+                          .read<AddressBookBloc>()
+                          .add(const AddressBookEvent.fetch()),
+                      onLoadingMore: () => {},
+                      isLoading: state.isFetching,
+                      itemBuilder: (context, index, item) => _AddressBookGroup(
+                        addressGroup: item,
+                        selectedAddress: state.selectedAddress,
+                        index: index,
+                      ),
+                      items: state.addressList.getAddressBookGroupList,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class _AddressBookGroup extends StatelessWidget {
+  final AddressBookGroup addressGroup;
+  final AddressBook selectedAddress;
+
+  final int index;
+
+  const _AddressBookGroup({
+    required this.addressGroup,
+    required this.selectedAddress,
+    required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pin code - ${addressGroup.pinCode}',
+            style: const TextStyle(
+              color: AppColors.darkTeal,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          ...addressGroup.addressBookList.map(
+            (e) => Column(
+              children: [
+                AddressItem(
+                  addressBook: e,
+                  isSelected: selectedAddress == e,
+                  index: addressGroup.addressBookList.indexOf(e),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
