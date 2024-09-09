@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/string_constants.dart';
 
 @RoutePage()
 class OrderSuccessPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class OrderSuccessPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Congratulations !',
+                          StringConstant.congratulationsString,
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall
@@ -53,7 +54,7 @@ class OrderSuccessPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Text(
-                            'Your order has been placed. Thank you for ordering.',
+                            StringConstant.orderSuccessSubTitle,
                             style: Theme.of(context).textTheme.labelSmall,
                             textAlign: TextAlign.center,
                           ),
@@ -62,7 +63,7 @@ class OrderSuccessPage extends StatelessWidget {
                           onPressed: () => context.router.replace(
                             const OrderListRoute(),
                           ),
-                          child: const Text('Continue'),
+                          child: const Text(StringConstant.continueString),
                         ),
                       ],
                     ),
