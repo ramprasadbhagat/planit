@@ -54,4 +54,7 @@ abstract class StringConstant {
       'Your order has been placed. Thank you for ordering.';
   static const String congratulationsString = 'Congratulations !';
   static const String continueString = 'Continue';
+  static const String paymentSuccessTitle = 'GREAT!';
+  static const String paymentSuccessSubTitle =
+      'Amount has been successfully added to your wallet balance.';
 }

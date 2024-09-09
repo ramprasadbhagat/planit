@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
+import 'package:planit/utils/animation_path.dart';
 import 'package:planit/utils/string_constants.dart';
 
 @RoutePage()
@@ -28,7 +29,7 @@ class OrderSuccessPage extends StatelessWidget {
                   right: -150,
                   left: -150,
                   child: Lottie.asset(
-                    'assets/anim/order_success.json',
+                    AnimationPath.success,
                     height: double.infinity,
                     fit: BoxFit.fill,
                   ),
