@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/application/add_money/ui_state/payment_method.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/payment/entities/payment_options.dart';
 import 'package:planit/domain/payment/repository/i_payment_repository.dart';
 import 'package:planit/domain/wallet/repository/i_wallet_repository.dart';
@@ -27,7 +28,7 @@ class AddMoneyBloc extends Bloc<AddMoneyEvent, AddMoneyState> {
   ) async {
     await event.map(
       init: (value) {
-        emit(AddMoneyState.initial());
+        emit(AddMoneyState.initial().copyWith());
       },
       changePaymentMethod: (value) {
         emit(
@@ -56,8 +57,8 @@ class AddMoneyBloc extends Bloc<AddMoneyEvent, AddMoneyState> {
             name: 'PlanIt',
             description: 'Wallet topup',
             amount: state.amount.toDouble(),
-            prefill: const PrefillData(
-              contact: '',
+            prefill: PrefillData(
+              contact: value.mobileNumber.getValue(),
             ),
           ),
           handlePaymentSuccess: (p0) {
