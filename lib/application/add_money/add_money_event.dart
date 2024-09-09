@@ -7,7 +7,8 @@ class AddMoneyEvent with _$AddMoneyEvent {
   const factory AddMoneyEvent.changePaymentMethod(PaymentMethod paymentMethod) =
       _PaymentMethod;
   const factory AddMoneyEvent.changeAmount(String amount) = _ChangeAmount;
-  const factory AddMoneyEvent.addMoneyClicked() = _AddMoneyClicked;
+  const factory AddMoneyEvent.addMoneyClicked(MobileNumber mobileNumber) =
+      _AddMoneyClicked;
   const factory AddMoneyEvent.handlePaymentSuccess(
     int amount,
     String transactionId,

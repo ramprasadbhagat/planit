@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planit/application/add_money/add_money_bloc.dart';
+import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/locator.dart';
 import 'package:planit/presentation/add_money/widgets/add_money_form.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -47,9 +48,15 @@ class AddMoneyPage extends StatelessWidget {
                   onPressed: state.isLoading
                       ? null
                       : () {
-                          context
-                              .read<AddMoneyBloc>()
-                              .add(const AddMoneyEvent.addMoneyClicked());
+                          context.read<AddMoneyBloc>().add(
+                                AddMoneyEvent.addMoneyClicked(
+                                  context
+                                      .read<UserProfileBloc>()
+                                      .state
+                                      .user
+                                      .mobileNumber,
+                                ),
+                              );
                         },
                   child: Text(
                     'Add money',
