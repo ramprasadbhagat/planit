@@ -200,7 +200,7 @@ class OrderListItem extends StatelessWidget {
                     Row(
                       children: [
                         OrderActionButton(
-                          label: 'Track your Order',
+                          label: 'Track Your Order',
                           onTap: () => context.router.navigate(
                             TrackOrderRoute(
                               order: order,
