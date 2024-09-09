@@ -22,7 +22,7 @@ class WishlistRemoteDataSource {
       url: 'favourites/product/$userId',
     );
     _exceptionChecker(res: res);
-    return List.from(res.data)
+    return List.from(res.data['items'])
         .map((e) => WishlistDto.fromJson(e).toDomain)
         .toList();
   }

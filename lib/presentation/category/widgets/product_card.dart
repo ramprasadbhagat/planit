@@ -227,7 +227,7 @@ class AddToListButton extends StatelessWidget {
               ),
             );
           } else {
-            CustomSnackbar.showSuccessMessage(
+            CustomSnackbar.showErrorMessage(
               context,
               StringConstant.pleaseLoginToAddItemsToShoppingList,
             );
