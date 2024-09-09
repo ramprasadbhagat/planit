@@ -21,6 +21,17 @@ class DeliveringTo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final now = DateTime.now();
+    var deadline = DateTime(now.year, now.month, now.day, 18); // 6 PM today
+
+    // If current time is after 6 PM, set deadline to 6 PM tomorrow
+    if (now.isAfter(deadline)) {
+      deadline = deadline.add(const Duration(days: 1));
+    }
+
+    final remainingTime = deadline.difference(now);
+    final isNextDay = now.isAfter(DateTime(now.year, now.month, now.day, 18));
+
     final textTheme = Theme.of(context).textTheme;
     return Row(
       children: [
@@ -86,7 +97,9 @@ class DeliveringTo extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Order within 30 mins for delivery by 6 pm on 24-03',
+                  isNextDay
+                      ? 'Order within 30 mins for delivery by 6 pm tomorrow'
+                      : 'Order within 30 mins for delivery by 6 pm today',
                   style: textTheme.labelSmall?.copyWith(fontSize: 13),
                 ),
                 const SizedBox(width: 4.0),

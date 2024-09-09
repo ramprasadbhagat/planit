@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:planit/application/add_review/add_review_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/order/entities/order.dart';
@@ -402,203 +403,221 @@ class OrderDetailsPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Stack(
                         children: [
-                          Row(
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                PngImage.dollar,
-                                height: 12,
-                                width: 15,
-                              ),
-                              Text(
-                                ' Payment Details',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                              const Spacer(),
-                              if (order.paymentStatus.isFailed)
-                                const Tag(
-                                  label: 'Payment Failed',
-                                  backgroundColor: AppColors.red,
-                                  labelColor: AppColors.white,
-                                )
-                              else
-                                Checkbox(
-                                  fillColor: WidgetStateProperty.all(
-                                    AppColors.green,
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    PngImage.dollar,
+                                    height: 12,
+                                    width: 15,
                                   ),
-                                  value: true,
-                                  onChanged: null,
-                                ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 18,
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.date_range_outlined,
-                                size: 12,
-                                color: AppColors.iconGrey,
-                              ),
-                              Text(
-                                ' Order No : ${order.id.displayLabel}',
-                                style: textTheme.titleMedium?.copyWith(
-                                  color: AppColors.grey2,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                PngImage.dollar,
-                                height: 8,
-                                width: 10,
-                              ),
-                              Text(
-                                ' Payment Option : ${order.paymentType.getOrDefaultValue('Cash')}',
-                                style: textTheme.titleMedium?.copyWith(
-                                  color: AppColors.grey2,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                            ),
-                            child: Column(
-                              children: [
-                                if (order.isCouponApplied) ...[
-                                  Row(
-                                    children: [
-                                      Image.asset(
-                                        PngImage.coupon,
-                                        height: 14,
-                                        width: 11,
-                                      ),
-                                      Text(
-                                        ' Coupon ',
-                                        style: textTheme.titleMedium?.copyWith(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const Spacer(),
-                                      Text(
-                                        'You saved ${order.totalDiscount.getValue().toPrice()} ',
-                                        style: textTheme.titleMedium?.copyWith(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
+                                  Text(
+                                    ' Payment Details',
+                                    style: textTheme.titleMedium?.copyWith(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.start,
                                   ),
-                                  const SizedBox(
-                                    height: 20,
+                                  const Spacer(),
+                                  if (order.paymentStatus.isFailed)
+                                    const Tag(
+                                      label: 'Payment Failed',
+                                      backgroundColor: AppColors.red,
+                                      labelColor: AppColors.white,
+                                    ),
+                                  if (order.paymentStatus.isUnknown)
+                                    const Tag(
+                                      label: 'Payment Pending',
+                                      backgroundColor: AppColors.deepOrange,
+                                      labelColor: AppColors.black,
+                                    ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 18,
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.date_range_outlined,
+                                    size: 12,
+                                    color: AppColors.iconGrey,
+                                  ),
+                                  Text(
+                                    ' Order No : ${order.id.displayLabel}',
+                                    style: textTheme.titleMedium?.copyWith(
+                                      color: AppColors.grey2,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Subtotal',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    PngImage.dollar,
+                                    height: 8,
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    ' Payment Option : ${order.paymentType.getOrDefaultValue('Cash')}',
+                                    style: textTheme.titleMedium?.copyWith(
+                                      color: AppColors.grey2,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                    const Spacer(),
-                                    Text(
-                                      order.subTotal.getValue().toPrice(),
-                                      style: textTheme.bodySmall?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontWeight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                child: Column(
+                                  children: [
+                                    if (order.isCouponApplied) ...[
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            PngImage.coupon,
+                                            height: 14,
+                                            width: 11,
+                                          ),
+                                          Text(
+                                            ' Coupon ',
+                                            style:
+                                                textTheme.titleMedium?.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            'You saved ${order.totalDiscount.getValue().toPrice()} ',
+                                            style:
+                                                textTheme.titleMedium?.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
                                       ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                    ],
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Subtotal',
+                                          style:
+                                              textTheme.titleMedium?.copyWith(
+                                            color: AppColors.grey2,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          order.subTotal.getValue().toPrice(),
+                                          style: textTheme.bodySmall?.copyWith(
+                                            color: AppColors.grey2,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Delivery Charge',
+                                          style: textTheme.bodySmall?.copyWith(
+                                            color: AppColors.grey2,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          order.deliveryCharge
+                                              .getValue()
+                                              .toPrice(showFreeIfZero: true),
+                                          style:
+                                              textTheme.titleMedium?.copyWith(
+                                            color: AppColors.grey2,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    const Divider(
+                                      indent: 0,
+                                      endIndent: 0,
+                                      height: 2,
+                                      color: AppColors.iconGrey,
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          PngImage.dollar,
+                                          height: 14,
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          ' Grand Total',
+                                          style:
+                                              textTheme.titleMedium?.copyWith(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          order.getTotalPrice,
+                                          style:
+                                              textTheme.titleMedium?.copyWith(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      'Delivery Charge',
-                                      style: textTheme.bodySmall?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      order.deliveryCharge
-                                          .getValue()
-                                          .toPrice(showFreeIfZero: true),
-                                      style: textTheme.titleMedium?.copyWith(
-                                        color: AppColors.grey2,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                const Divider(
-                                  indent: 0,
-                                  endIndent: 0,
-                                  height: 2,
-                                  color: AppColors.iconGrey,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      PngImage.dollar,
-                                      height: 14,
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      ' Grand Total',
-                                      style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    Text(
-                                      order.getTotalPrice,
-                                      style: textTheme.titleMedium?.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                          if (order.paymentStatus.isSuccess)
+                            Positioned(
+                              right: -10,
+                              top: -10,
+                              child: Lottie.asset(
+                                'assets/anim/payment_done.json',
+                                height: 60,
+                                repeat: false,
+                              ),
+                            ),
                         ],
                       ),
                     ),

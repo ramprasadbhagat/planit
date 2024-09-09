@@ -62,7 +62,7 @@ class PaymentStatus extends ValueObject<String> {
 
   bool get isSuccess => isEqualsIgnoreCase(displayLabel, 'completed');
   bool get isFailed => isEqualsIgnoreCase(displayLabel, 'pending');
-  bool get isUnknown => !isSuccess || !isFailed;
+  bool get isUnknown => !isSuccess && !isFailed;
 
   const PaymentStatus._(this.value);
 }

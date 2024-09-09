@@ -136,7 +136,7 @@ class OrderListItem extends StatelessWidget {
                         ),
                         Text.rich(
                           TextSpan(
-                            text: 'Total Amount : ',
+                            text: 'Total Amt. : ',
                             style: textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -152,6 +152,9 @@ class OrderListItem extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Row(
                       children: [
                         SvgPicture.asset(
@@ -163,8 +166,9 @@ class OrderListItem extends StatelessWidget {
                           width: 4,
                         ),
                         Text.rich(
+                          overflow: TextOverflow.ellipsis,
                           TextSpan(
-                            text: 'Payment Type: ',
+                            text: 'Payment : ',
                             style: textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -190,14 +194,11 @@ class OrderListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
+                    OrderStatusWidget(
+                      status: order.orderStatus,
+                    ),
                     Row(
                       children: [
-                        OrderStatusWidget(
-                          status: order.orderStatus,
-                        ),
-                        const SizedBox(
-                          width: 24,
-                        ),
                         OrderActionButton(
                           label: 'Track your Order',
                           onTap: () => context.router.navigate(
@@ -206,18 +207,21 @@ class OrderListItem extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        OrderActionButton(
+                          label: 'Reorder',
+                          onTap: isOOS
+                              ? null
+                              : () {
+                                  context
+                                      .read<CartBloc>()
+                                      .add(CartEvent.reOrder(order: order));
+                                  context.router.navigate(const CartRoute());
+                                },
+                        ),
                       ],
-                    ),
-                    OrderActionButton(
-                      label: 'Reorder',
-                      onTap: isOOS
-                          ? null
-                          : () {
-                              context
-                                  .read<CartBloc>()
-                                  .add(CartEvent.reOrder(order: order));
-                              context.router.navigate(const CartRoute());
-                            },
                     ),
                   ],
                 ),

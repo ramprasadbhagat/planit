@@ -39,9 +39,9 @@ String getOrderStatusText(String status) {
 
 Color getOrderStatusTagColor(String status) {
   const statusColors = {
-    'Order Received': AppColors.skyBlueColor,
+    'Order Received': AppColors.blue,
     'Processing': AppColors.orange,
-    'Dispatched': AppColors.orange,
+    'Dispatched': AppColors.purple,
     'Delivered': AppColors.green,
     'Cancelled': AppColors.red,
   };

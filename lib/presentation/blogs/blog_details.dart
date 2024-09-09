@@ -428,19 +428,11 @@ class CommentListItem extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.white,
-                border: Border.all(width: 3, color: AppColors.grey2),
+                border: Border.all(width: 2, color: AppColors.grey),
                 shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 4,
-                    spreadRadius: 1,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
               ),
               child: Text(
-                comment.userName.getOrDefaultValue('A').characters.first,
+                comment.userName.getOrDefaultValue('Unknown').characters.first,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.grey2,
@@ -458,7 +450,7 @@ class CommentListItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          comment.userName.getOrDefaultValue('User Name'),
+                          comment.userName.getOrDefaultValue('Unknown'),
                           style:
                               Theme.of(context).textTheme.titleMedium?.copyWith(
                                     fontWeight: FontWeight.w500,

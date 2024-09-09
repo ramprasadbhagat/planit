@@ -26,6 +26,8 @@ abstract class AppColors {
   static const Color arrowButtonBackgroundColor =
       Color.fromRGBO(138, 177, 180, 1);
   static const Color orange = Color.fromRGBO(231, 165, 70, 1);
+  static const Color blue = Color.fromRGBO(0, 123, 255, 1.0);
+  static const Color purple = Color.fromRGBO(111, 66, 193, 1.0);
   static const Color lightGray2 = Color.fromRGBO(217, 217, 217, 1.0);
   static const Color shadesGray = Color.fromRGBO(160, 160, 160, 1.0);
   static const Color dividerColor = Color.fromRGBO(161, 161, 161, 1.0);
