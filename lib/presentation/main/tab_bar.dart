@@ -134,7 +134,8 @@ class MainTabbar extends StatelessWidget {
                   );
 
                   context.router.navigate(const HomeRoute());
-                  context.router.navigate(const OrderListRoute());
+                  context.router.navigate(const OrderSuccessRoute());
+
                   if (state.selectedPaymentMethod ==
                       const PaymentMethod.wallet()) {
                     context

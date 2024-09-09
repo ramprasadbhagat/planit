@@ -60,7 +60,9 @@ class UserProfilePage extends StatelessWidget {
                 return TextButton(
                   onPressed: () => context.router.navigate(const HomeRoute()),
                   child: Text(
-                    state.user.isValid ? 'Continue' : 'Skip for now',
+                    state.user.isValid
+                        ? StringConstant.continueString
+                        : 'Skip for now',
                     style: textTheme.labelSmall,
                   ),
                 );
@@ -112,7 +114,10 @@ class CheckoutContinueButton extends StatelessWidget {
 
         context.router.navigate(const CheckoutRoute());
       },
-      child: Text('Continue', style: Theme.of(context).textTheme.labelSmall),
+      child: Text(
+        StringConstant.continueString,
+        style: Theme.of(context).textTheme.labelSmall,
+      ),
     );
   }
 }

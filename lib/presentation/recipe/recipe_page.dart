@@ -61,6 +61,7 @@ class RecipesPage extends StatelessWidget {
                               label: Text(
                                 '${state.filterCount}',
                               ),
+                              offset: const Offset(1, -4),
                               textStyle: const TextStyle(fontSize: 10),
                               child: Material(
                                 color: AppColors.transparent,

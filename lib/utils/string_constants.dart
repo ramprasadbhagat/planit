@@ -50,4 +50,8 @@ abstract class StringConstant {
 
   static const String pleaseAddYourDeliveryPinCode =
       'Please add your delivery pin code';
+  static const String orderSuccessSubTitle =
+      'Your order has been placed. Thank you for ordering.';
+  static const String congratulationsString = 'Congratulations !';
+  static const String continueString = 'Continue';
 }

@@ -99,6 +99,10 @@ class AppRouter extends $AppRouter {
           path: '/searchBlogs',
         ),
         AutoRoute(
+          page: OrderSuccessRoute.page,
+          path: '/OrderSuccessPage',
+        ),
+        AutoRoute(
           path: '/maintab',
           page: MainTabbar.page,
           initial: true,
