@@ -29,7 +29,6 @@ class DeliveringTo extends StatelessWidget {
       deadline = deadline.add(const Duration(days: 1));
     }
 
-    final remainingTime = deadline.difference(now);
     final isNextDay = now.isAfter(DateTime(now.year, now.month, now.day, 18));
 
     final textTheme = Theme.of(context).textTheme;
@@ -48,7 +47,12 @@ class DeliveringTo extends StatelessWidget {
                     CustomSnackbar.showErrorMessage(context, l.failureMessage);
                     context.router.maybePop();
                   },
-                  (_) {},
+                  (_) {
+                    CustomSnackbar.showSuccessMessage(
+                      context,
+                      StringConstant.pinCodeSavedSuccessfully,
+                    );
+                  },
                 ),
               );
               context.read<AddressBookBloc>().add(
@@ -56,54 +60,65 @@ class DeliveringTo extends StatelessWidget {
                       pinCode: state.pincode,
                     ),
                   );
-              CustomSnackbar.showSuccessMessage(
-                context,
-                StringConstant.pinCodeSavedSuccessfully,
-              );
+
               context.router.maybePop();
             },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      SvgImage.locationPin,
-                    ),
-                    const SizedBox(width: 4.0),
-                    GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet<void>(
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (BuildContext context) =>
-                              const CommonBottomSheet(
-                            child: PinCodeDialogBox(),
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (BuildContext context) => const CommonBottomSheet(
+                    child: PinCodeDialogBox(),
+                  ),
+                );
+              },
+              child: BlocBuilder<PincodeBloc, PincodeState>(
+                buildWhen: (previous, current) =>
+                    previous.pincode != current.pincode,
+                builder: (context, state) {
+                  if (state.pincode.isEmpty) {
+                    return Row(
+                      children: [
+                        SvgPicture.asset(
+                          SvgImage.locationPin,
+                        ),
+                        const SizedBox(width: 4.0),
+                        Text(
+                          StringConstant.pleaseAddYourDeliveryPinCode,
+                          style: textTheme.labelSmall?.copyWith(),
+                        ),
+                      ],
+                    );
+                  }
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            SvgImage.locationPin,
                           ),
-                        );
-                      },
-                      child: BlocBuilder<PincodeBloc, PincodeState>(
-                        buildWhen: (previous, current) =>
-                            previous.pincode != current.pincode,
-                        builder: (context, state) {
-                          return Text(
+                          const SizedBox(width: 4.0),
+                          Text(
                             'Delivering to  ${state.pincode}',
                             style: textTheme.bodyMedium,
-                          );
-                        },
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Text(
-                  isNextDay
-                      ? 'Order within 30 mins for delivery by 6 pm tomorrow'
-                      : 'Order within 30 mins for delivery by 6 pm today',
-                  style: textTheme.labelSmall?.copyWith(fontSize: 13),
-                ),
-                const SizedBox(width: 4.0),
-              ],
+                      Text(
+                        isNextDay
+                            ? 'Order within 30 mins for delivery by 6 pm tomorrow'
+                            : 'Order within 30 mins for delivery by 6 pm today',
+                        style: textTheme.labelSmall?.copyWith(fontSize: 13),
+                      ),
+                      const SizedBox(width: 4.0),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),

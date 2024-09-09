@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:planit/presentation/core/coming_soon/coming_soon_widget.dart';
 
 @RoutePage()
 class TalkToUsPage extends StatelessWidget {
@@ -21,9 +22,7 @@ class TalkToUsPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Talk To Us',
-            ),
+            ComingSoon(),
           ],
         ),
       ),

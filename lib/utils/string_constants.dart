@@ -47,4 +47,7 @@ abstract class StringConstant {
 
   static String selectedAddressNotAlignedWithDeliveryPin(String pinCode) =>
       'Please choose addresses added with delivery pin - $pinCode. please change address to place order';
+
+  static const String pleaseAddYourDeliveryPinCode =
+      'Please add your delivery pin code';
 }

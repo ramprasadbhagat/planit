@@ -11,6 +11,7 @@ import 'package:planit/presentation/order/widgets/review_order.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:planit/utils/animation_path.dart';
 import 'package:planit/utils/png_image.dart';
 
 @RoutePage()
@@ -613,7 +614,7 @@ class OrderDetailsPage extends StatelessWidget {
                               right: -10,
                               top: -10,
                               child: Lottie.asset(
-                                'assets/anim/payment_done.json',
+                                AnimationPath.paymentDone,
                                 height: 60,
                                 repeat: false,
                               ),
