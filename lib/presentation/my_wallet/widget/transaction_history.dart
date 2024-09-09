@@ -31,11 +31,12 @@ class TransactionHistoryList extends StatelessWidget {
                       message: 'No Transaction found',
                     ),
                   ),
-                  controller: ScrollController(),
                   onRefresh: () => context
                       .read<WalletBloc>()
                       .add(const WalletEvent.fetchTransactionHistory()),
-                  onLoadingMore: () => {},
+                  onLoadingMore: () => context
+                      .read<WalletBloc>()
+                      .add(const WalletEvent.fetchMoreTransactionEvent()),
                   isLoading: state.isTransactionLoading,
                   itemBuilder: (_, index, item) => TransactionHistoryItem(
                     transaction: state.transactions[index],

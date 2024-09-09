@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
-import 'package:planit/domain/wallet/entities/transaction_history.dart';
+import 'package:planit/domain/wallet/entities/transaction_history_response.dart';
 import 'package:planit/domain/wallet/repository/i_wallet_repository.dart';
 import 'package:planit/infrastructure/wallet/datasource/wallet_local.dart';
 import 'package:planit/infrastructure/wallet/datasource/wallet_remote.dart';
@@ -66,20 +66,26 @@ class WalletRepository implements IWalletRepository {
   }
 
   @override
-  Future<Either<ApiFailure, List<TransactionHistory>>>
-      fetchTransactionsHistory() async {
-    // if (config.appFlavor == Flavor.mock) {
-    //   try {
-    //     final res = await localDatasource.fetchBalance();
+  Future<Either<ApiFailure, TransactionHistoryResponse>>
+      fetchTransactionsHistory({
+    int pageSize = 10,
+    int pageNumber = 1,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final res = await localDatasource.fetchTransactionsHistory();
 
-    //     return Right(res);
-    //   } catch (e) {
-    //     return Left(FailureHandler.handleFailure(e));
-    //   }
-    // }
+        return Right(res);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
 
     try {
-      final res = await remoteDatasource.fetchTransactionsHistory();
+      final res = await remoteDatasource.fetchTransactionsHistory(
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      );
 
       return Right(res);
     } catch (e) {

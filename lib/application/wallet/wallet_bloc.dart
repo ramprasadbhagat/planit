@@ -50,11 +50,14 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
         emit(
           state.copyWith(
             isTransactionLoading: true,
+            transactions: <TransactionHistory>[],
           ),
         );
 
         final failureOrSuccess =
-            await _walletRepository.fetchTransactionsHistory();
+            await _walletRepository.fetchTransactionsHistory(
+          pageNumber: 1,
+        );
 
         failureOrSuccess.fold((l) {
           emit(
@@ -67,10 +70,47 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
           emit(
             state.copyWith(
               isTransactionLoading: false,
-              transactions: r,
+              transactions: r.items,
+              transactionPageNumber: 2,
+              hasMore: r.items.length < r.totalCount,
             ),
           );
         });
+      },
+      fetchMoreTransactionEvent: (_FetchMoreEvent value) async {
+        if (state.isTransactionLoading || !state.hasMore) return;
+
+        emit(
+          state.copyWith(
+            isTransactionLoading: true,
+          ),
+        );
+        final failureOrSuccessOption =
+            await _walletRepository.fetchTransactionsHistory(
+          pageNumber: state.transactionPageNumber,
+        );
+        failureOrSuccessOption.fold(
+          (l) {
+            emit(
+              state.copyWith(
+                isTransactionLoading: false,
+                apiFailureOrSuccessOption: optionOf(failureOrSuccessOption),
+              ),
+            );
+          },
+          (r) {
+            final totalTransactions = [...state.transactions, ...r.items];
+
+            emit(
+              state.copyWith(
+                isTransactionLoading: false,
+                transactions: totalTransactions,
+                transactionPageNumber: state.transactionPageNumber + 1,
+                hasMore: totalTransactions.length < r.totalCount,
+              ),
+            );
+          },
+        );
       },
     );
   }

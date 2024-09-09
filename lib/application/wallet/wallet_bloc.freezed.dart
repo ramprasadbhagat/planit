@@ -20,18 +20,21 @@ mixin _$WalletEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBalance,
     required TResult Function() fetchTransactionHistory,
+    required TResult Function() fetchMoreTransactionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBalance,
     TResult? Function()? fetchTransactionHistory,
+    TResult? Function()? fetchMoreTransactionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBalance,
     TResult Function()? fetchTransactionHistory,
+    TResult Function()? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$WalletEvent {
     required TResult Function(_FetchBalance value) fetchBalance,
     required TResult Function(_FetchTransactionHistory value)
         fetchTransactionHistory,
+    required TResult Function(_FetchMoreEvent value) fetchMoreTransactionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBalance value)? fetchBalance,
     TResult? Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult? Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBalance value)? fetchBalance,
     TResult Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +121,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBalance,
     required TResult Function() fetchTransactionHistory,
+    required TResult Function() fetchMoreTransactionEvent,
   }) {
     return fetchBalance();
   }
@@ -124,6 +131,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBalance,
     TResult? Function()? fetchTransactionHistory,
+    TResult? Function()? fetchMoreTransactionEvent,
   }) {
     return fetchBalance?.call();
   }
@@ -133,6 +141,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBalance,
     TResult Function()? fetchTransactionHistory,
+    TResult Function()? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) {
     if (fetchBalance != null) {
@@ -147,6 +156,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
     required TResult Function(_FetchBalance value) fetchBalance,
     required TResult Function(_FetchTransactionHistory value)
         fetchTransactionHistory,
+    required TResult Function(_FetchMoreEvent value) fetchMoreTransactionEvent,
   }) {
     return fetchBalance(this);
   }
@@ -156,6 +166,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBalance value)? fetchBalance,
     TResult? Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult? Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
   }) {
     return fetchBalance?.call(this);
   }
@@ -165,6 +176,7 @@ class _$FetchBalanceImpl implements _FetchBalance {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBalance value)? fetchBalance,
     TResult Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) {
     if (fetchBalance != null) {
@@ -221,6 +233,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBalance,
     required TResult Function() fetchTransactionHistory,
+    required TResult Function() fetchMoreTransactionEvent,
   }) {
     return fetchTransactionHistory();
   }
@@ -230,6 +243,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBalance,
     TResult? Function()? fetchTransactionHistory,
+    TResult? Function()? fetchMoreTransactionEvent,
   }) {
     return fetchTransactionHistory?.call();
   }
@@ -239,6 +253,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBalance,
     TResult Function()? fetchTransactionHistory,
+    TResult Function()? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) {
     if (fetchTransactionHistory != null) {
@@ -253,6 +268,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
     required TResult Function(_FetchBalance value) fetchBalance,
     required TResult Function(_FetchTransactionHistory value)
         fetchTransactionHistory,
+    required TResult Function(_FetchMoreEvent value) fetchMoreTransactionEvent,
   }) {
     return fetchTransactionHistory(this);
   }
@@ -262,6 +278,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBalance value)? fetchBalance,
     TResult? Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult? Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
   }) {
     return fetchTransactionHistory?.call(this);
   }
@@ -271,6 +288,7 @@ class _$FetchTransactionHistoryImpl implements _FetchTransactionHistory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBalance value)? fetchBalance,
     TResult Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
     required TResult orElse(),
   }) {
     if (fetchTransactionHistory != null) {
@@ -285,6 +303,115 @@ abstract class _FetchTransactionHistory implements WalletEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchMoreEventImplCopyWith<$Res> {
+  factory _$$FetchMoreEventImplCopyWith(_$FetchMoreEventImpl value,
+          $Res Function(_$FetchMoreEventImpl) then) =
+      __$$FetchMoreEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchMoreEventImplCopyWithImpl<$Res>
+    extends _$WalletEventCopyWithImpl<$Res, _$FetchMoreEventImpl>
+    implements _$$FetchMoreEventImplCopyWith<$Res> {
+  __$$FetchMoreEventImplCopyWithImpl(
+      _$FetchMoreEventImpl _value, $Res Function(_$FetchMoreEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchMoreEventImpl implements _FetchMoreEvent {
+  const _$FetchMoreEventImpl();
+
+  @override
+  String toString() {
+    return 'WalletEvent.fetchMoreTransactionEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchMoreEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBalance,
+    required TResult Function() fetchTransactionHistory,
+    required TResult Function() fetchMoreTransactionEvent,
+  }) {
+    return fetchMoreTransactionEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBalance,
+    TResult? Function()? fetchTransactionHistory,
+    TResult? Function()? fetchMoreTransactionEvent,
+  }) {
+    return fetchMoreTransactionEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBalance,
+    TResult Function()? fetchTransactionHistory,
+    TResult Function()? fetchMoreTransactionEvent,
+    required TResult orElse(),
+  }) {
+    if (fetchMoreTransactionEvent != null) {
+      return fetchMoreTransactionEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBalance value) fetchBalance,
+    required TResult Function(_FetchTransactionHistory value)
+        fetchTransactionHistory,
+    required TResult Function(_FetchMoreEvent value) fetchMoreTransactionEvent,
+  }) {
+    return fetchMoreTransactionEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBalance value)? fetchBalance,
+    TResult? Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult? Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
+  }) {
+    return fetchMoreTransactionEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBalance value)? fetchBalance,
+    TResult Function(_FetchTransactionHistory value)? fetchTransactionHistory,
+    TResult Function(_FetchMoreEvent value)? fetchMoreTransactionEvent,
+    required TResult orElse(),
+  }) {
+    if (fetchMoreTransactionEvent != null) {
+      return fetchMoreTransactionEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchMoreEvent implements WalletEvent {
+  const factory _FetchMoreEvent() = _$FetchMoreEventImpl;
+}
+
+/// @nodoc
 mixin _$WalletState {
   int get balance => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
@@ -293,6 +420,8 @@ mixin _$WalletState {
       throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  bool get hasMore => throw _privateConstructorUsedError;
+  int get transactionPageNumber => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WalletStateCopyWith<WalletState> get copyWith =>
@@ -310,7 +439,9 @@ abstract class $WalletStateCopyWith<$Res> {
       bool isLoading,
       bool isTransactionLoading,
       List<TransactionHistory> transactions,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      bool hasMore,
+      int transactionPageNumber});
 }
 
 /// @nodoc
@@ -331,6 +462,8 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
     Object? isTransactionLoading = null,
     Object? transactions = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? hasMore = null,
+    Object? transactionPageNumber = null,
   }) {
     return _then(_value.copyWith(
       balance: null == balance
@@ -353,6 +486,14 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactionPageNumber: null == transactionPageNumber
+          ? _value.transactionPageNumber
+          : transactionPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -370,7 +511,9 @@ abstract class _$$WalletStateImplCopyWith<$Res>
       bool isLoading,
       bool isTransactionLoading,
       List<TransactionHistory> transactions,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      bool hasMore,
+      int transactionPageNumber});
 }
 
 /// @nodoc
@@ -389,6 +532,8 @@ class __$$WalletStateImplCopyWithImpl<$Res>
     Object? isTransactionLoading = null,
     Object? transactions = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? hasMore = null,
+    Object? transactionPageNumber = null,
   }) {
     return _then(_$WalletStateImpl(
       balance: null == balance
@@ -411,6 +556,14 @@ class __$$WalletStateImplCopyWithImpl<$Res>
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transactionPageNumber: null == transactionPageNumber
+          ? _value.transactionPageNumber
+          : transactionPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -423,7 +576,9 @@ class _$WalletStateImpl implements _WalletState {
       required this.isLoading,
       required this.isTransactionLoading,
       required final List<TransactionHistory> transactions,
-      required this.apiFailureOrSuccessOption})
+      required this.apiFailureOrSuccessOption,
+      required this.hasMore,
+      required this.transactionPageNumber})
       : _transactions = transactions;
 
   @override
@@ -442,10 +597,14 @@ class _$WalletStateImpl implements _WalletState {
 
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
+  @override
+  final bool hasMore;
+  @override
+  final int transactionPageNumber;
 
   @override
   String toString() {
-    return 'WalletState(balance: $balance, isLoading: $isLoading, isTransactionLoading: $isTransactionLoading, transactions: $transactions, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'WalletState(balance: $balance, isLoading: $isLoading, isTransactionLoading: $isTransactionLoading, transactions: $transactions, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, hasMore: $hasMore, transactionPageNumber: $transactionPageNumber)';
   }
 
   @override
@@ -462,7 +621,10 @@ class _$WalletStateImpl implements _WalletState {
                 .equals(other._transactions, _transactions) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
-                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
+                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
+            (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
+            (identical(other.transactionPageNumber, transactionPageNumber) ||
+                other.transactionPageNumber == transactionPageNumber));
   }
 
   @override
@@ -472,7 +634,9 @@ class _$WalletStateImpl implements _WalletState {
       isLoading,
       isTransactionLoading,
       const DeepCollectionEquality().hash(_transactions),
-      apiFailureOrSuccessOption);
+      apiFailureOrSuccessOption,
+      hasMore,
+      transactionPageNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -488,7 +652,9 @@ abstract class _WalletState implements WalletState {
       required final bool isTransactionLoading,
       required final List<TransactionHistory> transactions,
       required final Option<Either<ApiFailure, dynamic>>
-          apiFailureOrSuccessOption}) = _$WalletStateImpl;
+          apiFailureOrSuccessOption,
+      required final bool hasMore,
+      required final int transactionPageNumber}) = _$WalletStateImpl;
 
   @override
   int get balance;
@@ -500,6 +666,10 @@ abstract class _WalletState implements WalletState {
   List<TransactionHistory> get transactions;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
+  @override
+  bool get hasMore;
+  @override
+  int get transactionPageNumber;
   @override
   @JsonKey(ignore: true)
   _$$WalletStateImplCopyWith<_$WalletStateImpl> get copyWith =>

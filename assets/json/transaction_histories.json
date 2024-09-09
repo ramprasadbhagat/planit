@@ -1,0 +1,75 @@
+{
+    "items": [
+        {
+            "_id": "66cf21af92a5c133f4975461",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": "pay_OpQXyUf06G2ol6",
+            "type": "wallet",
+            "amount": "1000",
+            "description": "Daily Life items",
+            "status": "CR",
+            "date": "2024-08-28T13:10:07.172Z"
+        },
+        {
+            "_id": "66cf223792a5c133f4975462",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": "pay_OpQXyUf06G2ol6",
+            "type": "wallet",
+            "amount": "2000",
+            "description": "Electronic Device",
+            "status": "CR",
+            "date": "2024-08-28T13:12:23.613Z"
+        },
+        {
+            "_id": "66d037d4407e84001207a2b2",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": null,
+            "type": "wallet",
+            "amount": 200,
+            "description": "Added money to wallet",
+            "status": "CR",
+            "date": "2024-08-29T08:56:52.657Z"
+        },
+        {
+            "_id": "66d0470f407e84001207a2be",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": null,
+            "type": "wallet",
+            "amount": 455,
+            "description": "Purchased amount is deducted from your wallet",
+            "status": "DR",
+            "date": "2024-08-29T10:01:51.033Z"
+        },
+        {
+            "_id": "66d048c2407e84001207a2ce",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": "66d048c2407e84001207a2cc",
+            "type": "wallet",
+            "amount": 275,
+            "description": "Purchased amount is deducted from your wallet",
+            "status": "DR",
+            "date": "2024-08-29T10:09:06.268Z"
+        },
+        {
+            "_id": "66d055c15cd65600128d9c05",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": "pay_Oqgxdy4b0fz2CC",
+            "type": "wallet",
+            "amount": 500,
+            "description": "Added money to wallet",
+            "status": "CR",
+            "date": "2024-08-29T11:04:33.476Z"
+        },
+        {
+            "_id": "66d0564f5cd65600128d9c0c",
+            "userId": "66b0960c0feada0012113695",
+            "transaction_id": "66d0564f5cd65600128d9c0a",
+            "type": "wallet",
+            "amount": 275,
+            "description": "Purchased amount is deducted from your wallet",
+            "status": "DR",
+            "date": "2024-08-29T11:06:55.774Z"
+        }
+    ],
+    "totalCount": 7
+}

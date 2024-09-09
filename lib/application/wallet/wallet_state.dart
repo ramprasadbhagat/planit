@@ -8,6 +8,8 @@ class WalletState with _$WalletState {
     required bool isTransactionLoading,
     required List<TransactionHistory> transactions,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required bool hasMore,
+    required int transactionPageNumber,
   }) = _WalletState;
 
   factory WalletState.initial() => const WalletState(
@@ -16,5 +18,7 @@ class WalletState with _$WalletState {
         apiFailureOrSuccessOption: None(),
         isTransactionLoading: false,
         transactions: [],
+        hasMore: true,
+        transactionPageNumber: 1,
       );
 }
