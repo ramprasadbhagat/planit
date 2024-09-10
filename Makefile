@@ -6,6 +6,8 @@ clean_ios:
 	@cd ios && rm -rf Pods && rm Podfile.lock && fvm flutter pub get && pod install && cd ..
 build_ios_uat:
 	@flutter build ipa --flavor uat -t lib/main_uat.dart --release --export-options-plist=ios/config/uat/exportOptions.plist
+build_android_uat_apk:
+	@fvm flutter build apk --flavor uat -t lib/main_uat.dart --release
 build_android_uat:
 	@fvm flutter build appbundle --flavor uat -t lib/main_uat.dart --release
 build_web_uat:

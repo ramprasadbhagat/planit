@@ -8,6 +8,7 @@ import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/utils/svg_image.dart';
 
 part 'product_detail_event.dart';
 part 'product_detail_state.dart';

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
@@ -19,6 +20,7 @@ import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
+import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
@@ -104,14 +106,14 @@ class AddToCartBottomSheet extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Image.asset(
-                                  state.isOOS ? PngImage.oos : PngImage.stock,
-                                  height: 34,
-                                  width: 25,
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
+                                if (state.stockInfo.isNotEmpty) ...[
+                                  SvgPicture.asset(
+                                    state.stockInfo,
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                ],
                                 Expanded(
                                   child: Text(
                                     state.product.name,
