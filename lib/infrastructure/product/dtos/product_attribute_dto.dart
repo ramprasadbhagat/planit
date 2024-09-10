@@ -31,7 +31,7 @@ class ProductAttributeDto with _$ProductAttributeDto {
         attributeItemValue: StringValue(attributeItemValue),
         attributeItemName: StringValue(attributeItemName),
         price: price,
-        quantity: quantity,
+        quantity: AttributeQuantity(quantity),
       );
 }
 

@@ -62,7 +62,13 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
         emit(state.copyWith(searchCouponList: []));
       },
       applyCoupon: (_Apply e) async {
-        emit(state.copyWith(isApplying: true, appliedCoupon: e.coupon));
+        emit(
+          state.copyWith(
+            isApplying: true,
+            appliedCoupon: e.coupon,
+            apiFailureOrSuccessOption: none(),
+          ),
+        );
         final failureOrSuccess = await repository.applyCoupon(
           coupon: e.coupon,
         );

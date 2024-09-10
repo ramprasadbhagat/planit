@@ -98,3 +98,5 @@ Icon getOrderStatusOrderListIcon(String status) {
       );
   }
 }
+
+bool getIsGretharThanZero(int quantity) => quantity <= 0;

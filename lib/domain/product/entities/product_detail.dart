@@ -43,7 +43,7 @@ class ProductDetail with _$ProductDetail {
         attributeItemId: selectAttribute.attributeItemId,
         price: Price(
           price: selectAttribute.price,
-          quantity: selectAttribute.quantity,
+          quantity: selectAttribute.quantity.getOrDefaultValue(0),
         ),
         productDescription: productDescription,
         backOrder: backOrder,
@@ -59,7 +59,7 @@ class ProductAttribute with _$ProductAttribute {
     required StringValue attributeItemValue,
     required StringValue attributeItemName,
     required String price,
-    required int quantity,
+    required AttributeQuantity quantity,
   }) = _ProductAttribute;
 
   factory ProductAttribute.empty() => ProductAttribute(
@@ -68,6 +68,6 @@ class ProductAttribute with _$ProductAttribute {
         attributeItemValue: StringValue(''),
         attributeItemName: StringValue(''),
         price: '0',
-        quantity: 0,
+        quantity: AttributeQuantity(0),
       );
 }

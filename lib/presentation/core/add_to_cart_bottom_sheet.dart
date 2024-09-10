@@ -20,7 +20,6 @@ import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
 import 'package:planit/utils/png_image.dart';
-import 'package:planit/utils/svg_image.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class AddToCartBottomSheet extends StatelessWidget {
@@ -212,11 +211,10 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
-                                  color:
-                                      state.selectedProductAttribute.quantity >
-                                              0
-                                          ? AppColors.textBlack
-                                          : AppColors.grey4,
+                                  color: state.selectedProductAttribute.quantity
+                                          .isGretharThanZero
+                                      ? AppColors.textBlack
+                                      : AppColors.grey4,
                                 ),
                               ),
                             ],
@@ -360,8 +358,8 @@ class Unit extends StatelessWidget {
           previous.selectedProductAttribute != current.selectedProductAttribute,
       builder: (context, state) {
         final isSelected = state.selectedProductAttribute == productAttribute;
-        final isOutOfStock =
-            !(productAttribute.quantity > 0 || state.product.backOrder);
+        final isOutOfStock = !(productAttribute.quantity.isGretharThanZero ||
+            state.product.backOrder);
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -407,7 +405,8 @@ class Unit extends StatelessWidget {
                   ),
                 ],
                 Text(
-                  productAttribute.quantity > 0 || state.product.backOrder
+                  productAttribute.quantity.isGretharThanZero ||
+                          state.product.backOrder
                       ? '₹ ${productAttribute.price}'
                       : 'Out of stock',
                   style: textTheme.bodySmall?.copyWith(fontSize: 10),

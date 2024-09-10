@@ -180,3 +180,16 @@ class FullName extends ValueObject<String> {
     );
   }
 }
+
+class AttributeQuantity extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory AttributeQuantity.fromString(String input) =>
+      AttributeQuantity._(validateInteger(input));
+  factory AttributeQuantity(int input) => AttributeQuantity._(Right(input));
+
+  bool get isGretharThanZero => getIsGretharThanZero(value.getOrElse(() => 0));
+
+  const AttributeQuantity._(this.value);
+}
