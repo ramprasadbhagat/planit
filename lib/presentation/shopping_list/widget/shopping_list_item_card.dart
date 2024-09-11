@@ -136,20 +136,11 @@ class ShoppingListItemCard extends StatelessWidget {
                       height: 2,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         StarRating(
                           rating: double.tryParse(item.productRating) ?? 0,
                         ),
-                        const SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          item.productRating,
-                          style: textTheme.bodySmall?.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const Spacer(),
                         ItemCountWidget(
                           item: item,
                           isLoading: context

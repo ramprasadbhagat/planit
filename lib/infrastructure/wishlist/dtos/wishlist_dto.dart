@@ -14,6 +14,8 @@ class WishlistDto with _$WishlistDto {
     @JsonKey(name: 'product_id', defaultValue: '') required String productId,
     @JsonKey(name: 'attributeItemId', defaultValue: '')
     required String attributeItemId,
+    @JsonKey(name: 'productRating', defaultValue: '')
+    required String productRating,
     @JsonKey(name: 'quantity', defaultValue: '') required String quantity,
     @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
     required int price,
@@ -36,6 +38,7 @@ class WishlistDto with _$WishlistDto {
                 attributeItemId: attributeItemId,
                 uid: id,
                 price: price,
+                productRating: productRating,
               ),
             )
             .toList(),
