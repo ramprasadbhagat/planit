@@ -326,7 +326,7 @@ mixin _$ProductAttribute {
   StringValue get attributeItemValue => throw _privateConstructorUsedError;
   StringValue get attributeItemName => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
+  AttributeQuantity get quantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductAttributeCopyWith<ProductAttribute> get copyWith =>
@@ -345,7 +345,7 @@ abstract class $ProductAttributeCopyWith<$Res> {
       StringValue attributeItemValue,
       StringValue attributeItemName,
       String price,
-      int quantity});
+      AttributeQuantity quantity});
 }
 
 /// @nodoc
@@ -392,7 +392,7 @@ class _$ProductAttributeCopyWithImpl<$Res, $Val extends ProductAttribute>
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AttributeQuantity,
     ) as $Val);
   }
 }
@@ -411,7 +411,7 @@ abstract class _$$ProductAttributeImplCopyWith<$Res>
       StringValue attributeItemValue,
       StringValue attributeItemName,
       String price,
-      int quantity});
+      AttributeQuantity quantity});
 }
 
 /// @nodoc
@@ -456,7 +456,7 @@ class __$$ProductAttributeImplCopyWithImpl<$Res>
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
+              as AttributeQuantity,
     ));
   }
 }
@@ -483,7 +483,7 @@ class _$ProductAttributeImpl implements _ProductAttribute {
   @override
   final String price;
   @override
-  final int quantity;
+  final AttributeQuantity quantity;
 
   @override
   String toString() {
@@ -533,7 +533,7 @@ abstract class _ProductAttribute implements ProductAttribute {
       required final StringValue attributeItemValue,
       required final StringValue attributeItemName,
       required final String price,
-      required final int quantity}) = _$ProductAttributeImpl;
+      required final AttributeQuantity quantity}) = _$ProductAttributeImpl;
 
   @override
   StringValue get attributeItemId;
@@ -546,7 +546,7 @@ abstract class _ProductAttribute implements ProductAttribute {
   @override
   String get price;
   @override
-  int get quantity;
+  AttributeQuantity get quantity;
   @override
   @JsonKey(ignore: true)
   _$$ProductAttributeImplCopyWith<_$ProductAttributeImpl> get copyWith =>

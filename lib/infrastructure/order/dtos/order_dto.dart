@@ -24,6 +24,12 @@ class OrderDto with _$OrderDto {
     @JsonKey(name: 'orderStatus', defaultValue: '') required String orderStatus,
     @JsonKey(name: 'totalPrice', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
+    @JsonKey(
+      name: 'couponReductionAmount',
+      defaultValue: 0,
+      readValue: intReadValue,
+    )
+    required int couponReductionAmount,
     @JsonKey(name: 'subTotal', defaultValue: 0, readValue: intReadValue)
     required int subTotal,
     @JsonKey(name: 'packingCharges', defaultValue: 0, readValue: intReadValue)
@@ -57,6 +63,7 @@ class OrderDto with _$OrderDto {
         paymentStatus: PaymentStatus(paymentStatus),
         orderStatus: OrderStatus(orderStatus),
         totalPrice: IntegerValue(totalPrice),
+        couponReductionAmount: IntegerValue(couponReductionAmount),
         subTotal: IntegerValue(subTotal),
         deliveryCharge: IntegerValue(deliveryCharge),
         totalDiscount: IntegerValue(totalDiscount),

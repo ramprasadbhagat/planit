@@ -21,6 +21,7 @@ mixin _$Coupon {
   CouponType get type => throw _privateConstructorUsedError;
   int get rate => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
+  bool get isActive => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CouponCopyWith<Coupon> get copyWith => throw _privateConstructorUsedError;
@@ -36,7 +37,8 @@ abstract class $CouponCopyWith<$Res> {
       String couponCode,
       CouponType type,
       int rate,
-      String shortDescription});
+      String shortDescription,
+      bool isActive});
 }
 
 /// @nodoc
@@ -57,6 +59,7 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
     Object? type = null,
     Object? rate = null,
     Object? shortDescription = null,
+    Object? isActive = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -79,6 +82,10 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$CouponImplCopyWith<$Res> implements $CouponCopyWith<$Res> {
       String couponCode,
       CouponType type,
       int rate,
-      String shortDescription});
+      String shortDescription,
+      bool isActive});
 }
 
 /// @nodoc
@@ -114,6 +122,7 @@ class __$$CouponImplCopyWithImpl<$Res>
     Object? type = null,
     Object? rate = null,
     Object? shortDescription = null,
+    Object? isActive = null,
   }) {
     return _then(_$CouponImpl(
       id: null == id
@@ -136,6 +145,10 @@ class __$$CouponImplCopyWithImpl<$Res>
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -148,7 +161,8 @@ class _$CouponImpl extends _Coupon {
       required this.couponCode,
       required this.type,
       required this.rate,
-      required this.shortDescription})
+      required this.shortDescription,
+      required this.isActive})
       : super._();
 
   @override
@@ -161,10 +175,12 @@ class _$CouponImpl extends _Coupon {
   final int rate;
   @override
   final String shortDescription;
+  @override
+  final bool isActive;
 
   @override
   String toString() {
-    return 'Coupon(id: $id, couponCode: $couponCode, type: $type, rate: $rate, shortDescription: $shortDescription)';
+    return 'Coupon(id: $id, couponCode: $couponCode, type: $type, rate: $rate, shortDescription: $shortDescription, isActive: $isActive)';
   }
 
   @override
@@ -178,12 +194,14 @@ class _$CouponImpl extends _Coupon {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.shortDescription, shortDescription) ||
-                other.shortDescription == shortDescription));
+                other.shortDescription == shortDescription) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, couponCode, type, rate, shortDescription);
+  int get hashCode => Object.hash(
+      runtimeType, id, couponCode, type, rate, shortDescription, isActive);
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +216,8 @@ abstract class _Coupon extends Coupon {
       required final String couponCode,
       required final CouponType type,
       required final int rate,
-      required final String shortDescription}) = _$CouponImpl;
+      required final String shortDescription,
+      required final bool isActive}) = _$CouponImpl;
   const _Coupon._() : super._();
 
   @override
@@ -211,6 +230,8 @@ abstract class _Coupon extends Coupon {
   int get rate;
   @override
   String get shortDescription;
+  @override
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$CouponImplCopyWith<_$CouponImpl> get copyWith =>

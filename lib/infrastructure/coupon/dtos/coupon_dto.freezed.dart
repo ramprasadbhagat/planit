@@ -30,6 +30,8 @@ mixin _$CouponDto {
   String get shortDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'type', defaultValue: '')
   String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'isActive', defaultValue: false)
+  bool get isActive => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +50,8 @@ abstract class $CouponDtoCopyWith<$Res> {
       @JsonKey(name: 'rate', defaultValue: 0, readValue: intReadValue) int rate,
       @JsonKey(name: 'shortDescription', defaultValue: '')
       String shortDescription,
-      @JsonKey(name: 'type', defaultValue: '') String type});
+      @JsonKey(name: 'type', defaultValue: '') String type,
+      @JsonKey(name: 'isActive', defaultValue: false) bool isActive});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$CouponDtoCopyWithImpl<$Res, $Val extends CouponDto>
     Object? rate = null,
     Object? shortDescription = null,
     Object? type = null,
+    Object? isActive = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -91,6 +95,10 @@ class _$CouponDtoCopyWithImpl<$Res, $Val extends CouponDto>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -109,7 +117,8 @@ abstract class _$$CouponDtoImplCopyWith<$Res>
       @JsonKey(name: 'rate', defaultValue: 0, readValue: intReadValue) int rate,
       @JsonKey(name: 'shortDescription', defaultValue: '')
       String shortDescription,
-      @JsonKey(name: 'type', defaultValue: '') String type});
+      @JsonKey(name: 'type', defaultValue: '') String type,
+      @JsonKey(name: 'isActive', defaultValue: false) bool isActive});
 }
 
 /// @nodoc
@@ -128,6 +137,7 @@ class __$$CouponDtoImplCopyWithImpl<$Res>
     Object? rate = null,
     Object? shortDescription = null,
     Object? type = null,
+    Object? isActive = null,
   }) {
     return _then(_$CouponDtoImpl(
       id: null == id
@@ -150,6 +160,10 @@ class __$$CouponDtoImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -164,7 +178,8 @@ class _$CouponDtoImpl extends _CouponDto {
       required this.rate,
       @JsonKey(name: 'shortDescription', defaultValue: '')
       required this.shortDescription,
-      @JsonKey(name: 'type', defaultValue: '') required this.type})
+      @JsonKey(name: 'type', defaultValue: '') required this.type,
+      @JsonKey(name: 'isActive', defaultValue: false) required this.isActive})
       : super._();
 
   factory _$CouponDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -185,10 +200,13 @@ class _$CouponDtoImpl extends _CouponDto {
   @override
   @JsonKey(name: 'type', defaultValue: '')
   final String type;
+  @override
+  @JsonKey(name: 'isActive', defaultValue: false)
+  final bool isActive;
 
   @override
   String toString() {
-    return 'CouponDto(id: $id, couponCode: $couponCode, rate: $rate, shortDescription: $shortDescription, type: $type)';
+    return 'CouponDto(id: $id, couponCode: $couponCode, rate: $rate, shortDescription: $shortDescription, type: $type, isActive: $isActive)';
   }
 
   @override
@@ -202,13 +220,15 @@ class _$CouponDtoImpl extends _CouponDto {
             (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, couponCode, rate, shortDescription, type);
+  int get hashCode => Object.hash(
+      runtimeType, id, couponCode, rate, shortDescription, type, isActive);
 
   @JsonKey(ignore: true)
   @override
@@ -233,8 +253,9 @@ abstract class _CouponDto extends CouponDto {
       required final int rate,
       @JsonKey(name: 'shortDescription', defaultValue: '')
       required final String shortDescription,
-      @JsonKey(name: 'type', defaultValue: '')
-      required final String type}) = _$CouponDtoImpl;
+      @JsonKey(name: 'type', defaultValue: '') required final String type,
+      @JsonKey(name: 'isActive', defaultValue: false)
+      required final bool isActive}) = _$CouponDtoImpl;
   const _CouponDto._() : super._();
 
   factory _CouponDto.fromJson(Map<String, dynamic> json) =
@@ -255,6 +276,9 @@ abstract class _CouponDto extends CouponDto {
   @override
   @JsonKey(name: 'type', defaultValue: '')
   String get type;
+  @override
+  @JsonKey(name: 'isActive', defaultValue: false)
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$CouponDtoImplCopyWith<_$CouponDtoImpl> get copyWith =>

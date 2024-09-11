@@ -20,7 +20,8 @@ class ProductDetailState with _$ProductDetailState {
   bool get isOOS =>
       product.attribute.isNotEmpty &&
       (!selectedProductAttribute.attributeItemId.isValid() ||
-          (selectedProductAttribute.quantity <= 0 && !product.backOrder));
+          (selectedProductAttribute.quantity.isGretharThanZero &&
+              !product.backOrder));
 
   String get stockInfo => isOOS
       ? SvgImage.outOfStock

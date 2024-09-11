@@ -11,6 +11,7 @@ class Coupon with _$Coupon {
     required CouponType type,
     required int rate,
     required String shortDescription,
+    required bool isActive,
   }) = _Coupon;
 
   int amount(int price) {
@@ -38,6 +39,7 @@ class Coupon with _$Coupon {
         id: '',
         shortDescription: '',
         type: CouponType.other,
+        isActive: false,
       );
 }
 

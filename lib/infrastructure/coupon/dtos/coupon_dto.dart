@@ -15,6 +15,7 @@ class CouponDto with _$CouponDto {
     @JsonKey(name: 'shortDescription', defaultValue: '')
     required String shortDescription,
     @JsonKey(name: 'type', defaultValue: '') required String type,
+    @JsonKey(name: 'isActive', defaultValue: false) required bool isActive,
   }) = _CouponDto;
 
   Coupon get toDomain => Coupon(
@@ -25,6 +26,7 @@ class CouponDto with _$CouponDto {
             ? CouponType.percentage
             : CouponType.fixedAmount,
         shortDescription: shortDescription,
+        isActive: isActive,
       );
 
   factory CouponDto.fromJson(Map<String, dynamic> json) =>
