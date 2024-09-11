@@ -19,21 +19,21 @@ mixin _$TrackOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Order order) getTrackOrderDetails,
+    required TResult Function(StringValue id) getTrackOrderDetails,
     required TResult Function() cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(Order order)? getTrackOrderDetails,
+    TResult? Function(StringValue id)? getTrackOrderDetails,
     TResult? Function()? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Order order)? getTrackOrderDetails,
+    TResult Function(StringValue id)? getTrackOrderDetails,
     TResult Function()? cancelOrder,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Order order) getTrackOrderDetails,
+    required TResult Function(StringValue id) getTrackOrderDetails,
     required TResult Function() cancelOrder,
   }) {
     return started();
@@ -129,7 +129,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(Order order)? getTrackOrderDetails,
+    TResult? Function(StringValue id)? getTrackOrderDetails,
     TResult? Function()? cancelOrder,
   }) {
     return started?.call();
@@ -139,7 +139,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Order order)? getTrackOrderDetails,
+    TResult Function(StringValue id)? getTrackOrderDetails,
     TResult Function()? cancelOrder,
     required TResult orElse(),
   }) {
@@ -194,9 +194,7 @@ abstract class _$$GetTrackOrderDetailsImplCopyWith<$Res> {
           $Res Function(_$GetTrackOrderDetailsImpl) then) =
       __$$GetTrackOrderDetailsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Order order});
-
-  $OrderCopyWith<$Res> get order;
+  $Res call({StringValue id});
 }
 
 /// @nodoc
@@ -210,36 +208,28 @@ class __$$GetTrackOrderDetailsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? order = null,
+    Object? id = null,
   }) {
     return _then(_$GetTrackOrderDetailsImpl(
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res> get order {
-    return $OrderCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$GetTrackOrderDetailsImpl implements _GetTrackOrderDetails {
-  const _$GetTrackOrderDetailsImpl({required this.order});
+  const _$GetTrackOrderDetailsImpl({required this.id});
 
   @override
-  final Order order;
+  final StringValue id;
 
   @override
   String toString() {
-    return 'TrackOrderEvent.getTrackOrderDetails(order: $order)';
+    return 'TrackOrderEvent.getTrackOrderDetails(id: $id)';
   }
 
   @override
@@ -247,11 +237,11 @@ class _$GetTrackOrderDetailsImpl implements _GetTrackOrderDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetTrackOrderDetailsImpl &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, order);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -265,32 +255,32 @@ class _$GetTrackOrderDetailsImpl implements _GetTrackOrderDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Order order) getTrackOrderDetails,
+    required TResult Function(StringValue id) getTrackOrderDetails,
     required TResult Function() cancelOrder,
   }) {
-    return getTrackOrderDetails(order);
+    return getTrackOrderDetails(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(Order order)? getTrackOrderDetails,
+    TResult? Function(StringValue id)? getTrackOrderDetails,
     TResult? Function()? cancelOrder,
   }) {
-    return getTrackOrderDetails?.call(order);
+    return getTrackOrderDetails?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Order order)? getTrackOrderDetails,
+    TResult Function(StringValue id)? getTrackOrderDetails,
     TResult Function()? cancelOrder,
     required TResult orElse(),
   }) {
     if (getTrackOrderDetails != null) {
-      return getTrackOrderDetails(order);
+      return getTrackOrderDetails(id);
     }
     return orElse();
   }
@@ -331,10 +321,10 @@ class _$GetTrackOrderDetailsImpl implements _GetTrackOrderDetails {
 }
 
 abstract class _GetTrackOrderDetails implements TrackOrderEvent {
-  const factory _GetTrackOrderDetails({required final Order order}) =
+  const factory _GetTrackOrderDetails({required final StringValue id}) =
       _$GetTrackOrderDetailsImpl;
 
-  Order get order;
+  StringValue get id;
   @JsonKey(ignore: true)
   _$$GetTrackOrderDetailsImplCopyWith<_$GetTrackOrderDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -379,7 +369,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(Order order) getTrackOrderDetails,
+    required TResult Function(StringValue id) getTrackOrderDetails,
     required TResult Function() cancelOrder,
   }) {
     return cancelOrder();
@@ -389,7 +379,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(Order order)? getTrackOrderDetails,
+    TResult? Function(StringValue id)? getTrackOrderDetails,
     TResult? Function()? cancelOrder,
   }) {
     return cancelOrder?.call();
@@ -399,7 +389,7 @@ class _$CancelOrderImpl implements _CancelOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(Order order)? getTrackOrderDetails,
+    TResult Function(StringValue id)? getTrackOrderDetails,
     TResult Function()? cancelOrder,
     required TResult orElse(),
   }) {
@@ -450,11 +440,11 @@ abstract class _CancelOrder implements TrackOrderEvent {
 
 /// @nodoc
 mixin _$TrackOrderState {
-  TrackOrderDetails get trackOrderItem => throw _privateConstructorUsedError;
+  TrackOrder get trackOrder => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
-  Order get order => throw _privateConstructorUsedError;
+  bool get isCancelling => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrackOrderStateCopyWith<TrackOrderState> get copyWith =>
@@ -468,13 +458,12 @@ abstract class $TrackOrderStateCopyWith<$Res> {
       _$TrackOrderStateCopyWithImpl<$Res, TrackOrderState>;
   @useResult
   $Res call(
-      {TrackOrderDetails trackOrderItem,
+      {TrackOrder trackOrder,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      Order order});
+      bool isCancelling});
 
-  $TrackOrderDetailsCopyWith<$Res> get trackOrderItem;
-  $OrderCopyWith<$Res> get order;
+  $TrackOrderCopyWith<$Res> get trackOrder;
 }
 
 /// @nodoc
@@ -490,16 +479,16 @@ class _$TrackOrderStateCopyWithImpl<$Res, $Val extends TrackOrderState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItem = null,
+    Object? trackOrder = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? order = null,
+    Object? isCancelling = null,
   }) {
     return _then(_value.copyWith(
-      trackOrderItem: null == trackOrderItem
-          ? _value.trackOrderItem
-          : trackOrderItem // ignore: cast_nullable_to_non_nullable
-              as TrackOrderDetails,
+      trackOrder: null == trackOrder
+          ? _value.trackOrder
+          : trackOrder // ignore: cast_nullable_to_non_nullable
+              as TrackOrder,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -508,26 +497,18 @@ class _$TrackOrderStateCopyWithImpl<$Res, $Val extends TrackOrderState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order,
+      isCancelling: null == isCancelling
+          ? _value.isCancelling
+          : isCancelling // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TrackOrderDetailsCopyWith<$Res> get trackOrderItem {
-    return $TrackOrderDetailsCopyWith<$Res>(_value.trackOrderItem, (value) {
-      return _then(_value.copyWith(trackOrderItem: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderCopyWith<$Res> get order {
-    return $OrderCopyWith<$Res>(_value.order, (value) {
-      return _then(_value.copyWith(order: value) as $Val);
+  $TrackOrderCopyWith<$Res> get trackOrder {
+    return $TrackOrderCopyWith<$Res>(_value.trackOrder, (value) {
+      return _then(_value.copyWith(trackOrder: value) as $Val);
     });
   }
 }
@@ -541,15 +522,13 @@ abstract class _$$TrackOrderStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TrackOrderDetails trackOrderItem,
+      {TrackOrder trackOrder,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      Order order});
+      bool isCancelling});
 
   @override
-  $TrackOrderDetailsCopyWith<$Res> get trackOrderItem;
-  @override
-  $OrderCopyWith<$Res> get order;
+  $TrackOrderCopyWith<$Res> get trackOrder;
 }
 
 /// @nodoc
@@ -563,16 +542,16 @@ class __$$TrackOrderStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItem = null,
+    Object? trackOrder = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? order = null,
+    Object? isCancelling = null,
   }) {
     return _then(_$TrackOrderStateImpl(
-      trackOrderItem: null == trackOrderItem
-          ? _value.trackOrderItem
-          : trackOrderItem // ignore: cast_nullable_to_non_nullable
-              as TrackOrderDetails,
+      trackOrder: null == trackOrder
+          ? _value.trackOrder
+          : trackOrder // ignore: cast_nullable_to_non_nullable
+              as TrackOrder,
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -581,10 +560,10 @@ class __$$TrackOrderStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as Order,
+      isCancelling: null == isCancelling
+          ? _value.isCancelling
+          : isCancelling // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -593,24 +572,24 @@ class __$$TrackOrderStateImplCopyWithImpl<$Res>
 
 class _$TrackOrderStateImpl extends _TrackOrderState {
   const _$TrackOrderStateImpl(
-      {required this.trackOrderItem,
+      {required this.trackOrder,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.order})
+      required this.isCancelling})
       : super._();
 
   @override
-  final TrackOrderDetails trackOrderItem;
+  final TrackOrder trackOrder;
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
   @override
   final bool isFetching;
   @override
-  final Order order;
+  final bool isCancelling;
 
   @override
   String toString() {
-    return 'TrackOrderState(trackOrderItem: $trackOrderItem, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, order: $order)';
+    return 'TrackOrderState(trackOrder: $trackOrder, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, isCancelling: $isCancelling)';
   }
 
   @override
@@ -618,19 +597,20 @@ class _$TrackOrderStateImpl extends _TrackOrderState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TrackOrderStateImpl &&
-            (identical(other.trackOrderItem, trackOrderItem) ||
-                other.trackOrderItem == trackOrderItem) &&
+            (identical(other.trackOrder, trackOrder) ||
+                other.trackOrder == trackOrder) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
-            (identical(other.order, order) || other.order == order));
+            (identical(other.isCancelling, isCancelling) ||
+                other.isCancelling == isCancelling));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, trackOrderItem,
-      apiFailureOrSuccessOption, isFetching, order);
+  int get hashCode => Object.hash(runtimeType, trackOrder,
+      apiFailureOrSuccessOption, isFetching, isCancelling);
 
   @JsonKey(ignore: true)
   @override
@@ -642,21 +622,21 @@ class _$TrackOrderStateImpl extends _TrackOrderState {
 
 abstract class _TrackOrderState extends TrackOrderState {
   const factory _TrackOrderState(
-      {required final TrackOrderDetails trackOrderItem,
+      {required final TrackOrder trackOrder,
       required final Option<Either<ApiFailure, dynamic>>
           apiFailureOrSuccessOption,
       required final bool isFetching,
-      required final Order order}) = _$TrackOrderStateImpl;
+      required final bool isCancelling}) = _$TrackOrderStateImpl;
   const _TrackOrderState._() : super._();
 
   @override
-  TrackOrderDetails get trackOrderItem;
+  TrackOrder get trackOrder;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
   @override
   bool get isFetching;
   @override
-  Order get order;
+  bool get isCancelling;
   @override
   @JsonKey(ignore: true)
   _$$TrackOrderStateImplCopyWith<_$TrackOrderStateImpl> get copyWith =>

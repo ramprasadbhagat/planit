@@ -1,12 +1,10 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/exception.dart';
-import 'package:planit/domain/order/entities/order.dart';
-import 'package:planit/domain/track_order/entity/track_order_details.dart';
+import 'package:planit/domain/track_order/entity/track_order.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
-import 'package:planit/infrastructure/order/dtos/order_dto.dart';
-import 'package:planit/infrastructure/track_order/dtos/track_order_details_dto.dart';
+import 'package:planit/infrastructure/track_order/dtos/track_order_dto.dart';
 import 'package:planit/utils/storage_service.dart';
 
 class TrackOrderRemoteDataSource {
@@ -18,41 +16,30 @@ class TrackOrderRemoteDataSource {
     required this.storageService,
   });
 
-  Future<TrackOrderDetails> getTrackOrderDetails({
+  Future<TrackOrder> getTrackOrderDetails({
     required String orderId,
   }) async {
     final res = await httpService.request(
       method: 'GET',
       url: 'orderTracking/$orderId',
     );
-    _exceptionChecker(res: res);
-    return TrackOrderDetailsDto.fromJson(res.data).toDomain;
+    _trackOrderExceptionChecker(res: res);
+    return TrackOrderDto.fromJson(res.data).toDomain;
   }
 
-  Future<Order> cancelOrder({
-    required String orderId,
-  }) async {
-    await Future.delayed(
-      Durations.extralong4,
-    ); // TODO implement cancel order api
-
-    return getOrderById(orderId: orderId);
-  }
-
-  Future<Order> getOrderById({
+  Future<Unit> cancelOrder({
     required String orderId,
   }) async {
     final res = await httpService.request(
-      method: 'GET',
-      url: 'orders/$orderId',
+      method: 'PATCH',
+      url: 'orders/cancelOrder/$orderId',
     );
-    _exceptionChecker(res: res);
+    _cancelOrderExceptionChecker(res: res);
 
-    final order = res.data['items'] as List;
-    return OrderDto.fromJson(order.first).toDomain;
+    return unit;
   }
 
-  void _exceptionChecker({required Response<dynamic> res}) {
+  void _trackOrderExceptionChecker({required Response<dynamic> res}) {
     if (res.statusCode != 200) {
       throw ServerException(
         code: res.statusCode ?? 0,
@@ -61,9 +48,18 @@ class TrackOrderRemoteDataSource {
     }
 
     if ((res.data == null ||
-        res.data['items'] == null ||
-        (res.data['items'] as List).isEmpty)) {
+        res.data['all_status'] == null ||
+        (res.data['all_status'] as List).isEmpty)) {
       throw const ApiFailure.other('Something wents wrong');
     }
+  }
+}
+
+void _cancelOrderExceptionChecker({required Response<dynamic> res}) {
+  if (res.statusCode != 200) {
+    throw ServerException(
+      code: res.statusCode ?? 0,
+      message: res.statusMessage ?? '',
+    );
   }
 }

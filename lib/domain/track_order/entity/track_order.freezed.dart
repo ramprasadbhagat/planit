@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TrackOrder {
-  List<TrackOrderDetails> get trackOrderItems =>
+  List<TrackOrderDetails> get trackOrderStatusList =>
       throw _privateConstructorUsedError;
-  int get totalCount => throw _privateConstructorUsedError;
+  OrderStatus get orderStatus => throw _privateConstructorUsedError;
+  StringValue get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrackOrderCopyWith<TrackOrder> get copyWith =>
@@ -31,7 +32,10 @@ abstract class $TrackOrderCopyWith<$Res> {
           TrackOrder value, $Res Function(TrackOrder) then) =
       _$TrackOrderCopyWithImpl<$Res, TrackOrder>;
   @useResult
-  $Res call({List<TrackOrderDetails> trackOrderItems, int totalCount});
+  $Res call(
+      {List<TrackOrderDetails> trackOrderStatusList,
+      OrderStatus orderStatus,
+      StringValue id});
 }
 
 /// @nodoc
@@ -47,18 +51,23 @@ class _$TrackOrderCopyWithImpl<$Res, $Val extends TrackOrder>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItems = null,
-    Object? totalCount = null,
+    Object? trackOrderStatusList = null,
+    Object? orderStatus = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      trackOrderItems: null == trackOrderItems
-          ? _value.trackOrderItems
-          : trackOrderItems // ignore: cast_nullable_to_non_nullable
+      trackOrderStatusList: null == trackOrderStatusList
+          ? _value.trackOrderStatusList
+          : trackOrderStatusList // ignore: cast_nullable_to_non_nullable
               as List<TrackOrderDetails>,
-      totalCount: null == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      orderStatus: null == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ) as $Val);
   }
 }
@@ -71,7 +80,10 @@ abstract class _$$TrackOrderImplCopyWith<$Res>
       __$$TrackOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<TrackOrderDetails> trackOrderItems, int totalCount});
+  $Res call(
+      {List<TrackOrderDetails> trackOrderStatusList,
+      OrderStatus orderStatus,
+      StringValue id});
 }
 
 /// @nodoc
@@ -85,18 +97,23 @@ class __$$TrackOrderImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItems = null,
-    Object? totalCount = null,
+    Object? trackOrderStatusList = null,
+    Object? orderStatus = null,
+    Object? id = null,
   }) {
     return _then(_$TrackOrderImpl(
-      trackOrderItems: null == trackOrderItems
-          ? _value._trackOrderItems
-          : trackOrderItems // ignore: cast_nullable_to_non_nullable
+      trackOrderStatusList: null == trackOrderStatusList
+          ? _value._trackOrderStatusList
+          : trackOrderStatusList // ignore: cast_nullable_to_non_nullable
               as List<TrackOrderDetails>,
-      totalCount: null == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      orderStatus: null == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as StringValue,
     ));
   }
 }
@@ -105,25 +122,29 @@ class __$$TrackOrderImplCopyWithImpl<$Res>
 
 class _$TrackOrderImpl extends _TrackOrder {
   _$TrackOrderImpl(
-      {required final List<TrackOrderDetails> trackOrderItems,
-      required this.totalCount})
-      : _trackOrderItems = trackOrderItems,
+      {required final List<TrackOrderDetails> trackOrderStatusList,
+      required this.orderStatus,
+      required this.id})
+      : _trackOrderStatusList = trackOrderStatusList,
         super._();
 
-  final List<TrackOrderDetails> _trackOrderItems;
+  final List<TrackOrderDetails> _trackOrderStatusList;
   @override
-  List<TrackOrderDetails> get trackOrderItems {
-    if (_trackOrderItems is EqualUnmodifiableListView) return _trackOrderItems;
+  List<TrackOrderDetails> get trackOrderStatusList {
+    if (_trackOrderStatusList is EqualUnmodifiableListView)
+      return _trackOrderStatusList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_trackOrderItems);
+    return EqualUnmodifiableListView(_trackOrderStatusList);
   }
 
   @override
-  final int totalCount;
+  final OrderStatus orderStatus;
+  @override
+  final StringValue id;
 
   @override
   String toString() {
-    return 'TrackOrder(trackOrderItems: $trackOrderItems, totalCount: $totalCount)';
+    return 'TrackOrder(trackOrderStatusList: $trackOrderStatusList, orderStatus: $orderStatus, id: $id)';
   }
 
   @override
@@ -132,14 +153,18 @@ class _$TrackOrderImpl extends _TrackOrder {
         (other.runtimeType == runtimeType &&
             other is _$TrackOrderImpl &&
             const DeepCollectionEquality()
-                .equals(other._trackOrderItems, _trackOrderItems) &&
-            (identical(other.totalCount, totalCount) ||
-                other.totalCount == totalCount));
+                .equals(other._trackOrderStatusList, _trackOrderStatusList) &&
+            (identical(other.orderStatus, orderStatus) ||
+                other.orderStatus == orderStatus) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_trackOrderItems), totalCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_trackOrderStatusList),
+      orderStatus,
+      id);
 
   @JsonKey(ignore: true)
   @override
@@ -150,14 +175,17 @@ class _$TrackOrderImpl extends _TrackOrder {
 
 abstract class _TrackOrder extends TrackOrder {
   factory _TrackOrder(
-      {required final List<TrackOrderDetails> trackOrderItems,
-      required final int totalCount}) = _$TrackOrderImpl;
+      {required final List<TrackOrderDetails> trackOrderStatusList,
+      required final OrderStatus orderStatus,
+      required final StringValue id}) = _$TrackOrderImpl;
   _TrackOrder._() : super._();
 
   @override
-  List<TrackOrderDetails> get trackOrderItems;
+  List<TrackOrderDetails> get trackOrderStatusList;
   @override
-  int get totalCount;
+  OrderStatus get orderStatus;
+  @override
+  StringValue get id;
   @override
   @JsonKey(ignore: true)
   _$$TrackOrderImplCopyWith<_$TrackOrderImpl> get copyWith =>

@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/order/value/value_objects.dart';
 
 part 'track_order_details.freezed.dart';
 
@@ -6,27 +8,12 @@ part 'track_order_details.freezed.dart';
 class TrackOrderDetails with _$TrackOrderDetails {
   const TrackOrderDetails._();
   factory TrackOrderDetails({
-    required String id,
-    required String orderId,
-    required OrderStatus orderStatus,
-    required String date,
+    required OrderStatus status,
+    required DeliveryDate date,
   }) = _TrackOrderDetails;
 
   factory TrackOrderDetails.empty() => TrackOrderDetails(
-        id: '',
-        orderId: '',
-        orderStatus: OrderStatus.cancel,
-        date: '',
+        status: OrderStatus(''),
+        date: DeliveryDate(''),
       );
-
-  int get trackID => OrderStatus.values.indexOf(orderStatus);
-}
-
-enum OrderStatus {
-  pending,
-  received,
-  inProcess,
-  dispatched,
-  successfull,
-  cancel,
 }

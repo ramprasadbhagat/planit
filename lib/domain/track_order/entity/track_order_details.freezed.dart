@@ -16,10 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TrackOrderDetails {
-  String get id => throw _privateConstructorUsedError;
-  String get orderId => throw _privateConstructorUsedError;
-  OrderStatus get orderStatus => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
+  OrderStatus get status => throw _privateConstructorUsedError;
+  DeliveryDate get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrackOrderDetailsCopyWith<TrackOrderDetails> get copyWith =>
@@ -32,7 +30,7 @@ abstract class $TrackOrderDetailsCopyWith<$Res> {
           TrackOrderDetails value, $Res Function(TrackOrderDetails) then) =
       _$TrackOrderDetailsCopyWithImpl<$Res, TrackOrderDetails>;
   @useResult
-  $Res call({String id, String orderId, OrderStatus orderStatus, String date});
+  $Res call({OrderStatus status, DeliveryDate date});
 }
 
 /// @nodoc
@@ -48,28 +46,18 @@ class _$TrackOrderDetailsCopyWithImpl<$Res, $Val extends TrackOrderDetails>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? orderId = null,
-    Object? orderStatus = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as OrderStatus,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DeliveryDate,
     ) as $Val);
   }
 }
@@ -82,7 +70,7 @@ abstract class _$$TrackOrderDetailsImplCopyWith<$Res>
       __$$TrackOrderDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String orderId, OrderStatus orderStatus, String date});
+  $Res call({OrderStatus status, DeliveryDate date});
 }
 
 /// @nodoc
@@ -96,28 +84,18 @@ class __$$TrackOrderDetailsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? orderId = null,
-    Object? orderStatus = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_$TrackOrderDetailsImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as OrderStatus,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DeliveryDate,
     ));
   }
 }
@@ -125,25 +103,17 @@ class __$$TrackOrderDetailsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TrackOrderDetailsImpl extends _TrackOrderDetails {
-  _$TrackOrderDetailsImpl(
-      {required this.id,
-      required this.orderId,
-      required this.orderStatus,
-      required this.date})
+  _$TrackOrderDetailsImpl({required this.status, required this.date})
       : super._();
 
   @override
-  final String id;
+  final OrderStatus status;
   @override
-  final String orderId;
-  @override
-  final OrderStatus orderStatus;
-  @override
-  final String date;
+  final DeliveryDate date;
 
   @override
   String toString() {
-    return 'TrackOrderDetails(id: $id, orderId: $orderId, orderStatus: $orderStatus, date: $date)';
+    return 'TrackOrderDetails(status: $status, date: $date)';
   }
 
   @override
@@ -151,15 +121,12 @@ class _$TrackOrderDetailsImpl extends _TrackOrderDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TrackOrderDetailsImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.orderStatus, orderStatus) ||
-                other.orderStatus == orderStatus) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, orderId, orderStatus, date);
+  int get hashCode => Object.hash(runtimeType, status, date);
 
   @JsonKey(ignore: true)
   @override
@@ -171,20 +138,14 @@ class _$TrackOrderDetailsImpl extends _TrackOrderDetails {
 
 abstract class _TrackOrderDetails extends TrackOrderDetails {
   factory _TrackOrderDetails(
-      {required final String id,
-      required final String orderId,
-      required final OrderStatus orderStatus,
-      required final String date}) = _$TrackOrderDetailsImpl;
+      {required final OrderStatus status,
+      required final DeliveryDate date}) = _$TrackOrderDetailsImpl;
   _TrackOrderDetails._() : super._();
 
   @override
-  String get id;
+  OrderStatus get status;
   @override
-  String get orderId;
-  @override
-  OrderStatus get orderStatus;
-  @override
-  String get date;
+  DeliveryDate get date;
   @override
   @JsonKey(ignore: true)
   _$$TrackOrderDetailsImplCopyWith<_$TrackOrderDetailsImpl> get copyWith =>

@@ -20,11 +20,13 @@ TrackOrderDto _$TrackOrderDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TrackOrderDto {
-  @JsonKey(name: 'items', defaultValue: [])
-  List<TrackOrderDetailsDto> get trackOrderItems =>
+  @JsonKey(name: 'order_id', defaultValue: '')
+  String get orderId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'all_status', defaultValue: [])
+  List<TrackOrderDetailsDto> get trackOrderStatusList =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: 'totalCount', defaultValue: 0)
-  int get totalCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'order_status', defaultValue: '')
+  String get orderStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,9 +41,10 @@ abstract class $TrackOrderDtoCopyWith<$Res> {
       _$TrackOrderDtoCopyWithImpl<$Res, TrackOrderDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'items', defaultValue: [])
-      List<TrackOrderDetailsDto> trackOrderItems,
-      @JsonKey(name: 'totalCount', defaultValue: 0) int totalCount});
+      {@JsonKey(name: 'order_id', defaultValue: '') String orderId,
+      @JsonKey(name: 'all_status', defaultValue: [])
+      List<TrackOrderDetailsDto> trackOrderStatusList,
+      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus});
 }
 
 /// @nodoc
@@ -57,18 +60,23 @@ class _$TrackOrderDtoCopyWithImpl<$Res, $Val extends TrackOrderDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItems = null,
-    Object? totalCount = null,
+    Object? orderId = null,
+    Object? trackOrderStatusList = null,
+    Object? orderStatus = null,
   }) {
     return _then(_value.copyWith(
-      trackOrderItems: null == trackOrderItems
-          ? _value.trackOrderItems
-          : trackOrderItems // ignore: cast_nullable_to_non_nullable
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackOrderStatusList: null == trackOrderStatusList
+          ? _value.trackOrderStatusList
+          : trackOrderStatusList // ignore: cast_nullable_to_non_nullable
               as List<TrackOrderDetailsDto>,
-      totalCount: null == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      orderStatus: null == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -82,9 +90,10 @@ abstract class _$$TrackOrderDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'items', defaultValue: [])
-      List<TrackOrderDetailsDto> trackOrderItems,
-      @JsonKey(name: 'totalCount', defaultValue: 0) int totalCount});
+      {@JsonKey(name: 'order_id', defaultValue: '') String orderId,
+      @JsonKey(name: 'all_status', defaultValue: [])
+      List<TrackOrderDetailsDto> trackOrderStatusList,
+      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus});
 }
 
 /// @nodoc
@@ -98,18 +107,23 @@ class __$$TrackOrderDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trackOrderItems = null,
-    Object? totalCount = null,
+    Object? orderId = null,
+    Object? trackOrderStatusList = null,
+    Object? orderStatus = null,
   }) {
     return _then(_$TrackOrderDtoImpl(
-      trackOrderItems: null == trackOrderItems
-          ? _value._trackOrderItems
-          : trackOrderItems // ignore: cast_nullable_to_non_nullable
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      trackOrderStatusList: null == trackOrderStatusList
+          ? _value._trackOrderStatusList
+          : trackOrderStatusList // ignore: cast_nullable_to_non_nullable
               as List<TrackOrderDetailsDto>,
-      totalCount: null == totalCount
-          ? _value.totalCount
-          : totalCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      orderStatus: null == orderStatus
+          ? _value.orderStatus
+          : orderStatus // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,31 +132,37 @@ class __$$TrackOrderDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TrackOrderDtoImpl extends _TrackOrderDto {
   _$TrackOrderDtoImpl(
-      {@JsonKey(name: 'items', defaultValue: [])
-      required final List<TrackOrderDetailsDto> trackOrderItems,
-      @JsonKey(name: 'totalCount', defaultValue: 0) required this.totalCount})
-      : _trackOrderItems = trackOrderItems,
+      {@JsonKey(name: 'order_id', defaultValue: '') required this.orderId,
+      @JsonKey(name: 'all_status', defaultValue: [])
+      required final List<TrackOrderDetailsDto> trackOrderStatusList,
+      @JsonKey(name: 'order_status', defaultValue: '')
+      required this.orderStatus})
+      : _trackOrderStatusList = trackOrderStatusList,
         super._();
 
   factory _$TrackOrderDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TrackOrderDtoImplFromJson(json);
 
-  final List<TrackOrderDetailsDto> _trackOrderItems;
   @override
-  @JsonKey(name: 'items', defaultValue: [])
-  List<TrackOrderDetailsDto> get trackOrderItems {
-    if (_trackOrderItems is EqualUnmodifiableListView) return _trackOrderItems;
+  @JsonKey(name: 'order_id', defaultValue: '')
+  final String orderId;
+  final List<TrackOrderDetailsDto> _trackOrderStatusList;
+  @override
+  @JsonKey(name: 'all_status', defaultValue: [])
+  List<TrackOrderDetailsDto> get trackOrderStatusList {
+    if (_trackOrderStatusList is EqualUnmodifiableListView)
+      return _trackOrderStatusList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_trackOrderItems);
+    return EqualUnmodifiableListView(_trackOrderStatusList);
   }
 
   @override
-  @JsonKey(name: 'totalCount', defaultValue: 0)
-  final int totalCount;
+  @JsonKey(name: 'order_status', defaultValue: '')
+  final String orderStatus;
 
   @override
   String toString() {
-    return 'TrackOrderDto(trackOrderItems: $trackOrderItems, totalCount: $totalCount)';
+    return 'TrackOrderDto(orderId: $orderId, trackOrderStatusList: $trackOrderStatusList, orderStatus: $orderStatus)';
   }
 
   @override
@@ -150,16 +170,17 @@ class _$TrackOrderDtoImpl extends _TrackOrderDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TrackOrderDtoImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
             const DeepCollectionEquality()
-                .equals(other._trackOrderItems, _trackOrderItems) &&
-            (identical(other.totalCount, totalCount) ||
-                other.totalCount == totalCount));
+                .equals(other._trackOrderStatusList, _trackOrderStatusList) &&
+            (identical(other.orderStatus, orderStatus) ||
+                other.orderStatus == orderStatus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_trackOrderItems), totalCount);
+  int get hashCode => Object.hash(runtimeType, orderId,
+      const DeepCollectionEquality().hash(_trackOrderStatusList), orderStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -177,21 +198,26 @@ class _$TrackOrderDtoImpl extends _TrackOrderDto {
 
 abstract class _TrackOrderDto extends TrackOrderDto {
   factory _TrackOrderDto(
-      {@JsonKey(name: 'items', defaultValue: [])
-      required final List<TrackOrderDetailsDto> trackOrderItems,
-      @JsonKey(name: 'totalCount', defaultValue: 0)
-      required final int totalCount}) = _$TrackOrderDtoImpl;
+      {@JsonKey(name: 'order_id', defaultValue: '')
+      required final String orderId,
+      @JsonKey(name: 'all_status', defaultValue: [])
+      required final List<TrackOrderDetailsDto> trackOrderStatusList,
+      @JsonKey(name: 'order_status', defaultValue: '')
+      required final String orderStatus}) = _$TrackOrderDtoImpl;
   _TrackOrderDto._() : super._();
 
   factory _TrackOrderDto.fromJson(Map<String, dynamic> json) =
       _$TrackOrderDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'items', defaultValue: [])
-  List<TrackOrderDetailsDto> get trackOrderItems;
+  @JsonKey(name: 'order_id', defaultValue: '')
+  String get orderId;
   @override
-  @JsonKey(name: 'totalCount', defaultValue: 0)
-  int get totalCount;
+  @JsonKey(name: 'all_status', defaultValue: [])
+  List<TrackOrderDetailsDto> get trackOrderStatusList;
+  @override
+  @JsonKey(name: 'order_status', defaultValue: '')
+  String get orderStatus;
   @override
   @JsonKey(ignore: true)
   _$$TrackOrderDtoImplCopyWith<_$TrackOrderDtoImpl> get copyWith =>
