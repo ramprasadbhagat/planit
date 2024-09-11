@@ -13,41 +13,37 @@ class BeforeCheckoutSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<WishlistBloc, WishlistState>(
+      builder: (context, state) {
+        if (state.isWishlistEmpty) {
+          return const SizedBox.shrink();
+        }
+
+        return Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Before you checkout',
-                  style: textTheme.titleSmall,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context.router.navigate(const WishlistRoute());
-                  },
-                  child: Text(
-                    'view all',
-                    style: textTheme.titleSmall,
-                  ),
-                ),
-              ],
-            ),
-            BlocBuilder<WishlistBloc, WishlistState>(
-              builder: (context, state) {
-                if (state.isWishlistEmpty) {
-                  return const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: Text('No Wishlist Item'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Before you checkout',
+                      style: textTheme.titleSmall,
                     ),
-                  );
-                }
-                return SizedBox(
+                    GestureDetector(
+                      onTap: () {
+                        context.router.navigate(const WishlistRoute());
+                      },
+                      child: Text(
+                        'view all',
+                        style: textTheme.titleSmall,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
                   height: 190,
                   child: ListView.separated(
                     separatorBuilder: (__, _) => const SizedBox(
@@ -65,12 +61,12 @@ class BeforeCheckoutSection extends StatelessWidget {
                       item: state.getAllWishList[index],
                     ),
                   ),
-                );
-              },
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
