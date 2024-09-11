@@ -225,18 +225,19 @@ class _CouponCard extends StatelessWidget {
                       ),
                     ),
                   )
-                : Container(
-                    color: AppColors.accentColor,
+                : SizedBox(
                     width: 70,
                     height: 24,
                     child: ElevatedButton(
-                      onPressed: () {
-                        context.read<CouponBloc>().add(
-                              CouponEvent.applyCoupon(
-                                coupon: coupon,
-                              ),
-                            );
-                      },
+                      onPressed: coupon.isActive
+                          ? () {
+                              context.read<CouponBloc>().add(
+                                    CouponEvent.applyCoupon(
+                                      coupon: coupon,
+                                    ),
+                                  );
+                            }
+                          : null,
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
                         backgroundColor: AppColors.deepOrange,
@@ -251,7 +252,7 @@ class _CouponCard extends StatelessWidget {
                                 color: AppColors.white,
                               ),
                             )
-                          : const Text('Apply'),
+                          : Text(coupon.isActive ? 'Apply' : 'Expired'),
                     ),
                   ),
           ),

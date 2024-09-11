@@ -74,8 +74,7 @@ class OrderDetailsPage extends StatelessWidget {
                             children: [
                               Text(
                                 'Order Summary',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                style: textTheme.titleSmall?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
@@ -248,8 +247,7 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 'Delivery Address',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
@@ -268,8 +266,7 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 ' Recipient Name : ',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.textBlack,
                                 ),
@@ -277,8 +274,7 @@ class OrderDetailsPage extends StatelessWidget {
                               Text(
                                 order.deliveryAddress.firstOrNull?.fullName ??
                                     'NA',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textBlack,
                                 ),
@@ -297,15 +293,13 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 ' Mobile Number : ',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
                                 order.getDeliveryPhoneNumber,
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -324,16 +318,14 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 ' Address : ',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 12,
+                                style: textTheme.bodySmall?.copyWith(
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Expanded(
                                 child: Text(
                                   order.getDeliveryAddress,
-                                  style: textTheme.titleMedium?.copyWith(
-                                    fontSize: 12,
+                                  style: textTheme.bodySmall?.copyWith(
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -371,8 +363,7 @@ class OrderDetailsPage extends StatelessWidget {
                               ),
                               Text(
                                 ' Order Items',
-                                style: textTheme.titleMedium?.copyWith(
-                                  fontSize: 14,
+                                style: textTheme.bodyLarge?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                                 textAlign: TextAlign.start,
@@ -418,8 +409,7 @@ class OrderDetailsPage extends StatelessWidget {
                                   ),
                                   Text(
                                     ' Payment Details',
-                                    style: textTheme.titleMedium?.copyWith(
-                                      fontSize: 14,
+                                    style: textTheme.bodyLarge?.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
                                     textAlign: TextAlign.start,
@@ -451,9 +441,8 @@ class OrderDetailsPage extends StatelessWidget {
                                   ),
                                   Text(
                                     ' Order No : ${order.id.displayLabel}',
-                                    style: textTheme.titleMedium?.copyWith(
+                                    style: textTheme.bodySmall?.copyWith(
                                       color: AppColors.grey2,
-                                      fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -471,9 +460,8 @@ class OrderDetailsPage extends StatelessWidget {
                                   ),
                                   Text(
                                     ' Payment Option : ${order.paymentType.getOrDefaultValue('Cash')}',
-                                    style: textTheme.titleMedium?.copyWith(
+                                    style: textTheme.bodySmall?.copyWith(
                                       color: AppColors.grey2,
-                                      fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -490,43 +478,74 @@ class OrderDetailsPage extends StatelessWidget {
                                   children: [
                                     if (order.isCouponApplied) ...[
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Image.asset(
-                                            PngImage.coupon,
-                                            height: 14,
-                                            width: 11,
-                                          ),
                                           Text(
-                                            ' Coupon ',
+                                            'Total Saving',
                                             style:
-                                                textTheme.titleMedium?.copyWith(
-                                              fontSize: 12,
+                                                textTheme.bodySmall?.copyWith(
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          const Spacer(),
                                           Text(
                                             'You saved ${order.totalDiscount.getValue().toPrice()} ',
                                             style:
-                                                textTheme.titleMedium?.copyWith(
-                                              fontSize: 12,
+                                                textTheme.bodySmall?.copyWith(
                                               fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ],
                                       ),
                                       const SizedBox(
-                                        height: 20,
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Additional Discount',
+                                                style: textTheme.bodySmall
+                                                    ?.copyWith(),
+                                              ),
+                                              Text(
+                                                'Coupon Applied!',
+                                                style: textTheme.bodySmall
+                                                    ?.copyWith(
+                                                  color: AppColors.grey2,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                            order.couponReductionAmount
+                                                .getValue()
+                                                .toPrice(),
+                                            style:
+                                                textTheme.bodySmall?.copyWith(
+                                              color: AppColors.grey2,
+                                              fontWeight: FontWeight.w500,
+                                              letterSpacing: 1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
                                       ),
                                     ],
                                     Row(
                                       children: [
                                         Text(
                                           'Subtotal',
-                                          style:
-                                              textTheme.titleMedium?.copyWith(
+                                          style: textTheme.bodySmall?.copyWith(
                                             color: AppColors.grey2,
-                                            fontSize: 12,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -536,6 +555,7 @@ class OrderDetailsPage extends StatelessWidget {
                                           style: textTheme.bodySmall?.copyWith(
                                             color: AppColors.grey2,
                                             fontWeight: FontWeight.w500,
+                                            letterSpacing: 1,
                                           ),
                                         ),
                                       ],
@@ -557,11 +577,10 @@ class OrderDetailsPage extends StatelessWidget {
                                           order.deliveryCharge
                                               .getValue()
                                               .toPrice(showFreeIfZero: true),
-                                          style:
-                                              textTheme.titleMedium?.copyWith(
+                                          style: textTheme.bodySmall?.copyWith(
                                             color: AppColors.grey2,
-                                            fontSize: 12,
                                             fontWeight: FontWeight.w500,
+                                            letterSpacing: 1,
                                           ),
                                         ),
                                       ],
@@ -587,19 +606,16 @@ class OrderDetailsPage extends StatelessWidget {
                                         ),
                                         Text(
                                           ' Grand Total',
-                                          style:
-                                              textTheme.titleMedium?.copyWith(
-                                            fontSize: 14,
+                                          style: textTheme.titleSmall?.copyWith(
                                             fontWeight: FontWeight.w700,
                                           ),
                                         ),
                                         const Spacer(),
                                         Text(
                                           order.getTotalPrice,
-                                          style:
-                                              textTheme.titleMedium?.copyWith(
-                                            fontSize: 14,
+                                          style: textTheme.titleSmall?.copyWith(
                                             fontWeight: FontWeight.w700,
+                                            letterSpacing: 1,
                                           ),
                                         ),
                                       ],

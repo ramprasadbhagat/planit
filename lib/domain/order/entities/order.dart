@@ -23,6 +23,7 @@ class Order with _$Order {
     required StringValue paymentType,
     required IntegerValue packingCharges,
     required IntegerValue totalPrice,
+    required IntegerValue couponReductionAmount,
     required IntegerValue subTotal,
     required IntegerValue deliveryCharge,
     required IntegerValue totalDiscount,
@@ -43,6 +44,7 @@ class Order with _$Order {
         paymentStatus: PaymentStatus(''),
         orderStatus: OrderStatus(''),
         totalPrice: IntegerValue(0),
+        couponReductionAmount: IntegerValue(0),
         subTotal: IntegerValue(0),
         deliveryCharge: IntegerValue(0),
         totalDiscount: IntegerValue(0),
@@ -94,7 +96,7 @@ extension IntX on int {
       return 'Free';
     }
 
-    return NumberFormat.simpleCurrency(locale: 'en_IN', decimalDigits: 2)
+    return NumberFormat.simpleCurrency(locale: 'en_IN', decimalDigits: 1)
         .format(this);
   }
 }
