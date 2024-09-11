@@ -28,6 +28,8 @@ mixin _$WishlistDto {
   String get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'productRating', defaultValue: '')
+  String get productRating => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity', defaultValue: '')
   String get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
@@ -53,6 +55,7 @@ abstract class $WishlistDtoCopyWith<$Res> {
       @JsonKey(name: 'product_id', defaultValue: '') String productId,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       String attributeItemId,
+      @JsonKey(name: 'productRating', defaultValue: '') String productRating,
       @JsonKey(name: 'quantity', defaultValue: '') String quantity,
       @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
       int price,
@@ -77,6 +80,7 @@ class _$WishlistDtoCopyWithImpl<$Res, $Val extends WishlistDto>
     Object? userId = null,
     Object? productId = null,
     Object? attributeItemId = null,
+    Object? productRating = null,
     Object? quantity = null,
     Object? price = null,
     Object? product = null,
@@ -97,6 +101,10 @@ class _$WishlistDtoCopyWithImpl<$Res, $Val extends WishlistDto>
       attributeItemId: null == attributeItemId
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
@@ -128,6 +136,7 @@ abstract class _$$WishlistDtoImplCopyWith<$Res>
       @JsonKey(name: 'product_id', defaultValue: '') String productId,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       String attributeItemId,
+      @JsonKey(name: 'productRating', defaultValue: '') String productRating,
       @JsonKey(name: 'quantity', defaultValue: '') String quantity,
       @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
       int price,
@@ -150,6 +159,7 @@ class __$$WishlistDtoImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? productId = null,
     Object? attributeItemId = null,
+    Object? productRating = null,
     Object? quantity = null,
     Object? price = null,
     Object? product = null,
@@ -170,6 +180,10 @@ class __$$WishlistDtoImplCopyWithImpl<$Res>
       attributeItemId: null == attributeItemId
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productRating: null == productRating
+          ? _value.productRating
+          : productRating // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: null == quantity
           ? _value.quantity
@@ -196,6 +210,8 @@ class _$WishlistDtoImpl extends _WishlistDto {
       @JsonKey(name: 'product_id', defaultValue: '') required this.productId,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       required this.attributeItemId,
+      @JsonKey(name: 'productRating', defaultValue: '')
+      required this.productRating,
       @JsonKey(name: 'quantity', defaultValue: '') required this.quantity,
       @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
       required this.price,
@@ -220,6 +236,9 @@ class _$WishlistDtoImpl extends _WishlistDto {
   @JsonKey(name: 'attributeItemId', defaultValue: '')
   final String attributeItemId;
   @override
+  @JsonKey(name: 'productRating', defaultValue: '')
+  final String productRating;
+  @override
   @JsonKey(name: 'quantity', defaultValue: '')
   final String quantity;
   @override
@@ -236,7 +255,7 @@ class _$WishlistDtoImpl extends _WishlistDto {
 
   @override
   String toString() {
-    return 'WishlistDto(id: $id, userId: $userId, productId: $productId, attributeItemId: $attributeItemId, quantity: $quantity, price: $price, product: $product)';
+    return 'WishlistDto(id: $id, userId: $userId, productId: $productId, attributeItemId: $attributeItemId, productRating: $productRating, quantity: $quantity, price: $price, product: $product)';
   }
 
   @override
@@ -250,6 +269,8 @@ class _$WishlistDtoImpl extends _WishlistDto {
                 other.productId == productId) &&
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
+            (identical(other.productRating, productRating) ||
+                other.productRating == productRating) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.price, price) || other.price == price) &&
@@ -264,6 +285,7 @@ class _$WishlistDtoImpl extends _WishlistDto {
       userId,
       productId,
       attributeItemId,
+      productRating,
       quantity,
       price,
       const DeepCollectionEquality().hash(_product));
@@ -290,6 +312,8 @@ abstract class _WishlistDto extends WishlistDto {
       required final String productId,
       @JsonKey(name: 'attributeItemId', defaultValue: '')
       required final String attributeItemId,
+      @JsonKey(name: 'productRating', defaultValue: '')
+      required final String productRating,
       @JsonKey(name: 'quantity', defaultValue: '')
       required final String quantity,
       @JsonKey(name: 'price', defaultValue: 0, readValue: intReadValue)
@@ -313,6 +337,9 @@ abstract class _WishlistDto extends WishlistDto {
   @override
   @JsonKey(name: 'attributeItemId', defaultValue: '')
   String get attributeItemId;
+  @override
+  @JsonKey(name: 'productRating', defaultValue: '')
+  String get productRating;
   @override
   @JsonKey(name: 'quantity', defaultValue: '')
   String get quantity;
