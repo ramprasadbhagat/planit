@@ -20,12 +20,8 @@ TrackOrderDetailsDto _$TrackOrderDetailsDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TrackOrderDetailsDto {
-  @JsonKey(name: 'id', defaultValue: '')
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_id', defaultValue: '')
-  String get orderId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'order_status', defaultValue: '')
-  String get orderStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'status', defaultValue: '')
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'date', defaultValue: '')
   String get date => throw _privateConstructorUsedError;
 
@@ -42,9 +38,7 @@ abstract class $TrackOrderDetailsDtoCopyWith<$Res> {
       _$TrackOrderDetailsDtoCopyWithImpl<$Res, TrackOrderDetailsDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'order_id', defaultValue: '') String orderId,
-      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus,
+      {@JsonKey(name: 'status', defaultValue: '') String status,
       @JsonKey(name: 'date', defaultValue: '') String date});
 }
 
@@ -62,23 +56,13 @@ class _$TrackOrderDetailsDtoCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? orderId = null,
-    Object? orderStatus = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -97,9 +81,7 @@ abstract class _$$TrackOrderDetailsDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id', defaultValue: '') String id,
-      @JsonKey(name: 'order_id', defaultValue: '') String orderId,
-      @JsonKey(name: 'order_status', defaultValue: '') String orderStatus,
+      {@JsonKey(name: 'status', defaultValue: '') String status,
       @JsonKey(name: 'date', defaultValue: '') String date});
 }
 
@@ -114,23 +96,13 @@ class __$$TrackOrderDetailsDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? orderId = null,
-    Object? orderStatus = null,
+    Object? status = null,
     Object? date = null,
   }) {
     return _then(_$TrackOrderDetailsDtoImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderId: null == orderId
-          ? _value.orderId
-          : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderStatus: null == orderStatus
-          ? _value.orderStatus
-          : orderStatus // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -144,10 +116,7 @@ class __$$TrackOrderDetailsDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
   _$TrackOrderDetailsDtoImpl(
-      {@JsonKey(name: 'id', defaultValue: '') required this.id,
-      @JsonKey(name: 'order_id', defaultValue: '') required this.orderId,
-      @JsonKey(name: 'order_status', defaultValue: '')
-      required this.orderStatus,
+      {@JsonKey(name: 'status', defaultValue: '') required this.status,
       @JsonKey(name: 'date', defaultValue: '') required this.date})
       : super._();
 
@@ -155,21 +124,15 @@ class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
       _$$TrackOrderDetailsDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: 'id', defaultValue: '')
-  final String id;
-  @override
-  @JsonKey(name: 'order_id', defaultValue: '')
-  final String orderId;
-  @override
-  @JsonKey(name: 'order_status', defaultValue: '')
-  final String orderStatus;
+  @JsonKey(name: 'status', defaultValue: '')
+  final String status;
   @override
   @JsonKey(name: 'date', defaultValue: '')
   final String date;
 
   @override
   String toString() {
-    return 'TrackOrderDetailsDto(id: $id, orderId: $orderId, orderStatus: $orderStatus, date: $date)';
+    return 'TrackOrderDetailsDto(status: $status, date: $date)';
   }
 
   @override
@@ -177,16 +140,13 @@ class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TrackOrderDetailsDtoImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId) &&
-            (identical(other.orderStatus, orderStatus) ||
-                other.orderStatus == orderStatus) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, orderId, orderStatus, date);
+  int get hashCode => Object.hash(runtimeType, status, date);
 
   @JsonKey(ignore: true)
   @override
@@ -206,11 +166,7 @@ class _$TrackOrderDetailsDtoImpl extends _TrackOrderDetailsDto {
 
 abstract class _TrackOrderDetailsDto extends TrackOrderDetailsDto {
   factory _TrackOrderDetailsDto(
-      {@JsonKey(name: 'id', defaultValue: '') required final String id,
-      @JsonKey(name: 'order_id', defaultValue: '')
-      required final String orderId,
-      @JsonKey(name: 'order_status', defaultValue: '')
-      required final String orderStatus,
+      {@JsonKey(name: 'status', defaultValue: '') required final String status,
       @JsonKey(name: 'date', defaultValue: '')
       required final String date}) = _$TrackOrderDetailsDtoImpl;
   _TrackOrderDetailsDto._() : super._();
@@ -219,14 +175,8 @@ abstract class _TrackOrderDetailsDto extends TrackOrderDetailsDto {
       _$TrackOrderDetailsDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'id', defaultValue: '')
-  String get id;
-  @override
-  @JsonKey(name: 'order_id', defaultValue: '')
-  String get orderId;
-  @override
-  @JsonKey(name: 'order_status', defaultValue: '')
-  String get orderStatus;
+  @JsonKey(name: 'status', defaultValue: '')
+  String get status;
   @override
   @JsonKey(name: 'date', defaultValue: '')
   String get date;

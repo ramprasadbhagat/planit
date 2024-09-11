@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'package:dartz/dartz.dart' hide Order;
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
-import 'package:planit/domain/order/entities/order.dart';
-import 'package:planit/domain/track_order/entity/track_order_details.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/track_order/entity/track_order.dart';
 import 'package:planit/domain/track_order/repository/i_track_order_repository.dart';
 
 part 'track_order_event.dart';
@@ -28,24 +27,22 @@ class TrackOrderBloc extends Bloc<TrackOrderEvent, TrackOrderState> {
         emit(
           TrackOrderState.initial().copyWith(
             isFetching: true,
-            order: e.order,
           ),
         );
         final failureOrSuccess =
-            await repository.getTrackOrder(orderId: e.order.id.getOrCrash());
+            await repository.getTrackOrder(orderId: e.id.getOrCrash());
         failureOrSuccess.fold(
             (failure) => emit(
                   state.copyWith(
                     isFetching: false,
-                    trackOrderItem: TrackOrderDetails.empty(),
+                    trackOrder: TrackOrder.empty(),
                     apiFailureOrSuccessOption: optionOf(failureOrSuccess),
                   ),
-                ), (success) {
+                ), (trackOrder) {
           emit(
             state.copyWith(
-              order: e.order,
               isFetching: false,
-              trackOrderItem: success,
+              trackOrder: trackOrder,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           );
@@ -54,25 +51,25 @@ class TrackOrderBloc extends Bloc<TrackOrderEvent, TrackOrderState> {
       cancelOrder: (_CancelOrder value) async {
         emit(
           state.copyWith(
-            isFetching: true,
+            isCancelling: true,
           ),
         );
-        final failureOrSuccess =
-            await repository.cancelOrder(orderId: state.order.id.getOrCrash());
+        final failureOrSuccess = await repository.cancelOrder(
+          orderId: state.trackOrder.id.getOrCrash(),
+        );
 
         failureOrSuccess.fold((l) {
           emit(
             state.copyWith(
-              isFetching: false,
+              isCancelling: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
             ),
           );
-        }, (r) {
+        }, (_) {
           emit(
             state.copyWith(
-              isFetching: false,
+              isCancelling: false,
               apiFailureOrSuccessOption: optionOf(failureOrSuccess),
-              order: r,
             ),
           );
         });

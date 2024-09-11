@@ -9,17 +9,13 @@ part of 'track_order_details_dto.dart';
 _$TrackOrderDetailsDtoImpl _$$TrackOrderDetailsDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$TrackOrderDetailsDtoImpl(
-      id: json['id'] as String? ?? '',
-      orderId: json['order_id'] as String? ?? '',
-      orderStatus: json['order_status'] as String? ?? '',
+      status: json['status'] as String? ?? '',
       date: json['date'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$TrackOrderDetailsDtoImplToJson(
         _$TrackOrderDetailsDtoImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'order_id': instance.orderId,
-      'order_status': instance.orderStatus,
+      'status': instance.status,
       'date': instance.date,
     };
