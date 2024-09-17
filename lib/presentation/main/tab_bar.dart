@@ -359,6 +359,8 @@ class MainTabbar extends StatelessWidget {
     context.read<RecipeBloc>().add(const RecipeEvent.fetch());
 
     context.read<BlogBloc>().add(const BlogEvent.fetchBlogs());
+    context.read<BlogBloc>().add(const BlogEvent.fetchFilterList());
+
     context.read<BestSellerBloc>().add(const BestSellerEvent.fetchProducts());
   }
 }

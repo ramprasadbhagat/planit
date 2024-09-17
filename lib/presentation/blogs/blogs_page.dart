@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:planit/application/blog/blog_bloc.dart';
 import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/presentation/blogs/widgets/blog_item_card.dart';
+import 'package:planit/presentation/blogs/widgets/blogs_filter_bottom_sheet.dart';
+import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/scroll_list.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -41,15 +43,25 @@ class BlogsPage extends StatelessWidget {
                             'Read All Blogs',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          // TODO: Need to implement the Blog filter
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) => const CommonBottomSheet(
+                                  child: BlogsFilterBottomSheet(),
+                                ),
+                                isScrollControlled: true,
+                              );
+                            },
                             child: BlocBuilder<BlogBloc, BlogState>(
+                              buildWhen: (previous, current) =>
+                                  previous.isFetching != current.isFetching,
                               builder: (context, state) {
                                 return Badge(
-                                  isLabelVisible: false,
-                                  label: const Text(
-                                    '${0}',
+                                  isLabelVisible:
+                                      state.tempFilterList.isNotEmpty,
+                                  label: Text(
+                                    '${state.tempFilterList.length}',
                                   ),
                                   textStyle: const TextStyle(fontSize: 10),
                                   child: Material(
@@ -99,9 +111,11 @@ class BlogsPage extends StatelessWidget {
                       child: NoData(),
                     ),
                     controller: ScrollController(),
-                    onRefresh: () => context
-                        .read<BlogBloc>()
-                        .add(const BlogEvent.fetchBlogs()),
+                    onRefresh: () {
+                      final blogBloc = context.read<BlogBloc>();
+                      blogBloc.add(const BlogEvent.clearAllFilterClicked());
+                      blogBloc.add(const BlogEvent.fetchBlogs());
+                    },
                     onLoadingMore: () => context
                         .read<BlogBloc>()
                         .add(const BlogEvent.loadMoreBlogs()),
