@@ -1,0 +1,122 @@
+{
+    "items": [
+      {
+        "id": "66c590186816760012b6c234",
+        "user_id": "662d14137af30e0013145c4c",
+        "blog_title": "Football",
+        "blog_content": "<p>Football is great</p>\r\n",
+        "keyword": [],
+        "blog_images": [
+          "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724223512047.jpg"
+        ],
+        "created_at": "2024-08-21T06:58:32.056Z",
+        "updated_at": "2024-08-22T09:29:22.237Z",
+        "isActive": true,
+        "isDeleted": false,
+        "blog_tag": [
+          "tag2",
+          "tag4",
+          "tag6",
+          "tag8",
+          "tag10"
+        ],
+        "hyperlink": [
+          "https://www.a.com/",
+          "https://www.a.com/"
+        ]
+      },
+      {
+        "id": "66c57c9daa4c060012d00217",
+        "user_id": "662d14137af30e0013145c4c",
+        "blog_title": "India",
+        "blog_content": "<p>India is great</p>\r\n<p></p>\r\n",
+        "keyword": [],
+        "blog_images": [
+          "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724218525838.png"
+        ],
+        "created_at": "2024-08-21T05:35:25.845Z",
+        "updated_at": "2024-08-22T09:32:28.317Z",
+        "isActive": true,
+        "isDeleted": false,
+        "blog_tag": [
+          "tag1",
+          "tag2"
+        ],
+        "hyperlink": [
+          "https://www.google.co.in/",
+          "https://www.google.co.in/"
+        ]
+      },
+      {
+        "id": "66c48ddeaa4c060012d0020c",
+        "user_id": "662d14137af30e0013145c4c",
+        "blog_title": "Indian Film Industry",
+        "blog_content": "<p><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 18px;font-family: barlow-medium, barlow, sans-serif;\">Organized by the Directorate of Film Festivals, this year's awards were announced in New Delhi at National Media Centre. Due to the covid delays, this year's ceremony also honored films from 2020 across several categories. Filmmaker Vipul Shah led the 10-member jury for the year which also included cinematographer Dharam Gulati, National Award-winning Bengali actor Sreelekha Mukherjee, cinematographer GS Bhaskar, A Karthikraaja, VN Aditya, Viji Thampi, Sanjeev Rattan, S Thangadurai and Nishigandha.</span>&nbsp;</p>\r\n",
+        "keyword": [],
+        "blog_images": [
+          "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724157406857.jpg"
+        ],
+        "created_at": "2024-08-20T12:36:46.858Z",
+        "updated_at": "2024-08-22T09:36:03.099Z",
+        "isActive": true,
+        "isDeleted": false,
+        "blog_tag": [
+          "tag1",
+          "tag2"
+        ],
+        "hyperlink": [
+          "https://www.amazon.com",
+          "https://www.amazon.com",
+          "https://www.amazon.com"
+        ]
+      },
+      {
+        "id": "66c47d19cd268c00120116cd",
+        "user_id": "662d14137af30e0013145c4c",
+        "blog_title": "Indian Medical Industry",
+        "blog_content": "<p><span style=\"color: rgb(34,34,34);background-color: rgb(255,255,255);font-size: 17px;font-family: Roboto;\">Along with the private sector, the complete health expenditure is estimated at 3.9 per cent of India’s GDP. Of this, around 30 per cent represents the public sector’s contribution. Again, this number is lower than that of other developing and developed nations. The statistics imply that individual consumers bear the cost of their healthcare expenses. To minimise the burden of OOPEs on the people, the Centre must increase its healthcare spending. </span>&nbsp;</p>\r\n",
+        "keyword": [],
+        "blog_images": [
+          "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724153113987.jpg"
+        ],
+        "created_at": "2024-08-20T11:25:13.989Z",
+        "updated_at": "2024-08-22T09:37:02.007Z",
+        "isActive": true,
+        "isDeleted": false,
+        "blog_tag": [
+          "tag1",
+          "tag2"
+        ],
+        "hyperlink": [
+          "https://www.amazon.com",
+          "https://www.amazon.com"
+        ]
+      },
+      {
+        "id": "66c4753dcd268c00120116cc",
+        "user_id": "662d14137af30e0013145c4c",
+        "blog_title": "IT sector",
+        "blog_content": "<p><span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">The Electronics Committee also known as the \"Bhabha Committee\" created a 10-year (1966–1975) plan laying the foundation for India's IT Service Industries.</span><a href=\"https://en.wikipedia.org/wiki/Information_technology_in_India#cite_note-10\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: initial;\"><sup>[10]</sup></span></a> <span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">The industry was born in</span> <a href=\"https://en.wikipedia.org/wiki/Mumbai\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">Mumbai</span></a> <span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">in 1967 with the establishment of</span> <a href=\"https://en.wikipedia.org/wiki/Tata_Consultancy_Services\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">Tata Consultancy Services</span></a><a href=\"https://en.wikipedia.org/wiki/Information_technology_in_India#cite_note-auto2-11\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: initial;\"><sup>[11]</sup></span></a> <span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">who in 1977 partnered with Burroughs which began India's export of IT services.</span><a href=\"https://en.wikipedia.org/wiki/Information_technology_in_India#cite_note-doccentre1-12\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: initial;\"><sup>[12]</sup></span></a> <span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">The first software export zone,</span> <a href=\"https://en.wikipedia.org/wiki/SEEPZ\" target=\"_self\"><span style=\"color: var(--color-progressive,#36c);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">SEEPZ</span></a> <span style=\"color: rgb(32,33,34);background-color: rgb(255,255,255);font-size: 16px;font-family: sans-serif;\">– the precursor to the modern-day IT park – was established in Mumbai in 1973. More than 80 percent of the country's software exports were from SEEPZ in the 1980s.</span>&nbsp;</p>\r\n",
+        "keyword": [],
+        "blog_images": [
+          "https://nzms-dev-plantit.nzmsecurity.com/blog-images/1724410410381.png"
+        ],
+        "created_at": "2024-08-20T10:51:41.368Z",
+        "updated_at": "2024-08-23T10:53:30.390Z",
+        "isActive": true,
+        "isDeleted": false,
+        "blog_tag": [
+          "tag1",
+          "tag2999",
+          "tag3"
+        ],
+        "hyperlink": [
+          "https://www.amazon.com",
+          "https://www.amazon.com",
+          "https://www.amazon.com",
+          "https://www.amazon.com"
+        ]
+      }
+    ],
+    "totalCount": 9
+  }

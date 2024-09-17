@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:planit/config.dart';
 import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/domain/blog/enitities/blog_comments.dart';
+import 'package:planit/domain/blog/enitities/blogs_filter_tag.dart';
 import 'package:planit/domain/blog/enitities/blogs_response.dart';
 import 'package:planit/domain/blog/repository/i_blog_repository.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -39,6 +40,50 @@ class BlogRepository extends IBlogRepository {
         pageNumber: pageNumber,
         pageSize: pageSize,
         searchText: search,
+      );
+
+      return Right(blogResponse);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, List<BlogsFilterTag>>> fetchFilterList() async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final blogResponse = await localDataSource.fetchFilterList();
+
+        return Right(blogResponse);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final blogResponse = await remoteDataSource.fetchFilterList();
+
+      return Right(blogResponse);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, BlogResponse>> updateFilterBlog({
+    required List<String> updateFilterList,
+  }) async {
+    if (config.appFlavor == Flavor.mock) {
+      try {
+        final blogResponse = await localDataSource.updateFilterBlog();
+
+        return Right(blogResponse);
+      } catch (e) {
+        return Left(FailureHandler.handleFailure(e));
+      }
+    }
+    try {
+      final blogResponse = await remoteDataSource.updateFilterBlog(
+        updateFilterList: updateFilterList,
       );
 
       return Right(blogResponse);

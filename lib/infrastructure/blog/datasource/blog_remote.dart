@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:planit/domain/blog/enitities/blog.dart';
 import 'package:planit/domain/blog/enitities/blog_comments.dart';
+import 'package:planit/domain/blog/enitities/blogs_filter_tag.dart';
 import 'package:planit/domain/blog/enitities/blogs_response.dart';
 import 'package:planit/domain/core/error/exception.dart';
 import 'package:planit/infrastructure/blog/dtos/blog_comments_dto.dart';
 import 'package:planit/infrastructure/blog/dtos/blog_dto.dart';
+import 'package:planit/infrastructure/blog/dtos/blog_filter_tag_dto.dart';
 import 'package:planit/infrastructure/blog/dtos/blog_response_dto.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
 import 'package:planit/utils/storage_service.dart';
@@ -25,6 +27,33 @@ class BlogRemoteDataSource {
       method: 'GET',
       url:
           '/blogs?pageSize=$pageSize&pageNumber=$pageNumber&search=$searchText',
+    );
+    _exceptionChecker(res: res);
+
+    final blogResponse = BlogResponseDto.fromJson(res.data).toDomain;
+    return blogResponse;
+  }
+
+  Future<List<BlogsFilterTag>> fetchFilterList() async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'tags',
+    );
+    _exceptionChecker(res: res);
+
+    final filterList = res.data['items'];
+
+    return List.from(
+      filterList.map((e) => BlogFilterTagDto.fromJson(e).toDomain).toList(),
+    );
+  }
+
+  Future<BlogResponse> updateFilterBlog({
+    required List<String> updateFilterList,
+  }) async {
+    final res = await httpService.request(
+      method: 'GET',
+      url: 'blogs/active?filterByblog_tag=${updateFilterList.join(',')}',
     );
     _exceptionChecker(res: res);
 

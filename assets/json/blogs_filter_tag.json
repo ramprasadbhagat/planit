@@ -1,0 +1,40 @@
+{
+    "items": [
+      {
+        "id": "66e2b3731033bb0012489b87",
+        "tagName": "save_environment",
+        "is_active": "true",
+        "is_deleted": "false",
+        "is_created": "2024-09-12T09:25:07.743Z"
+      },
+      {
+        "id": "66e2b3621033bb0012489b86",
+        "tagName": "save_law",
+        "is_active": "true",
+        "is_deleted": "false",
+        "is_created": "2024-09-12T09:24:50.486Z"
+      },
+      {
+        "id": "66e2b3541033bb0012489b85",
+        "tagName": "save_life",
+        "is_active": "true",
+        "is_deleted": "false",
+        "is_created": "2024-09-12T09:24:36.059Z"
+      },
+      {
+        "id": "662f6d5e0bf28c5674819c60",
+        "tagName": "Very Good",
+        "is_active": "true",
+        "is_deleted": "false",
+        "is_created": "2024-04-29T09:50:22.527Z"
+      },
+      {
+        "id": "662bb163eb7b2105bc4cac75",
+        "tagName": "Good",
+        "is_active": "true",
+        "is_deleted": "false",
+        "is_created": "2024-04-26T13:51:31.734Z"
+      }
+    ],
+    "totalCount": 5
+  }
