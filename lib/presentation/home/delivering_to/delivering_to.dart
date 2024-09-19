@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planit/application/address_book/address_book_bloc.dart';
 import 'package:planit/application/auth/auth_bloc.dart';
+import 'package:planit/application/order/order_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/user/user_bloc.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
@@ -108,11 +109,17 @@ class DeliveringTo extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        isNextDay
-                            ? 'Order within 30 mins for delivery by 6 pm tomorrow'
-                            : 'Order within 30 mins for delivery by 6 pm today',
-                        style: textTheme.labelSmall?.copyWith(fontSize: 13),
+                      BlocBuilder<OrderBloc, OrderState>(
+                        buildWhen: (previous, current) =>
+                            previous.isFetchingDeliveryDate !=
+                                current.isFetchingDeliveryDate &&
+                            !current.isFetchingDeliveryDate,
+                        builder: (context, state) {
+                          return Text(
+                            'Order within 30 mins for delivery by ${state.deliveryTime.endTime.displayOnlyHours} ${state.deliveryTime.date.getOrDefaultValue('')}',
+                            style: textTheme.labelSmall?.copyWith(fontSize: 13),
+                          );
+                        },
                       ),
                       const SizedBox(width: 4.0),
                     ],

@@ -31,6 +31,11 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   DateTime date = DateTime.now();
+  @override
+  void initState() {
+    context.read<OrderBloc>().add(const OrderEvent.checkDeliveryDate());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +93,23 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    DeliveryDateSection(
-                      onChanged: (e) {
-                        setState(() {
-                          date = e!;
-                        });
+                    BlocBuilder<OrderBloc, OrderState>(
+                      buildWhen: (previous, current) =>
+                          previous.isFetchingDeliveryDate !=
+                              current.isFetchingDeliveryDate &&
+                          !current.isFetchingDeliveryDate,
+                      builder: (context, orderState) {
+                        date = orderState.deliveryTime.date.dateTimeOrNull ??
+                            DateTime.now();
+                        return DeliveryDateSection(
+                          onChanged: (e) {
+                            setState(() {
+                              date = e!;
+                            });
+                          },
+                          initialDate: date,
+                        );
                       },
-                      initialDate: date,
                     ),
                     const SizedBox(
                       height: 6,

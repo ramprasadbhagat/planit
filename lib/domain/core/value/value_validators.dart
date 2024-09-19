@@ -31,3 +31,11 @@ Either<ValueFailure<String>, String> validateMinStringLength(
       ? right(input)
       : left(ValueFailure.subceedLength(failedValue: input, min: minLength));
 }
+
+Either<ValueFailure<String>, String> validateDateString(String input) {
+  final dateTime = tryParseDateTime(input);
+
+  return dateTime != null
+      ? right(input)
+      : left(ValueFailure.invalidDateValue(failedValue: input));
+}

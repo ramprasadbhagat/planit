@@ -9,6 +9,7 @@ import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
+import 'package:planit/domain/order/entities/delivery_time.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
 import 'package:planit/domain/payment/entities/payment_options.dart';
@@ -210,6 +211,31 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             selectedPaymentMethod: value.paymentMethod,
           ),
         );
+      },
+      checkDeliveryDate: (_CheckDeliveryDate value) async {
+        emit(
+          state.copyWith(
+            isFetchingDeliveryDate: true,
+          ),
+        );
+        final failureOrSuccess = await repository.getDeliveryDate();
+
+        failureOrSuccess.fold((l) {
+          emit(
+            state.copyWith(
+              isFetchingDeliveryDate: false,
+              apiFailureOrSuccessOption: optionOf(failureOrSuccess),
+            ),
+          );
+        }, (r) {
+          emit(
+            state.copyWith(
+              isFetchingDeliveryDate: false,
+              deliveryTime: r,
+              apiFailureOrSuccessOption: none(),
+            ),
+          );
+        });
       },
     );
   }

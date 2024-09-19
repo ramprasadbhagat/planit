@@ -5,6 +5,7 @@ import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/core/error/failure_handler.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
+import 'package:planit/domain/order/entities/delivery_time.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/domain/order/repository/i_order_repository.dart';
 import 'package:planit/infrastructure/order/datasource/order_local.dart';
@@ -89,6 +90,17 @@ class OrderRepository extends IOrderRepository {
       final products = await remoteDataSource.getOrders();
 
       return Right(products);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, DeliveryTime>> getDeliveryDate() async {
+    try {
+      final res = await remoteDataSource.getDeliveryDate();
+
+      return Right(res);
     } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }
