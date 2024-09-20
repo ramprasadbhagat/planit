@@ -22,8 +22,8 @@ mixin _$ProductDetail {
   int get startingPrice => throw _privateConstructorUsedError;
   Price get price => throw _privateConstructorUsedError;
   StringValue get productDescription => throw _privateConstructorUsedError;
-  List<ProductAttribute> get attribute => throw _privateConstructorUsedError;
   bool get backOrder => throw _privateConstructorUsedError;
+  List<Inventory> get inventoryList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductDetailCopyWith<ProductDetail> get copyWith =>
@@ -43,8 +43,8 @@ abstract class $ProductDetailCopyWith<$Res> {
       int startingPrice,
       Price price,
       StringValue productDescription,
-      List<ProductAttribute> attribute,
-      bool backOrder});
+      bool backOrder,
+      List<Inventory> inventoryList});
 
   $PriceCopyWith<$Res> get price;
 }
@@ -68,8 +68,8 @@ class _$ProductDetailCopyWithImpl<$Res, $Val extends ProductDetail>
     Object? startingPrice = null,
     Object? price = null,
     Object? productDescription = null,
-    Object? attribute = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -96,14 +96,14 @@ class _$ProductDetailCopyWithImpl<$Res, $Val extends ProductDetail>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      attribute: null == attribute
-          ? _value.attribute
-          : attribute // ignore: cast_nullable_to_non_nullable
-              as List<ProductAttribute>,
       backOrder: null == backOrder
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
     ) as $Val);
   }
 
@@ -131,8 +131,8 @@ abstract class _$$ProductDetailImplCopyWith<$Res>
       int startingPrice,
       Price price,
       StringValue productDescription,
-      List<ProductAttribute> attribute,
-      bool backOrder});
+      bool backOrder,
+      List<Inventory> inventoryList});
 
   @override
   $PriceCopyWith<$Res> get price;
@@ -155,8 +155,8 @@ class __$$ProductDetailImplCopyWithImpl<$Res>
     Object? startingPrice = null,
     Object? price = null,
     Object? productDescription = null,
-    Object? attribute = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_$ProductDetailImpl(
       productId: null == productId
@@ -183,14 +183,14 @@ class __$$ProductDetailImplCopyWithImpl<$Res>
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      attribute: null == attribute
-          ? _value._attribute
-          : attribute // ignore: cast_nullable_to_non_nullable
-              as List<ProductAttribute>,
       backOrder: null == backOrder
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
     ));
   }
 }
@@ -205,10 +205,10 @@ class _$ProductDetailImpl extends _ProductDetail {
       required this.startingPrice,
       required this.price,
       required this.productDescription,
-      required final List<ProductAttribute> attribute,
-      required this.backOrder})
+      required this.backOrder,
+      required final List<Inventory> inventoryList})
       : _productImages = productImages,
-        _attribute = attribute,
+        _inventoryList = inventoryList,
         super._();
 
   @override
@@ -229,20 +229,19 @@ class _$ProductDetailImpl extends _ProductDetail {
   final Price price;
   @override
   final StringValue productDescription;
-  final List<ProductAttribute> _attribute;
   @override
-  List<ProductAttribute> get attribute {
-    if (_attribute is EqualUnmodifiableListView) return _attribute;
+  final bool backOrder;
+  final List<Inventory> _inventoryList;
+  @override
+  List<Inventory> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_attribute);
+    return EqualUnmodifiableListView(_inventoryList);
   }
 
   @override
-  final bool backOrder;
-
-  @override
   String toString() {
-    return 'ProductDetail(productId: $productId, name: $name, productImages: $productImages, startingPrice: $startingPrice, price: $price, productDescription: $productDescription, attribute: $attribute, backOrder: $backOrder)';
+    return 'ProductDetail(productId: $productId, name: $name, productImages: $productImages, startingPrice: $startingPrice, price: $price, productDescription: $productDescription, backOrder: $backOrder, inventoryList: $inventoryList)';
   }
 
   @override
@@ -260,10 +259,10 @@ class _$ProductDetailImpl extends _ProductDetail {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.productDescription, productDescription) ||
                 other.productDescription == productDescription) &&
-            const DeepCollectionEquality()
-                .equals(other._attribute, _attribute) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList));
   }
 
   @override
@@ -275,8 +274,8 @@ class _$ProductDetailImpl extends _ProductDetail {
       startingPrice,
       price,
       productDescription,
-      const DeepCollectionEquality().hash(_attribute),
-      backOrder);
+      backOrder,
+      const DeepCollectionEquality().hash(_inventoryList));
 
   @JsonKey(ignore: true)
   @override
@@ -293,8 +292,8 @@ abstract class _ProductDetail extends ProductDetail {
       required final int startingPrice,
       required final Price price,
       required final StringValue productDescription,
-      required final List<ProductAttribute> attribute,
-      required final bool backOrder}) = _$ProductDetailImpl;
+      required final bool backOrder,
+      required final List<Inventory> inventoryList}) = _$ProductDetailImpl;
   _ProductDetail._() : super._();
 
   @override
@@ -310,9 +309,9 @@ abstract class _ProductDetail extends ProductDetail {
   @override
   StringValue get productDescription;
   @override
-  List<ProductAttribute> get attribute;
-  @override
   bool get backOrder;
+  @override
+  List<Inventory> get inventoryList;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailImplCopyWith<_$ProductDetailImpl> get copyWith =>

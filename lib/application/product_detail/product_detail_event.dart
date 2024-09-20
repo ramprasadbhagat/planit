@@ -8,6 +8,6 @@ class ProductDetailEvent with _$ProductDetailEvent {
     String? attributeItemId,
   }) = _Fetch;
   const factory ProductDetailEvent.changeSelectedAttribute(
-    ProductAttribute productAttribute,
+    Inventory inventory,
   ) = _ChangeSelectedAttribute;
 }

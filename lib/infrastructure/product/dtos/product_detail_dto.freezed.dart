@@ -33,10 +33,13 @@ mixin _$ProductDetailDto {
   @JsonKey(
       name: 'productImages', defaultValue: [], readValue: parseProductImages)
   List<String> get productImages => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>> get attribute =>
-      throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,8 +66,12 @@ abstract class $ProductDetailDtoCopyWith<$Res> {
           defaultValue: [],
           readValue: parseProductImages)
       List<String> productImages,
-      List<Map<String, dynamic>> attribute,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -86,8 +93,8 @@ class _$ProductDetailDtoCopyWithImpl<$Res, $Val extends ProductDetailDto>
     Object? startingPrice = null,
     Object? price = null,
     Object? productImages = null,
-    Object? attribute = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -114,14 +121,14 @@ class _$ProductDetailDtoCopyWithImpl<$Res, $Val extends ProductDetailDto>
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      attribute: null == attribute
-          ? _value.attribute
-          : attribute // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
       backOrder: null == backOrder
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ) as $Val);
   }
 }
@@ -147,8 +154,12 @@ abstract class _$$ProductDetailDtoImplCopyWith<$Res>
           defaultValue: [],
           readValue: parseProductImages)
       List<String> productImages,
-      List<Map<String, dynamic>> attribute,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -168,8 +179,8 @@ class __$$ProductDetailDtoImplCopyWithImpl<$Res>
     Object? startingPrice = null,
     Object? price = null,
     Object? productImages = null,
-    Object? attribute = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_$ProductDetailDtoImpl(
       productId: null == productId
@@ -196,14 +207,14 @@ class __$$ProductDetailDtoImplCopyWithImpl<$Res>
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      attribute: null == attribute
-          ? _value._attribute
-          : attribute // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
       backOrder: null == backOrder
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ));
   }
 }
@@ -225,11 +236,15 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
           defaultValue: [],
           readValue: parseProductImages)
       required final List<String> productImages,
-      required final List<Map<String, dynamic>> attribute,
-      @JsonKey(defaultValue: false) required this.backOrder})
+      @JsonKey(defaultValue: false) required this.backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList})
       : _price = price,
         _productImages = productImages,
-        _attribute = attribute,
+        _inventoryList = inventoryList,
         super._();
 
   factory _$ProductDetailDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -266,21 +281,24 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
     return EqualUnmodifiableListView(_productImages);
   }
 
-  final List<Map<String, dynamic>> _attribute;
-  @override
-  List<Map<String, dynamic>> get attribute {
-    if (_attribute is EqualUnmodifiableListView) return _attribute;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_attribute);
-  }
-
   @override
   @JsonKey(defaultValue: false)
   final bool backOrder;
+  final List<InventoryDto> _inventoryList;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
 
   @override
   String toString() {
-    return 'ProductDetailDto(productId: $productId, productDescription: $productDescription, name: $name, startingPrice: $startingPrice, price: $price, productImages: $productImages, attribute: $attribute, backOrder: $backOrder)';
+    return 'ProductDetailDto(productId: $productId, productDescription: $productDescription, name: $name, startingPrice: $startingPrice, price: $price, productImages: $productImages, backOrder: $backOrder, inventoryList: $inventoryList)';
   }
 
   @override
@@ -298,10 +316,10 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
             const DeepCollectionEquality().equals(other._price, _price) &&
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages) &&
-            const DeepCollectionEquality()
-                .equals(other._attribute, _attribute) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList));
   }
 
   @JsonKey(ignore: true)
@@ -314,8 +332,8 @@ class _$ProductDetailDtoImpl extends _ProductDetailDto {
       startingPrice,
       const DeepCollectionEquality().hash(_price),
       const DeepCollectionEquality().hash(_productImages),
-      const DeepCollectionEquality().hash(_attribute),
-      backOrder);
+      backOrder,
+      const DeepCollectionEquality().hash(_inventoryList));
 
   @JsonKey(ignore: true)
   @override
@@ -348,9 +366,13 @@ abstract class _ProductDetailDto extends ProductDetailDto {
           defaultValue: [],
           readValue: parseProductImages)
       required final List<String> productImages,
-      required final List<Map<String, dynamic>> attribute,
-      @JsonKey(defaultValue: false)
-      required final bool backOrder}) = _$ProductDetailDtoImpl;
+      @JsonKey(defaultValue: false) required final bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto>
+          inventoryList}) = _$ProductDetailDtoImpl;
   _ProductDetailDto._() : super._();
 
   factory _ProductDetailDto.fromJson(Map<String, dynamic> json) =
@@ -376,10 +398,14 @@ abstract class _ProductDetailDto extends ProductDetailDto {
       name: 'productImages', defaultValue: [], readValue: parseProductImages)
   List<String> get productImages;
   @override
-  List<Map<String, dynamic>> get attribute;
-  @override
   @JsonKey(defaultValue: false)
   bool get backOrder;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailDtoImplCopyWith<_$ProductDetailDtoImpl> get copyWith =>

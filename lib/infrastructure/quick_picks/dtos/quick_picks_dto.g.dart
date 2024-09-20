@@ -34,7 +34,11 @@ _$QuickPicksDtoImpl _$$QuickPicksDtoImplFromJson(Map<String, dynamic> json) =>
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemId: json['attributeItemId'] as String? ?? '',
-      price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
+      inventory:
+          (JsonReadValueHelper.readList(json, 'inventory') as List<dynamic>?)
+                  ?.map((e) => InventoryDto.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -65,7 +69,7 @@ Map<String, dynamic> _$$QuickPicksDtoImplToJson(_$QuickPicksDtoImpl instance) =>
       'attributeItemProductId': instance.attributeItemProductId,
       'attributeItem': instance.attributeItem,
       'attributeItemId': instance.attributeItemId,
-      'price': instance.price,
+      'inventory': instance.inventory,
       'productImages': instance.productImages,
       'backOrder': instance.backOrder,
     };

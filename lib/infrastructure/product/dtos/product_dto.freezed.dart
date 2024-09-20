@@ -43,6 +43,11 @@ mixin _$ProductDto {
   bool get backOrder => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get productRating => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -76,7 +81,12 @@ abstract class $ProductDtoCopyWith<$Res> {
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
       @JsonKey(defaultValue: false) bool backOrder,
-      @JsonKey(defaultValue: '') String productRating});
+      @JsonKey(defaultValue: '') String productRating,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -103,6 +113,7 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
     Object? productDescription = null,
     Object? backOrder = null,
     Object? productRating = null,
+    Object? inventoryList = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -149,6 +160,10 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as String,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ) as $Val);
   }
 }
@@ -181,7 +196,12 @@ abstract class _$$ProductDtoImplCopyWith<$Res>
       @JsonKey(name: 'productDescription', defaultValue: '')
       String productDescription,
       @JsonKey(defaultValue: false) bool backOrder,
-      @JsonKey(defaultValue: '') String productRating});
+      @JsonKey(defaultValue: '') String productRating,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -206,6 +226,7 @@ class __$$ProductDtoImplCopyWithImpl<$Res>
     Object? productDescription = null,
     Object? backOrder = null,
     Object? productRating = null,
+    Object? inventoryList = null,
   }) {
     return _then(_$ProductDtoImpl(
       productId: null == productId
@@ -252,6 +273,10 @@ class __$$ProductDtoImplCopyWithImpl<$Res>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as String,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ));
   }
 }
@@ -280,9 +305,15 @@ class _$ProductDtoImpl extends _ProductDto {
       @JsonKey(name: 'productDescription', defaultValue: '')
       required this.productDescription,
       @JsonKey(defaultValue: false) required this.backOrder,
-      @JsonKey(defaultValue: '') required this.productRating})
+      @JsonKey(defaultValue: '') required this.productRating,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList})
       : _productImages = productImages,
         _price = price,
+        _inventoryList = inventoryList,
         super._();
 
   factory _$ProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -334,10 +365,21 @@ class _$ProductDtoImpl extends _ProductDto {
   @override
   @JsonKey(defaultValue: '')
   final String productRating;
+  final List<InventoryDto> _inventoryList;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
 
   @override
   String toString() {
-    return 'ProductDto(productId: $productId, productName: $productName, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productDescription: $productDescription, backOrder: $backOrder, productRating: $productRating)';
+    return 'ProductDto(productId: $productId, productName: $productName, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, productDescription: $productDescription, backOrder: $backOrder, productRating: $productRating, inventoryList: $inventoryList)';
   }
 
   @override
@@ -365,7 +407,9 @@ class _$ProductDtoImpl extends _ProductDto {
             (identical(other.backOrder, backOrder) ||
                 other.backOrder == backOrder) &&
             (identical(other.productRating, productRating) ||
-                other.productRating == productRating));
+                other.productRating == productRating) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList));
   }
 
   @JsonKey(ignore: true)
@@ -382,7 +426,8 @@ class _$ProductDtoImpl extends _ProductDto {
       const DeepCollectionEquality().hash(_price),
       productDescription,
       backOrder,
-      productRating);
+      productRating,
+      const DeepCollectionEquality().hash(_inventoryList));
 
   @JsonKey(ignore: true)
   @override
@@ -421,8 +466,12 @@ abstract class _ProductDto extends ProductDto {
       @JsonKey(name: 'productDescription', defaultValue: '')
       required final String productDescription,
       @JsonKey(defaultValue: false) required final bool backOrder,
-      @JsonKey(defaultValue: '')
-      required final String productRating}) = _$ProductDtoImpl;
+      @JsonKey(defaultValue: '') required final String productRating,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList}) = _$ProductDtoImpl;
   _ProductDto._() : super._();
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
@@ -462,6 +511,12 @@ abstract class _ProductDto extends ProductDto {
   @override
   @JsonKey(defaultValue: '')
   String get productRating;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList;
   @override
   @JsonKey(ignore: true)
   _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>

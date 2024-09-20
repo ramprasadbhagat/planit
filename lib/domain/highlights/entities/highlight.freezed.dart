@@ -37,11 +37,11 @@ mixin _$Highlight {
   int get productMRP => throw _privateConstructorUsedError;
   String get productReview => throw _privateConstructorUsedError;
   double get productRating => throw _privateConstructorUsedError;
-  Price get price => throw _privateConstructorUsedError;
   String get attributeItemProductId => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
   StringValue get attributeItemId => throw _privateConstructorUsedError;
   bool get backOrder => throw _privateConstructorUsedError;
+  List<Inventory> get inventoryList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HighlightCopyWith<Highlight> get copyWith =>
@@ -75,13 +75,11 @@ abstract class $HighlightCopyWith<$Res> {
       int productMRP,
       String productReview,
       double productRating,
-      Price price,
       String attributeItemProductId,
       List<String> productImages,
       StringValue attributeItemId,
-      bool backOrder});
-
-  $PriceCopyWith<$Res> get price;
+      bool backOrder,
+      List<Inventory> inventoryList});
 }
 
 /// @nodoc
@@ -118,11 +116,11 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
-    Object? price = null,
     Object? attributeItemProductId = null,
     Object? productImages = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -209,10 +207,6 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
       attributeItemProductId: null == attributeItemProductId
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
@@ -229,15 +223,11 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res> get price {
-    return $PriceCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
-    });
   }
 }
 
@@ -271,14 +261,11 @@ abstract class _$$HighlightImplCopyWith<$Res>
       int productMRP,
       String productReview,
       double productRating,
-      Price price,
       String attributeItemProductId,
       List<String> productImages,
       StringValue attributeItemId,
-      bool backOrder});
-
-  @override
-  $PriceCopyWith<$Res> get price;
+      bool backOrder,
+      List<Inventory> inventoryList});
 }
 
 /// @nodoc
@@ -313,11 +300,11 @@ class __$$HighlightImplCopyWithImpl<$Res>
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
-    Object? price = null,
     Object? attributeItemProductId = null,
     Object? productImages = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_$HighlightImpl(
       id: null == id
@@ -404,10 +391,6 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
       attributeItemProductId: null == attributeItemProductId
           ? _value.attributeItemProductId
           : attributeItemProductId // ignore: cast_nullable_to_non_nullable
@@ -424,6 +407,10 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
     ));
   }
 }
@@ -453,13 +440,14 @@ class _$HighlightImpl extends _Highlight {
       required this.productMRP,
       required this.productReview,
       required this.productRating,
-      required this.price,
       required this.attributeItemProductId,
       required final List<String> productImages,
       required this.attributeItemId,
-      required this.backOrder})
+      required this.backOrder,
+      required final List<Inventory> inventoryList})
       : _ingredientsList = ingredientsList,
         _productImages = productImages,
+        _inventoryList = inventoryList,
         super._();
 
   @override
@@ -511,8 +499,6 @@ class _$HighlightImpl extends _Highlight {
   @override
   final double productRating;
   @override
-  final Price price;
-  @override
   final String attributeItemProductId;
   final List<String> _productImages;
   @override
@@ -526,10 +512,17 @@ class _$HighlightImpl extends _Highlight {
   final StringValue attributeItemId;
   @override
   final bool backOrder;
+  final List<Inventory> _inventoryList;
+  @override
+  List<Inventory> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
 
   @override
   String toString() {
-    return 'Highlight(id: $id, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, attributeItemProductId: $attributeItemProductId, productImages: $productImages, attributeItemId: $attributeItemId, backOrder: $backOrder)';
+    return 'Highlight(id: $id, productName: $productName, productDescription: $productDescription, productDiscount: $productDiscount, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, attributeItemProductId: $attributeItemProductId, productImages: $productImages, attributeItemId: $attributeItemId, backOrder: $backOrder, inventoryList: $inventoryList)';
   }
 
   @override
@@ -577,7 +570,6 @@ class _$HighlightImpl extends _Highlight {
                 other.productReview == productReview) &&
             (identical(other.productRating, productRating) ||
                 other.productRating == productRating) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.attributeItemProductId, attributeItemProductId) ||
                 other.attributeItemProductId == attributeItemProductId) &&
             const DeepCollectionEquality()
@@ -585,7 +577,9 @@ class _$HighlightImpl extends _Highlight {
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList));
   }
 
   @override
@@ -612,11 +606,11 @@ class _$HighlightImpl extends _Highlight {
         productMRP,
         productReview,
         productRating,
-        price,
         attributeItemProductId,
         const DeepCollectionEquality().hash(_productImages),
         attributeItemId,
-        backOrder
+        backOrder,
+        const DeepCollectionEquality().hash(_inventoryList)
       ]);
 
   @JsonKey(ignore: true)
@@ -649,11 +643,11 @@ abstract class _Highlight extends Highlight {
       required final int productMRP,
       required final String productReview,
       required final double productRating,
-      required final Price price,
       required final String attributeItemProductId,
       required final List<String> productImages,
       required final StringValue attributeItemId,
-      required final bool backOrder}) = _$HighlightImpl;
+      required final bool backOrder,
+      required final List<Inventory> inventoryList}) = _$HighlightImpl;
   const _Highlight._() : super._();
 
   @override
@@ -699,8 +693,6 @@ abstract class _Highlight extends Highlight {
   @override
   double get productRating;
   @override
-  Price get price;
-  @override
   String get attributeItemProductId;
   @override
   List<String> get productImages;
@@ -709,140 +701,9 @@ abstract class _Highlight extends Highlight {
   @override
   bool get backOrder;
   @override
+  List<Inventory> get inventoryList;
+  @override
   @JsonKey(ignore: true)
   _$$HighlightImplCopyWith<_$HighlightImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$Price {
-  String get price => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PriceCopyWith<Price> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PriceCopyWith<$Res> {
-  factory $PriceCopyWith(Price value, $Res Function(Price) then) =
-      _$PriceCopyWithImpl<$Res, Price>;
-  @useResult
-  $Res call({String price, int quantity});
-}
-
-/// @nodoc
-class _$PriceCopyWithImpl<$Res, $Val extends Price>
-    implements $PriceCopyWith<$Res> {
-  _$PriceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? quantity = null,
-  }) {
-    return _then(_value.copyWith(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PriceImplCopyWith<$Res> implements $PriceCopyWith<$Res> {
-  factory _$$PriceImplCopyWith(
-          _$PriceImpl value, $Res Function(_$PriceImpl) then) =
-      __$$PriceImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String price, int quantity});
-}
-
-/// @nodoc
-class __$$PriceImplCopyWithImpl<$Res>
-    extends _$PriceCopyWithImpl<$Res, _$PriceImpl>
-    implements _$$PriceImplCopyWith<$Res> {
-  __$$PriceImplCopyWithImpl(
-      _$PriceImpl _value, $Res Function(_$PriceImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? quantity = null,
-  }) {
-    return _then(_$PriceImpl(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PriceImpl extends _Price {
-  const _$PriceImpl({required this.price, required this.quantity}) : super._();
-
-  @override
-  final String price;
-  @override
-  final int quantity;
-
-  @override
-  String toString() {
-    return 'Price(price: $price, quantity: $quantity)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PriceImpl &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, price, quantity);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PriceImplCopyWith<_$PriceImpl> get copyWith =>
-      __$$PriceImplCopyWithImpl<_$PriceImpl>(this, _$identity);
-}
-
-abstract class _Price extends Price {
-  const factory _Price(
-      {required final String price, required final int quantity}) = _$PriceImpl;
-  const _Price._() : super._();
-
-  @override
-  String get price;
-  @override
-  int get quantity;
-  @override
-  @JsonKey(ignore: true)
-  _$$PriceImplCopyWith<_$PriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

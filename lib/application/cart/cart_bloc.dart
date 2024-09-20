@@ -9,10 +9,10 @@ import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
 import 'package:planit/domain/cart/repository/i_cart_repository.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/debouncer.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/order/entities/order.dart';
-import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/entities/product.dart';
 
 part 'cart_event.dart';
@@ -323,8 +323,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               product: Product.empty().copyWith(
                 attributeItemId: orderItem.attributeItemId,
                 productId: orderItem.productId,
-                price: Price(
-                  price: orderItem.product.price.getValue().toString(),
+                inventory: Inventory.empty().copyWith(
+                  finalPrice: orderItem.product.price.getValue().toDouble(),
                   quantity: orderItem.reOrderQuantity.getValue(),
                 ),
               ),

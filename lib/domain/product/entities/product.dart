@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
-import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
 part 'product.freezed.dart';
@@ -18,15 +18,15 @@ class Product with _$Product {
     required String attributeItem,
     required String attributeItemProductId,
     required StringValue attributeItemId,
-    required Price price,
     required StringValue productDescription,
     required bool backOrder,
     required double productRating,
+    required Inventory inventory,
   }) = _Product;
 
   String get getPriceValue {
-    if ((double.tryParse(price.price) ?? 0) > 0) {
-      return price.price;
+    if (inventory.finalPrice > 0) {
+      return inventory.finalPrice.toString();
     } else if (startingPrice > 0) {
       return startingPrice.toString();
     } else {
@@ -47,6 +47,7 @@ class Product with _$Product {
       quantity: quantity,
       attributeItemId: attributeItemId.getValue(),
       backOrder: backOrder,
+      inventory: inventory,
     );
   }
 
@@ -58,10 +59,17 @@ class Product with _$Product {
         startingPrice: 0,
         attributeItem: '',
         attributeItemProductId: '',
-        price: Price.empty(),
         productDescription: StringValue(''),
         attributeItemId: StringValue(''),
         backOrder: false,
         productRating: 0,
+        inventory: Inventory.empty(),
       );
+
+  bool get isOOS {
+    final hasStock = inventory.quantity > 0;
+    final isBackOrderable = inventory.quantity == 0 && backOrder;
+
+    return !(hasStock || isBackOrderable);
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/similar_product/entities/similar_product.dart';
+import 'package:planit/infrastructure/core/common/json_read_value_helper.dart';
+import 'package:planit/infrastructure/inventory/dto/inventory_dto.dart';
 import 'package:planit/infrastructure/similar_product/dtos/price_dto.dart';
 
 part 'similar_product_dto.freezed.dart';
@@ -34,6 +36,12 @@ class SimilarProductDto with _$SimilarProductDto {
     @JsonKey(defaultValue: {}) required Map<String, dynamic> price,
     @JsonKey(defaultValue: []) required List<String> productImages,
     @JsonKey(defaultValue: false) required bool backOrder,
+    @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList,
+    )
+    required List<InventoryDto> inventoryList,
   }) = _SimilarProductDto;
 
   factory SimilarProductDto.fromJson(Map<String, dynamic> json) =>
@@ -63,6 +71,9 @@ class SimilarProductDto with _$SimilarProductDto {
         productImages: productImages,
         attributeItemId: StringValue(attributeItemId),
         backOrder: backOrder,
+        inventoryList: List<InventoryDto>.from(inventoryList)
+            .map((e) => e.toDomain)
+            .toList(),
       );
 }
 

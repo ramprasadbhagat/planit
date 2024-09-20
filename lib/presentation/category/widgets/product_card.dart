@@ -10,6 +10,7 @@ import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
 import 'package:planit/presentation/core/custom_snackbar/custom_snackbar.dart';
+import 'package:planit/presentation/core/discount_widget/discount_widget.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -31,7 +32,6 @@ class ProductCard extends StatelessWidget {
     return Container(
       width: 130,
       height: 170,
-      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -56,151 +56,161 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: CachedNetworkImage(
-                      errorWidget: (context, url, error) =>
-                          Image.asset(PngImage.placeholder),
-                      imageUrl: product.productImages.firstOrNull ?? '',
-                      height: 80,
-                      width: double.infinity,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  BlocBuilder<WishlistBloc, WishlistState>(
-                    builder: (context, state) {
-                      final item = state.getwishlistProduct(product);
-                      if (item == null) {
-                        return AddToListButton(product: product);
-                      }
-                      return ItemCountWidget(
-                        item: item,
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(4),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Expanded(
-                    child: Text(
-                      product.name,
-                      style: textTheme.bodySmall?.copyWith(fontSize: 10),
-                      textAlign: TextAlign.left,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Text(
-                    product.attributeItem,
-                    style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.grey1,
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: [
-                  Text(
-                    '₹${product.getPriceValue} ',
-                    style: textTheme.bodySmall?.copyWith(
-                      fontSize: 9,
-                    ),
-                  ),
-                  Text(
-                    '${(double.tryParse(product.getPriceValue) ?? 0) + 30.0}',
-                    style: textTheme.bodySmall!.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      color: AppColors.lightGray,
-                      fontSize: 9,
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+                  Stack(
+                    // alignment: Alignment.topRight,
                     children: [
-                      const Icon(
-                        Icons.star,
-                        size: 9,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: CachedNetworkImage(
+                          errorWidget: (context, url, error) =>
+                              Image.asset(PngImage.placeholder),
+                          imageUrl: product.productImages.firstOrNull ?? '',
+                          height: 80,
+                          width: double.infinity,
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                      Text(
-                        product.productRating.toStringAsFixed(1),
-                        style: textTheme.bodySmall?.copyWith(
-                          fontSize: 9,
+                      Positioned(
+                        right: 0,
+                        top: 0,
+                        child: BlocBuilder<WishlistBloc, WishlistState>(
+                          builder: (context, state) {
+                            final item = state.getwishlistProduct(product);
+                            if (item == null) {
+                              return AddToListButton(product: product);
+                            }
+                            return ItemCountWidget(
+                              item: item,
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
-                  product.attributeItemId.isValid() &&
-                          (product.backOrder || product.price.quantity > 0)
-                      ? AddToCartButton.fromProductCard(
-                          product: product,
-                          onPressed: () async {
-                            if (context
-                                .read<AuthBloc>()
-                                .state
-                                .isUnAuthenticated) {
-                              context.read<CartBloc>().add(
-                                    CartEvent.addToCartLocal(
-                                      product: product,
-                                      quantity: 1,
-                                    ),
-                                  );
-                            } else {
-                              if (context
-                                  .read<PincodeBloc>()
-                                  .state
-                                  .pincode
-                                  .isEmpty) {
-                                await showDialog<void>(
-                                  context: context,
-                                  barrierDismissible:
-                                      false, // user must tap button!
-                                  builder: (BuildContext context) {
-                                    return const NoPincodeErrorDialog();
-                                  },
-                                );
-                              } else {
-                                context.read<CartBloc>().add(
-                                      CartEvent.addToCart(
-                                        product: product,
-                                        quantity: 1,
-                                      ),
-                                    );
-                              }
-                            }
-                          },
-                        )
-                      : Text(
-                          'Out of stock',
-                          style:
-                              Theme.of(context).textTheme.labelSmall?.copyWith(
-                                    fontSize: 12,
-                                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          product.name,
+                          style: textTheme.bodySmall?.copyWith(fontSize: 10),
+                          textAlign: TextAlign.left,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
+                      ),
+                      Text(
+                        product.attributeItem,
+                        style: textTheme.bodySmall?.copyWith(
+                          color: AppColors.grey1,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Text(
+                        '₹${product.inventory.finalPrice} ',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 9,
+                        ),
+                      ),
+                      if (product.inventory.showListPrice)
+                        Text(
+                          product.inventory.listPrice.toString(),
+                          style: textTheme.bodySmall!.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColors.lightGray,
+                            fontSize: 9,
+                          ),
+                        ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            size: 9,
+                          ),
+                          Text(
+                            product.productRating.toStringAsFixed(1),
+                            style: textTheme.bodySmall?.copyWith(
+                              fontSize: 9,
+                            ),
+                          ),
+                        ],
+                      ),
+                      product.isOOS
+                          ? Text(
+                              'Out of stock',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall
+                                  ?.copyWith(fontSize: 12),
+                            )
+                          : AddToCartButton.fromProductCard(
+                              product: product,
+                              onPressed: () async {
+                                if (context
+                                    .read<AuthBloc>()
+                                    .state
+                                    .isUnAuthenticated) {
+                                  context.read<CartBloc>().add(
+                                        CartEvent.addToCartLocal(
+                                          product: product,
+                                          quantity: 1,
+                                        ),
+                                      );
+                                } else {
+                                  if (context
+                                      .read<PincodeBloc>()
+                                      .state
+                                      .pincode
+                                      .isEmpty) {
+                                    await showDialog<void>(
+                                      context: context,
+                                      barrierDismissible:
+                                          false, // user must tap button!
+                                      builder: (BuildContext context) {
+                                        return const NoPincodeErrorDialog();
+                                      },
+                                    );
+                                  } else {
+                                    context.read<CartBloc>().add(
+                                          CartEvent.addToCart(
+                                            product: product,
+                                            quantity: 1,
+                                          ),
+                                        );
+                                  }
+                                }
+                              },
+                            ),
+                    ],
+                  ),
                 ],
               ),
-            ],
-          ),
+            ),
+            if (product.inventory.showListPrice)
+              DiscountWidget(
+                discountPercentage: product.inventory.discountPercentage,
+              ),
+          ],
         ),
       ),
     );

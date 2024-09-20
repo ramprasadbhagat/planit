@@ -38,6 +38,11 @@ _$SimilarProductDtoImpl _$$SimilarProductDtoImplFromJson(
               .toList() ??
           [],
       backOrder: json['backOrder'] as bool? ?? false,
+      inventoryList:
+          (JsonReadValueHelper.readList(json, 'inventory') as List<dynamic>?)
+                  ?.map((e) => InventoryDto.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
     );
 
 Map<String, dynamic> _$$SimilarProductDtoImplToJson(
@@ -66,4 +71,5 @@ Map<String, dynamic> _$$SimilarProductDtoImplToJson(
       'price': instance.price,
       'productImages': instance.productImages,
       'backOrder': instance.backOrder,
+      'inventory': instance.inventoryList,
     };

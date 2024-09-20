@@ -35,7 +35,11 @@ _$HighlightDtoImpl _$$HighlightDtoImplFromJson(Map<String, dynamic> json) =>
       attributeItem: json['attributeItem'] as String? ?? '',
       attributeItemProductId: json['attributeItemProductId'] as String? ?? '',
       attributeItemId: json['attributeItemId'] as String? ?? '',
-      price: PriceDto.fromJson(json['price'] as Map<String, dynamic>),
+      inventoryList:
+          (JsonReadValueHelper.readList(json, 'inventory') as List<dynamic>?)
+                  ?.map((e) => InventoryDto.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
       productImages: (json['productImages'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -67,7 +71,7 @@ Map<String, dynamic> _$$HighlightDtoImplToJson(_$HighlightDtoImpl instance) =>
       'attributeItem': instance.attributeItem,
       'attributeItemProductId': instance.attributeItemProductId,
       'attributeItemId': instance.attributeItemId,
-      'price': instance.price,
+      'inventory': instance.inventoryList,
       'productImages': instance.productImages,
       'backOrder': instance.backOrder,
     };

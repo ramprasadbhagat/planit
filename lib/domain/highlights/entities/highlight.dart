@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
-import 'package:planit/domain/product/entities/price.dart' as pp;
 
 part 'highlight.freezed.dart';
 
@@ -31,11 +31,11 @@ class Highlight with _$Highlight {
     required int productMRP,
     required String productReview,
     required double productRating,
-    required Price price,
     required String attributeItemProductId,
     required List<String> productImages,
     required StringValue attributeItemId,
     required bool backOrder,
+    required List<Inventory> inventoryList,
   }) = _Highlight;
 
   String get discountValue {
@@ -78,35 +78,28 @@ class Highlight with _$Highlight {
         attributeName: '',
         productDiscount: '',
         attributeItem: '',
-        price: Price.empty(),
         productImages: <String>[],
         attributeItemId: StringValue(''),
         backOrder: false,
+        inventoryList: <Inventory>[],
       );
 
-  Product get toProduct => Product(
-        productId: ProductId(id),
-        name: productName,
-        productImages: productImages,
-        skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
-        startingPrice: startingPrice,
-        attributeItem: attributeItem,
-        attributeItemProductId: attributeItemProductId,
-        price: pp.Price(price: price.price, quantity: price.quantity),
-        productDescription: StringValue(productDescription),
-        attributeItemId: attributeItemId,
-        backOrder: backOrder,
-        productRating: productRating,
-      );
-}
-
-@freezed
-class Price with _$Price {
-  const Price._();
-  const factory Price({
-    required String price,
-    required int quantity,
-  }) = _Price;
-  bool get isEditable => quantity > 1;
-  factory Price.empty() => const Price(price: '', quantity: 0);
+  Product get toProduct {
+    final inventory =
+        inventoryList.isNotEmpty ? inventoryList.first : Inventory.empty();
+    return Product(
+      productId: ProductId(id),
+      name: productName,
+      productImages: productImages,
+      skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
+      startingPrice: startingPrice,
+      attributeItem: attributeItem,
+      attributeItemProductId: inventory.attributeItemId,
+      productDescription: StringValue(productDescription),
+      attributeItemId: StringValue(inventory.attributeItemId),
+      backOrder: backOrder,
+      productRating: productRating,
+      inventory: inventory,
+    );
+  }
 }

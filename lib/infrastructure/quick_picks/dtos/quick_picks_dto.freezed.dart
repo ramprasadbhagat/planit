@@ -64,7 +64,11 @@ mixin _$QuickPicksDto {
   String get attributeItem => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get attributeItemId => throw _privateConstructorUsedError;
-  PriceDto get price => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventory => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
@@ -104,11 +108,13 @@ abstract class $QuickPicksDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItem,
       @JsonKey(defaultValue: '') String attributeItemId,
-      PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventory,
       List<String> productImages,
       @JsonKey(defaultValue: false) bool backOrder});
-
-  $PriceDtoCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -146,7 +152,7 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
     Object? attributeItemProductId = null,
     Object? attributeItem = null,
     Object? attributeItemId = null,
-    Object? price = null,
+    Object? inventory = null,
     Object? productImages = null,
     Object? backOrder = null,
   }) {
@@ -239,10 +245,10 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as PriceDto,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
       productImages: null == productImages
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -252,14 +258,6 @@ class _$QuickPicksDtoCopyWithImpl<$Res, $Val extends QuickPicksDto>
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceDtoCopyWith<$Res> get price {
-    return $PriceDtoCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
-    });
   }
 }
 
@@ -294,12 +292,13 @@ abstract class _$$QuickPicksDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItem,
       @JsonKey(defaultValue: '') String attributeItemId,
-      PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventory,
       List<String> productImages,
       @JsonKey(defaultValue: false) bool backOrder});
-
-  @override
-  $PriceDtoCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -335,7 +334,7 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
     Object? attributeItemProductId = null,
     Object? attributeItem = null,
     Object? attributeItemId = null,
-    Object? price = null,
+    Object? inventory = null,
     Object? productImages = null,
     Object? backOrder = null,
   }) {
@@ -428,10 +427,10 @@ class __$$QuickPicksDtoImplCopyWithImpl<$Res>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as PriceDto,
+      inventory: null == inventory
+          ? _value._inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
       productImages: null == productImages
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -472,10 +471,15 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
       @JsonKey(defaultValue: '') required this.attributeItemProductId,
       @JsonKey(defaultValue: '') required this.attributeItem,
       @JsonKey(defaultValue: '') required this.attributeItemId,
-      required this.price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventory,
       required final List<String> productImages,
       @JsonKey(defaultValue: false) required this.backOrder})
       : _ingredientsList = ingredientsList,
+        _inventory = inventory,
         _productImages = productImages,
         super._();
 
@@ -554,8 +558,18 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
   @override
   @JsonKey(defaultValue: '')
   final String attributeItemId;
+  final List<InventoryDto> _inventory;
   @override
-  final PriceDto price;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventory {
+    if (_inventory is EqualUnmodifiableListView) return _inventory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventory);
+  }
+
   final List<String> _productImages;
   @override
   List<String> get productImages {
@@ -570,7 +584,7 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
 
   @override
   String toString() {
-    return 'QuickPicksDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItemProductId: $attributeItemProductId, attributeItem: $attributeItem, attributeItemId: $attributeItemId, price: $price, productImages: $productImages, backOrder: $backOrder)';
+    return 'QuickPicksDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItemProductId: $attributeItemProductId, attributeItem: $attributeItem, attributeItemId: $attributeItemId, inventory: $inventory, productImages: $productImages, backOrder: $backOrder)';
   }
 
   @override
@@ -620,7 +634,8 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
                 other.attributeItem == attributeItem) &&
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
-            (identical(other.price, price) || other.price == price) &&
+            const DeepCollectionEquality()
+                .equals(other._inventory, _inventory) &&
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages) &&
             (identical(other.backOrder, backOrder) ||
@@ -653,7 +668,7 @@ class _$QuickPicksDtoImpl extends _QuickPicksDto {
         attributeItemProductId,
         attributeItem,
         attributeItemId,
-        price,
+        const DeepCollectionEquality().hash(_inventory),
         const DeepCollectionEquality().hash(_productImages),
         backOrder
       ]);
@@ -700,7 +715,11 @@ abstract class _QuickPicksDto extends QuickPicksDto {
       @JsonKey(defaultValue: '') required final String attributeItemProductId,
       @JsonKey(defaultValue: '') required final String attributeItem,
       @JsonKey(defaultValue: '') required final String attributeItemId,
-      required final PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventory,
       required final List<String> productImages,
       @JsonKey(defaultValue: false)
       required final bool backOrder}) = _$QuickPicksDtoImpl;
@@ -776,7 +795,11 @@ abstract class _QuickPicksDto extends QuickPicksDto {
   @JsonKey(defaultValue: '')
   String get attributeItemId;
   @override
-  PriceDto get price;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventory;
   @override
   List<String> get productImages;
   @override

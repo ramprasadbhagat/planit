@@ -66,6 +66,11 @@ mixin _$SimilarProductDto {
   List<String> get productImages => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -103,7 +108,12 @@ abstract class $SimilarProductDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: {}) Map<String, dynamic> price,
       @JsonKey(defaultValue: []) List<String> productImages,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -142,6 +152,7 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
     Object? price = null,
     Object? productImages = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -236,6 +247,10 @@ class _$SimilarProductDtoCopyWithImpl<$Res, $Val extends SimilarProductDto>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ) as $Val);
   }
 }
@@ -272,7 +287,12 @@ abstract class _$$SimilarProductDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: {}) Map<String, dynamic> price,
       @JsonKey(defaultValue: []) List<String> productImages,
-      @JsonKey(defaultValue: false) bool backOrder});
+      @JsonKey(defaultValue: false) bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList});
 }
 
 /// @nodoc
@@ -309,6 +329,7 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
     Object? price = null,
     Object? productImages = null,
     Object? backOrder = null,
+    Object? inventoryList = null,
   }) {
     return _then(_$SimilarProductDtoImpl(
       id: null == id
@@ -403,6 +424,10 @@ class __$$SimilarProductDtoImplCopyWithImpl<$Res>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
     ));
   }
 }
@@ -434,10 +459,16 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
       @JsonKey(defaultValue: '') required this.attributeItemProductId,
       @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
       @JsonKey(defaultValue: []) required final List<String> productImages,
-      @JsonKey(defaultValue: false) required this.backOrder})
+      @JsonKey(defaultValue: false) required this.backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList})
       : _ingredientsList = ingredientsList,
         _price = price,
         _productImages = productImages,
+        _inventoryList = inventoryList,
         super._();
 
   factory _$SimilarProductDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -530,10 +561,21 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
   @override
   @JsonKey(defaultValue: false)
   final bool backOrder;
+  final List<InventoryDto> _inventoryList;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
 
   @override
   String toString() {
-    return 'SimilarProductDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemId: $attributeItemId, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages, backOrder: $backOrder)';
+    return 'SimilarProductDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, startingPrice: $startingPrice, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemId: $attributeItemId, attributeItemProductId: $attributeItemProductId, price: $price, productImages: $productImages, backOrder: $backOrder, inventoryList: $inventoryList)';
   }
 
   @override
@@ -583,7 +625,9 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList));
   }
 
   @JsonKey(ignore: true)
@@ -612,7 +656,8 @@ class _$SimilarProductDtoImpl extends _SimilarProductDto {
         attributeItemProductId,
         const DeepCollectionEquality().hash(_price),
         const DeepCollectionEquality().hash(_productImages),
-        backOrder
+        backOrder,
+        const DeepCollectionEquality().hash(_inventoryList)
       ]);
 
   @JsonKey(ignore: true)
@@ -656,8 +701,13 @@ abstract class _SimilarProductDto extends SimilarProductDto {
       @JsonKey(defaultValue: '') required final String attributeItemProductId,
       @JsonKey(defaultValue: {}) required final Map<String, dynamic> price,
       @JsonKey(defaultValue: []) required final List<String> productImages,
-      @JsonKey(defaultValue: false)
-      required final bool backOrder}) = _$SimilarProductDtoImpl;
+      @JsonKey(defaultValue: false) required final bool backOrder,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto>
+          inventoryList}) = _$SimilarProductDtoImpl;
   const _SimilarProductDto._() : super._();
 
   factory _SimilarProductDto.fromJson(Map<String, dynamic> json) =
@@ -732,6 +782,12 @@ abstract class _SimilarProductDto extends SimilarProductDto {
   @override
   @JsonKey(defaultValue: false)
   bool get backOrder;
+  @override
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList;
   @override
   @JsonKey(ignore: true)
   _$$SimilarProductDtoImplCopyWith<_$SimilarProductDtoImpl> get copyWith =>
