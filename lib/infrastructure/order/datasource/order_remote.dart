@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/exception.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
 import 'package:planit/domain/order/entities/delivery_time.dart';
 import 'package:planit/domain/order/entities/order.dart';
@@ -84,10 +85,10 @@ class OrderRemoteDataSource {
   }
 
   Future<DeliveryTime> getDeliveryDate() async {
-    final currentTime = DateTime.now();
+    final currentTime = DateTimeStringValue(DateTime.now().toIso8601String());
     final data = {
-      'date': '${currentTime.year}-${currentTime.month}-${currentTime.day}',
-      'time': '${currentTime.hour}:${currentTime.minute}:${currentTime.second}',
+      'date': currentTime.apiDateWithDashString,
+      'time': currentTime.apiTime,
     };
     final res = await httpService.request(
       method: 'POST',

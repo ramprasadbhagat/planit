@@ -101,23 +101,30 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       builder: (context, orderState) {
                         date = orderState.deliveryTime.date.dateTimeOrNull ??
                             DateTime.now();
-                        return DeliveryDateSection(
-                          onChanged: (e) {
-                            setState(() {
-                              date = e!;
-                            });
-                          },
-                          initialDate: date,
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DeliveryDateSection(
+                              onChanged: (e) {
+                                setState(() {
+                                  date = e!;
+                                });
+                              },
+                              initialDate: date,
+                            ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              '* Your expected date of delivery is on ${orderState.deliveryTime.date.dateString} , at ${orderState.deliveryTime.startTime.displayOnlyHours} - ${orderState.deliveryTime.endTime.displayOnlyHours}',
+                              style: textTheme.labelSmall?.copyWith(
+                                color: AppColors.grey2,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
                         );
                       },
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      '* Your expected date of delivery is on 7th June 2024 , Monday , at 7:00 - 8:00 pm',
-                      style: textTheme.labelSmall
-                          ?.copyWith(color: AppColors.grey2, fontSize: 12),
                     ),
                     const SizedBox(
                       height: 10,

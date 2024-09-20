@@ -115,6 +115,11 @@ class DateTimeStringValue extends ValueObject<String> {
         DateTimeFormatString.apiDateWithDashFormat,
       );
 
+  String get apiTime => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.timeFormat,
+      );
+
   int get intValue => getDateTimeIntValue(_valueOrEmpty);
 
   DateTime? get dateTimeOrNull => tryParseDateTime(_valueOrEmpty);

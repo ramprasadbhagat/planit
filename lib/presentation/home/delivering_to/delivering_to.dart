@@ -78,6 +78,9 @@ class DeliveringTo extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.pincode != current.pincode,
                 builder: (context, state) {
+                  context
+                      .read<OrderBloc>()
+                      .add(const OrderEvent.checkDeliveryDate());
                   if (state.pincode.isEmpty) {
                     return Row(
                       children: [
