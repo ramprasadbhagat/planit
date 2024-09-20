@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/error/api_failures.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/repository/i_product_repository.dart';
@@ -44,15 +45,14 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
             emit(
               state.copyWith(
                 product: res,
-                selectedProductAttribute: e.attributeItemId != null
-                    ? res.attribute.firstWhere(
+                selectedInventory: e.attributeItemId != null
+                    ? res.inventoryList.firstWhere(
                         (element) =>
-                            element.attributeItemId.getValue() ==
-                            e.attributeItemId,
-                        orElse: () => (res.attribute.firstOrNull ??
-                            ProductAttribute.empty()),
+                            element.attributeItemId == e.attributeItemId,
+                        orElse: () =>
+                            res.inventoryList.firstOrNull ?? Inventory.empty(),
                       )
-                    : (res.attribute.firstOrNull ?? ProductAttribute.empty()),
+                    : res.inventoryList.firstOrNull ?? Inventory.empty(),
                 isFetching: false,
               ),
             );
@@ -62,7 +62,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       changeSelectedAttribute: (_ChangeSelectedAttribute value) {
         emit(
           state.copyWith(
-            selectedProductAttribute: value.productAttribute,
+            selectedInventory: value.inventory,
           ),
         );
       },

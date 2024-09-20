@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
-import 'package:planit/infrastructure/highlights/dtos/price_dto.dart';
+import 'package:planit/infrastructure/core/common/json_read_value_helper.dart';
+import 'package:planit/infrastructure/inventory/dto/inventory_dto.dart';
 
 part 'highlight_dto.freezed.dart';
 part 'highlight_dto.g.dart';
@@ -35,7 +36,12 @@ class HighlightDto with _$HighlightDto {
     @JsonKey(defaultValue: '') required String attributeItem,
     @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: '') required String attributeItemId,
-    required PriceDto price,
+    @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList,
+    )
+    required List<InventoryDto> inventoryList,
     required List<String> productImages,
     @JsonKey(defaultValue: false) required bool backOrder,
   }) = _HighlightDto;
@@ -65,11 +71,13 @@ class HighlightDto with _$HighlightDto {
         discount: discount,
         attributeName: attributeName,
         attributeItem: attributeItem,
-        price: price.toDomain,
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
         attributeItemId: StringValue(attributeItemId),
         backOrder: false,
+        inventoryList: List<InventoryDto>.from(inventoryList)
+            .map((e) => e.toDomain)
+            .toList(),
       );
 }
 

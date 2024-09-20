@@ -38,6 +38,8 @@ mixin _$CartProductLocal {
   String get attributeItemId => throw _privateConstructorUsedError;
   @HiveField(10, defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
+  @HiveField(11)
+  Inventory get inventory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartProductLocalCopyWith<CartProductLocal> get copyWith =>
@@ -61,7 +63,10 @@ abstract class $CartProductLocalCopyWith<$Res> {
       @HiveField(7) String price,
       @HiveField(8) int quantity,
       @HiveField(9) String attributeItemId,
-      @HiveField(10, defaultValue: false) bool backOrder});
+      @HiveField(10, defaultValue: false) bool backOrder,
+      @HiveField(11) Inventory inventory});
+
+  $InventoryCopyWith<$Res> get inventory;
 }
 
 /// @nodoc
@@ -88,6 +93,7 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
     Object? quantity = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
+    Object? inventory = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -134,7 +140,19 @@ class _$CartProductLocalCopyWithImpl<$Res, $Val extends CartProductLocal>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InventoryCopyWith<$Res> get inventory {
+    return $InventoryCopyWith<$Res>(_value.inventory, (value) {
+      return _then(_value.copyWith(inventory: value) as $Val);
+    });
   }
 }
 
@@ -157,7 +175,11 @@ abstract class _$$CartProductLocalImplCopyWith<$Res>
       @HiveField(7) String price,
       @HiveField(8) int quantity,
       @HiveField(9) String attributeItemId,
-      @HiveField(10, defaultValue: false) bool backOrder});
+      @HiveField(10, defaultValue: false) bool backOrder,
+      @HiveField(11) Inventory inventory});
+
+  @override
+  $InventoryCopyWith<$Res> get inventory;
 }
 
 /// @nodoc
@@ -182,6 +204,7 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
     Object? quantity = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
+    Object? inventory = null,
   }) {
     return _then(_$CartProductLocalImpl(
       productId: null == productId
@@ -228,6 +251,10 @@ class __$$CartProductLocalImplCopyWithImpl<$Res>
           ? _value.backOrder
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ));
   }
 }
@@ -248,7 +275,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       @HiveField(7) required this.price,
       @HiveField(8) required this.quantity,
       @HiveField(9) required this.attributeItemId,
-      @HiveField(10, defaultValue: false) required this.backOrder})
+      @HiveField(10, defaultValue: false) required this.backOrder,
+      @HiveField(11) required this.inventory})
       : _productImages = productImages,
         super._();
 
@@ -291,10 +319,13 @@ class _$CartProductLocalImpl extends _CartProductLocal {
   @override
   @HiveField(10, defaultValue: false)
   final bool backOrder;
+  @override
+  @HiveField(11)
+  final Inventory inventory;
 
   @override
   String toString() {
-    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, quantity: $quantity, attributeItemId: $attributeItemId, backOrder: $backOrder)';
+    return 'CartProductLocal(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, price: $price, quantity: $quantity, attributeItemId: $attributeItemId, backOrder: $backOrder, inventory: $inventory)';
   }
 
   @override
@@ -321,7 +352,9 @@ class _$CartProductLocalImpl extends _CartProductLocal {
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
             (identical(other.backOrder, backOrder) ||
-                other.backOrder == backOrder));
+                other.backOrder == backOrder) &&
+            (identical(other.inventory, inventory) ||
+                other.inventory == inventory));
   }
 
   @override
@@ -337,7 +370,8 @@ class _$CartProductLocalImpl extends _CartProductLocal {
       price,
       quantity,
       attributeItemId,
-      backOrder);
+      backOrder,
+      inventory);
 
   @JsonKey(ignore: true)
   @override
@@ -359,7 +393,8 @@ abstract class _CartProductLocal extends CartProductLocal {
           @HiveField(7) required final String price,
           @HiveField(8) required final int quantity,
           @HiveField(9) required final String attributeItemId,
-          @HiveField(10, defaultValue: false) required final bool backOrder}) =
+          @HiveField(10, defaultValue: false) required final bool backOrder,
+          @HiveField(11) required final Inventory inventory}) =
       _$CartProductLocalImpl;
   _CartProductLocal._() : super._();
 
@@ -396,6 +431,9 @@ abstract class _CartProductLocal extends CartProductLocal {
   @override
   @HiveField(10, defaultValue: false)
   bool get backOrder;
+  @override
+  @HiveField(11)
+  Inventory get inventory;
   @override
   @JsonKey(ignore: true)
   _$$CartProductLocalImplCopyWith<_$CartProductLocalImpl> get copyWith =>

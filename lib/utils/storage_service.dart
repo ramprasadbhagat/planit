@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:planit/domain/auth/entities/auth.dart';
 import 'package:planit/domain/auth/entities/user.dart';
 import 'package:planit/domain/cart/entities/cart_product_local.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/pincode/entities/pincode.dart';
 import 'package:planit/utils/hive_constants.dart';
 
@@ -27,6 +28,7 @@ class StorageService {
     Hive.registerAdapter(AuthAdapter());
     Hive.registerAdapter(CartAdapter());
     Hive.registerAdapter(PinCodeAdapter());
+    Hive.registerAdapter(InventoryAdapter());
   }
 
   Future<void> _openBox() async {

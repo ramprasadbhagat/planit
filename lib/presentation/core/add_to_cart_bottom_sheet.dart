@@ -9,6 +9,7 @@ import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/application/pincode/pincode_bloc.dart';
 import 'package:planit/application/product_detail/product_detail_bloc.dart';
 import 'package:planit/application/wishlist/wishlist_bloc.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
@@ -90,6 +91,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                                     items: state.product.productImages
                                         .map(
                                           (e) => CachedNetworkImage(
+                                            fit: BoxFit.fill,
                                             errorWidget:
                                                 (context, url, error) =>
                                                     Image.asset(
@@ -126,7 +128,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                                 ),
                                 AddToWishlistButton(
                                   product: state.product.toProduct(
-                                    state.selectedProductAttribute,
+                                    state.selectedInventory,
                                   ),
                                 ),
                               ],
@@ -185,9 +187,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                state
-                                    .selectedProductAttribute.attributeItemValue
-                                    .getValue(),
+                                state.selectedInventory.itemWeight,
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
@@ -196,23 +196,55 @@ class AddToCartBottomSheet extends StatelessWidget {
                                       : AppColors.grey4,
                                 ),
                               ),
-                              Text(
-                                'MRP ₹${state.selectedProductAttribute.price}',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                  color: !state.isOOS
-                                      ? AppColors.textBlack
-                                      : AppColors.grey4,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'MRP ₹${state.selectedInventory.finalPrice}',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: !state.isOOS
+                                          ? AppColors.textBlack
+                                          : AppColors.grey4,
+                                    ),
+                                  ),
+                                  if (state.selectedInventory.showListPrice)
+                                    Text(
+                                      state.selectedInventory.listPrice
+                                          .toString(),
+                                      style: textTheme.bodySmall!.copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                        color: AppColors.lightGray,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                  if (state.selectedInventory.showListPrice)
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 4),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 6,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: AppColors.green,
+                                      ),
+                                      child: Text(
+                                        '${state.selectedInventory.discountPercentage}% OFF',
+                                        style: textTheme.bodySmall!.copyWith(
+                                          color: AppColors.white,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ),
+                                ],
                               ),
                               Text(
                                 '(Inclusicve of all taxes)',
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
-                                  color: state.selectedProductAttribute.quantity
-                                          .isGretharThanZero
+                                  color: state.selectedInventory.quantity > 0
                                       ? AppColors.textBlack
                                       : AppColors.grey4,
                                 ),
@@ -221,7 +253,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                           ),
                           AddToCartButton.fromBottomSheet(
                             product: state.product
-                                .toProduct(state.selectedProductAttribute),
+                                .toProduct(state.selectedInventory),
                             onTap: !state.isOOS
                                 ? () async {
                                     if (context.read<AuthBloc>().state ==
@@ -229,7 +261,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                                       context.read<CartBloc>().add(
                                             CartEvent.addToCartLocal(
                                               product: state.product.toProduct(
-                                                state.selectedProductAttribute,
+                                                state.selectedInventory,
                                               ),
                                               quantity: 1,
                                             ),
@@ -253,8 +285,7 @@ class AddToCartBottomSheet extends StatelessWidget {
                                               CartEvent.addToCart(
                                                 product:
                                                     state.product.toProduct(
-                                                  state
-                                                      .selectedProductAttribute,
+                                                  state.selectedInventory,
                                                 ),
                                                 quantity: 1,
                                               ),
@@ -328,12 +359,12 @@ class UnitList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             physics: const ScrollPhysics(),
             shrinkWrap: true,
-            itemCount: product.attribute.length,
+            itemCount: product.inventoryList.length,
             padding: const EdgeInsets.symmetric(
               vertical: 10,
             ),
             itemBuilder: (context, index) =>
-                Unit(productAttribute: product.attribute[index]),
+                Unit(inventory: product.inventoryList[index]),
           ),
         ),
       ],
@@ -342,11 +373,11 @@ class UnitList extends StatelessWidget {
 }
 
 class Unit extends StatelessWidget {
-  final ProductAttribute productAttribute;
+  final Inventory inventory;
 
   const Unit({
     super.key,
-    required this.productAttribute,
+    required this.inventory,
   });
 
   @override
@@ -355,11 +386,11 @@ class Unit extends StatelessWidget {
 
     return BlocBuilder<ProductDetailBloc, ProductDetailState>(
       buildWhen: (previous, current) =>
-          previous.selectedProductAttribute != current.selectedProductAttribute,
+          previous.selectedInventory != current.selectedInventory,
       builder: (context, state) {
-        final isSelected = state.selectedProductAttribute == productAttribute;
-        final isOutOfStock = !(productAttribute.quantity.isGretharThanZero ||
-            state.product.backOrder);
+        final isSelected = state.selectedInventory == inventory;
+        final isOutOfStock = state.isOOS;
+
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -388,16 +419,16 @@ class Unit extends StatelessWidget {
             onTap: () {
               context.read<ProductDetailBloc>().add(
                     ProductDetailEvent.changeSelectedAttribute(
-                      productAttribute,
+                      inventory,
                     ),
                   );
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (productAttribute.attributeItemValue.isValid()) ...[
+                if (inventory.itemWeight.isNotEmpty) ...[
                   Text(
-                    productAttribute.attributeItemValue.getValue(),
+                    inventory.itemWeight,
                     style: textTheme.bodySmall?.copyWith(fontSize: 10),
                   ),
                   const SizedBox(
@@ -405,10 +436,7 @@ class Unit extends StatelessWidget {
                   ),
                 ],
                 Text(
-                  productAttribute.quantity.isGretharThanZero ||
-                          state.product.backOrder
-                      ? '₹ ${productAttribute.price}'
-                      : 'Out of stock',
+                  state.isOOS ? 'Out of stock' : '₹ ${inventory.finalPrice}',
                   style: textTheme.bodySmall?.copyWith(fontSize: 10),
                 ),
               ],

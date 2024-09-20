@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
-import 'package:planit/domain/product/entities/price.dart' as pp;
 
 part 'quick_picks.freezed.dart';
 
@@ -31,7 +31,7 @@ class QuickPicks with _$QuickPicks {
     required int productMRP,
     required String productReview,
     required double productRating,
-    required Price price,
+    required List<Inventory> inventoryList,
     required List<String> productImages,
     required StringValue attributeItemId,
     required bool backOrder,
@@ -59,34 +59,28 @@ class QuickPicks with _$QuickPicks {
         discount: '',
         attributeName: '',
         attributeItem: '',
-        price: Price.empty(),
+        inventoryList: <Inventory>[],
         productImages: <String>[],
         attributeItemId: StringValue(''),
         backOrder: false,
       );
-  Product get toProduct => Product(
-        productId: ProductId(id),
-        name: productName,
-        productImages: productImages,
-        skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
-        startingPrice: startingPrice,
-        attributeItem: attributeItem,
-        attributeItemProductId: attributeItemProductId,
-        price: pp.Price(price: price.price, quantity: price.quantity),
-        productDescription: StringValue(productDescription),
-        attributeItemId: attributeItemId,
-        backOrder: backOrder,
-        productRating: productRating,
-      );
-}
 
-@freezed
-class Price with _$Price {
-  const Price._();
-  const factory Price({
-    required String price,
-    required int quantity,
-  }) = _Price;
-  bool get isEditable => quantity > 1;
-  factory Price.empty() => const Price(price: '', quantity: 0);
+  Product get toProduct {
+    final inventory =
+        inventoryList.isNotEmpty ? inventoryList.first : Inventory.empty();
+    return Product(
+      productId: ProductId(id),
+      name: productName,
+      productImages: productImages,
+      skuPrice: IntegerValue(int.tryParse(skuPrice) ?? 0),
+      startingPrice: startingPrice,
+      attributeItem: inventory.itemWeight,
+      attributeItemProductId: inventory.attributeItemId,
+      productDescription: StringValue(productDescription),
+      attributeItemId: StringValue(inventory.attributeItemId),
+      backOrder: backOrder,
+      productRating: productRating,
+      inventory: inventory,
+    );
+  }
 }

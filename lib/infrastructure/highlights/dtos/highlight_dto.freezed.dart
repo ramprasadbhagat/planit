@@ -66,7 +66,11 @@ mixin _$HighlightDto {
   String get attributeItemProductId => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get attributeItemId => throw _privateConstructorUsedError;
-  PriceDto get price => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: false)
   bool get backOrder => throw _privateConstructorUsedError;
@@ -107,11 +111,13 @@ abstract class $HighlightDtoCopyWith<$Res> {
       @JsonKey(defaultValue: '') String attributeItem,
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItemId,
-      PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList,
       List<String> productImages,
       @JsonKey(defaultValue: false) bool backOrder});
-
-  $PriceDtoCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -150,7 +156,7 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? attributeItemId = null,
-    Object? price = null,
+    Object? inventoryList = null,
     Object? productImages = null,
     Object? backOrder = null,
   }) {
@@ -247,10 +253,10 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as PriceDto,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
       productImages: null == productImages
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -260,14 +266,6 @@ class _$HighlightDtoCopyWithImpl<$Res, $Val extends HighlightDto>
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceDtoCopyWith<$Res> get price {
-    return $PriceDtoCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
-    });
   }
 }
 
@@ -303,12 +301,13 @@ abstract class _$$HighlightDtoImplCopyWith<$Res>
       @JsonKey(defaultValue: '') String attributeItem,
       @JsonKey(defaultValue: '') String attributeItemProductId,
       @JsonKey(defaultValue: '') String attributeItemId,
-      PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      List<InventoryDto> inventoryList,
       List<String> productImages,
       @JsonKey(defaultValue: false) bool backOrder});
-
-  @override
-  $PriceDtoCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -345,7 +344,7 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? attributeItemId = null,
-    Object? price = null,
+    Object? inventoryList = null,
     Object? productImages = null,
     Object? backOrder = null,
   }) {
@@ -442,10 +441,10 @@ class __$$HighlightDtoImplCopyWithImpl<$Res>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as PriceDto,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<InventoryDto>,
       productImages: null == productImages
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -487,10 +486,15 @@ class _$HighlightDtoImpl extends _HighlightDto {
       @JsonKey(defaultValue: '') required this.attributeItem,
       @JsonKey(defaultValue: '') required this.attributeItemProductId,
       @JsonKey(defaultValue: '') required this.attributeItemId,
-      required this.price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList,
       required final List<String> productImages,
       @JsonKey(defaultValue: false) required this.backOrder})
       : _ingredientsList = ingredientsList,
+        _inventoryList = inventoryList,
         _productImages = productImages,
         super._();
 
@@ -572,8 +576,18 @@ class _$HighlightDtoImpl extends _HighlightDto {
   @override
   @JsonKey(defaultValue: '')
   final String attributeItemId;
+  final List<InventoryDto> _inventoryList;
   @override
-  final PriceDto price;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
+
   final List<String> _productImages;
   @override
   List<String> get productImages {
@@ -588,7 +602,7 @@ class _$HighlightDtoImpl extends _HighlightDto {
 
   @override
   String toString() {
-    return 'HighlightDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productImages: $productImages, backOrder: $backOrder)';
+    return 'HighlightDto(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, productMRP: $productMRP, startingPrice: $startingPrice, productReview: $productReview, productRating: $productRating, productDiscount: $productDiscount, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, inventoryList: $inventoryList, productImages: $productImages, backOrder: $backOrder)';
   }
 
   @override
@@ -640,7 +654,8 @@ class _$HighlightDtoImpl extends _HighlightDto {
                 other.attributeItemProductId == attributeItemProductId) &&
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
-            (identical(other.price, price) || other.price == price) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList) &&
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages) &&
             (identical(other.backOrder, backOrder) ||
@@ -674,7 +689,7 @@ class _$HighlightDtoImpl extends _HighlightDto {
         attributeItem,
         attributeItemProductId,
         attributeItemId,
-        price,
+        const DeepCollectionEquality().hash(_inventoryList),
         const DeepCollectionEquality().hash(_productImages),
         backOrder
       ]);
@@ -722,7 +737,11 @@ abstract class _HighlightDto extends HighlightDto {
       @JsonKey(defaultValue: '') required final String attributeItem,
       @JsonKey(defaultValue: '') required final String attributeItemProductId,
       @JsonKey(defaultValue: '') required final String attributeItemId,
-      required final PriceDto price,
+      @JsonKey(
+          name: 'inventory',
+          defaultValue: <InventoryDto>[],
+          readValue: JsonReadValueHelper.readList)
+      required final List<InventoryDto> inventoryList,
       required final List<String> productImages,
       @JsonKey(defaultValue: false)
       required final bool backOrder}) = _$HighlightDtoImpl;
@@ -801,7 +820,11 @@ abstract class _HighlightDto extends HighlightDto {
   @JsonKey(defaultValue: '')
   String get attributeItemId;
   @override
-  PriceDto get price;
+  @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList)
+  List<InventoryDto> get inventoryList;
   @override
   List<String> get productImages;
   @override

@@ -24,6 +24,11 @@ _$ProductDtoImpl _$$ProductDtoImplFromJson(Map<String, dynamic> json) =>
       productDescription: json['productDescription'] as String? ?? '',
       backOrder: json['backOrder'] as bool? ?? false,
       productRating: json['productRating'] as String? ?? '',
+      inventoryList:
+          (JsonReadValueHelper.readList(json, 'inventory') as List<dynamic>?)
+                  ?.map((e) => InventoryDto.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [],
     );
 
 Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
@@ -39,4 +44,5 @@ Map<String, dynamic> _$$ProductDtoImplToJson(_$ProductDtoImpl instance) =>
       'productDescription': instance.productDescription,
       'backOrder': instance.backOrder,
       'productRating': instance.productRating,
+      'inventory': instance.inventoryList,
     };

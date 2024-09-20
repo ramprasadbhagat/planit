@@ -204,7 +204,7 @@ class SimilarProductCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                item.toProduct.price.quantity > 0
+                item.toProduct.inventory.quantity > 0
                     ? AddToCartButton.fromProductCard(
                         product: item.toProduct,
                         onPressed: () {

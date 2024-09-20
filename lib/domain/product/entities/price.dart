@@ -14,4 +14,5 @@ class Price with _$Price {
         price: '',
         quantity: 0,
       );
+  bool get isEditable => quantity > 1;
 }

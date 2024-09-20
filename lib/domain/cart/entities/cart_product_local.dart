@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
-import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 import 'package:planit/utils/hive_constants.dart';
@@ -28,6 +28,7 @@ class CartProductLocal with _$CartProductLocal {
     @HiveField(8) required int quantity,
     @HiveField(9) required String attributeItemId,
     @HiveField(10, defaultValue: false) required bool backOrder,
+    @HiveField(11) required Inventory inventory,
   }) = _CartProductLocal;
   factory CartProductLocal.empty() => CartProductLocal(
         name: '',
@@ -41,6 +42,7 @@ class CartProductLocal with _$CartProductLocal {
         quantity: 0,
         attributeItemId: '',
         backOrder: false,
+        inventory: Inventory.empty(),
       );
   Product get toProduct => Product(
         productId: ProductId(productId),
@@ -50,10 +52,10 @@ class CartProductLocal with _$CartProductLocal {
         startingPrice: startingPrice,
         attributeItem: attributeItem,
         attributeItemProductId: attributeItemProductId,
-        price: Price.empty().copyWith(price: price, quantity: 1),
         productDescription: StringValue(''),
         attributeItemId: StringValue(attributeItemId),
         backOrder: backOrder,
         productRating: 0,
+        inventory: inventory,
       );
 }

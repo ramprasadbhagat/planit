@@ -30,18 +30,6 @@ class ProductRemoteDataSource {
         .toList();
   }
 
-  Future<List<Product>> getQuickPackProduct() async {
-    final res = await httpService.request(
-      method: 'GET',
-      url: 'products/getQuickPick',
-    );
-    _exceptionChecker(res: res);
-    final categories = res.data['items'];
-    return List.from(categories)
-        .map((e) => ProductDto.fromJson(e).toDomain)
-        .toList();
-  }
-
   Future<List<Product>> getSubCategoryProduct(String subcategoryId) async {
     final res = await httpService.request(
       method: 'GET',

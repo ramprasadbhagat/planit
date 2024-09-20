@@ -24,10 +24,10 @@ mixin _$Product {
   String get attributeItem => throw _privateConstructorUsedError;
   String get attributeItemProductId => throw _privateConstructorUsedError;
   StringValue get attributeItemId => throw _privateConstructorUsedError;
-  Price get price => throw _privateConstructorUsedError;
   StringValue get productDescription => throw _privateConstructorUsedError;
   bool get backOrder => throw _privateConstructorUsedError;
   double get productRating => throw _privateConstructorUsedError;
+  Inventory get inventory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
@@ -47,12 +47,12 @@ abstract class $ProductCopyWith<$Res> {
       String attributeItem,
       String attributeItemProductId,
       StringValue attributeItemId,
-      Price price,
       StringValue productDescription,
       bool backOrder,
-      double productRating});
+      double productRating,
+      Inventory inventory});
 
-  $PriceCopyWith<$Res> get price;
+  $InventoryCopyWith<$Res> get inventory;
 }
 
 /// @nodoc
@@ -76,10 +76,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? attributeItemId = null,
-    Object? price = null,
     Object? productDescription = null,
     Object? backOrder = null,
     Object? productRating = null,
+    Object? inventory = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -114,10 +114,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
       productDescription: null == productDescription
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
@@ -130,14 +126,18 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res> get price {
-    return $PriceCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
+  $InventoryCopyWith<$Res> get inventory {
+    return $InventoryCopyWith<$Res>(_value.inventory, (value) {
+      return _then(_value.copyWith(inventory: value) as $Val);
     });
   }
 }
@@ -158,13 +158,13 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String attributeItem,
       String attributeItemProductId,
       StringValue attributeItemId,
-      Price price,
       StringValue productDescription,
       bool backOrder,
-      double productRating});
+      double productRating,
+      Inventory inventory});
 
   @override
-  $PriceCopyWith<$Res> get price;
+  $InventoryCopyWith<$Res> get inventory;
 }
 
 /// @nodoc
@@ -186,10 +186,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? attributeItem = null,
     Object? attributeItemProductId = null,
     Object? attributeItemId = null,
-    Object? price = null,
     Object? productDescription = null,
     Object? backOrder = null,
     Object? productRating = null,
+    Object? inventory = null,
   }) {
     return _then(_$ProductImpl(
       productId: null == productId
@@ -224,10 +224,6 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.attributeItemId
           : attributeItemId // ignore: cast_nullable_to_non_nullable
               as StringValue,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
       productDescription: null == productDescription
           ? _value.productDescription
           : productDescription // ignore: cast_nullable_to_non_nullable
@@ -240,6 +236,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
+      inventory: null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ));
   }
 }
@@ -256,10 +256,10 @@ class _$ProductImpl extends _Product {
       required this.attributeItem,
       required this.attributeItemProductId,
       required this.attributeItemId,
-      required this.price,
       required this.productDescription,
       required this.backOrder,
-      required this.productRating})
+      required this.productRating,
+      required this.inventory})
       : _productImages = productImages,
         super._();
 
@@ -286,17 +286,17 @@ class _$ProductImpl extends _Product {
   @override
   final StringValue attributeItemId;
   @override
-  final Price price;
-  @override
   final StringValue productDescription;
   @override
   final bool backOrder;
   @override
   final double productRating;
+  @override
+  final Inventory inventory;
 
   @override
   String toString() {
-    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, price: $price, productDescription: $productDescription, backOrder: $backOrder, productRating: $productRating)';
+    return 'Product(productId: $productId, name: $name, productImages: $productImages, skuPrice: $skuPrice, startingPrice: $startingPrice, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, attributeItemId: $attributeItemId, productDescription: $productDescription, backOrder: $backOrder, productRating: $productRating, inventory: $inventory)';
   }
 
   @override
@@ -319,13 +319,14 @@ class _$ProductImpl extends _Product {
                 other.attributeItemProductId == attributeItemProductId) &&
             (identical(other.attributeItemId, attributeItemId) ||
                 other.attributeItemId == attributeItemId) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.productDescription, productDescription) ||
                 other.productDescription == productDescription) &&
             (identical(other.backOrder, backOrder) ||
                 other.backOrder == backOrder) &&
             (identical(other.productRating, productRating) ||
-                other.productRating == productRating));
+                other.productRating == productRating) &&
+            (identical(other.inventory, inventory) ||
+                other.inventory == inventory));
   }
 
   @override
@@ -339,10 +340,10 @@ class _$ProductImpl extends _Product {
       attributeItem,
       attributeItemProductId,
       attributeItemId,
-      price,
       productDescription,
       backOrder,
-      productRating);
+      productRating,
+      inventory);
 
   @JsonKey(ignore: true)
   @override
@@ -361,10 +362,10 @@ abstract class _Product extends Product {
       required final String attributeItem,
       required final String attributeItemProductId,
       required final StringValue attributeItemId,
-      required final Price price,
       required final StringValue productDescription,
       required final bool backOrder,
-      required final double productRating}) = _$ProductImpl;
+      required final double productRating,
+      required final Inventory inventory}) = _$ProductImpl;
   _Product._() : super._();
 
   @override
@@ -384,13 +385,13 @@ abstract class _Product extends Product {
   @override
   StringValue get attributeItemId;
   @override
-  Price get price;
-  @override
   StringValue get productDescription;
   @override
   bool get backOrder;
   @override
   double get productRating;
+  @override
+  Inventory get inventory;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>

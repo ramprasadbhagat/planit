@@ -21,24 +21,21 @@ mixin _$ProductDetailEvent {
     required TResult Function() initialized,
     required TResult Function(ProductId productId, String? attributeItemId)
         fetch,
-    required TResult Function(ProductAttribute productAttribute)
-        changeSelectedAttribute,
+    required TResult Function(Inventory inventory) changeSelectedAttribute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult? Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult? Function(Inventory inventory)? changeSelectedAttribute,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult Function(Inventory inventory)? changeSelectedAttribute,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +123,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function(ProductId productId, String? attributeItemId)
         fetch,
-    required TResult Function(ProductAttribute productAttribute)
-        changeSelectedAttribute,
+    required TResult Function(Inventory inventory) changeSelectedAttribute,
   }) {
     return initialized();
   }
@@ -137,8 +133,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult? Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult? Function(Inventory inventory)? changeSelectedAttribute,
   }) {
     return initialized?.call();
   }
@@ -148,8 +143,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult Function(Inventory inventory)? changeSelectedAttribute,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -275,8 +269,7 @@ class _$FetchImpl implements _Fetch {
     required TResult Function() initialized,
     required TResult Function(ProductId productId, String? attributeItemId)
         fetch,
-    required TResult Function(ProductAttribute productAttribute)
-        changeSelectedAttribute,
+    required TResult Function(Inventory inventory) changeSelectedAttribute,
   }) {
     return fetch(productId, attributeItemId);
   }
@@ -286,8 +279,7 @@ class _$FetchImpl implements _Fetch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult? Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult? Function(Inventory inventory)? changeSelectedAttribute,
   }) {
     return fetch?.call(productId, attributeItemId);
   }
@@ -297,8 +289,7 @@ class _$FetchImpl implements _Fetch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult Function(Inventory inventory)? changeSelectedAttribute,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -361,9 +352,9 @@ abstract class _$$ChangeSelectedAttributeImplCopyWith<$Res> {
           $Res Function(_$ChangeSelectedAttributeImpl) then) =
       __$$ChangeSelectedAttributeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProductAttribute productAttribute});
+  $Res call({Inventory inventory});
 
-  $ProductAttributeCopyWith<$Res> get productAttribute;
+  $InventoryCopyWith<$Res> get inventory;
 }
 
 /// @nodoc
@@ -379,21 +370,21 @@ class __$$ChangeSelectedAttributeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productAttribute = null,
+    Object? inventory = null,
   }) {
     return _then(_$ChangeSelectedAttributeImpl(
-      null == productAttribute
-          ? _value.productAttribute
-          : productAttribute // ignore: cast_nullable_to_non_nullable
-              as ProductAttribute,
+      null == inventory
+          ? _value.inventory
+          : inventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductAttributeCopyWith<$Res> get productAttribute {
-    return $ProductAttributeCopyWith<$Res>(_value.productAttribute, (value) {
-      return _then(_value.copyWith(productAttribute: value));
+  $InventoryCopyWith<$Res> get inventory {
+    return $InventoryCopyWith<$Res>(_value.inventory, (value) {
+      return _then(_value.copyWith(inventory: value));
     });
   }
 }
@@ -401,14 +392,14 @@ class __$$ChangeSelectedAttributeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
-  const _$ChangeSelectedAttributeImpl(this.productAttribute);
+  const _$ChangeSelectedAttributeImpl(this.inventory);
 
   @override
-  final ProductAttribute productAttribute;
+  final Inventory inventory;
 
   @override
   String toString() {
-    return 'ProductDetailEvent.changeSelectedAttribute(productAttribute: $productAttribute)';
+    return 'ProductDetailEvent.changeSelectedAttribute(inventory: $inventory)';
   }
 
   @override
@@ -416,12 +407,12 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeSelectedAttributeImpl &&
-            (identical(other.productAttribute, productAttribute) ||
-                other.productAttribute == productAttribute));
+            (identical(other.inventory, inventory) ||
+                other.inventory == inventory));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productAttribute);
+  int get hashCode => Object.hash(runtimeType, inventory);
 
   @JsonKey(ignore: true)
   @override
@@ -436,10 +427,9 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
     required TResult Function() initialized,
     required TResult Function(ProductId productId, String? attributeItemId)
         fetch,
-    required TResult Function(ProductAttribute productAttribute)
-        changeSelectedAttribute,
+    required TResult Function(Inventory inventory) changeSelectedAttribute,
   }) {
-    return changeSelectedAttribute(productAttribute);
+    return changeSelectedAttribute(inventory);
   }
 
   @override
@@ -447,10 +437,9 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult? Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult? Function(Inventory inventory)? changeSelectedAttribute,
   }) {
-    return changeSelectedAttribute?.call(productAttribute);
+    return changeSelectedAttribute?.call(inventory);
   }
 
   @override
@@ -458,12 +447,11 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function(ProductId productId, String? attributeItemId)? fetch,
-    TResult Function(ProductAttribute productAttribute)?
-        changeSelectedAttribute,
+    TResult Function(Inventory inventory)? changeSelectedAttribute,
     required TResult orElse(),
   }) {
     if (changeSelectedAttribute != null) {
-      return changeSelectedAttribute(productAttribute);
+      return changeSelectedAttribute(inventory);
     }
     return orElse();
   }
@@ -505,10 +493,10 @@ class _$ChangeSelectedAttributeImpl implements _ChangeSelectedAttribute {
 }
 
 abstract class _ChangeSelectedAttribute implements ProductDetailEvent {
-  const factory _ChangeSelectedAttribute(
-      final ProductAttribute productAttribute) = _$ChangeSelectedAttributeImpl;
+  const factory _ChangeSelectedAttribute(final Inventory inventory) =
+      _$ChangeSelectedAttributeImpl;
 
-  ProductAttribute get productAttribute;
+  Inventory get inventory;
   @JsonKey(ignore: true)
   _$$ChangeSelectedAttributeImplCopyWith<_$ChangeSelectedAttributeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -520,8 +508,7 @@ mixin _$ProductDetailState {
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
-  ProductAttribute get selectedProductAttribute =>
-      throw _privateConstructorUsedError;
+  Inventory get selectedInventory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductDetailStateCopyWith<ProductDetailState> get copyWith =>
@@ -538,10 +525,10 @@ abstract class $ProductDetailStateCopyWith<$Res> {
       {ProductDetail product,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      ProductAttribute selectedProductAttribute});
+      Inventory selectedInventory});
 
   $ProductDetailCopyWith<$Res> get product;
-  $ProductAttributeCopyWith<$Res> get selectedProductAttribute;
+  $InventoryCopyWith<$Res> get selectedInventory;
 }
 
 /// @nodoc
@@ -560,7 +547,7 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
     Object? product = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? selectedProductAttribute = null,
+    Object? selectedInventory = null,
   }) {
     return _then(_value.copyWith(
       product: null == product
@@ -575,10 +562,10 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedProductAttribute: null == selectedProductAttribute
-          ? _value.selectedProductAttribute
-          : selectedProductAttribute // ignore: cast_nullable_to_non_nullable
-              as ProductAttribute,
+      selectedInventory: null == selectedInventory
+          ? _value.selectedInventory
+          : selectedInventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ) as $Val);
   }
 
@@ -592,10 +579,9 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductAttributeCopyWith<$Res> get selectedProductAttribute {
-    return $ProductAttributeCopyWith<$Res>(_value.selectedProductAttribute,
-        (value) {
-      return _then(_value.copyWith(selectedProductAttribute: value) as $Val);
+  $InventoryCopyWith<$Res> get selectedInventory {
+    return $InventoryCopyWith<$Res>(_value.selectedInventory, (value) {
+      return _then(_value.copyWith(selectedInventory: value) as $Val);
     });
   }
 }
@@ -612,12 +598,12 @@ abstract class _$$ProductDetailStateImplCopyWith<$Res>
       {ProductDetail product,
       Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
       bool isFetching,
-      ProductAttribute selectedProductAttribute});
+      Inventory selectedInventory});
 
   @override
   $ProductDetailCopyWith<$Res> get product;
   @override
-  $ProductAttributeCopyWith<$Res> get selectedProductAttribute;
+  $InventoryCopyWith<$Res> get selectedInventory;
 }
 
 /// @nodoc
@@ -634,7 +620,7 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
     Object? product = null,
     Object? apiFailureOrSuccessOption = null,
     Object? isFetching = null,
-    Object? selectedProductAttribute = null,
+    Object? selectedInventory = null,
   }) {
     return _then(_$ProductDetailStateImpl(
       product: null == product
@@ -649,10 +635,10 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
           ? _value.isFetching
           : isFetching // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedProductAttribute: null == selectedProductAttribute
-          ? _value.selectedProductAttribute
-          : selectedProductAttribute // ignore: cast_nullable_to_non_nullable
-              as ProductAttribute,
+      selectedInventory: null == selectedInventory
+          ? _value.selectedInventory
+          : selectedInventory // ignore: cast_nullable_to_non_nullable
+              as Inventory,
     ));
   }
 }
@@ -664,7 +650,7 @@ class _$ProductDetailStateImpl extends _ProductDetailState {
       {required this.product,
       required this.apiFailureOrSuccessOption,
       required this.isFetching,
-      required this.selectedProductAttribute})
+      required this.selectedInventory})
       : super._();
 
   @override
@@ -674,11 +660,11 @@ class _$ProductDetailStateImpl extends _ProductDetailState {
   @override
   final bool isFetching;
   @override
-  final ProductAttribute selectedProductAttribute;
+  final Inventory selectedInventory;
 
   @override
   String toString() {
-    return 'ProductDetailState(product: $product, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedProductAttribute: $selectedProductAttribute)';
+    return 'ProductDetailState(product: $product, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, isFetching: $isFetching, selectedInventory: $selectedInventory)';
   }
 
   @override
@@ -692,14 +678,13 @@ class _$ProductDetailStateImpl extends _ProductDetailState {
                 other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
             (identical(other.isFetching, isFetching) ||
                 other.isFetching == isFetching) &&
-            (identical(
-                    other.selectedProductAttribute, selectedProductAttribute) ||
-                other.selectedProductAttribute == selectedProductAttribute));
+            (identical(other.selectedInventory, selectedInventory) ||
+                other.selectedInventory == selectedInventory));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, product,
-      apiFailureOrSuccessOption, isFetching, selectedProductAttribute);
+      apiFailureOrSuccessOption, isFetching, selectedInventory);
 
   @JsonKey(ignore: true)
   @override
@@ -711,12 +696,11 @@ class _$ProductDetailStateImpl extends _ProductDetailState {
 
 abstract class _ProductDetailState extends ProductDetailState {
   const factory _ProductDetailState(
-          {required final ProductDetail product,
-          required final Option<Either<ApiFailure, dynamic>>
-              apiFailureOrSuccessOption,
-          required final bool isFetching,
-          required final ProductAttribute selectedProductAttribute}) =
-      _$ProductDetailStateImpl;
+      {required final ProductDetail product,
+      required final Option<Either<ApiFailure, dynamic>>
+          apiFailureOrSuccessOption,
+      required final bool isFetching,
+      required final Inventory selectedInventory}) = _$ProductDetailStateImpl;
   const _ProductDetailState._() : super._();
 
   @override
@@ -726,7 +710,7 @@ abstract class _ProductDetailState extends ProductDetailState {
   @override
   bool get isFetching;
   @override
-  ProductAttribute get selectedProductAttribute;
+  Inventory get selectedInventory;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailStateImplCopyWith<_$ProductDetailStateImpl> get copyWith =>

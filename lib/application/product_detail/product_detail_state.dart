@@ -7,21 +7,23 @@ class ProductDetailState with _$ProductDetailState {
     required ProductDetail product,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
     required bool isFetching,
-    required ProductAttribute selectedProductAttribute,
+    required Inventory selectedInventory,
   }) = _ProductDetailState;
 
   factory ProductDetailState.initial() => ProductDetailState(
         product: ProductDetail.empty(),
         apiFailureOrSuccessOption: none(),
         isFetching: true,
-        selectedProductAttribute: ProductAttribute.empty(),
+        selectedInventory: Inventory.empty(),
       );
 
-  bool get isOOS =>
-      product.attribute.isNotEmpty &&
-      (!selectedProductAttribute.attributeItemId.isValid() ||
-          (selectedProductAttribute.quantity.isGretharThanZero &&
-              !product.backOrder));
+  bool get isOOS {
+    final hasStock = selectedInventory.quantity > 0;
+    final isBackOrderable =
+        selectedInventory.quantity == 0 && product.backOrder;
+
+    return !(hasStock || isBackOrderable);
+  }
 
   String get stockInfo => isOOS
       ? SvgImage.outOfStock

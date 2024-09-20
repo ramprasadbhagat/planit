@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/price.dart';
 import 'package:planit/domain/product/entities/product.dart';
@@ -16,8 +17,8 @@ class ProductDetail with _$ProductDetail {
     required int startingPrice,
     required Price price,
     required StringValue productDescription,
-    required List<ProductAttribute> attribute,
     required bool backOrder,
+    required List<Inventory> inventoryList,
   }) = _ProductDetail;
 
   factory ProductDetail.empty() => ProductDetail(
@@ -27,27 +28,23 @@ class ProductDetail with _$ProductDetail {
         price: Price.empty(),
         productId: ProductId(''),
         startingPrice: 0,
-        attribute: [],
         backOrder: false,
+        inventoryList: <Inventory>[],
       );
 
-  Product toProduct(ProductAttribute selectAttribute) => Product(
+  Product toProduct(Inventory inventory) => Product(
         productId: productId,
         name: name,
         productImages: productImages,
         skuPrice: IntegerValue(int.tryParse(price.price) ?? 0),
         startingPrice: startingPrice,
-        attributeItem: selectAttribute.attributeItemValue.getValue(),
-        attributeItemProductId:
-            selectAttribute.attributeItemProductId.getValue(),
-        attributeItemId: selectAttribute.attributeItemId,
-        price: Price(
-          price: selectAttribute.price,
-          quantity: selectAttribute.quantity.getOrDefaultValue(0),
-        ),
+        attributeItem: inventory.itemWeight,
+        attributeItemProductId: inventory.attributeItemId,
+        attributeItemId: StringValue(inventory.attributeItemId),
         productDescription: productDescription,
         backOrder: backOrder,
         productRating: 0,
+        inventory: inventory,
       );
 }
 

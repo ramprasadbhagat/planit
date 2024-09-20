@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/quick_picks/entities/quick_picks.dart';
-import 'package:planit/infrastructure/quick_picks/dtos/price_dto.dart';
+import 'package:planit/infrastructure/core/common/json_read_value_helper.dart';
+import 'package:planit/infrastructure/inventory/dto/inventory_dto.dart';
 
 part 'quick_picks_dto.freezed.dart';
 part 'quick_picks_dto.g.dart';
@@ -34,7 +35,12 @@ class QuickPicksDto with _$QuickPicksDto {
     @JsonKey(defaultValue: '') required String attributeItemProductId,
     @JsonKey(defaultValue: '') required String attributeItem,
     @JsonKey(defaultValue: '') required String attributeItemId,
-    required PriceDto price,
+    @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList,
+    )
+    required List<InventoryDto> inventory,
     required List<String> productImages,
     @JsonKey(defaultValue: false) required bool backOrder,
   }) = _QuickPicksDto;
@@ -63,7 +69,8 @@ class QuickPicksDto with _$QuickPicksDto {
         discount: discount,
         attributeName: attributeName,
         attributeItem: attributeItem,
-        price: price.toDomain,
+        inventoryList:
+            List<InventoryDto>.from(inventory).map((e) => e.toDomain).toList(),
         productImages: productImages,
         attributeItemProductId: attributeItemProductId,
         attributeItemId: StringValue(attributeItemId),

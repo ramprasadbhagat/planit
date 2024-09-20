@@ -37,7 +37,7 @@ mixin _$QuickPicks {
   int get productMRP => throw _privateConstructorUsedError;
   String get productReview => throw _privateConstructorUsedError;
   double get productRating => throw _privateConstructorUsedError;
-  Price get price => throw _privateConstructorUsedError;
+  List<Inventory> get inventoryList => throw _privateConstructorUsedError;
   List<String> get productImages => throw _privateConstructorUsedError;
   StringValue get attributeItemId => throw _privateConstructorUsedError;
   bool get backOrder => throw _privateConstructorUsedError;
@@ -75,12 +75,10 @@ abstract class $QuickPicksCopyWith<$Res> {
       int productMRP,
       String productReview,
       double productRating,
-      Price price,
+      List<Inventory> inventoryList,
       List<String> productImages,
       StringValue attributeItemId,
       bool backOrder});
-
-  $PriceCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -117,7 +115,7 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
-    Object? price = null,
+    Object? inventoryList = null,
     Object? productImages = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
@@ -207,10 +205,10 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
+      inventoryList: null == inventoryList
+          ? _value.inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
       productImages: null == productImages
           ? _value.productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -224,14 +222,6 @@ class _$QuickPicksCopyWithImpl<$Res, $Val extends QuickPicks>
           : backOrder // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceCopyWith<$Res> get price {
-    return $PriceCopyWith<$Res>(_value.price, (value) {
-      return _then(_value.copyWith(price: value) as $Val);
-    });
   }
 }
 
@@ -265,13 +255,10 @@ abstract class _$$QuickPicksImplCopyWith<$Res>
       int productMRP,
       String productReview,
       double productRating,
-      Price price,
+      List<Inventory> inventoryList,
       List<String> productImages,
       StringValue attributeItemId,
       bool backOrder});
-
-  @override
-  $PriceCopyWith<$Res> get price;
 }
 
 /// @nodoc
@@ -306,7 +293,7 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
     Object? productMRP = null,
     Object? productReview = null,
     Object? productRating = null,
-    Object? price = null,
+    Object? inventoryList = null,
     Object? productImages = null,
     Object? attributeItemId = null,
     Object? backOrder = null,
@@ -396,10 +383,10 @@ class __$$QuickPicksImplCopyWithImpl<$Res>
           ? _value.productRating
           : productRating // ignore: cast_nullable_to_non_nullable
               as double,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as Price,
+      inventoryList: null == inventoryList
+          ? _value._inventoryList
+          : inventoryList // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>,
       productImages: null == productImages
           ? _value._productImages
           : productImages // ignore: cast_nullable_to_non_nullable
@@ -441,11 +428,12 @@ class _$QuickPicksImpl extends _QuickPicks {
       required this.productMRP,
       required this.productReview,
       required this.productRating,
-      required this.price,
+      required final List<Inventory> inventoryList,
       required final List<String> productImages,
       required this.attributeItemId,
       required this.backOrder})
       : _ingredientsList = ingredientsList,
+        _inventoryList = inventoryList,
         _productImages = productImages,
         super._();
 
@@ -497,8 +485,14 @@ class _$QuickPicksImpl extends _QuickPicks {
   final String productReview;
   @override
   final double productRating;
+  final List<Inventory> _inventoryList;
   @override
-  final Price price;
+  List<Inventory> get inventoryList {
+    if (_inventoryList is EqualUnmodifiableListView) return _inventoryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_inventoryList);
+  }
+
   final List<String> _productImages;
   @override
   List<String> get productImages {
@@ -514,7 +508,7 @@ class _$QuickPicksImpl extends _QuickPicks {
 
   @override
   String toString() {
-    return 'QuickPicks(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, price: $price, productImages: $productImages, attributeItemId: $attributeItemId, backOrder: $backOrder)';
+    return 'QuickPicks(id: $id, productName: $productName, productDescription: $productDescription, sku: $sku, skuPrice: $skuPrice, skuPacksize: $skuPacksize, skuContent: $skuContent, startingPrice: $startingPrice, ingredientsList: $ingredientsList, nutritionalInformation: $nutritionalInformation, isDeleted: $isDeleted, isActive: $isActive, isHighlighted: $isHighlighted, isQuickPick: $isQuickPick, discount: $discount, attributeName: $attributeName, attributeItem: $attributeItem, attributeItemProductId: $attributeItemProductId, productMRP: $productMRP, productReview: $productReview, productRating: $productRating, inventoryList: $inventoryList, productImages: $productImages, attributeItemId: $attributeItemId, backOrder: $backOrder)';
   }
 
   @override
@@ -562,7 +556,8 @@ class _$QuickPicksImpl extends _QuickPicks {
                 other.productReview == productReview) &&
             (identical(other.productRating, productRating) ||
                 other.productRating == productRating) &&
-            (identical(other.price, price) || other.price == price) &&
+            const DeepCollectionEquality()
+                .equals(other._inventoryList, _inventoryList) &&
             const DeepCollectionEquality()
                 .equals(other._productImages, _productImages) &&
             (identical(other.attributeItemId, attributeItemId) ||
@@ -595,7 +590,7 @@ class _$QuickPicksImpl extends _QuickPicks {
         productMRP,
         productReview,
         productRating,
-        price,
+        const DeepCollectionEquality().hash(_inventoryList),
         const DeepCollectionEquality().hash(_productImages),
         attributeItemId,
         backOrder
@@ -631,7 +626,7 @@ abstract class _QuickPicks extends QuickPicks {
       required final int productMRP,
       required final String productReview,
       required final double productRating,
-      required final Price price,
+      required final List<Inventory> inventoryList,
       required final List<String> productImages,
       required final StringValue attributeItemId,
       required final bool backOrder}) = _$QuickPicksImpl;
@@ -680,7 +675,7 @@ abstract class _QuickPicks extends QuickPicks {
   @override
   double get productRating;
   @override
-  Price get price;
+  List<Inventory> get inventoryList;
   @override
   List<String> get productImages;
   @override
@@ -690,138 +685,5 @@ abstract class _QuickPicks extends QuickPicks {
   @override
   @JsonKey(ignore: true)
   _$$QuickPicksImplCopyWith<_$QuickPicksImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$Price {
-  String get price => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PriceCopyWith<Price> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PriceCopyWith<$Res> {
-  factory $PriceCopyWith(Price value, $Res Function(Price) then) =
-      _$PriceCopyWithImpl<$Res, Price>;
-  @useResult
-  $Res call({String price, int quantity});
-}
-
-/// @nodoc
-class _$PriceCopyWithImpl<$Res, $Val extends Price>
-    implements $PriceCopyWith<$Res> {
-  _$PriceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? quantity = null,
-  }) {
-    return _then(_value.copyWith(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PriceImplCopyWith<$Res> implements $PriceCopyWith<$Res> {
-  factory _$$PriceImplCopyWith(
-          _$PriceImpl value, $Res Function(_$PriceImpl) then) =
-      __$$PriceImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String price, int quantity});
-}
-
-/// @nodoc
-class __$$PriceImplCopyWithImpl<$Res>
-    extends _$PriceCopyWithImpl<$Res, _$PriceImpl>
-    implements _$$PriceImplCopyWith<$Res> {
-  __$$PriceImplCopyWithImpl(
-      _$PriceImpl _value, $Res Function(_$PriceImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? price = null,
-    Object? quantity = null,
-  }) {
-    return _then(_$PriceImpl(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$PriceImpl extends _Price {
-  const _$PriceImpl({required this.price, required this.quantity}) : super._();
-
-  @override
-  final String price;
-  @override
-  final int quantity;
-
-  @override
-  String toString() {
-    return 'Price(price: $price, quantity: $quantity)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PriceImpl &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, price, quantity);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PriceImplCopyWith<_$PriceImpl> get copyWith =>
-      __$$PriceImplCopyWithImpl<_$PriceImpl>(this, _$identity);
-}
-
-abstract class _Price extends Price {
-  const factory _Price(
-      {required final String price, required final int quantity}) = _$PriceImpl;
-  const _Price._() : super._();
-
-  @override
-  String get price;
-  @override
-  int get quantity;
-  @override
-  @JsonKey(ignore: true)
-  _$$PriceImplCopyWith<_$PriceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -2,8 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/product/entities/product_detail.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/infrastructure/core/common/json_read_value_helper.dart';
 import 'package:planit/infrastructure/product/dtos/price_dto.dart';
-import 'package:planit/infrastructure/product/dtos/product_attribute_dto.dart';
+import 'package:planit/infrastructure/inventory/dto/inventory_dto.dart';
 
 part 'product_detail_dto.freezed.dart';
 part 'product_detail_dto.g.dart';
@@ -33,8 +34,13 @@ class ProductDetailDto with _$ProductDetailDto {
       readValue: parseProductImages,
     )
     required List<String> productImages,
-    required List<Map<String, dynamic>> attribute,
     @JsonKey(defaultValue: false) required bool backOrder,
+    @JsonKey(
+      name: 'inventory',
+      defaultValue: <InventoryDto>[],
+      readValue: JsonReadValueHelper.readList,
+    )
+    required List<InventoryDto> inventoryList,
   }) = _ProductDetailDto;
 
   factory ProductDetailDto.fromJson(Map<String, dynamic> json) =>
@@ -47,10 +53,10 @@ class ProductDetailDto with _$ProductDetailDto {
         price: PriceDto.fromJson(price).toDomain,
         productId: ProductId(productId),
         startingPrice: startingPrice,
-        attribute: attribute
-            .map((e) => ProductAttributeDto.fromJson(e).toDomain)
-            .toList(),
         backOrder: backOrder,
+        inventoryList: List<InventoryDto>.from(inventoryList)
+            .map((e) => e.toDomain)
+            .toList(),
       );
 }
 
