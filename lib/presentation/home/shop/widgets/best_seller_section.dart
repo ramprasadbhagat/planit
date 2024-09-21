@@ -86,7 +86,9 @@ class BestSellerItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Padding(
+                  child: Container(
+                    width: 130,
+                    height: 180,
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: [
@@ -105,8 +107,9 @@ class BestSellerItem extends StatelessWidget {
                             fit: BoxFit.scaleDown,
                           ),
                         Text(
-                          item.productName.getValue(),
+                          item.productName.getOrDefaultValue(''),
                           textAlign: TextAlign.center,
+                          maxLines: 2,
                           style: textTheme.bodyMedium,
                         ),
                       ],

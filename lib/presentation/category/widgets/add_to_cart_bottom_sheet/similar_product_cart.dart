@@ -264,13 +264,16 @@ class AddToListButton extends StatelessWidget {
       width: 75,
       child: OutlinedButton(
         onPressed: () {
-          wishlistBloc
-              .add(WishlistEvent.addToWishlist(product: item.toProduct));
-          context.router.maybePop();
-          CustomSnackbar.showSuccessMessage(
-            context,
-            StringConstant.itemAddedToWishList,
-          );
+          if (!context.read<AuthBloc>().state.isUnAuthenticated) {
+            wishlistBloc
+                .add(WishlistEvent.addToWishlist(product: item.toProduct));
+            context.router.maybePop();
+          } else {
+            CustomSnackbar.showErrorMessage(
+              context,
+              StringConstant.pleaseLoginToAddItemsToShoppingList,
+            );
+          }
         },
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
