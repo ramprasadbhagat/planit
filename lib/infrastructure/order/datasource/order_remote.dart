@@ -84,12 +84,19 @@ class OrderRemoteDataSource {
     return unit;
   }
 
-  Future<DeliveryTime> getDeliveryDate() async {
+  Future<DeliveryTime> getDeliveryDate({
+    bool isDeliveryDateSelectedByUser = false,
+    String selectedDate = '',
+  }) async {
     final currentTime = DateTimeStringValue(DateTime.now().toIso8601String());
-    final data = {
-      'date': currentTime.apiDateWithDashString,
-      'time': currentTime.apiTime,
-    };
+    final data = isDeliveryDateSelectedByUser
+        ? {
+            'date': selectedDate,
+          }
+        : {
+            'date': currentTime.apiDateWithDashString,
+            'time': currentTime.apiTime,
+          };
     final res = await httpService.request(
       method: 'POST',
       url: 'deliveryDateAndTime/recent',

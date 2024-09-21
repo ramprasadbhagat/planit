@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,7 @@ import 'package:planit/presentation/checkout/widgets/deliver_address_section.dar
 import 'package:planit/presentation/checkout/widgets/delivery_date_section.dart';
 import 'package:planit/presentation/checkout/widgets/payment_section.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/loading_shimmer/loading_shimmer.dart';
 import 'package:planit/presentation/core/pin_code_dialog_box/pin_code_dialog_box.dart';
 import 'package:planit/presentation/router/router.gr.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -96,33 +99,43 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     BlocBuilder<OrderBloc, OrderState>(
                       buildWhen: (previous, current) =>
                           previous.isFetchingDeliveryDate !=
-                              current.isFetchingDeliveryDate &&
-                          !current.isFetchingDeliveryDate,
+                          current.isFetchingDeliveryDate,
                       builder: (context, orderState) {
                         date = orderState.deliveryTime.date.dateTimeOrNull ??
                             DateTime.now();
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DeliveryDateSection(
-                              onChanged: (e) {
-                                setState(() {
-                                  date = e!;
-                                });
-                              },
-                              initialDate: date,
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              '* Your expected date of delivery is on ${orderState.deliveryTime.date.dateString} , at ${orderState.deliveryTime.startTime.displayOnlyHours} - ${orderState.deliveryTime.endTime.displayOnlyHours}',
-                              style: textTheme.labelSmall?.copyWith(
-                                color: AppColors.grey2,
-                                fontSize: 12,
+                        return LoadingShimmer.withChild(
+                          enabled: orderState.isFetchingDeliveryDate,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DeliveryDateSection(
+                                onChanged: (e) {
+                                  setState(() {
+                                    date = e!;
+                                    context.read<OrderBloc>().add(
+                                          OrderEvent.checkDeliveryDate(
+                                            isDeliveryDateSelectedByUser: true,
+                                            selectedDate:
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(e),
+                                          ),
+                                        );
+                                  });
+                                },
+                                initialDate: date,
                               ),
-                            ),
-                          ],
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                '* Your expected date of delivery is on ${orderState.deliveryTime.date.dateString} , at ${orderState.deliveryTime.startTime.displayOnlyHours} - ${orderState.deliveryTime.endTime.displayOnlyHours}',
+                                style: textTheme.labelSmall?.copyWith(
+                                  color: AppColors.grey2,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
                         );
                       },
                     ),

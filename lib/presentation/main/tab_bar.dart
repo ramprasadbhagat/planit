@@ -138,6 +138,9 @@ class MainTabbar extends StatelessWidget {
                   context
                       .read<CouponBloc>()
                       .add(const CouponEvent.removeCoupon());
+                  context.read<OrderBloc>().add(
+                        const OrderEvent.checkDeliveryDate(),
+                      );
                   context.router.navigate(const HomeRoute());
                   context.router.navigate(const OrderSuccessRoute());
 

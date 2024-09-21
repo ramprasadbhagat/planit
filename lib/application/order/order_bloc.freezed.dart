@@ -36,7 +36,9 @@ mixin _$OrderEvent {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,7 +55,8 @@ mixin _$OrderEvent {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,7 +73,8 @@ mixin _$OrderEvent {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,7 +194,9 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return initialized();
   }
@@ -210,7 +216,8 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return initialized?.call();
   }
@@ -230,7 +237,8 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -472,7 +480,9 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return submitOrder(
         cartItem, addressBook, date, coupon, deliveryCharge, currentUser);
@@ -493,7 +503,8 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return submitOrder?.call(
         cartItem, addressBook, date, coupon, deliveryCharge, currentUser);
@@ -514,7 +525,8 @@ class _$SubmitOrderImpl implements _SubmitOrder {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (submitOrder != null) {
@@ -653,7 +665,9 @@ class _$FetchOrdersImpl implements _FetchOrders {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return fetchOrders();
   }
@@ -673,7 +687,8 @@ class _$FetchOrdersImpl implements _FetchOrders {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return fetchOrders?.call();
   }
@@ -693,7 +708,8 @@ class _$FetchOrdersImpl implements _FetchOrders {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (fetchOrders != null) {
@@ -860,7 +876,9 @@ class _$ProcessPaymentImpl implements _ProcessPayment {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return processPayment(totalAmount, phone, orderId);
   }
@@ -880,7 +898,8 @@ class _$ProcessPaymentImpl implements _ProcessPayment {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return processPayment?.call(totalAmount, phone, orderId);
   }
@@ -900,7 +919,8 @@ class _$ProcessPaymentImpl implements _ProcessPayment {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (processPayment != null) {
@@ -1080,7 +1100,9 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return paymentSuccess(orderId, paymentId, paymentType);
   }
@@ -1100,7 +1122,8 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return paymentSuccess?.call(orderId, paymentId, paymentType);
   }
@@ -1120,7 +1143,8 @@ class _$PaymentSuccessImpl implements _PaymentSuccess {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (paymentSuccess != null) {
@@ -1287,7 +1311,9 @@ class _$PaymentFailedImpl implements _PaymentFailed {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return paymentFailed(orderId, paymentType);
   }
@@ -1307,7 +1333,8 @@ class _$PaymentFailedImpl implements _PaymentFailed {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return paymentFailed?.call(orderId, paymentType);
   }
@@ -1327,7 +1354,8 @@ class _$PaymentFailedImpl implements _PaymentFailed {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (paymentFailed != null) {
@@ -1457,7 +1485,9 @@ class _$HandleExternalAppImpl implements _HandleExternalApp {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return handleExternalApp();
   }
@@ -1477,7 +1507,8 @@ class _$HandleExternalAppImpl implements _HandleExternalApp {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return handleExternalApp?.call();
   }
@@ -1497,7 +1528,8 @@ class _$HandleExternalAppImpl implements _HandleExternalApp {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (handleExternalApp != null) {
@@ -1657,7 +1689,9 @@ class _$ChangePaymentMethodImpl implements _ChangePaymentMethod {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
     return changePaymentMethod(paymentMethod);
   }
@@ -1677,7 +1711,8 @@ class _$ChangePaymentMethodImpl implements _ChangePaymentMethod {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
     return changePaymentMethod?.call(paymentMethod);
   }
@@ -1697,7 +1732,8 @@ class _$ChangePaymentMethodImpl implements _ChangePaymentMethod {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (changePaymentMethod != null) {
@@ -1774,6 +1810,8 @@ abstract class _$$CheckDeliveryDateImplCopyWith<$Res> {
   factory _$$CheckDeliveryDateImplCopyWith(_$CheckDeliveryDateImpl value,
           $Res Function(_$CheckDeliveryDateImpl) then) =
       __$$CheckDeliveryDateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isDeliveryDateSelectedByUser, String selectedDate});
 }
 
 /// @nodoc
@@ -1783,26 +1821,67 @@ class __$$CheckDeliveryDateImplCopyWithImpl<$Res>
   __$$CheckDeliveryDateImplCopyWithImpl(_$CheckDeliveryDateImpl _value,
       $Res Function(_$CheckDeliveryDateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isDeliveryDateSelectedByUser = null,
+    Object? selectedDate = null,
+  }) {
+    return _then(_$CheckDeliveryDateImpl(
+      isDeliveryDateSelectedByUser: null == isDeliveryDateSelectedByUser
+          ? _value.isDeliveryDateSelectedByUser
+          : isDeliveryDateSelectedByUser // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedDate: null == selectedDate
+          ? _value.selectedDate
+          : selectedDate // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$CheckDeliveryDateImpl implements _CheckDeliveryDate {
-  const _$CheckDeliveryDateImpl();
+  const _$CheckDeliveryDateImpl(
+      {this.isDeliveryDateSelectedByUser = false, this.selectedDate = ''});
+
+  @override
+  @JsonKey()
+  final bool isDeliveryDateSelectedByUser;
+  @override
+  @JsonKey()
+  final String selectedDate;
 
   @override
   String toString() {
-    return 'OrderEvent.checkDeliveryDate()';
+    return 'OrderEvent.checkDeliveryDate(isDeliveryDateSelectedByUser: $isDeliveryDateSelectedByUser, selectedDate: $selectedDate)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CheckDeliveryDateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CheckDeliveryDateImpl &&
+            (identical(other.isDeliveryDateSelectedByUser,
+                    isDeliveryDateSelectedByUser) ||
+                other.isDeliveryDateSelectedByUser ==
+                    isDeliveryDateSelectedByUser) &&
+            (identical(other.selectedDate, selectedDate) ||
+                other.selectedDate == selectedDate));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, isDeliveryDateSelectedByUser, selectedDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckDeliveryDateImplCopyWith<_$CheckDeliveryDateImpl> get copyWith =>
+      __$$CheckDeliveryDateImplCopyWithImpl<_$CheckDeliveryDateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1825,9 +1904,11 @@ class _$CheckDeliveryDateImpl implements _CheckDeliveryDate {
     required TResult Function(String orderId, String paymentType) paymentFailed,
     required TResult Function() handleExternalApp,
     required TResult Function(PaymentMethod paymentMethod) changePaymentMethod,
-    required TResult Function() checkDeliveryDate,
+    required TResult Function(
+            bool isDeliveryDateSelectedByUser, String selectedDate)
+        checkDeliveryDate,
   }) {
-    return checkDeliveryDate();
+    return checkDeliveryDate(isDeliveryDateSelectedByUser, selectedDate);
   }
 
   @override
@@ -1845,9 +1926,10 @@ class _$CheckDeliveryDateImpl implements _CheckDeliveryDate {
     TResult? Function(String orderId, String paymentType)? paymentFailed,
     TResult? Function()? handleExternalApp,
     TResult? Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult? Function()? checkDeliveryDate,
+    TResult? Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
   }) {
-    return checkDeliveryDate?.call();
+    return checkDeliveryDate?.call(isDeliveryDateSelectedByUser, selectedDate);
   }
 
   @override
@@ -1865,11 +1947,12 @@ class _$CheckDeliveryDateImpl implements _CheckDeliveryDate {
     TResult Function(String orderId, String paymentType)? paymentFailed,
     TResult Function()? handleExternalApp,
     TResult Function(PaymentMethod paymentMethod)? changePaymentMethod,
-    TResult Function()? checkDeliveryDate,
+    TResult Function(bool isDeliveryDateSelectedByUser, String selectedDate)?
+        checkDeliveryDate,
     required TResult orElse(),
   }) {
     if (checkDeliveryDate != null) {
-      return checkDeliveryDate();
+      return checkDeliveryDate(isDeliveryDateSelectedByUser, selectedDate);
     }
     return orElse();
   }
@@ -1928,7 +2011,15 @@ class _$CheckDeliveryDateImpl implements _CheckDeliveryDate {
 }
 
 abstract class _CheckDeliveryDate implements OrderEvent {
-  const factory _CheckDeliveryDate() = _$CheckDeliveryDateImpl;
+  const factory _CheckDeliveryDate(
+      {final bool isDeliveryDateSelectedByUser,
+      final String selectedDate}) = _$CheckDeliveryDateImpl;
+
+  bool get isDeliveryDateSelectedByUser;
+  String get selectedDate;
+  @JsonKey(ignore: true)
+  _$$CheckDeliveryDateImplCopyWith<_$CheckDeliveryDateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
