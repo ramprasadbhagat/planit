@@ -19,4 +19,7 @@ class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
     required int min,
   }) = SubceedLength<T>;
+  const factory ValueFailure.invalidDateValue({
+    required T failedValue,
+  }) = InvalidDateValue<T>;
 }

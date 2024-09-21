@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/domain/core/error/errors.dart';
 import 'package:planit/domain/core/error/failures.dart';
+import 'package:planit/domain/core/value/constant.dart';
 import 'package:planit/domain/core/value/value_transformer.dart';
 import 'package:planit/domain/core/value/value_validators.dart';
 
@@ -49,6 +50,102 @@ class StringValue extends ValueObject<String> {
   String get displayLabel => naIfEmpty(value.getOrElse(() => ''));
 
   const StringValue._(this.value);
+}
+
+class DateTimeStringValue extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory DateTimeStringValue(String input) {
+    return DateTimeStringValue._(validateDateString(input));
+  }
+
+  String get _valueOrEmpty => value.getOrElse(() => '');
+
+  String get _valueOrDash => value.getOrElse(() => '-');
+
+  String get _valueOrNa => value.getOrElse(() => 'NA');
+
+  bool get isNotEmpty => _valueOrEmpty.isNotEmpty;
+
+  bool get isEmpty => _valueOrEmpty.isEmpty;
+
+  String get displayOnlyHours => convertHoursIn12HrsFormat(
+        _valueOrNa,
+        DateTimeFormatString.displayOnlyHours,
+      );
+
+  String get dateTimeOrNaString => displayDateTimeString(
+        _valueOrNa,
+        DateTimeFormatString.displayDateFormat,
+      );
+
+  String get dateOrDashString => displayDateTimeString(
+        _valueOrDash,
+        DateTimeFormatString.displayDateFormat,
+      );
+
+  String get dateTimeOrDashString => displayDateTimeString(
+        _valueOrDash,
+        DateTimeFormatString.displayDateTimeFormat,
+      );
+
+  String get dateString => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.displayDateFormat,
+      );
+
+  String get simpleDateString => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.displaySimpleDateFormat,
+      );
+
+  String get dateTime12HoursString => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.displayDateTime12HoursFormat,
+      );
+
+  String get apiDateTimeString => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.apiDateFormat,
+      );
+
+  String get apiDateWithDashString => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.apiDateWithDashFormat,
+      );
+
+  String get apiTime => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.timeFormat,
+      );
+
+  int get intValue => getDateTimeIntValue(_valueOrEmpty);
+
+  DateTime? get dateTimeOrNull => tryParseDateTime(_valueOrEmpty);
+
+  String get notificationDateTime => displayDateTimeString(
+        _valueOrEmpty,
+        DateTimeFormatString.displayNotificationDateTimeFormat,
+      );
+
+  // bool get aWeekDifference => differenceNGTWeek(dateTime);
+
+  // bool get isDateMoreThanAWeekAway => checkIfDateMoreThanAWeekAway(dateTime);
+
+  // DateTimeStringValue get threeDaysAfter => DateTimeStringValue(
+  //       getThreeDaysAfterString(
+  //         dateTime,
+  //       ),
+  //     );
+
+  // int get paymentAttentionExpiry => paymentAttentionExpiryInDays(dateTime);
+
+  bool get withinAYearFromNow => dateTimeOrNull != null
+      ? dateTimeOrNull!.difference(DateTime.now()).inDays <= 365
+      : false;
+
+  const DateTimeStringValue._(this.value);
 }
 
 class PaymentStatus extends ValueObject<String> {

@@ -30,4 +30,5 @@ class OrderEvent with _$OrderEvent {
   const factory OrderEvent.handleExternalApp() = _HandleExternalApp;
   const factory OrderEvent.changePaymentMethod(PaymentMethod paymentMethod) =
       _ChangePaymentMethod;
+  const factory OrderEvent.checkDeliveryDate() = _CheckDeliveryDate;
 }

@@ -1,12 +1,16 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dartz/dartz.dart' hide Order;
 import 'package:dio/dio.dart';
 import 'package:planit/domain/address_book/entities/address_book.dart';
 import 'package:planit/domain/cart/entities/cart_item.dart';
 import 'package:planit/domain/core/error/exception.dart';
+import 'package:planit/domain/core/value/value_objects.dart';
 import 'package:planit/domain/coupon/entities/coupon.dart';
+import 'package:planit/domain/order/entities/delivery_time.dart';
 import 'package:planit/domain/order/entities/order.dart';
 import 'package:planit/infrastructure/core/http/http.dart';
+import 'package:planit/infrastructure/order/dtos/delivery_time_dto.dart';
 import 'package:planit/infrastructure/order/dtos/order_dto.dart';
 import 'package:planit/utils/storage_service.dart';
 
@@ -78,6 +82,21 @@ class OrderRemoteDataSource {
     _exceptionChecker(res: res);
 
     return unit;
+  }
+
+  Future<DeliveryTime> getDeliveryDate() async {
+    final currentTime = DateTimeStringValue(DateTime.now().toIso8601String());
+    final data = {
+      'date': currentTime.apiDateWithDashString,
+      'time': currentTime.apiTime,
+    };
+    final res = await httpService.request(
+      method: 'POST',
+      url: 'deliveryDateAndTime/recent',
+      data: data,
+    );
+    _exceptionChecker(res: res);
+    return DeliveryTimeDto.fromJson(res.data).toDomain;
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {

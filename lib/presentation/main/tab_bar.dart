@@ -108,6 +108,9 @@ class MainTabbar extends StatelessWidget {
                   context
                       .read<WalletBloc>()
                       .add(const WalletEvent.fetchTransactionHistory());
+                  context
+                      .read<OrderBloc>()
+                      .add(const OrderEvent.checkDeliveryDate());
                   final cartBloc = context.read<CartBloc>();
 
                   if (cartBloc.state.cartData.isNotEmpty) {
@@ -362,6 +365,7 @@ class MainTabbar extends StatelessWidget {
     context.read<BlogBloc>().add(const BlogEvent.fetchFilterList());
 
     context.read<BestSellerBloc>().add(const BestSellerEvent.fetchProducts());
+    context.read<OrderBloc>().add(const OrderEvent.checkDeliveryDate());
   }
 }
 
