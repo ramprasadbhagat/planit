@@ -96,9 +96,15 @@ class OrderRepository extends IOrderRepository {
   }
 
   @override
-  Future<Either<ApiFailure, DeliveryTime>> getDeliveryDate() async {
+  Future<Either<ApiFailure, DeliveryTime>> getDeliveryDate({
+    bool isDeliveryDateSelectedByUser = false,
+    String selectedDate = '',
+  }) async {
     try {
-      final res = await remoteDataSource.getDeliveryDate();
+      final res = await remoteDataSource.getDeliveryDate(
+        isDeliveryDateSelectedByUser: isDeliveryDateSelectedByUser,
+        selectedDate: selectedDate,
+      );
 
       return Right(res);
     } catch (e) {

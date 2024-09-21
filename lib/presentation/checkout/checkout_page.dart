@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,6 +110,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               onChanged: (e) {
                                 setState(() {
                                   date = e!;
+                                  context.read<OrderBloc>().add(
+                                        OrderEvent.checkDeliveryDate(
+                                          isDeliveryDateSelectedByUser: true,
+                                          selectedDate: DateFormat('yyyy-MM-dd')
+                                              .format(e),
+                                        ),
+                                      );
                                 });
                               },
                               initialDate: date,

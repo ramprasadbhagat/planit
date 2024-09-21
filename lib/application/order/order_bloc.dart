@@ -212,13 +212,16 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           ),
         );
       },
-      checkDeliveryDate: (_CheckDeliveryDate value) async {
+      checkDeliveryDate: (_CheckDeliveryDate e) async {
         emit(
           state.copyWith(
             isFetchingDeliveryDate: true,
           ),
         );
-        final failureOrSuccess = await repository.getDeliveryDate();
+        final failureOrSuccess = await repository.getDeliveryDate(
+          isDeliveryDateSelectedByUser: e.isDeliveryDateSelectedByUser,
+          selectedDate: e.selectedDate,
+        );
 
         failureOrSuccess.fold((l) {
           emit(

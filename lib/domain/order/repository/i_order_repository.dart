@@ -24,5 +24,8 @@ abstract class IOrderRepository {
     required String paymentType,
   });
 
-  Future<Either<ApiFailure, DeliveryTime>> getDeliveryDate();
+  Future<Either<ApiFailure, DeliveryTime>> getDeliveryDate({
+    bool isDeliveryDateSelectedByUser = false,
+    String selectedDate = '',
+  });
 }
