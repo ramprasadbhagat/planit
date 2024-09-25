@@ -24,16 +24,6 @@ class Product with _$Product {
     required Inventory inventory,
   }) = _Product;
 
-  String get getPriceValue {
-    if (inventory.finalPrice > 0) {
-      return inventory.finalPrice.toString();
-    } else if (startingPrice > 0) {
-      return startingPrice.toString();
-    } else {
-      return skuPrice.getValue().toString();
-    }
-  }
-
   CartProductLocal getCartProductLocal({int quantity = 1}) {
     return CartProductLocal(
       productId: productId.getValue(),
@@ -43,7 +33,7 @@ class Product with _$Product {
       startingPrice: startingPrice,
       attributeItem: attributeItem,
       attributeItemProductId: attributeItemProductId,
-      price: getPriceValue,
+      price: inventory.finalPrice.toString(),
       quantity: quantity,
       attributeItemId: attributeItemId.getValue(),
       backOrder: backOrder,

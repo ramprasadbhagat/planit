@@ -31,7 +31,6 @@ class WishlistRemoteDataSource {
     required String productId,
     required String attributeItemId,
     required String quantity,
-    required String price,
   }) async {
     final userId = storageService.getUserId();
     final res = await httpService.request(
@@ -42,7 +41,6 @@ class WishlistRemoteDataSource {
         'product_id': productId,
         'attributeItemId': attributeItemId,
         'quantity': quantity,
-        'price': price,
       },
     );
     _exceptionChecker(res: res);

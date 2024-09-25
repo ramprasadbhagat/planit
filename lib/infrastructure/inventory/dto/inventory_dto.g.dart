@@ -11,8 +11,15 @@ _$InventoryDtoImpl _$$InventoryDtoImplFromJson(Map<String, dynamic> json) =>
       attributeName: json['attributeName'] as String? ?? '',
       attributeItemName: json['attributeItemName'] as String? ?? '',
       attributeItemId: json['attributeItemId'] as String? ?? '',
-      listPrice: (json['listPrice'] as num?)?.toDouble() ?? 0,
-      finalPrice: (json['finalPrice'] as num?)?.toDouble() ?? 0,
+      listPrice: (JsonReadValueHelper.roundToTwoDecimalPlaces(json, 'listPrice')
+                  as num?)
+              ?.toDouble() ??
+          0,
+      finalPrice:
+          (JsonReadValueHelper.roundToTwoDecimalPlaces(json, 'finalPrice')
+                      as num?)
+                  ?.toDouble() ??
+              0,
       discountPercentage: (json['discountPercentage'] as num?)?.toDouble() ?? 0,
       quantity: (json['quantity'] as num?)?.toInt() ?? 0,
     );

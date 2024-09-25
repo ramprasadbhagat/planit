@@ -44,14 +44,12 @@ class WishlistRepository extends IWishlistRepository {
     required String productId,
     required String attributeItemId,
     required String quantity,
-    required String price,
   }) async {
     try {
       final wishlist = await remoteDataSource.addToWishlist(
         productId: productId,
         attributeItemId: attributeItemId,
         quantity: quantity,
-        price: price,
       );
 
       return Right(wishlist);

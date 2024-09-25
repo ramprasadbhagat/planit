@@ -8,7 +8,6 @@ abstract class IWishlistRepository {
     required String productId,
     required String attributeItemId,
     required String quantity,
-    required String price,
   });
   Future<Either<ApiFailure, Unit>> addToCart({
     required String productId,

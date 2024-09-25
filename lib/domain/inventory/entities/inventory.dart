@@ -30,5 +30,5 @@ class Inventory with _$Inventory {
         discountPercentage: 0.0,
       );
 
-  bool get showListPrice => discountPercentage > 0;
+  bool get isDiscountApplied => discountPercentage > 0;
 }

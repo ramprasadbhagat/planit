@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/product/entities/product.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
 
@@ -20,6 +21,7 @@ class CartProduct with _$CartProduct {
     required int quantity,
     required int totalPrice,
     required int discount,
+    required Inventory inventory,
   }) = _CartProduct;
 
   factory CartProduct.empty() => CartProduct(
@@ -34,6 +36,7 @@ class CartProduct with _$CartProduct {
         totalPrice: 0,
         discount: 0,
         attributeitemId: StringValue(''),
+        inventory: Inventory.empty(),
       );
 
   Map<String, dynamic> get toMap => {

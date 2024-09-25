@@ -17,6 +17,7 @@ import 'package:planit/locator.dart';
 import 'package:planit/presentation/category/widgets/add_to_cart_bottom_sheet/similar_product_section.dart';
 import 'package:planit/presentation/category/widgets/product_card.dart';
 import 'package:planit/presentation/core/add_to_cart_button.dart';
+import 'package:planit/presentation/core/discount_widget/discount_widget.dart';
 import 'package:planit/presentation/core/no_pincode_error_dialog.dart';
 import 'package:planit/presentation/shopping_list/widget/item_count_widget.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -208,7 +209,8 @@ class AddToCartBottomSheet extends StatelessWidget {
                                           : AppColors.grey4,
                                     ),
                                   ),
-                                  if (state.selectedInventory.showListPrice)
+                                  if (state
+                                      .selectedInventory.isDiscountApplied) ...[
                                     Text(
                                       state.selectedInventory.listPrice
                                           .toString(),
@@ -218,25 +220,11 @@ class AddToCartBottomSheet extends StatelessWidget {
                                         fontSize: 13,
                                       ),
                                     ),
-                                  if (state.selectedInventory.showListPrice)
-                                    Container(
-                                      margin: const EdgeInsets.only(left: 4),
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 4,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: AppColors.green,
-                                      ),
-                                      child: Text(
-                                        '${state.selectedInventory.discountPercentage}% OFF',
-                                        style: textTheme.bodySmall!.copyWith(
-                                          color: AppColors.white,
-                                          fontSize: 10,
-                                        ),
-                                      ),
+                                    Discount.tag(
+                                      discountPercentage: state
+                                          .selectedInventory.discountPercentage,
                                     ),
+                                  ],
                                 ],
                               ),
                               Text(

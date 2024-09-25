@@ -55,7 +55,6 @@ class CartRepository extends ICartRepository {
       final cartItems = await remoteDataSource.addToCart(
         productId: product.productId.getValue(),
         quantity: quantity,
-        totalPrice: int.tryParse(product.getPriceValue) ?? 0,
         attributeItemProductId: product.attributeItemProductId,
         attributeItemId: product.attributeItemId.getValue(),
       );
