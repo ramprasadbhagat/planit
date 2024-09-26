@@ -30,7 +30,6 @@ class CartRemoteDataSource {
     required String productId,
     required String attributeItemProductId,
     required int quantity,
-    required int totalPrice,
     required String attributeItemId,
   }) async {
     final userId = storageService.getUserId();

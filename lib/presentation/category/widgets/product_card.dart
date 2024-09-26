@@ -126,7 +126,7 @@ class ProductCard extends StatelessWidget {
                           fontSize: 9,
                         ),
                       ),
-                      if (product.inventory.showListPrice)
+                      if (product.inventory.isDiscountApplied)
                         Text(
                           product.inventory.listPrice.toString(),
                           style: textTheme.bodySmall!.copyWith(
@@ -206,9 +206,11 @@ class ProductCard extends StatelessWidget {
                 ],
               ),
             ),
-            if (product.inventory.showListPrice)
-              DiscountWidget(
+            if (product.inventory.isDiscountApplied)
+              Discount.ribbon(
                 discountPercentage: product.inventory.discountPercentage,
+                width: 130,
+                height: 170,
               ),
           ],
         ),

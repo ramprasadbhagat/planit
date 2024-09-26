@@ -26,9 +26,11 @@ mixin _$InventoryDto {
   String get attributeItemName => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: '')
   String get attributeItemId => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   double get listPrice => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   double get finalPrice => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: 0)
   double get discountPercentage => throw _privateConstructorUsedError;
@@ -51,8 +53,14 @@ abstract class $InventoryDtoCopyWith<$Res> {
       {@JsonKey(defaultValue: '') String attributeName,
       @JsonKey(defaultValue: '') String attributeItemName,
       @JsonKey(defaultValue: '') String attributeItemId,
-      @JsonKey(defaultValue: 0) double listPrice,
-      @JsonKey(defaultValue: 0) double finalPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      double listPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      double finalPrice,
       @JsonKey(defaultValue: 0) double discountPercentage,
       @JsonKey(defaultValue: 0) int quantity});
 }
@@ -123,8 +131,14 @@ abstract class _$$InventoryDtoImplCopyWith<$Res>
       {@JsonKey(defaultValue: '') String attributeName,
       @JsonKey(defaultValue: '') String attributeItemName,
       @JsonKey(defaultValue: '') String attributeItemId,
-      @JsonKey(defaultValue: 0) double listPrice,
-      @JsonKey(defaultValue: 0) double finalPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      double listPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      double finalPrice,
       @JsonKey(defaultValue: 0) double discountPercentage,
       @JsonKey(defaultValue: 0) int quantity});
 }
@@ -188,8 +202,14 @@ class _$InventoryDtoImpl extends _InventoryDto {
       {@JsonKey(defaultValue: '') required this.attributeName,
       @JsonKey(defaultValue: '') required this.attributeItemName,
       @JsonKey(defaultValue: '') required this.attributeItemId,
-      @JsonKey(defaultValue: 0) required this.listPrice,
-      @JsonKey(defaultValue: 0) required this.finalPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      required this.listPrice,
+      @JsonKey(
+          defaultValue: 0,
+          readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+      required this.finalPrice,
       @JsonKey(defaultValue: 0) required this.discountPercentage,
       @JsonKey(defaultValue: 0) required this.quantity})
       : super._();
@@ -207,10 +227,12 @@ class _$InventoryDtoImpl extends _InventoryDto {
   @JsonKey(defaultValue: '')
   final String attributeItemId;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   final double listPrice;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   final double finalPrice;
   @override
   @JsonKey(defaultValue: 0)
@@ -269,8 +291,14 @@ abstract class _InventoryDto extends InventoryDto {
           {@JsonKey(defaultValue: '') required final String attributeName,
           @JsonKey(defaultValue: '') required final String attributeItemName,
           @JsonKey(defaultValue: '') required final String attributeItemId,
-          @JsonKey(defaultValue: 0) required final double listPrice,
-          @JsonKey(defaultValue: 0) required final double finalPrice,
+          @JsonKey(
+              defaultValue: 0,
+              readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+          required final double listPrice,
+          @JsonKey(
+              defaultValue: 0,
+              readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
+          required final double finalPrice,
           @JsonKey(defaultValue: 0) required final double discountPercentage,
           @JsonKey(defaultValue: 0) required final int quantity}) =
       _$InventoryDtoImpl;
@@ -289,10 +317,12 @@ abstract class _InventoryDto extends InventoryDto {
   @JsonKey(defaultValue: '')
   String get attributeItemId;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   double get listPrice;
   @override
-  @JsonKey(defaultValue: 0)
+  @JsonKey(
+      defaultValue: 0, readValue: JsonReadValueHelper.roundToTwoDecimalPlaces)
   double get finalPrice;
   @override
   @JsonKey(defaultValue: 0)

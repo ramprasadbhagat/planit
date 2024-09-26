@@ -40,6 +40,8 @@ class BlogItemCard extends StatelessWidget {
                       blog.blogImage.isEmpty || !blog.blogImage.first.isValid()
                           ? Image.asset(
                               PngImage.placeholder,
+                              width: 80,
+                              height: 72,
                             )
                           : CachedNetworkImage(
                               imageUrl: blog.blogImage.first.getValue(),

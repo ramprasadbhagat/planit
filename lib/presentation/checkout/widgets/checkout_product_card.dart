@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
+import 'package:planit/presentation/core/discount_widget/discount_widget.dart';
 import 'package:planit/presentation/core/html_text.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
@@ -76,7 +77,7 @@ class ChecoutItemCard extends StatelessWidget {
               ),
               const Spacer(),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     '${cartProduct.quantity}x',
@@ -87,14 +88,32 @@ class ChecoutItemCard extends StatelessWidget {
                     ),
                     textAlign: TextAlign.start,
                   ),
-                  Text(
-                    '₹${cartProduct.totalPrice}',
-                    style: textTheme.bodySmall?.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.start,
+                  Row(
+                    children: [
+                      if (cartProduct.inventory.isDiscountApplied)
+                        Text(
+                          ' ${cartProduct.inventory.listPrice} ',
+                          style: textTheme.bodySmall!.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColors.lightGray,
+                            fontSize: 14,
+                          ),
+                        ),
+                      Text(
+                        '₹${cartProduct.inventory.finalPrice}',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
                   ),
+                  if (cartProduct.inventory.isDiscountApplied)
+                    Discount.tag(
+                      discountPercentage:
+                          cartProduct.inventory.discountPercentage,
+                    ),
                 ],
               ),
             ],

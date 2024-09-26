@@ -6,6 +6,7 @@ import 'package:planit/application/highlight/highlight_product_bloc.dart';
 import 'package:planit/domain/highlights/entities/highlight.dart';
 import 'package:planit/presentation/core/add_to_cart_bottom_sheet.dart';
 import 'package:planit/presentation/core/common_bottomsheet.dart';
+import 'package:planit/presentation/core/discount_widget/discount_widget.dart';
 import 'package:planit/presentation/core/no_data.dart';
 import 'package:planit/presentation/core/section_title.dart';
 import 'package:planit/presentation/home/shop/widgets/shimmer_items.dart';
@@ -53,11 +54,15 @@ class HighLightSection extends StatelessWidget {
               }
               return SizedBox(
                 height: 180,
-                child: ListView.builder(
+                child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: state.highlights.length,
                   itemBuilder: (BuildContext context, int index) =>
                       HighlightItem(item: state.highlights.elementAt(index)),
+                  separatorBuilder: (context, index) =>
+                      state.highlights.last == state.highlights[index]
+                          ? const SizedBox.shrink()
+                          : const Padding(padding: EdgeInsets.only(right: 8)),
                 ),
               );
             },
@@ -79,82 +84,62 @@ class HighlightItem extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: InkWell(
-            onTap: () => showModalBottomSheet<void>(
-              context: context,
-              isScrollControlled: true,
-              builder: (BuildContext context) => CommonBottomSheet(
-                child: AddToCartBottomSheet(
-                  productId: item.toProduct.productId.getValue(),
-                  attributeItemId: item.attributeItemId.isValid()
-                      ? item.attributeItemId.getValue()
-                      : null,
-                ),
-              ),
-            ),
-            child: Card(
-              clipBehavior: Clip.hardEdge,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              child: Container(
-                width: MediaQuery.sizeOf(context).width * 0.33,
-                decoration: BoxDecoration(
-                  color: AppColors.extraLightGray,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: 80,
-                      child: CachedNetworkImage(
-                        imageUrl: item.productImages.firstOrNull ?? '',
-                        errorWidget: (context, url, error) =>
-                            Image.asset(PngImage.placeholder),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: MediaQuery.sizeOf(context).height * 0.05,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      alignment: Alignment.center,
-                      child: Text(
-                        item.productName,
-                        style: textTheme.bodySmall,
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                      ),
-                    ),
-                  ],
-                ),
+        InkWell(
+          onTap: () => showModalBottomSheet<void>(
+            context: context,
+            isScrollControlled: true,
+            builder: (BuildContext context) => CommonBottomSheet(
+              child: AddToCartBottomSheet(
+                productId: item.toProduct.productId.getValue(),
+                attributeItemId: item.attributeItemId.isValid()
+                    ? item.attributeItemId.getValue()
+                    : null,
               ),
             ),
           ),
+          child: Container(
+            width: MediaQuery.sizeOf(context).width * 0.33,
+            decoration: BoxDecoration(
+              color: AppColors.extraLightGray,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 80,
+                  child: CachedNetworkImage(
+                    imageUrl: item.productImages.firstOrNull ?? '',
+                    errorWidget: (context, url, error) =>
+                        Image.asset(PngImage.placeholder),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: MediaQuery.sizeOf(context).height * 0.05,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.center,
+                  child: Text(
+                    item.productName,
+                    style: textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-        item.discountValue == '0'
-            ? const SizedBox.shrink()
-            : Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 5,
-                  vertical: 4,
-                ),
-                margin: const EdgeInsets.only(top: 2),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColors.black,
-                ),
-                child: Text(
-                  '${item.discountValue} % off',
-                  style: textTheme.bodySmall!.copyWith(color: AppColors.white),
-                ),
-              ),
+        if (item.toProduct.inventory.isDiscountApplied)
+          Discount.ribbon(
+            discountPercentage: item.toProduct.inventory.discountPercentage,
+            width: MediaQuery.sizeOf(context).width * 0.33,
+            height: 180,
+          ),
       ],
     );
   }

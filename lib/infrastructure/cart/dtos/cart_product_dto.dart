@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/core/value/value_objects.dart';
+import 'package:planit/domain/inventory/entities/inventory.dart';
 import 'package:planit/domain/product/value/value_objects.dart';
+import 'package:planit/infrastructure/core/common/json_read_value_helper.dart';
 
 part 'cart_product_dto.freezed.dart';
 part 'cart_product_dto.g.dart';
@@ -16,8 +18,6 @@ class CartProductDto with _$CartProductDto {
     @JsonKey(name: 'productName', defaultValue: '') required String productName,
     @JsonKey(name: 'productDescription', defaultValue: '')
     required String productDescription,
-    @JsonKey(name: 'attributeitem', defaultValue: '')
-    required String attributeitem,
     @JsonKey(name: 'attributeItemId', defaultValue: '')
     required String attributeItemId,
     @JsonKey(
@@ -30,7 +30,21 @@ class CartProductDto with _$CartProductDto {
     required int quantity,
     @JsonKey(name: 'total_price', defaultValue: 0, readValue: intReadValue)
     required int totalPrice,
-    @JsonKey(defaultValue: 0) required int discount,
+    @JsonKey(name: 'attributeItemName', defaultValue: '')
+    required String attributeItemName,
+    @JsonKey(name: 'attributeName', defaultValue: '')
+    required String attributeName,
+    @JsonKey(
+      defaultValue: 0.0,
+      readValue: JsonReadValueHelper.roundToTwoDecimalPlaces,
+    )
+    required double finalPrice,
+    @JsonKey(
+      defaultValue: 0.0,
+      readValue: JsonReadValueHelper.roundToTwoDecimalPlaces,
+    )
+    required double listPrice,
+    @JsonKey(defaultValue: 0.0) required double discountPercentage,
   }) = _CartProductDto;
 
   CartProduct get toDomain => CartProduct(
@@ -39,12 +53,20 @@ class CartProductDto with _$CartProductDto {
         image: image,
         productName: productName,
         productDescription: productDescription,
-        attributeitem: attributeitem,
+        attributeitem: attributeItemName,
         itemPrice: itemPrice,
         quantity: quantity,
         totalPrice: totalPrice,
-        discount: discount,
+        discount: discountPercentage.toInt(),
         attributeitemId: StringValue(attributeItemId),
+        inventory: Inventory.empty().copyWith(
+          itemWeight: '$attributeItemName$attributeName',
+          attributeItemId: attributeItemId,
+          listPrice: listPrice,
+          finalPrice: finalPrice,
+          discountPercentage: discountPercentage,
+          quantity: quantity,
+        ),
       );
 
   factory CartProductDto.fromJson(Map<String, dynamic> json) =>

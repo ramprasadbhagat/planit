@@ -6,6 +6,7 @@ import 'package:planit/application/auth/auth_bloc.dart';
 import 'package:planit/application/cart/cart_bloc.dart';
 import 'package:planit/domain/cart/entities/cart_product.dart';
 import 'package:planit/domain/product/entities/product.dart';
+import 'package:planit/presentation/core/discount_widget/discount_widget.dart';
 import 'package:planit/utils/png_image.dart';
 import 'package:planit/presentation/theme/colors.dart';
 
@@ -80,7 +81,7 @@ class CartItemCard extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    cartProduct.attributeitem,
+                    cartProduct.inventory.itemWeight,
                     style: textTheme.bodySmall?.copyWith(
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
@@ -93,19 +94,25 @@ class CartItemCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '₹${cartProduct.totalPrice} ',
+                        '₹${cartProduct.inventory.finalPrice} ',
                         style: textTheme.bodySmall?.copyWith(
                           fontSize: 11,
                         ),
                       ),
-                      Text(
-                        ' ${cartProduct.totalPrice + cartProduct.discount} ',
-                        style: textTheme.bodySmall!.copyWith(
-                          decoration: TextDecoration.lineThrough,
-                          color: AppColors.lightGray,
-                          fontSize: 9,
+                      if (cartProduct.inventory.isDiscountApplied) ...[
+                        Text(
+                          ' ${cartProduct.inventory.listPrice} ',
+                          style: textTheme.bodySmall!.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColors.lightGray,
+                            fontSize: 9,
+                          ),
                         ),
-                      ),
+                        Discount.tag(
+                          discountPercentage:
+                              cartProduct.inventory.discountPercentage,
+                        ),
+                      ],
                     ],
                   ),
                 ],

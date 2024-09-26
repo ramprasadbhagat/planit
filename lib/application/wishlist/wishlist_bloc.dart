@@ -152,7 +152,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           productId: e.product.productId.getValue(),
           attributeItemId: e.product.attributeItemId
               .getOrDefaultValue(e.product.attributeItemProductId),
-          price: e.product.getPriceValue,
           quantity: '1',
         );
         failureOrSuccess.fold(

@@ -37,9 +37,15 @@ class CartItemSection extends StatelessWidget {
                               SvgImage.locationPin,
                             ),
                             const SizedBox(width: 4.0),
-                            Text(
-                              'Delivering to ${context.read<PincodeBloc>().state.pincode}',
-                              style: textTheme.bodyMedium,
+                            BlocBuilder<PincodeBloc, PincodeState>(
+                              buildWhen: (previous, current) =>
+                                  previous.pincode != current.pincode,
+                              builder: (context, state) {
+                                return Text(
+                                  'Delivering to ${context.read<PincodeBloc>().state.pincode}',
+                                  style: textTheme.bodyMedium,
+                                );
+                              },
                             ),
                           ],
                         ),

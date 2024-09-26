@@ -90,7 +90,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
           emit(
             state.copyWith(
               isSubmitting: true,
-              showErrorMessage: true,
+              showErrorMessage: false,
               apiFailureOrSuccessOption: none(),
             ),
           );
