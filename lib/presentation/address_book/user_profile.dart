@@ -122,8 +122,51 @@ class CheckoutContinueButton extends StatelessWidget {
   }
 }
 
-class ProfileInformationSection extends StatelessWidget {
+class ProfileInformationSection extends StatefulWidget {
   const ProfileInformationSection({super.key});
+
+  @override
+  State<ProfileInformationSection> createState() =>
+      _ProfileInformationSectionState();
+}
+
+class _ProfileInformationSectionState extends State<ProfileInformationSection> {
+  late TextEditingController _fullNameController;
+  late TextEditingController _mobileNumberController;
+  late TextEditingController _emailController;
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<UserProfileBloc>().state.updatedUser;
+    _fullNameController =
+        TextEditingController(text: state.fullName.getValue());
+    _mobileNumberController =
+        TextEditingController(text: state.mobileNumber.getValue());
+    _emailController =
+        TextEditingController(text: state.emailAddress.getValue());
+  }
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _mobileNumberController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  void _updateControllersIfNeeded(UserProfileState state) {
+    final updatedUser = state.updatedUser;
+    if (updatedUser.fullName.getValue() != _fullNameController.text) {
+      _fullNameController.text = updatedUser.fullName.getValue();
+    }
+    if (updatedUser.mobileNumber.getValue() != _mobileNumberController.text) {
+      _mobileNumberController.text = updatedUser.mobileNumber.getValue();
+    }
+    if (updatedUser.emailAddress.getValue() != _emailController.text) {
+      _emailController.text = updatedUser.emailAddress.getValue();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +193,8 @@ class ProfileInformationSection extends StatelessWidget {
           );
         },
         builder: (context, state) {
+          _updateControllersIfNeeded(state);
+
           return Form(
             autovalidateMode: state.showErrorMessage
                 ? AutovalidateMode.always
@@ -303,7 +348,7 @@ class ProfileInformationSection extends StatelessWidget {
                         TextFormField(
                           readOnly: state.isEditMode ? false : true,
                           keyboardType: TextInputType.name,
-                          initialValue: state.updatedUser.fullName.getValue(),
+                          controller: _fullNameController,
                           validator: (_) => context
                               .read<UserProfileBloc>()
                               .state
@@ -338,8 +383,7 @@ class ProfileInformationSection extends StatelessWidget {
                         TextFormField(
                           readOnly: state.isEditMode ? false : true,
                           keyboardType: TextInputType.number,
-                          initialValue:
-                              state.updatedUser.mobileNumber.getValue(),
+                          controller: _mobileNumberController,
                           onChanged: (value) =>
                               context.read<UserProfileBloc>().add(
                                     UserProfileEvent.phoneFieldChange(
@@ -380,8 +424,7 @@ class ProfileInformationSection extends StatelessWidget {
                                       value: value,
                                     ),
                                   ),
-                          initialValue:
-                              state.updatedUser.emailAddress.getValue(),
+                          controller: _emailController,
                           validator: (_) => context
                               .read<UserProfileBloc>()
                               .state
